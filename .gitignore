@@ -1,0 +1,19 @@
+# Competition Data (per EVALUATION.md §5) -- must not be redistributed/publicly
+# shared outside Kaggle's own competition forums/notebooks, and must be deleted
+# after the competition ends. Never commit these, even to a private remote you
+# might later make public.
+dataset/
+par_rulebook_en.pdf
+ptcg_engine/
+sample_submission/sample_submission/cg/
+
+# Local run artifacts
+result.txt
+result.html
+
+# Python
+__pycache__/
+*.pyc
+
+# Local tooling state (not project source)
+.ontrack/
