@@ -1,0 +1,34 @@
+****** Pokémon Trading Card Game Deck List ******
+
+17 - Pokémon
+
+1 Psyduck - 858
+3 Buneary - 758
+1 Abra - 109
+2 Dunsparce - 65
+1 Dudunsparce ex - 306
+2 Dunsparce - 65
+3 Dudunsparce - 66
+1 Fan Rotom - 174
+3 Mega Lopunny ex - 849
+
+36 - Trainer Cards
+
+3 Air Balloon - 1174
+3 Buddy-Buddy Poffin - 1086
+3 Lillie's Determination - 1227
+4 Poké Pad - 1152
+3 Battle Cage - 1264
+4 Boss's Orders - 1182
+4 Ultra Ball - 1121
+4 Wally's Compassion - 1229
+4 Pokégear 3.0 - 1122
+4 Hilda - 1225
+
+7 - Energy Cards
+
+4 Mist Energy - 11
+1 Enriching Energy - 13
+2 Spiky Energy - 14
+
+Total Cards - 60

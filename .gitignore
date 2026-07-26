@@ -7,9 +7,10 @@ par_rulebook_en.pdf
 ptcg_engine/
 sample_submission/sample_submission/cg/
 
-# Local run artifacts
+# Local run artifacts (generated; the HTML replays embed engine/card data)
 result.txt
 result.html
+replay.html
 
 # Python
 __pycache__/

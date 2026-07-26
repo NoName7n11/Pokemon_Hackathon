@@ -1,0 +1,38 @@
+****** Pokémon Trading Card Game Deck List ******
+
+18 - Pokémon
+
+3 Munkidori - 112
+2 Mega Absol ex - 687
+2 Mega Kangaskhan ex - 756
+2 Teal Mask Ogerpon ex - 96
+2 Latias ex - 184
+2 Meowth ex - 1071
+2 Lillie's Clefairy ex - 272
+1 Fezandipiti ex - 140
+1 Bloodmoon Ursaluna ex - 44
+1 Psyduck - 858
+
+29 - Trainer Cards
+
+3 Cyrano - 1205
+3 Crispin - 1198
+3 Boss's Orders - 1182
+2 Brock's Scouting - 1210
+2 Ciphermaniac's Codebreaking - 1188
+1 Lillie's Determination - 1227
+4 Ultra Ball - 1121
+4 Energy Switch - 1116
+2 Night Stretcher - 1097
+1 Unfair Stamp - 1080
+3 Area Zero Underdepths - 1250
+1 Jamming Tower - 1246
+
+13 - Energy Cards
+
+5 Grass Energy - 1
+4 Darkness Energy - 7
+2 Psychic Energy - 5
+2 Mist Energy - 11
+
+Total Cards - 60

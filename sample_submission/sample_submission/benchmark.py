@@ -28,18 +28,20 @@ def play_one(agent0, agent1, max_steps: int = 3000) -> int:
         print("battle_start failed:", start_data)
         return 2
 
-    agents = [agent0, agent1]
-    result = 2
-    for _ in range(max_steps):
-        obs = to_observation_class(obs_dict)
-        if obs.current is not None and obs.current.result != -1:
-            result = obs.current.result
-            break
-        player_idx = obs.current.yourIndex if obs.current else 0
-        selection = agents[player_idx](obs_dict)
-        obs_dict = battle_select(selection)
-    battle_finish()
-    return result
+    try:
+        agents = [agent0, agent1]
+        result = 2
+        for _ in range(max_steps):
+            obs = to_observation_class(obs_dict)
+            if obs.current is not None and obs.current.result != -1:
+                result = obs.current.result
+                break
+            player_idx = obs.current.yourIndex if obs.current else 0
+            selection = agents[player_idx](obs_dict)
+            obs_dict = battle_select(selection)
+        return result
+    finally:
+        battle_finish()
 
 
 def main():

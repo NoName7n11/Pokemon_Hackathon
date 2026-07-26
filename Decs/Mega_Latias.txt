@@ -1,0 +1,42 @@
+****** Pokémon Trading Card Game Deck List ******
+
+13 - Pokémon
+
+2 Latias ex - 184
+2 Mega Latias ex - 754
+2 Latios - 755
+2 Mega Kangaskhan ex - 756
+1 Smoochum - 183
+1 Munkidori - 112
+1 Meowth ex - 1071
+1 Fezandipiti ex - 140
+1 Moltres - 791
+
+35 - Trainer
+
+4 Lillie's Determination - 1227
+3 Crispin - 1198
+3 Boss's Orders - 1182
+2 Kieran - 1191
+1 Cyrano - 1205
+1 Ciphermaniac's Codebreaking - 1188
+1 Wally's Compassion - 1229
+4 Ultra Ball - 1121
+3 Wondrous Patch - 1146
+2 Night Stretcher - 1097
+2 Switch - 1123
+2 Poké Pad - 1152
+2 Mega Signal - 1145
+1 Tool Scrapper - 1137
+1 Judge - 1213
+1 Maximum Belt - 1158
+2 Gravity Mountain - 1252
+
+12 - Energy
+
+6 Psychic Energy - 5
+4 Fire Energy - 2
+1 Telepathic Psychic Energy - 19
+1 Darkness Energy - 7
+
+Total Cards - 60

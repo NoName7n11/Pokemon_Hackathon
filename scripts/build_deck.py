@@ -1,6 +1,6 @@
 """Build a synergistic 60-card deck from EN_Card_Data.csv.
 
-Strategy (documented in NOTES.md):
+Strategy (documented in PROGRESS.md):
   - Pick one Energy type with a deep card pool.
   - Find the best 3-stage (Basic->Stage1->Stage2) evolution line of that type
     that is NOT a rule-box Pokemon (Rule == 'n/a'), to avoid giving up extra
@@ -31,12 +31,6 @@ MAX_COPIES = 4
 def load_rows():
     with open(CSV_PATH, encoding="utf-8-sig") as f:
         return list(csv.DictReader(f))
-
-
-def cost_len(cost: str) -> int:
-    if not cost or cost == "n/a":
-        return 0
-    return len(re.findall(r"\{.\}|\●", cost))
 
 
 def group_cards(rows):
@@ -75,10 +69,6 @@ def group_cards(rows):
 
 def find_chains(cards, ptype):
     """Return list of (basic, stage1, stage2_or_None) same-type chains."""
-    by_name = defaultdict(list)
-    for c in cards.values():
-        by_name[c["name"]].append(c)
-
     basics = [c for c in cards.values() if c["stage"] == "Basic Pokémon" and c["type"] == ptype and c["rule"] == "n/a"]
     chains = []
     for b in basics:
@@ -142,7 +132,6 @@ def main():
     pokemon_slots.append((secondary[1]["id"], 3))
 
     used_names = {primary[0]["name"], primary[1]["name"], primary[2]["name"], secondary[0]["name"], secondary[1]["name"]}
-    used_ids = {c[0] for c in pokemon_slots}
 
     # Fill remaining Pokemon slots (target ~20 total) with strongest lone Basics of the type.
     lone_basics = [
@@ -160,7 +149,6 @@ def main():
         copies = min(3, target_pokemon - pokemon_total)
         pokemon_slots.append((c["id"], copies))
         pokemon_total += copies
-        used_ids.add(c["id"])
 
     print(f"\nPokemon total: {pokemon_total}")
     for cid, n in pokemon_slots:
@@ -176,18 +164,25 @@ def main():
         r for r in rows
         if r[STAGE_COL] in ("Item", "Supporter", "Stadium")
     ]
-    trainer_cards = group_cards(trainer_rows)
-    keywords = re.compile(r"draw|search your deck|heal|shuffle.*hand|Basic Pok[ée]mon", re.IGNORECASE)
-
-    def trainer_score(c):
-        text = " ".join(m["name"] for m in c["moves"]) + str(rows)
-        return 1
+    keywords = re.compile(
+        r"draw|search your deck|heal|shuffle.*hand|Basic Pok[ée]mon|Stage 2|evol",
+        re.IGNORECASE,
+    )
 
     trainer_candidates = []
     for r in trainer_rows:
         effect = r["Effect Explanation"] or ""
-        if keywords.search(effect):
-            trainer_candidates.append(r)
+        if not keywords.search(effect):
+            continue
+        if "Tera Pokémon" in effect:
+            continue
+        if "Mega Evolution Pokémon" in effect:
+            continue
+        if "Team Rocket" in effect:
+            continue
+        if "same name as 1 of your opponent" in effect:
+            continue
+        trainer_candidates.append(r)
 
     # De-dupe by Card ID, keep first occurrence.
     seen = {}
@@ -195,9 +190,43 @@ def main():
         seen.setdefault(r["Card ID"], r)
     trainer_list = list(seen.values())
 
+    def trainer_score(r):
+        effect = (r["Effect Explanation"] or "").lower()
+        score = 0
+        name = r["Card Name"].lower()
+        if "rare candy" in name:
+            score += 90
+        if "ultra ball" in name:
+            score += 75
+        if "buddy-buddy poffin" in name:
+            score += 65
+        if "search your deck" in effect:
+            score += 50
+        if "draw" in effect:
+            score += 40
+        if "stage 2" in effect or "evol" in effect:
+            score += 35
+        if "basic pokémon" in effect or "basic pokemon" in effect:
+            score += 35
+        if "heal" in effect:
+            score += 20
+        if "discard 2 other cards" in effect:
+            score -= 10
+        if "your turn ends" in effect:
+            score -= 25
+        if r["Rule"] == "ACE SPEC":
+            score += 15
+        if r[STAGE_COL] == "Supporter":
+            score -= 10
+        return score
+
+    trainer_list.sort(key=lambda r: (trainer_score(r), r["Card Name"], r["Card ID"]), reverse=True)
+
     trainer_total_target = 60 - pokemon_total - energy_count
     trainer_slots = []
     ace_spec_used = False
+    supporter_count = 0
+    supporter_cap = 8
     t_count = 0
     for r in trainer_list:
         if t_count >= trainer_total_target:
@@ -211,6 +240,11 @@ def main():
             ace_spec_used = True
         else:
             copies = min(MAX_COPIES, trainer_total_target - t_count)
+        if r[STAGE_COL] == "Supporter":
+            copies = min(copies, 2, supporter_cap - supporter_count)
+            if copies <= 0:
+                continue
+            supporter_count += copies
         trainer_slots.append((cid, copies, r["Card Name"], r[STAGE_COL]))
         t_count += copies
 

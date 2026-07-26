@@ -1,3 +1,8 @@
+"""Frozen baseline agent for self-play benchmark comparisons.
+
+This is the policy state before the live-HP targeting pass. Keep this file stable
+unless intentionally refreshing the benchmark baseline.
+"""
 from pathlib import Path
 
 from cg.api import (
@@ -31,11 +36,6 @@ def _attack_data():
 
 
 def read_deck_csv() -> list[int]:
-    """Read deck.csv.
-
-    Returns:
-        list[int]: A list of card IDs in the deck.
-    """
     local_path = Path(__file__).with_name("deck.csv")
     kaggle_path = Path("/kaggle_simulations/agent/deck.csv")
     file_path = local_path if local_path.exists() else kaggle_path
@@ -54,7 +54,6 @@ def _group_by_type(options):
 
 
 def _best_attack_index(options, indices):
-    """Index (into options) of the highest-damage attack among the given option indices."""
     attacks = _attack_data()
     best_i, best_dmg = indices[0], -1
     for i in indices:
@@ -84,52 +83,7 @@ def _best_card_option(options, indices, reverse=True):
     return sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)[0]
 
 
-def _option_pokemon(opt, state):
-    if opt.playerIndex is None or opt.area is None or opt.index is None:
-        return None
-    if opt.playerIndex < 0 or opt.playerIndex >= len(state.players):
-        return None
-    player = state.players[opt.playerIndex]
-    if opt.area == AreaType.ACTIVE:
-        return player.active[0] if player.active and player.active[0] is not None else None
-    if opt.area == AreaType.BENCH and opt.index < len(player.bench):
-        return player.bench[opt.index]
-    return None
-
-
-def _target_score(opt, obs):
-    """Score a target using live board state first, static card data as fallback."""
-    state = obs.current
-    if state is None:
-        return _option_card_power(opt)
-
-    pokemon = _option_pokemon(opt, state)
-    if pokemon is None:
-        return _option_card_power(opt)
-
-    card = _card_data().get(pokemon.id)
-    prize_value = 3 if card and card.megaEx else 2 if card and card.ex else 1
-    damage_taken = max(0, pokemon.maxHp - pokemon.hp)
-    static_threat = _card_power(pokemon.id)
-
-    lethal_damage = None
-    sel = obs.select
-    assert sel is not None
-    if sel.context in (SelectContext.DAMAGE_COUNTER, SelectContext.DAMAGE_COUNTER_ANY):
-        lethal_damage = sel.remainDamageCounter * 10
-    lethal_bonus = 100000 * prize_value if lethal_damage is not None and pokemon.hp <= lethal_damage else 0
-    active_bonus = 5000 if opt.area == AreaType.ACTIVE else 0
-
-    if sel.context == SelectContext.DAMAGE:
-        near_ko_bonus = 6000 + (10 - pokemon.hp) * 200 if pokemon.hp <= 10 else 0
-        live_pressure = near_ko_bonus + damage_taken * 2
-    else:
-        live_pressure = damage_taken * 20 - pokemon.hp * 10
-    return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
-
-
 def _best_attach_index(options, indices, me):
-    """Prefer powering the Active, then the strongest Bench target."""
     best_i, best_score = indices[0], -1
     for i in indices:
         opt = options[i]
@@ -146,7 +100,6 @@ def _best_attach_index(options, indices, me):
 
 
 def _best_play_index(options, indices, me):
-    """Rank playable Basic Pokemon by likely board value."""
     cards = _card_data()
     best_i, best_score = indices[0], -1
     for i in indices:
@@ -163,8 +116,6 @@ def _best_play_index(options, indices, me):
 
 
 def _choose_main(obs: Observation) -> list[int]:
-    """Greedy priority: lethal attack > evolve > attach energy > play basics > ability
-    > best attack > retreat if dying > end turn."""
     sel = obs.select
     state = obs.current
     assert sel is not None and state is not None
@@ -174,36 +125,29 @@ def _choose_main(obs: Observation) -> list[int]:
     opp_active = opp.active[0] if opp.active else None
     by_type = _group_by_type(options)
 
-    # 1. Attack for lethal (engine only lists attacks we have Energy for).
     if OptionType.ATTACK in by_type and opp_active is not None:
         idx, dmg = _best_attack_index(options, by_type[OptionType.ATTACK])
         if dmg >= opp_active.hp:
             return [idx]
 
-    # 2. Evolve — free stat upgrade, no downside.
     if OptionType.EVOLVE in by_type:
         return [_best_card_option(options, by_type[OptionType.EVOLVE])]
 
-    # 3. Attach Energy if we haven't this turn.
     if OptionType.ATTACH in by_type and not state.energyAttached:
         return [_best_attach_index(options, by_type[OptionType.ATTACH], me)]
 
-    # 4. Develop the board: play the strongest Basic to Bench while there's room.
     if OptionType.PLAY in by_type and len(me.bench) < me.benchMax:
         play_idx = _best_play_index(options, by_type[OptionType.PLAY], me)
         if play_idx is not None:
             return [play_idx]
 
-    # 5. Use an Ability if one is available.
     if OptionType.ABILITY in by_type:
         return [by_type[OptionType.ABILITY][0]]
 
-    # 6. Attack anyway with the strongest available attack.
     if OptionType.ATTACK in by_type:
         idx, _ = _best_attack_index(options, by_type[OptionType.ATTACK])
         return [idx]
 
-    # 7. Retreat only if Active is low and a stronger Benched Pokémon exists.
     if OptionType.RETREAT in by_type:
         my_active = me.active[0] if me.active else None
         if my_active is not None and me.bench:
@@ -212,7 +156,6 @@ def _choose_main(obs: Observation) -> list[int]:
             if low_hp and stronger_bench:
                 return [by_type[OptionType.RETREAT][0]]
 
-    # 8. Nothing useful left to do.
     if OptionType.END in by_type:
         return [by_type[OptionType.END][0]]
 
@@ -227,15 +170,20 @@ def _choose_attack(obs: Observation) -> list[int]:
 
 
 def _choose_evolve(obs: Observation) -> list[int]:
-    """Prefer evolving into the strongest resulting card."""
     sel = obs.select
     assert sel is not None
-    return [_best_card_option(sel.option, list(range(len(sel.option))))]
+    options = sel.option
+    cards = _card_data()
+    best_i, best_hp = 0, -1
+    for i, opt in enumerate(options):
+        card = cards.get(opt.cardId) if opt.cardId is not None else None
+        hp = card.hp if card else 0
+        if hp > best_hp:
+            best_i, best_hp = i, hp
+    return [best_i]
 
 
 def _choose_card(obs: Observation) -> list[int]:
-    """Rank card choices by HP: strongest first for board-building contexts,
-    weakest first when discarding/returning cards."""
     sel = obs.select
     assert sel is not None
     options = sel.option
@@ -251,23 +199,23 @@ def _choose_card(obs: Observation) -> list[int]:
         SelectContext.DAMAGE,
         SelectContext.DAMAGE_COUNTER,
         SelectContext.DAMAGE_COUNTER_ANY,
+        SelectContext.EFFECT_TARGET,
     )
     indices = list(range(len(options)))
     if sel.context in opponent_target_contexts:
-        opponent_indices = [i for i, opt in enumerate(options) if opt.playerIndex is not None and obs.current is not None and opt.playerIndex != obs.current.yourIndex]
+        opponent_indices = [
+            i for i, opt in enumerate(options)
+            if opt.playerIndex is not None and obs.current is not None and opt.playerIndex != obs.current.yourIndex
+        ]
         if opponent_indices:
             indices = opponent_indices
 
-    if sel.context in opponent_target_contexts:
-        ranked = sorted(indices, key=lambda i: _target_score(options[i], obs), reverse=True)
-    else:
-        reverse = sel.context not in weakest_first_contexts
-        ranked = sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)
+    reverse = sel.context not in weakest_first_contexts
+    ranked = sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)
     return ranked[: sel.maxCount] if sel.maxCount > 0 else []
 
 
 def _choose_yes_no(obs: Observation) -> list[int]:
-    """Default optimistic: take the beneficial-sounding option when offered."""
     sel = obs.select
     assert sel is not None
     for i, opt in enumerate(sel.option):
@@ -277,7 +225,6 @@ def _choose_yes_no(obs: Observation) -> list[int]:
 
 
 def _choose_count(obs: Observation) -> list[int]:
-    """Each option represents a candidate count; pick the option with the highest number."""
     sel = obs.select
     assert sel is not None
     options = sel.option
@@ -290,7 +237,6 @@ def _choose_count(obs: Observation) -> list[int]:
 
 
 def _clamp(idx_list, sel, n_options):
-    """Enforce minCount <= len <= maxCount, no duplicates, valid range."""
     idx_list = [i for i in dict.fromkeys(idx_list) if 0 <= i < n_options]
     if len(idx_list) > sel.maxCount:
         idx_list = idx_list[: sel.maxCount]
@@ -301,14 +247,8 @@ def _clamp(idx_list, sel, n_options):
 
 
 def agent(obs_dict: dict) -> list[int]:
-    """Greedy heuristic Pokémon TCG agent (no lookahead / no ML — v1 baseline).
-
-    Returns:
-        list[int]: A list of option index.
-    """
     obs: Observation = to_observation_class(obs_dict)
     if obs.select is None:
-        # Initial deck selection.
         return read_deck_csv()
 
     sel = obs.select
@@ -329,7 +269,6 @@ def agent(obs_dict: dict) -> list[int]:
     elif sel.type == SelectType.COUNT:
         idx_list = _choose_count(obs)
     else:
-        # ENERGY, SKILL, SPECIAL_CONDITION, and any future types: safe minimal default.
         idx_list = list(range(sel.minCount))
 
     return _clamp(idx_list, sel, len(options))

@@ -1,0 +1,36 @@
+****** Pokémon Trading Card Game Deck List ******
+
+26 - Pokémon
+
+4 Poltchageist - 28
+4 Sinistcha - 94
+4 Shuppet - 963
+4 Banette - 273
+3 Dhelmise - 332
+1 Latias ex - 184
+1 Meowth ex - 1071
+1 Fezandipiti - 970
+1 Shaymin - 45
+1 Lillie's Clefairy ex - 272
+1 Psyduck - 858
+1 Spiritomb - 688
+
+28 - Trainer Cards
+
+3 Boss's Orders - 1182
+3 Carmine - 1192
+3 Lillie's Determination - 1227
+2 Hilda - 1225
+4 Ultra Ball - 1121
+4 Buddy-Buddy Poffin - 1086
+4 Poké Pad - 1152
+2 Night Stretcher - 1097
+3 Team Rocket's Watchtower - 1256
+
+6 - Energy Cards
+
+3 Telepathic Psychic Energy - 19
+2 Psychic Energy - 5
+1 Legacy Energy - 12
+
+Total Cards - 60

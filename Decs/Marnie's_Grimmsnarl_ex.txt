@@ -1,0 +1,34 @@
+****** Pokémon Trading Card Game Deck List ******
+
+19 - Pokémon
+
+4 Munkidori - 112
+3 Marnie's Impidimp - 646
+2 Marnie's Morgrem - 647
+3 Marnie's Grimmsnarl ex - 648
+2 Snorunt - 103
+2 Froslass - 104
+1 Budew - 235
+1 Yveltal - 689
+1 Tatsugiri - 122
+
+32 - Trainer Cards
+
+4 Lillie's Determination - 1227
+4 Morty's Conviction - 1187
+3 Boss's Orders - 1182
+2 Team Rocket's Petrel - 1219
+4 Buddy-Buddy Poffin - 1086
+4 Poké Pad - 1152
+2 Night Stretcher - 1097
+2 Rare Candy - 1079
+1 Unfair Stamp - 1080
+1 Pokégear 3.0 - 1122
+2 Air Balloon - 1174
+3 Spikemuth Gym - 1259
+
+9 - Energy Cards
+
+9 Darkness Energy - 7
+
+Total Cards - 60

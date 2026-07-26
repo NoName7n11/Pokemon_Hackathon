@@ -1,0 +1,38 @@
+****** Pokémon Trading Card Game Deck List ******
+
+21 - Pokémon
+
+4 Teal Mask Ogerpon ex - 96
+2 Chikorita - 708
+2 Bayleef - 709
+2 Meganium - 710
+2 Applin - 42
+2 Dipplin - 93
+2 Hydrapple ex - 150
+1 Tapu Bulu - 920
+1 Celebi - 655
+1 Meowth ex - 1071
+1 Fezandipiti ex - 140
+1 Regigigas - 251
+
+26 - Trainer Cards
+
+4 Lillie's Determination - 1227
+3 Boss's Orders - 1182
+1 Ciphermaniac's Codebreaking - 1188
+1 Lana's Aid - 1184
+1 Briar - 1201
+1 Dawn - 1231
+4 Bug Catching Set - 1094
+2 Night Stretcher - 1097
+2 Poké Pad - 1152
+2 Ultra Ball - 1121
+1 Unfair Stamp - 1080
+1 Judge - 1213
+3 Forest of Vitality - 1261
+
+13 - Energy Cards
+
+13 Grass Energy - 1
+
+Total Cards - 60
