@@ -12,9 +12,17 @@ result.txt
 result.html
 replay.html
 
+# Other teams' downloaded replay data (Competition Data -- do not redistribute)
+liamk_decks.json
+liamk_behavior.json
+.playwright-mcp/
+
 # Python
 __pycache__/
 *.pyc
 
 # Local tooling state (not project source)
 .ontrack/
+
+# Other teams' downloaded/derived deck data -- do not redistribute
+Decs/

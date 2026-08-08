@@ -13,9 +13,9 @@ Writes round_robin_results.md.
 import sys
 from pathlib import Path
 
+import main as agent_mod
 from cg.api import to_observation_class
 from cg.game import battle_finish, battle_select, battle_start
-from main import agent as heuristic
 
 DECS = Path(__file__).resolve().parents[2] / "Decs"
 
@@ -25,16 +25,32 @@ def load_deck(path: Path) -> list[int]:
     return [int(x) for x in ids[:60]]
 
 
+def seat_agent(deck_ids):
+    """Agent bound to a specific deck.
+
+    The lookahead builds its hidden-info predictions from `agent_mod._MY_DECK`, which
+    otherwise defaults to the submission `deck.csv`. Without this binding every
+    seat would predict the submission deck's cards while actually piloting a
+    different list, biasing the round-robin toward that deck."""
+    def act(obs_dict):
+        agent_mod._MY_DECK = deck_ids
+        return agent_mod.agent(obs_dict)
+    return act
+
+
 def play_one(deck0, deck1, max_steps=3000) -> int:
+    a0, a1 = seat_agent(deck0), seat_agent(deck1)
     obs_dict, start = battle_start(deck0, deck1)
     if obs_dict is None:
         return 2
     try:
+        agents = [a0, a1]
         for _ in range(max_steps):
             obs = to_observation_class(obs_dict)
             if obs.current is not None and obs.current.result != -1:
                 return obs.current.result
-            obs_dict = battle_select(heuristic(obs_dict))
+            pi = obs.current.yourIndex if obs.current else 0
+            obs_dict = battle_select(agents[pi](obs_dict))
         return 2
     finally:
         battle_finish()
@@ -88,7 +104,7 @@ def main():
 
     out = "\n\n".join([f"# Round-robin results ({n} games/ordered pair, heuristic both seats)",
                        rank_txt, avg, raw, bias])
-    Path("round_robin_results.md").write_text(out + "\n", encoding="utf-8")
+    Path(sys.argv[2] if len(sys.argv) > 2 else "round_robin_results.md").write_text(out + "\n", encoding="utf-8")
     print("\n" + rank_txt)
     print("\nWrote round_robin_results.md")
 

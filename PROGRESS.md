@@ -9,7 +9,533 @@ the reversal as a new entry instead).
 
 ---
 
+## 2026-08-08
+
+- **First Kaggle submissions — two failed, root cause found and fixed (`__file__` under
+  `exec()`)**:
+  - Submitted to the **Simulation** competition for the first time (entry gate was
+    already cleared; `user_has_entered: true`). Submissions `#55335664` and `#55351154`
+    both came back `status: ERROR` / "Validation Episode failed."
+  - **Root cause** (from the Agent 0 Logs attachment on the Submissions page, which is
+    the ONLY place the traceback is exposed — the MCP `get_episode_agent_logs` tool
+    returns a content-free stub and no public URL pattern serves it the way
+    `episodes/<id>/replay.json` does):
+    ```
+    File "/kaggle_simulations/agent/main.py", line 55, in read_deck_csv
+        local_path = Path(__file__).with_name("deck.csv")
+    NameError: name '__file__' is not defined
+    ```
+    `kaggle_environments/agent.py` runs the submitted `main.py` by `exec()`-ing its
+    source into a fresh namespace, so **`__file__` is never defined**. Every local
+    execution path (normal import, `python main.py`, `run_local.py`, Docker) defines
+    `__file__`, so no amount of local testing could reproduce it. The failure hit the
+    very first `agent()` call (the deck-selection request, `select: null`) — visible in
+    the replay as `remainingOverageTime` dropping only ~0.08s before `ERROR`.
+  - Aggravating factor: the `agent()` safety net added earlier that day swallowed the
+    `NameError` and returned `[]`, converting a loud crash into a silent **empty deck**
+    — still invalid, but harder to diagnose. Broad `except Exception` around an entry
+    point hides exactly the errors worth seeing.
+  - `sample_submission/sample_submission/main.py` — `read_deck_csv()` now resolves
+    `deck.csv` from `globals().get("__file__")` when present, then
+    `/kaggle_simulations/agent/deck.csv`, then CWD. No bare `__file__` reference.
+  - `sample_submission/sample_submission/cg/sim.py` — native engine load deferred from
+    module import to first attribute access (`_LazyLib`). This was speculative — it was
+    NOT the cause (the `.so` loads fine on Linux, verified in a container) — but it does
+    mean a native-lib failure can no longer kill `import main` before `agent()` exists.
+  - Verified live: replicated Kaggle's execution model in a Linux container
+    (`exec(compile(src, "main.py", "exec"), {"__name__": "__main__"})`, no `__file__`)
+    and fed it the real server-generated observation JSON pulled from a public ladder
+    replay. Fixed code returns all 60 card IDs; the previously-submitted code returns
+    `0` under the identical harness (negative control). Full game still completes
+    (129 steps) on Linux. Resubmitted as `#55351602`.
+  - Note for the Strategy writeup: the deck/agent were never the problem for those two
+    submissions — this was purely a submission-harness bug, and cost ~14h of ladder time.
+  - Also pulled and analysed the rank-1 opponent's deck (`Majkel1337`, 1277.8) from a
+    public replay: 4× Mega Lucario ex + 4× Fighting Gong (energy accel) + 4× Premium
+    Power Pro (damage boost) + 4× Judge — a 4-copy consistency build around one attacker,
+    vs our 5-line toolbox with no energy-acceleration item. Their observed win rate is
+    **79.2% (38-10 over 48 ladder games)**, not 100% — they trade fairly evenly with
+    LiamK and flg. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Cleanup shipped, baseline re-frozen — and the attacker-concentration hypothesis is
+  FALSIFIED**:
+  - `sample_submission/sample_submission/main.py` — deleted
+    `_should_retreat_to_better_attacker` (~40 lines, magic thresholds 30/60/90/120 and
+    a prize-exposure branch) after the ablation measured its contribution at exactly
+    zero. Retreat reverted to the simple pre-2026-08-08 rule at step 7 (below "attack
+    anyway", `hp <= 30% maxHp` and a healthier Bench option). Left a `ponytail:` comment
+    naming the ablation result in-code so the gate is not rebuilt blind later.
+    **`_live_attacker_score` was deliberately KEPT** — it is now load-bearing for
+    `_choose_card`, which is where the measured gain actually lives.
+  - `sample_submission/sample_submission/attacker_share.py` — new. The attacker-share
+    metric had been quoted in three separate entries with no committed tool behind it
+    (the 08-07 numbers came from an ad-hoc replay decode). This harness wraps the agent,
+    records the Active card on every selected ATTACK option, and prints the full
+    per-card ranking plus top-2 concentration. It does **not** hardcode a "real vs weak
+    attacker" card list — the split is left visible in the ranking so the reader
+    classifies, not the tool.
+  - `sample_submission/sample_submission/retreat_ablation.py` — guarded its monkeypatch
+    with `getattr`, so the harness degrades to no-op arms instead of crashing now that
+    the gate it ablated no longer exists.
+  - **Re-test of the cleaned agent** (vs the old frozen 07-18 baseline, so directly
+    comparable to everything above):
+
+    | test | result | reads against |
+    |---|---|---|
+    | `self_play_benchmark.py 500` | **71.6% [67.5-75.4]** (358/142/0), 121.6 steps | fix #2 control 72.8%, Codex's 71.2% — a **tie**, so removing the retreat gate cost nothing, exactly as the ablation predicted |
+    | `benchmark.py 200` vs random | 97.0% (194/200) | 96.0% previously — healthy, no legality/crash regression |
+    | `attacker_share.py 40` | **top-2 = 60.9%** | 66.3% on 2026-08-07 |
+
+  - **The headline is the attacker-share null.** Win rate rose ~10pts while attacker
+    concentration **fell** (66.3% -> 60.9%), and the weak/support share is unchanged at
+    **35.6%** (Celebi 10.3%, Tapu Bulu 9.2%, Regigigas 6.3%, Applin 2.9%, Chikorita
+    2.9%, Bayleef 2.9%, Dipplin 1.1%) — the same ~34-40% band logged since 08-04.
+    So **attacker concentration does not drive our win rate**, and the "close the ~22pt
+    concentration gap vs LiamK" target set on 2026-08-07 was aimed at a metric that does
+    not convert. It should stop driving work.
+  - What *did* move is the composition **within** the attackers: Teal Mask Ogerpon ex
+    54.7% -> 39.7%, **Hydrapple ex 11.6% -> 21.3%**. The promotion fix routes swings to
+    the deck's heavier hitter rather than concentrating them into fewer cards. The gain
+    is attacker **quality per swing**, not concentration.
+  - Instrument caveat, stated so the numbers are not over-read: this harness decodes
+    MAIN-phase ATTACK selections on **one seat**, while the 08-07 figures came from a
+    both-seats replay decode. Attacks/game are therefore **not comparable** (4.3 here vs
+    14.4 there). Shares are comparable in kind; the honest claim is "concentration did
+    not improve", not a precise -5.4pt delta.
+  - `sample_submission/sample_submission/previous_agent.py` — **re-frozen** to the
+    cleaned agent (was the 2026-07-18 pre-lookahead greedy, preserved in git at
+    `7f732ba`). Reason: the old baseline had stopped discriminating — every change since
+    lookahead scored 60-72% against it, so a mediocre change and a good one looked
+    similar. All future deltas measure against the *current shipped* policy, which is
+    also much closer to what the ladder actually pits us against. Verified the freeze:
+    module imports independently of `main`, `SEARCH_MAIN=True`, retreat gate absent, and
+    `self_play_benchmark.py 60` of the agent against its own frozen copy returns 45.0%
+    [33.1-57.5] — a CI spanning 50%, as identical policies must.
+  - Consequence for reading this log: **every win-rate number logged before this entry
+    is "vs the 07-18 greedy" and every number after it is "vs the 08-08 cleaned agent".
+    They are not on the same scale.** — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Fix #2 ablated — the entire gain is the CARD/promotion change; the retreat gate
+  contributes nothing**:
+  - `sample_submission/sample_submission/retreat_ablation.py` — new harness. Fix #2
+    shipped **two** mechanisms in one measurement, so its +6.6pts could not be credited
+    to either: (a) the tactical retreat gate ordered above "attack anyway", and (b)
+    own-board `CARD` selection ranked by `_live_attacker_score` instead of static
+    `_option_card_power`. Arm (b) fires on **every forced promotion after a KO** — far
+    more often than RETREAT, which was only 3.9% of MAIN decisions (2026-08-07 table).
+    The harness monkeypatches each arm off independently (same pattern as
+    `eval_ablation.py`) and runs all four combinations against the same frozen
+    `previous_agent`.
+  - **Also added a two-proportion z-test** (`two_prop_z`) and switched attribution
+    calls to it. Method note: comparing two Wilson CIs by eye is **over-conservative** —
+    non-overlap implies significance, but *overlap does not imply a non-significant
+    difference*. Fix #2's own headline is the example: 71.2% [67.1-75.0] vs the 64.6%
+    [60.3-68.7] reference overlaps by 1.6pts, yet the correct test gives z=2.24,
+    **p=0.025** — genuinely significant. The standing "refuse to act on overlapping
+    CIs" rule should be read as "refuse to act without a test", not "overlap = tie".
+  - **Results (500 games/arm, 2,000 games, vs frozen `previous_agent`):**
+
+    | arm | wins | win rate | delta vs control | z | p |
+    |---|---|---|---|---|---|
+    | both (control) | 364/500 | **72.8%** [68.7-76.5] | — | — | — |
+    | retreat_off | 352/500 | 70.4% [66.3-74.2] | -2.4 | -0.84 | 0.400 **tie** |
+    | card_off | 312/500 | 62.4% [58.1-66.5] | -10.4 | -3.51 | 0.0004 **sig** |
+    | neither | 314/500 | 62.8% [58.5-66.9] | -10.0 | -3.38 | 0.0007 **sig** |
+
+  - The control also **replicates** fix #2's headline independently (72.8% here vs
+    71.2% as logged), so the effect is real and not a single-run fluke.
+  - **Attribution is unambiguous: `card_off` (62.4%) and `neither` (62.8%) are the
+    same number.** Turning the retreat gate off costs nothing whether the CARD change
+    is present or absent, i.e. the retreat mechanism is **inert**. All ~10pts belong to
+    the live-attacker promotion ranking.
+  - **Interpretation — the attacker-discipline hypothesis survives, but the lever was
+    wrong.** Attacker choice is not decided by voluntarily retreating; it is decided at
+    **forced promotion after a KO**, which happens every time something dies and was
+    previously resolved by static printed card power (biggest HP + printed damage), not
+    by who can actually attack right now. That is the mechanism behind the "attacks with
+    whatever is already Active" flaw: the agent kept *promoting* the wrong Pokemon.
+    Retreat was always the rarer and more expensive way to fix the same problem.
+  - Consequence for `main.py`: `_should_retreat_to_better_attacker` (~40 lines, magic
+    thresholds 30/60/90/120 and a prize-exposure branch) is now **measured dead weight**
+    — unproven complexity of exactly the kind the 08-04 KO-risk term was flagged for.
+    Recommend reverting the retreat portion to the pre-fix #1 rule and keeping only the
+    CARD change; not done in this entry, pending decision. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Attacker-discipline retreat fix #2 — conservative tactical retreat gate (kept
+  pending future challenger tests)**:
+  - `sample_submission/sample_submission/main.py` — replaced the broad attempt #1
+    rule ("retreat if any Benched Pokemon has higher usable damage") with a
+    conservative tactical gate. Retreat still sits above "attack anyway", but now
+    only fires when it turns a non-lethal line into an immediate KO or when the
+    Benched attacker offers a meaningful immediate damage gain. The gate also avoids
+    exposing a higher-prize attacker to an immediate KO for only a modest damage
+    upgrade.
+  - Added `_live_attacker_score()` and `_should_retreat_to_better_attacker()` so the
+    rule is explicit and easier to tune. Also updated own-board `CARD` selections to
+    prefer live in-play attackers by usable damage/HP/energy rather than static
+    printed card power, so after choosing RETREAT the follow-up promoted Pokemon is
+    more likely to be the actual attacker instead of merely the strongest printed
+    card.
+  - Reasoning: attempt #1 found the real structural issue (retreat was unreachable in
+    greedy rollout whenever any attack was legal), but its fix was too blunt and
+    measured as a tie with a lower point estimate. This pass keeps the valid ordering
+    insight while requiring a concrete tactical payoff before giving up the current
+    attack.
+  - Verified live: `python -m py_compile` passed for `main.py`, `self_play_benchmark.py`,
+    and `benchmark.py`; `python benchmark.py 40` finished 40/40 wins vs random;
+    `python self_play_benchmark.py 200` finished current 138 / previous 62 / draw 0
+    = **69.0% [95% CI 62.3-75.0%]**; `python self_play_benchmark.py 500` finished
+    current 356 / previous 143 / draw 1 = **71.2% [95% CI 67.1-75.0%]**, avg 123.0
+    steps. Compared with the shipped lookahead reference 64.6% [60.3-68.7%], this is
+    a materially higher point estimate with only slight CI overlap, so it is kept as
+    the current working version rather than rejected like attempt #1. Next useful
+    check: measure attacker-share directly to confirm the win-rate gain actually
+    came from fewer weak/support attacks. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Attacker-discipline attempt #1 — retreat promoted above "attack anyway" (measured
+  a TIE, not shipped on evidence)**:
+  - `sample_submission/sample_submission/main.py` — reordered the greedy MAIN ladder:
+    the retreat rule moved from step 7 to step 6, i.e. **above** "attack anyway with
+    the strongest available attack", and its gate changed from
+    `active.hp <= 30% maxHp and any bench.hp > active.hp` (HP-based) to
+    `any(_best_usable_damage(b) > _best_usable_damage(active))` (damage-based).
+    Lethal attack remains step 1, so lethal still preempts retreat.
+  - **Reasoning / mechanism found.** First hypothesis logged in discussion — "search
+    never gets to consider retreat" — was **wrong**, and is corrected here:
+    `_search_choose_main` enumerates *every* option index (`for i in
+    range(len(sel.option))`), so RETREAT was always a legal top-level search candidate.
+    The real blocker was ladder **ordering**: old step 6 returned an attack whenever
+    any attack was legal, so old step 7 (retreat) was unreachable while the Active
+    could swing at all. Because `_choose_main` is *also* the rollout policy inside
+    lookahead (`_greedy_select` at the `search_step` tail), every rollout continuation
+    also swung with whatever was Active. That explains why the 08-07 eval-term work
+    (Active-quality / KO-risk) could not move the weak-attacker share (40% -> 39.2%):
+    the terms were scoring lines the policy could never generate.
+  - **Result: no measured gain.** `self_play_benchmark.py 500` vs the frozen
+    `previous_agent` = **61.0% [95% CI 56.7-65.2%]** (305/195/0 draws), avg 123.2
+    steps. The shipped lookahead config on the identical harness is **64.6%
+    [60.3-68.7]**. The CIs overlap across most of their range, so this is a
+    **statistical tie with a 3.6pt lower point estimate** — i.e. no evidence of
+    improvement, and a hint of regression that is itself not significant.
+  - Per the standing rule (do not ship on overlapping CIs; do not act on noise), this
+    is **not** treated as an improvement. Left in the tree pending one follow-up
+    measurement of the attacker-share metric, because a *moved share with flat win
+    rate* would be a genuine finding — it would mean attacker concentration does not
+    convert to wins on Hydrapple, and that imitating LiamK's 88.7% figure is chasing
+    a metric with no payoff. If the share is unmoved, the change is simply reverted
+    as rejected fix #4. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Discussion with Codex and me — clarified what we are actually optimizing**:
+  - We clarified that the final Kaggle submission should be treated as a paired
+    product: **`main.py + deck.csv`**. The goal is not to build a universally perfect
+    Pokemon TCG agent in isolation, and it is not to pick a strong-looking deck in
+    isolation. The goal is to submit the strongest measured pairing: an agent that
+    pilots the submitted deck as well as possible against other teams' own
+    `main.py + deck.csv` combinations.
+  - Current stable baseline remains **Hydrapple + lookahead `main.py`**. Hydrapple is
+    not assumed to be the final answer forever, but it is the safest current
+    submission candidate because it has already been validated under our own agent.
+    Copying LiamK's Mega Lopunny / Mega Froslass deck did not create a measurable
+    gain under our pilot: LiamK deck vs Hydrapple was a statistical tie. Therefore
+    LiamK's leaderboard strength should be read as a **deck + agent execution**
+    result, not as proof that the deck alone is superior for us.
+  - The useful lesson from LiamK is behavioral, not just deck-list based. Their agent
+    appears to spend much more compute, takes more useful actions per turn, attaches
+    or accelerates Energy more often, and concentrates attacks through real attackers.
+    Our known gap is still that Hydrapple sometimes attacks with weak or support
+    Pokemon instead of converting through Teal Mask Ogerpon ex / Hydrapple ex /
+    Meganium-style attackers. The next `main.py` work should focus on attacker
+    discipline, tempo, attachment/acceleration sequencing, retreat/promotion choices,
+    and using more of the available search budget.
+  - We also agreed that exploring another strong or anti-meta deck in parallel is
+    reasonable. Hydrapple progress should not be halted or discarded, but a challenger
+    deck can be developed separately. The rule is: **do not replace Hydrapple unless
+    `new deck + adapted main.py` clearly beats `Hydrapple + current/improved main.py`
+    under enough games**. Paper strength, type coverage, or leaderboard imitation is
+    not enough; the candidate must be strong under our actual agent logic.
+  - Working principle going forward:
+
+    ```text
+    final strength = deck potential * agent execution
+    ```
+
+    A strong deck with mismatched agent logic can underperform, and a good agent with
+    a low-ceiling deck is limited. The winning target is the strongest measured pair.
+    Immediate priorities are: keep improving Hydrapple execution as the stable path,
+    add/track attacker-discipline and tempo metrics, widen/deepen search where useful,
+    and test any challenger deck against Hydrapple and LiamK-style baselines before
+    considering a switch. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+## 2026-08-07
+
+- **Behavioral comparison vs the #1 agent — two concrete gaps found**:
+  - Replays carry the **full observation**, including `select.option` for every
+    decision and `remainingOverageTime`. So the #1 agent's actual *choices* can be
+    decoded (map each chosen action index back to its `OptionType`), and its compute
+    consumption read directly. Extracted 40 of LiamK's episodes and measured our own
+    agent on the identical metrics (40 Hydrapple mirror games).
+
+    | metric | LiamK (#1, 1202) | ours (lookahead) |
+    |---|---|---|
+    | avg steps / turns per game | 158 / **13.3** | 139 / **16.1** |
+    | MAIN decisions per game | **48.5** | 40.8 |
+    | PLAY | 36.9% | 42.1% |
+    | **ATTACH** | **25.4%** | **13.1%** |
+    | ATTACK | 12.6% | 11.6% |
+    | ABILITY | 10.9% | 13.4% |
+    | END | 8.0% | 9.3% |
+    | EVOLVE | 3.8% | 6.6% |
+    | RETREAT | 2.4% | 3.9% |
+    | **think time per game** | **15.51s** | **~0.5s** |
+
+  - **GAP 1 — compute. They spend ~30x more time per decision than we do.** LiamK
+    burns 15.51s of the 600s per-game overage bank; our lookahead uses roughly 0.5s.
+    Both are far under the cap (they use 2.6% of it, we use ~0.08%), so **the budget
+    is nowhere near binding for either of us** — consistent with the earlier timing
+    probe (1.8ms per one-turn rollout, ~2,200 rollouts/decision affordable). Our
+    1-ply/one-candidate-per-option search is simply far shallower than theirs. This
+    is the clearest headroom we have: deeper or wider search is affordable *today*.
+  - **GAP 2 — attacker discipline.** LiamK's attacks are overwhelmingly by their two
+    real attackers: **Mega Lopunny ex 55.9% + Mega Froslass ex 32.8% = 88.7%**, with
+    only ~11% by utility Pokémon (Fan Rotom, Buneary, Dunsparce). Ours: Teal Mask
+    Ogerpon ex 54.7% + Hydrapple ex 11.6% = **66.3%**, leaving **~34% of attacks made
+    by weak/support Pokémon** (Celebi, Chikorita, Applin, Bayleef, Regigigas, Dipplin,
+    Tapu Bulu). This independently confirms the "attacks with whatever is already
+    Active" flaw logged earlier — and quantifies the target: close a ~22pt gap in
+    attacker concentration.
+  - **Tempo signature:** they take *more* actions per turn (48.5 MAIN decisions over
+    13.3 turns) yet finish in **~17% fewer turns** than us (16.1). Their much higher
+    ATTACH rate (25.4% vs 13.1%) is the mechanism — they build a board faster and
+    convert sooner, rather than spending turns cycling cards. Note only one *manual*
+    energy attach is legal per turn, so their surplus ATTACHes come from card/ability
+    effects: their Trainer-heavy (36) build is doing real work.
+  - Caveats recorded so these are not over-read: LiamK's 60% win rate is **vs the
+    live ladder field**, while our 55% is a **mirror self-match** (same agent and deck
+    both seats) — those two numbers are *not* comparable and no conclusion is drawn
+    from them. Their think time is engine-measured overage; ours is local wall clock —
+    different instruments, but the ~30x order-of-magnitude gap is well outside
+    measurement error.
+  - `.gitignore` — added `liamk_behavior.json` (another team's replay-derived data;
+    Competition Data, not redistributable). — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Leaderboard #1 (LiamK) deck extracted and tested — no deck change**:
+  - Method (all public, and explicitly sanctioned by the competition Data page, which
+    says replays from other teams are downloadable from the Leaderboard): the
+    leaderboard replay viewer calls **`GET /competitions/episodes/{id}/replay.json`**,
+    which needs no auth, and `POST /api/i/competitions.EpisodeService/ListEpisodes`
+    with `{submissionId}` lists a submission's episodes. In a replay, an agent's
+    **deck is simply its `steps[1]` action** (the 60 card IDs returned during the
+    deck-selection phase), and `info.TeamNames` identifies which seat is whose. Found
+    the endpoint by clicking the replay button and reading the network log after
+    guessing endpoint names failed.
+  - Sampled **60 of LiamK's 241 episodes** (submission 55248965, rating 1202.1).
+    **Every game used one identical 60-card list** — no deck variation at all.
+    Sample record 42W-18L (70%). Saved as `Decs/LiamK_MegaLopunny.txt` / `.csv`.
+  - **The deck is a Mega Lopunny ex / Mega Froslass ex dual-Mega build**: 16 Pokémon
+    (4 Dunsparce, 3 Dudunsparce, 2 Buneary, 2 Mega Lopunny ex, 2 Snorunt, 2 Mega
+    Froslass ex, 1 Fan Rotom), 36 Trainers (4 each Buddy-Buddy Poffin / Lillie's
+    Determination / Poké Pad / Ultra Ball / Wally's Compassion, 3 each Air Balloon /
+    Battle Cage / Hand Trimmer / Hilda, 2 each Boss's Orders / Pokégear 3.0), 8 Energy
+    (4 Mist, 3 Basic {W}, 1 Enriching). Notably thin on Pokémon and Energy, very
+    Trainer-heavy — a consistency-first build.
+  - **Independent corroboration of our own measurement:** this is the same archetype as
+    our `Decs/Mega_Lopunny_ex`, which our lookahead round-robin had already ranked
+    statistically tied for #1 (70.9% vs Hydrapple 71.0%). Two independent methods —
+    our simulation and the actual leaderboard — converged on the same archetype.
+    Theirs is a refinement of ours: adds the Snorunt/Mega Froslass ex line (+3 Basic
+    Water Energy to power it) and 3 Hand Trimmer; cuts Psyduck, Abra, Dudunsparce ex,
+    Spiky Energy; trims Boss's Orders 4->2 and Pokégear 4->2.
+  - `sample_submission/sample_submission/deck_head2head.py` — new seat-balanced
+    two-deck comparison harness (Wilson CI, avg game length, explicit timeout count so
+    long games are reported rather than silently dropped).
+  - **Decisive test: LiamK's deck vs Hydrapple, piloted by OUR agent = 49.2%
+    [43.1-55.4%] over 250 games, 0 timeouts — a TIE. No deck change.** The important
+    read is that **their #1 rating is driven by their agent, not by a copyable deck**:
+    under our pilot their list is worth nothing extra over what we already run. This
+    is more evidence for the deck<->agent coupling already logged — their build almost
+    certainly needs sequencing our generic agent does not execute (Mega evolution
+    timing, Froslass ability use, Hand Trimmer loops).
+  - `.gitignore` — added `liamk_decks.json` and `.playwright-mcp/`. Another team's
+    downloaded replay data is Competition Data and must not be redistributed. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Round-robin re-run WITH lookahead; submission deck re-validated (kept)**:
+  - `sample_submission/sample_submission/round_robin.py` — **fixed a result-invalidating
+    bug found before launching.** The harness passed each deck to the *engine*, but the
+    lookahead builds its hidden-info predictions from `_MY_DECK`, which defaults to the
+    submission `deck.csv`. So every seat would have predicted **Hydrapple's** cards while
+    piloting a different list — systematically biasing the comparison toward the exact
+    deck under test. Added `seat_agent(deck_ids)` to bind the right deck per seat. Also
+    hit a Python shadowing trap: the module-level `def main():` rebound the name over
+    `import main`, so `main._MY_DECK = ...` would have set an attribute on the *function*
+    and then crashed on `main.agent`; renamed to `import main as agent_mod`. Added an
+    optional output-filename argument.
+  - **Deck ranking with lookahead** (50 games/ordered pair, 3,200 games, seat-averaged),
+    vs the earlier greedy-pilot ranking:
+
+    | Deck | greedy | lookahead | delta |
+    |---|---|---|---|
+    | Hydrapple | 74.7% | 71.0% | -3.7 |
+    | Mega_Lopunny_ex | 64.3% | **70.9%** | **+6.6** |
+    | Marnie's_Grimmsnarl_ex | 57.0% | 61.0% | +4.0 |
+    | Team_Rockets_Honchkrow | 48.7% | 51.6% | +2.9 |
+    | Mega_Kangaskhan_ex | 42.9% | 46.4% | +3.5 |
+    | Mega_Absol_ex | 40.0% | 42.4% | +2.4 |
+    | Mega_Latias | 49.4% | **41.0%** | **-8.4** |
+    | Hide_n_Sneak | 23.0% | 15.7% | -7.3 |
+
+  - Finding: **the pilot changes the deck landscape.** Mega_Lopunny_ex gained most from
+    lookahead (+6.6) and Mega_Latias lost most (-8.4), collapsing the previously clear
+    Hydrapple lead into a dead heat (71.0 vs 70.9 — noise at n=50/cell).
+  - **Decisive head-to-head to settle the submission deck:** Hydrapple vs
+    Mega_Lopunny_ex, 500 seat-balanced games = **47.4% [95% CI 43.1-51.8%]** — CI spans
+    50%, i.e. a statistical **tie** (Hydrapple 50.0% as P0, 44.8% as P1).
+  - **Decision: keep Hydrapple as the submission deck.** There is no significant
+    advantage either way, so switching would be chasing noise — the same mistake the
+    earlier 100-game 60/40 result caused. Documented rather than churned. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Lookahead SHIPPED ON: +15.6pts, with a corrected attribution**:
+  - `sample_submission/sample_submission/main.py` — extended `_eval_state` (v2) with
+    `_can_pay` (typed/Colorless attack-cost check, RAINBOW as wild),
+    `_best_usable_damage` (highest damage a Pokémon can actually afford right now),
+    and `_prize_value`; the eval now adds an **Active-attacker quality** term
+    (`best_usable_damage*2 + energies*5`) and an **opponent-KO-back risk** penalty
+    (`-300 * prize_value` if their Active can KO mine next turn). Set
+    `SEARCH_MAIN = True`.
+  - `sample_submission/sample_submission/eval_ablation.py` — new harness that
+    monkeypatches `_eval_state` variants (full / no_ko / no_quality / base-v1) and
+    runs each against the frozen `previous_agent`, so gains are attributed to a
+    specific term instead of a bundle (a repeat criticism of earlier passes).
+  - **Headline result — lookahead is a large, real win.** Same Hydrapple deck on
+    both seats, vs frozen greedy: **control greedy-without-lookahead 49.0%
+    [43.4-54.6] (n=300)** vs **lookahead 64.6% [60.3-68.7] (n=500)** — **+15.6pts**,
+    CIs cleanly separated. Average game length also fell 131.9 -> 121.6 steps
+    (faster, more decisive wins). `benchmark.py 200` = 192/200 (96.0%) vs random.
+  - **Correction to the 2026-07-20 diagnosis.** That entry concluded 1-ply lookahead
+    failed (45%) because "the eval is myopic". That was **wrong**. The ablation shows
+    the *unchanged v1 naive eval* now scores **61.5% [54.6-68.0]** — the only thing
+    that changed in between is the submission deck (auto-built Water -> Hydrapple).
+    Lookahead's value is **deck-dependent**: it exploits Hydrapple's ability-driven
+    energy engine and had little to work with in the clunky Water list.
+  - **My v2 eval terms are within noise.** Ablation (n=200 each): full 63.5%
+    [56.6-69.9], no_ko 64.0% [57.1-70.3], no_quality 56.0% [49.1-62.7], base-v1
+    61.5% [54.6-68.0] — all CIs overlap, and dropping the KO-back term changes
+    nothing (64.0 vs 63.5). The shipped config is the full eval because it carries
+    the largest sample (n=500), but the KO-risk term is **unproven complexity on
+    probation**, not a demonstrated improvement.
+  - The Active-quality term also failed at its stated purpose: the weak-attacker
+    share (Applin/Chikorita/Bayleef/Dipplin/Celebi/Regigigas/Tapu Bulu) is
+    **39.2%** of attacks, essentially unchanged from the ~40% baseline. Attack
+    composition did concentrate on the main attacker though (Teal Mask Ogerpon ex
+    28.8% -> 43.6% of attacks) and total attacks per 40 games fell 785 -> 574, i.e.
+    fewer, more decisive swings. Net: the win comes from lookahead selecting better
+    *lines*, not from the specific eval terms designed for attacker choice. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Hydrapple deck-execution audit (verification of the deck swap)**:
+  - Independently verified Codex's deck swap: `deck.csv` is byte-identical to
+    `Decs/Hydrapple.csv` (60 lines) and `benchmark.py 60` reproduced 57/60 = 95.0%
+    vs random. Swap confirmed correct and kept.
+  - Ran `watch_game.py` on the new deck to check whether the agent actually executes
+    Hydrapple's game plan (the Deck-Score question: are key cards *utilized*, not
+    just present). **First single game was misleading** — it showed zero Hydrapple ex
+    deployment and 13/13 attacks by Teal Mask Ogerpon ex, suggesting the deck's
+    namesake line was dead weight. A 40-game instrumented re-run **corrected that**:
+    Hydrapple ex evolves 89 times (~2.2/game) and attacks 85 times, so the engine
+    does work. Noting the correction explicitly because the n=1 conclusion was wrong
+    and nearly drove a deck rebuild.
+  - **Real finding from the 40-game attacker distribution** (total attacks by card):
+    Teal Mask Ogerpon ex 226, Meganium 85, Hydrapple ex 85, Celebi 84, **Applin 80**,
+    Fezandipiti ex 53, Regigigas 48, **Chikorita 42, Bayleef 33, Dipplin 26**, Tapu
+    Bulu 13, Meowth ex 10. Roughly **40% of attacks come from weak basics/unevolved
+    intermediates** (Applin 40HP, Chikorita, Bayleef, Dipplin) rather than the deck's
+    real attackers. The agent attacks with whatever is already Active instead of
+    promoting the right attacker — the known tempo/misallocation flaw in a new form,
+    consistent with the deliberately conservative retreat rule (only retreat at
+    <=30% HP). Confirms the Ogerpon energy engine IS used (Teal Dance ability fires
+    for energy accel + draw), so the deck/agent pairing is sound; the gap is
+    attacker selection, not deck construction. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+## 2026-08-04
+
+- **Submission deck swapped to Hydrapple**:
+  - `sample_submission/sample_submission/deck.csv` — replaced the auto-built Water
+    Stage-2 deck with the measured Hydrapple deck from `Decs/Hydrapple.csv`.
+    Reasoning: the full 8-deck round robin already showed Hydrapple as the strongest
+    deck under the current generic heuristic pilot (74.7% mean seat-neutral win rate
+    vs the field), so leaving the weaker Water deck as the actual submission deck was
+    unused measured value. This is the lowest-risk, highest-ROI deck-score/model-score
+    improvement before further agent work.
+  - `PLAN.html` — updated the completion board to mark Hydrapple as the active
+    submission deck, reject the auto-built Water list for final submission, and mark
+    deck-vs-deck measurement as done via the round-robin harness. Reasoning: the plan
+    should reflect the current decision frontier: deck selection is now measured and
+    cashed in; the remaining high-ceiling work is agent eval/lookahead.
+  - Verified live: `Decs/Hydrapple.csv` and the copied submission `deck.csv` are both
+    60 lines; `python -m py_compile` passed for runtime Python files; `python
+    benchmark.py 200` with Hydrapple finished 190/200 wins (95.0%) against random;
+    `python run_local.py` completed one local match and wrote `result.txt`. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Hackathon completion board**:
+  - `PLAN.html` — added a static browser-openable planning board with tracks for
+    submission correctness, measurement, agent strategy, deck strategy, report
+    evidence, and final polish. Reasoning: the project now needs a controlled
+    finish path rather than reactive heuristic tuning; an HTML board is easier to
+    scan during the remaining hackathon days than a long markdown checklist.
+  - The plan records current measured state (self-play neutrality over 500 games,
+    random-smoke strength, and remaining tempo/stall debt), explicitly keeps the
+    rejected one-rule tempo fixes rejected, and separates agent-quality work from
+    deck-quality measurement so future changes are not mixed together. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 ## 2026-07-20
+
+- **MAIN-phase 1-ply lookahead (built, measured, shipped OFF)**:
+  - `sample_submission/sample_submission/main.py` — added a 1-ply lookahead for MAIN
+    decisions behind a `SEARCH_MAIN` flag. Refactored the greedy dispatch into
+    `_greedy_select(obs)` (reused as both the default policy and the rollout policy).
+    New pieces: `_eval_state` (prizes×1000 + board-HP diff + Active energy, from a
+    fixed my-index perspective, terminal win/loss = ±1e9), `_predictions` (mirror
+    hidden-info fill for `search_begin`), `_rollout_score` (fork via `search_begin`,
+    apply a candidate first action, greedily play out the rest of my turn via
+    `search_step`, eval the end-of-turn board), and `_search_choose_main` (score
+    every MAIN option's greedy continuation, pick the best; return None → greedy
+    fallback on any failure).
+  - **Measured WORSE than greedy and shipped OFF.** Verified search actually engages
+    (33/33 P0 MAIN decisions, 0 errors — not a silent fallback). `self_play_benchmark
+    200` (current lookahead vs frozen 07-18 greedy) = **45.0% [95% CI 38.3-51.9%]**,
+    vs ~49% for greedy-without-lookahead — i.e. ~4pts worse, at the edge of
+    significance. Set `SEARCH_MAIN = False` so the stronger greedy policy ships; all
+    lookahead code kept behind the flag for iteration.
+  - Diagnosis of why 1-ply didn't pay off: (1) the greedy rollout tail masks the
+    first action — most candidates converge to similar end boards, so search
+    differentiates on HP/energy noise and loses to greedy's clean lethal-first
+    priority; (2) the eval is myopic (end-of-MY-turn only, ignores the opponent's
+    KO-back on their turn — greedy's tuned retreat/priority implicitly handles some
+    of that); (3) mirror-fill pollutes rollouts — draw/search cards in the sandbox
+    pull from the predicted deck, not real draw order. Next-iteration levers:
+    richer eval (opponent lethal-next-turn / Active survivability / prize race),
+    or restrict search to specific decisions (attack timing) instead of all MAIN
+    options. Paused for design discussion before iterating. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Search-API timing probe (lookahead feasibility)**:
+  - `sample_submission/sample_submission/time_probe.py` — at 25 real MAIN decision
+    points in a live game, times the cabt search API (`search_begin` /
+    `search_step` / `search_end`) to size a future lookahead. Builds the hidden-info
+    args `search_begin` requires (my deck/prize, opponent deck/prize/hand at exact
+    counts; identities are valid-but-arbitrary for a pure speed test), rolls forward
+    one turn, and reports rollouts-per-budget. Also read the env budget from
+    `cabt.json`: `actTimeout=0`, `runTimeout=2000`, `remainingOverageTime=600` (a
+    ~600s per-game bank).
+  - **Results (Hydrapple mirror, 25 points, 0 failures):** `search_begin` median
+    0.26ms, `search_step` median 0.17ms, one full one-turn rollout (begin + ~8
+    steps) median **1.8ms** (max 3.9ms). A ~150-decision game averages ~4000ms per
+    decision, i.e. **~2,200 rollouts/decision** available; even a conservative 200ms
+    gives ~110.
+  - **Conclusion: time does not constrain the lookahead design.** 1-ply search over
+    a handful of candidate lines is trivially affordable; multi-ply / hundreds of
+    rollouts also fit. The real constraints are (1) state-eval quality — with speed
+    free, lookahead quality rides entirely on the board-scoring function — and (2)
+    hidden-info prediction: the probe fed *true* decks, but a real agent must guess
+    the opponent's deck/hand, which affects rollout realism (decision quality), not
+    speed. Next: discuss eval design + opponent modeling before building 1-ply. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
 
 - **Full 8-deck round-robin (seat-bias-cancelled deck ranking)**:
   - `sample_submission/sample_submission/round_robin.py` — plays every ordered deck

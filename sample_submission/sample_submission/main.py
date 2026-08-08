@@ -3,17 +3,33 @@ from pathlib import Path
 from cg.api import (
     AreaType,
     CardType,
+    EnergyType,
     Observation,
     OptionType,
     SelectContext,
     SelectType,
     all_attack,
     all_card_data,
+    search_begin,
+    search_end,
+    search_step,
     to_observation_class,
 )
 
 _CARD_DATA = None
 _ATTACK_DATA = None
+_MY_DECK = None
+
+# MAIN-phase 1-ply lookahead config.
+SEARCH_MAIN = True          # MAIN-phase 1-ply lookahead. MEASURED (Hydrapple deck,
+                            # vs frozen greedy): lookahead 64.6% [60.3-68.7] n=500 vs
+                            # greedy control 49.0% [43.4-54.6] n=300 => +15.6pts.
+                            # NOTE: the gain is from lookahead itself and is
+                            # DECK-DEPENDENT (it measured 45% on the old Water deck).
+                            # The _eval_state v2 terms are within noise -- see
+                            # eval_ablation.py and PROGRESS.md 2026-08-04.
+MAX_ROLLOUT_STEPS = 40      # cap greedy rollout length inside a forked turn
+WIN_SCORE = 1e9
 
 
 def _card_data():
@@ -36,9 +52,17 @@ def read_deck_csv() -> list[int]:
     Returns:
         list[int]: A list of card IDs in the deck.
     """
-    local_path = Path(__file__).with_name("deck.csv")
-    kaggle_path = Path("/kaggle_simulations/agent/deck.csv")
-    file_path = local_path if local_path.exists() else kaggle_path
+    # NOTE: Kaggle runs this file via exec() of its source, so `__file__` is NOT
+    # defined there (it crashed submissions #55335664/#55351154 with NameError).
+    # Resolve the sibling deck.csv only when __file__ exists; otherwise fall back
+    # to the documented Kaggle agent directory, then the CWD.
+    candidates = []
+    module_file = globals().get("__file__")
+    if module_file:
+        candidates.append(Path(module_file).with_name("deck.csv"))
+    candidates.append(Path("/kaggle_simulations/agent/deck.csv"))
+    candidates.append(Path("deck.csv"))
+    file_path = next((p for p in candidates if p.exists()), candidates[-1])
     with open(file_path, "r", encoding="utf-8") as file:
         rows = [line.strip() for line in file if line.strip()]
     if len(rows) < 60:
@@ -162,6 +186,16 @@ def _best_play_index(options, indices, me):
     return best_i if best_score >= 0 else None
 
 
+def _live_attacker_score(mon, opp_active=None) -> int:
+    """Score an in-play Pokemon as an immediate Active attacker."""
+    if mon is None:
+        return -10**9
+    dmg = _best_usable_damage(mon)
+    lethal_bonus = 3000 if opp_active is not None and dmg >= opp_active.hp else 0
+    prize_penalty = 120 * _prize_value(mon)
+    return lethal_bonus + dmg * 20 + mon.hp + len(mon.energies) * 15 - prize_penalty
+
+
 def _choose_main(obs: Observation) -> list[int]:
     """Greedy priority: lethal attack > evolve > attach energy > play basics > ability
     > best attack > retreat if dying > end turn."""
@@ -203,13 +237,17 @@ def _choose_main(obs: Observation) -> list[int]:
         idx, _ = _best_attack_index(options, by_type[OptionType.ATTACK])
         return [idx]
 
-    # 7. Retreat only if Active is low and a stronger Benched Pokémon exists.
+    # 7. Retreat only if the Active is dying and a stronger Benched Pokémon exists.
+    # ponytail: deliberately the simple pre-2026-08-08 rule. A tactical
+    # "retreat to a better attacker" gate was built and ABLATED to exactly zero
+    # (retreat_ablation.py: card_off 62.4% vs neither 62.8%, n=500/arm) — attacker
+    # choice is decided at forced promotion after a KO, not by voluntary retreat.
+    # Don't reintroduce a retreat heuristic without measuring it in isolation.
     if OptionType.RETREAT in by_type:
         my_active = me.active[0] if me.active else None
         if my_active is not None and me.bench:
             low_hp = my_active.hp <= my_active.maxHp * 0.3
-            stronger_bench = any(b.hp > my_active.hp for b in me.bench)
-            if low_hp and stronger_bench:
+            if low_hp and any(b.hp > my_active.hp for b in me.bench):
                 return [by_type[OptionType.RETREAT][0]]
 
     # 8. Nothing useful left to do.
@@ -262,7 +300,24 @@ def _choose_card(obs: Observation) -> list[int]:
         ranked = sorted(indices, key=lambda i: _target_score(options[i], obs), reverse=True)
     else:
         reverse = sel.context not in weakest_first_contexts
-        ranked = sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)
+        own_board_indices = []
+        if reverse and obs.current is not None:
+            own_board_indices = [
+                i for i, opt in enumerate(options)
+                if opt.playerIndex == obs.current.yourIndex
+                and opt.area in (AreaType.ACTIVE, AreaType.BENCH)
+                and _option_pokemon(opt, obs.current) is not None
+            ]
+        if own_board_indices:
+            opp = obs.current.players[1 - obs.current.yourIndex]
+            opp_active = opp.active[0] if opp.active else None
+            ranked = sorted(
+                indices,
+                key=lambda i: _live_attacker_score(_option_pokemon(options[i], obs.current), opp_active),
+                reverse=True,
+            )
+        else:
+            ranked = sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)
     return ranked[: sel.maxCount] if sel.maxCount > 0 else []
 
 
@@ -300,18 +355,11 @@ def _clamp(idx_list, sel, n_options):
     return idx_list
 
 
-def agent(obs_dict: dict) -> list[int]:
-    """Greedy heuristic Pokémon TCG agent (no lookahead / no ML — v1 baseline).
-
-    Returns:
-        list[int]: A list of option index.
-    """
-    obs: Observation = to_observation_class(obs_dict)
-    if obs.select is None:
-        # Initial deck selection.
-        return read_deck_csv()
-
+def _greedy_select(obs: Observation) -> list[int]:
+    """Pure greedy policy over one Observation. Used both as the agent's default
+    and as the rollout policy inside lookahead (never recurses into search)."""
     sel = obs.select
+    assert sel is not None
     options = sel.option
     if not options:
         return []
@@ -333,3 +381,220 @@ def agent(obs_dict: dict) -> list[int]:
         idx_list = list(range(sel.minCount))
 
     return _clamp(idx_list, sel, len(options))
+
+
+def _my_deck_ids() -> list[int]:
+    global _MY_DECK
+    if _MY_DECK is None:
+        try:
+            _MY_DECK = read_deck_csv()
+        except Exception:
+            _MY_DECK = []
+    return _MY_DECK
+
+
+def _can_pay(cost, have) -> bool:
+    """Approximate attack-cost check: each typed symbol needs a matching attached
+    Energy (RAINBOW counts as any type); Colorless symbols take whatever is left."""
+    pool = list(have)
+    colorless = 0
+    for c in cost:
+        if c == EnergyType.COLORLESS:
+            colorless += 1
+            continue
+        for i, e in enumerate(pool):
+            if e == c or e == EnergyType.RAINBOW:
+                pool.pop(i)
+                break
+        else:
+            return False
+    return len(pool) >= colorless
+
+
+def _best_usable_damage(mon) -> int:
+    """Highest damage this Pokémon can actually deal right now (cost affordable)."""
+    if mon is None:
+        return 0
+    card = _card_data().get(mon.id)
+    if card is None:
+        return 0
+    attacks = _attack_data()
+    best = 0
+    for aid in card.attacks:
+        a = attacks.get(aid)
+        if a is not None and _can_pay(a.energies, mon.energies):
+            best = max(best, a.damage)
+    return best
+
+
+def _prize_value(mon) -> int:
+    """Prizes the opponent takes if this Pokémon is Knocked Out."""
+    card = _card_data().get(mon.id) if mon is not None else None
+    if card is None:
+        return 1
+    return 3 if card.megaEx else 2 if card.ex else 1
+
+
+def _eval_state(state, my_index: int) -> float:
+    """Score a board from my_index's perspective.
+
+    Terms, in rough priority: prizes (the win condition), board HP (material),
+    Active attacker quality (is the RIGHT Pokémon in the Active slot, powered up),
+    and opponent KO-back risk (does this line leave my Active dying next turn,
+    weighted by the prizes that KO would concede)."""
+    if state is None:
+        return 0.0
+    if state.result != -1:
+        if state.result == my_index:
+            return WIN_SCORE
+        if state.result == 1 - my_index:
+            return -WIN_SCORE
+        return 0.0  # draw
+
+    me = state.players[my_index]
+    opp = state.players[1 - my_index]
+
+    def total_hp(p):
+        mons = ([p.active[0]] if p.active and p.active[0] else []) + list(p.bench)
+        return sum(m.hp for m in mons)
+
+    # Fewer of MY prizes remaining = I've taken more = closer to winning.
+    prize = (len(opp.prize) - len(me.prize)) * 1000
+    hp_diff = total_hp(me) - total_hp(opp)
+
+    my_active = me.active[0] if me.active else None
+    opp_active = opp.active[0] if opp.active else None
+
+    # Reward having a real, powered attacker Active (not a 40HP intermediate).
+    active_quality = 0
+    if my_active is not None:
+        active_quality = _best_usable_damage(my_active) * 2 + len(my_active.energies) * 5
+
+    # Penalize lines that leave my Active KO-able on the opponent's next turn,
+    # scaled by how many Prize cards that KO would hand them.
+    ko_risk = 0
+    if my_active is not None and opp_active is not None:
+        if _best_usable_damage(opp_active) >= my_active.hp:
+            ko_risk = -300 * _prize_value(my_active)
+
+    return prize + hp_diff + active_quality + ko_risk
+
+
+def _predictions(obs: Observation, my_deck: list[int], opp_deck: list[int]) -> dict:
+    """Hidden-info args for search_begin. For a within-my-turn rollout the opponent
+    never acts, so a mirror-deck fill is sufficient; counts must match observed."""
+    st = obs.current
+    assert st is not None
+    yi = st.yourIndex
+    me, opp = st.players[yi], st.players[1 - yi]
+
+    def take(ids, n):
+        if n <= 0:
+            return []
+        pool = ids or my_deck or [0]
+        return [pool[i % len(pool)] for i in range(n)]
+
+    return {
+        "your_deck": take(my_deck, me.deckCount),
+        "your_prize": take(my_deck, len(me.prize)),
+        "opponent_deck": take(opp_deck, opp.deckCount),
+        "opponent_prize": take(opp_deck, len(opp.prize)),
+        "opponent_hand": take(opp_deck, opp.handCount),
+        "opponent_active": [],
+    }
+
+
+def _rollout_score(first_select, obs: Observation, my_index: int,
+                   my_deck: list[int], opp_deck: list[int]) -> float:
+    """Fork the real state, apply first_select, then play out the REST of my turn
+    greedily; return the end-of-turn board eval (or terminal win/loss)."""
+    p = _predictions(obs, my_deck, opp_deck)
+    ss = search_begin(obs, p["your_deck"], p["your_prize"], p["opponent_deck"],
+                      p["opponent_prize"], p["opponent_hand"], p["opponent_active"])
+    start_turn = obs.current.turn if obs.current else 0
+    try:
+        ss = search_step(ss.searchId, first_select)
+        for _ in range(MAX_ROLLOUT_STEPS):
+            o = ss.observation
+            cur, s = o.current, o.select
+            if cur is not None and cur.result != -1:
+                return _eval_state(cur, my_index)
+            if cur is not None and cur.turn != start_turn:
+                break  # my turn ended
+            if s is None:
+                break
+            ss = search_step(ss.searchId, _greedy_select(o))
+        return _eval_state(ss.observation.current, my_index)
+    finally:
+        search_end()
+
+
+def _search_choose_main(obs: Observation):
+    """1-ply lookahead over MAIN options: pick the action whose greedy continuation
+    yields the best end-of-turn board. Returns None to signal 'fall back to greedy'."""
+    sel = obs.select
+    if sel is None or obs.current is None:
+        return None
+    my_deck = _my_deck_ids()
+    if not my_deck:
+        return None
+    my_index = obs.current.yourIndex
+    opp_deck = my_deck  # mirror opponent (irrelevant during my own turn)
+
+    try:
+        best_i, best_score = None, float("-inf")
+        for i in range(len(sel.option)):
+            choice = _clamp([i], sel, len(sel.option))
+            score = _rollout_score(choice, obs, my_index, my_deck, opp_deck)
+            if score > best_score:
+                best_score, best_i = score, i
+    except Exception:
+        return None  # any search failure => greedy fallback
+    if best_i is None:
+        return None
+    return _clamp([best_i], sel, len(sel.option))
+
+
+def agent(obs_dict: dict) -> list[int]:
+    """Pokémon TCG agent entry point. Delegates to `_agent_impl`; on ANY unexpected
+    exception there (e.g. the native cg engine failing to load on an unfamiliar
+    host) falls back to a minimal, cg.api-free legal selection instead of
+    forfeiting the match outright.
+
+    Returns:
+        list[int]: A list of option index.
+    """
+    try:
+        return _agent_impl(obs_dict)
+    except Exception:
+        sel = obs_dict.get("select") if isinstance(obs_dict, dict) else None
+        if sel is None:
+            try:
+                return read_deck_csv()
+            except Exception:
+                return []
+        options = sel.get("option") or []
+        min_count = sel.get("minCount", 0) or 0
+        return list(range(min(min_count, len(options))))
+
+
+def _agent_impl(obs_dict: dict) -> list[int]:
+    """Pokémon TCG agent: MAIN-phase 1-ply lookahead (greedy rollout) with a greedy
+    fallback for all other decisions and on any search failure.
+
+    Returns:
+        list[int]: A list of option index.
+    """
+    obs: Observation = to_observation_class(obs_dict)
+    if obs.select is None:
+        # Initial deck selection.
+        return read_deck_csv()
+    if not obs.select.option:
+        return []
+
+    if SEARCH_MAIN and obs.select.type == SelectType.MAIN and obs.current is not None:
+        chosen = _search_choose_main(obs)
+        if chosen is not None:
+            return chosen
+
+    return _greedy_select(obs)

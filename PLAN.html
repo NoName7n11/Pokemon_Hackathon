@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokemon Hackathon Plan</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #647086;
+      --line: #d8dee9;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+      --done: #0f766e;
+      --doing: #b45309;
+      --todo: #475569;
+      --risk: #b91c1c;
+      --reject: #6d28d9;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.45;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      padding: 28px 36px 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 960px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    main {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 24px 28px 44px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 21px;
+      margin-bottom: 2px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: -4px 0 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      border-top: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: inline-block;
+      min-width: 72px;
+      border-radius: 999px;
+      padding: 3px 8px;
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .done { background: var(--done); }
+    .doing { background: var(--doing); }
+    .todo { background: var(--todo); }
+    .risk { background: var(--risk); }
+    .reject { background: var(--reject); }
+
+    code {
+      background: #edf2f7;
+      border: 1px solid #dbe3ee;
+      border-radius: 5px;
+      padding: 1px 5px;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 860px) {
+      header { padding: 22px 18px; }
+      main { padding: 18px 14px 34px; }
+      .summary, .grid { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+      th, td { padding: 9px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pokemon Hackathon Plan</h1>
+    <p class="subtitle">
+      Working board for finishing the hackathon: preserve submission correctness,
+      improve only with measurement, and turn the progress log into final report evidence.
+    </p>
+  </header>
+
+  <main>
+    <div class="summary">
+      <div class="metric"><strong>95%</strong><span>Hydrapple random smoke win rate</span></div>
+      <div class="metric"><strong>49.2%</strong><span>Current vs frozen previous over 500 games</span></div>
+      <div class="metric"><strong>74.7%</strong><span>Hydrapple seat-neutral round-robin strength</span></div>
+      <div class="metric"><strong>60</strong><span>Hydrapple submission deck IDs</span></div>
+    </div>
+
+    <div class="grid">
+      <section>
+        <h2>Submission Correctness</h2>
+        <p class="note">These tasks protect against invalid or fragile final submissions.</p>
+        <table>
+          <tr><th>Status</th><th>Task</th><th>Check</th></tr>
+          <tr><td><span class="status done">Done</span></td><td>Submitted agent reads deck from local file or Kaggle path.</td><td><code>read_deck_csv()</code></td></tr>
+          <tr><td><span class="status done">Done</span></td><td>Submission deck is Hydrapple and remains exactly 60 IDs.</td><td><code>sample_submission\sample_submission\deck.csv</code></td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Confirm final package includes only required runtime files.</td><td>Manual package review</td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Run final local match after the last code change.</td><td><code>python run_local.py</code></td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Measurement</h2>
+        <p class="note">No gameplay change should be accepted without passing the right benchmark.</p>
+        <table>
+          <tr><th>Status</th><th>Task</th><th>Check</th></tr>
+          <tr><td><span class="status done">Done</span></td><td>Random benchmark kept as smoke test.</td><td><code>python benchmark.py 200</code></td></tr>
+          <tr><td><span class="status done">Done</span></td><td>Self-play benchmark uses frozen previous agent and confidence interval.</td><td><code>python self_play_benchmark.py 500</code></td></tr>
+          <tr><td><span class="status doing">Doing</span></td><td>Tempo diagnostics quantify stalling and big-hand END turns.</td><td><code>python tempo_diagnostics.py 100</code></td></tr>
+          <tr><td><span class="status done">Done</span></td><td>Deck-vs-deck measurement exists via round robin.</td><td><code>round_robin.py</code></td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Agent Strategy</h2>
+        <p class="note">Current priority is tempo: turns where the agent ends instead of building toward damage.</p>
+        <table>
+          <tr><th>Status</th><th>Task</th><th>Decision Rule</th></tr>
+          <tr><td><span class="status done">Done</span></td><td>Live-HP targeting exists for damage/counter selections.</td><td>Keep unless measured regression appears</td></tr>
+          <tr><td><span class="status risk">Risk</span></td><td>Fix Energy and Trainer sequencing that causes big-hand END turns.</td><td>Needs diagnostics or lookahead</td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Prototype MAIN-phase lookahead for attack timing and Energy routing.</td><td>Accept only if self-play improves</td></tr>
+          <tr><td><span class="status reject">Rejected</span></td><td>One-rule Trainer play and ready-Bench retreat tweaks.</td><td>Both regressed 500-game self-play</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Deck Strategy</h2>
+        <p class="note">Deck changes need separate measurement because mirror self-play cancels deck quality.</p>
+        <table>
+          <tr><th>Status</th><th>Task</th><th>Question</th></tr>
+          <tr><td><span class="status done">Done</span></td><td>Hydrapple selected as active submission deck.</td><td>74.7% mean seat-neutral win rate vs field</td></tr>
+          <tr><td><span class="status reject">Rejected</span></td><td>Auto-built Water Stage-2 list as submission deck.</td><td>Outperformed by Hydrapple under fixed agent</td></tr>
+          <tr><td><span class="status done">Done</span></td><td>Deck quality measured separately from policy quality.</td><td>8-deck round robin</td></tr>
+          <tr><td><span class="status doing">Doing</span></td><td>Freeze Hydrapple before final agent polish.</td><td>Avoid late combined variables</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Report Evidence</h2>
+        <p class="note">The final writeup should mostly be assembled from PROGRESS.md, benchmarks, and rejected experiments.</p>
+        <table>
+          <tr><th>Status</th><th>Task</th><th>Source</th></tr>
+          <tr><td><span class="status done">Done</span></td><td>Append-only progress log is active.</td><td><code>PROGRESS.md</code></td></tr>
+          <tr><td><span class="status done">Done</span></td><td>Rejected experiments are documented instead of hidden.</td><td>2026-07-19 entries</td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Draft final strategy report outline.</td><td>Evaluation rubric</td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Summarize measurement discipline and final selected agent/deck.</td><td>Benchmarks + watcher notes</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Final Polish</h2>
+        <p class="note">Late stage work should be conservative and evidence-driven.</p>
+        <table>
+          <tr><th>Status</th><th>Task</th><th>Exit Criteria</th></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Freeze best measured agent/deck.</td><td>No risky changes afterward</td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Run longer final benchmarks.</td><td>Self-play, random, diagnostics</td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Review final submission folder.</td><td>Only required runtime artifacts</td></tr>
+          <tr><td><span class="status todo">Todo</span></td><td>Prepare final report.</td><td>Clear rationale, metrics, limitations</td></tr>
+        </table>
+      </section>
+
+      <section class="wide">
+        <h2>Recommended Work Order</h2>
+        <ol>
+          <li>Keep the current retained agent stable while improving diagnostics.</li>
+          <li>Treat Hydrapple as the active submission deck unless a stronger measured deck appears.</li>
+          <li>Prototype MAIN-phase lookahead or deeper Energy/Trainer sequencing, one change at a time.</li>
+          <li>Run <code>self_play_benchmark.py 500</code> or higher for every accepted policy change.</li>
+          <li>Freeze final agent and deck, then polish the report from <code>PROGRESS.md</code>.</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
