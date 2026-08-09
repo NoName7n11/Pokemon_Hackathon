@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Build and export 60-card decks from the local Pokemon Hackathon card dataset.">
+    <title>OnTrack Deck Lab</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brandBlock">
+        <div class="brandMark" aria-hidden="true"><span></span></div>
+        <div>
+          <h1>OnTrack Deck Lab</h1>
+          <p id="dataSummary">Preparing card library...</p>
+        </div>
+      </div>
+
+      <div class="deckIdentity">
+        <label for="deckName">Deck name</label>
+        <input id="deckName" type="text" value="My Deck" maxlength="60" autocomplete="off">
+      </div>
+
+      <div class="topActions">
+        <button id="importOpen" class="button secondary" type="button">Import</button>
+        <button id="clearDeck" class="button secondary" type="button">Clear</button>
+        <button id="exportTxt" class="button secondary" type="button">Export TXT</button>
+        <button id="exportCsv" class="button primary" type="button">Export CSV</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="filterPanel" aria-label="Card filters">
+        <div class="panelTitleRow">
+          <div>
+            <span class="eyebrow">Library</span>
+            <h2>Find cards</h2>
+          </div>
+          <button id="resetFilters" class="textButton" type="button">Reset</button>
+        </div>
+
+        <label class="field searchField" for="searchInput">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Name, attack, ability..." autocomplete="off">
+        </label>
+
+        <fieldset class="filterGroup kindGroup">
+          <legend>Card kind</legend>
+          <div class="segmented" id="kindFilter">
+            <button class="active" type="button" data-value="">All</button>
+            <button type="button" data-value="Pokemon">Pokemon</button>
+            <button type="button" data-value="Trainer">Trainer</button>
+            <button type="button" data-value="Energy">Energy</button>
+          </div>
+        </fieldset>
+
+        <label class="field" for="typeFilter">
+          <span>Energy type</span>
+          <select id="typeFilter"><option value="">All types</option></select>
+        </label>
+
+        <label class="field" for="expansionFilter">
+          <span>Expansion</span>
+          <select id="expansionFilter"><option value="">All expansions</option></select>
+        </label>
+
+        <label class="field" for="stageFilter">
+          <span>Stage / trainer type</span>
+          <select id="stageFilter"><option value="">All stages</option></select>
+        </label>
+
+        <label class="field" for="sortFilter">
+          <span>Sort by</span>
+          <select id="sortFilter">
+            <option value="set">Expansion &amp; number</option>
+            <option value="name">Card name</option>
+            <option value="hp">Highest HP</option>
+          </select>
+        </label>
+
+        <div class="toggleList">
+          <label class="toggleRow"><input id="megaFilter" type="checkbox"><span class="toggle"></span><span>Mega cards only</span></label>
+          <label class="toggleRow"><input id="abilityFilter" type="checkbox"><span class="toggle"></span><span>Has an Ability</span></label>
+        </div>
+
+        <div class="filterHint">
+          <strong>Quick build</strong>
+          <p>Click <b>+</b> to add a card. Click its artwork to inspect attacks and effects.</p>
+        </div>
+      </aside>
+
+      <section class="catalogPanel" aria-label="Available cards">
+        <div class="catalogHeader">
+          <div>
+            <span class="eyebrow">Card catalog</span>
+            <h2 id="catalogTitle">All cards</h2>
+          </div>
+          <div class="resultMeta">
+            <span id="activeFilterCount" class="filterCount" hidden></span>
+            <span id="resultCount">0 results</span>
+          </div>
+        </div>
+
+        <div id="cardGrid" class="cardGrid" aria-live="polite"></div>
+        <div class="loadMoreBar">
+          <button id="loadMore" class="button secondary" type="button" hidden>Show more cards</button>
+        </div>
+      </section>
+
+      <aside class="deckPanel" aria-label="Selected deck">
+        <div class="deckHeader">
+          <div class="deckCountBlock">
+            <div class="countRing" id="countRing"><strong id="deckTotal">0</strong><span>/ 60</span></div>
+            <div>
+              <span class="eyebrow">Current deck</span>
+              <h2 id="deckStatusTitle">Start building</h2>
+            </div>
+          </div>
+          <div id="deckBreakdown" class="breakdown" aria-label="Deck composition"></div>
+        </div>
+
+        <div id="ruleWarnings" class="validation"></div>
+        <div id="deckList" class="deckList"></div>
+        <div id="emptyDeck" class="emptyDeck">
+          <div class="emptyStack" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h3>Your deck is empty</h3>
+          <p>Add cards from the catalog. This panel stays organized by Pokemon, Trainer, and Energy.</p>
+        </div>
+      </aside>
+    </main>
+
+    <section id="focusOverlay" class="focusOverlay" aria-label="Focused card browser" hidden>
+      <header class="focusTopbar">
+        <button id="closeFocus" class="focusBack" type="button" aria-label="Close focused card browser">←</button>
+        <div class="focusHeading">
+          <strong>Card Library</strong>
+          <span id="focusKind">Pokemon</span>
+        </div>
+        <button id="toggleFocusDeck" class="focusDeckToggle" type="button" aria-expanded="false">
+          <span>Deck</span>
+          <strong id="focusDeckTotal">0 / 60</strong>
+        </button>
+        <button id="closeFocusX" class="focusClose" type="button" aria-label="Close focused card browser">×</button>
+      </header>
+
+      <div class="focusBody">
+        <div class="focusStage">
+          <button id="focusPrevious" class="focusArrow previous" type="button" aria-label="Previous card">‹</button>
+          <article class="focusCardFrame">
+            <img id="focusCardImage" src="" alt="">
+          </article>
+          <button id="focusNext" class="focusArrow next" type="button" aria-label="Next card">›</button>
+
+          <div class="focusControls">
+            <button id="focusRemove" class="focusAdjust remove" type="button" aria-label="Remove card from deck">−</button>
+            <div class="focusCount">
+              <span>In deck</span>
+              <strong><b id="focusCardCount">0</b> / <i id="focusCardLimit">4</i></strong>
+            </div>
+            <button id="focusAdd" class="focusAdjust add" type="button" aria-label="Add card to deck">+</button>
+          </div>
+        </div>
+
+        <aside id="focusDeckDrawer" class="focusDeckDrawer" hidden>
+          <div class="drawerHeader">
+            <div>
+              <span class="eyebrow">Current deck</span>
+              <h2 id="focusDeckName">My Deck</h2>
+            </div>
+            <button id="closeFocusDeck" class="drawerClose" type="button" aria-label="Close deck drawer">×</button>
+          </div>
+          <div id="focusDeckValidation" class="drawerValidation"></div>
+          <div id="focusDeckTabs" class="drawerTabs" role="tablist">
+            <button class="active" type="button" data-kind="Pokemon" role="tab">Pokemon <b>0</b></button>
+            <button type="button" data-kind="Trainer" role="tab">Trainer <b>0</b></button>
+            <button type="button" data-kind="Energy" role="tab">Energy <b>0</b></button>
+          </div>
+          <div id="focusDeckGrid" class="focusDeckGrid"></div>
+        </aside>
+      </div>
+    </section>
+
+    <dialog id="importDialog" class="importDialog">
+      <form method="dialog" class="dialogShell" id="importForm">
+        <div class="dialogHeading">
+          <div>
+            <span class="eyebrow">Load a deck</span>
+            <h2>Import card IDs</h2>
+          </div>
+          <button class="dialogClose static" value="cancel" type="submit" aria-label="Close import dialog">×</button>
+        </div>
+        <p>Paste either one card ID per line from a CSV, or the grouped lines from a deck TXT export.</p>
+        <textarea id="importBox" rows="12" placeholder="96&#10;96&#10;96&#10;96&#10;...&#10;&#10;or&#10;&#10;4 Teal Mask Ogerpon ex - 96"></textarea>
+        <div id="importMessage" class="importMessage" aria-live="polite"></div>
+        <div class="dialogActions">
+          <button class="button secondary" value="cancel" type="submit">Cancel</button>
+          <button id="importDeck" class="button primary" type="button">Import deck</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="card-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

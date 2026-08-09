@@ -1,0 +1,130 @@
+****** Pokémon Trading Card Game Deck List ******
+
+14 - Pokémon
+
+4 Mega Zygarde ex - 1056
+4 Cornerstone Mask Ogerpon ex - 117
+4 Cornerstone Mask Ogerpon - 386
+2 Regirock ex - 447
+
+31 - Trainer Cards
+
+4 Lillie's Determination - 1227
+4 Ultra Ball - 1121
+4 Poké Pad - 1152
+3 Crispin - 1198
+3 Switch - 1123
+3 Air Balloon - 1174
+2 Boss's Orders - 1182
+2 Judge - 1213
+2 Waitress - 1235
+2 Night Stretcher - 1097
+2 Energy Switch - 1116
+
+15 - Energy
+
+15 Basic {F} Energy - 6
+
+
+****** Design notes (built for a GREEDY BOT, not a human) ******
+
+Problem being solved: the Hydrapple list loses by never coming online.
+Measured on ladder -- wins average 6.0 turns, losses average 17.8 turns; one
+loss had ZERO attacks across 13 turns. Two Stage-2 lines (Applin->Dipplin->
+Hydrapple ex, Chikorita->Bayleef->Meganium) need 2 evolution steps before any
+damage happens.
+
+Fix: every attacker is a BASIC. Zero evolution steps, so the deck cannot brick
+on missing evolution pieces.
+
+Why Mega Zygarde ex (1056) as the primary:
+  - Basic, so it is NOT subject to "evolving into a Mega ends your turn"
+    (POKEMON_RULES.md sec.12). Basic Megas skip that cost entirely.
+  - 310 HP -- the tankiest drawback-free attacker in the legal pool.
+  - Gaia Wave: 3 Energy, 200 damage, and the rider is pure UPSIDE
+    (takes 30 less next turn). No self-damage, no Energy discard, no
+    next-turn lockout.
+
+The drawback-text rule (the key bot constraint):
+  main.py's _best_attack_index ranks attacks by PRINTED DAMAGE ONLY -- it never
+  parses effect text. So any attack whose text punishes repeated use is a trap.
+  Rejected on this basis:
+    - Mega Mawile ex (695): 260 dmg, but base drops to 30 if the target already
+      has damage counters. The bot would spam a 30-damage attack.
+    - Gouging Fire ex (46): 260 dmg, then cannot use it again until it leaves play.
+    - Koraidon ex / Latias ex / Yveltal ex / Zacian ex: next-turn attack lockouts.
+    - Pikachu ex (328) / Black Kyurem ex (179): self-damage.
+    - Iron Boulder (971): 170 dmg but does NOTHING unless hand sizes match.
+    - Mega Diancie ex (766): damage scales with Energy the bot must discard itself.
+
+Support Pokémon:
+  - Cornerstone Mask Ogerpon ex (117): 210 HP Basic backup. Demolish is
+    {F} + 2 Colorless, so it is the easiest attack in the deck to pay for.
+    Damage ignores Weakness/Resistance.
+  - Cornerstone Mask Ogerpon (386): 110 HP, 1 Prize only. Rock Kagura costs 1
+    Energy and deals 0 damage -- which means with a single Energy attached it is
+    the ONLY legal attack, so the greedy agent picks it and it ramps
+    (searches a Basic {F} Energy out of the deck and attaches it).
+  - Regirock ex (447): 230 HP wall; Regi Charge pulls 2 {F} back from the discard.
+
+Energy math (the point of the deck):
+  Attach 1/turn only        -> Gaia Wave online turn 3.
+  Attach + Crispin/Waitress -> online turn 2.
+  Compare Hydrapple, which needed two evolution steps AND energy before
+  threatening anything.
+
+Search note: Poké Pad cannot find Rule Box Pokémon, so it cannot fetch Mega
+Zygarde ex -- it is in the list to find Cornerstone Mask Ogerpon (386). Ultra
+Ball is the only search that reaches the Mega ex attackers, hence 4 copies.
+
+****** MEASURED RESULT: THIS DECK LOSES. DO NOT ADOPT AS-IS. ******
+
+  deck_head2head.py Zygarde_Ramp Hydrapple 50 (100 seat-balanced games, one agent
+  piloting both sides):
+      Zygarde_Ramp 37/100 = 37.0%  [95% CI 28.2%-46.8%]  avg 135 steps
+      => Hydrapple BETTER (CI upper bound is below 50%)
+
+  Experiment 1 -- was the agent's _prize_value(megaEx)=3 suppressing it?
+      Monkeypatched to the rulebook value of 2 and re-ran the same matchup:
+      23/100 = 23.0% [15.8%-32.2%]. WORSE, not better. Hypothesis REFUTED.
+      Making the agent more willing to lead with Zygarde made it lose harder,
+      which means Zygarde in the Active slot is feeding Prizes, not winning races.
+
+  Experiment 2 -- tempo probe, 12 mirror games per deck:
+      Zygarde_Ramp  first attack turn 3.7, 6.9 attacks/game, 627 printed dmg/game, 21.2 turns
+      Hydrapple     first attack turn 4.0, 4.8 attacks/game, 142 printed dmg/game, 14.9 turns
+
+      The design thesis WORKED on its own terms -- this deck attacks earlier, more
+      often, and for 4.4x more printed damage. It still loses. So "comes online
+      slowly" was NOT the binding constraint in this matchup, and the ladder
+      diagnosis (6-turn wins vs 17.8-turn losses) does not translate into
+      "more damage sooner => more wins".
+
+  Best remaining explanation -- PRIZE ECONOMY, the thing this build got wrong:
+      Zygarde_Ramp: 10 of 14 Pokémon are Rule Box (4 Mega Zygarde ex + 4
+      Cornerstone Mask Ogerpon ex + 2 Regirock ex). Almost every KO against us
+      hands over 2 Prizes, so the opponent needs only ~3 KOs.
+      Hydrapple: 13 of 21 Pokémon are non-ex bodies that cost only 1 Prize, so it
+      can absorb KOs while trading.
+      Raw damage does not matter if each of our KOs pays double.
+
+  Also suspect: Cornerstone Mask Ogerpon (386) Rock Kagura is a 0-damage attack.
+  It was included as a ramp trick, but _best_attack_index picks the highest
+  printed damage among LEGAL attacks -- so whenever only 1 Energy is attached,
+  the agent attacks for literally 0. Average damage per attack here is 91,
+  well under Gaia Wave's 200, which says the deck spends a lot of attacks on
+  Rock Kagura and Mountain Ramming rather than on Zygarde.
+
+  NEXT ITERATION would: cut the Rule Box count hard (single-Prize attackers as
+  the default body), drop the 0-damage ramp attack, and only then re-test.
+
+KNOWN RISKS (identified during design, before the above measurements):
+  1. Prize math. Mega ex gives up 2 Prizes per KO (POKEMON_RULES.md sec.12), so
+     3 KOs loses the game. 310 HP is the mitigation, not a guarantee.
+  2. main.py's _prize_value returns 3 for megaEx, but the rulebook says Mega = 2.
+     If that is wrong, the agent OVER-penalizes its own Zygarde
+     (_live_attacker_score prize_penalty, _eval_state ko_risk) and may avoid
+     leading with the card the deck is built around. Verify before adopting.
+  3. Weakness to {G}. Our own previous deck was Grass; if Grass is common on
+     ladder this is a real matchup tax.
+  4. Zygarde retreat 2 -- hence 3 Switch + 3 Air Balloon.

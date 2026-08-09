@@ -1,0 +1,30 @@
+****** Pokémon Trading Card Game Deck List ******
+
+19 - Pokémon
+
+4 Numel - 661
+3 Mega Camerupt ex - 662
+3 Volcanion ex - 259
+2 Hearthflame Mask Ogerpon ex - 99
+2 Oricorio ex - 795
+3 Eevee - 317
+2 Flareon ex - 239
+
+26 - Trainer Cards
+
+4 Lillie's Determination - 1227
+4 Ultra Ball - 1121
+4 Hilda - 1225
+3 Mega Signal - 1145
+3 Firebreather - 1232
+3 Pokégear 3.0 - 1122
+2 Boss's Orders - 1182
+2 Air Balloon - 1174
+1 Surfer - 1203
+
+15 - Energy Cards
+
+1 Enriching Energy - 13
+14 Basic {R} Energy - 2
+
+Total Cards - 60

@@ -1,0 +1,33 @@
+****** Pokemon Trading Card Game Deck List ******
+
+16 - Pokemon
+
+4 Ralts - 745
+2 Kirlia - 746
+3 Mega Gardevoir ex - 747
+2 Xerneas - 751
+2 Smoochum - 183
+1 Latias ex - 184
+1 Lillie's Clefairy ex - 272
+1 Fezandipiti ex - 140
+
+31 - Trainer Cards
+
+4 Lillie's Determination - 1227
+4 Hilda - 1225
+4 Rare Candy - 1079
+4 Buddy-Buddy Poffin - 1086
+3 Ultra Ball - 1121
+3 Mega Signal - 1145
+3 Wondrous Patch - 1146
+2 Boss's Orders - 1182
+2 Air Balloon - 1174
+1 Precious Trolley - 1126
+1 Mystery Garden - 1263
+
+13 - Energy Cards
+
+10 Basic {P} Energy - 5
+3 Telepathic Psychic Energy - 19
+
+Total Cards - 60

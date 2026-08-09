@@ -7,6 +7,13 @@ par_rulebook_en.pdf
 ptcg_engine/
 sample_submission/sample_submission/cg/
 
+# Deck-builder card data: card-data.js is dataset/EN_Card_Data.csv repackaged as
+# JSON, and assets/cards/ is the 1,267 card images (~42 MB). Both are Competition
+# Data. Regenerate locally with `python3 deck_builder/generate_card_data.py` --
+# the generator IS committed, so nothing is lost by keeping these out of history.
+deck_builder/card-data.js
+deck_builder/assets/
+
 # Local run artifacts (generated; the HTML replays embed engine/card data)
 result.txt
 result.html
@@ -24,5 +31,5 @@ __pycache__/
 # Local tooling state (not project source)
 .ontrack/
 
-# Other teams' downloaded/derived deck data -- do not redistribute
-Decs/
+# Other teams' decks reconstructed from replay data -- do not redistribute
+Decs/LiamK_*

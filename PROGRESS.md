@@ -9,6 +9,311 @@ the reversal as a new entry instead).
 
 ---
 
+## 2026-08-09
+
+- **Focused-card opening stabilized — original catalog remains as the backdrop**:
+  - Removed the separately rendered focus-mode background grid from
+    `deck_builder/index.html`, `app.js`, and `styles.css`. The focused inspector
+    now overlays the existing Card Catalog directly and applies a brief
+    semi-transparent dimming fade plus a small card-entry transition.
+    **Reason for the implementation:** replacing the visible catalog with a newly
+    generated dark card grid caused an abrupt background change when opening an
+    individual card, breaking the user's spatial context. Preserving the exact
+    catalog underneath makes the transition feel continuous while keeping the
+    inspected card and controls prominent.
+  - Removed the unused backdrop-rendering JavaScript and added a reduced-motion
+    fallback. Navigation, live deck visibility, and keyboard/visible `+` / `-`
+    controls are unchanged. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Focused card inspector confined to Card Catalog — live deck remains visible**:
+  - Reworked the focused-card interaction in `deck_builder/app.js` and
+    `styles.css` so the inspector is mounted inside `.catalogPanel` and covers
+    only the center card catalog rather than the entire browser viewport.
+    **Reason for the implementation:** the full-screen inspector hid the selected
+    deck, making it difficult to know which cards and quantities had already been
+    added while browsing. Keeping the filter panel and right-hand deck editor
+    visible preserves context and makes each add/remove decision immediately
+    observable.
+  - The inspector retains its centered card, dimmed neighboring cards, previous/
+    next navigation, visible red `-` / `+` controls, keyboard arrow navigation,
+    keyboard `+` / `-`, and Escape-to-close. Add/remove still uses the shared deck
+    update path, so counts, legality feedback, composition, and selected rows in
+    the right panel refresh immediately.
+  - Removed the focus-mode body scroll lock and disabled the redundant internal
+    deck drawer. The existing right deck panel is now the single visible source of
+    truth for selected cards while the inspector is open. Responsive focus-header,
+    card, arrow, and control dimensions were tightened for the smaller catalog
+    container.
+  - Validation: `node --check deck_builder\app.js` passed. `design-qa.md` documents
+    the new scoped state and remains blocked because the integrated browser runtime
+    again failed during initialization, preventing rendered screenshot comparison
+    and console/interaction verification. `main.py` and active `deck.csv` were not
+    changed. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Keyboard-focused card browser added — arrow navigation and direct +/- deck editing**:
+  - Reworked the visual browsing interaction in `deck_builder/index.html`,
+    `styles.css`, and `app.js` around the supplied game-style deck-builder
+    references. Selecting card artwork now opens a full-viewport focused browser
+    with a large centered card, dimmed surrounding card gallery, previous/next
+    controls, a persistent deck count, large red remove/add controls, and an
+    optional right-side visual deck drawer. **Reason for the implementation:**
+    make rapid card comparison and deck editing practical from the keyboard and
+    visually closer to the interaction model the user requested, instead of
+    requiring repeated pointer travel between small catalog cards and the deck
+    list.
+  - Added roving keyboard navigation in the normal card grid: Left/Right move one
+    card, Up/Down move approximately one grid row, Enter opens the focused card,
+    and `+` / `-` add or remove the focused grid card. Every catalog tile now also
+    exposes visible `-`, selected-count, and `+` controls.
+  - Focus mode navigates through the complete current filtered result set with
+    Left/Right or Up/Down (wrapping at the ends), supports keyboard and visible
+    `+` / `-` deck editing, closes with Escape, and can toggle the deck drawer with
+    `D`. Closing restores focus to the originating catalog card where available.
+  - The focus-mode deck drawer shows live legality status, Pokemon/Trainer/Energy
+    tabs and counts, card artwork, and selected quantities. Selecting a drawer
+    card moves the centered inspector to that card without closing the drawer.
+    Existing filtering, autosave, validation, import, and CSV/TXT export behavior
+    remains intact; `main.py` and the active `deck.csv` were not changed.
+  - Validation: `node --check deck_builder\app.js` passed and a static UI-ID check
+    found no missing referenced elements. `design-qa.md` records the visual QA as
+    blocked because the integrated browser runtime failed to initialize, so a
+    browser-rendered screenshot comparison and interaction/console pass could not
+    be completed in this environment. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Deck builder rebuilt — self-contained visual card library and interactive 60-card workspace**:
+  - Replaced the first `deck_builder/index.html`, `styles.css`, and `app.js`
+    implementation with an image-first deck-building workspace inspired by the
+    structure of Limitless: compact filters on the left, a scrollable visual card
+    catalog in the center, and a persistent grouped deck editor on the right.
+    **Reason for the implementation:** the first version reported mapped images
+    but referenced them through absolute `file:///C:/...` URLs outside the
+    project, leaving the visible catalog blank in the browser and making the
+    builder fragile whenever the external folder path or browser file policy
+    changed.
+  - Updated `deck_builder/generate_card_data.py` to create optimized WebP card
+    previews inside `deck_builder/assets/cards/` and write relative image paths
+    into `card-data.js`. All 1,267 supplied JPG card images are now packaged as
+    1,267 local previews (about 38.1 MB instead of copying the 219.1 MB originals),
+    so `index.html` no longer depends on external absolute image URLs.
+  - The catalog now displays actual card artwork, selection-count badges, card
+    names/set numbers/competition IDs, incremental result loading, search across
+    names/attacks/effects, Pokemon/Trainer/Energy segmented filtering, Energy
+    type, expansion, stage/trainer type, Mega, Ability, and sort controls. Clicking
+    artwork opens a full preview with HP, evolution, attacks, effects, Weakness,
+    Resistance, Retreat, and add/remove controls.
+  - The deck workspace now has a live circular 60-card counter, Pokemon/Trainer/
+    Energy composition, grouped rows with thumbnails and steppers, same-name
+    four-copy enforcement across different printings, Basic Energy exceptions,
+    ACE SPEC and Basic Pokemon checks, local browser autosave, deck naming, clear
+    confirmation, and responsive desktop/mobile layouts.
+  - Import now accepts both one-ID-per-line CSV content and grouped readable TXT
+    lines. Export writes the chosen deck name to `.csv` in the one-ID-per-line
+    competition format and `.txt` in the same grouped structure as
+    `Decs/Hydrapple.txt`. The active submission `main.py` and `deck.csv` were not
+    changed.
+  - Validation: `node --check deck_builder\app.js` and
+    `python -m py_compile deck_builder\generate_card_data.py` passed; regeneration
+    reported 1,267 cards and 1,267 previews; an independent manifest/filesystem
+    check found zero missing image paths; and a representative generated WebP was
+    visually inspected and readable. The integrated browser preview could not be
+    started because its connection failed during initialization, so final
+    in-browser interaction remains a manual check by opening `index.html`. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Local deck builder added — interactive dataset-only deck construction/export**:
+  - `deck_builder/index.html`, `styles.css`, and `app.js` — added a standalone
+    browser deck builder for the cards available in this project dataset. It
+    presents filters on the left, a searchable card catalog in the center, and the
+    selected deck on the right. Filters include card kind, Energy/type, expansion,
+    stage/trainer type, Mega-only, ability-text, and image availability.
+    **Reason for the implementation:** make deck exploration faster and less error
+    prone than editing ID lists by hand, while keeping the active submission
+    `main.py` and `deck.csv` untouched.
+  - `deck_builder/generate_card_data.py` — added a generator that groups
+    `dataset/EN_Card_Data.csv` by competition `Card ID`, preserves attack/effect
+    text, classifies cards as Pokemon/Trainer/Energy, and maps every card to the
+    image folder at `C:\Users\novan\Desktop\Pokemon_Dataset` using expansion +
+    collection number. Generated `deck_builder/card-data.js` contains 1,267 cards
+    and 1,267 mapped image URLs.
+  - Export support writes `deck.csv` as one card ID per line, matching
+    `Decs/Hydrapple.csv`, and `deck.txt` in the grouped readable format used by
+    `Decs/Hydrapple.txt`. The UI also supports pasting/importing an existing card
+    ID list, live 60-card validation, non-Basic 4-copy enforcement, Basic Energy
+    exceptions, ACE SPEC warnings, and Pokemon/Trainer/Energy count breakdowns.
+  - Verified live: `python deck_builder\generate_card_data.py` regenerated the
+    static card data; `python -m py_compile deck_builder\generate_card_data.py`
+    passed; `node --check deck_builder\app.js` passed; a metadata sanity check
+    confirmed 1,267 card records and 1,267 image mappings. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Mega Gardevoir ex challenger built — stable Psychic engine explored, not adopted**:
+  - `Decs/Codex_MegaGardevoir.txt` / `.csv` — added a separate 60-card deck built
+    around Mega Gardevoir ex, leaving the active submission `deck.csv` unchanged.
+    **Reason for the implementation:** test whether Gardevoir's one-Energy
+    `Overflowing Wishes` setup attack and board-wide `Mega Symphonia` scaling can
+    form a stable alternative submission archetype rather than continuing to tune
+    only Hydrapple and its direct counters.
+  - Final composition is 16 Pokemon / 31 Trainers / 13 Energy. The 4 Ralts / 2
+    Kirlia / 3 Mega Gardevoir ex core has both natural-evolution and Rare Candy
+    routes. Xerneas, Smoochum, Telepathic Psychic Energy, and the Precious Trolley
+    ACE SPEC provide four overlapping ways to fill or energize the Bench; Hilda,
+    Mega Signal, Ultra Ball, and Buddy-Buddy Poffin provide redundant search.
+    Latias ex removes Basic retreat costs, Fezandipiti ex supplies post-KO draw,
+    Lillie's Clefairy ex adds Dragon coverage, Air Balloon is the Mega's retreat
+    tool, and Mystery Garden converts spare Energy into draw.
+  - Legal/count validation passed: exactly 60 IDs, no non-Basic card above four
+    copies, and exactly one ACE SPEC. The list contains 10 Basic Psychic Energy and
+    3 Telepathic Psychic Energy, leaving enough Basic Energy targets for
+    `Overflowing Wishes` while making early Bench development more reliable.
+  - Final stability screen: 38/40 = **95.0% versus random**, with zero draws or
+    timeouts. The harder Hydrapple screen was only **7/40 = 17.5% [95% CI
+    8.7-32.0%]**, so consistency against a blind opponent does not translate into
+    competitive tempo against the current strong deck.
+  - Several alternatives were tested and rejected: a three-Latias tempo package
+    scored 4/40 versus Hydrapple; a Mega Diancie package scored 6/40; a
+    single-multi-prize focused shell scored 4/40; and a denser Scream Tail hybrid
+    scored 5/40. An independently created `Claude_Mega_Gardevoir` list was tied in
+    direct play (Codex 18/40, 45.0%, CI spans 50%) and itself scored only 8/40 into
+    Hydrapple. These small screens are not precise rankings, but every tested
+    Gardevoir branch showed the same Stage-2 tempo ceiling.
+  - Decision: **keep as an exploratory challenger; do not adopt**. The deck is legal,
+    coherent, and functional, but current evidence says Hydrapple and the Fire
+    anti-Hydrapple candidate are materially stronger under the present `main.py`.
+    Improving Gardevoir further likely requires deck-specific planning in the agent
+    (setup-attack timing and promotion discipline), not more blind list swaps. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **How much of a bad deck result is the DECK vs the AGENT? Measured on
+  Claude_Mega_Gardevoir — a deck-aware agent nearly DOUBLES it, and still loses**:
+  - Question raised: every deck above was piloted by an agent tuned on Hydrapple.
+    So how much of Gardevoir's 20% was the deck being bad vs the agent being wrong
+    for it? Built a Gardevoir-aware agent as a wrapper over `main.py` (no files
+    modified) and ran 4 arms x 100 seat-balanced games vs Hydrapple, with Hydrapple
+    always piloted by the STOCK agent:
+
+    | arm | change | result vs Hydrapple |
+    |---|---|---|
+    | stock | unmodified `main.agent` | 21.0% [14.2-30.0] |
+    | dmg | Mega Symphonia damage estimated **dynamically** each call as 50 x (all {P} Energy in play) | 34.0% [25.5-43.7] |
+    | bench | dmg + attach Energy to the **Bench** instead of the Active | **40.0% [30.9-49.8]** |
+    | full | bench + crude "force Gardevoir into the Active slot" | 38.0% [29.1-47.8] |
+
+  - **+19 points, ~2x the win rate, from agent changes alone with the deck untouched.**
+    So a meaningful share of a deck's measured score here is agent fit, not deck
+    quality — deck head-to-heads under one fixed agent systematically understate any
+    deck the agent cannot read.
+  - Of the two changes that mattered, they are NOT the same kind of thing:
+    - The variable-damage estimate is a **general** agent fix. 381 of 1556 engine
+      attacks report `damage = 0`; any deck built on a scaling attacker is currently
+      mis-valued. This belongs in `main.py` regardless of which deck we submit.
+    - Bench-first Energy attachment is **deck-specific** and probably WRONG for
+      Hydrapple (which wants its Active powered). This is genuine agent/deck
+      co-tuning, and the competition submits exactly one `main.py` + one `deck.csv`,
+      so co-tuning is the correct strategy rather than a compromise.
+  - Forcing Gardevoir into the Active slot did NOT help (38% vs 40%, overlapping CIs).
+    The gain came from the agent *evaluating* the card correctly, not from steering it.
+  - Not chased further: the agent still never uses **Overflowing Wishes** (0 printed
+    damage), which is the deck's actual ramp engine (+1 {P} Energy per Benched Pokémon).
+    A fuller deck-aware agent would ramp with it on a wide bench, then swing. Untested.
+  - Conclusion: even with a dedicated agent, Gardevoir sits at 40% vs Hydrapple while
+    `Codex_FireCamerupt` reaches 66% under the *stock* agent. Gardevoir is not worth
+    further investment; the variable-damage fix is, independently of deck choice.
+    — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Two Claude challenger decks built and MEASURED — both LOSE; the useful output is
+  a agent blind spot, not the decks (neither adopted)**:
+  - `Decs/Claude_Zygarde_Ramp.txt` / `.csv` — 60-card Fighting deck, all attackers
+    **Basic** (4 Mega Zygarde ex / 4 Cornerstone Mask Ogerpon ex / 4 Cornerstone Mask
+    Ogerpon / 2 Regirock ex, 31 Trainers, 15 Basic {F} Energy). Thesis came from the
+    2026-08-08 ladder analysis (wins avg 6.0 turns, losses avg 17.8, one loss with
+    ZERO attacks in 13 turns): if we lose by never coming online, remove every
+    evolution step. Two rules facts drove the picks — **Basic Megas exist**
+    (`prev-stage = n/a`), so they skip the "evolving into a Mega ends your turn" cost
+    (POKEMON_RULES.md sec.12); and `_best_attack_index` ranks by printed damage only,
+    so drawback text is invisible. Rejected on that basis: Mega Mawile ex (260 dmg
+    but base drops to **30** once the target has damage counters — the bot would spam
+    30s), Gouging Fire ex, Koraidon/Latias/Yveltal/Zacian ex (next-turn lockouts),
+    Pikachu ex / Black Kyurem ex (self-damage), Iron Boulder (does nothing unless hand
+    sizes match).
+  - Measured: `deck_head2head.py Claude_Zygarde_Ramp Hydrapple 50` → **37/100 = 37.0%
+    [95% CI 28.2-46.8%]**, avg 135 steps. Hydrapple better; CI upper bound below 50%.
+  - **Two hypotheses tested and BOTH refuted**, which is the point of the entry:
+    1. *"`_prize_value` returns 3 for megaEx but POKEMON_RULES.md sec.12 says Mega = 2,
+       so the agent over-penalizes its own Mega."* Monkeypatched to 2, re-ran:
+       **23/100 = 23.0%** — WORSE. Making the agent more willing to lead with Zygarde
+       made it lose harder, i.e. Zygarde in the Active slot was feeding Prizes.
+    2. *"Basic attackers fix the ladder losses."* Tempo probe (12 mirror games/deck):
+       Claude_Zygarde_Ramp first attack turn **3.7**, 6.9 attacks/game, **627** printed
+       dmg/game; Hydrapple turn 4.0, 4.8 attacks/game, **142** dmg/game. The deck
+       attacks earlier, more often, for 4.4x more damage — **and still loses**. So
+       "comes online slowly" was NOT the binding constraint, and the ladder diagnosis
+       does not translate into "more damage sooner => more wins". Treat the earlier
+       energy-acceleration recommendation as unproven.
+    - Best remaining explanation: **prize economy**. 10 of 14 Pokémon were Rule Box
+      (2 Prizes per KO), so the opponent needed only ~3 KOs; Hydrapple has 13
+      single-Prize bodies to absorb trades. Self-inflicted secondary bug: Cornerstone
+      Mask Ogerpon's Rock Kagura is a **0-damage** attack included as a ramp trick, but
+      the agent picks max damage among *legal* attacks, so on 1 Energy it attacked for
+      literally 0 (avg damage/attack 91, vs Gaia Wave's 200).
+  - `Decs/Claude_Mega_Gardevoir.txt` / `.csv` — 60-card Psychic deck built on request
+    around **Mega Gardevoir ex** (4 Mega Gardevoir ex / 4 Ralts / 2 Kirlia / 4 Scream
+    Tail ex / 2 Smoochum, 27 Trainers, 16 Basic {P} Energy). The combo is real:
+    Mega Symphonia costs **1 Energy** and does **50x every {P} Energy attached to ALL
+    your Pokémon**, so damage scales off the bench rather than the attacker; Smoochum's
+    Delightful Kiss costs **zero** Energy and pulls 2 {P} Energy from deck onto the
+    Bench; Rare Candy skips Kirlia; Buddy-Buddy Poffin fetches Ralts/Smoochum (both
+    <=70 HP); Gardevoir is 360 HP.
+  - Measured: v1 (support-heavy) **19/100 = 19.0% [12.5-27.8%]**; v2 (swapped the
+    fragile support bodies for 4 Scream Tail ex) **20/100 = 20.0% [13.3-28.9%]**.
+    Composition fix did not move it.
+  - **ROOT CAUSE — the agent is blind to variable-damage attacks.** The engine reports
+    `Attack.damage = 0` for "50x"-style attacks, and the agent ranks every attacker by
+    that field (`_best_attack_index`, `_best_usable_damage`). So it believes Mega
+    Gardevoir ex is a zero-damage Pokémon. Probe over 10 games: Gardevoir held the
+    Active slot only **55 steps** while Scream Tail ex (printed 120) held **334** — the
+    agent kept promoting the weaker card. Proof by experiment: patching ONLY the
+    agent's view of Mega Symphonia (0 -> 200), changing no cards, moved the same
+    matchup **20.0% -> 37.0%** (+17 points, one line).
+  - Scope of the blind spot: **109 cards** in the pool have variable damage in the
+    card data; **381 of 1556** engine attacks report `damage = 0`. That whole class of
+    cards is currently un-pickable by our heuristics. Fixing it means teaching
+    `_best_usable_damage` to estimate scaling attacks (for Mega Symphonia:
+    50 x count of {P} Energy in play) — an **agent** change, not a deck change.
+  - This is the concrete answer to "would a new deck work on the current main.py?":
+    for Mega Gardevoir, **no** — it cannot function until the agent can see variable
+    damage. Decision: **do not adopt either deck.** Codex's `Codex_FireCamerupt`
+    (66% vs Hydrapple, logged below) is a far stronger challenger than either of
+    these; both Claude decks are kept as recorded negative results with their
+    measurements written into their `.txt` files. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Codex challenger deck built — Fire/Mega Camerupt anti-Hydrapple candidate
+  (not adopted)**:
+  - `Decs/Codex_FireCamerupt.txt` / `.csv` — added a separate 60-card challenger
+    deck, leaving the active submission `deck.csv` unchanged. The concept is a Fire
+    tempo deck aimed at Hydrapple's Grass weakness while staying simple enough for
+    our current lookahead agent to pilot: 4 Numel / 3 Mega Camerupt ex as the main
+    Mega line, Volcanion ex and Hearthflame Mask Ogerpon ex as Basic Fire attackers,
+    Oricorio ex for Fire Energy acceleration once a Fire Mega is in play, and
+    Flareon ex as a deck-to-board Energy accelerator. The Trainer package borrows
+    the proven high-consistency shell pattern: Lillie's Determination, Ultra Ball,
+    Hilda, Mega Signal, Pokégear, Firebreather, Boss's Orders, Air Balloon, and
+    Surfer.
+  - Legal/count validation passed locally: 60 IDs, no non-basic card above 4 copies,
+    exactly 1 ACE SPEC (`Enriching Energy`). The readable `.txt` list classifies it
+    as 19 Pokémon / 26 Trainers / 15 Energy.
+  - Initial measurement under our current agent: `python deck_head2head.py
+    Codex_FireCamerupt Hydrapple 50` finished **66/100 = 66.0%
+    [95% CI 56.3-74.5%]**, avg 125 steps, 0 draws/timeouts. This is a promising
+    anti-Hydrapple signal, but it is only 100 total games and should not trigger a
+    deck swap by itself.
+  - Sanity check into the known leaderboard-style archetype was weaker and noisy:
+    `python deck_head2head.py Codex_FireCamerupt LiamK_MegaLopunny 20` finished
+    **14/40 = 35.0% [95% CI 22.1-50.5%]**, avg 138 steps, 0 draws/timeouts. The CI
+    still touches 50%, but the point estimate warns that this may be a targeted
+    Hydrapple counter rather than a broadly stronger deck. Larger runs timed out at
+    the current command budget, so this remains exploratory.
+  - Decision: **do not adopt**. Keep Hydrapple as the active submission deck until a
+    challenger pair proves itself across Hydrapple, LiamK-style Mega Lopunny, and the
+    existing round-robin field. This deck is useful as a challenger/anti-meta probe,
+    not yet as the default submission. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 ## 2026-08-08
 
 - **First Kaggle submissions — two failed, root cause found and fixed (`__file__` under
