@@ -362,6 +362,26 @@ the reversal as a new entry instead).
     **79.2% (38-10 over 48 ladder games)**, not 100% — they trade fairly evenly with
     LiamK and flg. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
 
+- **Deck builder committed source-only; its card data held out as Competition Data**:
+  - `.gitignore` — added `deck_builder/card-data.js` and `deck_builder/assets/`.
+    Caught while staging: `card-data.js` (887 KB) is `dataset/EN_Card_Data.csv`
+    repackaged as JSON — all 1,267 cards with HP, attack costs, damage and effect text
+    — and `assets/cards/` is the 1,267 card images (~42 MB). Both are **Competition
+    Data** under EVALUATION.md §5, and this repo's own ignore rule already says never to
+    commit such files "even to a private remote you might later make public". The remote
+    is currently private, so nothing leaked, but committing would have written them into
+    git history permanently, where flipping the repo public or adding a collaborator
+    republishes them and removal needs a history rewrite.
+  - `deck_builder/generate_card_data.py` **is** committed, so `card-data.js` rebuilds
+    from `dataset/` on any machine — holding the data out costs nothing.
+  - Committed as `e0d5526` on `main` and pushed: deck-builder source (`index.html`,
+    `app.js`, `styles.css`, the generator), `design-qa.md`, 7 new `Decs/` lists, and the
+    PROGRESS entries below. Verified before committing that nothing matching
+    `card-data|assets/cards|dataset/|liamk|.webp|.pyc` was staged.
+  - Note on the earlier `.gitignore` edit (not mine): the ignore rule was loosened from
+    `Decs/` to `Decs/LiamK_*`, so our own authored deck lists are now tracked while the
+    replay-reconstructed LiamK lists stay ignored. That split is correct and is kept. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
 - **Cleanup shipped, baseline re-frozen — and the attacker-concentration hypothesis is
   FALSIFIED**:
   - `sample_submission/sample_submission/main.py` — deleted
