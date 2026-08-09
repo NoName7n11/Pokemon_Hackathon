@@ -9,6 +9,70 @@ the reversal as a new entry instead).
 
 ---
 
+## 2026-08-10
+
+- **Flagged-section import/export added — portable CSV and readable TXT**:
+  - Added separate Import / TXT / CSV controls beside the flagged catalog section
+    tabs in `deck_builder/index.html`, with transfer logic in `app.js` and compact
+    responsive styling in `styles.css`. **Reason for the implementation:** make the
+    Ability, Attack, and Both research collections portable between browser
+    sessions/machines and shareable independently of the active 60-card deck.
+  - CSV export writes a deterministic `card_id,flag` file containing all flagged
+    cards. TXT export writes a readable grouped list under `[Ability]`, `[Attack]`,
+    and `[Both]` headings with competition Card ID and card name. Files use the
+    current deck name plus `_flags` so they remain distinguishable from deck CSV/
+    TXT exports.
+  - Added a dedicated flag-import dialog that accepts `.csv` and `.txt` files or
+    pasted content. Import validates IDs against the 1,267-card local dataset,
+    ignores unrecognized lines, reports skipped unknown IDs, and offers an explicit
+    option to merge with current flags or replace all existing flags first. The
+    imported state is persisted through the existing local-storage mechanism and
+    immediately refreshes section totals and card results.
+  - Deck import/export remains separate and unchanged. `main.py` and active
+    `deck.csv` were not changed. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Flag interaction revised — direct buttons in expanded view only**:
+  - Removed the flag dropdown from every catalog tile and replaced the expanded
+    card's dropdown with three direct `Ability`, `Attack`, and `Both` buttons.
+    **Reason for the implementation:** flagging is an intentional evaluation made
+    while inspecting a card closely, so exposing a dropdown on every library tile
+    added unnecessary visual density and did not match the requested workflow.
+  - The current flag is shown as the active button. Clicking another button moves
+    the card to that flag section; clicking the already-active button clears the
+    flag. Catalog cards retain only a small read-only criterion badge and colored
+    edge so previously flagged cards remain recognizable without presenting an
+    editing control outside expanded view.
+  - Persistent storage and the Card Library / Ability / Attack / Both sections are
+    unchanged. Validation passed with `node --check deck_builder\app.js`, and a
+    source scan confirmed the old tile and expanded-view dropdown controls were
+    removed. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Persistent card flagging added — Ability, Attack, and Both catalog sections**:
+  - Added independent card flags to `deck_builder/app.js` with four possible
+    states: unflagged, `Ability`, `Attack`, or `Both`. Flags are stored alongside
+    the existing deck state in browser local storage and restored when the deck
+    builder is reopened. **Reason for the implementation:** support research and
+    deck exploration before committing cards to a 60-card list, allowing useful
+    cards to be collected according to whether their Ability, Attack, or complete
+    card design is the reason they are being considered.
+  - Added Card Library / Ability / Attack / Both section tabs above the catalog.
+    Each section displays live card totals and reuses the complete existing card
+    experience: artwork grid, search, card-kind/type/expansion/stage filters,
+    sorting, keyboard navigation, focused-card inspection, and deck add/remove
+    controls. The three flag sections are exclusive, so a card appears in the one
+    section matching its current criterion.
+  - Added a flag selector to every catalog card and to the expanded-card header.
+    Flagged cards receive a subtle criterion-colored edge in the library. Changing
+    or removing a flag immediately updates the section counts and visible results;
+    if the expanded card no longer belongs to the active flagged section, the
+    inspector closes back to that section cleanly.
+  - Flag state remains separate from deck membership: flagging does not alter the
+    60-card count, and cards can still be added or removed normally from every
+    flagged section. Existing deck autosave, validation, import, and CSV/TXT export
+    behavior is preserved. Validation passed with `node --check
+    deck_builder\app.js`, and the updated markup contains no duplicate element IDs.
+    `main.py` and active `deck.csv` were not changed. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 ## 2026-08-09
 
 - **Focused-card opening stabilized — original catalog remains as the backdrop**:

@@ -1,8 +1,10 @@
 const cards = window.CARD_DATA?.cards || [];
 const byId = new Map(cards.map((card) => [card.id, card]));
 const deck = new Map();
+const flags = new Map();
 const PAGE_SIZE = 120;
 const STORAGE_KEY = "ontrack-deck-lab-v2";
+const FLAG_VALUES = new Set(["Ability", "Attack", "Both"]);
 
 const typeNames = {
   "{G}": "Grass",
@@ -20,6 +22,7 @@ const typeNames = {
 
 const state = {
   kind: "",
+  view: "library",
   visibleLimit: PAGE_SIZE,
   focusId: null,
   focusDeckOpen: false,
@@ -32,14 +35,16 @@ const els = Object.fromEntries(
     "dataSummary", "deckName", "importOpen", "clearDeck", "exportTxt", "exportCsv",
     "resetFilters", "searchInput", "kindFilter", "typeFilter", "expansionFilter",
     "stageFilter", "sortFilter", "megaFilter", "abilityFilter", "catalogTitle",
-    "activeFilterCount", "resultCount", "cardGrid", "loadMore", "deckTotal",
+    "activeFilterCount", "resultCount", "catalogViews", "importFlagsOpen",
+    "exportFlagsTxt", "exportFlagsCsv", "cardGrid", "loadMore", "deckTotal",
     "deckStatusTitle", "countRing", "deckBreakdown", "ruleWarnings", "deckList",
     "emptyDeck", "focusOverlay", "closeFocus", "closeFocusX", "focusKind",
     "toggleFocusDeck", "focusDeckTotal", "focusPrevious",
-    "focusNext", "focusCardImage", "focusRemove", "focusAdd", "focusCardCount",
+    "focusNext", "focusCardImage", "focusFlagButtons", "focusRemove", "focusAdd", "focusCardCount",
     "focusCardLimit", "focusDeckDrawer", "closeFocusDeck", "focusDeckName",
     "focusDeckValidation", "focusDeckTabs", "focusDeckGrid", "importDialog",
-    "importBox", "importMessage", "importDeck", "toast",
+    "importBox", "importMessage", "importDeck", "flagImportDialog", "flagImportFile",
+    "flagImportBox", "replaceFlags", "flagImportMessage", "importFlags", "toast",
   ].map((id) => [id, document.getElementById(id)])
 );
 
@@ -74,6 +79,26 @@ function totalCards() {
 
 function countFor(id) {
   return deck.get(id) || 0;
+}
+
+function flagFor(id) {
+  return flags.get(Number(id)) || "";
+}
+
+function setFlag(id, value) {
+  const numericId = Number(id);
+  const card = byId.get(numericId);
+  if (!card) return;
+  const next = FLAG_VALUES.has(value) ? value : "";
+  if (next) flags.set(numericId, next);
+  else flags.delete(numericId);
+  persistDeck();
+
+  if (!els.focusOverlay.hidden && state.view !== "library" && next !== state.view) {
+    closeFocus();
+  }
+  renderAll();
+  showToast(next ? `${card.name} flagged for ${next}.` : `${card.name} flag removed.`);
 }
 
 function nameCount(cardName) {
@@ -118,7 +143,7 @@ function setCardCount(id, count) {
 }
 
 function persistDeck() {
-  const payload = { name: els.deckName.value, cards: [...deck.entries()] };
+  const payload = { name: els.deckName.value, cards: [...deck.entries()], flags: [...flags.entries()] };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
 }
 
@@ -129,6 +154,9 @@ function restoreDeck() {
     if (payload.name) els.deckName.value = payload.name;
     (payload.cards || []).forEach(([id, count]) => {
       if (byId.has(Number(id)) && Number(count) > 0) deck.set(Number(id), Number(count));
+    });
+    (payload.flags || []).forEach(([id, value]) => {
+      if (byId.has(Number(id)) && FLAG_VALUES.has(value)) flags.set(Number(id), value);
     });
   } catch {
     localStorage.removeItem(STORAGE_KEY);
@@ -151,6 +179,7 @@ function activeFilterTotal() {
 function filteredCards() {
   const query = els.searchInput.value.trim().toLowerCase();
   const visible = cards.filter((card) => {
+    if (state.view !== "library" && flagFor(card.id) !== state.view) return false;
     if (query && !cardSearchText(card).includes(query)) return false;
     if (state.kind && card.kind !== state.kind) return false;
     if (els.typeFilter.value && card.type !== els.typeFilter.value) return false;
@@ -172,13 +201,15 @@ function filteredCards() {
 
 function cardTile(card) {
   const selected = countFor(card.id);
+  const flag = flagFor(card.id);
   const article = document.createElement("article");
-  article.className = `cardTile${selected ? " selected" : ""}`;
+  article.className = `cardTile${selected ? " selected" : ""}${flag ? ` flagged flag-${flag.toLowerCase()}` : ""}`;
   article.dataset.id = card.id;
   article.innerHTML = `
     <button class="artButton" type="button" aria-label="Preview ${escapeHtml(card.name)}">
       <img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.name)}" loading="lazy" width="320" height="448">
       ${selected ? `<span class="selectedBadge">${selected}</span>` : ""}
+      ${flag ? `<span class="flagBadge">${flag}</span>` : ""}
     </button>
     <div class="cardTileFooter">
       <div class="tileIdentity">
@@ -225,14 +256,29 @@ function renderCards() {
   const filterTotal = activeFilterTotal();
   els.activeFilterCount.hidden = filterTotal === 0;
   els.activeFilterCount.textContent = `${filterTotal} active`;
-  els.catalogTitle.textContent = state.kind ? `${state.kind} cards` : "All cards";
+  const viewTitle = state.view === "library" ? "All cards" : `${state.view} flags`;
+  els.catalogTitle.textContent = state.kind ? `${viewTitle} · ${state.kind}` : viewTitle;
+  renderCatalogViews();
   els.cardGrid.replaceChildren(...visible.map(cardTile));
   els.loadMore.hidden = visible.length >= filtered.length;
   els.loadMore.textContent = `Show more (${filtered.length - visible.length} remaining)`;
 
   if (!filtered.length) {
-    els.cardGrid.innerHTML = `<div class="noResults"><strong>No cards match these filters</strong><span>Try clearing a filter or using a broader search.</span></div>`;
+    const emptyTitle = state.view === "library" ? "No cards match these filters" : `No cards flagged for ${state.view}`;
+    const emptyHelp = state.view === "library" ? "Try clearing a filter or using a broader search." : `Choose ${state.view} from a card's Flag menu to collect it here.`;
+    els.cardGrid.innerHTML = `<div class="noResults"><strong>${emptyTitle}</strong><span>${emptyHelp}</span></div>`;
   }
+}
+
+function renderCatalogViews() {
+  const counts = { Ability: 0, Attack: 0, Both: 0 };
+  flags.forEach((value) => { if (counts[value] !== undefined) counts[value] += 1; });
+  [...els.catalogViews.querySelectorAll("button")].forEach((button) => {
+    const view = button.dataset.view;
+    button.classList.toggle("active", view === state.view);
+    button.setAttribute("aria-current", view === state.view ? "page" : "false");
+    button.querySelector("b").textContent = view === "library" ? cards.length.toLocaleString() : counts[view];
+  });
 }
 
 function sortedDeckCards() {
@@ -377,6 +423,12 @@ function renderFocus() {
   els.focusKind.textContent = card.kind;
   els.focusCardImage.src = card.image;
   els.focusCardImage.alt = card.name;
+  const flag = flagFor(card.id);
+  [...els.focusFlagButtons.querySelectorAll("button[data-flag]")].forEach((button) => {
+    const active = button.dataset.flag === flag;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
   els.focusCardCount.textContent = countFor(card.id);
   els.focusCardLimit.textContent = card.isBasicEnergy ? "60" : "4";
   els.focusRemove.disabled = countFor(card.id) === 0;
@@ -411,6 +463,7 @@ function renderFocusDeck() {
 
 function handleFocusKeydown(event) {
   if (els.focusOverlay.hidden) return;
+  if (event.target.matches("select, input, textarea")) return;
   if (["ArrowLeft", "ArrowUp"].includes(event.key)) {
     event.preventDefault(); navigateFocus(-1);
   } else if (["ArrowRight", "ArrowDown"].includes(event.key)) {
@@ -441,6 +494,92 @@ function txtExportText() {
   });
   lines.push(`Total Cards - ${totalCards()}`, "");
   return lines.join("\n");
+}
+
+function sortedFlaggedCards() {
+  const order = { Ability: 0, Attack: 1, Both: 2 };
+  return [...flags.entries()]
+    .map(([id, flag]) => ({ card: byId.get(id), flag }))
+    .filter(({ card, flag }) => card && FLAG_VALUES.has(flag))
+    .sort((a, b) => order[a.flag] - order[b.flag] || a.card.name.localeCompare(b.card.name) || a.card.id - b.card.id);
+}
+
+function flagsCsvExportText() {
+  return ["card_id,flag", ...sortedFlaggedCards().map(({ card, flag }) => `${card.id},${flag}`)].join("\n") + "\n";
+}
+
+function flagsTxtExportText() {
+  const entries = sortedFlaggedCards();
+  const lines = ["****** OnTrack Flagged Card Library ******", ""];
+  ["Ability", "Attack", "Both"].forEach((flag) => {
+    const group = entries.filter((entry) => entry.flag === flag);
+    lines.push(`[${flag}] - ${group.length}`, "");
+    group.forEach(({ card }) => lines.push(`${card.id} - ${card.name}`));
+    lines.push("");
+  });
+  lines.push(`Total Flagged Cards - ${entries.length}`, "");
+  return lines.join("\n");
+}
+
+function exportFlags(format) {
+  if (!flags.size) {
+    showToast("No flagged cards to export.");
+    return;
+  }
+  const filename = `${safeFilename()}_flags.${format}`;
+  if (format === "csv") download(filename, flagsCsvExportText(), "text/csv;charset=utf-8");
+  else download(filename, flagsTxtExportText(), "text/plain;charset=utf-8");
+  showToast(`Flagged cards exported as ${format.toUpperCase()}.`);
+}
+
+function parseFlagImport(text) {
+  const imported = new Map();
+  const unknown = new Set();
+  let currentFlag = "";
+
+  text.replace(/^\uFEFF/, "").split(/\r?\n/).forEach((line) => {
+    const trimmed = line.trim();
+    if (!trimmed) return;
+
+    const groupMatch = trimmed.match(/^\[(Ability|Attack|Both)\](?:\s*-\s*\d+)?$/i);
+    if (groupMatch) {
+      currentFlag = groupMatch[1][0].toUpperCase() + groupMatch[1].slice(1).toLowerCase();
+      return;
+    }
+
+    const csvMatch = trimmed.match(/^(\d+)\s*,\s*(Ability|Attack|Both)$/i);
+    const txtMatch = currentFlag ? trimmed.match(/^(\d+)\s+-\s+.+$/) : null;
+    const id = csvMatch ? Number(csvMatch[1]) : txtMatch ? Number(txtMatch[1]) : null;
+    const flag = csvMatch
+      ? csvMatch[2][0].toUpperCase() + csvMatch[2].slice(1).toLowerCase()
+      : txtMatch
+        ? currentFlag
+        : "";
+
+    if (id !== null) {
+      if (byId.has(id) && FLAG_VALUES.has(flag)) imported.set(id, flag);
+      else unknown.add(id);
+    }
+  });
+  return { imported, unknown: [...unknown] };
+}
+
+function importFlagData() {
+  const parsed = parseFlagImport(els.flagImportBox.value);
+  if (!parsed.imported.size) {
+    els.flagImportMessage.textContent = "No recognized flagged card entries were found.";
+    els.flagImportMessage.className = "importMessage error";
+    return;
+  }
+  if (els.replaceFlags.checked) flags.clear();
+  parsed.imported.forEach((flag, id) => flags.set(id, flag));
+  persistDeck();
+  renderAll();
+  els.flagImportDialog.close();
+  els.flagImportBox.value = "";
+  els.flagImportFile.value = "";
+  els.flagImportMessage.textContent = "";
+  showToast(`Imported ${parsed.imported.size} flagged cards${parsed.unknown.length ? `; ${parsed.unknown.length} unknown IDs skipped` : ""}.`);
 }
 
 function safeFilename() {
@@ -537,6 +676,13 @@ function init() {
     [...els.kindFilter.querySelectorAll("button")].forEach((item) => item.classList.toggle("active", item === button));
     renderCards();
   });
+  els.catalogViews.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-view]");
+    if (!button) return;
+    state.view = button.dataset.view;
+    state.visibleLimit = PAGE_SIZE;
+    renderCards();
+  });
   els.loadMore.addEventListener("click", () => { state.visibleLimit += PAGE_SIZE; renderCards(); });
   els.resetFilters.addEventListener("click", resetFilters);
   els.deckName.addEventListener("input", () => {
@@ -550,6 +696,25 @@ function init() {
   });
   els.exportCsv.addEventListener("click", () => { download(`${safeFilename()}.csv`, csvExportText(), "text/csv;charset=utf-8"); showToast("CSV exported."); });
   els.exportTxt.addEventListener("click", () => { download(`${safeFilename()}.txt`, txtExportText(), "text/plain;charset=utf-8"); showToast("TXT exported."); });
+  els.importFlagsOpen.addEventListener("click", () => {
+    els.flagImportMessage.textContent = "";
+    els.flagImportDialog.showModal();
+  });
+  els.exportFlagsCsv.addEventListener("click", () => exportFlags("csv"));
+  els.exportFlagsTxt.addEventListener("click", () => exportFlags("txt"));
+  els.flagImportFile.addEventListener("change", async () => {
+    const file = els.flagImportFile.files[0];
+    if (!file) return;
+    try {
+      els.flagImportBox.value = await file.text();
+      els.flagImportMessage.textContent = `${file.name} loaded and ready to import.`;
+      els.flagImportMessage.className = "importMessage";
+    } catch {
+      els.flagImportMessage.textContent = "The selected file could not be read.";
+      els.flagImportMessage.className = "importMessage error";
+    }
+  });
+  els.importFlags.addEventListener("click", importFlagData);
   els.importOpen.addEventListener("click", () => els.importDialog.showModal());
   els.importDeck.addEventListener("click", importDeck);
   els.closeFocus.addEventListener("click", closeFocus);
@@ -558,6 +723,11 @@ function init() {
   els.focusNext.addEventListener("click", () => navigateFocus(1));
   els.focusRemove.addEventListener("click", () => removeCard(state.focusId));
   els.focusAdd.addEventListener("click", () => addCard(state.focusId));
+  els.focusFlagButtons.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-flag]");
+    if (!button) return;
+    setFlag(state.focusId, flagFor(state.focusId) === button.dataset.flag ? "" : button.dataset.flag);
+  });
   els.closeFocusDeck.addEventListener("click", () => toggleFocusDeck(false));
   els.focusDeckTabs.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-kind]");
@@ -567,6 +737,9 @@ function init() {
   });
   els.importDialog.addEventListener("click", (event) => {
     if (event.target === els.importDialog) els.importDialog.close();
+  });
+  els.flagImportDialog.addEventListener("click", (event) => {
+    if (event.target === els.flagImportDialog) els.flagImportDialog.close();
   });
   document.addEventListener("keydown", handleFocusKeydown);
 

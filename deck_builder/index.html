@@ -102,6 +102,20 @@
           </div>
         </div>
 
+        <div class="catalogViewBar">
+          <nav id="catalogViews" class="catalogViews" aria-label="Card library sections">
+            <button class="active" type="button" data-view="library">Card Library <b>1267</b></button>
+            <button type="button" data-view="Ability">Ability <b>0</b></button>
+            <button type="button" data-view="Attack">Attack <b>0</b></button>
+            <button type="button" data-view="Both">Both <b>0</b></button>
+          </nav>
+          <div class="flagTransferActions" aria-label="Flagged card import and export">
+            <button id="importFlagsOpen" type="button" title="Import flagged cards" aria-label="Import flagged cards">Import</button>
+            <button id="exportFlagsTxt" type="button" title="Export all flagged cards as TXT" aria-label="Export all flagged cards as TXT">TXT</button>
+            <button id="exportFlagsCsv" type="button" title="Export all flagged cards as CSV" aria-label="Export all flagged cards as CSV">CSV</button>
+          </div>
+        </div>
+
         <div id="cardGrid" class="cardGrid" aria-live="polite"></div>
         <div class="loadMoreBar">
           <button id="loadMore" class="button secondary" type="button" hidden>Show more cards</button>
@@ -141,6 +155,12 @@
           <span>Deck</span>
           <strong id="focusDeckTotal">0 / 60</strong>
         </button>
+        <div id="focusFlagButtons" class="focusFlagButtons" role="group" aria-label="Flag this card">
+          <span>Flag</span>
+          <button type="button" data-flag="Ability" aria-pressed="false">Ability</button>
+          <button type="button" data-flag="Attack" aria-pressed="false">Attack</button>
+          <button type="button" data-flag="Both" aria-pressed="false">Both</button>
+        </div>
         <button id="closeFocusX" class="focusClose" type="button" aria-label="Close focused card browser">×</button>
       </header>
 
@@ -196,6 +216,30 @@
         <div class="dialogActions">
           <button class="button secondary" value="cancel" type="submit">Cancel</button>
           <button id="importDeck" class="button primary" type="button">Import deck</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="flagImportDialog" class="importDialog flagImportDialog">
+      <form method="dialog" class="dialogShell" id="flagImportForm">
+        <div class="dialogHeading">
+          <div>
+            <span class="eyebrow">Flagged card library</span>
+            <h2>Import flags</h2>
+          </div>
+          <button class="dialogClose static" value="cancel" type="submit" aria-label="Close flag import dialog">×</button>
+        </div>
+        <p>Choose a flags CSV or TXT export. You can also paste its contents below.</p>
+        <label class="fileField" for="flagImportFile">
+          <span>Choose CSV or TXT file</span>
+          <input id="flagImportFile" type="file" accept=".csv,.txt,text/csv,text/plain">
+        </label>
+        <textarea id="flagImportBox" rows="12" placeholder="card_id,flag&#10;909,Ability&#10;928,Attack&#10;..."></textarea>
+        <label class="replaceFlags"><input id="replaceFlags" type="checkbox"> Replace all existing flags before import</label>
+        <div id="flagImportMessage" class="importMessage" aria-live="polite"></div>
+        <div class="dialogActions">
+          <button class="button secondary" value="cancel" type="submit">Cancel</button>
+          <button id="importFlags" class="button primary" type="button">Import flags</button>
         </div>
       </form>
     </dialog>

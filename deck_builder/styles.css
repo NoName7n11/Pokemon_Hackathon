@@ -172,10 +172,21 @@ h2 { font-size: 18px; line-height: 1.2; margin: 3px 0 0; }
 .filterHint strong { font-size: 12px; }
 .filterHint p { color: var(--muted); font-size: 11px; line-height: 1.5; margin: 4px 0 0; }
 
-.catalogPanel { display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; position: relative; }
+.catalogPanel { display: grid; grid-template-rows: auto auto 1fr auto; overflow: hidden; position: relative; }
 .catalogHeader { border-bottom: 1px solid var(--line); min-height: 68px; padding: 12px 16px; }
 .resultMeta { color: var(--muted); font-size: 12px; gap: 8px; }
 .filterCount { background: #dff2ef; border-radius: 20px; color: var(--teal-dark); font-weight: 700; padding: 4px 8px; }
+
+.catalogViewBar { background: #f7f8f9; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+.catalogViews { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: 46px; }
+.catalogViews button { background: transparent; border: 0; border-bottom: 3px solid transparent; color: #596473; font-size: 11px; font-weight: 800; min-width: 0; padding: 8px 6px 6px; }
+.catalogViews button b { background: #e7eaee; border-radius: 20px; color: #596473; display: inline-block; font-size: 9px; margin-left: 4px; min-width: 20px; padding: 3px 5px; }
+.catalogViews button:hover { background: #eef2f4; color: var(--ink); }
+.catalogViews button.active { background: #fff; border-bottom-color: var(--teal); color: var(--teal-dark); }
+.catalogViews button.active b { background: #dff2ef; color: var(--teal-dark); }
+.flagTransferActions { align-items: center; border-left: 1px solid var(--line); display: flex; gap: 4px; padding: 6px 8px; }
+.flagTransferActions button { background: #fff; border: 1px solid #cbd1d8; border-radius: 4px; color: #43505f; font-size: 9px; font-weight: 800; height: 30px; padding: 4px 7px; }
+.flagTransferActions button:hover { border-color: var(--teal); color: var(--teal-dark); }
 
 .cardGrid {
   align-content: start;
@@ -187,12 +198,17 @@ h2 { font-size: 18px; line-height: 1.2; margin: 3px 0 0; }
 }
 
 .cardTile { min-width: 0; position: relative; }
+.cardTile.flagged .artButton { border-bottom: 4px solid; }
+.cardTile.flag-ability .artButton { border-bottom-color: #16856f; }
+.cardTile.flag-attack .artButton { border-bottom-color: #c2413d; }
+.cardTile.flag-both .artButton { border-bottom-color: #7256a8; }
 .artButton { background: #e4e8ed; border: 0; border-radius: 7px; box-shadow: 0 3px 9px rgba(23,32,42,.15); display: block; overflow: hidden; padding: 0; position: relative; width: 100%; }
 .artButton::before { content: ""; display: block; padding-top: 139.7%; }
 .artButton img { height: 100%; inset: 0; object-fit: cover; position: absolute; transition: transform 170ms ease, filter 170ms ease; width: 100%; }
 .cardTile:hover .artButton img { filter: brightness(1.03); transform: scale(1.018); }
 .cardTile.selected .artButton { box-shadow: 0 0 0 3px var(--teal), 0 4px 12px rgba(23,32,42,.18); }
 .selectedBadge { align-items: center; background: var(--teal); border: 2px solid #fff; border-radius: 50%; color: #fff; display: flex; font-size: 12px; font-weight: 800; height: 28px; justify-content: center; left: 7px; position: absolute; top: 7px; width: 28px; }
+.flagBadge { background: rgba(20,43,74,.92); border-radius: 3px; bottom: 7px; color: #fff; font-size: 9px; font-weight: 800; padding: 4px 6px; position: absolute; right: 7px; text-transform: uppercase; }
 
 .cardTileFooter { gap: 6px; padding: 8px 1px 0; }
 .tileIdentity { min-width: 0; }
@@ -309,6 +325,10 @@ dialog::backdrop { background: rgba(8, 18, 31, .72); }
 .dialogActions { gap: 8px; justify-content: flex-end; margin-top: 16px; }
 .importMessage { font-size: 11px; min-height: 18px; padding-top: 5px; }
 .importMessage.error { color: var(--danger); }
+.fileField { color: #4e5967; display: grid; font-size: 11px; font-weight: 700; gap: 6px; margin-top: 14px; }
+.fileField input { border: 1px solid #cfd5dd; border-radius: 5px; min-height: 38px; padding: 6px; width: 100%; }
+.replaceFlags { align-items: center; color: #4e5967; display: flex; font-size: 11px; gap: 8px; margin-top: 10px; }
+.replaceFlags input { height: auto; min-height: 0; width: auto; }
 
 .toast { background: var(--navy); border: 1px solid rgba(255,255,255,.15); border-radius: 5px; bottom: 20px; color: #fff; font-size: 12px; left: 50%; opacity: 0; padding: 10px 15px; pointer-events: none; position: fixed; transform: translate(-50%, 12px); transition: opacity 150ms ease, transform 150ms ease; z-index: 50; }
 .toast.visible { opacity: 1; transform: translate(-50%, 0); }
@@ -330,7 +350,7 @@ dialog::backdrop { background: rgba(8, 18, 31, .72); }
   color: #272d34;
   display: grid;
   gap: 18px;
-  grid-template-columns: 58px 1fr 46px;
+  grid-template-columns: 58px 1fr auto 46px;
   height: 58px;
   position: relative;
   z-index: 4;
@@ -376,6 +396,12 @@ dialog::backdrop { background: rgba(8, 18, 31, .72); }
   text-transform: uppercase;
 }
 .focusDeckToggle { display: none; }
+
+.focusFlagButtons { align-items: center; display: flex; gap: 4px; }
+.focusFlagButtons > span { color: #596473; font-size: 10px; font-weight: 800; margin-right: 3px; text-transform: uppercase; }
+.focusFlagButtons button { background: #fff; border: 1px solid #bcc3cb; border-radius: 4px; color: #3f4955; font-size: 10px; font-weight: 800; height: 32px; padding: 4px 8px; }
+.focusFlagButtons button:hover { border-color: var(--teal); color: var(--teal-dark); }
+.focusFlagButtons button.active { background: var(--teal); border-color: var(--teal); color: #fff; }
 .focusDeckToggle span { color: #cbd2da; font-size: 10px; font-weight: 800; }
 .focusDeckToggle strong { font-size: 13px; }
 
@@ -559,7 +585,7 @@ dialog::backdrop { background: rgba(8, 18, 31, .72); }
   .workspace { grid-template-columns: 220px minmax(0, 1fr); height: auto; }
   .filterPanel, .catalogPanel { height: calc(100vh - 90px); }
   .deckPanel { grid-column: 1 / -1; min-height: 560px; }
-  .focusTopbar { grid-template-columns: 54px 1fr 46px; }
+  .focusTopbar { grid-template-columns: 54px 1fr auto 46px; }
   .focusDeckDrawer { bottom: 0; flex-basis: min(440px, 70vw); position: absolute; right: 0; top: 0; }
   .focusControls { bottom: 18px; grid-template-columns: 100px 160px 100px; }
   .focusAdjust { height: 56px; }
@@ -574,13 +600,17 @@ dialog::backdrop { background: rgba(8, 18, 31, .72); }
   .filterPanel { max-height: none; }
   .catalogPanel { min-height: 640px; }
   .cardGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 70vh; }
+  .catalogViewBar { grid-template-columns: 1fr; }
+  .flagTransferActions { border-left: 0; border-top: 1px solid var(--line); justify-content: flex-end; }
   .deckPanel { min-height: 520px; }
-  .focusTopbar { gap: 7px; grid-template-columns: 42px 1fr 40px; height: 52px; }
+  .focusTopbar { gap: 7px; grid-template-columns: 42px 1fr auto 40px; height: 52px; }
   .focusHeading { display: grid; gap: 1px; }
   .focusHeading strong { font-size: 13px; }
   .focusHeading span { font-size: 10px; }
   .focusDeckToggle { gap: 5px; min-height: 36px; padding: 6px 8px; }
   .focusDeckToggle span { display: none; }
+  .focusFlagButtons > span { display: none; }
+  .focusFlagButtons button { font-size: 9px; padding: 3px 5px; }
   .focusClose { border-width: 3px; font-size: 27px; height: 36px; margin-right: 5px; width: 36px; }
   .focusBody { height: calc(100% - 52px); }
   .focusCardFrame { border-width: 7px; height: min(59vh, 500px); width: min(42vh, calc(100vw - 116px)); }
