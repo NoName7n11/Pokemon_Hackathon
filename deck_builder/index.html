@@ -108,11 +108,25 @@
             <button type="button" data-view="Ability">Ability <b>0</b></button>
             <button type="button" data-view="Attack">Attack <b>0</b></button>
             <button type="button" data-view="Both">Both <b>0</b></button>
+            <button type="button" data-view="saved">Saved Decks <b>0</b></button>
           </nav>
           <div class="flagTransferActions" aria-label="Flagged card import and export">
             <button id="importFlagsOpen" type="button" title="Import flagged cards" aria-label="Import flagged cards">Import</button>
             <button id="exportFlagsTxt" type="button" title="Export all flagged cards as TXT" aria-label="Export all flagged cards as TXT">TXT</button>
             <button id="exportFlagsCsv" type="button" title="Export all flagged cards as CSV" aria-label="Export all flagged cards as CSV">CSV</button>
+          </div>
+        </div>
+
+        <div id="savedDeckToolbar" class="savedDeckToolbar" hidden>
+          <button id="savedDeckBack" class="savedDeckBack" type="button" hidden aria-label="Back to saved decks">←</button>
+          <div>
+            <span class="eyebrow">Saved deck</span>
+            <h3 id="savedDeckTitle">Deck library</h3>
+            <p id="savedDeckMeta">Import deck lists to keep them here.</p>
+          </div>
+          <div id="savedDeckActions" class="savedDeckActions" hidden>
+            <button id="loadSavedDeck" class="button primary" type="button">Load into builder</button>
+            <button id="deleteSavedDeck" class="button danger" type="button">Delete</button>
           </div>
         </div>
 
@@ -210,12 +224,20 @@
           </div>
           <button class="dialogClose static" value="cancel" type="submit" aria-label="Close import dialog">×</button>
         </div>
-        <p>Paste either one card ID per line from a CSV, or the grouped lines from a deck TXT export.</p>
+        <p>Choose one or more exported deck TXT files, or paste a deck list below. Every imported deck is saved as its own folder.</p>
+        <label class="fileField" for="deckImportFiles">
+          <span>Choose deck TXT files</span>
+          <input id="deckImportFiles" type="file" multiple accept=".txt,text/plain">
+        </label>
+        <label class="field importNameField" for="importDeckName">
+          <span>Deck name for pasted list</span>
+          <input id="importDeckName" type="text" maxlength="60" placeholder="My imported deck" autocomplete="off">
+        </label>
         <textarea id="importBox" rows="12" placeholder="96&#10;96&#10;96&#10;96&#10;...&#10;&#10;or&#10;&#10;4 Teal Mask Ogerpon ex - 96"></textarea>
         <div id="importMessage" class="importMessage" aria-live="polite"></div>
         <div class="dialogActions">
           <button class="button secondary" value="cancel" type="submit">Cancel</button>
-          <button id="importDeck" class="button primary" type="button">Import deck</button>
+          <button id="importDeck" class="button primary" type="button">Save imported deck</button>
         </div>
       </form>
     </dialog>

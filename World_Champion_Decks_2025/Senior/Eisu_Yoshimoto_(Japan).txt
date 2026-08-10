@@ -1,0 +1,49 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 22
+
+2 Flareon ex PRE 14
+1 Leafeon ex PRE 6
+1 Sylveon ex PRE 41
+1 Eevee MEW 133
+1 Eevee PRE 74
+4 Noctowl SCR 115
+4 Hoothoot SCR 114
+2 Fan Rotom SCR 118
+1 Eevee ex PRE 75
+1 Fezandipiti ex SFA 38
+1 Latias ex SSP 76
+1 Lillie’s Clefairy ex JTG 56
+1 Mew ex MEW 151
+1 Wellspring Mask Ogerpon ex TWM 64
+
+Trainer Cards - 29
+
+3 Crispin SCR 133
+2 Boss’s Orders (Ghetsis) PAL 172
+2 Iono PAL 185
+1 Briar SCR 132
+1 Professor Turo’s Scenario PAR 171
+2 Area Zero Underdepths SCR 131
+4 Nest Ball SVI 181
+4 Ultra Ball SVI 196
+2 Buddy-Buddy Poffin TEF 144
+2 Counter Catcher PAR 160
+1 Gravity Mountain SSP 177
+1 Night Stretcher SFA 61
+1 Sparkling Crystal SCR 142
+1 Super Rod PAL 188
+1 Switch SVI 194
+1 Tera Orb SSP 189
+
+Energy - 9
+
+2 Basic Fire Energy SVE 2
+2 Basic Lightning Energy SVE 4
+2 Basic Psychic Energy SVE 5
+2 Basic Water Energy SVE 3
+1 Basic Grass Energy SVE 1
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******

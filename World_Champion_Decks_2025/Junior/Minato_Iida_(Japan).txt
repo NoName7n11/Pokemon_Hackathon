@@ -1,0 +1,43 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 19
+
+2 Marnie’s Grimmsnarl ex DRI 136
+2 Marnie’s Morgrem DRI 135
+3 Marnie’s Impidimp DRI 134
+2 Froslass TWM 53
+2 Snorunt TWM 51
+4 Munkidori TWM 95
+1 Bloodmoon Ursaluna ex TWM 141
+1 Budew PRE 4
+1 Maractus JTG 8
+1 Shaymin DRI 10
+
+Trainer Cards - 33
+
+4 Arven OBF 186
+4 Iono PAL 185
+3 Professor’s Research (Professor Sada) SVI 189
+2 Boss’s Orders (Ghetsis) PAL 172
+2 Spikemuth Gym DRI 169
+1 Artazon PAL 171
+2 Buddy-Buddy Poffin TEF 144
+2 Counter Catcher PAR 160
+2 Night Stretcher SFA 61
+2 Technical Machine: Evolution PAR 178
+2 Technical Machine: Devolution PAR 177
+1 Air Balloon BLK 79
+1 Energy Search SVI 172
+1 Nest Ball SVI 181
+1 Rare Candy SVI 191
+1 Super Rod PAL 188
+1 Secret Box TWM 163
+1 Ultra Ball SVI 196
+
+Energy - 8
+
+8 Basic Darkness Energy SVE 7
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******

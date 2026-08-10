@@ -1,0 +1,41 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 20
+
+3 Charizard ex OBF 125
+2 Charmeleon MEW 5
+4 Charmander MEW 4
+2 Munkidori TWM 95
+2 Pidgeot ex OBF 164
+2 Pidgeotto MEW 17
+2 Pidgey OBF 162
+1 Cleffa OBF 80
+1 Chi-Yu PAR 29
+1 Fezandipiti ex SFA 38
+
+Trainer Cards - 32
+
+4 Arven OBF 186
+3 Iono PAL 185
+2 Boss’s Orders (Ghetsis) PAL 172
+2 Brock’s Scouting JTG 146
+1 Professor’s Research (Professor Sada) SVI 189
+2 Artazon PAL 171
+4 Buddy-Buddy Poffin TEF 144
+3 Rare Candy SVI 191
+3 Ultra Ball SVI 196
+2 Counter Catcher PAR 160
+2 Super Rod PAL 188
+2 Technical Machine: Evolution PAR 178
+1 Energy Search SVI 172
+1 Maximum Belt TEF 154
+
+Energy - 8
+
+5 Basic Fire Energy SVE 2
+2 Luminous Energy PAL 191
+1 Basic Darkness Energy SVE 7
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******

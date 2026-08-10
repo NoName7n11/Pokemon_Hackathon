@@ -1,0 +1,40 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 16
+
+2 Gardevoir ex SVI 86
+2 Kirlia SVI 85
+3 Ralts SVI 84
+4 Munkidori TWM 95
+1 Fezandipiti ex SFA 38
+1 Flutter Mane TEF 78
+1 Lillie’s Clefairy ex JTG 56
+1 Mew ex MEW 151
+1 Scream Tail PAR 86
+
+Trainer Cards - 33
+
+4 Iono PAL 185
+4 Professor’s Research (Professor Sada) SVI 189
+2 Arven OBF 186
+2 Artazon PAL 171
+4 Ultra Ball SVI 196
+3 Earthen Vessel PAR 163
+2 Counter Catcher PAR 160
+2 Nest Ball SVI 181
+2 Night Stretcher SFA 61
+2 Technical Machine: Evolution PAR 178
+2 Rare Candy SVI 191
+1 Bravery Charm PAL 173
+1 Secret Box TWM 163
+1 Super Rod PAL 188
+1 Technical Machine: Devolution PAR 177
+
+Energy - 11
+
+7 Basic Psychic Energy SVE 5
+4 Basic Darkness Energy SVE 7
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******

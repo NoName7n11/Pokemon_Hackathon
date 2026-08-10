@@ -1,0 +1,39 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 14
+
+4 Roaring Moon TEF 109
+3 Dudunsparce TEF 129
+3 Dunsparce PAL 156
+1 Flutter Mane TEF 78
+1 Iron Bundle PAR 56
+1 Koraidon SSP 116
+1 Munkidori TWM 95
+
+Trainer Cards - 39
+
+4 Explorer’s Guidance TEF 147
+4 Professor Sada’s Vitality PAR 170
+1 Boss’s Orders (Ghetsis) PAL 172
+1 Iono PAL 185
+1 Morty’s Conviction TEF 155
+1 Professor’s Research (Professor Sada) SVI 189
+3 Artazon PAL 171
+1 Gravity Mountain SSP 177
+4 Ancient Booster Energy Capsule TEF 140
+4 Earthen Vessel PAR 163
+4 Ultra Ball SVI 196
+3 Buddy-Buddy Poffin TEF 144
+3 Pokégear 3.0 SVI 186
+2 Counter Catcher PAR 160
+2 Super Rod PAL 188
+1 Brave Bangle WHT 80
+
+Energy - 7
+
+6 Basic Darkness Energy SVE 7
+1 Legacy Energy TWM 167
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******

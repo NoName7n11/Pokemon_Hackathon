@@ -31,6 +31,10 @@ SEARCH_MAIN = True          # MAIN-phase 1-ply lookahead. MEASURED (Hydrapple de
 MAX_ROLLOUT_STEPS = 40      # cap greedy rollout length inside a forked turn
 WIN_SCORE = 1e9
 
+ABILITY_CAP_PER_TURN = 4    # see _ability_cap_reached: guards against unbounded Abilities
+_live_ability_count: dict = {}
+_last_seen_turn = -1
+
 
 def _card_data():
     global _CARD_DATA
@@ -196,6 +200,50 @@ def _live_attacker_score(mon, opp_active=None) -> int:
     return lethal_bonus + dmg * 20 + mon.hp + len(mon.energies) * 15 - prize_penalty
 
 
+def _ability_cap_reached(state) -> bool:
+    """Read-only: has this seat already used ABILITY the max allowed times on
+    the CURRENT real turn? Shared by the greedy ladder and the search
+    candidate list so a rollout preview sees the same constraint the live
+    game actually faces. Never increments -- see _record_ability_use, the
+    only writer, called once by _agent_impl on the actually-applied action.
+
+    Bug found 2026-08-11: some Abilities are legal to use "as often as you
+    like" during a turn (e.g. Mega Venusaur ex's Solar Transfer, Azumarill ex's
+    Bubble Gathering, Dewgong's Wash Out -- all move Energy between your own
+    in-play Pokemon at zero net cost, so nothing ever runs out). The eval's
+    Active-quality term (`energies * 5`) rewards hoarding Energy with no
+    penalty for never attacking, so once such a card is in the deck,
+    `_search_choose_main` finds "use Ability again" scores higher than
+    "attack" on literally every turn and re-picks it forever -- confirmed via
+    direct trace, stuck cycling ENERGY -> CARD -> ABILITY on one turn for
+    1500+ steps until the harness step cap cut it off (~35% of a 20-game
+    sample never finished). An earlier version of this fix only capped the
+    ladder inside `_choose_main`, which gates the ROLLOUT TAIL but not
+    `_search_choose_main`'s own top-level candidate choice -- that path
+    bypasses `_choose_main` entirely, so the loop persisted unchanged. This
+    version gates the actual decision point instead.
+    """
+    global _last_seen_turn
+    if state is None:
+        return False
+    turn = state.turn
+    if turn < _last_seen_turn:
+        _live_ability_count.clear()  # new game started; turn numbers restarted
+    _last_seen_turn = turn
+    return _live_ability_count.get((turn, state.yourIndex), 0) >= ABILITY_CAP_PER_TURN
+
+
+def _record_ability_use(state) -> None:
+    """Record a real, applied ABILITY choice against the per-turn cap. Call
+    only from _agent_impl on the final chosen action -- never from inside a
+    search rollout, or hypothetical deliberation would falsely eat into the
+    real turn's budget before the live game has taken a single action."""
+    if state is None:
+        return
+    key = (state.turn, state.yourIndex)
+    _live_ability_count[key] = _live_ability_count.get(key, 0) + 1
+
+
 def _choose_main(obs: Observation) -> list[int]:
     """Greedy priority: lethal attack > evolve > attach energy > play basics > ability
     > best attack > retreat if dying > end turn."""
@@ -228,8 +276,9 @@ def _choose_main(obs: Observation) -> list[int]:
         if play_idx is not None:
             return [play_idx]
 
-    # 5. Use an Ability if one is available.
-    if OptionType.ABILITY in by_type:
+    # 5. Use an Ability if one is available (capped per real turn, see
+    # _ability_cap_reached).
+    if OptionType.ABILITY in by_type and not _ability_cap_reached(state):
         return [by_type[OptionType.ABILITY][0]]
 
     # 6. Attack anyway with the strongest available attack.
@@ -540,10 +589,13 @@ def _search_choose_main(obs: Observation):
         return None
     my_index = obs.current.yourIndex
     opp_deck = my_deck  # mirror opponent (irrelevant during my own turn)
+    ability_capped = _ability_cap_reached(obs.current)
 
     try:
         best_i, best_score = None, float("-inf")
         for i in range(len(sel.option)):
+            if ability_capped and sel.option[i].type == OptionType.ABILITY:
+                continue  # per-turn cap already used; don't let search re-pick it
             choice = _clamp([i], sel, len(sel.option))
             score = _rollout_score(choice, obs, my_index, my_deck, opp_deck)
             if score > best_score:
@@ -595,6 +647,21 @@ def _agent_impl(obs_dict: dict) -> list[int]:
     if SEARCH_MAIN and obs.select.type == SelectType.MAIN and obs.current is not None:
         chosen = _search_choose_main(obs)
         if chosen is not None:
+            _record_if_ability(obs, chosen)
             return chosen
 
-    return _greedy_select(obs)
+    chosen = _greedy_select(obs)
+    if obs.select.type == SelectType.MAIN:
+        _record_if_ability(obs, chosen)
+    return chosen
+
+
+def _record_if_ability(obs: Observation, chosen: list[int]) -> None:
+    """If the action actually being returned to the engine is ABILITY, count
+    it against the per-turn cap (see _record_ability_use)."""
+    if not chosen or obs.current is None:
+        return
+    i = chosen[0]
+    options = obs.select.option if obs.select else []
+    if 0 <= i < len(options) and options[i].type == OptionType.ABILITY:
+        _record_ability_use(obs.current)

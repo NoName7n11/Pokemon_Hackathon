@@ -1,0 +1,40 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 17
+
+3 Gholdengo ex PAR 139
+4 Gimmighoul SSP 97
+2 Genesect ex BLK 67
+2 Iron Hands ex PAR 70
+2 Joltik SCR 50
+1 Fezandipiti ex SFA 38
+1 Latias ex SSP 76
+1 Miraidon ex SVI 81
+1 Pikachu ex SSP 57
+
+Trainer Cards - 32
+
+4 Arven OBF 186
+3 Boss’s Orders (Ghetsis) PAL 172
+2 Brock’s Scouting JTG 146
+1 Professor Turo’s Scenario PAR 171
+1 Team Rocket’s Petrel DRI 176
+2 Levincia JTG 150
+4 Nest Ball SVI 181
+4 Superior Energy Retrieval PAL 189
+3 Buddy-Buddy Poffin TEF 144
+2 Air Balloon BLK 79
+2 Earthen Vessel PAR 163
+2 Pokégear 3.0 SVI 186
+1 Bravery Charm PAL 173
+1 Prime Catcher TEF 157
+
+Energy - 11
+
+4 Basic Grass Energy SVE 1
+4 Basic Lightning Energy SVE 4
+3 Basic Metal Energy SVE 8
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******

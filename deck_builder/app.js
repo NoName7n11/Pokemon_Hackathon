@@ -2,6 +2,7 @@ const cards = window.CARD_DATA?.cards || [];
 const byId = new Map(cards.map((card) => [card.id, card]));
 const deck = new Map();
 const flags = new Map();
+const savedDecks = new Map();
 const PAGE_SIZE = 120;
 const STORAGE_KEY = "ontrack-deck-lab-v2";
 const FLAG_VALUES = new Set(["Ability", "Attack", "Both"]);
@@ -27,6 +28,8 @@ const state = {
   focusId: null,
   focusDeckOpen: false,
   focusDeckKind: "Pokemon",
+  savedDeckId: null,
+  pendingDeckFiles: [],
   toastTimer: null,
 };
 
@@ -37,13 +40,15 @@ const els = Object.fromEntries(
     "stageFilter", "sortFilter", "megaFilter", "abilityFilter", "catalogTitle",
     "activeFilterCount", "resultCount", "catalogViews", "importFlagsOpen",
     "exportFlagsTxt", "exportFlagsCsv", "cardGrid", "loadMore", "deckTotal",
+    "savedDeckToolbar", "savedDeckBack", "savedDeckTitle", "savedDeckMeta",
+    "savedDeckActions", "loadSavedDeck", "deleteSavedDeck",
     "deckStatusTitle", "countRing", "deckBreakdown", "ruleWarnings", "deckList",
     "emptyDeck", "focusOverlay", "closeFocus", "closeFocusX", "focusKind",
     "toggleFocusDeck", "focusDeckTotal", "focusPrevious",
     "focusNext", "focusCardImage", "focusFlagButtons", "focusRemove", "focusAdd", "focusCardCount",
     "focusCardLimit", "focusDeckDrawer", "closeFocusDeck", "focusDeckName",
     "focusDeckValidation", "focusDeckTabs", "focusDeckGrid", "importDialog",
-    "importBox", "importMessage", "importDeck", "flagImportDialog", "flagImportFile",
+    "deckImportFiles", "importDeckName", "importBox", "importMessage", "importDeck", "flagImportDialog", "flagImportFile",
     "flagImportBox", "replaceFlags", "flagImportMessage", "importFlags", "toast",
   ].map((id) => [id, document.getElementById(id)])
 );
@@ -143,7 +148,12 @@ function setCardCount(id, count) {
 }
 
 function persistDeck() {
-  const payload = { name: els.deckName.value, cards: [...deck.entries()], flags: [...flags.entries()] };
+  const payload = {
+    name: els.deckName.value,
+    cards: [...deck.entries()],
+    flags: [...flags.entries()],
+    savedDecks: [...savedDecks.values()],
+  };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
 }
 
@@ -157,6 +167,13 @@ function restoreDeck() {
     });
     (payload.flags || []).forEach(([id, value]) => {
       if (byId.has(Number(id)) && FLAG_VALUES.has(value)) flags.set(Number(id), value);
+    });
+    (payload.savedDecks || []).forEach((saved) => {
+      if (!saved?.id || !saved?.name || !Array.isArray(saved.cards)) return;
+      const recognized = saved.cards
+        .map(([id, count]) => [Number(id), Number(count)])
+        .filter(([id, count]) => byId.has(id) && count > 0);
+      if (recognized.length) savedDecks.set(saved.id, { ...saved, cards: recognized });
     });
   } catch {
     localStorage.removeItem(STORAGE_KEY);
@@ -176,10 +193,23 @@ function activeFilterTotal() {
   ].filter(Boolean).length;
 }
 
+function selectedSavedDeck() {
+  return state.savedDeckId ? savedDecks.get(state.savedDeckId) || null : null;
+}
+
+function savedDeckEntries(saved = selectedSavedDeck()) {
+  if (!saved) return [];
+  return saved.cards
+    .map(([id, count]) => ({ card: byId.get(Number(id)), count: Number(count) }))
+    .filter(({ card, count }) => card && count > 0);
+}
+
 function filteredCards() {
   const query = els.searchInput.value.trim().toLowerCase();
-  const visible = cards.filter((card) => {
-    if (state.view !== "library" && flagFor(card.id) !== state.view) return false;
+  const saved = selectedSavedDeck();
+  const source = state.view === "saved" && saved ? savedDeckEntries(saved).map(({ card }) => card) : cards;
+  const visible = source.filter((card) => {
+    if (FLAG_VALUES.has(state.view) && flagFor(card.id) !== state.view) return false;
     if (query && !cardSearchText(card).includes(query)) return false;
     if (state.kind && card.kind !== state.kind) return false;
     if (els.typeFilter.value && card.type !== els.typeFilter.value) return false;
@@ -199,7 +229,7 @@ function filteredCards() {
   return visible;
 }
 
-function cardTile(card) {
+function cardTile(card, savedCount = 0) {
   const selected = countFor(card.id);
   const flag = flagFor(card.id);
   const article = document.createElement("article");
@@ -209,6 +239,7 @@ function cardTile(card) {
     <button class="artButton" type="button" aria-label="Preview ${escapeHtml(card.name)}">
       <img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.name)}" loading="lazy" width="320" height="448">
       ${selected ? `<span class="selectedBadge">${selected}</span>` : ""}
+      ${savedCount ? `<span class="savedCopyBadge">×${savedCount}</span>` : ""}
       ${flag ? `<span class="flagBadge">${flag}</span>` : ""}
     </button>
     <div class="cardTileFooter">
@@ -250,6 +281,12 @@ function handleGridKeydown(event) {
 }
 
 function renderCards() {
+  if (state.view === "saved") {
+    renderSavedDecks();
+    return;
+  }
+  els.savedDeckToolbar.hidden = true;
+  els.cardGrid.classList.remove("savedDeckFolderGrid");
   const filtered = filteredCards();
   const visible = filtered.slice(0, state.visibleLimit);
   els.resultCount.textContent = `${filtered.length.toLocaleString()} card${filtered.length === 1 ? "" : "s"}`;
@@ -277,8 +314,98 @@ function renderCatalogViews() {
     const view = button.dataset.view;
     button.classList.toggle("active", view === state.view);
     button.setAttribute("aria-current", view === state.view ? "page" : "false");
-    button.querySelector("b").textContent = view === "library" ? cards.length.toLocaleString() : counts[view];
+    button.querySelector("b").textContent = view === "library"
+      ? cards.length.toLocaleString()
+      : view === "saved"
+        ? savedDecks.size
+        : counts[view];
   });
+}
+
+function savedDeckStats(saved) {
+  const stats = { Pokemon: 0, Trainer: 0, Energy: 0 };
+  savedDeckEntries(saved).forEach(({ card, count }) => { stats[card.kind] += count; });
+  return stats;
+}
+
+function renderSavedDeckFolders() {
+  els.savedDeckToolbar.hidden = false;
+  els.savedDeckBack.hidden = true;
+  els.savedDeckActions.hidden = true;
+  els.savedDeckTitle.textContent = "Deck library";
+  els.savedDeckMeta.textContent = `${savedDecks.size} saved deck${savedDecks.size === 1 ? "" : "s"}`;
+  els.catalogTitle.textContent = "Saved decks";
+  els.resultCount.textContent = `${savedDecks.size} folder${savedDecks.size === 1 ? "" : "s"}`;
+  els.activeFilterCount.hidden = true;
+  els.loadMore.hidden = true;
+  els.cardGrid.classList.add("savedDeckFolderGrid");
+  els.cardGrid.replaceChildren();
+
+  if (!savedDecks.size) {
+    els.cardGrid.innerHTML = `<div class="noResults"><strong>No saved decks yet</strong><span>Use Import to upload one or more deck TXT files.</span></div>`;
+    return;
+  }
+
+  [...savedDecks.values()]
+    .sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")) || a.name.localeCompare(b.name))
+    .forEach((saved) => {
+      const entries = savedDeckEntries(saved);
+      const stats = savedDeckStats(saved);
+      const total = entries.reduce((sum, entry) => sum + entry.count, 0);
+      const folder = document.createElement("button");
+      folder.className = "savedDeckFolder";
+      folder.type = "button";
+      folder.dataset.savedDeckId = saved.id;
+      folder.setAttribute("aria-label", `Open ${saved.name}`);
+      const artwork = entries.slice(0, 4).map(({ card }) => `<img src="${escapeHtml(card.image)}" alt="" loading="lazy">`).join("");
+      folder.innerHTML = `
+        <span class="folderTab" aria-hidden="true"></span>
+        <span class="folderArtwork">${artwork}</span>
+        <span class="folderDetails">
+          <strong title="${escapeHtml(saved.name)}">${escapeHtml(saved.name)}</strong>
+          <small>${total} cards · ${entries.length} unique</small>
+          <span><b>${stats.Pokemon}</b> Pokémon <b>${stats.Trainer}</b> Trainer <b>${stats.Energy}</b> Energy</span>
+        </span>`;
+      folder.addEventListener("click", () => {
+        state.savedDeckId = saved.id;
+        state.visibleLimit = PAGE_SIZE;
+        renderCards();
+      });
+      els.cardGrid.appendChild(folder);
+    });
+}
+
+function renderSavedDecks() {
+  renderCatalogViews();
+  els.savedDeckToolbar.hidden = false;
+  const saved = selectedSavedDeck();
+  if (!saved) {
+    renderSavedDeckFolders();
+    return;
+  }
+
+  const allEntries = savedDeckEntries(saved);
+  const counts = new Map(allEntries.map(({ card, count }) => [card.id, count]));
+  const total = allEntries.reduce((sum, entry) => sum + entry.count, 0);
+  const stats = savedDeckStats(saved);
+  const filtered = filteredCards();
+  const visible = filtered.slice(0, state.visibleLimit);
+  els.savedDeckBack.hidden = false;
+  els.savedDeckActions.hidden = false;
+  els.savedDeckTitle.textContent = saved.name;
+  els.savedDeckMeta.textContent = `${total} cards · ${stats.Pokemon} Pokémon · ${stats.Trainer} Trainer · ${stats.Energy} Energy`;
+  els.catalogTitle.textContent = saved.name;
+  els.resultCount.textContent = `${filtered.length} unique card${filtered.length === 1 ? "" : "s"}`;
+  const filterTotal = activeFilterTotal();
+  els.activeFilterCount.hidden = filterTotal === 0;
+  els.activeFilterCount.textContent = `${filterTotal} active`;
+  els.cardGrid.classList.remove("savedDeckFolderGrid");
+  els.cardGrid.replaceChildren(...visible.map((card) => cardTile(card, counts.get(card.id) || 0)));
+  els.loadMore.hidden = visible.length >= filtered.length;
+  els.loadMore.textContent = `Show more (${filtered.length - visible.length} remaining)`;
+  if (!filtered.length) {
+    els.cardGrid.innerHTML = `<div class="noResults"><strong>No cards match these filters</strong><span>Clear a filter to see the complete saved deck.</span></div>`;
+  }
 }
 
 function sortedDeckCards() {
@@ -598,42 +725,129 @@ function download(name, content, type) {
 }
 
 function parseImport(text) {
-  const imported = [];
-  const unknown = [];
-  text.split(/\r?\n/).forEach((line) => {
+  const imported = new Map();
+  const unknown = new Set();
+  text.replace(/^\uFEFF/, "").split(/\r?\n/).forEach((line) => {
     const trimmed = line.trim();
     if (!trimmed) return;
-    const txtMatch = trimmed.match(/^(\d+)\s+.+\s+-\s+(\d+)$/);
+    const txtMatch = trimmed.match(/^(\d+)\s+(.+?)\s+-\s+(\d+)$/);
     const csvMatch = trimmed.match(/^(\d+)$/);
     if (txtMatch) {
       const count = Number(txtMatch[1]);
-      const id = Number(txtMatch[2]);
-      if (byId.has(id)) imported.push(...Array(count).fill(id));
-      else unknown.push(id);
+      const id = Number(txtMatch[3]);
+      if (count <= 0) return;
+      if (byId.has(id)) imported.set(id, (imported.get(id) || 0) + count);
+      else unknown.add(id);
     } else if (csvMatch) {
       const id = Number(csvMatch[1]);
-      if (byId.has(id)) imported.push(id);
-      else unknown.push(id);
+      if (byId.has(id)) imported.set(id, (imported.get(id) || 0) + 1);
+      else unknown.add(id);
     }
   });
-  return { imported, unknown: [...new Set(unknown)] };
+  return {
+    imported,
+    unknown: [...unknown],
+    total: [...imported.values()].reduce((sum, count) => sum + count, 0),
+  };
+}
+
+function deckNameFromFile(filename) {
+  return filename.replace(/\.[^.]+$/, "").replaceAll("_", " ").trim() || "Imported deck";
+}
+
+function saveImportedDeck(name, parsed, source = "Pasted deck list") {
+  const cleanName = name.trim() || "Imported deck";
+  const existing = [...savedDecks.values()].find((saved) => saved.name.toLowerCase() === cleanName.toLowerCase());
+  const id = existing?.id || `deck-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  savedDecks.set(id, {
+    id,
+    name: cleanName,
+    source,
+    cards: [...parsed.imported.entries()],
+    unknown: parsed.unknown,
+    updatedAt: new Date().toISOString(),
+  });
+  return { id, updated: Boolean(existing) };
+}
+
+function clearDeckImportDialog() {
+  state.pendingDeckFiles = [];
+  els.deckImportFiles.value = "";
+  els.importDeckName.value = "";
+  els.importBox.value = "";
+  els.importMessage.textContent = "";
 }
 
 function importDeck() {
-  const parsed = parseImport(els.importBox.value);
-  if (!parsed.imported.length) {
-    els.importMessage.textContent = "No recognized card IDs were found.";
+  const candidates = [...state.pendingDeckFiles];
+  if (els.importBox.value.trim()) {
+    candidates.push({
+      name: els.importDeckName.value.trim() || els.deckName.value.trim() || "Imported deck",
+      source: "Pasted deck list",
+      text: els.importBox.value,
+    });
+  }
+  if (!candidates.length) {
+    els.importMessage.textContent = "Choose a deck TXT file or paste a deck list first.";
     els.importMessage.className = "importMessage error";
     return;
   }
+
+  const saved = [];
+  const rejected = [];
+  let unknownCount = 0;
+  candidates.forEach((candidate) => {
+    const parsed = parseImport(candidate.text);
+    if (!parsed.imported.size) {
+      rejected.push(candidate.name);
+      return;
+    }
+    const result = saveImportedDeck(candidate.name, parsed, candidate.source);
+    saved.push({ ...result, name: candidate.name, total: parsed.total });
+    unknownCount += parsed.unknown.length;
+  });
+
+  if (!saved.length) {
+    els.importMessage.textContent = "No recognized card IDs were found in the selected deck lists.";
+    els.importMessage.className = "importMessage error";
+    return;
+  }
+  persistDeck();
+  state.view = "saved";
+  state.savedDeckId = null;
+  state.visibleLimit = PAGE_SIZE;
+  renderCards();
+  els.importDialog.close();
+  clearDeckImportDialog();
+  const updates = saved.filter((item) => item.updated).length;
+  const details = [
+    `${saved.length} deck${saved.length === 1 ? "" : "s"} saved`,
+    updates ? `${updates} updated` : "",
+    unknownCount ? `${unknownCount} unknown ID${unknownCount === 1 ? "" : "s"} skipped` : "",
+    rejected.length ? `${rejected.length} unreadable file${rejected.length === 1 ? "" : "s"}` : "",
+  ].filter(Boolean).join("; ");
+  showToast(details + ".");
+}
+
+function loadSelectedSavedDeck() {
+  const saved = selectedSavedDeck();
+  if (!saved) return;
   deck.clear();
-  parsed.imported.slice(0, 60).forEach((id) => setCardCount(id, countFor(id) + 1));
+  saved.cards.forEach(([id, count]) => setCardCount(Number(id), Number(count)));
+  els.deckName.value = saved.name;
   persistDeck();
   renderAll();
-  els.importDialog.close();
-  els.importBox.value = "";
-  els.importMessage.textContent = "";
-  showToast(`Imported ${totalCards()} cards${parsed.unknown.length ? `; ${parsed.unknown.length} unknown IDs skipped` : ""}.`);
+  showToast(`${saved.name} loaded into the builder.`);
+}
+
+function deleteSelectedSavedDeck() {
+  const saved = selectedSavedDeck();
+  if (!saved || !window.confirm(`Delete the saved deck "${saved.name}"?`)) return;
+  savedDecks.delete(saved.id);
+  state.savedDeckId = null;
+  persistDeck();
+  renderCards();
+  showToast(`${saved.name} deleted from saved decks.`);
 }
 
 function resetFilters() {
@@ -679,7 +893,9 @@ function init() {
   els.catalogViews.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-view]");
     if (!button) return;
-    state.view = button.dataset.view;
+    const nextView = button.dataset.view;
+    if (nextView === "saved" && state.view !== "saved") state.savedDeckId = null;
+    state.view = nextView;
     state.visibleLimit = PAGE_SIZE;
     renderCards();
   });
@@ -715,8 +931,38 @@ function init() {
     }
   });
   els.importFlags.addEventListener("click", importFlagData);
-  els.importOpen.addEventListener("click", () => els.importDialog.showModal());
+  els.importOpen.addEventListener("click", () => {
+    els.importMessage.textContent = "";
+    els.importDeckName.value = els.deckName.value.trim() || "My imported deck";
+    els.importDialog.showModal();
+  });
+  els.deckImportFiles.addEventListener("change", async () => {
+    const files = [...els.deckImportFiles.files];
+    state.pendingDeckFiles = [];
+    if (!files.length) return;
+    try {
+      state.pendingDeckFiles = await Promise.all(files.map(async (file) => ({
+        name: deckNameFromFile(file.name),
+        source: file.name,
+        text: await file.text(),
+      })));
+      els.importMessage.textContent = `${files.length} deck file${files.length === 1 ? "" : "s"} loaded and ready to save.`;
+      els.importMessage.className = "importMessage";
+      if (files.length === 1) els.importDeckName.value = deckNameFromFile(files[0].name);
+    } catch {
+      state.pendingDeckFiles = [];
+      els.importMessage.textContent = "One or more selected files could not be read.";
+      els.importMessage.className = "importMessage error";
+    }
+  });
   els.importDeck.addEventListener("click", importDeck);
+  els.savedDeckBack.addEventListener("click", () => {
+    state.savedDeckId = null;
+    state.visibleLimit = PAGE_SIZE;
+    renderCards();
+  });
+  els.loadSavedDeck.addEventListener("click", loadSelectedSavedDeck);
+  els.deleteSavedDeck.addEventListener("click", deleteSelectedSavedDeck);
   els.closeFocus.addEventListener("click", closeFocus);
   els.closeFocusX.addEventListener("click", closeFocus);
   els.focusPrevious.addEventListener("click", () => navigateFocus(-1));

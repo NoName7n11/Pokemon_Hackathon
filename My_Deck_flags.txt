@@ -1,6 +1,6 @@
 ****** OnTrack Flagged Card Library ******
 
-[Ability] - 25
+[Ability] - 23
 
 170 - Archaludon
 962 - Azumarill ex
@@ -8,7 +8,6 @@
 424 - Cetitan ex
 117 - Cornerstone Mask Ogerpon ex
 1029 - Dewgong
-81 - Drilbur
 512 - Eelektrik
 83 - Farigiraf ex
 140 - Fezandipiti ex
@@ -25,16 +24,25 @@
 173 - Noctowl
 795 - Oricorio ex
 829 - Seviper
-711 - Shuckle
 330 - Sylveon
 
-[Attack] - 7
+[Attack] - 17
 
 835 - Empoleon ex
 750 - Grumpig
 1037 - Luxray
 954 - Luxray ex
+1006 - Mega Audino ex
+790 - Mega Charizard X ex
+928 - Mega Charizard Y ex
 766 - Mega Diancie ex
+939 - Mega Feraligatr ex
+861 - Mega Froslass ex
+747 - Mega Gardevoir ex
+781 - Mega Heracross ex
+678 - Mega Lucario ex
+919 - Mega Meganium ex
+1031 - Mega Starmie ex
 481 - Serperior ex
 203 - Skeledirge
 
@@ -62,4 +70,4 @@
 290 - Tyranitar
 340 - Yanmega ex
 
-Total Flagged Cards - 53
+Total Flagged Cards - 61

@@ -1,0 +1,45 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 16
+
+4 Gholdengo ex PAR 139
+3 Gimmighoul SSP 97
+1 Gimmighoul PAR 88
+2 Dusknoir SFA 20
+2 Duskull SFA 18
+2 Genesect ex BLK 67
+1 Fezandipiti ex SFA 38
+1 Munkidori TWM 95
+
+Trainer Cards - 33
+
+4 Arven OBF 186
+3 Boss’s Orders (Ghetsis) PAL 172
+2 Ciphermaniac’s Codebreaking TEF 145
+1 Iono PAL 185
+1 Professor Turo’s Scenario PAR 171
+1 Levincia JTG 150
+4 Buddy-Buddy Poffin TEF 144
+4 Nest Ball SVI 181
+4 Superior Energy Retrieval PAL 189
+2 Air Balloon BLK 79
+2 Night Stretcher SFA 61
+2 Rare Candy SVI 191
+1 Earthen Vessel PAR 163
+1 Energy Search Pro SSP 176
+1 Ultra Ball SVI 196
+
+Energy - 11
+
+3 Basic Metal Energy SVE 8
+2 Basic Lightning Energy SVE 4
+1 Basic Darkness Energy SVE 7
+1 Basic Fighting Energy SVE 6
+1 Basic Fire Energy SVE 2
+1 Basic Grass Energy SVE 1
+1 Basic Psychic Energy SVE 5
+1 Basic Water Energy SVE 3
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******

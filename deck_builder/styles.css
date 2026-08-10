@@ -109,6 +109,8 @@ button:disabled { cursor: not-allowed; opacity: 0.42; }
 .topbar .button.secondary { background: transparent; border-color: rgba(255,255,255,0.3); color: #fff; }
 .button.primary { background: var(--teal); border-color: var(--teal); color: #fff; }
 .button.primary:hover { background: var(--teal-dark); }
+.button.danger { background: #fff; border-color: #d7a5a5; color: var(--danger); }
+.button.danger:hover { background: #fff3f3; border-color: var(--danger); }
 .button:focus-visible, .addButton:focus-visible, .textButton:focus-visible, .artButton:focus-visible { outline: 3px solid rgba(8,127,114,0.28); outline-offset: 2px; }
 
 .workspace {
@@ -172,13 +174,13 @@ h2 { font-size: 18px; line-height: 1.2; margin: 3px 0 0; }
 .filterHint strong { font-size: 12px; }
 .filterHint p { color: var(--muted); font-size: 11px; line-height: 1.5; margin: 4px 0 0; }
 
-.catalogPanel { display: grid; grid-template-rows: auto auto 1fr auto; overflow: hidden; position: relative; }
+.catalogPanel { display: grid; grid-template-rows: auto auto auto 1fr auto; overflow: hidden; position: relative; }
 .catalogHeader { border-bottom: 1px solid var(--line); min-height: 68px; padding: 12px 16px; }
 .resultMeta { color: var(--muted); font-size: 12px; gap: 8px; }
 .filterCount { background: #dff2ef; border-radius: 20px; color: var(--teal-dark); font-weight: 700; padding: 4px 8px; }
 
 .catalogViewBar { background: #f7f8f9; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) auto; }
-.catalogViews { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: 46px; }
+.catalogViews { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); min-height: 46px; }
 .catalogViews button { background: transparent; border: 0; border-bottom: 3px solid transparent; color: #596473; font-size: 11px; font-weight: 800; min-width: 0; padding: 8px 6px 6px; }
 .catalogViews button b { background: #e7eaee; border-radius: 20px; color: #596473; display: inline-block; font-size: 9px; margin-left: 4px; min-width: 20px; padding: 3px 5px; }
 .catalogViews button:hover { background: #eef2f4; color: var(--ink); }
@@ -187,6 +189,24 @@ h2 { font-size: 18px; line-height: 1.2; margin: 3px 0 0; }
 .flagTransferActions { align-items: center; border-left: 1px solid var(--line); display: flex; gap: 4px; padding: 6px 8px; }
 .flagTransferActions button { background: #fff; border: 1px solid #cbd1d8; border-radius: 4px; color: #43505f; font-size: 9px; font-weight: 800; height: 30px; padding: 4px 7px; }
 .flagTransferActions button:hover { border-color: var(--teal); color: var(--teal-dark); }
+
+.savedDeckToolbar {
+  align-items: center;
+  background: #f7faf9;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 64px;
+  padding: 9px 16px;
+}
+.savedDeckToolbar[hidden] { display: none; }
+.savedDeckToolbar h3 { font-size: 15px; margin: 2px 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.savedDeckToolbar p { color: var(--muted); font-size: 10px; margin: 3px 0 0; }
+.savedDeckBack { align-items: center; background: #fff; border: 1px solid #cbd1d8; border-radius: 50%; color: var(--navy); display: flex; font-size: 20px; height: 36px; justify-content: center; padding: 0; width: 36px; }
+.savedDeckBack:hover { border-color: var(--teal); color: var(--teal-dark); }
+.savedDeckBack[hidden], .savedDeckActions[hidden] { display: none; }
+.savedDeckActions { align-items: center; display: flex; gap: 7px; }
 
 .cardGrid {
   align-content: start;
@@ -208,6 +228,7 @@ h2 { font-size: 18px; line-height: 1.2; margin: 3px 0 0; }
 .cardTile:hover .artButton img { filter: brightness(1.03); transform: scale(1.018); }
 .cardTile.selected .artButton { box-shadow: 0 0 0 3px var(--teal), 0 4px 12px rgba(23,32,42,.18); }
 .selectedBadge { align-items: center; background: var(--teal); border: 2px solid #fff; border-radius: 50%; color: #fff; display: flex; font-size: 12px; font-weight: 800; height: 28px; justify-content: center; left: 7px; position: absolute; top: 7px; width: 28px; }
+.savedCopyBadge { align-items: center; background: rgba(20,43,74,.94); border: 2px solid #fff; border-radius: 15px; color: #fff; display: flex; font-size: 11px; font-weight: 800; height: 28px; justify-content: center; min-width: 34px; padding: 0 7px; position: absolute; right: 7px; top: 7px; }
 .flagBadge { background: rgba(20,43,74,.92); border-radius: 3px; bottom: 7px; color: #fff; font-size: 9px; font-weight: 800; padding: 4px 6px; position: absolute; right: 7px; text-transform: uppercase; }
 
 .cardTileFooter { gap: 6px; padding: 8px 1px 0; }
@@ -225,6 +246,38 @@ h2 { font-size: 18px; line-height: 1.2; margin: 3px 0 0; }
 .loadMoreBar:has(button[hidden]) { display: none; }
 .noResults { align-items: center; color: var(--muted); display: flex; flex-direction: column; gap: 6px; grid-column: 1 / -1; justify-content: center; min-height: 240px; text-align: center; }
 .noResults strong { color: var(--ink); }
+
+.cardGrid.savedDeckFolderGrid {
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  padding: 24px;
+}
+
+.savedDeckFolder {
+  background: #e9b744;
+  border: 1px solid #c79527;
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba(23,32,42,.13);
+  color: var(--ink);
+  display: grid;
+  grid-template-rows: minmax(130px, 1fr) auto;
+  min-height: 240px;
+  overflow: visible;
+  padding: 10px;
+  position: relative;
+  text-align: left;
+}
+.savedDeckFolder:hover { border-color: #9f7113; box-shadow: 0 9px 20px rgba(23,32,42,.2); transform: translateY(-1px); }
+.savedDeckFolder:focus-visible { outline: 3px solid rgba(8,127,114,.3); outline-offset: 3px; }
+.folderTab { background: #e9b744; border: 1px solid #c79527; border-bottom: 0; border-radius: 5px 5px 0 0; height: 18px; left: 13px; position: absolute; top: -18px; width: 82px; }
+.folderArtwork { display: grid; gap: 6px; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: hidden; padding: 4px 2px 10px; }
+.folderArtwork img { align-self: end; border-radius: 4px; box-shadow: 0 3px 7px rgba(51,35,6,.26); display: block; min-width: 0; width: 100%; }
+.folderArtwork img:nth-child(2), .folderArtwork img:nth-child(4) { transform: translateY(8px); }
+.folderDetails { background: rgba(255,255,255,.9); border-radius: 4px; display: block; padding: 10px 11px; }
+.folderDetails > strong { display: block; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.folderDetails small { color: #5f6873; display: block; font-size: 10px; margin-top: 3px; }
+.folderDetails > span { color: #4d5660; display: flex; font-size: 9px; gap: 4px; margin-top: 8px; white-space: nowrap; }
+.folderDetails b { color: var(--ink); }
 
 .deckPanel { display: grid; grid-template-rows: auto auto 1fr; overflow: hidden; }
 .deckHeader { border-bottom: 1px solid var(--line); padding: 14px 16px; }
@@ -327,6 +380,7 @@ dialog::backdrop { background: rgba(8, 18, 31, .72); }
 .importMessage.error { color: var(--danger); }
 .fileField { color: #4e5967; display: grid; font-size: 11px; font-weight: 700; gap: 6px; margin-top: 14px; }
 .fileField input { border: 1px solid #cfd5dd; border-radius: 5px; min-height: 38px; padding: 6px; width: 100%; }
+.importNameField { margin: 14px 0 0; }
 .replaceFlags { align-items: center; color: #4e5967; display: flex; font-size: 11px; gap: 8px; margin-top: 10px; }
 .replaceFlags input { height: auto; min-height: 0; width: auto; }
 

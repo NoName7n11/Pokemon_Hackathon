@@ -1,0 +1,46 @@
+****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 17
+
+4 N’s Zoroark ex JTG 98
+4 N’s Zorua JTG 97
+3 Munkidori TWM 95
+2 N’s Reshiram JTG 116
+1 Bloodmoon Ursaluna ex TWM 141
+1 Cornerstone Mask Ogerpon ex TWM 112
+1 Fezandipiti ex SFA 38
+1 Wellspring Mask Ogerpon ex TWM 64
+
+Trainer Cards - 35
+
+4 Arven OBF 186
+3 Boss’s Orders (Ghetsis) PAL 172
+3 Iono PAL 185
+1 Professor’s Research (Professor Sada) SVI 189
+1 Professor Turo’s Scenario PAR 171
+2 Artazon PAL 171
+3 Buddy-Buddy Poffin TEF 144
+3 Nest Ball SVI 181
+2 Counter Catcher PAR 160
+2 Technical Machine: Turbo Energize PAR 179
+1 Air Balloon BLK 79
+1 Earthen Vessel PAR 163
+1 Energy Switch SVI 173
+1 N’s PP Up JTG 153
+1 Night Stretcher SFA 61
+1 Pal Pad SVI 182
+1 Secret Box TWM 163
+1 Super Rod PAL 188
+1 Switch SVI 194
+1 Technical Machine: Evolution PAR 178
+1 Ultra Ball SVI 196
+
+Energy - 8
+
+7 Basic Darkness Energy SVE 7
+1 Basic Fighting Energy SVE 6
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******
+

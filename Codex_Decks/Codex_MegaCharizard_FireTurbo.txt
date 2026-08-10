@@ -1,0 +1,34 @@
+****** Pokemon Trading Card Game Deck List ******
+
+17 - Pokemon
+
+2 Charmander - 788
+2 Charmander - 926
+1 Charmeleon - 789
+1 Charmeleon - 927
+3 Mega Charizard X ex - 790
+2 Mega Charizard Y ex - 928
+3 Oricorio ex - 795
+1 Fezandipiti ex - 140
+1 Latias ex - 184
+1 Mega Audino ex - 1006
+
+29 - Trainer Cards
+
+4 Firebreather - 1232
+4 Hilda - 1225
+4 Ultra Ball - 1121
+4 Rare Candy - 1079
+3 Mega Signal - 1145
+3 Pokegear 3.0 - 1122
+2 Boss's Orders - 1182
+2 Air Balloon - 1174
+2 Night Stretcher - 1097
+1 Precious Trolley - 1126
+
+14 - Energy Cards
+
+14 Basic {R} Energy - 2
+
+Total Cards - 60
+

@@ -9,7 +9,140 @@ the reversal as a new entry instead).
 
 ---
 
+## 2026-08-11
+
+- **First `Claude_Decks/` build exposed a genuine infinite-loop bug in `main.py`'s
+  MAIN ladder; root-caused and fixed at the actual decision point**:
+  - `Claude_Decks/Claude_Grass_Venusaur.txt` / `.csv` — first deck built from the
+    user's flagged-card research: extends the proven Hydrapple core (Teal Mask
+    Ogerpon ex / Meganium / Hydrapple ex) with a second Stage-2 Grass attacker line,
+    Bulbasaur -> Ivysaur -> **Mega Venusaur ex** (380 HP, `Solar Transfer` ability
+    moves a Basic {G} Energy between own Pokemon "as often as you like"). 24 Pokemon /
+    23 Trainers / 13 Energy, legal by direct Card-ID check against the dataset (all 60
+    IDs exist, no name over 4 copies outside Energy, >=1 Basic present) and confirmed
+    playable end-to-end through the real engine.
+  - **First measurement was alarming: 80% vs random (Hydrapple's own baseline is
+    96-97%) and 23.5% [18.2-29.8] head-to-head vs Hydrapple, n=200 seat-balanced.**
+    Investigated rather than accepted at face value, per house discipline. A 20-game
+    instrumented mirror run showed **avg 831-963 steps** (Hydrapple's proven average is
+    ~121-131) with **7 of 20 games (35%) hitting the 3000-step harness cap and never
+    finishing**, scored as non-wins. Not a weak deck -- a hang.
+  - **Root cause, confirmed by direct trace of the actual option sequence:** the agent
+    cycles `ENERGY -> CARD -> ABILITY -> ENERGY -> CARD -> ABILITY ...` on one turn for
+    1500+ consecutive steps. Mega Venusaur ex's `Solar Transfer` is legal forever (moves
+    Energy between your own in-play Pokemon at zero net cost, so nothing runs out), and
+    `_eval_state`'s Active-quality term (`energies * 5`, shipped 2026-08-04) rewards
+    hoarding Energy with **no penalty for never attacking**. Once an unlimited
+    energy-move source exists, `_search_choose_main` finds "use Ability again" scores
+    higher than "attack" on literally every turn and re-picks it forever. This pathway
+    was invisible until now because Hydrapple's own abilities (Teal Dance, Ripening
+    Charge) are all "once during your turn" -- bounded.
+  - **First fix attempt was wrong and is recorded as such.** Capped Ability re-selection
+    inside `_choose_main`'s greedy ladder (`_take_ability`, a per-(turn,seat) counter).
+    Re-ran the same trace: **identical infinite loop, unchanged.** Cause: when
+    `SEARCH_MAIN` is on, the top-level MAIN decision is chosen by `_search_choose_main`,
+    which evaluates every `sel.option` candidate directly and **never calls
+    `_choose_main`'s ladder for the live pick** -- that function is only used for the
+    ROLLOUT TAIL inside each candidate's preview. The cap gated a code path the bug
+    didn't go through.
+  - **Working fix gates the actual decision point.** Replaced the ladder-only cap with
+    `_ability_cap_reached()` (read-only, checked by both `_choose_main`'s ladder AND
+    `_search_choose_main`'s candidate loop, which now skips ABILITY-type options once
+    the cap is hit) and `_record_ability_use()` / `_record_if_ability()` (the only
+    writer, called once in `_agent_impl` on the action actually returned to the engine
+    -- never from inside a rollout, so hypothetical search deliberation can't burn the
+    real turn's budget before the live game acts). `ABILITY_CAP_PER_TURN = 4`: high
+    enough that legitimate multi-use turns (consolidating Energy from several sources
+    before attacking) aren't restricted, low enough to guarantee the MAIN phase always
+    terminates.
+  - `sample_submission/sample_submission/check_ability_cap.py` — new persistent
+    regression check (ponytail: one runnable check for non-trivial logic). Plays N
+    games with the Grass/Venusaur deck and asserts none hit the step cap.
+    **Before the working fix: 6/30 games at ~2998-2999 steps (right at the cap).
+    After: 0/30, all finishing in a normal 30-239 step range.**
+  - **Verification status, stated plainly rather than assumed:** the no-regression
+    check on the shipped Hydrapple baseline (`self_play_benchmark.py 500` vs frozen
+    `previous_agent`) and a clean re-measure of the new deck vs random were both
+    **launched but not yet returned** when this entry was written (the shell session
+    restarted mid-run and orphaned the first attempt). Do not read this fix as fully
+    validated on the shipped deck until a follow-up entry confirms the ~71.6% Hydrapple
+    baseline is unchanged. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Deck builder full-TXT import and persistent saved-deck folders added**:
+  - `deck_builder/index.html`, `app.js`, and `styles.css` — expanded deck import
+    from pasted card IDs into a multi-file TXT workflow that accepts the grouped
+    `count card name - card ID` format used by `Codex_MegaCharizard_FireTurbo.txt`,
+    `Codex_FireCamerupt.txt`, and `Hydrapple.txt`. **Reason for the
+    implementation:** imported deck lists needed to remain available for visual
+    comparison instead of only replacing the single editable deck and then being
+    forgotten.
+  - Added a persistent **Saved Decks** catalog section. Each imported file becomes
+    a separate folder named from its filename; opening a folder shows its unique
+    cards with local card artwork and imported copy counts in the same visual form
+    as the Card Catalog. Saved folders can be loaded explicitly into the editable
+    builder or deleted, and re-importing the same deck name updates that folder.
+  - Multiple TXT files can be selected in one import. Pasted deck lists remain
+    supported with an explicit deck name, unknown IDs are reported and skipped,
+    and saved folders persist in browser storage alongside the working deck and
+    flags.
+  - Verification passed against all three requested examples: Mega Charizard Fire
+    Turbo imported as 60 cards / 21 unique / 0 unknown IDs, Fire Camerupt as 60 /
+    18 / 0, and Hydrapple as 60 / 26 / 0. JavaScript syntax and diff checks also
+    passed. No submission `main.py` or active `deck.csv` was changed. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Codex Mega Charizard Fire Turbo candidate built from updated flagged pool**:
+  - `Codex_Decks/Codex_MegaCharizard_FireTurbo.txt` and `.csv` — added a separate
+    60-card candidate deck, leaving active submission files unchanged. **Reason for
+    the implementation:** the updated `My_Deck_flags.txt` added enough Fire Mega
+    pieces to form a coherent Pokemon shell and support shell around Mega
+    Charizard X ex, Mega Charizard Y ex, Oricorio ex, and Firebreather without
+    mixing unrelated flagged engines.
+  - The deck uses a compact 17-Pokemon shell: 4 Charmander split across two legal
+    printings, 2 Charmeleon, 3 Mega Charizard X ex as the primary scalable finisher,
+    2 Mega Charizard Y ex as a high-impact secondary snipe attacker, 3 Oricorio ex
+    for Fire Energy acceleration once a Fire Mega is in play, plus Fezandipiti ex,
+    Latias ex, and Mega Audino ex as utility/support basics.
+  - Trainer shell follows the World Champion deck lesson of high consistency:
+    4 Firebreather, 4 Hilda, 4 Ultra Ball, 4 Rare Candy, 3 Mega Signal, 3 Pokegear
+    3.0, 2 Boss's Orders, 2 Air Balloon, 2 Night Stretcher, and 1 Precious Trolley
+    ACE SPEC. Energy shell is 14 Basic {R} Energy so Firebreather and Oricorio ex
+    have enough targets and Charizard X has fuel across the board.
+  - Validation passed locally: 60 total cards, exactly 1 ACE SPEC, and no
+    non-Basic card name above four copies. This deck is exploratory only and was
+    not copied into `sample_submission/sample_submission/deck.csv`. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 ## 2026-08-10
+
+- **World Champion deck import reviewed — use as structure reference, not direct copy**:
+  - Reviewed the newly added `World_Champion_Decks_2025/` folder and sampled lists
+    across Junior, Senior, and Master divisions. **Reason for the implementation:**
+    the original entry only recorded that the files were added; the more useful
+    project takeaway is what their deck structure teaches for our own deck-building
+    process.
+  - The strongest repeated pattern is Trainer density and consistency, not large
+    Pokemon piles. Across the sampled champion lists, Pokemon counts generally sit
+    around 13-23, Trainer counts around 28-39, and Energy around 6-12. Repeated
+    staples include search/draw/recovery/gust cards such as Ultra Ball, Boss's
+    Orders, Iono, Fezandipiti ex, Nest Ball, Buddy-Buddy Poffin, Night Stretcher,
+    Counter Catcher, Arven, Rare Candy, and Super Rod.
+  - Current user workflow clarified: the immediate focus is intentionally only on
+    building a **Pokemon shell** from the flagged card pool. Trainer and Energy
+    shells should be added later after the Pokemon core is chosen, because the
+    correct support package depends on the chosen attackers, evolution depth,
+    Energy types, acceleration needs, and whether the deck asks the agent to pilot
+    complex sequencing.
+  - Practical rule carried forward: use the champion lists as deck-construction
+    templates for ratios and consistency philosophy, but do not copy them directly.
+    The hackathon card pool is different, and our submitted `main.py` must be able
+    to pilot the resulting deck reliably. No deck files, `main.py`, or active
+    `deck.csv` were changed. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Added ``World_Champion_Decks_2025`` for understanding deck creation and learning strategies:**
+  - ``/Junior`` contains all the decks from Junior Division.
+  - ``/Senior`` contains all the decks from Senior Division.
+  - ``/Master`` contains all the decks from Master Division. - <span style="background-color:rgba(50, 205, 50, 0.31); color:#12db12">no_name</span>
 
 - **Card-pool research pass on the user's 53 flagged cards; multi-type Energy solved;
   `Claude_Decks/` created**:
