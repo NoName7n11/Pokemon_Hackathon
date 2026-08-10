@@ -11,6 +11,101 @@ the reversal as a new entry instead).
 
 ## 2026-08-10
 
+- **Card-pool research pass on the user's 53 flagged cards; multi-type Energy solved;
+  `Claude_Decks/` created**:
+  - `Claude_Decks/` — new directory. All decks I build from now on go here only, kept
+    separate from `Decs/` (user-authored + replay-derived), `Codex_Decks/`, and the
+    active submission `deck.csv`.
+  - **Leafeon ex `{G}{R}{W}` rainbow-cost problem — solved.** The user asked which
+    cards can supply Energy of different types. Findings from the full 2,022-row pool:
+    - **Terapagos [234]** is the single best answer: `Prism Charge ●` searches the deck
+      for **up to 3 Basic Energy of different types and attaches them to your Tera
+      Pokémon**. Leafeon ex is Tera(Stellar), so one attack costing one Colorless pays
+      the entire `{G}{R}{W}` cost straight from deck. It also pairs with Leafeon ex's
+      `[Tera]` (no damage while Benched), so the attacker loads in total safety.
+    - **Sparkling Crystal [1165]** (Tool) makes any **Tera** Pokémon's attacks cost
+      **1 Energy less, of any type** — it does not fix the rainbow so much as delete a
+      third of it, and it applies to six already-flagged Tera cards.
+    - Trap recorded: **Prism Energy [16]** is rainbow **only on Basic** Pokémon and
+      **Neo Upper Energy [10]** only on **Stage 2**. Leafeon ex is Stage 1, so both
+      provide plain `{C}` on it and are dead there. **Legacy Energy [12]** is genuinely
+      wild but is **ACE SPEC** (1 copy) and competes with Energy Search Pro for the slot.
+  - **Direct-attach sweep (non-Pokémon cards).** Confirmed **no Stadium in the pool
+    attaches Energy** — all 26 checked; Levincia [1254] is the only Energy-related
+    Stadium at all and it only moves Basic {L} from discard to *hand*. Direct attach
+    lives on 11 Items/Supporters/Tools. Generic, any-type, any-target: **Waitress
+    [1235]** (deck -> any 1 Pokémon, Active or Bench), **Crispin [1198]**, **Powerglass
+    [1163]** (discard -> Active, repeats every turn, no Supporter slot), **Energy Coin
+    [1135]** (coin-flip), **Rosa's Encouragement [1240]** (Stage 2, prize-gated).
+    Archetype-locked: **Janine's Secret Art [1195]** is the strongest single card of the
+    group (2 Basic {D} from deck onto 2 different {D} Pokémon) but is dark-only.
+    **Heavy Baton [1160]** moves up to 3 Basic Energy to the Bench when a **retreat-4**
+    Active is KO'd — four flagged cards qualify (Iron Thorns ex, Cetitan ex, Mega
+    Venusaur ex, Orthworm ex).
+  - **Review of `My_Deck_flags.txt` (53 cards).** Structural finding: the list is
+    **53 Pokémon, 0 Trainers, 0 Energy**. Deck strength in this pool has repeatedly
+    tracked Trainer consistency (LiamK sits at #1 on a 36-Trainer build), so ~30 slots
+    of every deck built from this list are still unscouted.
+  - Cards judged strongest, grouped by what they actually do:
+    - *Passive/always-on:* Meganium [710] (each Basic {G} provides {G}{G} — a doubler,
+      not accel), Aurorus [1033] (-50 to all {W}-attached), Ludicolo [262] (+40 HP to
+      every Pokémon in play), Cornerstone Mask Ogerpon ex [117] (immune to any Pokémon
+      **with an Ability**), Serperior ex [481] (+20 to all your attacks).
+    - *Anti-meta hosers — the most interesting group:* **Iron Thorns ex [37]** turns off
+      **every Rule Box Pokémon's Ability in play, both sides** while Active (this would
+      blank Mega Lopunny/Mega Froslass, and also our own Teal Dance); **Tyranitar [290]**
+      Item-locks the opponent while Active; **Genesect [142]** blocks ACE SPEC;
+      **Farigiraf ex [83]** is immune to Basic Pokémon ex. Worth noting because copying
+      LiamK's *deck* measured as a tie (49.2%) — attacking their *engine* is a different
+      axis that has not been tried.
+    - *Cost-break attackers:* Incineroar ex [79] (-{C} per opponent Bench Pokémon),
+      Decidueye ex [1022] (ignores all {C} when opponent holds exactly 4 cards),
+      Yanmega ex [340] (self-loads 3 Basic {G} on Bench->Active), Azumarill [315]
+      (230 for `{P}` with any Tera in play).
+  - **Corrections to my own review, after the user pushed back — all three of their
+    challenges were right and are recorded as such:**
+    - **Seviper [829]** — I called it a dead card without a {D} Mega ex. **Wrong.**
+      `Pitch-Black Fangs` is **120 base**, 240 with the Ability live. It is also already
+      enabled by **Mega Gengar ex [772]** ({D} Mega ex) on the same list.
+    - **Oricorio ex [795] + Charizard** — the user's played combo checks out and is
+      stronger than I credited. **Mega Charizard X ex [790]**'s `Inferno X {R}{R}` is
+      **90x per {R} Energy discarded from among your Pokémon** — not just itself — so
+      Oricorio's unlimited attach to the **Bench** builds a fuel tank Charizard spends.
+      The hand-dependency the user then solved themselves with **Firebreather [1232]**
+      (Supporter: search up to **7** Basic {R} Energy to hand), verified in the pool.
+    - **Magneton [211] self-KO** — I logged the conceded Prize as a drawback. The user's
+      read is better: it *powers your own cards*. Eight cards scale on "Prize cards your
+      opponent has taken" — best fit is **Zekrom ex [515]** (`Voltage Burst` 130 **+50
+      per prize**, same {L} type), so Magneton loads it from the discard, dies, and pays
+      for the concession on the same turn. Also **Kingambit [901]** (+30/prize, passive).
+      Noted for accuracy: **Luxray [1037]** scales on prizes ***you*** took — opposite
+      direction, does **not** pair with Magneton.
+  - One correction in the other direction: **Huntail [416]** recovers the **Basic {W}
+    Energy cards to hand**, *not* the Knocked Out Pokémon. It limits tempo loss on a KO;
+    it cannot replay the attacker. Kept on the list pending a {W} shell.
+  - **Data-quality find:** [480] Servine and [481] Serperior ex are the **only 2 cards
+    in the entire dataset with untranslated Japanese effect text**. Serperior ex's
+    Regal Cheer is "+20 damage to the opponent's Active from your Pokémon's attacks" and
+    Command the Grass is "150, then search your deck for up to 3 cards". Flagged because
+    `main.py` reads effect text for heuristics, so a build around it needs the simulator
+    behaviour verified first.
+  - **Selection criterion carried forward from our own measurements:** deck power under
+    *our* pilot is not paper power (one agent change moved Mega_Lopunny +6.6 and
+    Mega_Latias -8.4 in the round-robin). The useful split of this list is **agent-proof**
+    (passive effects that need no sequencing) vs **needs piloting**. The largest single
+    cluster the user flagged — unlimited energy-move loops (Azumarill ex, Dewgong, Mega
+    Venusaur ex, Mega Gengar ex, Iron Thorns ex) — is precisely what a greedy ladder plus
+    1-ply MAIN search handles worst. No decks built yet; this entry is the research
+    substrate for them. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Codex deck workspace created — future Codex-built decks isolated**:
+  - `Codex_Decks/` — added a dedicated directory for deck lists created by Codex
+    from this point onward. **Reason for the implementation:** keep exploratory
+    Codex-built decks separate from existing `Decs/`, active submission files, and
+    user/Claude deck work so future deck experiments are easier to compare without
+    muddying the current project structure.
+  - No deck files, `main.py`, or active `deck.csv` were changed. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 - **Flagged-section import/export added — portable CSV and readable TXT**:
   - Added separate Import / TXT / CSV controls beside the flagged catalog section
     tabs in `deck_builder/index.html`, with transfer logic in `app.js` and compact
