@@ -11,6 +11,19 @@ the reversal as a new entry instead).
 
 ## 2026-08-11
 
+- **Ability-cap fix confirmed clean on the shipped Hydrapple baseline (follow-up to
+  the entry below)**:
+  - `self_play_benchmark.py 500` (main.py with the fix, vs frozen `previous_agent`,
+    Hydrapple mirror): **48.6% [95% CI 44.2-53.0%]** (243/257/0), avg 126.4 steps. CI
+    spans 50% -- a tie, and average steps sits in the same ~121-131 band logged since
+    the 08-08 freeze. Exactly the expected result: Hydrapple's own Abilities (Teal
+    Dance, Ripening Charge) are already "once during your turn" -- bounded -- so the
+    cap never engages on them and should be a no-op, which this confirms.
+  - The fix is now validated on both ends: `check_ability_cap.py` shows it eliminates
+    the hang on the deck that exposed the bug, and this run shows it does not change
+    behavior on the deck that must not regress. Committed and pushed as `569ca1d`
+    together with the fix itself. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
 - **First `Claude_Decks/` build exposed a genuine infinite-loop bug in `main.py`'s
   MAIN ladder; root-caused and fixed at the actual decision point**:
   - `Claude_Decks/Claude_Grass_Venusaur.txt` / `.csv` — first deck built from the
