@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "stage": "tournament",
+  "pair_a": {
+    "name": "Hydrapple",
+    "version": "v000-baseline",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\deck.csv"
+  },
+  "pair_b": {
+    "name": "Claude_Grass_Venusaur",
+    "version": "v000-baseline",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Claude_Grass_Venusaur\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Claude_Grass_Venusaur\\deck.csv"
+  },
+  "seed_set": "20260813",
+  "games_per_seat": 10,
+  "games": 20,
+  "a_wins": 14,
+  "b_wins": 6,
+  "draws": 0,
+  "timeouts": 0,
+  "engine_crashes": 0,
+  "faults": {
+    "a": {
+      "crashes": 0,
+      "illegal_actions": 0
+    },
+    "b": {
+      "crashes": 0,
+      "illegal_actions": 0
+    }
+  },
+  "orientations": {
+    "a_first": {
+      "games": 10,
+      "a_wins": 7,
+      "b_wins": 3,
+      "draws": 0
+    },
+    "b_first": {
+      "games": 10,
+      "a_wins": 7,
+      "b_wins": 3,
+      "draws": 0
+    }
+  },
+  "a_win_rate": 0.7,
+  "a_decisive_win_rate": 0.7,
+  "a_confidence_interval": [
+    0.4810232237710206,
+    0.854524726031006
+  ],
+  "z_score": 1.7888543819998315,
+  "p_value": 0.07363827012030269,
+  "average_steps": 133.65,
+  "decision_time": {
+    "a": {
+      "decisions": 1445,
+      "average_ms": 6.153584844297322,
+      "max_ms": 139.17039999978442
+    },
+    "b": {
+      "decisions": 1228,
+      "average_ms": 9.281686156345996,
+      "max_ms": 255.75049999997646
+    }
+  },
+  "started_at": "2026-08-12T19:03:47.868793+00:00",
+  "finished_at": "2026-08-12T19:04:09.392800+00:00",
+  "duration_seconds": 21.53071520000003,
+  "errors": [],
+  "process": {
+    "returncode": 0,
+    "duration_seconds": 21.719694899999922,
+    "stdout_log": "Hydrapple__vs__Claude_Grass_Venusaur.stdout.log",
+    "stderr_log": "Hydrapple__vs__Claude_Grass_Venusaur.stderr.log"
+  }
+}

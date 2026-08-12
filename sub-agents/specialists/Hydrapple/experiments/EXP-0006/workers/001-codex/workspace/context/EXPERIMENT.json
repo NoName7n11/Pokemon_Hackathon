@@ -1,0 +1,38 @@
+{
+  "id": "EXP-0006",
+  "specialist": "Hydrapple",
+  "created_at": "2026-08-12T18:50:03.108895+00:00",
+  "updated_at": "2026-08-12T18:50:03.161056+00:00",
+  "worker": "codex",
+  "hypothesis": "When choosing a normal Energy attachment, prefer an in-play Pokemon when that single attachment makes one of its attacks usable this turn; preserve Active preference and existing strength ordering as tie-breakers.",
+  "expected_effect": "Reduce wasted attachments that leave all attackers unusable without broadly switching to bench-first attachment.",
+  "mechanisms": [
+    "attack_readiness_attachment"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0006/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T18:50:03.161056+00:00",
+    "updated_at": "2026-08-12T18:50:03.161056+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

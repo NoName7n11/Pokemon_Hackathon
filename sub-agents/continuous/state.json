@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-12T19:54:41.133966+00:00",
+  "jobs": [
+    {
+      "id": "JOB-00001",
+      "specialist": "Hydrapple",
+      "provider": "codex",
+      "model": null,
+      "hypothesis": "When a normal Energy attachment makes an attack usable this turn, apply that readiness preference only to the Active Pokemon; never give the readiness bonus to a Benched target, and preserve the shipped attachment ranking otherwise.",
+      "mechanism": "active_only_attack_readiness_attachment",
+      "expected_effect": "Reduce wasted Active attachments without recreating the measured harmful bench-first Energy routing.",
+      "provider_authorized": false,
+      "state": "awaiting_provider_authorization",
+      "created_at": "2026-08-12T19:51:25.353444+00:00",
+      "updated_at": "2026-08-12T19:51:25.353444+00:00",
+      "experiment": null,
+      "seed": 880271263,
+      "history": [
+        {
+          "at": "2026-08-12T19:51:25.353444+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-12T19:52:00+00:00",
+          "state": "awaiting_provider_authorization",
+          "event": "source_egress_blocked",
+          "detail": "No source was sent. Explicit authorization is required to transmit isolated main.py, deck.csv, and copied strategy context to Codex."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00002",
+      "specialist": "Claude_Grass_Venusaur",
+      "provider": "claude",
+      "model": null,
+      "hypothesis": "For forced promotion and own-board CARD choices after a knockout, prefer an attack-ready Mega Venusaur ex, Hydrapple ex, or Teal Mask Ogerpon ex over support Pokemon when it can immediately deal more usable damage; preserve generic live-attacker scoring outside that narrow choice.",
+      "mechanism": "venusaur_attacker_concentration",
+      "expected_effect": "Increase attacks made by the deck's primary attackers and reduce turns lost after a knockout without changing global evaluation or ability handling.",
+      "provider_authorized": false,
+      "state": "awaiting_provider_authorization",
+      "created_at": "2026-08-12T19:51:35.156699+00:00",
+      "updated_at": "2026-08-12T19:51:35.156699+00:00",
+      "experiment": null,
+      "seed": 762779953,
+      "history": [
+        {
+          "at": "2026-08-12T19:51:35.156699+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-12T19:52:00+00:00",
+          "state": "awaiting_provider_authorization",
+          "event": "source_egress_blocked",
+          "detail": "No source was sent. Explicit authorization is required to transmit isolated main.py, deck.csv, and copied strategy context to Claude."
+        }
+      ]
+    }
+  ]
+}

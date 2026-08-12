@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "minimum_tournament_games_per_seat": 300,
+  "minimum_tournament_entrants": 3,
+  "minimum_confirmation_games": 500,
+  "minimum_cross_deck_opponents": 2,
+  "submission_smoke_games": 20,
+  "smoke_timeout_seconds": 1800,
+  "require_fault_free_winner": true,
+  "require_human_approval": true,
+  "auto_promote": false,
+  "automatic_rollback_on_failure": true
+}

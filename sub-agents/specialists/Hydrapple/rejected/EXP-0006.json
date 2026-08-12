@@ -1,0 +1,138 @@
+{
+  "id": "EXP-0006",
+  "specialist": "Hydrapple",
+  "created_at": "2026-08-12T18:50:03.108895+00:00",
+  "updated_at": "2026-08-12T18:53:45.667951+00:00",
+  "worker": "codex",
+  "hypothesis": "When choosing a normal Energy attachment, prefer an in-play Pokemon when that single attachment makes one of its attacks usable this turn; preserve Active preference and existing strength ordering as tie-breakers.",
+  "expected_effect": "Reduce wasted attachments that leave all attackers unusable without broadly switching to bench-first attachment.",
+  "mechanisms": [
+    "attack_readiness_attachment"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0006/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "Hydrapple",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "20260815",
+    "games": 20,
+    "wins": 9,
+    "losses": 11,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 118.55,
+    "average_decision_time_ms": 4.675251294903595,
+    "max_decision_time_ms": 74.28090000030352,
+    "win_rate": 0.45,
+    "confidence_interval": [
+      0.25819502085709295,
+      0.6579179916924003
+    ],
+    "z_score": -0.44721359549995787,
+    "p_value": 0.6547208460185772,
+    "started_at": "2026-08-12T18:52:22.689578+00:00",
+    "finished_at": "2026-08-12T18:52:36.101471+00:00",
+    "duration_seconds": 13.419989600000008,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "Hydrapple",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "20260816",
+    "games": 100,
+    "wins": 40,
+    "losses": 60,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 127.86,
+    "average_decision_time_ms": 4.89531125059767,
+    "max_decision_time_ms": 127.06870000010895,
+    "win_rate": 0.4,
+    "confidence_interval": [
+      0.3093997461136028,
+      0.4979992153815976
+    ],
+    "z_score": -1.9999999999999996,
+    "p_value": 0.045500263896358466,
+    "started_at": "2026-08-12T18:52:36.485729+00:00",
+    "finished_at": "2026-08-12T18:53:45.417905+00:00",
+    "duration_seconds": 68.91829880000023,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 20260815,
+      "started_at": "2026-08-12T18:52:22.501654+00:00",
+      "finished_at": "2026-08-12T18:52:36.122338+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 100,
+      "seed": 20260816,
+      "started_at": "2026-08-12T18:52:36.334941+00:00",
+      "finished_at": "2026-08-12T18:53:45.435019+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": null,
+      "started_at": "2026-08-12T18:50:03.468770+00:00",
+      "finished_at": "2026-08-12T18:52:22.218300+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-codex"
+    }
+  ],
+  "orchestration": {
+    "state": "FAILED_SCREENING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T18:50:03.161056+00:00",
+    "updated_at": "2026-08-12T18:53:45.501745+00:00",
+    "failure_reason": "automatic rejection: screening win rate 40.0% is below 45.0%"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "automatic rejection: screening win rate 40.0% is below 45.0%",
+  "limitations": []
+}

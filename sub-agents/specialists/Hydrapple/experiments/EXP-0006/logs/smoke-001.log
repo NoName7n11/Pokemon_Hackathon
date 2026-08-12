@@ -1,0 +1,35 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\benchmark_pair.py --candidate C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\candidate\main.py --baseline C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\snapshots\v000-baseline\main.py --deck C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\candidate\deck.csv --games 20 --max-steps 3000 --seed 20260815 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\results\smoke-001.json --specialist Hydrapple --candidate-version v001-candidate --baseline-version v000-baseline --stage smoke
+
+STDOUT:
+{
+  "specialist": "Hydrapple",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260815",
+  "games": 20,
+  "wins": 9,
+  "losses": 11,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 118.55,
+  "average_decision_time_ms": 4.675251294903595,
+  "max_decision_time_ms": 74.28090000030352,
+  "win_rate": 0.45,
+  "confidence_interval": [
+    0.25819502085709295,
+    0.6579179916924003
+  ],
+  "z_score": -0.44721359549995787,
+  "p_value": 0.6547208460185772,
+  "started_at": "2026-08-12T18:52:22.689578+00:00",
+  "finished_at": "2026-08-12T18:52:36.101471+00:00",
+  "duration_seconds": 13.419989600000008,
+  "errors": []
+}
+
+
+STDERR:

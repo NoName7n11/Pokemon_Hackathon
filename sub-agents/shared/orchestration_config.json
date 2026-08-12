@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "default_through_stage": "screening",
+  "worker_timeout_seconds": 900,
+  "command_grace_seconds": 60,
+  "screening": {
+    "reject_below_win_rate": 0.45,
+    "reject_significant_loss": true,
+    "significance_alpha": 0.05
+  },
+  "human_review_after": [
+    "screening",
+    "confirmation"
+  ],
+  "deep_evaluation": {
+    "stages": ["main", "confirmation"],
+    "require_cross_deck": true,
+    "minimum_cross_deck_opponents": 2
+  },
+  "auto_accept": false,
+  "auto_promote": false
+}

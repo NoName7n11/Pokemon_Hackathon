@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.pokemon-hackathon/experiment.schema.json",
+  "title": "Plan 2 Specialist Experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "specialist",
+    "hypothesis",
+    "mechanisms",
+    "baseline_version",
+    "status",
+    "decision"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "specialist": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "worker": { "type": "string" },
+    "hypothesis": { "type": "string", "minLength": 1 },
+    "expected_effect": { "type": "string" },
+    "mechanisms": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "files_changed": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "baseline_version": { "type": "string", "minLength": 1 },
+    "candidate_version": { "type": "string" },
+    "accepted_version": { "type": ["string", "null"] },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "baseline_path": { "type": "string" },
+    "candidate_path": { "type": "string" },
+    "status": {
+      "enum": ["PROPOSED", "RUNNING", "REVIEW_REQUIRED", "COMPLETE"]
+    },
+    "smoke_result": { "type": ["object", "null"] },
+    "screening_result": { "type": ["object", "null"] },
+    "main_result": { "type": ["object", "null"] },
+    "confirmation_result": { "type": ["object", "null"] },
+    "cross_deck_results": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "runs": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "worker_runs": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "orchestration": { "type": "object" },
+    "reviews": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "review_history": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "decision": {
+      "enum": ["pending", "accepted", "rejected", "more_evidence"]
+    },
+    "reason": { "type": "string" },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

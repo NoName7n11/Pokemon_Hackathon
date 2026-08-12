@@ -1,0 +1,68 @@
+{
+  "id": "EXP-0005",
+  "specialist": "Hydrapple",
+  "created_at": "2026-08-12T18:47:37.068655+00:00",
+  "updated_at": "2026-08-12T18:50:02.685546+00:00",
+  "worker": "codex",
+  "hypothesis": "Verify the Codex nested Windows command runner with automatic approval review before retrying a strategic worker edit",
+  "expected_effect": "Codex should read the isolated context and make one harmless main.py comment edit",
+  "mechanisms": [
+    "codex_windows_spawn_probe"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0005/candidate",
+  "status": "COMPLETE",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": null,
+      "started_at": "2026-08-12T18:47:48.319729+00:00",
+      "finished_at": "2026-08-12T18:47:48.353161+00:00",
+      "dry_run": false,
+      "returncode": 2,
+      "timed_out": false,
+      "candidate_imported": false,
+      "changed_files": [],
+      "validation_errors": [
+        "provider exited with code 2",
+        "provider did not modify main.py"
+      ],
+      "run_dir": "workers/001-codex"
+    },
+    {
+      "run": 2,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": null,
+      "started_at": "2026-08-12T18:48:09.636851+00:00",
+      "finished_at": "2026-08-12T18:49:38.631946+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/002-codex"
+    }
+  ],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "Codex Windows spawn-policy probe only; validated one harmless comment edit and made no gameplay change.",
+  "limitations": []
+}

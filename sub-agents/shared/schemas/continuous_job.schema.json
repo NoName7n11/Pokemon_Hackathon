@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan_2 continuous scheduler job",
+  "type": "object",
+  "required": [
+    "id", "specialist", "provider", "hypothesis", "mechanism",
+    "expected_effect", "provider_authorized", "state", "created_at", "history"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "specialist": { "type": "string", "minLength": 1 },
+    "provider": { "enum": ["codex", "claude", "antigravity"] },
+    "hypothesis": { "type": "string", "minLength": 1 },
+    "mechanism": { "type": "string", "minLength": 1 },
+    "expected_effect": { "type": "string", "minLength": 1 },
+    "provider_authorized": { "type": "boolean" },
+    "state": {
+      "enum": [
+        "awaiting_provider_authorization", "queued", "running_screening", "waiting_screening_review",
+        "running_deep_evaluation", "waiting_final_review", "completed",
+        "rejected", "failed", "cancelled"
+      ]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "experiment": { "type": ["string", "null"] },
+    "history": { "type": "array", "items": { "type": "object" } }
+  }
+}

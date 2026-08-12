@@ -1,0 +1,29 @@
+{
+  "specialist": "Claude_Grass_Venusaur",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260815",
+  "games": 20,
+  "wins": 13,
+  "losses": 7,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 118.5,
+  "average_decision_time_ms": 10.563862066184011,
+  "max_decision_time_ms": 318.17270000010467,
+  "win_rate": 0.65,
+  "confidence_interval": [
+    0.43285051021946463,
+    0.8188104521320554
+  ],
+  "z_score": 1.341640786499874,
+  "p_value": 0.17971249487899985,
+  "started_at": "2026-08-12T19:07:42.600093+00:00",
+  "finished_at": "2026-08-12T19:08:08.675326+00:00",
+  "duration_seconds": 26.081455300000016,
+  "errors": []
+}

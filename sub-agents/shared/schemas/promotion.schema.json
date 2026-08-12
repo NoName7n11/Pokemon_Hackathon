@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan_2 controlled promotion request",
+  "type": "object",
+  "required": [
+    "schema_version", "id", "specialist", "specialist_version",
+    "tournament_id", "state", "requested_at", "reason",
+    "source", "tournament", "approval", "execution"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^PROM-[0-9]{4}$" },
+    "specialist": { "type": "string", "minLength": 1 },
+    "specialist_version": { "type": "string", "minLength": 1 },
+    "tournament_id": { "type": "string", "minLength": 1 },
+    "state": {
+      "enum": ["PENDING_APPROVAL", "APPROVED", "PROMOTING", "PROMOTED", "FAILED_ROLLED_BACK", "ROLLED_BACK", "REJECTED"]
+    },
+    "requested_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "reason": { "type": "string", "minLength": 1 },
+    "source": { "type": "object" },
+    "tournament": { "type": "object" },
+    "approval": { "type": ["object", "null"] },
+    "execution": { "type": ["object", "null"] }
+  }
+}

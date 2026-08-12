@@ -29,6 +29,8 @@ const state = {
   focusDeckOpen: false,
   focusDeckKind: "Pokemon",
   savedDeckId: null,
+  savedDeckSelectionMode: false,
+  selectedSavedDeckIds: new Set(),
   pendingDeckFiles: [],
   toastTimer: null,
 };
@@ -41,6 +43,8 @@ const els = Object.fromEntries(
     "activeFilterCount", "resultCount", "catalogViews", "importFlagsOpen",
     "exportFlagsTxt", "exportFlagsCsv", "cardGrid", "loadMore", "deckTotal",
     "savedDeckToolbar", "savedDeckBack", "savedDeckTitle", "savedDeckMeta",
+    "savedDeckLibraryActions", "selectSavedDecks", "selectAllSavedDecks",
+    "cancelSavedDeckSelection", "deleteSelectedSavedDecks",
     "savedDeckActions", "loadSavedDeck", "deleteSavedDeck",
     "deckStatusTitle", "countRing", "deckBreakdown", "ruleWarnings", "deckList",
     "emptyDeck", "focusOverlay", "closeFocus", "closeFocusX", "focusKind",
@@ -50,6 +54,8 @@ const els = Object.fromEntries(
     "focusDeckValidation", "focusDeckTabs", "focusDeckGrid", "importDialog",
     "deckImportFiles", "importDeckName", "importBox", "importMessage", "importDeck", "flagImportDialog", "flagImportFile",
     "flagImportBox", "replaceFlags", "flagImportMessage", "importFlags", "toast",
+    "closeMobileFilters", "closeMobileDeck", "mobileBackdrop", "openMobileFilters",
+    "mobileCatalogTop", "openMobileDeck", "mobileFilterCount", "mobileDeckTotal", "mobileDeckName",
   ].map((id) => [id, document.getElementById(id)])
 );
 
@@ -293,6 +299,8 @@ function renderCards() {
   const filterTotal = activeFilterTotal();
   els.activeFilterCount.hidden = filterTotal === 0;
   els.activeFilterCount.textContent = `${filterTotal} active`;
+  els.mobileFilterCount.hidden = filterTotal === 0;
+  els.mobileFilterCount.textContent = filterTotal;
   const viewTitle = state.view === "library" ? "All cards" : `${state.view} flags`;
   els.catalogTitle.textContent = state.kind ? `${viewTitle} · ${state.kind}` : viewTitle;
   renderCatalogViews();
@@ -328,15 +336,40 @@ function savedDeckStats(saved) {
   return stats;
 }
 
+function clearSavedDeckSelection() {
+  state.savedDeckSelectionMode = false;
+  state.selectedSavedDeckIds.clear();
+}
+
+function updateSavedDeckSelectionActions() {
+  const selecting = state.savedDeckSelectionMode;
+  const selectedCount = state.selectedSavedDeckIds.size;
+  els.savedDeckLibraryActions.hidden = !savedDecks.size;
+  els.selectSavedDecks.hidden = selecting;
+  els.selectAllSavedDecks.hidden = !selecting;
+  els.cancelSavedDeckSelection.hidden = !selecting;
+  els.deleteSelectedSavedDecks.hidden = !selecting;
+  els.deleteSelectedSavedDecks.disabled = selectedCount === 0;
+  els.deleteSelectedSavedDecks.textContent = selectedCount
+    ? `Delete selected (${selectedCount})`
+    : "Delete selected";
+  els.selectAllSavedDecks.textContent = selectedCount === savedDecks.size ? "Clear selection" : "Select all";
+}
+
 function renderSavedDeckFolders() {
   els.savedDeckToolbar.hidden = false;
   els.savedDeckBack.hidden = true;
   els.savedDeckActions.hidden = true;
+  updateSavedDeckSelectionActions();
   els.savedDeckTitle.textContent = "Deck library";
-  els.savedDeckMeta.textContent = `${savedDecks.size} saved deck${savedDecks.size === 1 ? "" : "s"}`;
+  const selectedCount = state.selectedSavedDeckIds.size;
+  els.savedDeckMeta.textContent = state.savedDeckSelectionMode
+    ? `${selectedCount} of ${savedDecks.size} selected`
+    : `${savedDecks.size} saved deck${savedDecks.size === 1 ? "" : "s"}`;
   els.catalogTitle.textContent = "Saved decks";
   els.resultCount.textContent = `${savedDecks.size} folder${savedDecks.size === 1 ? "" : "s"}`;
   els.activeFilterCount.hidden = true;
+  els.mobileFilterCount.hidden = true;
   els.loadMore.hidden = true;
   els.cardGrid.classList.add("savedDeckFolderGrid");
   els.cardGrid.replaceChildren();
@@ -354,12 +387,16 @@ function renderSavedDeckFolders() {
       const total = entries.reduce((sum, entry) => sum + entry.count, 0);
       const folder = document.createElement("button");
       folder.className = "savedDeckFolder";
+      folder.classList.toggle("selectionMode", state.savedDeckSelectionMode);
+      folder.classList.toggle("selectedForDelete", state.selectedSavedDeckIds.has(saved.id));
       folder.type = "button";
       folder.dataset.savedDeckId = saved.id;
-      folder.setAttribute("aria-label", `Open ${saved.name}`);
+      folder.setAttribute("aria-label", state.savedDeckSelectionMode ? `Select ${saved.name} for deletion` : `Open ${saved.name}`);
+      if (state.savedDeckSelectionMode) folder.setAttribute("aria-pressed", String(state.selectedSavedDeckIds.has(saved.id)));
       const artwork = entries.slice(0, 4).map(({ card }) => `<img src="${escapeHtml(card.image)}" alt="" loading="lazy">`).join("");
       folder.innerHTML = `
         <span class="folderTab" aria-hidden="true"></span>
+        <span class="folderSelection" aria-hidden="true">✓</span>
         <span class="folderArtwork">${artwork}</span>
         <span class="folderDetails">
           <strong title="${escapeHtml(saved.name)}">${escapeHtml(saved.name)}</strong>
@@ -367,6 +404,12 @@ function renderSavedDeckFolders() {
           <span><b>${stats.Pokemon}</b> Pokémon <b>${stats.Trainer}</b> Trainer <b>${stats.Energy}</b> Energy</span>
         </span>`;
       folder.addEventListener("click", () => {
+        if (state.savedDeckSelectionMode) {
+          if (state.selectedSavedDeckIds.has(saved.id)) state.selectedSavedDeckIds.delete(saved.id);
+          else state.selectedSavedDeckIds.add(saved.id);
+          renderSavedDeckFolders();
+          return;
+        }
         state.savedDeckId = saved.id;
         state.visibleLimit = PAGE_SIZE;
         renderCards();
@@ -384,6 +427,8 @@ function renderSavedDecks() {
     return;
   }
 
+  els.savedDeckLibraryActions.hidden = true;
+
   const allEntries = savedDeckEntries(saved);
   const counts = new Map(allEntries.map(({ card, count }) => [card.id, count]));
   const total = allEntries.reduce((sum, entry) => sum + entry.count, 0);
@@ -399,6 +444,8 @@ function renderSavedDecks() {
   const filterTotal = activeFilterTotal();
   els.activeFilterCount.hidden = filterTotal === 0;
   els.activeFilterCount.textContent = `${filterTotal} active`;
+  els.mobileFilterCount.hidden = filterTotal === 0;
+  els.mobileFilterCount.textContent = filterTotal;
   els.cardGrid.classList.remove("savedDeckFolderGrid");
   els.cardGrid.replaceChildren(...visible.map((card) => cardTile(card, counts.get(card.id) || 0)));
   els.loadMore.hidden = visible.length >= filtered.length;
@@ -472,6 +519,8 @@ function renderDeck() {
   const isLegal = total === 60 && !issues.some((issue) => issue.type === "error");
 
   els.deckTotal.textContent = total;
+  els.mobileDeckTotal.textContent = total;
+  els.mobileDeckName.textContent = els.deckName.value || "My Deck";
   els.deckStatusTitle.textContent = isLegal ? "Ready to export" : total ? "In progress" : "Start building";
   els.countRing.style.setProperty("--progress", `${Math.min(total / 60, 1) * 360}deg`);
   els.countRing.classList.toggle("complete", isLegal);
@@ -503,6 +552,23 @@ function renderAll() {
   renderCards();
   renderDeck();
   if (!els.focusOverlay.hidden && state.focusId) renderFocus();
+}
+
+function closeMobilePanels() {
+  document.body.classList.remove("mobileFiltersOpen", "mobileDeckOpen");
+  els.mobileBackdrop.hidden = true;
+  els.openMobileFilters.setAttribute("aria-expanded", "false");
+  els.openMobileDeck.setAttribute("aria-expanded", "false");
+}
+
+function openMobilePanel(panel) {
+  closeMobilePanels();
+  document.body.classList.add(panel === "filters" ? "mobileFiltersOpen" : "mobileDeckOpen");
+  els.mobileBackdrop.hidden = false;
+  els.openMobileFilters.setAttribute("aria-expanded", String(panel === "filters"));
+  els.openMobileDeck.setAttribute("aria-expanded", String(panel === "deck"));
+  const target = panel === "filters" ? els.closeMobileFilters : els.closeMobileDeck;
+  requestAnimationFrame(() => target.focus());
 }
 
 function openCard(id) {
@@ -844,10 +910,23 @@ function deleteSelectedSavedDeck() {
   const saved = selectedSavedDeck();
   if (!saved || !window.confirm(`Delete the saved deck "${saved.name}"?`)) return;
   savedDecks.delete(saved.id);
+  state.selectedSavedDeckIds.delete(saved.id);
   state.savedDeckId = null;
   persistDeck();
   renderCards();
   showToast(`${saved.name} deleted from saved decks.`);
+}
+
+function deleteSelectedSavedDecks() {
+  const selected = [...state.selectedSavedDeckIds].filter((id) => savedDecks.has(id));
+  if (!selected.length) return;
+  const noun = selected.length === 1 ? "saved deck" : "saved decks";
+  if (!window.confirm(`Delete ${selected.length} selected ${noun}? This will not clear the deck currently loaded in the builder.`)) return;
+  selected.forEach((id) => savedDecks.delete(id));
+  clearSavedDeckSelection();
+  persistDeck();
+  renderCards();
+  showToast(`${selected.length} ${noun} deleted.`);
 }
 
 function resetFilters() {
@@ -895,6 +974,7 @@ function init() {
     if (!button) return;
     const nextView = button.dataset.view;
     if (nextView === "saved" && state.view !== "saved") state.savedDeckId = null;
+    if (nextView !== "saved") clearSavedDeckSelection();
     state.view = nextView;
     state.visibleLimit = PAGE_SIZE;
     renderCards();
@@ -903,6 +983,7 @@ function init() {
   els.resetFilters.addEventListener("click", resetFilters);
   els.deckName.addEventListener("input", () => {
     persistDeck();
+    els.mobileDeckName.textContent = els.deckName.value || "My Deck";
     if (!els.focusOverlay.hidden) els.focusDeckName.textContent = els.deckName.value || "My Deck";
   });
   els.clearDeck.addEventListener("click", () => {
@@ -963,6 +1044,33 @@ function init() {
   });
   els.loadSavedDeck.addEventListener("click", loadSelectedSavedDeck);
   els.deleteSavedDeck.addEventListener("click", deleteSelectedSavedDeck);
+  els.selectSavedDecks.addEventListener("click", () => {
+    state.savedDeckSelectionMode = true;
+    state.selectedSavedDeckIds.clear();
+    renderSavedDeckFolders();
+  });
+  els.selectAllSavedDecks.addEventListener("click", () => {
+    if (state.selectedSavedDeckIds.size === savedDecks.size) state.selectedSavedDeckIds.clear();
+    else state.selectedSavedDeckIds = new Set(savedDecks.keys());
+    renderSavedDeckFolders();
+  });
+  els.cancelSavedDeckSelection.addEventListener("click", () => {
+    clearSavedDeckSelection();
+    renderSavedDeckFolders();
+  });
+  els.deleteSelectedSavedDecks.addEventListener("click", deleteSelectedSavedDecks);
+  els.openMobileFilters.addEventListener("click", () => openMobilePanel("filters"));
+  els.openMobileDeck.addEventListener("click", () => openMobilePanel("deck"));
+  els.closeMobileFilters.addEventListener("click", closeMobilePanels);
+  els.closeMobileDeck.addEventListener("click", closeMobilePanels);
+  els.mobileBackdrop.addEventListener("click", closeMobilePanels);
+  els.mobileCatalogTop.addEventListener("click", () => {
+    closeMobilePanels();
+    document.querySelector(".catalogPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  window.matchMedia("(min-width: 681px)").addEventListener("change", (event) => {
+    if (event.matches) closeMobilePanels();
+  });
   els.closeFocus.addEventListener("click", closeFocus);
   els.closeFocusX.addEventListener("click", closeFocus);
   els.focusPrevious.addEventListener("click", () => navigateFocus(-1));
@@ -987,7 +1095,10 @@ function init() {
   els.flagImportDialog.addEventListener("click", (event) => {
     if (event.target === els.flagImportDialog) els.flagImportDialog.close();
   });
-  document.addEventListener("keydown", handleFocusKeydown);
+  document.addEventListener("keydown", (event) => {
+    handleFocusKeydown(event);
+    if (event.key === "Escape" && els.focusOverlay.hidden) closeMobilePanels();
+  });
 
   renderAll();
 }

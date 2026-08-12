@@ -1,0 +1,17 @@
+{
+  "run": 2,
+  "provider": "codex",
+  "backend": "codex-cli",
+  "model": null,
+  "started_at": "2026-08-12T18:48:09.636851+00:00",
+  "finished_at": "2026-08-12T18:49:38.631946+00:00",
+  "dry_run": false,
+  "returncode": 0,
+  "timed_out": false,
+  "candidate_imported": true,
+  "changed_files": [
+    "main.py"
+  ],
+  "validation_errors": [],
+  "run_dir": "workers/002-codex"
+}

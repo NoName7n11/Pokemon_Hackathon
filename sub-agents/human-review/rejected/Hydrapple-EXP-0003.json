@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "specialist": "Hydrapple",
+  "experiment": "EXP-0003",
+  "stage": "screening",
+  "created_at": "2026-08-12T18:04:23.415839+00:00",
+  "hypothesis": "Verify the Phase 4 successful orchestration and human-review path using a local no-op fixture without external source transmission",
+  "expected_effect": "Smoke and screening should complete and generate a review pack while accepted files remain unchanged",
+  "mechanisms": [
+    "local_orchestration_fixture"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "local-fixture",
+    "backend": "local-noop-fixture",
+    "model": null,
+    "started_at": "2026-08-12T18:00:00+00:00",
+    "finished_at": "2026-08-12T18:00:00+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": null,
+    "fixture": true
+  },
+  "benchmark": {
+    "specialist": "Hydrapple",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "20260815",
+    "games": 100,
+    "wins": 54,
+    "losses": 46,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 124.49,
+    "average_decision_time_ms": 7.930304097160297,
+    "max_decision_time_ms": 183.38719999883324,
+    "win_rate": 0.54,
+    "confidence_interval": [
+      0.44264685393523856,
+      0.6343935614666815
+    ],
+    "z_score": 0.8000000000000007,
+    "p_value": 0.42371079716679305,
+    "started_at": "2026-08-12T18:02:37.534528+00:00",
+    "finished_at": "2026-08-12T18:04:23.317434+00:00",
+    "duration_seconds": 105.78771489998326,
+    "errors": []
+  },
+  "diff_truncated": false,
+  "decision": "rejected",
+  "reviewer_reason": "Local no-op fixture changed only a comment; 54/100 at screening (p=0.424) is expected noise and provides no gameplay mechanism to advance.",
+  "reviewed_at": "2026-08-12T18:05:05.450528+00:00"
+}

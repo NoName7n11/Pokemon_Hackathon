@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "worker_timeout_seconds": 900,
+  "max_worker_runs_per_experiment": 3,
+  "max_dry_runs_per_experiment": 10,
+  "providers": {
+    "codex": {
+      "command": "codex",
+      "backend": "codex-cli",
+      "enabled": true,
+      "note": "Uses Codex automatic approval review with workspace-write because the nested Windows sandbox cannot spawn PowerShell under the default never-approval policy. Disposable-workspace fingerprint validation remains authoritative."
+    },
+    "claude": {
+      "command": "claude",
+      "backend": "claude-code",
+      "enabled": true
+    },
+    "antigravity": {
+      "command": "gemini",
+      "backend": "gemini-cli",
+      "enabled": true,
+      "note": "The installed Antigravity desktop application exposes no headless PATH command; Gemini CLI is the available Antigravity-family coding backend on this machine."
+    }
+  }
+}

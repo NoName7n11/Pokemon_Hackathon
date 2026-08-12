@@ -1,0 +1,7 @@
+Updated only [main.py](C:/Users/novan/Desktop/Projects/Pokemon_Hackathon/sub-agents/specialists/Hydrapple/experiments/EXP-0005/workers/002-codex/workspace/main.py:23) with one harmless comment:
+
+`# EXP-0005: harmless marker for the Codex Windows spawn approval probe.`
+
+No gameplay logic, imports, `agent(obs_dict)`, or `read_deck_csv()` behavior changed. I did not modify `deck.csv`, `context/`, or create files, and I did not run benchmarks.
+
+Concern for review: the sandboxed PowerShell spawn initially failed with Windows access denied, then local reads/diff checks were retried with escalation as expected by this probe.

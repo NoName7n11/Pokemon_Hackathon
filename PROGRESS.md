@@ -9,6 +9,489 @@ the reversal as a new entry instead).
 
 ---
 
+## 2026-08-13
+
+- **All implemented phases verified and Phase 6 controlled promotion completed as infrastructure**:
+  - Added `verify_platform.py`, which performs one repeatable Phase 1-6 audit:
+    parses every Plan_2 JSON artifact, validates experiment/job/matchup/tournament/
+    promotion schemas, validates and runtime-imports every registered specialist,
+    compares registry hashes, checks configured providers, enforces 20/200/300/500
+    evidence policy, detects stale locks, maps tournament-history markers to result
+    directories, verifies continuous-job authorization consistency, inspects
+    promotion policy, and fingerprints the active submission. Verification
+    `VERIFY-20260812-203435-964809` passed every phase with **0 errors** across
+    **82 JSON files**; Codex, Claude, and Gemini CLIs were all available. Its only
+    warning was correct: no statistically powered central tournament exists yet.
+  - Added Phase 6 `promotion_config.json`, promotion schema, and
+    `promote_candidate.py` with `request -> approve -> execute -> rollback` states.
+    A request requires an accepted specialist backed by at least 500 confirmation
+    games and two cross-deck opponents, exact specialist/registry/tournament hashes,
+    a fault-free rank-one result, at least three entrants, and at least 300 games
+    per seat. Approval requires named human acknowledgement and remains separate
+    from execution.
+  - Execution preserves the current submission pair in a uniquely identified
+    snapshot, atomically replaces both `main.py` and `deck.csv`, validates the deck
+    and Python interface, imports against the local `cg` engine, runs a complete-pair
+    smoke and `benchmark.py` from the actual submission directory, and emits exact
+    hashes/logs in a promotion manifest. Any validation, import, copy, or smoke
+    failure automatically restores both old files. Explicit rollback restores and
+    verifies both snapshot hashes. Every lifecycle event is append-only.
+  - Isolated Phase 6 tests passed for successful atomic replacement, explicit
+    rollback, and automatic rollback after a simulated missing-second-file partial-
+    copy failure. The real request path was tested against Hydrapple and tournament
+    `T-20260812-190829-346545`; it correctly refused **10 games per seat; requires
+    300** before creating a request. No approval, execution, real submission write,
+    or promotion occurred.
+  - Active submission hashes remain
+    `DBA17948B...AA3203` for `main.py` and `E1A9ABF1...AC41` for `deck.csv`, identical
+    to accepted Hydrapple. The two continuous provider jobs remain blocked awaiting
+    explicit source-egress authorization, so phase verification sent no new source
+    to Codex or Claude.
+    **Reason for the implementation:** make the final submission transition as
+    evidence-gated, recoverable, auditable, and human-controlled as the specialist
+    experimentation that precedes it, while providing a single command that can
+    detect drift across every implemented phase. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Continuous sub-agent research pipeline implemented — 20/200/300/500 evidence gates, persistent queue, and two safe staged jobs**:
+  - Added `continuous_scheduler.py`, `continuous_config.json`, and a continuous-job
+    schema. The scheduler can remain resident, run up to two different specialists
+    concurrently, enforce one experiment per specialist, cap new starts at six per
+    day, retain fresh seeds and process logs, recover through persisted job states,
+    stop gracefully, and append every transition to
+    `sub-agents/continuous/REPORT.md`. Automatic acceptance and promotion remain
+    disabled.
+  - **Recommended Pipeline:** one narrow coding-agent hypothesis -> **20-game
+    smoke** for import/legality/crash detection -> **200-game screening** for clear
+    gains or regressions -> first human logic review -> **300-game main** evaluation
+    -> fresh-seed **500-game confirmation** -> **200 cross-deck games per opponent**
+    -> final human review -> private acceptance. Central tournament and controlled
+    submission promotion remain separate operations.
+  - **Evidence:** 20 games are infrastructure evidence only and have roughly a
+    +/-22-point 95% margin near 50%; 200 games narrow that to roughly +/-7 points
+    and are suitable for screening large effects; 500 games narrow it to roughly
+    +/-4.4 points and are the minimum confirmation bar. Effects around 2-3 points
+    require substantially more than 500 games. The central tournament remains 300
+    games per seat (600 per pairing) for stronger pair comparison.
+  - Added `advance_evidence.py` and strengthened acceptance. Screening survivors
+    pause at review; approval runs main, confirmation, and available cross-deck
+    matches, then creates a final review. `review_gate.py accept` now requires a
+    confirmation result, two distinct completed cross-deck opponents, and explicit
+    final human approval. With only two registered specialists, the system honestly
+    records a 1/2-opponent limitation and cannot accept until a third specialist is
+    available.
+  - Staged two narrow jobs from measured evidence: Hydrapple's readiness bonus is
+    restricted to the Active Pokemon, and Venusaur tests primary-attacker promotion
+    after knockouts. Starting the daemon was blocked before launch because it would
+    send isolated private `main.py`, `deck.csv`, and copied strategy/rules context
+    to external Codex and Claude providers. Both jobs were changed to
+    `awaiting_provider_authorization`; **no source was sent and no provider was
+    called**. Explicit destination-aware source-egress approval is still required.
+  - Python compilation, all JSON parsing, empty scheduler execution, CLI loading,
+    mandatory authorization refusal, persisted queue state, and active-submission
+    isolation passed.
+    **Reason for the implementation:** allow long-running, statistically meaningful
+    specialist improvement without converting continuous automation into unchecked
+    self-modification, repeated false-positive tuning, or automatic submission
+    changes. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Tournament reporting made progressive and Phase 6 boundary defined**:
+  - Added `sub-agents/tournaments/REPORT.md` as the append-only cross-run ledger.
+    Existing per-run `results/<tournament-id>/REPORT.md` files remain immutable
+    detailed snapshots; future tournaments append one central entry identified by
+    a unique HTML tournament marker and never overwrite earlier entries. A bounded
+    exclusive report lock protects the duplicate-check and append operation when
+    background tournaments finish concurrently.
+  - Backfilled all three existing Phase 5 pilots chronologically. The ledger now
+    maps Hydrapple's observed **70% -> 55% -> 65%** sequence and the inverse
+    Venusaur sequence, while recording that both agent and deck hashes were
+    unchanged. Those deltas therefore show sampling variation, not implementation
+    improvement.
+  - New tournament summaries calculate progress against the latest same-field run:
+    prior/current version, agent/deck hash changes, rank delta, field-win-rate
+    delta, and worst-matchup delta. Comparisons are labeled direct only when both
+    the entrant field and games per seat match; the seed is now retained in new
+    summaries as additional reproducibility context.
+  - Historical backfill is idempotent: running it twice left the central report at
+    the identical SHA-256
+    `ADC425B1E439706B2D0C8E7AF75E7AAC4B60DCEB884C3A0AE3E035A944BF6ED9`,
+    proving that already-recorded tournaments were neither duplicated nor rewritten.
+  - Defined **Phase 6** as controlled submission promotion: human approval,
+    recoverable submission snapshot, exact tournament-artifact verification,
+    atomic pair copy, validation/smoke from the submission directory, promotion
+    manifest, and tested rollback. It remains deliberately unstarted because the
+    current 20-game pilot is infrastructure evidence rather than a credible winner.
+    **Reason for the implementation:** preserve the full experimental timeline and
+    distinguish genuine agent/deck progress from run-to-run variance before any
+    tournament result can influence the final submission. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan_2 phase 5 complete — central tournament now ranks whole private deck-agent pairs; two-specialist pilot remained inconclusive**:
+  - Added `matchup_pair.py`, which loads two independent private `main.py` modules,
+    binds each to its own 60-card `deck.csv`, swaps the complete deck-agent pair
+    between seats, and alternates first player game by game. Outcomes retain
+    orientation counts, Wilson interval/null-test statistics, per-agent timing,
+    timeouts, agent crashes, illegal actions, and engine failures instead of
+    collapsing all non-wins into one bucket.
+  - Added `run_tournament.py`, central configuration, matchup/tournament schemas,
+    immutable entrant hashes, subprocess and log isolation per pairing, aggregate
+    robustness ranking, matchup matrix, and a Markdown report under
+    `sub-agents/tournaments/results/`. Tournament entry rejects active experiments
+    and any specialist not in `READY_FOR_EXPERIMENT`.
+  - Ranking is fault-free operation first, then field win rate, worst matchup, and
+    mean decision time. The reported winner is only a **provisional champion**;
+    configuration and every result fix `auto_promote=false`, and the tournament
+    runner contains no submission-copy path.
+  - Closed a lifecycle-state gap found during the pilot: a successful smoke stage
+    now records static, runtime-import, and smoke validation in `status.json`.
+    Created the isolated `Claude_Grass_Venusaur` specialist from the existing legal
+    deck and shared baseline. Its unchanged `EXP-0001` smoke finished **13-7 over
+    20**, with no failures, then was explicitly rejected because it contained no
+    strategic change. No Claude coding-provider call occurred.
+  - Final infrastructure pilot `T-20260812-190829-346545`: Hydrapple **13-7** over
+    Claude Grass Venusaur, exactly 10 games in each seat orientation, zero draws,
+    timeouts, illegal actions, agent crashes, or engine crashes. Hydrapple's 65%
+    had **95% CI 43.3-81.9%, z=1.34, p=0.180**. This is not statistically persuasive;
+    it validates pair swapping and reporting only and does not support promotion.
+  - Python compilation, both generated JSON schemas, outcome/seat accounting,
+    specialist readiness, and active-submission integrity passed. The active
+    `main.py` and `deck.csv` hashes still match the accepted Hydrapple specialist.
+    **Reason for the implementation:** replace incomparable specialist self-reports
+    with one central, seat-balanced measurement of complete deck-agent pairs while
+    preserving human authority over any final submission decision. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan_2 phase 4 live verification complete — authorized Codex candidate reached screening and was correctly auto-rejected at 40%**:
+  - The user explicitly authorized transmitting the isolated Hydrapple candidate and
+    copied Plan_2 context to Codex CLI. The first authorized run (`EXP-0004`) reached
+    Codex but produced no edit because the nested Windows sandbox could not spawn even
+    `pwd` (`CreateProcessAsUserW failed: 5`). The controller rejected it before any game,
+    and accepted/submission files remained untouched.
+  - Corrected the Codex adapter to use its managed `--approve-for-me` execution policy.
+    This Codex version forbids combining that flag with an explicit `--sandbox`; the
+    corrected invocation reports `approval: on-request` and `sandbox: workspace-write`.
+    The disposable workspace, 15-minute outer timeout, complete workspace fingerprint,
+    and `main.py`-only import gate remain in force. A fresh harmless comment probe
+    (`EXP-0005`) proved Codex could read context and edit only `main.py`; it was then
+    explicitly rejected without benchmarking.
+  - Ran the real `attack_readiness_attachment` hypothesis as `EXP-0006`. Codex added
+    Energy-type inference, an attack-cost transition check, and a 100,000-point bonus
+    when one attachment changed a target from unable to able to attack. The provider
+    exited cleanly, modified only `main.py`, passed syntax/deck/interface validation,
+    and was atomically imported into the private candidate.
+  - Engine evidence: smoke **9/20 (45%)**, then screening **40/100 (40.0%, 95% CI
+    30.9-49.8%, z=-2.00, p=0.0455)**; average 127.86 steps and 4.90 ms candidate
+    decision time; zero draws, timeouts, illegal actions, or crashes. The Phase 4 policy
+    automatically rejected it below the 45% floor, before human review or any acceptance.
+  - Code-quality postmortem: Energy metadata inference matched the real API, so this was
+    not a silent metadata failure. The strategic interpretation was wrong: the enormous
+    readiness bonus applied to **Benched** Pokemon even though they normally cannot attack
+    that turn, overpowering the established Active preference. This recreates the already
+    observed harmful bench-first Energy routing rather than narrowly preventing wasted
+    Active attachments. No retry or constant tuning was performed after the measured loss.
+  - Hydrapple remains `v000-baseline`; active submission `main.py` and `deck.csv` remain
+    unchanged. This completes Phase 4's real verification: external provider invocation,
+    isolated edit, validation, smoke, screening, statistical gate, and automatic rejection
+    all operated end to end.
+    **Reason for the implementation:** verify that Plan_2 can safely turn a real coding-
+    agent hypothesis into measured evidence and reject a plausible but harmful strategy
+    without relying on the provider's self-assessment or risking accepted files. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+## 2026-08-12
+
+- **Plan_2 phase 4 locally complete — bounded worker cycle and human review gate proven; live provider awaits explicit source-transmission approval**:
+  - Added `orchestration_config.json`, `orchestrate.py`, and `review_gate.py`. A cycle is
+    now a finite, persisted `start -> provider -> smoke -> screening -> REVIEW_REQUIRED`
+    state machine protected by an atomic per-specialist lock. Interrupted experiments can
+    be resumed from their recorded provider/stage results instead of restarting or
+    silently duplicating work.
+  - The orchestrator delegates to the Phase 2/3 CLIs, preserving their isolation,
+    validation, game caps, and audit logs. Provider failure, outer timeout, engine-stage
+    failure, any crash/illegal action/engine timeout, screening below 45%, or a significant
+    screening loss triggers an explicit rejection through the normal experiment decision
+    path. Configuration explicitly sets `auto_accept=false` and `auto_promote=false`.
+  - Added generated human-review packs under `sub-agents/human-review/pending/`: exact
+    hypothesis/mechanism, provider record, benchmark statistics, Wilson interval/null-test,
+    failure and decision-time counts, bounded unified diff, and mechanism-aware review
+    questions. `review_gate.py approve` authorizes only the later main benchmark; it does
+    not accept the candidate. Rejection moves Markdown/JSON evidence to `rejected/` and
+    closes the experiment through the existing archive path.
+  - Verified the full local success path as Hydrapple `EXP-0003` using an explicitly
+    labeled no-op fixture (one comment, no behavior change): smoke **9/20**, screening
+    **54/100 [44.3-63.4%], z=0.80, p=0.424**, average 124.49 steps, zero draws/timeouts/
+    illegal actions/crashes. The result correctly reached human review rather than being
+    treated as a gain. The review wording initially exposed an Energy-specific assumption
+    for a generic fixture; generation was corrected to generic checks plus optional
+    mechanism-specific questions. Human rejection archived both review artifacts, and
+    Hydrapple remained `v000-baseline` with the accepted hash unchanged.
+  - A real Codex-provider pilot for the narrow `attack_readiness_attachment` hypothesis
+    was attempted, but execution was blocked **before experiment creation** because it
+    would transmit the isolated private `main.py` and copied project context to an
+    external coding provider without explicit source-egress approval. No source was sent,
+    no model was called, and no workaround was used. The code path remains ready once the
+    user explicitly authorizes that transmission.
+  - Python compilation, JSON parsing/schema compatibility, real 120-game stage ordering,
+    review generation/archive, and active-submission integrity checks passed.
+    **Reason for the implementation:** convert the separate provider and benchmark tools
+    into one finite, recoverable human-in-the-loop workflow that can reject failures
+    automatically but can never accept or promote an unreviewed strategy. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan_2 phase 3 implemented — Codex, Claude Code, and Antigravity/Gemini now share one isolated worker contract**:
+  - Added `provider_config.json`, `provider_adapters.py`, and `run_worker.py`. Provider
+    discovery confirmed Codex CLI `0.147.0-alpha.6.5`, Claude Code `2.1.218`, and Gemini
+    CLI `0.47.0-nightly.20260604.g4196596f7` are callable. The configured `antigravity`
+    slot resolves to Gemini CLI because the installed Antigravity desktop directory has
+    no headless PATH executable; audit records name the actual `gemini-cli` backend so
+    this is not represented as direct desktop automation.
+  - Every invocation receives a disposable experiment workspace with copies of the
+    candidate `main.py`/`deck.csv`, frozen baseline, experiment definition, specialist
+    configuration/status/progress, shared contract, and Pokemon rules. The generated
+    prompt permits only the smallest hypothesis-specific edit to root `main.py`; workers
+    do not benchmark, accept, promote, or touch the staged candidate directly.
+  - Provider commands are constrained according to available CLI controls: Codex uses
+    an ephemeral workspace-write sandbox, Claude Code uses safe mode plus Read/Edit/Write
+    tools only, and Gemini uses sandbox + auto-edit mode. The controller adds an outer
+    timeout and separate actual-run/dry-run budgets, records prompt/command/backend/model,
+    captures stdout/stderr, and fingerprints the complete disposable workspace.
+  - Import is fail-closed: process failure, timeout, unchanged `main.py`, any changed
+    protected/context/deck file, invalid deck, or invalid Python interface rejects the
+    output. Only a valid root `main.py` is atomically copied into the already-isolated
+    experiment candidate; accepted specialist and submission files remain outside this
+    operation.
+  - Exercised Hydrapple `EXP-0002` as a **dry-run-only** adapter test. Codex, Claude, and
+    Antigravity/Gemini each resolved a concrete command and received equivalent private
+    workspaces; all worker and candidate `main.py` hashes matched the accepted baseline.
+    No model was invoked, no provider cost was incurred, and the experiment was explicitly
+    rejected because it contained no gameplay change. Hydrapple remains `v000-baseline`.
+  - Python compilation and JSON parsing passed. A real provider-generated edit remains
+    intentionally unverified until a gameplay hypothesis is selected; it must then pass
+    Phase 2 validation and benchmarks. Cross-deck evaluation, review-pack generation,
+    central tournament ranking, and submission promotion remain future phases.
+    **Reason for the implementation:** connect all available coding agents to the same
+    bounded evidence pipeline without granting any one CLI direct authority over accepted
+    specialists or submission files, while keeping the true backend and every attempted
+    change auditable. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan_2 phase 2 complete — bounded private experiments now run through the local engine**:
+  - Added `run_experiment.py` with an explicit `start -> run -> decide` lifecycle.
+    Starting creates an immutable snapshot of the accepted private deck-agent pair and
+    a separate candidate copy; only the candidate may be edited. A specialist can have
+    only one active experiment, and the tested concurrency guard refused a second start
+    with exit 2 while preserving the first experiment.
+  - Added `benchmark_pair.py`, which loads candidate and baseline modules independently,
+    binds the specialist deck to each seat, alternates the candidate's seat, and runs the
+    ignored local `cg` engine in a child process. The controller enforces configured game
+    caps, step caps, and wall-clock timeout, while preserving stdout/stderr logs and JSON
+    results. It records wins/losses, draws, engine timeouts, candidate illegal actions,
+    candidate crashes, steps, mean/max decision time, Wilson interval, and a two-sided
+    head-to-head 50% null-test approximation.
+  - Enforced ordered `smoke -> screening -> main -> confirmation` stages. Private
+    acceptance requires a successful main-stage result and no recorded failed/timed-out
+    run; promotion remains a separate future gate. Candidate-versus-baseline changed-file
+    detection is recorded at run time.
+  - Added explicit accept/reject handling. Rejection archives the complete evidence and
+    leaves accepted files untouched. Acceptance creates a recoverable accepted snapshot,
+    uses atomic per-file replacement, restores the prior baseline if replacement fails,
+    and updates specialist status plus the central registry. No submission file is ever
+    addressed by this workflow.
+  - Exercised the full safe path as Hydrapple `EXP-0001` with an intentionally unchanged
+    candidate: runtime import passed; a two-game seat-balanced smoke run finished **1-1**,
+    average 115 steps, zero draws/timeouts/illegal actions/crashes, and 4.86 ms mean
+    candidate decision time. The experiment was deliberately **rejected** because it
+    contained no strategic change. The accepted Hydrapple and active submission hashes
+    remained identical afterward. This tiny run validates infrastructure only and makes
+    no gameplay-strength claim.
+  - `py_compile`, all Plan_2 JSON parsing, generated experiment/result JSON Schema
+    validation, overwrite/concurrency guards, runtime import, and submission-integrity
+    checks passed. Updated `Plan_2.md` and `sub-agents/README.md` with the implemented
+    lifecycle and the remaining boundary: provider adapters, autonomous workers,
+    cross-deck review, tournament ranking, and promotion are not implemented yet.
+    **Reason for the implementation:** give future Codex, Claude Code, and Antigravity
+    workers one bounded and reproducible experiment controller before allowing them to
+    edit deck-specific agents in the background; this converts hypotheses into isolated,
+    reviewable evidence without risking accepted or submission files. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan_2 implementation started — isolated deck-specialist foundation and Hydrapple pilot created**:
+  - Added `Plan_2.md` with the agreed full architecture: development-agent contract,
+    specialist lifecycle, common measurement policy, human review gates, central
+    tournament, controlled promotion, coding-agent roles, and staged implementation
+    order. The first milestone is explicitly limited to safe specialist scaffolding;
+    autonomous workers and submission promotion are not enabled yet.
+  - Added `sub-agents/` with an enforceable shared `AGENT_CONTRACT.md`, provider-neutral
+    specialist/reviewer prompts, benchmark policy, experiment/result JSON schemas,
+    central registry, disabled-by-default tournament configuration, review directories,
+    and an immutable private copy of the current `main.py` baseline. Specialists are
+    forbidden from writing to the active submission or another specialist.
+  - Added `create_specialist.py` and `validate_agent.py`. Creation validates exactly 60
+    integer Card IDs, dataset membership, at least one Basic Pokemon, the four-copy
+    limit aggregated by card name, and the one-ACE-SPEC limit; it then creates the
+    private deck/agent pair, configuration, status, experiment directories, progress
+    log, hashes, and registry entry. Existing specialist names are refused rather than
+    overwritten. Agent validation parses Python syntax and verifies the required
+    top-level `agent()` and `read_deck_csv()` interfaces; optional runtime import is a
+    separate check so missing engine dependencies cannot be mistaken for a code error.
+  - Created the first pilot at `sub-agents/specialists/Hydrapple/` through the same CLI
+    intended for future decks. Static validation passed: 60 cards, 26 unique Card IDs,
+    13 Basic Pokemon, one ACE SPEC, valid Python syntax, and both required interfaces.
+    Repeating creation returned exit 2 and left `registry.json` byte-for-byte unchanged,
+    confirming the overwrite guard. JSON parsing and `py_compile` checks also passed.
+  - Runtime import/gameplay smoke testing remains pending because the Python available
+    in this shell does not expose the competition `cg` package (`ModuleNotFoundError`).
+    No active submission file was changed and no benchmark claim is made in this entry.
+    **Reason for the implementation:** establish a reproducible isolation and validation
+    boundary before Codex, Claude Code, or Antigravity are allowed to perform background
+    deck-specific experiments; this prevents parallel edits, inconsistent evidence, and
+    accidental submission replacement at the foundation of Plan_2. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Codex_MegaCharizard_FireTurbo evaluated — weakest deck measured so far; cause is
+  attacker discipline, and my ability-cap hypothesis was falsified**:
+  - Legality verified by Card ID before running: 60 lines, all IDs exist, >=1 Basic,
+    ACE SPEC exactly 1 (Precious Trolley), and the per-**name** cap holds -- Charmander
+    appears as two printings (788 x2 + 926 x2 = 4 total, exactly at the cap), Charmeleon
+    as two (789 + 927 = 2). Legal.
+  - **Results (n=200 each, 0 timeouts):** `vs random` **77.5% [71.2-82.7]**,
+    `vs Hydrapple` seat-balanced **20.5% [15.5-26.6]**, `vs Claude_Grass_Venusaur`
+    seat-balanced **33.5% [27.3-40.3]**. All three are decisive losses; the deck ranks
+    **below both Hydrapple and the Venusaur build**, which itself already failed the
+    submission bar.
+  - **The vs-random number is the real diagnostic.** 77.5% against an opponent playing at
+    random, where Hydrapple scores 96-97% and Venusaur 99.0% on the identical harness.
+    A deck that cannot cleanly beat random play is failing structurally, not merely
+    being outclassed.
+  - **Instrumented 40-game mirror shows why: attacker discipline collapses.** Attacks by
+    Active: Mega Audino ex 25.1%, Oricorio ex 24.1%, **Charmander 16.6%**, Fezandipiti ex
+    8.6%, Charmeleon 4.3% -- i.e. **~78% of all attacks come from support/basic Pokemon
+    and only 22.5% from the actual Mega Charizard X/Y ex**, the entire point of the deck.
+    Total volume is also low at **4.7 attacks/game**, with 21.4% of MAIN decisions being
+    END. Compounding it, **Mega Evolution ends your turn** (POKEMON_RULES.md line 241),
+    so landing a Charizard costs a full tempo cycle the greedy ladder does not model.
+  - **Hypothesis raised and then falsified, recorded as such.** I flagged before running
+    that `ABILITY_CAP_PER_TURN = 4` (added 2026-08-11) might be throttling Oricorio ex's
+    `Excited Turbo`, an "as often as you like" ability, and said the cap was the prime
+    suspect if the deck underperformed. Tested it directly with a cap sweep (n=150/arm):
+
+    | cap | vs random | vs Hydrapple |
+    |---|---|---|
+    | **4 (shipped)** | 74.0% [66.4-80.4] | **27.3% [20.8-35.0]** |
+    | 12 | 76.0% [68.6-82.1] | 22.0% [16.1-29.3] |
+    | 40 | 70.0% [62.2-76.8] | 17.3% [12.1-24.2] |
+
+    Raising the cap makes the deck **monotonically worse**, not better: cap=4 vs cap=40
+    against Hydrapple is z=-2.08, **p=0.038** -- significant, and in the *opposite*
+    direction from my prediction. The shipped cap=4 is the best of the three. The
+    hypothesis was wrong with the sign reversed, which is worth stating plainly rather
+    than quietly dropping. Plausible reading: extra Ability activations spend MAIN
+    decisions shuffling Energy instead of attacking, on a deck already starved at 4.7
+    attacks/game.
+  - **Conclusion: not a submission candidate**, and the gap is not fixable by deck
+    tweaks alone. This is the clearest instance yet of the "needs piloting" category
+    from the 2026-08-10 card review -- the deck requires Charmander -> Rare Candy ->
+    Mega sequencing plus Oricorio bench-fueling for `Inferno X`, and the current greedy
+    + 1-ply agent executes none of it. `deck potential x agent execution` with execution
+    near zero. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Deck Library now supports safe single- and multi-deck deletion**:
+  - `deck_builder/index.html`, `app.js`, and `styles.css` — added an explicit deck-selection
+    mode to the saved Deck Library with Select decks, Select all, Cancel, and Delete
+    selected actions. Selected folders receive a clear checkbox-style marker and count,
+    and the controls remain usable in the phone layout.
+  - Bulk deletion requires confirmation, removes only the selected saved-library records
+    from local storage, and deliberately leaves the deck currently loaded in the builder
+    unchanged. Existing deletion from inside a single saved deck continues to work.
+    **Reason for the implementation:** imported deck experiments can accumulate quickly,
+    so the library needs a deliberate way to remove one or several obsolete lists without
+    clearing the active build or deleting folders one at a time. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Claude_Grass_Venusaur clean evaluation (post ability-cap fix) — real result: loses
+  decisively to Hydrapple, not a submission candidate as built**:
+  - Every earlier number for this deck was contaminated by the ability-loop hang (logged
+    on 2026-08-11); this is the first clean measurement now that `main.py` no longer
+    stalls. `vs random n=200`: **99.0% [96.4-99.7]**, 0 timeouts, avg 117.7 steps --
+    comparable to Hydrapple's own 96-97% vs random, confirming the deck itself is
+    legitimate, not broken. `vs Hydrapple, seat-balanced n=200`: **35.5% [29.2-42.3]**,
+    0 timeouts, avg 127.3 steps -- CI upper bound sits clearly below 50%, a real,
+    significant loss, not noise.
+  - Per the standing working principle ("don't replace Hydrapple unless new deck + adapted
+    main.py clearly beats Hydrapple + current main.py"), this deck fails that bar outright
+    and is **not a submission candidate as constructed**. Kept in `Claude_Decks/` as a
+    recorded result, not reworked in this entry.
+  - Suspected cause, not yet isolated: 23 Trainers vs Hydrapple's 26, and three competing
+    Stage-2 Grass lines (Meganium / Hydrapple ex / Mega Venusaur ex) sharing the same 13
+    Energy and drawing against each other for consistency, rather than the two-line
+    Hydrapple core stacking cleanly. Not measured in isolation -- a real diagnosis would
+    need an ablation (drop the Venusaur line, re-test at the original 26-Trainer count)
+    before asserting which factor actually costs the win rate. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Discussion with Codex: RL/MCTS direction, 3-day feasibility, and Strategy focus**:
+  - Clarified that a full, leaderboard-reliable RL system is unlikely to be built
+    and trusted in a single 24-hour push. A 24-hour run can realistically produce a
+    prototype: simulator wrapper, state/action encoding, rollout loop, basic
+    training logs, and maybe an exportable policy. It should be treated as an
+    experiment, not as a guaranteed stronger submission.
+  - Reframed the user's follow-up plan: working 24 hours nonstop for 3 days could
+    create meaningful progress on an RL pipeline, especially if the goal is to learn
+    whether RL has promise in this simulator. The likely deliverable is a working
+    RL-assisted or MCTS-assisted prototype, not a robust pure-RL agent that can be
+    trusted without strong benchmark proof.
+  - Recommended priority split: keep the current heuristic/search `main.py` and deck
+    work as the dependable Simulation submission path, while using the 3-day push as
+    a side experiment. If the RL/MCTS prototype clearly beats the current
+    `main.py + deck.csv` in controlled tests, it can be considered for Simulation;
+    otherwise it should remain research for the Strategy Hackathon.
+  - For the Strategy Hackathon, the longer 2-3 week window makes the idea more
+    reasonable. The strongest path is not pure RL from scratch, but a hybrid:
+    retain the existing legal-action and heuristic structure, then add learned
+    scoring, bounded MCTS, rollout evaluation, or deck-specific policy improvements
+    around the decisions that matter most.
+  - Practical 3-day outline recorded for future execution: Day 1 should build the
+    environment wrapper, state representation, legal-action mapping, random/self-play
+    rollout loop, and reward logging. Day 2 should train the first policy/value or
+    imitation model using current-agent games plus reward shaping for prizes, KOs,
+    board setup, attacking, Energy attachment, and avoiding dead turns. Day 3 should
+    benchmark against the current agent, run enough games to avoid noise, and export
+    only if the result is clearly stronger.
+  - Decision rule carried forward: do not replace the current submission with an
+    RL/MCTS variant merely because it exists. Replace only if it wins by a meaningful
+    margin against the current agent under the same harness, same deck constraints,
+    and enough games to make the result credible. **Reason for the entry:** the user
+    is deciding whether to aim beyond the current heuristic agent for the Strategy
+    track, so the project log needs the practical RL/MCTS tradeoff, timeline, and
+    go/no-go rule captured before work branches in that direction. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Mobile card-catalog scrolling restored after the responsive sidebar pass**:
+  - `deck_builder/styles.css` — removed the desktop grid-height and overflow clipping
+    from the catalog panel at phone widths, allowing the card grid to grow with its
+    contents and use normal page scrolling. **Reason for the implementation:** the
+    preceding mobile redesign made the card grid itself scroll-compatible but left
+    its parent constrained to the desktop catalog layout, so cards beyond the first
+    viewport were clipped on phones. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Deck builder rebuilt around a catalog-first phone workflow with cascading sidebars**:
+  - `deck_builder/index.html`, `app.js`, and `styles.css` — converted the existing
+    stacked phone layout into two touch-friendly off-canvas panels: filters cascade
+    in from the left and the live deck cascades in from the right, while the card
+    catalog remains the primary phone view. A fixed bottom navigation bar exposes
+    Cards, Filters, and the current deck count at all times.
+  - Added synchronized mobile filter/deck counters, explicit drawer close controls,
+    backdrop and Escape dismissal, responsive deck-name handling, and automatic
+    drawer cleanup when returning to desktop width. Existing filtering, validation,
+    add/remove, saved-deck, flag, import, and export behavior continues to use the
+    original panels rather than duplicated mobile-only state.
+  - Reworked phone spacing and sizing across the header, horizontal catalog tabs,
+    two-column card grid, card steppers, saved-deck folders, deck rows, focused-card
+    controls, and import dialogs. **Reason for the implementation:** the previous
+    mobile breakpoint placed every major panel in one long page, making it difficult
+    to browse cards while checking the current deck; the cascading layout keeps those
+    tasks one tap apart without obscuring the catalog permanently. — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 ## 2026-08-11
 
 - **Ability-cap fix confirmed clean on the shipped Hydrapple baseline (follow-up to

@@ -1,0 +1,29 @@
+{
+  "specialist": "Hydrapple",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260815",
+  "games": 20,
+  "wins": 9,
+  "losses": 11,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 118.55,
+  "average_decision_time_ms": 4.675251294903595,
+  "max_decision_time_ms": 74.28090000030352,
+  "win_rate": 0.45,
+  "confidence_interval": [
+    0.25819502085709295,
+    0.6579179916924003
+  ],
+  "z_score": -0.44721359549995787,
+  "p_value": 0.6547208460185772,
+  "started_at": "2026-08-12T18:52:22.689578+00:00",
+  "finished_at": "2026-08-12T18:52:36.101471+00:00",
+  "duration_seconds": 13.419989600000008,
+  "errors": []
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "game_stages": {
+    "smoke": 20,
+    "screening": 200,
+    "main": 300,
+    "confirmation": 500
+  },
+  "max_steps_per_game": 3000,
+  "benchmark_timeout_seconds": 1800,
+  "minimum_acceptance_stage": "confirmation",
+  "confidence_level": 0.95,
+  "comparison_tests": {
+    "direct_head_to_head": "head_to_head_normal_approximation",
+    "independent_benchmark_arms": "two_proportion_z"
+  },
+  "significance_alpha": 0.05,
+  "minimum_practical_gain": 0.03,
+  "seat_balanced": true,
+  "fresh_confirmation_seeds": true,
+  "required_cross_deck_opponents": 2,
+  "cross_deck_games_per_seat": 100,
+  "track": [
+    "wins",
+    "losses",
+    "draws",
+    "timeouts",
+    "illegal_actions",
+    "crashes",
+    "steps",
+    "decision_time_ms"
+  ],
+  "reference_opponents": [
+    "shared_baseline",
+    "specialist_previous",
+    "tournament_champion"
+  ]
+}

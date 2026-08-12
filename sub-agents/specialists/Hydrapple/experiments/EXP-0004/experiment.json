@@ -1,0 +1,57 @@
+{
+  "id": "EXP-0004",
+  "specialist": "Hydrapple",
+  "created_at": "2026-08-12T18:46:06.236351+00:00",
+  "updated_at": "2026-08-12T18:46:52.026142+00:00",
+  "worker": "codex",
+  "hypothesis": "When choosing a normal Energy attachment, prefer an in-play Pokemon when that single attachment makes one of its attacks usable this turn; preserve Active preference and existing strength ordering as tie-breakers.",
+  "expected_effect": "Reduce wasted attachments that leave all attackers unusable without broadly switching to bench-first attachment.",
+  "mechanisms": [
+    "attack_readiness_attachment"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0004/candidate",
+  "status": "COMPLETE",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": null,
+      "started_at": "2026-08-12T18:46:06.753212+00:00",
+      "finished_at": "2026-08-12T18:46:51.836498+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": false,
+      "changed_files": [],
+      "validation_errors": [
+        "provider did not modify main.py"
+      ],
+      "run_dir": "workers/001-codex"
+    }
+  ],
+  "orchestration": {
+    "state": "FAILED_PROVIDER",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T18:46:06.286905+00:00",
+    "updated_at": "2026-08-12T18:46:51.873798+00:00",
+    "failure_reason": "automatic rejection: provider stage failed with exit 1"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "automatic rejection: provider stage failed with exit 1",
+  "limitations": []
+}

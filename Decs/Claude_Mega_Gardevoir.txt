@@ -1,0 +1,110 @@
+****** Pokémon Trading Card Game Deck List ******
+
+17 - Pokémon
+
+4 Mega Gardevoir ex - 747
+4 Ralts - 745
+4 Scream Tail ex - 969
+2 Kirlia - 746
+2 Smoochum - 183
+
+27 - Trainer Cards
+
+4 Rare Candy - 1079
+4 Buddy-Buddy Poffin - 1086
+4 Ultra Ball - 1121
+4 Lillie's Determination - 1227
+3 Wondrous Patch - 1146
+3 Switch - 1123
+2 Dawn - 1231
+2 Boss's Orders - 1182
+2 Night Stretcher - 1097
+
+16 - Energy
+
+16 Basic {P} Energy - 5
+
+
+****** Concept ******
+
+Built on request around Mega Gardevoir ex (747). The combo is real:
+
+  Mega Symphonia costs ONE {P} Energy and does 50 damage for EACH {P} Energy
+  attached to ALL of your Pokémon. Damage scales off the whole board, not off
+  the attacker -- so the attacker never needs to be loaded up.
+
+Support chosen to feed that multiplier:
+  - Smoochum (183) "Delightful Kiss" costs ZERO Energy and pulls 2 Basic {P}
+    Energy out of the deck onto a Benched Pokémon. Free ramp that directly adds
+    100 damage to every future Mega Symphonia.
+  - Rare Candy (1079) skips Kirlia entirely (Ralts -> Mega Gardevoir ex).
+  - Buddy-Buddy Poffin (1086) fetches Ralts (70 HP) and Smoochum (30 HP); both
+    are under the 70 HP cap.
+  - Wondrous Patch (1146) returns {P} Energy from discard to a Benched {P} Pokémon.
+  - Scream Tail ex (969), 190 HP Basic with a flexible {P} + 2 Colorless cost,
+    holds the Active slot while the Stage 2 assembles.
+  - Mega Gardevoir ex is 360 HP -- the largest body in the legal pool.
+
+
+****** MEASURED RESULT: THIS DECK LOSES. NOT ADOPTED. ******
+
+deck_head2head.py vs Hydrapple, 100 seat-balanced games, one agent piloting both:
+
+  v1 (support-heavy: Mesprit/Cresselia/4 Smoochum)  19/100 = 19.0% [12.5-27.8%]
+  v2 (those cut for 4 Scream Tail ex)               20/100 = 20.0% [13.3-28.9%]
+
+Changing the deck composition did not move it. The cause is not the card list.
+
+
+****** ROOT CAUSE: THE AGENT CANNOT SEE THIS CARD'S DAMAGE ******
+
+The engine reports Attack.damage = 0 for Mega Symphonia, because "50x" variable
+damage is stored as zero. main.py ranks every attacker by that single field
+(_best_attack_index, _best_usable_damage). So the agent believes Mega Gardevoir
+ex is a zero-damage Pokémon and will not promote it or lead with it.
+
+Attack-selection probe, 10 games:
+  Active-slot occupancy   Scream Tail ex 334 steps  vs  Mega Gardevoir ex 55 steps
+The agent parked on the card it could read (printed 120) over the one that
+actually hits for 200-400.
+
+Scope of the blind spot (whole card pool, not just this deck):
+  110 attacks have variable "50x"-style damage
+  381 of 1556 engine attacks report damage == 0 -- all tied in the ranking
+  391 of 1811 attack rows (22%) have real value that printed damage misses
+      (variable 110, coin-flip 107, discards own Energy 63, next-turn lockout 61,
+       self-damage 49, conditional 27)
+
+
+****** HOW MUCH IS DECK vs AGENT? (4 arms x 100 games vs Hydrapple) ******
+
+Hydrapple always piloted by the STOCK agent; only the Gardevoir side varied:
+
+  stock   unmodified main.agent                                21.0% [14.2-30.0]
+  dmg     Mega Symphonia estimated dynamically as
+          50 x (all {P} Energy in play)                        34.0% [25.5-43.7]
+  bench   dmg + attach Energy to the Bench, not the Active     40.0% [30.9-49.8]
+  full    bench + force Gardevoir into the Active slot         38.0% [29.1-47.8]
+
+  => +19 points, ~2x the win rate, from AGENT changes with the deck untouched.
+
+Notes on those arms:
+  - The variable-damage estimate is a GENERAL fix and belongs in main.py
+    regardless of which deck ships; it is not specific to Gardevoir.
+  - Bench-first Energy attachment is DECK-SPECIFIC. It is right here (Mega
+    Symphonia counts Energy everywhere, and Bench Energy survives a KO on the
+    attacker) and probably wrong for Hydrapple, which wants its Active powered.
+  - Forcing Gardevoir Active did NOT help (38% vs 40%, overlapping CIs). The gain
+    came from the agent EVALUATING the card correctly, not from steering it.
+
+
+****** NOT CHASED ******
+
+The agent still never uses Overflowing Wishes (also 0 printed damage), which is
+this deck's actual ramp engine: +1 {P} Energy to EACH Benched Pokémon, straight
+from the deck. A fuller deck-aware agent would ramp with it on a wide bench and
+then swing, so 40% is probably not the true ceiling.
+
+Not pursued because Codex_FireCamerupt reaches 66% vs Hydrapple under the STOCK
+agent -- a better deck with no agent work beats this deck with a lot of it.
+The variable-damage fix is still worth taking on its own merits.

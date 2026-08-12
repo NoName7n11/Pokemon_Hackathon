@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "contestants": [],
+  "allowed_states": [
+    "READY_FOR_EXPERIMENT"
+  ],
+  "games_per_seat": 300,
+  "max_steps_per_game": 3000,
+  "matchup_timeout_seconds": 3600,
+  "seed": 20260813,
+  "ranking_order": [
+    "fault_free",
+    "field_win_rate",
+    "worst_matchup_win_rate",
+    "average_decision_time_ms"
+  ],
+  "auto_promote": false,
+  "promotion_requires_human_approval": true
+}

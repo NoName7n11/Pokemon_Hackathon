@@ -1,0 +1,72 @@
+{
+  "id": "EXP-0001",
+  "specialist": "Claude_Grass_Venusaur",
+  "created_at": "2026-08-12T19:07:35.079628+00:00",
+  "updated_at": "2026-08-12T19:08:19.228615+00:00",
+  "worker": "codex",
+  "hypothesis": "Verify the unchanged private baseline before tournament entry",
+  "expected_effect": "Clean runtime import and smoke games with no agent or engine faults",
+  "mechanisms": [
+    "infrastructure_baseline"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0001/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "Claude_Grass_Venusaur",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "20260815",
+    "games": 20,
+    "wins": 13,
+    "losses": 7,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 118.5,
+    "average_decision_time_ms": 10.563862066184011,
+    "max_decision_time_ms": 318.17270000010467,
+    "win_rate": 0.65,
+    "confidence_interval": [
+      0.43285051021946463,
+      0.8188104521320554
+    ],
+    "z_score": 1.341640786499874,
+    "p_value": 0.17971249487899985,
+    "started_at": "2026-08-12T19:07:42.600093+00:00",
+    "finished_at": "2026-08-12T19:08:08.675326+00:00",
+    "duration_seconds": 26.081455300000016,
+    "errors": []
+  },
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 20260815,
+      "started_at": "2026-08-12T19:07:42.463410+00:00",
+      "finished_at": "2026-08-12T19:08:08.706758+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "Infrastructure-only unchanged baseline; smoke validates runtime and safety but is not a strategic candidate",
+  "limitations": []
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "poll_seconds": 30,
+  "max_parallel_specialists": 2,
+  "max_new_experiments_per_day": 6,
+  "worker_timeout_seconds": 900,
+  "command_timeout_seconds": 14400,
+  "require_provider_authorization_per_job": true,
+  "auto_reject_failures": true,
+  "auto_accept": false,
+  "auto_promote": false
+}

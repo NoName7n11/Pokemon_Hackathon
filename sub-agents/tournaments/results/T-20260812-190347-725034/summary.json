@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "tournament_id": "T-20260812-190347-725034",
+  "status": "complete",
+  "started_at": "2026-08-12T19:03:47.725034+00:00",
+  "finished_at": "2026-08-12T19:04:09.441145+00:00",
+  "duration_seconds": 21.723993699999937,
+  "games_per_seat": 10,
+  "pairings": 1,
+  "total_games": 20,
+  "engine_crashes": 0,
+  "auto_promote": false,
+  "provisional_champion": "Hydrapple",
+  "entrants": [
+    {
+      "name": "Hydrapple",
+      "version": "v000-baseline",
+      "state": "READY_FOR_EXPERIMENT",
+      "provider": "codex",
+      "agent": "sub-agents/specialists/Hydrapple/main.py",
+      "deck": "sub-agents/specialists/Hydrapple/deck.csv",
+      "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+      "deck_sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41"
+    },
+    {
+      "name": "Claude_Grass_Venusaur",
+      "version": "v000-baseline",
+      "state": "READY_FOR_BASELINE",
+      "provider": "claude",
+      "agent": "sub-agents/specialists/Claude_Grass_Venusaur/main.py",
+      "deck": "sub-agents/specialists/Claude_Grass_Venusaur/deck.csv",
+      "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+      "deck_sha256": "ec0c94f7e5defe13c4a318f1e800fd1979c4b1ddb3481ef707b258bdeb0fd489"
+    }
+  ],
+  "ranking": [
+    {
+      "name": "Hydrapple",
+      "version": "v000-baseline",
+      "wins": 14,
+      "losses": 6,
+      "draws": 0,
+      "timeouts": 0,
+      "agent_crashes": 0,
+      "illegal_actions": 0,
+      "engine_crashes": 0,
+      "max_decision_time_ms": 139.17039999978442,
+      "matchups": [
+        {
+          "opponent": "Claude_Grass_Venusaur",
+          "games": 20,
+          "wins": 14,
+          "losses": 6,
+          "draws": 0,
+          "win_rate": 0.7
+        }
+      ],
+      "games": 20,
+      "field_win_rate": 0.7,
+      "decisive_win_rate": 0.7,
+      "worst_matchup_win_rate": 0.7,
+      "average_decision_time_ms": 6.153584844297322,
+      "decision_count": 1445,
+      "fault_free": true,
+      "rank": 1
+    },
+    {
+      "name": "Claude_Grass_Venusaur",
+      "version": "v000-baseline",
+      "wins": 6,
+      "losses": 14,
+      "draws": 0,
+      "timeouts": 0,
+      "agent_crashes": 0,
+      "illegal_actions": 0,
+      "engine_crashes": 0,
+      "max_decision_time_ms": 255.75049999997646,
+      "matchups": [
+        {
+          "opponent": "Hydrapple",
+          "games": 20,
+          "wins": 6,
+          "losses": 14,
+          "draws": 0,
+          "win_rate": 0.3
+        }
+      ],
+      "games": 20,
+      "field_win_rate": 0.3,
+      "decisive_win_rate": 0.3,
+      "worst_matchup_win_rate": 0.3,
+      "average_decision_time_ms": 9.281686156345996,
+      "decision_count": 1228,
+      "fault_free": true,
+      "rank": 2
+    }
+  ],
+  "matchup_matrix": {
+    "Hydrapple": {
+      "Hydrapple": null,
+      "Claude_Grass_Venusaur": {
+        "opponent": "Claude_Grass_Venusaur",
+        "games": 20,
+        "wins": 14,
+        "losses": 6,
+        "draws": 0,
+        "win_rate": 0.7
+      }
+    },
+    "Claude_Grass_Venusaur": {
+      "Hydrapple": {
+        "opponent": "Hydrapple",
+        "games": 20,
+        "wins": 6,
+        "losses": 14,
+        "draws": 0,
+        "win_rate": 0.3
+      },
+      "Claude_Grass_Venusaur": null
+    }
+  },
+  "matchup_results": [
+    "sub-agents/tournaments/results/T-20260812-190347-725034/matchups/Hydrapple__vs__Claude_Grass_Venusaur.json"
+  ]
+}

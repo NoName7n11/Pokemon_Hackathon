@@ -1,0 +1,29 @@
+{
+  "id": "EXP-0002",
+  "specialist": "Hydrapple",
+  "created_at": "2026-08-12T17:53:29.153140+00:00",
+  "updated_at": "2026-08-12T17:53:29.153140+00:00",
+  "worker": "codex",
+  "hypothesis": "Verify all configured provider adapters create isolated, bounded worker invocations without calling a model",
+  "expected_effect": "Each adapter should resolve, package identical scoped context, and leave candidate and accepted files unchanged in dry-run mode",
+  "mechanisms": [
+    "provider_orchestration"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [],
+  "worker_runs": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

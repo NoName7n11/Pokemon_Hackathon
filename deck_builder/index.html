@@ -31,7 +31,14 @@
     </header>
 
     <main class="workspace">
-      <aside class="filterPanel" aria-label="Card filters">
+      <aside id="filterPanel" class="filterPanel" aria-label="Card filters">
+        <div class="mobileDrawerHeader">
+          <div>
+            <span class="eyebrow">Card catalog</span>
+            <strong>Filters</strong>
+          </div>
+          <button id="closeMobileFilters" class="mobileDrawerClose" type="button" aria-label="Close filters">×</button>
+        </div>
         <div class="panelTitleRow">
           <div>
             <span class="eyebrow">Library</span>
@@ -124,6 +131,12 @@
             <h3 id="savedDeckTitle">Deck library</h3>
             <p id="savedDeckMeta">Import deck lists to keep them here.</p>
           </div>
+          <div id="savedDeckLibraryActions" class="savedDeckActions savedDeckLibraryActions" hidden>
+            <button id="selectSavedDecks" class="button secondary" type="button">Select decks</button>
+            <button id="selectAllSavedDecks" class="button secondary" type="button" hidden>Select all</button>
+            <button id="cancelSavedDeckSelection" class="button secondary" type="button" hidden>Cancel</button>
+            <button id="deleteSelectedSavedDecks" class="button danger" type="button" hidden disabled>Delete selected</button>
+          </div>
           <div id="savedDeckActions" class="savedDeckActions" hidden>
             <button id="loadSavedDeck" class="button primary" type="button">Load into builder</button>
             <button id="deleteSavedDeck" class="button danger" type="button">Delete</button>
@@ -136,7 +149,14 @@
         </div>
       </section>
 
-      <aside class="deckPanel" aria-label="Selected deck">
+      <aside id="deckPanel" class="deckPanel" aria-label="Selected deck">
+        <div class="mobileDrawerHeader">
+          <div>
+            <span class="eyebrow">Deck builder</span>
+            <strong id="mobileDeckName">My Deck</strong>
+          </div>
+          <button id="closeMobileDeck" class="mobileDrawerClose" type="button" aria-label="Close current deck">×</button>
+        </div>
         <div class="deckHeader">
           <div class="deckCountBlock">
             <div class="countRing" id="countRing"><strong id="deckTotal">0</strong><span>/ 60</span></div>
@@ -157,6 +177,24 @@
         </div>
       </aside>
     </main>
+
+    <button id="mobileBackdrop" class="mobileBackdrop" type="button" aria-label="Close open panel" hidden></button>
+    <nav class="mobileDock" aria-label="Deck builder navigation">
+      <button id="openMobileFilters" type="button" aria-controls="filterPanel" aria-expanded="false">
+        <span class="dockIcon filterIcon" aria-hidden="true"></span>
+        <span>Filters</span>
+        <b id="mobileFilterCount" hidden>0</b>
+      </button>
+      <button id="mobileCatalogTop" class="active" type="button">
+        <span class="dockIcon cardsIcon" aria-hidden="true"></span>
+        <span>Cards</span>
+      </button>
+      <button id="openMobileDeck" type="button" aria-controls="deckPanel" aria-expanded="false">
+        <span class="dockIcon deckIcon" aria-hidden="true"></span>
+        <span>Deck</span>
+        <b id="mobileDeckTotal">0</b>
+      </button>
+    </nav>
 
     <section id="focusOverlay" class="focusOverlay" aria-label="Focused card browser" hidden>
       <header class="focusTopbar">

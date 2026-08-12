@@ -1,0 +1,22 @@
+{
+  "provider": "codex",
+  "backend": "codex-cli",
+  "executable": "c:\\Users\\novan\\.vscode\\extensions\\openai.chatgpt-26.5803.61601-win32-x64\\bin\\windows-x86_64\\codex.EXE",
+  "args": [
+    "c:\\Users\\novan\\.vscode\\extensions\\openai.chatgpt-26.5803.61601-win32-x64\\bin\\windows-x86_64\\codex.EXE",
+    "exec",
+    "--cd",
+    "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0004\\workers\\001-codex\\workspace",
+    "--skip-git-repo-check",
+    "--ephemeral",
+    "--ignore-rules",
+    "--sandbox",
+    "workspace-write",
+    "--color",
+    "never",
+    "-",
+    "<PROMPT via stdin>"
+  ],
+  "cwd": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0004\\workers\\001-codex\\workspace",
+  "model": null
+}

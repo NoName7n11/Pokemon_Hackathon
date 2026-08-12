@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan_2 complete-pair matchup result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "stage",
+    "pair_a",
+    "pair_b",
+    "games_per_seat",
+    "games",
+    "a_wins",
+    "b_wins",
+    "draws",
+    "timeouts",
+    "engine_crashes",
+    "faults",
+    "orientations",
+    "decision_time"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "stage": { "const": "tournament" },
+    "pair_a": { "$ref": "#/$defs/pair" },
+    "pair_b": { "$ref": "#/$defs/pair" },
+    "games_per_seat": { "type": "integer", "minimum": 1 },
+    "games": { "type": "integer", "minimum": 2 },
+    "a_wins": { "type": "integer", "minimum": 0 },
+    "b_wins": { "type": "integer", "minimum": 0 },
+    "draws": { "type": "integer", "minimum": 0 },
+    "timeouts": { "type": "integer", "minimum": 0 },
+    "engine_crashes": { "type": "integer", "minimum": 0 },
+    "faults": { "type": "object" },
+    "orientations": { "type": "object" },
+    "decision_time": { "type": "object" }
+  },
+  "$defs": {
+    "pair": {
+      "type": "object",
+      "required": ["name", "version", "agent", "deck"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "agent": { "type": "string", "minLength": 1 },
+        "deck": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

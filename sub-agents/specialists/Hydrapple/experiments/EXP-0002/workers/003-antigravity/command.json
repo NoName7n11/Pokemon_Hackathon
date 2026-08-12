@@ -1,0 +1,19 @@
+{
+  "provider": "antigravity",
+  "backend": "gemini-cli",
+  "executable": "C:\\Users\\novan\\AppData\\Roaming\\npm\\gemini.CMD",
+  "args": [
+    "C:\\Users\\novan\\AppData\\Roaming\\npm\\gemini.CMD",
+    "--prompt",
+    "",
+    "--output-format",
+    "json",
+    "--approval-mode",
+    "auto_edit",
+    "--sandbox",
+    "--skip-trust",
+    "<PROMPT via stdin>"
+  ],
+  "cwd": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0002\\workers\\003-antigravity\\workspace",
+  "model": null
+}

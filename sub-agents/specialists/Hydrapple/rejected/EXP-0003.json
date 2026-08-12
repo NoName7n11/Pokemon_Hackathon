@@ -1,0 +1,156 @@
+{
+  "id": "EXP-0003",
+  "specialist": "Hydrapple",
+  "created_at": "2026-08-12T18:01:53.784731+00:00",
+  "updated_at": "2026-08-12T18:05:05.650737+00:00",
+  "worker": "local-fixture",
+  "hypothesis": "Verify the Phase 4 successful orchestration and human-review path using a local no-op fixture without external source transmission",
+  "expected_effect": "Smoke and screening should complete and generate a review pack while accepted files remain unchanged",
+  "mechanisms": [
+    "local_orchestration_fixture"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0003/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "Hydrapple",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "20260814",
+    "games": 20,
+    "wins": 9,
+    "losses": 11,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 142.75,
+    "average_decision_time_ms": 6.474055478437261,
+    "max_decision_time_ms": 79.23599996138364,
+    "win_rate": 0.45,
+    "confidence_interval": [
+      0.25819502085709295,
+      0.6579179916924003
+    ],
+    "z_score": -0.44721359549995787,
+    "p_value": 0.6547208460185772,
+    "started_at": "2026-08-12T18:02:16.950601+00:00",
+    "finished_at": "2026-08-12T18:02:37.134427+00:00",
+    "duration_seconds": 20.19053259998327,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "Hydrapple",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "20260815",
+    "games": 100,
+    "wins": 54,
+    "losses": 46,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 124.49,
+    "average_decision_time_ms": 7.930304097160297,
+    "max_decision_time_ms": 183.38719999883324,
+    "win_rate": 0.54,
+    "confidence_interval": [
+      0.44264685393523856,
+      0.6343935614666815
+    ],
+    "z_score": 0.8000000000000007,
+    "p_value": 0.42371079716679305,
+    "started_at": "2026-08-12T18:02:37.534528+00:00",
+    "finished_at": "2026-08-12T18:04:23.317434+00:00",
+    "duration_seconds": 105.78771489998326,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 20260814,
+      "started_at": "2026-08-12T18:02:16.801435+00:00",
+      "finished_at": "2026-08-12T18:02:37.168238+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 100,
+      "seed": 20260815,
+      "started_at": "2026-08-12T18:02:37.384725+00:00",
+      "finished_at": "2026-08-12T18:04:23.351705+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "local-fixture",
+      "backend": "local-noop-fixture",
+      "model": null,
+      "started_at": "2026-08-12T18:00:00+00:00",
+      "finished_at": "2026-08-12T18:00:00+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": null,
+      "fixture": true
+    }
+  ],
+  "orchestration": {
+    "state": "REVIEW_REQUIRED",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T18:02:16.606454+00:00",
+    "updated_at": "2026-08-12T18:04:23.467451+00:00",
+    "review_pack": "human-review/pending/Hydrapple-EXP-0003.md"
+  },
+  "reviews": [
+    {
+      "stage": "screening",
+      "status": "rejected",
+      "created_at": "2026-08-12T18:04:23.417272+00:00",
+      "json": "human-review/rejected/Hydrapple-EXP-0003.json",
+      "markdown": "human-review/rejected/Hydrapple-EXP-0003.md",
+      "reviewed_at": "2026-08-12T18:05:05.450528+00:00",
+      "reason": "Local no-op fixture changed only a comment; 54/100 at screening (p=0.424) is expected noise and provides no gameplay mechanism to advance."
+    }
+  ],
+  "review_history": [
+    {
+      "stage": "screening",
+      "decision": "rejected",
+      "reason": "Local no-op fixture changed only a comment; 54/100 at screening (p=0.424) is expected noise and provides no gameplay mechanism to advance.",
+      "at": "2026-08-12T18:05:05.487548+00:00"
+    }
+  ],
+  "decision": "rejected",
+  "reason": "human review rejection: Local no-op fixture changed only a comment; 54/100 at screening (p=0.424) is expected noise and provides no gameplay mechanism to advance.",
+  "limitations": []
+}

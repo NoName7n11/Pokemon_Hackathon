@@ -1,0 +1,2703 @@
+2026-08-12T18:50:03.962115Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-08-12T18:50:03.962149Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-08-12T18:50:03.963049Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///C:/Users/novan/.codex/plugins/cache/openai-primary-runtime/template-creator/26.805.11740/.codex-plugin/plugin.json
+2026-08-12T18:50:03.965910Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///C:/Users/novan/.codex/plugins/cache/openai-primary-runtime/template-creator/26.805.11740/.codex-plugin/plugin.json
+2026-08-12T18:50:03.971319Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell
+2026-08-12T18:50:04.469714Z  WARN codex_core_skills::loader: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-08-12T18:50:04.469763Z  WARN codex_core_skills::loader: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-08-12T18:50:04.481063Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///C:/Users/novan/.codex/plugins/cache/openai-primary-runtime/template-creator/26.805.11740/.codex-plugin/plugin.json
+2026-08-12T18:50:04.483514Z  WARN codex_core_plugins::manifest: ignoring interface.defaultPrompt: maximum of 3 prompts is supported path=file:///C:/Users/novan/.codex/plugins/cache/openai-primary-runtime/template-creator/26.805.11740/.codex-plugin/plugin.json
+OpenAI Codex v0.147.0-alpha.6.5
+--------
+workdir: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+model: gpt-5.5
+provider: openai
+approval: on-request
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019ff74f-66b6-7ef0-abc7-a5800474e28c
+--------
+user
+You are the codex development worker for the private Plan_2 specialist Hydrapple.
+
+This is a disposable, isolated workspace. Read `context/AGENT_CONTRACT.md`,
+`context/EXPERIMENT.json`, `context/SPECIALIST_CONFIG.json`,
+`context/SPECIALIST_PROGRESS.md`, `context/POKEMON_RULES.md`, the current
+`main.py`, and `context/baseline/main.py` before editing.
+
+Experiment hypothesis:
+When choosing a normal Energy attachment, prefer an in-play Pokemon when that single attachment makes one of its attacks usable this turn; preserve Active preference and existing strength ordering as tie-breakers.
+
+Expected effect:
+Reduce wasted attachments that leave all attackers unusable without broadly switching to bench-first attachment.
+
+Mechanism under test:
+attack_readiness_attachment
+
+Implement the smallest coherent change in the root `main.py` that tests this
+hypothesis. Do not modify `deck.csv`, any file under `context/`, or create
+additional project files. Do not run benchmarks and do not access parent
+directories, the active submission, other specialists, the network, or external
+services. The controller performs validation and games after your process exits.
+
+Keep Kaggle compatibility: `main.py` must remain self-contained, define
+`agent(obs_dict)` and `read_deck_csv()`, and must not add dependencies unavailable
+to the competition environment. Finish with a concise description of the exact
+behavior changed and any concern the human reviewer should inspect.
+
+warning: Skill descriptions were shortened to fit the skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+codex
+Iâ€™ll first read the required contract and the current/baseline implementations, then make the smallest scoped edit in `main.py` only. After that Iâ€™ll do a local syntax/import-level check without running benchmarks.
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/AGENT_CONTRACT.md' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/EXPERIMENT.json' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/SPECIALIST_PROGRESS.md' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/SPECIALIST_CONFIG.json' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+2026-08-12T18:50:17.898960Z ERROR codex_core::exec: exec error: windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace | cmd="C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\pwsh.exe" -NoProfile -Command "try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+Get-Content -Raw context/EXPERIMENT.json" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)
+2026-08-12T18:50:17.899203Z ERROR codex_core::tools::router: error=execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/EXPERIMENT.json\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+ exited -1 in 0ms:
+execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/EXPERIMENT.json\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+2026-08-12T18:50:17.916881Z ERROR codex_core::exec: exec error: windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace | cmd="C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\pwsh.exe" -NoProfile -Command "try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+Get-Content -Raw context/SPECIALIST_PROGRESS.md" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)
+2026-08-12T18:50:17.917063Z ERROR codex_core::tools::router: error=execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/SPECIALIST_PROGRESS.md\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+ exited -1 in 0ms:
+execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/SPECIALIST_PROGRESS.md\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+2026-08-12T18:50:17.931647Z ERROR codex_core::exec: exec error: windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace | cmd="C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\pwsh.exe" -NoProfile -Command "try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+Get-Content -Raw context/SPECIALIST_CONFIG.json" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)
+2026-08-12T18:50:17.931816Z ERROR codex_core::tools::router: error=execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/SPECIALIST_CONFIG.json\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+ exited -1 in 0ms:
+execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/SPECIALIST_CONFIG.json\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+2026-08-12T18:50:17.945863Z ERROR codex_core::exec: exec error: windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace | cmd="C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\pwsh.exe" -NoProfile -Command "try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+Get-Content -Raw context/AGENT_CONTRACT.md" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)
+2026-08-12T18:50:17.946054Z ERROR codex_core::tools::router: error=execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/AGENT_CONTRACT.md\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+ exited -1 in 0ms:
+execution error: Io(Custom { kind: Other, error: "windows sandbox: runner failed during SpawnChild: CreateProcessAsUserW failed: 5 (Access is denied.) | cwd=C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\experiments\\EXP-0006\\workers\\001-codex\\workspace | cmd=\"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe\" -NoProfile -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nGet-Content -Raw context/AGENT_CONTRACT.md\" | env_u16_len=5788 | si_flags=256 | creation_flags=525312 (Windows error 5)" })
+codex
+The sandbox is blocking PowerShell startup itself with Windows error 5, so Iâ€™m retrying the same read commands outside the sandbox as required. This is read-only and still scoped to the workspace files the task named.
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/AGENT_CONTRACT.md' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/EXPERIMENT.json' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/SPECIALIST_PROGRESS.md' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/SPECIALIST_CONFIG.json' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+2026-08-12T18:50:34.799637Z  WARN codex_core::guardian::review_session: failed to refresh guardian trunk rollout snapshot: Session persistence is disabled; cannot guardian review fork.
+ succeeded in 369ms:
+# Development Agent Contract
+
+## Purpose
+
+A development agent improves one private deck-agent pair through bounded,
+measurable experiments. It is not the battle-time agent and has no authority to
+change or promote the active submission.
+
+## File Ownership
+
+The worker may write only inside its assigned directory under
+`sub-agents/specialists/`. It must never modify:
+
+- `sample_submission/sample_submission/main.py`
+- `sample_submission/sample_submission/deck.csv`
+- another specialist directory
+- shared benchmark policy, schemas, or tournament results
+- the root `PROGRESS.md`
+
+Shared files may be read for context. Changes to shared tooling require the
+Plan_2 coordinator.
+
+## Experiment Rules
+
+1. Begin from the current accepted private `main.py`.
+2. State one concrete gameplay weakness and a falsifiable hypothesis.
+3. Prefer one strategic mechanism per experiment.
+4. Snapshot the accepted implementation before editing.
+5. Keep a syntactically valid, self-contained battle agent.
+6. Run configured validation and benchmark stages.
+7. Record sample sizes, seeds, failures, confidence intervals, and comparison
+   tests. Do not report only the favorable summary statistic.
+8. Run ablations before attributing a bundled gain to one mechanism.
+9. Check at least the configured cross-deck opponents before accepting a gain.
+10. Record rejected experiments; do not silently erase negative evidence.
+11. Stop when the configured experiment or runtime budget is reached.
+
+## Human Review Gates
+
+- `AUTOMATIC`: static checks, smoke games, benchmarks, trace extraction, and
+  report generation may run automatically.
+- `REVIEW_REQUIRED`: strategic behavior changed materially or evidence is
+  ambiguous. The worker pauses before accepting the candidate.
+- `PROMOTION_REQUIRED`: entering the final promotion process always requires
+  explicit human approval.
+
+## Acceptance Standard
+
+An accepted experiment must:
+
+- pass syntax, import, action-validity, timeout, and crash checks available in
+  the configured environment;
+- show a practically meaningful result under the shared benchmark policy;
+- use the configured statistical comparison rather than CI-overlap eyeballing;
+- avoid an unacceptable cross-deck or runtime regression; and
+- include enough evidence for another worker to reproduce the result.
+
+No specialist can declare itself the overall winner. Only the central,
+seat-balanced tournament can rank deck-agent pairs for promotion.
+
+## Coding-Provider Boundary
+
+Codex, Claude Code, and Antigravity/Gemini are invoked only through the shared
+worker controller. The provider receives a disposable copy of the active
+experiment candidate and copied context. It may change only the root `main.py`.
+It must not run benchmarks, modify the deck, edit context, access parent
+directories, or promote a candidate. The controller imports the output only
+after checking the provider exit, timeout, changed-file boundary, deck validity,
+and Python interface. Provider output is evidence for an experiment, not an
+acceptance decision.
+
+
+ succeeded in 324ms:
+{
+  "id": "EXP-0006",
+  "specialist": "Hydrapple",
+  "created_at": "2026-08-12T18:50:03.108895+00:00",
+  "updated_at": "2026-08-12T18:50:03.161056+00:00",
+  "worker": "codex",
+  "hypothesis": "When choosing a normal Energy attachment, prefer an in-play Pokemon when that single attachment makes one of its attacks usable this turn; preserve Active preference and existing strength ordering as tie-breakers.",
+  "expected_effect": "Reduce wasted attachments that leave all attackers unusable without broadly switching to bench-first attachment.",
+  "mechanisms": [
+    "attack_readiness_attachment"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0006/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T18:50:03.161056+00:00",
+    "updated_at": "2026-08-12T18:50:03.161056+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}
+
+
+ succeeded in 346ms:
+{
+  "schema_version": 1,
+  "name": "Hydrapple",
+  "provider": "codex",
+  "worker_profile": null,
+  "deck_file": "deck.csv",
+  "agent_file": "main.py",
+  "source_deck": "Decs/Hydrapple.csv",
+  "source_baseline": "sub-agents/shared/baseline/main.py",
+  "experiment_budget": {
+    "max_experiments_per_run": 3,
+    "max_runtime_minutes": 180
+  },
+  "benchmark_policy": "../../shared/benchmark_config.json",
+  "provider_policy": "../../shared/provider_config.json",
+  "orchestration_policy": "../../shared/orchestration_config.json",
+  "cross_deck_opponents": [],
+  "human_review": {
+    "strategic_change": "REVIEW_REQUIRED",
+    "promotion": "PROMOTION_REQUIRED"
+  },
+  "allowed_writes": [
+    "."
+  ],
+  "forbidden_writes": [
+    "../../../sample_submission/sample_submission/main.py",
+    "../../../sample_submission/sample_submission/deck.csv",
+    "../*",
+    "../../*"
+  ],
+  "strategy_notes": []
+}
+
+
+ succeeded in 352ms:
+# Hydrapple Specialist Progress
+
+Append-only experiment log for this private Plan_2 specialist. This directory is
+not the active submission.
+
+---
+
+## 2026-08-12
+
+- **Specialist initialized**:
+  - Worker provider: `codex`.
+  - Source deck: `Decs/Hydrapple.csv`.
+  - Agent baseline: `sub-agents/shared/baseline/main.py`.
+  - Static deck and Python-interface validation passed.
+  - Runtime import and gameplay benchmarks remain pending in an environment with
+    the competition `cg` engine.
+  - **Reason:** establish an isolated, reproducible deck-agent workspace before
+    any automated strategic experiments begin.
+
+## 2026-08-12 â€” EXP-0001
+
+- **REJECTED: Verify the bounded experiment lifecycle with an unchanged candidate**
+  - Mechanisms: infrastructure_smoke.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 1.
+  - Decision reason: Infrastructure-only unchanged candidate; the 2-game seat-balanced smoke run passed 1-1 with zero crashes, illegal actions, draws, or timeouts, but contains no strategic improvement to accept.
+
+## 2026-08-12 â€” EXP-0002
+
+- **REJECTED: Verify all configured provider adapters create isolated, bounded worker invocations without calling a model**
+  - Mechanisms: provider_orchestration.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 0.
+  - Decision reason: Provider-adapter infrastructure dry run only: Codex, Claude Code, and the configured Antigravity/Gemini backend resolved and received isolated equivalent workspaces; no model was invoked and no candidate strategy changed.
+
+## 2026-08-12 â€” EXP-0003
+
+- **REJECTED: Verify the Phase 4 successful orchestration and human-review path using a local no-op fixture without external source transmission**
+  - Mechanisms: local_orchestration_fixture.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 2.
+  - Decision reason: human review rejection: Local no-op fixture changed only a comment; 54/100 at screening (p=0.424) is expected noise and provides no gameplay mechanism to advance.
+
+## 2026-08-12 â€” EXP-0004
+
+- **REJECTED: When choosing a normal Energy attachment, prefer an in-play Pokemon when that single attachment makes one of its attacks usable this turn; preserve Active preference and existing strength ordering as tie-breakers.**
+  - Mechanisms: attack_readiness_attachment.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 0.
+  - Decision reason: automatic rejection: provider stage failed with exit 1
+
+## 2026-08-12 â€” EXP-0005
+
+- **REJECTED: Verify the Codex nested Windows command runner with automatic approval review before retrying a strategic worker edit**
+  - Mechanisms: codex_windows_spawn_probe.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 0.
+  - Decision reason: Codex Windows spawn-policy probe only; validated one harmless comment edit and made no gameplay change.
+
+
+codex
+The contract confirms Iâ€™m only allowed to edit the root `main.py`; benchmarks and context edits are off limits. EXP-0004 previously failed at provider stage, so Iâ€™m keeping this implementation narrow and checking syntax before finishing.
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/POKEMON_RULES.md' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw main.py' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Get-Content -Raw context/baseline/main.py' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+2026-08-12T18:50:51.907215Z  WARN codex_core::guardian::review_session: failed to refresh guardian trunk rollout snapshot: Session persistence is disabled; cannot guardian review fork.
+ succeeded in 347ms:
+# PokÃ©mon Trading Card Game â€” Rules Reference
+
+> Source: `par_rulebook_en.pdf` (Scarlet & Violet â€” Paradox Rift edition, official TPCI rulebook).
+> Compiled as ML/agent context for the Kaggle **PokÃ©mon TCG AI Battle Challenge** (cabt simulator).
+> **Note:** For the competition, **simulator behavior is the ground truth** where it differs from these
+> official rules â€” see `## Simulator Deviations` at the end and the cabt engine docs.
+
+---
+
+## 1. Win Conditions
+
+You win the game in any of **3 ways**:
+
+1. **Take all your Prize cards** (you start with 6; first to take the last one wins).
+2. **Knock Out all opponent PokÃ©mon in play** (opponent has no PokÃ©mon left to promote to Active).
+3. **Deck-out opponent**: opponent has no cards to draw at the *beginning* of their turn.
+
+**Simultaneous win** â†’ play **Sudden Death** (see Â§10). If you win in both ways and opponent wins in only
+one, you are the victor outright.
+
+---
+
+## 2. Energy Types (11 total)
+
+| Type | Symbol notes |
+|------|--------------|
+| Grass | often heals / poisons |
+| Fire | big attacks, need recharge (discard energy) |
+| Water | energy manipulation, repositioning |
+| Lightning | recover energy from discard, paralyze |
+| Psychic | special effects; sleep/confuse/poison |
+| Fighting | risk/reward, coin-flip combos |
+| Darkness | discard effects, poison |
+| Metal | resistance-heavy, durable |
+| Dragon | strong attacks, usually need 2 energy types |
+| Fairy | exists only in older sets (SV uses Psychic instead) |
+| Colorless (`âœ·`) | versatile; **any** energy type pays a `âœ·` cost |
+
+**Key rule:** attack costs must be matched by attached Energy. A `âœ·` (Colorless) symbol in a cost can be
+paid by **any** energy type. A typed symbol (e.g. Water) must be paid by that type. Cost of 0 = attack
+needs no energy.
+
+---
+
+## 3. Card Types
+
+### PokÃ©mon
+- **Basic** â€” playable directly from hand.
+- **Stage 1 / Stage 2** â€” Evolution cards; play on top of the named lower stage ("Evolves from X").
+- Evolution order: Basic â†’ Stage 1 â†’ Stage 2.
+
+### Energy
+- **Basic Energy** (Grass/Fire/Water/Lightning/Psychic/Fighting/Darkness/Metal/Fairy) â€” unlimited copies allowed in deck.
+- **Special Energy** â€” deckbuild-limited to 4 like normal cards.
+
+### Trainer (subtypes)
+- **Item** â€” play any number per turn.
+- **Supporter** â€” only **one per turn**; first player **cannot** play a Supporter on their first turn.
+- **Stadium** â€” see Â§6.
+- **PokÃ©mon Tool** â€” attach to a PokÃ©mon; **max 1 Tool per PokÃ©mon**.
+
+---
+
+## 4. Board Zones
+
+| Zone | Description |
+|------|-------------|
+| **Active Spot** | Exactly 1 Active PokÃ©mon; only the Active can attack. Losing your last in-play PokÃ©mon = loss. |
+| **Bench** | Up to **5** PokÃ©mon. Any non-Active in-play PokÃ©mon must be here. |
+| **Hand** | Starts at 7 cards; hidden from opponent. |
+| **Deck** | 60 cards; order hidden unless a card says otherwise. |
+| **Prize Cards** | 6 face-down, set aside during setup. Take 1 into hand per opponent KO. |
+| **Discard Pile** | Face-up, public. KO'd PokÃ©mon + attached cards go here (unless card says otherwise). |
+| **Lost Zone** | Out of play permanently; cards sent here **cannot** be recovered (see Â§11 appendices). |
+
+---
+
+## 5. Setup Sequence
+
+1. Coin flip â†’ winner decides who goes first.
+2. Each player shuffles 60-card deck, draws 7.
+3. Must place **1 Basic PokÃ©mon** face-down as Active.
+4. May place up to 5 more Basic PokÃ©mon face-down on Bench.
+5. Set top 6 cards aside face-down as Prizes.
+6. Reveal (flip up) Active + Bench, begin.
+
+**Mulligan (no Basic in opening hand):** see Â§10 for full timing. Short version: reveal hand, shuffle
+back, redraw 7, repeat until you have a Basic. Opponent may draw 1 extra card per extra mulligan you took.
+
+---
+
+## 6. Turn Structure
+
+Each turn = **3 parts**:
+
+### 1) Draw a card
+- If deck empty at start of turn and you cannot draw â†’ you **lose**.
+
+### 2) Actions (any order, any number unless noted)
+- **A. Play Basic PokÃ©mon** to Bench (as many as you want, up to bench cap 5).
+- **B. Evolve** PokÃ©mon (as many as you want).
+- **C. Attach Energy** from hand â€” **once per turn**.
+- **D. Play Trainer cards** â€” Items unlimited; **1 Supporter/turn**; **1 Stadium/turn**.
+- **E. Retreat** Active â€” **once per turn**.
+- **F. Use Abilities** â€” as many as available (Abilities are **not** attacks).
+
+### 3) Attack, then end turn
+- Attacking **ends your turn** â€” do all step-2 actions first.
+- **First player's very first turn: skip the attack step** (turn ends after other actions).
+
+### 4) PokÃ©mon Checkup (between-turns step)
+Resolve **in this order**:
+1. **Poisoned** â†’ place 1 damage counter (10 dmg).
+2. **Burned** â†’ place 2 damage counters (20 dmg), then flip coin; heads = recover.
+3. **Asleep** â†’ flip coin; heads = wake up (recover), tails = stays asleep.
+4. **Paralyzed** â†’ recovers after its owner's next turn (during that checkup).
+
+Apply any "during PokÃ©mon Checkup / between turns" card effects here too. You may order
+Special-Conditions vs other effects either way, **but cannot interleave** them. After checkups, any
+PokÃ©mon at 0 HP is Knocked Out.
+
+---
+
+## 7. Evolution Rules
+
+- Play Evolution card on top of the named lower-stage PokÃ©mon ("Evolves from X").
+- Evolving **keeps**: attached cards (Energy, Tools), damage counters.
+- Evolving **clears**: Special Conditions, and any attack effects on that PokÃ©mon.
+- **Cannot evolve** a PokÃ©mon on the turn it was played (new in play).
+- Neither player may evolve on their **first turn** of the game.
+- Can evolve Active **or** Benched PokÃ©mon.
+- Evolved PokÃ©mon **cannot** use the attacks/Abilities of its previous stage unless a card says so.
+- "Evolves from" name must match **exactly**, including owner/form prefixes (e.g. Paldean Wooper â‰  Wooper).
+
+---
+
+## 8. Attacking (full detail)
+
+**Step order for a complex attack:**
+1. Choose attack; confirm correct Energy attached; announce it.
+2. Apply effects that alter/cancel the attack (from prior turns). Effects referencing "this PokÃ©mon"
+   go away if the Active changed (e.g. moved to Bench).
+3. If Active is **Confused**, flip coin now: tails = attack fails + 3 damage counters (30) to self.
+4. Make required choices (e.g. "choose 1 Benched PokÃ©mon").
+5. Do required actions (coin flips, etc.).
+6. Apply pre-damage effects â†’ place damage counters â†’ apply post-damage effects.
+
+**Damage calculation order (when modifiers stack):**
+1. Start with **base damage** printed. (If attack only says "put N damage counters," skip Weakness/
+   Resistance/modifiers entirely â€” just place those counters.)
+2. Add attacker-side damage boosts (before Weakness/Resistance).
+3. Apply **Weakness** (Ã— multiplier, usually Ã—2) if defender is weak to attacker's type â€” **increases**.
+4. Apply **Resistance** (usually âˆ’30) if defender resists attacker's type â€” **decreases**.
+5. Apply defender-side reductions (e.g. "takes 20 less damage after W&R").
+6. Place 1 damage counter per 10 final damage. 0 or less â†’ no counters.
+
+**Weakness & Resistance apply to the ACTIVE (defending) PokÃ©mon only â€” never Bench.**
+
+**Knock Out:** damage â‰¥ HP â†’ KO. KO'd PokÃ©mon + all attached cards â†’ discard. Opponent takes Prize card(s)
+(1 normally; 2 or 3 for rule-box PokÃ©mon â€” see appendices). KO'd player promotes a new Active from Bench.
+
+**What counts as an attack:** anything with a cost + name in the attack area â€” **even if 0 damage**
+(e.g. "Call for Family"). **Abilities are NOT attacks.** Cards that block attacks don't block Abilities,
+and vice-versa.
+
+---
+
+## 9. Special Conditions
+
+Only affect the **Active** PokÃ©mon. **Cleared** when the PokÃ©mon goes to Bench (retreat/switch) or evolves.
+
+| Condition | Card orientation | Effect |
+|-----------|-----------------|--------|
+| **Asleep** | rotate counterclockwise | can't attack/retreat; checkup coin flip heads = wake |
+| **Burned** | marker | checkup: 2 dmg counters + coin, heads = recover |
+| **Confused** | rotate 180Â° (toward you) | must flip before attacking; tails = attack fails + 3 counters self |
+| **Paralyzed** | rotate clockwise | can't attack/retreat; recovers after owner's next turn |
+| **Poisoned** | marker | checkup: 1 dmg counter (or more if card specifies) |
+
+- Asleep / Confused / Paralyzed all rotate the card â†’ only **one** applies at a time (last one wins).
+- Poisoned + Burned use **markers** â†’ stack independently; a PokÃ©mon can be Burned + Paralyzed + Poisoned simultaneously.
+- Only **Asleep** and **Paralyzed** prevent **retreating**.
+
+---
+
+## 10. Advanced / Edge-Case Rules
+
+### Mulligan (full)
+- Both players no Basic â†’ both reveal, reshuffle, restart normally.
+- Only one player no Basic:
+  1. Announce mulligan, wait for opponent to finish setup.
+  2. Reveal hand, shuffle back, redraw 7; repeat until a Basic appears.
+  3. Opponent (who didn't mulligan) may draw up to 1 extra card **per extra mulligan** taken; Basics among them may be benched.
+  4. Reveal Active + Bench, begin.
+
+### "up to" vs "any amount"
+- **"up to X"** â†’ choose any number 0..X (exception: "draw up to X cards" also allows 0).
+- **"any amount" / "any number"** â†’ may choose 0.
+- **"you may ..."** â†’ optional, may decline.
+
+### Draw/look more than you have
+- Draw/look at as many as exist, continue. You lose only if you **cannot draw at start of turn** â€” not if a
+  card effect tells you to draw and there aren't enough.
+
+### Sudden Death (tie-break)
+- New game, each player uses **1 Prize** instead of 6. Coin flip for first, set up normally. Winner = overall winner. Repeat if it ties again.
+
+### PokÃ©mon name rules (deck-building identity)
+- **Level / `SP`-style symbols / Team Plasma / TAG TEAM / Battle Style labels** â†’ NOT part of name.
+- **Suffix symbols** (`ex`, `EX`, `GX`, `V`, `VMAX`, `VSTAR`, `V-UNION`, `M`/Mega, `BREAK`, Alakazam â˜†) â†’ ARE part of name (different names â†’ 4 of each allowed).
+- **Î´ (Delta Species)** â†’ NOT part of name.
+- **Owner/form prefixes** (Alolan, Galarian, Paldean, Hisuian, Brock's, Rocket's) â†’ ARE part of name.
+- Deck limit: **max 4 copies** of any one name (except Basic Energy = unlimited).
+
+---
+
+## 11. Deck-Building Rules
+
+- Deck must be **exactly 60 cards**.
+- **Max 4** of any card by name (Basic Energy exempt â€” unlimited).
+- Must contain **at least 1 Basic PokÃ©mon**.
+- **ACE SPEC** Trainer: max **1 total** ACE SPEC card in the whole deck.
+- **Prism Star (`â—‡`)**: max 1 per name, but different-named Prism Stars allowed; go to Lost Zone instead of discard.
+- **Radiant PokÃ©mon**: max **1 Radiant** total in deck; always Basic; never evolve.
+- **PokÃ©mon V-UNION**: 4 pieces = 1 deck slot's worth (4 total cards, one of each piece, same set/artist).
+
+**Starter guidelines:** 1â€“2 energy types; 12â€“15 Energy; ~20â€“25 Trainers; rest PokÃ©mon (4-of key lines).
+
+---
+
+## 12. Card-Category Appendices (rule boxes & prize penalties)
+
+PokÃ©mon with **Rule Boxes** give extra Prize cards when KO'd. Summary of Prize-on-KO:
+
+| Category | Prizes on KO | Notes |
+|----------|:---:|-------|
+| Regular PokÃ©mon | 1 | â€” |
+| **PokÃ©mon ex** | 2 | `ex` part of name; Basic/Stage vary per card |
+| **Tera PokÃ©mon ex** | 2 | **No attack damage while on Bench** (all attacks, both players) |
+| **PokÃ©mon-EX** | 2 | older; `EX` â‰  `ex` (different names) |
+| **Mega Evolution / Primal Reversion** | 2 | evolving into Mega **ends your turn** |
+| **PokÃ©mon-GX** | 2 | one **GX attack per game**; can be Basic/Stage |
+| **TAG TEAM (GX)** | 3 | Basic GX with 2+ PokÃ©mon; GX attack w/ bonus |
+| **PokÃ©mon V** | 2 | powerful Basic |
+| **PokÃ©mon VSTAR** | 2 | evolves from V; one **VSTAR Power per game** |
+| **PokÃ©mon VMAX** | 3 | evolves from V; 300+ HP |
+| **PokÃ©mon V-UNION** | 3 | assemble 4 pieces from discard onto Bench |
+
+**Other appendix notes:**
+- **Ancient / Future** (Paradox) â€” flavor label, hard-hitting vs technical.
+- **Battle Styles** (Single/Rapid/Fusion Strike) â€” flavor + synergy tags.
+- **Ancient Traits** (`Î© Barrier`, `Î© Recovery`, etc.) â€” special powers under the name; NOT attacks/Abilities â†’ can't be shut off by attack/Ability lockdown.
+- **Team Flare Hyper Gear** â€” Tools attached to *opponent's* PokÃ©mon-EX; return to original player's discard when removed.
+- **Ultra Beasts** â€” GX with crimson coloring; all have Prize-related attacks.
+- **Dual-Type PokÃ©mon** â€” two types at once; apply Weakness **then** Resistance if both relevant.
+- **BREAK Evolution** â€” keeps prev-stage attacks/Abilities/W/R/retreat, gains more; new stage "BREAK."
+- **Regional Variants** â€” Alolan/Galarian/Paldean/Hisuian in the name; evolution must match the variant.
+- **Prism Star / ACE SPEC** â€” see Â§11 limits.
+- **Rare Fossil / Unidentified Fossil** â€” Item cards playable **as Basic PokÃ©mon**; evolve into Fossil PokÃ©mon.
+- **Restored PokÃ©mon** â€” special stage; only enter play via the matching Fossil Item's effect; NOT Basic, NOT Evolution; still need a real Basic in deck.
+
+---
+
+## 13. Retreat (detail)
+
+- Discard Energy from Active equal to its **Retreat Cost** (`âœ·` count, lower-right of card). 0 cost = free.
+- Switch retreating Active with a Benched PokÃ©mon; keep all counters + attached cards.
+- **Once per turn.** Asleep/Paralyzed **cannot** retreat.
+- Going to Bench (retreat or otherwise) clears Special Conditions + attack effects.
+- You **may still attack** the same turn with the new Active.
+
+---
+
+## 14. Glossary (key terms)
+
+- **Ability** â€” non-attack effect on a PokÃ©mon; some are always-on, some activated. Read each.
+- **Active PokÃ©mon** â€” the one non-Bench PokÃ©mon; only it can attack.
+- **attach** â€” take a card from hand, put on an in-play PokÃ©mon.
+- **between-turns step / PokÃ©mon Checkup** â€” resolves Special Conditions + timed effects.
+- **damage counter** â€” standard = 10 damage.
+- **Defending PokÃ©mon** â€” the PokÃ©mon receiving an attack.
+- **devolve** â€” remove top Evolution card; loses Special Conditions + effects (opposite of evolve).
+- **KO (Knocked Out)** â€” damage â‰¥ HP; PokÃ©mon + attachments â†’ discard; opponent takes Prize(s).
+- **PokÃ©mon Tool** â€” Item-like Trainer attached to a PokÃ©mon; max 1 per PokÃ©mon.
+- **Rule Box** â€” box on rule-box PokÃ©mon (ex/V/GX/etc.) â†’ extra prizes + Stadium-based Ability lock affects them.
+- **Stadium** â€” persistent Trainer; 1 in play at a time; new one discards old; can't replay same-named; 1/turn.
+- **Weakness** â€” extra damage from a type (Ã— multiplier). **Resistance** â€” less damage (âˆ’N). Active only.
+
+---
+
+## 15. Simulator Deviations (cabt engine â€” COMPETITION GROUND TRUTH)
+
+Where the cabt simulator differs from the official rules above, **the simulator wins**. Known differences
+(from competition discussion #708586):
+
+1. **Unresolvable attacks are unselectable upfront** (vs official "declare then fail"): e.g. bench-fill
+   attack with full bench, draw attack with empty deck, hand-interaction attack when opponent has 0 cards.
+2. **Mega Zygarde ex "Nullifying Zero"**: damage target order not choosable; coins auto-flip leftâ†’right.
+3. **Simultaneous-KO prize order**: sim = next-player picks+takes, then opponent picks+takes (official
+   interleaves). Both-take-all still resolves as a **draw**.
+4. **"Moved from Bench to Active this turn"** checks refer to the PokÃ©mon's **current form**, not its
+   pre-evolution (e.g. Bunearyâ†’Mega Lopunny ex same turn does NOT count as Mega Lopunny moving).
+5. **Bench "cleans" all effects** â€” retreat + re-promote resets next-turn attack locks (e.g. Mega Brave).
+6. **Ability vs Skill (engine OptionType)**: `ABILITY` = agent-selected activated action; `SKILL`/
+   continuous effects auto-apply (no per-turn selection, e.g. weakness auras).
+7. **Setup bench is optional**: when `select.context == SETUP_BENCH_POKEMON` and `minCount == 0`, return
+   `[]` to skip benching (no explicit "end turn" option appears).
+
+See the cabt engine API docs (`api.py` / `game.py`) for the observation/action data model.
+
+
+ succeeded in 343ms:
+from pathlib import Path
+
+from cg.api import (
+    AreaType,
+    CardType,
+    EnergyType,
+    Observation,
+    OptionType,
+    SelectContext,
+    SelectType,
+    all_attack,
+    all_card_data,
+    search_begin,
+    search_end,
+    search_step,
+    to_observation_class,
+)
+
+_CARD_DATA = None
+_ATTACK_DATA = None
+_MY_DECK = None
+
+# MAIN-phase 1-ply lookahead config.
+SEARCH_MAIN = True          # MAIN-phase 1-ply lookahead. MEASURED (Hydrapple deck,
+                            # vs frozen greedy): lookahead 64.6% [60.3-68.7] n=500 vs
+                            # greedy control 49.0% [43.4-54.6] n=300 => +15.6pts.
+                            # NOTE: the gain is from lookahead itself and is
+                            # DECK-DEPENDENT (it measured 45% on the old Water deck).
+                            # The _eval_state v2 terms are within noise -- see
+                            # eval_ablation.py and PROGRESS.md 2026-08-04.
+MAX_ROLLOUT_STEPS = 40      # cap greedy rollout length inside a forked turn
+WIN_SCORE = 1e9
+
+ABILITY_CAP_PER_TURN = 4    # see _ability_cap_reached: guards against unbounded Abilities
+_live_ability_count: dict = {}
+_last_seen_turn = -1
+
+
+def _card_data():
+    global _CARD_DATA
+    if _CARD_DATA is None:
+        _CARD_DATA = {c.cardId: c for c in all_card_data()}
+    return _CARD_DATA
+
+
+def _attack_data():
+    global _ATTACK_DATA
+    if _ATTACK_DATA is None:
+        _ATTACK_DATA = {a.attackId: a for a in all_attack()}
+    return _ATTACK_DATA
+
+
+def read_deck_csv() -> list[int]:
+    """Read deck.csv.
+
+    Returns:
+        list[int]: A list of card IDs in the deck.
+    """
+    # NOTE: Kaggle runs this file via exec() of its source, so `__file__` is NOT
+    # defined there (it crashed submissions #55335664/#55351154 with NameError).
+    # Resolve the sibling deck.csv only when __file__ exists; otherwise fall back
+    # to the documented Kaggle agent directory, then the CWD.
+    candidates = []
+    module_file = globals().get("__file__")
+    if module_file:
+        candidates.append(Path(module_file).with_name("deck.csv"))
+    candidates.append(Path("/kaggle_simulations/agent/deck.csv"))
+    candidates.append(Path("deck.csv"))
+    file_path = next((p for p in candidates if p.exists()), candidates[-1])
+    with open(file_path, "r", encoding="utf-8") as file:
+        rows = [line.strip() for line in file if line.strip()]
+    if len(rows) < 60:
+        raise ValueError(f"deck.csv must contain at least 60 card IDs, found {len(rows)}.")
+    return [int(card_id) for card_id in rows[:60]]
+
+
+def _group_by_type(options):
+    by_type = {}
+    for i, opt in enumerate(options):
+        by_type.setdefault(opt.type, []).append(i)
+    return by_type
+
+
+def _best_attack_index(options, indices):
+    """Index (into options) of the highest-damage attack among the given option indices."""
+    attacks = _attack_data()
+    best_i, best_dmg = indices[0], -1
+    for i in indices:
+        atk = attacks.get(options[i].attackId)
+        dmg = atk.damage if atk else 0
+        if dmg > best_dmg:
+            best_i, best_dmg = i, dmg
+    return best_i, best_dmg
+
+
+def _card_power(card_id):
+    cards = _card_data()
+    attacks = _attack_data()
+    card = cards.get(card_id)
+    if card is None:
+        return 0
+    best_damage = max((attacks[a].damage for a in card.attacks if a in attacks), default=0)
+    stage_bonus = 60 if card.stage2 else 30 if card.stage1 else 0
+    return card.hp + best_damage * 2 + stage_bonus
+
+
+def _option_card_power(opt):
+    return _card_power(opt.cardId) if opt.cardId is not None else 0
+
+
+def _best_card_option(options, indices, reverse=True):
+    return sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)[0]
+
+
+def _option_pokemon(opt, state):
+    if opt.playerIndex is None or opt.area is None or opt.index is None:
+        return None
+    if opt.playerIndex < 0 or opt.playerIndex >= len(state.players):
+        return None
+    player = state.players[opt.playerIndex]
+    if opt.area == AreaType.ACTIVE:
+        return player.active[0] if player.active and player.active[0] is not None else None
+    if opt.area == AreaType.BENCH and opt.index < len(player.bench):
+        return player.bench[opt.index]
+    return None
+
+
+def _target_score(opt, obs):
+    """Score a target using live board state first, static card data as fallback."""
+    state = obs.current
+    if state is None:
+        return _option_card_power(opt)
+
+    pokemon = _option_pokemon(opt, state)
+    if pokemon is None:
+        return _option_card_power(opt)
+
+    card = _card_data().get(pokemon.id)
+    prize_value = 3 if card and card.megaEx else 2 if card and card.ex else 1
+    damage_taken = max(0, pokemon.maxHp - pokemon.hp)
+    static_threat = _card_power(pokemon.id)
+
+    lethal_damage = None
+    sel = obs.select
+    assert sel is not None
+    if sel.context in (SelectContext.DAMAGE_COUNTER, SelectContext.DAMAGE_COUNTER_ANY):
+        lethal_damage = sel.remainDamageCounter * 10
+    lethal_bonus = 100000 * prize_value if lethal_damage is not None and pokemon.hp <= lethal_damage else 0
+    active_bonus = 5000 if opt.area == AreaType.ACTIVE else 0
+
+    if sel.context == SelectContext.DAMAGE:
+        near_ko_bonus = 6000 + (10 - pokemon.hp) * 200 if pokemon.hp <= 10 else 0
+        live_pressure = near_ko_bonus + damage_taken * 2
+    else:
+        live_pressure = damage_taken * 20 - pokemon.hp * 10
+    return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+
+
+def _best_attach_index(options, indices, me):
+    """Prefer powering the Active, then the strongest Bench target."""
+    best_i, best_score = indices[0], -1
+    for i in indices:
+        opt = options[i]
+        score = 0
+        if opt.inPlayArea == AreaType.ACTIVE:
+            target = me.active[0] if me.active else None
+            score = 10000 + (target.maxHp + target.hp if target else 0)
+        elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+            target = me.bench[opt.inPlayIndex]
+            score = target.maxHp + target.hp
+        if score > best_score:
+            best_i, best_score = i, score
+    return best_i
+
+
+def _best_play_index(options, indices, me):
+    """Rank playable Basic Pokemon by likely board value."""
+    cards = _card_data()
+    best_i, best_score = indices[0], -1
+    for i in indices:
+        card = cards.get(options[i].cardId)
+        score = 0
+        if card is not None and card.cardType == CardType.POKEMON:
+            if card.basic and len(me.bench) < me.benchMax:
+                score = 5000 + _card_power(card.cardId)
+            else:
+                score = -1
+        if score > best_score:
+            best_i, best_score = i, score
+    return best_i if best_score >= 0 else None
+
+
+def _live_attacker_score(mon, opp_active=None) -> int:
+    """Score an in-play Pokemon as an immediate Active attacker."""
+    if mon is None:
+        return -10**9
+    dmg = _best_usable_damage(mon)
+    lethal_bonus = 3000 if opp_active is not None and dmg >= opp_active.hp else 0
+    prize_penalty = 120 * _prize_value(mon)
+    return lethal_bonus + dmg * 20 + mon.hp + len(mon.energies) * 15 - prize_penalty
+
+
+def _ability_cap_reached(state) -> bool:
+    """Read-only: has this seat already used ABILITY the max allowed times on
+    the CURRENT real turn? Shared by the greedy ladder and the search
+    candidate list so a rollout preview sees the same constraint the live
+    game actually faces. Never increments -- see _record_ability_use, the
+    only writer, called once by _agent_impl on the actually-applied action.
+
+    Bug found 2026-08-11: some Abilities are legal to use "as often as you
+    like" during a turn (e.g. Mega Venusaur ex's Solar Transfer, Azumarill ex's
+    Bubble Gathering, Dewgong's Wash Out -- all move Energy between your own
+    in-play Pokemon at zero net cost, so nothing ever runs out). The eval's
+    Active-quality term (`energies * 5`) rewards hoarding Energy with no
+    penalty for never attacking, so once such a card is in the deck,
+    `_search_choose_main` finds "use Ability again" scores higher than
+    "attack" on literally every turn and re-picks it forever -- confirmed via
+    direct trace, stuck cycling ENERGY -> CARD -> ABILITY on one turn for
+    1500+ steps until the harness step cap cut it off (~35% of a 20-game
+    sample never finished). An earlier version of this fix only capped the
+    ladder inside `_choose_main`, which gates the ROLLOUT TAIL but not
+    `_search_choose_main`'s own top-level candidate choice -- that path
+    bypasses `_choose_main` entirely, so the loop persisted unchanged. This
+    version gates the actual decision point instead.
+    """
+    global _last_seen_turn
+    if state is None:
+        return False
+    turn = state.turn
+    if turn < _last_seen_turn:
+        _live_ability_count.clear()  # new game started; turn numbers restarted
+    _last_seen_turn = turn
+    return _live_ability_count.get((turn, state.yourIndex), 0) >= ABILITY_CAP_PER_TURN
+
+
+def _record_ability_use(state) -> None:
+    """Record a real, applied ABILITY choice against the per-turn cap. Call
+    only from _agent_impl on the final chosen action -- never from inside a
+    search rollout, or hypothetical deliberation would falsely eat into the
+    real turn's budget before the live game has taken a single action."""
+    if state is None:
+        return
+    key = (state.turn, state.yourIndex)
+    _live_ability_count[key] = _live_ability_count.get(key, 0) + 1
+
+
+def _choose_main(obs: Observation) -> list[int]:
+    """Greedy priority: lethal attack > evolve > attach energy > play basics > ability
+    > best attack > retreat if dying > end turn."""
+    sel = obs.select
+    state = obs.current
+    assert sel is not None and state is not None
+    options = sel.option
+    me = state.players[state.yourIndex]
+    opp = state.players[1 - state.yourIndex]
+    opp_active = opp.active[0] if opp.active else None
+    by_type = _group_by_type(options)
+
+    # 1. Attack for lethal (engine only lists attacks we have Energy for).
+    if OptionType.ATTACK in by_type and opp_active is not None:
+        idx, dmg = _best_attack_index(options, by_type[OptionType.ATTACK])
+        if dmg >= opp_active.hp:
+            return [idx]
+
+    # 2. Evolve â€” free stat upgrade, no downside.
+    if OptionType.EVOLVE in by_type:
+        return [_best_card_option(options, by_type[OptionType.EVOLVE])]
+
+    # 3. Attach Energy if we haven't this turn.
+    if OptionType.ATTACH in by_type and not state.energyAttached:
+        return [_best_attach_index(options, by_type[OptionType.ATTACH], me)]
+
+    # 4. Develop the board: play the strongest Basic to Bench while there's room.
+    if OptionType.PLAY in by_type and len(me.bench) < me.benchMax:
+        play_idx = _best_play_index(options, by_type[OptionType.PLAY], me)
+        if play_idx is not None:
+            return [play_idx]
+
+    # 5. Use an Ability if one is available (capped per real turn, see
+    # _ability_cap_reached).
+    if OptionType.ABILITY in by_type and not _ability_cap_reached(state):
+        return [by_type[OptionType.ABILITY][0]]
+
+    # 6. Attack anyway with the strongest available attack.
+    if OptionType.ATTACK in by_type:
+        idx, _ = _best_attack_index(options, by_type[OptionType.ATTACK])
+        return [idx]
+
+    # 7. Retreat only if the Active is dying and a stronger Benched PokÃ©mon exists.
+    # ponytail: deliberately the simple pre-2026-08-08 rule. A tactical
+    # "retreat to a better attacker" gate was built and ABLATED to exactly zero
+    # (retreat_ablation.py: card_off 62.4% vs neither 62.8%, n=500/arm) â€” attacker
+    # choice is decided at forced promotion after a KO, not by voluntary retreat.
+    # Don't reintroduce a retreat heuristic without measuring it in isolation.
+    if OptionType.RETREAT in by_type:
+        my_active = me.active[0] if me.active else None
+        if my_active is not None and me.bench:
+            low_hp = my_active.hp <= my_active.maxHp * 0.3
+            if low_hp and any(b.hp > my_active.hp for b in me.bench):
+                return [by_type[OptionType.RETREAT][0]]
+
+    # 8. Nothing useful left to do.
+    if OptionType.END in by_type:
+        return [by_type[OptionType.END][0]]
+
+    return [0]
+
+
+def _choose_attack(obs: Observation) -> list[int]:
+    sel = obs.select
+    assert sel is not None
+    idx, _ = _best_attack_index(sel.option, list(range(len(sel.option))))
+    return [idx]
+
+
+def _choose_evolve(obs: Observation) -> list[int]:
+    """Prefer evolving into the strongest resulting card."""
+    sel = obs.select
+    assert sel is not None
+    return [_best_card_option(sel.option, list(range(len(sel.option))))]
+
+
+def _choose_card(obs: Observation) -> list[int]:
+    """Rank card choices by HP: strongest first for board-building contexts,
+    weakest first when discarding/returning cards."""
+    sel = obs.select
+    assert sel is not None
+    options = sel.option
+    weakest_first_contexts = (
+        SelectContext.DISCARD,
+        SelectContext.TO_DECK,
+        SelectContext.TO_DECK_BOTTOM,
+        SelectContext.DISCARD_CARD_OR_ATTACHED_CARD,
+        SelectContext.DISCARD_ENERGY_CARD,
+        SelectContext.DISCARD_TOOL_CARD,
+    )
+    opponent_target_contexts = (
+        SelectContext.DAMAGE,
+        SelectContext.DAMAGE_COUNTER,
+        SelectContext.DAMAGE_COUNTER_ANY,
+    )
+    indices = list(range(len(options)))
+    if sel.context in opponent_target_contexts:
+        opponent_indices = [i for i, opt in enumerate(options) if opt.playerIndex is not None and obs.current is not None and opt.playerIndex != obs.current.yourIndex]
+        if opponent_indices:
+            indices = opponent_indices
+
+    if sel.context in opponent_target_contexts:
+        ranked = sorted(indices, key=lambda i: _target_score(options[i], obs), reverse=True)
+    else:
+        reverse = sel.context not in weakest_first_contexts
+        own_board_indices = []
+        if reverse and obs.current is not None:
+            own_board_indices = [
+                i for i, opt in enumerate(options)
+                if opt.playerIndex == obs.current.yourIndex
+                and opt.area in (AreaType.ACTIVE, AreaType.BENCH)
+                and _option_pokemon(opt, obs.current) is not None
+            ]
+        if own_board_indices:
+            opp = obs.current.players[1 - obs.current.yourIndex]
+            opp_active = opp.active[0] if opp.active else None
+            ranked = sorted(
+                indices,
+                key=lambda i: _live_attacker_score(_option_pokemon(options[i], obs.current), opp_active),
+                reverse=True,
+            )
+        else:
+            ranked = sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)
+    return ranked[: sel.maxCount] if sel.maxCount > 0 else []
+
+
+def _choose_yes_no(obs: Observation) -> list[int]:
+    """Default optimistic: take the beneficial-sounding option when offered."""
+    sel = obs.select
+    assert sel is not None
+    for i, opt in enumerate(sel.option):
+        if opt.type == OptionType.YES:
+            return [i]
+    return [0]
+
+
+def _choose_count(obs: Observation) -> list[int]:
+    """Each option represents a candidate count; pick the option with the highest number."""
+    sel = obs.select
+    assert sel is not None
+    options = sel.option
+    best_i, best_n = 0, -1
+    for i, opt in enumerate(options):
+        n = opt.number if opt.number is not None else 0
+        if n > best_n:
+            best_i, best_n = i, n
+    return [best_i]
+
+
+def _clamp(idx_list, sel, n_options):
+    """Enforce minCount <= len <= maxCount, no duplicates, valid range."""
+    idx_list = [i for i in dict.fromkeys(idx_list) if 0 <= i < n_options]
+    if len(idx_list) > sel.maxCount:
+        idx_list = idx_list[: sel.maxCount]
+    if len(idx_list) < sel.minCount:
+        remaining = [i for i in range(n_options) if i not in idx_list]
+        idx_list += remaining[: sel.minCount - len(idx_list)]
+    return idx_list
+
+
+def _greedy_select(obs: Observation) -> list[int]:
+    """Pure greedy policy over one Observation. Used both as the agent's default
+    and as the rollout policy inside lookahead (never recurses into search)."""
+    sel = obs.select
+    assert sel is not None
+    options = sel.option
+    if not options:
+        return []
+
+    if sel.type == SelectType.MAIN:
+        idx_list = _choose_main(obs)
+    elif sel.type == SelectType.ATTACK:
+        idx_list = _choose_attack(obs)
+    elif sel.type == SelectType.EVOLVE:
+        idx_list = _choose_evolve(obs)
+    elif sel.type in (SelectType.CARD, SelectType.CARD_OR_ATTACHED_CARD, SelectType.ATTACHED_CARD):
+        idx_list = _choose_card(obs)
+    elif sel.type == SelectType.YES_NO:
+        idx_list = _choose_yes_no(obs)
+    elif sel.type == SelectType.COUNT:
+        idx_list = _choose_count(obs)
+    else:
+        # ENERGY, SKILL, SPECIAL_CONDITION, and any future types: safe minimal default.
+        idx_list = list(range(sel.minCount))
+
+    return _clamp(idx_list, sel, len(options))
+
+
+def _my_deck_ids() -> list[int]:
+    global _MY_DECK
+    if _MY_DECK is None:
+        try:
+            _MY_DECK = read_deck_csv()
+        except Exception:
+            _MY_DECK = []
+    return _MY_DECK
+
+
+def _can_pay(cost, have) -> bool:
+    """Approximate attack-cost check: each typed symbol needs a matching attached
+    Energy (RAINBOW counts as any type); Colorless symbols take whatever is left."""
+    pool = list(have)
+    colorless = 0
+    for c in cost:
+        if c == EnergyType.COLORLESS:
+            colorless += 1
+            continue
+        for i, e in enumerate(pool):
+            if e == c or e == EnergyType.RAINBOW:
+                pool.pop(i)
+                break
+        else:
+            return False
+    return len(pool) >= colorless
+
+
+def _best_usable_damage(mon) -> int:
+    """Highest damage this PokÃ©mon can actually deal right now (cost affordable)."""
+    if mon is None:
+        return 0
+    card = _card_data().get(mon.id)
+    if card is None:
+        return 0
+    attacks = _attack_data()
+    best = 0
+    for aid in card.attacks:
+        a = attacks.get(aid)
+        if a is not None and _can_pay(a.energies, mon.energies):
+            best = max(best, a.damage)
+    return best
+
+
+def _prize_value(mon) -> int:
+    """Prizes the opponent takes if this PokÃ©mon is Knocked Out."""
+    card = _card_data().get(mon.id) if mon is not None else None
+    if card is None:
+        return 1
+    return 3 if card.megaEx else 2 if card.ex else 1
+
+
+def _eval_state(state, my_index: int) -> float:
+    """Score a board from my_index's perspective.
+
+    Terms, in rough priority: prizes (the win condition), board HP (material),
+    Active attacker quality (is the RIGHT PokÃ©mon in the Active slot, powered up),
+    and opponent KO-back risk (does this line leave my Active dying next turn,
+    weighted by the prizes that KO would concede)."""
+    if state is None:
+        return 0.0
+    if state.result != -1:
+        if state.result == my_index:
+            return WIN_SCORE
+        if state.result == 1 - my_index:
+            return -WIN_SCORE
+        return 0.0  # draw
+
+    me = state.players[my_index]
+    opp = state.players[1 - my_index]
+
+    def total_hp(p):
+        mons = ([p.active[0]] if p.active and p.active[0] else []) + list(p.bench)
+        return sum(m.hp for m in mons)
+
+    # Fewer of MY prizes remaining = I've taken more = closer to winning.
+    prize = (len(opp.prize) - len(me.prize)) * 1000
+    hp_diff = total_hp(me) - total_hp(opp)
+
+    my_active = me.active[0] if me.active else None
+    opp_active = opp.active[0] if opp.active else None
+
+    # Reward having a real, powered attacker Active (not a 40HP intermediate).
+    active_quality = 0
+    if my_active is not None:
+        active_quality = _best_usable_damage(my_active) * 2 + len(my_active.energies) * 5
+
+    # Penalize lines that leave my Active KO-able on the opponent's next turn,
+    # scaled by how many Prize cards that KO would hand them.
+    ko_risk = 0
+    if my_active is not None and opp_active is not None:
+        if _best_usable_damage(opp_active) >= my_active.hp:
+            ko_risk = -300 * _prize_value(my_active)
+
+    return prize + hp_diff + active_quality + ko_risk
+
+
+def _predictions(obs: Observation, my_deck: list[int], opp_deck: list[int]) -> dict:
+    """Hidden-info args for search_begin. For a within-my-turn rollout the opponent
+    never acts, so a mirror-deck fill is sufficient; counts must match observed."""
+    st = obs.current
+    assert st is not None
+    yi = st.yourIndex
+    me, opp = st.players[yi], st.players[1 - yi]
+
+    def take(ids, n):
+        if n <= 0:
+            return []
+        pool = ids or my_deck or [0]
+        return [pool[i % len(pool)] for i in range(n)]
+
+    return {
+        "your_deck": take(my_deck, me.deckCount),
+        "your_prize": take(my_deck, len(me.prize)),
+        "opponent_deck": take(opp_deck, opp.deckCount),
+        "opponent_prize": take(opp_deck, len(opp.prize)),
+        "opponent_hand": take(opp_deck, opp.handCount),
+        "opponent_active": [],
+    }
+
+
+def _rollout_score(first_select, obs: Observation, my_index: int,
+                   my_deck: list[int], opp_deck: list[int]) -> float:
+    """Fork the real state, apply first_select, then play out the REST of my turn
+    greedily; return the end-of-turn board eval (or terminal win/loss)."""
+    p = _predictions(obs, my_deck, opp_deck)
+    ss = search_begin(obs, p["your_deck"], p["your_prize"], p["opponent_deck"],
+                      p["opponent_prize"], p["opponent_hand"], p["opponent_active"])
+    start_turn = obs.current.turn if obs.current else 0
+    try:
+        ss = search_step(ss.searchId, first_select)
+        for _ in range(MAX_ROLLOUT_STEPS):
+            o = ss.observation
+            cur, s = o.current, o.select
+            if cur is not None and cur.result != -1:
+                return _eval_state(cur, my_index)
+            if cur is not None and cur.turn != start_turn:
+                break  # my turn ended
+            if s is None:
+                break
+            ss = search_step(ss.searchId, _greedy_select(o))
+        return _eval_state(ss.observation.current, my_index)
+    finally:
+        search_end()
+
+
+def _search_choose_main(obs: Observation):
+    """1-ply lookahead over MAIN options: pick the action whose greedy continuation
+    yields the best end-of-turn board. Returns None to signal 'fall back to greedy'."""
+    sel = obs.select
+    if sel is None or obs.current is None:
+        return None
+    my_deck = _my_deck_ids()
+    if not my_deck:
+        return None
+    my_index = obs.current.yourIndex
+    opp_deck = my_deck  # mirror opponent (irrelevant during my own turn)
+    ability_capped = _ability_cap_reached(obs.current)
+
+    try:
+        best_i, best_score = None, float("-inf")
+        for i in range(len(sel.option)):
+            if ability_capped and sel.option[i].type == OptionType.ABILITY:
+                continue  # per-turn cap already used; don't let search re-pick it
+            choice = _clamp([i], sel, len(sel.option))
+            score = _rollout_score(choice, obs, my_index, my_deck, opp_deck)
+            if score > best_score:
+                best_score, best_i = score, i
+    except Exception:
+        return None  # any search failure => greedy fallback
+    if best_i is None:
+        return None
+    return _clamp([best_i], sel, len(sel.option))
+
+
+def agent(obs_dict: dict) -> list[int]:
+    """PokÃ©mon TCG agent entry point. Delegates to `_agent_impl`; on ANY unexpected
+    exception there (e.g. the native cg engine failing to load on an unfamiliar
+    host) falls back to a minimal, cg.api-free legal selection instead of
+    forfeiting the match outright.
+
+    Returns:
+        list[int]: A list of option index.
+    """
+    try:
+        return _agent_impl(obs_dict)
+    except Exception:
+        sel = obs_dict.get("select") if isinstance(obs_dict, dict) else None
+        if sel is None:
+            try:
+                return read_deck_csv()
+            except Exception:
+                return []
+        options = sel.get("option") or []
+        min_count = sel.get("minCount", 0) or 0
+        return list(range(min(min_count, len(options))))
+
+
+def _agent_impl(obs_dict: dict) -> list[int]:
+    """PokÃ©mon TCG agent: MAIN-phase 1-ply lookahead (greedy rollout) with a greedy
+    fallback for all other decisions and on any search failure.
+
+    Returns:
+        list[int]: A list of option index.
+    """
+    obs: Observation = to_observation_class(obs_dict)
+    if obs.select is None:
+        # Initial deck selection.
+        return read_deck_csv()
+    if not obs.select.option:
+        return []
+
+    if SEARCH_MAIN and obs.select.type == SelectType.MAIN and obs.current is not None:
+        chosen = _search_choose_main(obs)
+        if chosen is not None:
+            _record_if_ability(obs, chosen)
+            return chosen
+
+    chosen = _greedy_select(obs)
+    if obs.select.type == SelectType.MAIN:
+        _record_if_ability(obs, chosen)
+    return chosen
+
+
+def _record_if_ability(obs: Observation, chosen: list[int]) -> None:
+    """If the action actually being returned to the engine is ABILITY, count
+    it against the per-turn cap (see _record_ability_use)."""
+    if not chosen or obs.current is None:
+        return
+    i = chosen[0]
+    options = obs.select.option if obs.select else []
+    if 0 <= i < len(options) and options[i].type == OptionType.ABILITY:
+        _record_ability_use(obs.current)
+
+
+ succeeded in 346ms:
+from pathlib import Path
+
+from cg.api import (
+    AreaType,
+    CardType,
+    EnergyType,
+    Observation,
+    OptionType,
+    SelectContext,
+    SelectType,
+    all_attack,
+    all_card_data,
+    search_begin,
+    search_end,
+    search_step,
+    to_observation_class,
+)
+
+_CARD_DATA = None
+_ATTACK_DATA = None
+_MY_DECK = None
+
+# MAIN-phase 1-ply lookahead config.
+SEARCH_MAIN = True          # MAIN-phase 1-ply lookahead. MEASURED (Hydrapple deck,
+                            # vs frozen greedy): lookahead 64.6% [60.3-68.7] n=500 vs
+                            # greedy control 49.0% [43.4-54.6] n=300 => +15.6pts.
+                            # NOTE: the gain is from lookahead itself and is
+                            # DECK-DEPENDENT (it measured 45% on the old Water deck).
+                            # The _eval_state v2 terms are within noise -- see
+                            # eval_ablation.py and PROGRESS.md 2026-08-04.
+MAX_ROLLOUT_STEPS = 40      # cap greedy rollout length inside a forked turn
+WIN_SCORE = 1e9
+
+ABILITY_CAP_PER_TURN = 4    # see _ability_cap_reached: guards against unbounded Abilities
+_live_ability_count: dict = {}
+_last_seen_turn = -1
+
+
+def _card_data():
+    global _CARD_DATA
+    if _CARD_DATA is None:
+        _CARD_DATA = {c.cardId: c for c in all_card_data()}
+    return _CARD_DATA
+
+
+def _attack_data():
+    global _ATTACK_DATA
+    if _ATTACK_DATA is None:
+        _ATTACK_DATA = {a.attackId: a for a in all_attack()}
+    return _ATTACK_DATA
+
+
+def read_deck_csv() -> list[int]:
+    """Read deck.csv.
+
+    Returns:
+        list[int]: A list of card IDs in the deck.
+    """
+    # NOTE: Kaggle runs this file via exec() of its source, so `__file__` is NOT
+    # defined there (it crashed submissions #55335664/#55351154 with NameError).
+    # Resolve the sibling deck.csv only when __file__ exists; otherwise fall back
+    # to the documented Kaggle agent directory, then the CWD.
+    candidates = []
+    module_file = globals().get("__file__")
+    if module_file:
+        candidates.append(Path(module_file).with_name("deck.csv"))
+    candidates.append(Path("/kaggle_simulations/agent/deck.csv"))
+    candidates.append(Path("deck.csv"))
+    file_path = next((p for p in candidates if p.exists()), candidates[-1])
+    with open(file_path, "r", encoding="utf-8") as file:
+        rows = [line.strip() for line in file if line.strip()]
+    if len(rows) < 60:
+        raise ValueError(f"deck.csv must contain at least 60 card IDs, found {len(rows)}.")
+    return [int(card_id) for card_id in rows[:60]]
+
+
+def _group_by_type(options):
+    by_type = {}
+    for i, opt in enumerate(options):
+        by_type.setdefault(opt.type, []).append(i)
+    return by_type
+
+
+def _best_attack_index(options, indices):
+    """Index (into options) of the highest-damage attack among the given option indices."""
+    attacks = _attack_data()
+    best_i, best_dmg = indices[0], -1
+    for i in indices:
+        atk = attacks.get(options[i].attackId)
+        dmg = atk.damage if atk else 0
+        if dmg > best_dmg:
+            best_i, best_dmg = i, dmg
+    return best_i, best_dmg
+
+
+def _card_power(card_id):
+    cards = _card_data()
+    attacks = _attack_data()
+    card = cards.get(card_id)
+    if card is None:
+        return 0
+    best_damage = max((attacks[a].damage for a in card.attacks if a in attacks), default=0)
+    stage_bonus = 60 if card.stage2 else 30 if card.stage1 else 0
+    return card.hp + best_damage * 2 + stage_bonus
+
+
+def _option_card_power(opt):
+    return _card_power(opt.cardId) if opt.cardId is not None else 0
+
+
+def _best_card_option(options, indices, reverse=True):
+    return sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)[0]
+
+
+def _option_pokemon(opt, state):
+    if opt.playerIndex is None or opt.area is None or opt.index is None:
+        return None
+    if opt.playerIndex < 0 or opt.playerIndex >= len(state.players):
+        return None
+    player = state.players[opt.playerIndex]
+    if opt.area == AreaType.ACTIVE:
+        return player.active[0] if player.active and player.active[0] is not None else None
+    if opt.area == AreaType.BENCH and opt.index < len(player.bench):
+        return player.bench[opt.index]
+    return None
+
+
+def _target_score(opt, obs):
+    """Score a target using live board state first, static card data as fallback."""
+    state = obs.current
+    if state is None:
+        return _option_card_power(opt)
+
+    pokemon = _option_pokemon(opt, state)
+    if pokemon is None:
+        return _option_card_power(opt)
+
+    card = _card_data().get(pokemon.id)
+    prize_value = 3 if card and card.megaEx else 2 if card and card.ex else 1
+    damage_taken = max(0, pokemon.maxHp - pokemon.hp)
+    static_threat = _card_power(pokemon.id)
+
+    lethal_damage = None
+    sel = obs.select
+    assert sel is not None
+    if sel.context in (SelectContext.DAMAGE_COUNTER, SelectContext.DAMAGE_COUNTER_ANY):
+        lethal_damage = sel.remainDamageCounter * 10
+    lethal_bonus = 100000 * prize_value if lethal_damage is not None and pokemon.hp <= lethal_damage else 0
+    active_bonus = 5000 if opt.area == AreaType.ACTIVE else 0
+
+    if sel.context == SelectContext.DAMAGE:
+        near_ko_bonus = 6000 + (10 - pokemon.hp) * 200 if pokemon.hp <= 10 else 0
+        live_pressure = near_ko_bonus + damage_taken * 2
+    else:
+        live_pressure = damage_taken * 20 - pokemon.hp * 10
+    return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+
+
+def _best_attach_index(options, indices, me):
+    """Prefer powering the Active, then the strongest Bench target."""
+    best_i, best_score = indices[0], -1
+    for i in indices:
+        opt = options[i]
+        score = 0
+        if opt.inPlayArea == AreaType.ACTIVE:
+            target = me.active[0] if me.active else None
+            score = 10000 + (target.maxHp + target.hp if target else 0)
+        elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+            target = me.bench[opt.inPlayIndex]
+            score = target.maxHp + target.hp
+        if score > best_score:
+            best_i, best_score = i, score
+    return best_i
+
+
+def _best_play_index(options, indices, me):
+    """Rank playable Basic Pokemon by likely board value."""
+    cards = _card_data()
+    best_i, best_score = indices[0], -1
+    for i in indices:
+        card = cards.get(options[i].cardId)
+        score = 0
+        if card is not None and card.cardType == CardType.POKEMON:
+            if card.basic and len(me.bench) < me.benchMax:
+                score = 5000 + _card_power(card.cardId)
+            else:
+                score = -1
+        if score > best_score:
+            best_i, best_score = i, score
+    return best_i if best_score >= 0 else None
+
+
+def _live_attacker_score(mon, opp_active=None) -> int:
+    """Score an in-play Pokemon as an immediate Active attacker."""
+    if mon is None:
+        return -10**9
+    dmg = _best_usable_damage(mon)
+    lethal_bonus = 3000 if opp_active is not None and dmg >= opp_active.hp else 0
+    prize_penalty = 120 * _prize_value(mon)
+    return lethal_bonus + dmg * 20 + mon.hp + len(mon.energies) * 15 - prize_penalty
+
+
+def _ability_cap_reached(state) -> bool:
+    """Read-only: has this seat already used ABILITY the max allowed times on
+    the CURRENT real turn? Shared by the greedy ladder and the search
+    candidate list so a rollout preview sees the same constraint the live
+    game actually faces. Never increments -- see _record_ability_use, the
+    only writer, called once by _agent_impl on the actually-applied action.
+
+    Bug found 2026-08-11: some Abilities are legal to use "as often as you
+    like" during a turn (e.g. Mega Venusaur ex's Solar Transfer, Azumarill ex's
+    Bubble Gathering, Dewgong's Wash Out -- all move Energy between your own
+    in-play Pokemon at zero net cost, so nothing ever runs out). The eval's
+    Active-quality term (`energies * 5`) rewards hoarding Energy with no
+    penalty for never attacking, so once such a card is in the deck,
+    `_search_choose_main` finds "use Ability again" scores higher than
+    "attack" on literally every turn and re-picks it forever -- confirmed via
+    direct trace, stuck cycling ENERGY -> CARD -> ABILITY on one turn for
+    1500+ steps until the harness step cap cut it off (~35% of a 20-game
+    sample never finished). An earlier version of this fix only capped the
+    ladder inside `_choose_main`, which gates the ROLLOUT TAIL but not
+    `_search_choose_main`'s own top-level candidate choice -- that path
+    bypasses `_choose_main` entirely, so the loop persisted unchanged. This
+    version gates the actual decision point instead.
+    """
+    global _last_seen_turn
+    if state is None:
+        return False
+    turn = state.turn
+    if turn < _last_seen_turn:
+        _live_ability_count.clear()  # new game started; turn numbers restarted
+    _last_seen_turn = turn
+    return _live_ability_count.get((turn, state.yourIndex), 0) >= ABILITY_CAP_PER_TURN
+
+
+def _record_ability_use(state) -> None:
+    """Record a real, applied ABILITY choice against the per-turn cap. Call
+    only from _agent_impl on the final chosen action -- never from inside a
+    search rollout, or hypothetical deliberation would falsely eat into the
+    real turn's budget before the live game has taken a single action."""
+    if state is None:
+        return
+    key = (state.turn, state.yourIndex)
+    _live_ability_count[key] = _live_ability_count.get(key, 0) + 1
+
+
+def _choose_main(obs: Observation) -> list[int]:
+    """Greedy priority: lethal attack > evolve > attach energy > play basics > ability
+    > best attack > retreat if dying > end turn."""
+    sel = obs.select
+    state = obs.current
+    assert sel is not None and state is not None
+    options = sel.option
+    me = state.players[state.yourIndex]
+    opp = state.players[1 - state.yourIndex]
+    opp_active = opp.active[0] if opp.active else None
+    by_type = _group_by_type(options)
+
+    # 1. Attack for lethal (engine only lists attacks we have Energy for).
+    if OptionType.ATTACK in by_type and opp_active is not None:
+        idx, dmg = _best_attack_index(options, by_type[OptionType.ATTACK])
+        if dmg >= opp_active.hp:
+            return [idx]
+
+    # 2. Evolve â€” free stat upgrade, no downside.
+    if OptionType.EVOLVE in by_type:
+        return [_best_card_option(options, by_type[OptionType.EVOLVE])]
+
+    # 3. Attach Energy if we haven't this turn.
+    if OptionType.ATTACH in by_type and not state.energyAttached:
+        return [_best_attach_index(options, by_type[OptionType.ATTACH], me)]
+
+    # 4. Develop the board: play the strongest Basic to Bench while there's room.
+    if OptionType.PLAY in by_type and len(me.bench) < me.benchMax:
+        play_idx = _best_play_index(options, by_type[OptionType.PLAY], me)
+        if play_idx is not None:
+            return [play_idx]
+
+    # 5. Use an Ability if one is available (capped per real turn, see
+    # _ability_cap_reached).
+    if OptionType.ABILITY in by_type and not _ability_cap_reached(state):
+        return [by_type[OptionType.ABILITY][0]]
+
+    # 6. Attack anyway with the strongest available attack.
+    if OptionType.ATTACK in by_type:
+        idx, _ = _best_attack_index(options, by_type[OptionType.ATTACK])
+        return [idx]
+
+    # 7. Retreat only if the Active is dying and a stronger Benched PokÃ©mon exists.
+    # ponytail: deliberately the simple pre-2026-08-08 rule. A tactical
+    # "retreat to a better attacker" gate was built and ABLATED to exactly zero
+    # (retreat_ablation.py: card_off 62.4% vs neither 62.8%, n=500/arm) â€” attacker
+    # choice is decided at forced promotion after a KO, not by voluntary retreat.
+    # Don't reintroduce a retreat heuristic without measuring it in isolation.
+    if OptionType.RETREAT in by_type:
+        my_active = me.active[0] if me.active else None
+        if my_active is not None and me.bench:
+            low_hp = my_active.hp <= my_active.maxHp * 0.3
+            if low_hp and any(b.hp > my_active.hp for b in me.bench):
+                return [by_type[OptionType.RETREAT][0]]
+
+    # 8. Nothing useful left to do.
+    if OptionType.END in by_type:
+        return [by_type[OptionType.END][0]]
+
+    return [0]
+
+
+def _choose_attack(obs: Observation) -> list[int]:
+    sel = obs.select
+    assert sel is not None
+    idx, _ = _best_attack_index(sel.option, list(range(len(sel.option))))
+    return [idx]
+
+
+def _choose_evolve(obs: Observation) -> list[int]:
+    """Prefer evolving into the strongest resulting card."""
+    sel = obs.select
+    assert sel is not None
+    return [_best_card_option(sel.option, list(range(len(sel.option))))]
+
+
+def _choose_card(obs: Observation) -> list[int]:
+    """Rank card choices by HP: strongest first for board-building contexts,
+    weakest first when discarding/returning cards."""
+    sel = obs.select
+    assert sel is not None
+    options = sel.option
+    weakest_first_contexts = (
+        SelectContext.DISCARD,
+        SelectContext.TO_DECK,
+        SelectContext.TO_DECK_BOTTOM,
+        SelectContext.DISCARD_CARD_OR_ATTACHED_CARD,
+        SelectContext.DISCARD_ENERGY_CARD,
+        SelectContext.DISCARD_TOOL_CARD,
+    )
+    opponent_target_contexts = (
+        SelectContext.DAMAGE,
+        SelectContext.DAMAGE_COUNTER,
+        SelectContext.DAMAGE_COUNTER_ANY,
+    )
+    indices = list(range(len(options)))
+    if sel.context in opponent_target_contexts:
+        opponent_indices = [i for i, opt in enumerate(options) if opt.playerIndex is not None and obs.current is not None and opt.playerIndex != obs.current.yourIndex]
+        if opponent_indices:
+            indices = opponent_indices
+
+    if sel.context in opponent_target_contexts:
+        ranked = sorted(indices, key=lambda i: _target_score(options[i], obs), reverse=True)
+    else:
+        reverse = sel.context not in weakest_first_contexts
+        own_board_indices = []
+        if reverse and obs.current is not None:
+            own_board_indices = [
+                i for i, opt in enumerate(options)
+                if opt.playerIndex == obs.current.yourIndex
+                and opt.area in (AreaType.ACTIVE, AreaType.BENCH)
+                and _option_pokemon(opt, obs.current) is not None
+            ]
+        if own_board_indices:
+            opp = obs.current.players[1 - obs.current.yourIndex]
+            opp_active = opp.active[0] if opp.active else None
+            ranked = sorted(
+                indices,
+                key=lambda i: _live_attacker_score(_option_pokemon(options[i], obs.current), opp_active),
+                reverse=True,
+            )
+        else:
+            ranked = sorted(indices, key=lambda i: _option_card_power(options[i]), reverse=reverse)
+    return ranked[: sel.maxCount] if sel.maxCount > 0 else []
+
+
+def _choose_yes_no(obs: Observation) -> list[int]:
+    """Default optimistic: take the beneficial-sounding option when offered."""
+    sel = obs.select
+    assert sel is not None
+    for i, opt in enumerate(sel.option):
+        if opt.type == OptionType.YES:
+            return [i]
+    return [0]
+
+
+def _choose_count(obs: Observation) -> list[int]:
+    """Each option represents a candidate count; pick the option with the highest number."""
+    sel = obs.select
+    assert sel is not None
+    options = sel.option
+    best_i, best_n = 0, -1
+    for i, opt in enumerate(options):
+        n = opt.number if opt.number is not None else 0
+        if n > best_n:
+            best_i, best_n = i, n
+    return [best_i]
+
+
+def _clamp(idx_list, sel, n_options):
+    """Enforce minCount <= len <= maxCount, no duplicates, valid range."""
+    idx_list = [i for i in dict.fromkeys(idx_list) if 0 <= i < n_options]
+    if len(idx_list) > sel.maxCount:
+        idx_list = idx_list[: sel.maxCount]
+    if len(idx_list) < sel.minCount:
+        remaining = [i for i in range(n_options) if i not in idx_list]
+        idx_list += remaining[: sel.minCount - len(idx_list)]
+    return idx_list
+
+
+def _greedy_select(obs: Observation) -> list[int]:
+    """Pure greedy policy over one Observation. Used both as the agent's default
+    and as the rollout policy inside lookahead (never recurses into search)."""
+    sel = obs.select
+    assert sel is not None
+    options = sel.option
+    if not options:
+        return []
+
+    if sel.type == SelectType.MAIN:
+        idx_list = _choose_main(obs)
+    elif sel.type == SelectType.ATTACK:
+        idx_list = _choose_attack(obs)
+    elif sel.type == SelectType.EVOLVE:
+        idx_list = _choose_evolve(obs)
+    elif sel.type in (SelectType.CARD, SelectType.CARD_OR_ATTACHED_CARD, SelectType.ATTACHED_CARD):
+        idx_list = _choose_card(obs)
+    elif sel.type == SelectType.YES_NO:
+        idx_list = _choose_yes_no(obs)
+    elif sel.type == SelectType.COUNT:
+        idx_list = _choose_count(obs)
+    else:
+        # ENERGY, SKILL, SPECIAL_CONDITION, and any future types: safe minimal default.
+        idx_list = list(range(sel.minCount))
+
+    return _clamp(idx_list, sel, len(options))
+
+
+def _my_deck_ids() -> list[int]:
+    global _MY_DECK
+    if _MY_DECK is None:
+        try:
+            _MY_DECK = read_deck_csv()
+        except Exception:
+            _MY_DECK = []
+    return _MY_DECK
+
+
+def _can_pay(cost, have) -> bool:
+    """Approximate attack-cost check: each typed symbol needs a matching attached
+    Energy (RAINBOW counts as any type); Colorless symbols take whatever is left."""
+    pool = list(have)
+    colorless = 0
+    for c in cost:
+        if c == EnergyType.COLORLESS:
+            colorless += 1
+            continue
+        for i, e in enumerate(pool):
+            if e == c or e == EnergyType.RAINBOW:
+                pool.pop(i)
+                break
+        else:
+            return False
+    return len(pool) >= colorless
+
+
+def _best_usable_damage(mon) -> int:
+    """Highest damage this PokÃ©mon can actually deal right now (cost affordable)."""
+    if mon is None:
+        return 0
+    card = _card_data().get(mon.id)
+    if card is None:
+        return 0
+    attacks = _attack_data()
+    best = 0
+    for aid in card.attacks:
+        a = attacks.get(aid)
+        if a is not None and _can_pay(a.energies, mon.energies):
+            best = max(best, a.damage)
+    return best
+
+
+def _prize_value(mon) -> int:
+    """Prizes the opponent takes if this PokÃ©mon is Knocked Out."""
+    card = _card_data().get(mon.id) if mon is not None else None
+    if card is None:
+        return 1
+    return 3 if card.megaEx else 2 if card.ex else 1
+
+
+def _eval_state(state, my_index: int) -> float:
+    """Score a board from my_index's perspective.
+
+    Terms, in rough priority: prizes (the win condition), board HP (material),
+    Active attacker quality (is the RIGHT PokÃ©mon in the Active slot, powered up),
+    and opponent KO-back risk (does this line leave my Active dying next turn,
+    weighted by the prizes that KO would concede)."""
+    if state is None:
+        return 0.0
+    if state.result != -1:
+        if state.result == my_index:
+            return WIN_SCORE
+        if state.result == 1 - my_index:
+            return -WIN_SCORE
+        return 0.0  # draw
+
+    me = state.players[my_index]
+    opp = state.players[1 - my_index]
+
+    def total_hp(p):
+        mons = ([p.active[0]] if p.active and p.active[0] else []) + list(p.bench)
+        return sum(m.hp for m in mons)
+
+    # Fewer of MY prizes remaining = I've taken more = closer to winning.
+    prize = (len(opp.prize) - len(me.prize)) * 1000
+    hp_diff = total_hp(me) - total_hp(opp)
+
+    my_active = me.active[0] if me.active else None
+    opp_active = opp.active[0] if opp.active else None
+
+    # Reward having a real, powered attacker Active (not a 40HP intermediate).
+    active_quality = 0
+    if my_active is not None:
+        active_quality = _best_usable_damage(my_active) * 2 + len(my_active.energies) * 5
+
+    # Penalize lines that leave my Active KO-able on the opponent's next turn,
+    # scaled by how many Prize cards that KO would hand them.
+    ko_risk = 0
+    if my_active is not None and opp_active is not None:
+        if _best_usable_damage(opp_active) >= my_active.hp:
+            ko_risk = -300 * _prize_value(my_active)
+
+    return prize + hp_diff + active_quality + ko_risk
+
+
+def _predictions(obs: Observation, my_deck: list[int], opp_deck: list[int]) -> dict:
+    """Hidden-info args for search_begin. For a within-my-turn rollout the opponent
+    never acts, so a mirror-deck fill is sufficient; counts must match observed."""
+    st = obs.current
+    assert st is not None
+    yi = st.yourIndex
+    me, opp = st.players[yi], st.players[1 - yi]
+
+    def take(ids, n):
+        if n <= 0:
+            return []
+        pool = ids or my_deck or [0]
+        return [pool[i % len(pool)] for i in range(n)]
+
+    return {
+        "your_deck": take(my_deck, me.deckCount),
+        "your_prize": take(my_deck, len(me.prize)),
+        "opponent_deck": take(opp_deck, opp.deckCount),
+        "opponent_prize": take(opp_deck, len(opp.prize)),
+        "opponent_hand": take(opp_deck, opp.handCount),
+        "opponent_active": [],
+    }
+
+
+def _rollout_score(first_select, obs: Observation, my_index: int,
+                   my_deck: list[int], opp_deck: list[int]) -> float:
+    """Fork the real state, apply first_select, then play out the REST of my turn
+    greedily; return the end-of-turn board eval (or terminal win/loss)."""
+    p = _predictions(obs, my_deck, opp_deck)
+    ss = search_begin(obs, p["your_deck"], p["your_prize"], p["opponent_deck"],
+                      p["opponent_prize"], p["opponent_hand"], p["opponent_active"])
+    start_turn = obs.current.turn if obs.current else 0
+    try:
+        ss = search_step(ss.searchId, first_select)
+        for _ in range(MAX_ROLLOUT_STEPS):
+            o = ss.observation
+            cur, s = o.current, o.select
+            if cur is not None and cur.result != -1:
+                return _eval_state(cur, my_index)
+            if cur is not None and cur.turn != start_turn:
+                break  # my turn ended
+            if s is None:
+                break
+            ss = search_step(ss.searchId, _greedy_select(o))
+        return _eval_state(ss.observation.current, my_index)
+    finally:
+        search_end()
+
+
+def _search_choose_main(obs: Observation):
+    """1-ply lookahead over MAIN options: pick the action whose greedy continuation
+    yields the best end-of-turn board. Returns None to signal 'fall back to greedy'."""
+    sel = obs.select
+    if sel is None or obs.current is None:
+        return None
+    my_deck = _my_deck_ids()
+    if not my_deck:
+        return None
+    my_index = obs.current.yourIndex
+    opp_deck = my_deck  # mirror opponent (irrelevant during my own turn)
+    ability_capped = _ability_cap_reached(obs.current)
+
+    try:
+        best_i, best_score = None, float("-inf")
+        for i in range(len(sel.option)):
+            if ability_capped and sel.option[i].type == OptionType.ABILITY:
+                continue  # per-turn cap already used; don't let search re-pick it
+            choice = _clamp([i], sel, len(sel.option))
+            score = _rollout_score(choice, obs, my_index, my_deck, opp_deck)
+            if score > best_score:
+                best_score, best_i = score, i
+    except Exception:
+        return None  # any search failure => greedy fallback
+    if best_i is None:
+        return None
+    return _clamp([best_i], sel, len(sel.option))
+
+
+def agent(obs_dict: dict) -> list[int]:
+    """PokÃ©mon TCG agent entry point. Delegates to `_agent_impl`; on ANY unexpected
+    exception there (e.g. the native cg engine failing to load on an unfamiliar
+    host) falls back to a minimal, cg.api-free legal selection instead of
+    forfeiting the match outright.
+
+    Returns:
+        list[int]: A list of option index.
+    """
+    try:
+        return _agent_impl(obs_dict)
+    except Exception:
+        sel = obs_dict.get("select") if isinstance(obs_dict, dict) else None
+        if sel is None:
+            try:
+                return read_deck_csv()
+            except Exception:
+                return []
+        options = sel.get("option") or []
+        min_count = sel.get("minCount", 0) or 0
+        return list(range(min(min_count, len(options))))
+
+
+def _agent_impl(obs_dict: dict) -> list[int]:
+    """PokÃ©mon TCG agent: MAIN-phase 1-ply lookahead (greedy rollout) with a greedy
+    fallback for all other decisions and on any search failure.
+
+    Returns:
+        list[int]: A list of option index.
+    """
+    obs: Observation = to_observation_class(obs_dict)
+    if obs.select is None:
+        # Initial deck selection.
+        return read_deck_csv()
+    if not obs.select.option:
+        return []
+
+    if SEARCH_MAIN and obs.select.type == SelectType.MAIN and obs.current is not None:
+        chosen = _search_choose_main(obs)
+        if chosen is not None:
+            _record_if_ability(obs, chosen)
+            return chosen
+
+    chosen = _greedy_select(obs)
+    if obs.select.type == SelectType.MAIN:
+        _record_if_ability(obs, chosen)
+    return chosen
+
+
+def _record_if_ability(obs: Observation, chosen: list[int]) -> None:
+    """If the action actually being returned to the engine is ABILITY, count
+    it against the per-turn cap (see _record_ability_use)."""
+    if not chosen or obs.current is None:
+        return
+    i = chosen[0]
+    options = obs.select.option if obs.select else []
+    if 0 <= i < len(options) and options[i].type == OptionType.ABILITY:
+        _record_ability_use(obs.current)
+
+
+codex
+The current `main.py` matches the baseline byte-for-byte in the relevant attachment code. Iâ€™m going to add a small readiness detector and fold it into `_best_attach_index`, leaving the existing Active and HP-based ranking as the tie-breaker.
+apply patch
+patch: completed
+C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace\main.py
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..b1ff1b183e0fcad8d9bf7a478106f8c93e7d0a80
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,67 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    if card is None or card.cardType != CardType.ENERGY:
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    for energy_type in (
++        EnergyType.GRASS,
++        EnergyType.FIRE,
++        EnergyType.WATER,
++        EnergyType.LIGHTNING,
++        EnergyType.PSYCHIC,
++        EnergyType.FIGHTING,
++        EnergyType.DARKNESS,
++        EnergyType.METAL,
++        EnergyType.FAIRY,
++    ):
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..b1ff1b183e0fcad8d9bf7a478106f8c93e7d0a80
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,67 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    if card is None or card.cardType != CardType.ENERGY:
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    for energy_type in (
++        EnergyType.GRASS,
++        EnergyType.FIRE,
++        EnergyType.WATER,
++        EnergyType.LIGHTNING,
++        EnergyType.PSYCHIC,
++        EnergyType.FIGHTING,
++        EnergyType.DARKNESS,
++        EnergyType.METAL,
++        EnergyType.FAIRY,
++    ):
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+codex
+I noticed one portability edge: enum members can vary across simulator builds, so Iâ€™m making the new Energy-type lookup tolerant of missing enum names instead of assuming every rulebook type is present.
+apply patch
+patch: completed
+C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace\main.py
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..d78fa26de6f3c49f42ebfab697058ad592b3ffb3
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,63 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    energy_card_type = getattr(CardType, "ENERGY", None)
++    if card is None or (energy_card_type is not None and card.cardType != energy_card_type):
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    energy_types = []
++    for type_name in ("GRASS", "FIRE", "WATER", "LIGHTNING", "PSYCHIC", "FIGHTING", "DARKNESS", "METAL", "FAIRY"):
++        energy_type = getattr(EnergyType, type_name, None)
++        if energy_type is not None:
++            energy_types.append(energy_type)
++    for energy_type in energy_types:
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..d78fa26de6f3c49f42ebfab697058ad592b3ffb3
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,63 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    energy_card_type = getattr(CardType, "ENERGY", None)
++    if card is None or (energy_card_type is not None and card.cardType != energy_card_type):
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    energy_types = []
++    for type_name in ("GRASS", "FIRE", "WATER", "LIGHTNING", "PSYCHIC", "FIGHTING", "DARKNESS", "METAL", "FAIRY"):
++        energy_type = getattr(EnergyType, type_name, None)
++        if energy_type is not None:
++            energy_types.append(energy_type)
++    for energy_type in energy_types:
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+codex
+The code edit is now in place in `main.py` only. Iâ€™m running a syntax compilation check, which doesnâ€™t import the competition engine or execute games.
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'python -m py_compile main.py' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+2026-08-12T18:51:46.934665Z  WARN codex_core::guardian::review_session: failed to refresh guardian trunk rollout snapshot: Session persistence is disabled; cannot guardian review fork.
+ succeeded in 519ms:
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..d78fa26de6f3c49f42ebfab697058ad592b3ffb3
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,63 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    energy_card_type = getattr(CardType, "ENERGY", None)
++    if card is None or (energy_card_type is not None and card.cardType != energy_card_type):
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    energy_types = []
++    for type_name in ("GRASS", "FIRE", "WATER", "LIGHTNING", "PSYCHIC", "FIGHTING", "DARKNESS", "METAL", "FAIRY"):
++        energy_type = getattr(EnergyType, type_name, None)
++        if energy_type is not None:
++            energy_types.append(energy_type)
++    for energy_type in energy_types:
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+codex
+Syntax compilation passed. Iâ€™m doing one final diff check to verify only the intended root file changed and the behavior is limited to attachment choice.
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'git diff -- main.py' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'git status --short' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+2026-08-12T18:51:57.380916Z  WARN codex_core::guardian::review_session: failed to refresh guardian trunk rollout snapshot: Session persistence is disabled; cannot guardian review fork.
+ succeeded in 374ms:
+ succeeded in 363ms:
+ M ../../../../../../../../PROGRESS.md
+ M ../../../../../../../../deck_builder/app.js
+ M ../../../../../../../../deck_builder/index.html
+ M ../../../../../../../../deck_builder/styles.css
+?? ../../../../../../../../No_Name_Decks/
+?? ../../../../../../../../Plan_2.md
+?? ../../../../../../../
+
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..d78fa26de6f3c49f42ebfab697058ad592b3ffb3
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,63 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    energy_card_type = getattr(CardType, "ENERGY", None)
++    if card is None or (energy_card_type is not None and card.cardType != energy_card_type):
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    energy_types = []
++    for type_name in ("GRASS", "FIRE", "WATER", "LIGHTNING", "PSYCHIC", "FIGHTING", "DARKNESS", "METAL", "FAIRY"):
++        energy_type = getattr(EnergyType, type_name, None)
++        if energy_type is not None:
++            energy_types.append(energy_type)
++    for energy_type in energy_types:
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+codex
+`git status` is rooted above this disposable worker tree and reports unrelated parent-level changes, so Iâ€™m not using it further. Iâ€™m checking the edited section directly against the local file content inside this workspace.
+exec
+"C:\\Program Files\\WindowsApps\\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe\\pwsh.exe" -Command 'Select-String -Path main.py -Pattern "attached_energy_type|attachment_unlocks_attack|best_attach_index" -Context 0,28' in C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\workers\001-codex\workspace
+2026-08-12T18:52:14.031043Z  WARN codex_core::guardian::review_session: failed to refresh guardian trunk rollout snapshot: Session persistence is disabled; cannot guardian review fork.
+ succeeded in 428ms:
+
+> main.py:159:def _[7mattached_energy_type[0m(card_id):[0m
+[7m[0m  main.py:160:    """Best-effort Basic Energy type lookup for an Energy card in hand."""[0m
+[7m[0m  main.py:161:    card = _card_data().get(card_id)[0m
+[7m[0m  main.py:162:    energy_card_type = getattr(CardType, "ENERGY", None)[0m
+[7m[0m  main.py:163:    if card is None or (energy_card_type is not None and card.cardType != energy_card_type):[0m
+[7m[0m  main.py:164:        return None[0m
+[7m[0m  main.py:165:    for attr in ("energyType", "energy_type"):[0m
+[7m[0m  main.py:166:        energy_type = getattr(card, attr, None)[0m
+[7m[0m  main.py:167:        if energy_type is not None:[0m
+[7m[0m  main.py:168:            return energy_type[0m
+[7m[0m  main.py:169:    name = getattr(card, "name", "")[0m
+[7m[0m  main.py:170:    energy_types = [][0m
+[7m [0m[7m [0m[7m[0mmain.py:171: [0m[7m [0m[7m [0m[7m [0m[7m[0mfor [0m[7m[0mtype_name [0m[7m[0min [0m[7m[0m("GRASS", [0m[7m[0m"FIRE", [0m[7m[0m"WATER", [0m[7m[0m"LIGHTNING", [0m[7m[0m"PSYCHIC", [0m[7m[0m"FIGHTING", [0m[7m[0m"DARKNESS", [0m[7m[0m"METAL", [0m
+[7m[0m"FAIRY"):[0m
+[7m[0m  main.py:172:        energy_type = getattr(EnergyType, type_name, None)[0m
+[7m[0m  main.py:173:        if energy_type is not None:[0m
+[7m[0m  main.py:174:            energy_types.append(energy_type)[0m
+[7m[0m  main.py:175:    for energy_type in energy_types:[0m
+[7m[0m  main.py:176:        if energy_type.name.title() in name:[0m
+[7m[0m  main.py:177:            return energy_type[0m
+[7m[0m  main.py:178:    return None[0m
+[7m[0m  main.py:179:[0m
+[7m[0m  main.py:180:[0m
+> main.py:181:def _[7mattachment_unlocks_attack[0m(mon, energy_type) -> bool:[0m
+[7m[0m  main.py:182:    """True when one attached Energy changes this Pokemon from unable to able."""[0m
+[7m[0m  main.py:183:    if mon is None or energy_type is None:[0m
+[7m[0m  main.py:184:        return False[0m
+[7m[0m  main.py:185:    card = _card_data().get(mon.id)[0m
+[7m[0m  main.py:186:    if card is None:[0m
+[7m[0m  main.py:187:        return False[0m
+[7m[0m  main.py:188:    attacks = _attack_data()[0m
+[7m[0m  main.py:189:    have = list(mon.energies)[0m
+[7m[0m  main.py:190:    for aid in card.attacks:[0m
+[7m[0m  main.py:191:        attack = attacks.get(aid)[0m
+[7m[0m  main.py:192:        if attack is None:[0m
+[7m[0m  main.py:193:            continue[0m
+[7m[0m  main.py:194:        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):[0m
+[7m[0m  main.py:195:            return True[0m
+[7m[0m  main.py:196:    return False[0m
+[7m[0m  main.py:197:[0m
+[7m[0m  main.py:198:[0m
+> main.py:199:def _[7mbest_attach_index[0m(options, indices, me):[0m
+[7m[0m  main.py:200:    """Prefer attachments that unlock an attack, then Active, then strongest target."""[0m
+[7m[0m  main.py:201:    best_i, best_score = indices[0], -1[0m
+[7m[0m  main.py:202:    for i in indices:[0m
+[7m[0m  main.py:203:        opt = options[i][0m
+[7m[0m  main.py:204:        score = 0[0m
+> main.py:205:        energy_type = _[7mattached_energy_type[0m(opt.cardId)[0m
+[7m[0m  main.py:206:        if opt.inPlayArea == AreaType.ACTIVE:[0m
+[7m[0m  main.py:207:            target = me.active[0] if me.active else None[0m
+[7m[0m  main.py:208:            score = 10000 + (target.maxHp + target.hp if target else 0)[0m
+[7m [0m[7m [0m[7m[0mmain.py:209: [0m[7m [0m[7m [0m[7m [0m[7m [0m[7m [0m[7m [0m[7m [0m[7m[0melif [0m[7m[0mopt.inPlayArea [0m[7m[0m== [0m[7m[0mAreaType.BENCH [0m[7m[0mand [0m[7m[0mopt.inPlayIndex [0m[7m[0mis [0m[7m[0mnot [0m[7m[0mNone [0m[7m[0mand [0m[7m[0mopt.inPlayIndex [0m[7m[0m< [0m
+[7m[0mlen(me.bench):[0m
+[7m[0m  main.py:210:            target = me.bench[opt.inPlayIndex][0m
+[7m[0m  main.py:211:            score = target.maxHp + target.hp[0m
+[7m[0m  main.py:212:        else:[0m
+[7m[0m  main.py:213:            target = None[0m
+> main.py:214:        if _[7mattachment_unlocks_attack[0m(target, energy_type):[0m
+[7m[0m  main.py:215:            score += 100000[0m
+[7m[0m  main.py:216:        if score > best_score:[0m
+[7m[0m  main.py:217:            best_i, best_score = i, score[0m
+[7m[0m  main.py:218:    return best_i[0m
+[7m[0m  main.py:219:[0m
+[7m[0m  main.py:220:[0m
+[7m[0m  main.py:221:def _best_play_index(options, indices, me):[0m
+[7m[0m  main.py:222:    """Rank playable Basic Pokemon by likely board value."""[0m
+[7m[0m  main.py:223:    cards = _card_data()[0m
+[7m[0m  main.py:224:    best_i, best_score = indices[0], -1[0m
+[7m[0m  main.py:225:    for i in indices:[0m
+[7m[0m  main.py:226:        card = cards.get(options[i].cardId)[0m
+[7m[0m  main.py:227:        score = 0[0m
+[7m[0m  main.py:228:        if card is not None and card.cardType == CardType.POKEMON:[0m
+[7m[0m  main.py:229:            if card.basic and len(me.bench) < me.benchMax:[0m
+[7m[0m  main.py:230:                score = 5000 + _card_power(card.cardId)[0m
+[7m[0m  main.py:231:            else:[0m
+[7m[0m  main.py:232:                score = -1[0m
+[7m[0m  main.py:233:        if score > best_score:[0m
+[7m[0m  main.py:234:            best_i, best_score = i, score[0m
+[7m[0m  main.py:235:    return best_i if best_score >= 0 else None[0m
+[7m[0m  main.py:236:[0m
+[7m[0m  main.py:237:[0m
+[7m[0m  main.py:238:def _live_attacker_score(mon, opp_active=None) -> int:[0m
+[7m[0m  main.py:239:    """Score an in-play Pokemon as an immediate Active attacker."""[0m
+[7m[0m  main.py:240:    if mon is None:[0m
+[7m[0m  main.py:241:        return -10**9[0m
+[7m[0m  main.py:242:    dmg = _best_usable_damage(mon)[0m
+> main.py:316:        return [_[7mbest_attach_index[0m(options, by_type[OptionType.ATTACH], me)][0m
+[7m[0m  main.py:317:[0m
+[7m[0m  main.py:318:    # 4. Develop the board: play the strongest Basic to Bench while there's room.[0m
+[7m[0m  main.py:319:    if OptionType.PLAY in by_type and len(me.bench) < me.benchMax:[0m
+[7m[0m  main.py:320:        play_idx = _best_play_index(options, by_type[OptionType.PLAY], me)[0m
+[7m[0m  main.py:321:        if play_idx is not None:[0m
+[7m[0m  main.py:322:            return [play_idx][0m
+[7m[0m  main.py:323:[0m
+[7m[0m  main.py:324:    # 5. Use an Ability if one is available (capped per real turn, see[0m
+[7m[0m  main.py:325:    # _ability_cap_reached).[0m
+[7m[0m  main.py:326:    if OptionType.ABILITY in by_type and not _ability_cap_reached(state):[0m
+[7m[0m  main.py:327:        return [by_type[OptionType.ABILITY][0]][0m
+[7m[0m  main.py:328:[0m
+[7m[0m  main.py:329:    # 6. Attack anyway with the strongest available attack.[0m
+[7m[0m  main.py:330:    if OptionType.ATTACK in by_type:[0m
+[7m[0m  main.py:331:        idx, _ = _best_attack_index(options, by_type[OptionType.ATTACK])[0m
+[7m[0m  main.py:332:        return [idx][0m
+[7m[0m  main.py:333:[0m
+[7m[0m  main.py:334:    # 7. Retreat only if the Active is dying and a stronger Benched PokÃ©mon exists.[0m
+[7m[0m  main.py:335:    # ponytail: deliberately the simple pre-2026-08-08 rule. A tactical[0m
+[7m[0m  main.py:336:    # "retreat to a better attacker" gate was built and ABLATED to exactly zero[0m
+[7m[0m  main.py:337:    # (retreat_ablation.py: card_off 62.4% vs neither 62.8%, n=500/arm) â€” attacker[0m
+[7m[0m  main.py:338:    # choice is decided at forced promotion after a KO, not by voluntary retreat.[0m
+[7m[0m  main.py:339:    # Don't reintroduce a retreat heuristic without measuring it in isolation.[0m
+[7m[0m  main.py:340:    if OptionType.RETREAT in by_type:[0m
+[7m[0m  main.py:341:        my_active = me.active[0] if me.active else None[0m
+[7m[0m  main.py:342:        if my_active is not None and me.bench:[0m
+[7m[0m  main.py:343:            low_hp = my_active.hp <= my_active.maxHp * 0.3[0m
+[7m[0m  main.py:344:            if low_hp and any(b.hp > my_active.hp for b in me.bench):[0m
+
+
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..d78fa26de6f3c49f42ebfab697058ad592b3ffb3
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,63 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    energy_card_type = getattr(CardType, "ENERGY", None)
++    if card is None or (energy_card_type is not None and card.cardType != energy_card_type):
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    energy_types = []
++    for type_name in ("GRASS", "FIRE", "WATER", "LIGHTNING", "PSYCHIC", "FIGHTING", "DARKNESS", "METAL", "FAIRY"):
++        energy_type = getattr(EnergyType, type_name, None)
++        if energy_type is not None:
++            energy_types.append(energy_type)
++    for energy_type in energy_types:
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+codex
+Implemented the smallest coherent change in `main.py`.
+
+Changed behavior:
+`_best_attach_index()` now gives a large priority bonus to an attachment target if the Energy being attached would make at least one currently-unpayable attack become payable immediately. If multiple targets qualify, the existing Active preference and HP-based strength ordering still decide the tie.
+
+Added helpers:
+`_attached_energy_type()`
+`_attachment_unlocks_attack()`
+
+Verification:
+`python -m py_compile main.py` passed.
+
+Concern for reviewer:
+The readiness bonus depends on the simulator exposing the attaching Energy via `option.cardId` plus either Energy metadata or a recognizable Energy card name. If that metadata is absent for some special/engine-specific Energy cards, the code falls back to the previous attachment ordering for those cases.
+diff --git a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+index 2e5a1d445ca94262190a26a9dae4edf00467f0c7..d78fa26de6f3c49f42ebfab697058ad592b3ffb3
+--- a/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
++++ b/sub-agents/specialists/Hydrapple/experiments/EXP-0006/workers/001-codex/workspace/main.py
+@@ -156,18 +156,63 @@
+     return lethal_bonus + active_bonus + live_pressure + static_threat + prize_value * 1000
+ 
+ 
++def _attached_energy_type(card_id):
++    """Best-effort Basic Energy type lookup for an Energy card in hand."""
++    card = _card_data().get(card_id)
++    energy_card_type = getattr(CardType, "ENERGY", None)
++    if card is None or (energy_card_type is not None and card.cardType != energy_card_type):
++        return None
++    for attr in ("energyType", "energy_type"):
++        energy_type = getattr(card, attr, None)
++        if energy_type is not None:
++            return energy_type
++    name = getattr(card, "name", "")
++    energy_types = []
++    for type_name in ("GRASS", "FIRE", "WATER", "LIGHTNING", "PSYCHIC", "FIGHTING", "DARKNESS", "METAL", "FAIRY"):
++        energy_type = getattr(EnergyType, type_name, None)
++        if energy_type is not None:
++            energy_types.append(energy_type)
++    for energy_type in energy_types:
++        if energy_type.name.title() in name:
++            return energy_type
++    return None
++
++
++def _attachment_unlocks_attack(mon, energy_type) -> bool:
++    """True when one attached Energy changes this Pokemon from unable to able."""
++    if mon is None or energy_type is None:
++        return False
++    card = _card_data().get(mon.id)
++    if card is None:
++        return False
++    attacks = _attack_data()
++    have = list(mon.energies)
++    for aid in card.attacks:
++        attack = attacks.get(aid)
++        if attack is None:
++            continue
++        if not _can_pay(attack.energies, have) and _can_pay(attack.energies, have + [energy_type]):
++            return True
++    return False
++
++
+ def _best_attach_index(options, indices, me):
+-    """Prefer powering the Active, then the strongest Bench target."""
++    """Prefer attachments that unlock an attack, then Active, then strongest target."""
+     best_i, best_score = indices[0], -1
+     for i in indices:
+         opt = options[i]
+         score = 0
++        energy_type = _attached_energy_type(opt.cardId)
+         if opt.inPlayArea == AreaType.ACTIVE:
+             target = me.active[0] if me.active else None
+             score = 10000 + (target.maxHp + target.hp if target else 0)
+         elif opt.inPlayArea == AreaType.BENCH and opt.inPlayIndex is not None and opt.inPlayIndex < len(me.bench):
+             target = me.bench[opt.inPlayIndex]
+             score = target.maxHp + target.hp
++        else:
++            target = None
++        if _attachment_unlocks_attack(target, energy_type):
++            score += 100000
+         if score > best_score:
+             best_i, best_score = i, score
+     return best_i
+
+tokens used
+65,546

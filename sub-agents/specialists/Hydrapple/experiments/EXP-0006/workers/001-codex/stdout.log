@@ -1,0 +1,14 @@
+Implemented the smallest coherent change in `main.py`.
+
+Changed behavior:
+`_best_attach_index()` now gives a large priority bonus to an attachment target if the Energy being attached would make at least one currently-unpayable attack become payable immediately. If multiple targets qualify, the existing Active preference and HP-based strength ordering still decide the tie.
+
+Added helpers:
+`_attached_energy_type()`
+`_attachment_unlocks_attack()`
+
+Verification:
+`python -m py_compile main.py` passed.
+
+Concern for reviewer:
+The readiness bonus depends on the simulator exposing the attaching Energy via `option.cardId` plus either Energy metadata or a recognizable Energy card name. If that metadata is absent for some special/engine-specific Energy cards, the code falls back to the previous attachment ordering for those cases.

@@ -1,0 +1,12 @@
+Iâ€™m blocked by the local command runner, not by the repo.
+
+Every shell attempt fails before execution with:
+
+```text
+CreateProcessAsUserW failed: 5 (Access is denied.)
+cmd="...pwsh.exe" ...
+```
+
+That means I cannot read the required files, inspect `main.py`, apply a coherent patch, or run even a minimal syntax check. Since your instructions explicitly require reading the contract/context/baseline before editing, I did not modify anything.
+
+Human reviewer concern: the worker environment needs its PowerShell spawn permissions fixed, or the shell tool needs to use an executable that is allowed by the sandbox.

@@ -1,0 +1,35 @@
+****** Pokémon Trading Card Game Deck List ******
+
+26 - Pokémon
+
+4 Bayleef - 918
+2 Bulbasaur - 650
+4 Chikorita - 917
+2 Ivysaur - 651
+2 Mega Kangaskhan ex - 756
+2 Mega Meganium ex - 919
+2 Mega Venusaur ex - 652
+2 Meganium - 710
+2 Teal Mask Ogerpon ex - 96
+2 Yanma - 339
+2 Yanmega ex - 340
+
+23 - Trainer Cards
+
+2 Air Balloon - 1174
+2 Boss’s Orders - 1182
+2 Buddy-Buddy Poffin - 1086
+2 Ciphermaniac’s Codebreaking - 1188
+2 Energy Retrieval - 1118
+2 Forest of Vitality - 1261
+1 Hero’s Cape - 1159
+2 Lillie's Determination - 1227
+4 Rare Candy - 1079
+2 Switch - 1123
+2 Ultra Ball - 1121
+
+11 - Energy Cards
+
+11 Basic {G} Energy - 1
+
+Total Cards - 60

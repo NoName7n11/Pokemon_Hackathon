@@ -1,0 +1,11 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py start --specialist Hydrapple --hypothesis "When choosing a normal Energy attachment, prefer an in-play Pokemon when that single attachment makes one of its attacks usable this turn; preserve Active preference and existing strength ordering as tie-breakers." --mechanism attack_readiness_attachment --expected-effect "Reduce wasted attachments that leave all attackers unusable without broadly switching to bench-first attachment." --worker codex
+STARTED: 2026-08-12T18:50:02.950970+00:00
+FINISHED: 2026-08-12T18:50:03.126885+00:00
+TIMED_OUT: False
+
+STDOUT:
+Started Hydrapple/EXP-0006
+Edit only: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\experiments\EXP-0006\candidate\main.py
+
+
+STDERR:

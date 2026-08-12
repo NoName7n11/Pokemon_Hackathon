@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.pokemon-hackathon/result.schema.json",
+  "title": "Plan 2 Benchmark Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "specialist",
+    "candidate_version",
+    "opponent",
+    "games",
+    "wins",
+    "losses",
+    "draws"
+  ],
+  "properties": {
+    "specialist": { "type": "string" },
+    "candidate_version": { "type": "string" },
+    "baseline_version": { "type": "string" },
+    "opponent": { "type": "string" },
+    "stage": { "enum": ["smoke", "screening", "main", "confirmation", "tournament"] },
+    "seed_set": { "type": ["string", "null"] },
+    "games": { "type": "integer", "minimum": 0 },
+    "wins": { "type": "integer", "minimum": 0 },
+    "losses": { "type": "integer", "minimum": 0 },
+    "draws": { "type": "integer", "minimum": 0 },
+    "timeouts": { "type": "integer", "minimum": 0 },
+    "illegal_actions": { "type": "integer", "minimum": 0 },
+    "crashes": { "type": "integer", "minimum": 0 },
+    "average_steps": { "type": ["number", "null"] },
+    "average_decision_time_ms": { "type": ["number", "null"] },
+    "max_decision_time_ms": { "type": ["number", "null"] },
+    "win_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "confidence_interval": {
+      "type": ["array", "null"],
+      "prefixItems": [
+        { "type": "number", "minimum": 0, "maximum": 1 },
+        { "type": "number", "minimum": 0, "maximum": 1 }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "z_score": { "type": ["number", "null"] },
+    "p_value": { "type": ["number", "null"] },
+    "started_at": { "type": ["string", "null"], "format": "date-time" },
+    "finished_at": { "type": ["string", "null"], "format": "date-time" }
+    ,
+    "duration_seconds": { "type": ["number", "null"] },
+    "errors": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
