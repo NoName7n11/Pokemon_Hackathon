@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0002",
+  "specialist": "Grass",
+  "created_at": "2026-08-12T23:24:48.403836+00:00",
+  "updated_at": "2026-08-12T23:24:48.488824+00:00",
+  "worker": "claude",
+  "hypothesis": "When evolving the Chikorita line and no Wild Growth Meganium is already in play, prioritize establishing Meganium card 710 before competing Mega Meganium endpoints; preserve evolution ranking after the energy engine exists.",
+  "expected_effect": "Establish Grass Energy doubling earlier and reduce expensive attackers stranded without usable Energy.",
+  "mechanisms": [
+    "wild_growth_engine_priority"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T23:24:48.488824+00:00",
+    "updated_at": "2026-08-12T23:24:48.488824+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

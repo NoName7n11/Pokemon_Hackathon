@@ -134,6 +134,89 @@ def unified_agent_diff(baseline: Path, candidate: Path, limit: int = 500) -> tup
     return "\n".join(lines), truncated
 
 
+def ensure_decision_trace(specialist: Path, experiment_dir: Path, stage: str) -> dict[str, Any]:
+    experiment = read_json(experiment_dir / "experiment.json")
+    existing = next(
+        (item for item in experiment.get("decision_traces", []) if item.get("stage") == stage),
+        None,
+    )
+    if existing:
+        return read_json(experiment_dir / existing["result"])
+    policy = read_json((specialist / read_json(specialist / "config.json")["benchmark_policy"]).resolve())
+    trace_policy = policy["decision_trace"]
+    result_path = experiment_dir / "results" / f"decision-trace-{stage}.json"
+    log_path = experiment_dir / "orchestration-logs" / f"decision-trace-{stage}.log"
+    stage_result = experiment[f"{stage}_result"]
+    seed = int(stage_result.get("seed_set") or 20260813) + 100_000
+    command = [
+        sys.executable,
+        str(TOOLS_DIR / "decision_trace.py"),
+        "--candidate", str(experiment_dir / "candidate" / "main.py"),
+        "--baseline", str(specialist / experiment["baseline_path"] / "main.py"),
+        "--deck", str(experiment_dir / "candidate" / "deck.csv"),
+        "--specialist", specialist.name,
+        "--candidate-version", experiment["candidate_version"],
+        "--baseline-version", experiment["baseline_version"],
+        "--games", str(trace_policy["games"]),
+        "--max-steps", str(policy["max_steps_per_game"]),
+        "--max-records", str(trace_policy["max_records"]),
+        "--max-options", str(trace_policy["max_options_per_record"]),
+        "--seed", str(seed),
+        "--output", str(result_path),
+    ]
+    code = run_command(command, log_path, int(trace_policy["timeout_seconds"]))
+    if code != 0 or not result_path.is_file():
+        raise ValueError(f"decision trace failed with exit {code}; see {log_path}")
+    trace = read_json(result_path)
+    if trace.get("errors"):
+        raise ValueError(f"decision trace contains execution errors; see {result_path}")
+    experiment = read_json(experiment_dir / "experiment.json")
+    experiment.setdefault("decision_traces", []).append(
+        {
+            "stage": stage,
+            "result": str(result_path.relative_to(experiment_dir)).replace("\\", "/"),
+            "log": str(log_path.relative_to(experiment_dir)).replace("\\", "/"),
+            "games": trace["games"],
+            "total_differences": trace["summary"]["total_differences"],
+            "difference_rate": trace["summary"]["difference_rate"],
+        }
+    )
+    experiment["updated_at"] = utc_now()
+    write_json_atomic(experiment_dir / "experiment.json", experiment)
+    return trace
+
+
+def trace_markdown(trace: dict[str, Any]) -> str:
+    summary = trace["summary"]
+    context_rows = "\n".join(
+        f"| {context} | {count} |" for context, count in summary.get("contexts", {}).items()
+    ) or "| none | 0 |"
+    examples = []
+    for record in trace.get("records", [])[:5]:
+        candidate = ", ".join(item.get("type", "?") for item in record["candidate_selected"]) or "none"
+        baseline = ", ".join(item.get("type", "?") for item in record["baseline_selected"]) or "none"
+        examples.append(
+            f"| {record['game']} | {record['step']} | {record['select_type']}/{record['context']} | "
+            f"{candidate} | {baseline} |"
+        )
+    example_rows = "\n".join(examples) or "| - | - | no differences retained | - | - |"
+    return f"""- Trace games: `{trace['games']}`
+- Candidate decisions observed: `{summary['candidate_decisions']}`
+- Different choices: `{summary['total_differences']}` ({summary['difference_rate']:.1%})
+- Games containing a difference: `{summary['games_with_difference']}`
+- Retained records: `{summary['records_retained']}`; truncated: `{summary['records_truncated']}`
+
+| Selection context | Differences |
+|---|---:|
+{context_rows}
+
+Representative differences:
+
+| Game | Step | Type/context | Candidate option types | Baseline option types |
+|---:|---:|---|---|---|
+{example_rows}"""
+
+
 def create_review_pack(specialist: Path, experiment_dir: Path, stage: str) -> tuple[Path, Path]:
     status = read_json(specialist / "status.json")
     experiment = read_json(experiment_dir / "experiment.json")
@@ -143,6 +226,9 @@ def create_review_pack(specialist: Path, experiment_dir: Path, stage: str) -> tu
     baseline = specialist / experiment["baseline_path"] / "main.py"
     candidate = experiment_dir / "candidate" / "main.py"
     diff, truncated = unified_agent_diff(baseline, candidate)
+    trace = ensure_decision_trace(specialist, experiment_dir, stage)
+    experiment = read_json(experiment_dir / "experiment.json")
+    trace_text = trace_markdown(trace)
     latest_worker = next((run for run in reversed(experiment.get("worker_runs", [])) if not run.get("dry_run")), None)
     checks = [
         "Does the diff implement only the stated mechanism?",
@@ -174,6 +260,10 @@ def create_review_pack(specialist: Path, experiment_dir: Path, stage: str) -> tu
         "provider_run": latest_worker,
         "benchmark": result,
         "cross_deck_results": experiment.get("cross_deck_results", []),
+        "decision_trace": {
+            "result": next(item["result"] for item in experiment["decision_traces"] if item["stage"] == stage),
+            "summary": trace["summary"],
+        },
         "diff_truncated": truncated,
         "decision": "pending",
         "reviewer_reason": "",
@@ -202,6 +292,10 @@ Mechanisms: {', '.join(experiment['mechanisms'])}
 ## Cross-Deck Evidence
 
 {json.dumps(experiment.get('cross_deck_results', []), indent=2, ensure_ascii=True)}
+
+## Decision-Difference Trace
+
+{trace_text}
 
 ## Required Human Checks
 

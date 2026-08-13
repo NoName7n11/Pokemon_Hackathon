@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan_2 candidate-versus-baseline decision trace",
+  "type": "object",
+  "required": [
+    "schema_version", "specialist", "candidate_version", "baseline_version",
+    "games", "records", "summary", "limits", "errors"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "specialist": { "type": "string", "minLength": 1 },
+    "candidate_version": { "type": "string", "minLength": 1 },
+    "baseline_version": { "type": "string", "minLength": 1 },
+    "games": { "type": "integer", "minimum": 1 },
+    "records": { "type": "array", "items": { "type": "object" } },
+    "summary": { "type": "object" },
+    "limits": { "type": "object" },
+    "errors": { "type": "array", "items": { "type": "string" } }
+  }
+}

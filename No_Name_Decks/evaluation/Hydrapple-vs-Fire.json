@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "stage": "tournament",
+  "pair_a": {
+    "name": "Hydrapple",
+    "version": "generic-current",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sample_submission\\sample_submission\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\Decs\\Hydrapple.csv"
+  },
+  "pair_b": {
+    "name": "Fire",
+    "version": "generic-current",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sample_submission\\sample_submission\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Fire.csv"
+  },
+  "seed_set": "20260822",
+  "games_per_seat": 100,
+  "games": 200,
+  "a_wins": 148,
+  "b_wins": 52,
+  "draws": 0,
+  "timeouts": 0,
+  "engine_crashes": 0,
+  "faults": {
+    "a": {
+      "crashes": 0,
+      "illegal_actions": 0
+    },
+    "b": {
+      "crashes": 0,
+      "illegal_actions": 0
+    }
+  },
+  "orientations": {
+    "a_first": {
+      "games": 100,
+      "a_wins": 75,
+      "b_wins": 25,
+      "draws": 0
+    },
+    "b_first": {
+      "games": 100,
+      "a_wins": 73,
+      "b_wins": 27,
+      "draws": 0
+    }
+  },
+  "a_win_rate": 0.74,
+  "a_decisive_win_rate": 0.74,
+  "a_confidence_interval": [
+    0.6750912860870691,
+    0.795862631072137
+  ],
+  "z_score": 6.788225099390856,
+  "p_value": 1.1352143584921982e-11,
+  "average_steps": 101.175,
+  "decision_time": {
+    "a": {
+      "decisions": 11665,
+      "average_ms": 7.893702854695447,
+      "max_ms": 345.3167999996367
+    },
+    "b": {
+      "decisions": 8570,
+      "average_ms": 7.212615122526388,
+      "max_ms": 459.44889999918814
+    }
+  },
+  "started_at": "2026-08-12T22:06:56.327337+00:00",
+  "finished_at": "2026-08-12T22:09:42.564936+00:00",
+  "duration_seconds": 166.24455580000176,
+  "errors": []
+}

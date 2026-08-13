@@ -1,0 +1,73 @@
+{
+  "id": "EXP-0001",
+  "specialist": "Dark",
+  "created_at": "2026-08-12T23:21:23.347529+00:00",
+  "updated_at": "2026-08-12T23:21:47.596569+00:00",
+  "worker": "infrastructure",
+  "hypothesis": "Unchanged baseline proves Dark specialist runtime readiness",
+  "expected_effect": "No strategic change; establish smoke readiness",
+  "mechanisms": [
+    "infrastructure_baseline"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0001/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "Dark",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "20260833",
+    "games": 20,
+    "wins": 11,
+    "losses": 9,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 147.2,
+    "average_decision_time_ms": 7.901177262994584,
+    "max_decision_time_ms": 133.92630000089412,
+    "win_rate": 0.55,
+    "confidence_interval": [
+      0.3420820083075997,
+      0.7418049791429071
+    ],
+    "z_score": 0.44721359549995837,
+    "p_value": 0.6547208460185767,
+    "started_at": "2026-08-12T23:21:23.880936+00:00",
+    "finished_at": "2026-08-12T23:21:47.282771+00:00",
+    "duration_seconds": 23.397309799998766,
+    "errors": []
+  },
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 20260833,
+      "started_at": "2026-08-12T23:21:23.697447+00:00",
+      "finished_at": "2026-08-12T23:21:47.297506+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "Infrastructure-only unchanged baseline",
+  "limitations": []
+}

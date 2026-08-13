@@ -2,7 +2,12 @@
   "schema_version": 1,
   "enabled": true,
   "poll_seconds": 30,
-  "max_parallel_specialists": 2,
+  "max_parallel_specialists": 5,
+  "provider_parallel_limits": {
+    "codex": 2,
+    "claude": 3,
+    "antigravity": 1
+  },
   "max_new_experiments_per_day": 6,
   "worker_timeout_seconds": 900,
   "command_timeout_seconds": 14400,

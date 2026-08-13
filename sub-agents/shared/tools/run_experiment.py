@@ -115,6 +115,7 @@ def start(args) -> int:
             "main_result": None,
             "confirmation_result": None,
             "cross_deck_results": [],
+            "decision_traces": [],
             "runs": [],
             "worker_runs": [],
             "orchestration": {},

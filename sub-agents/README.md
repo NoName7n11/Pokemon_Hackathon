@@ -106,7 +106,11 @@ python sub-agents/shared/tools/orchestrate.py run `
 
 Provider, engine, timeout, illegal-action, or clear screening failures are
 automatically rejected and archived. A surviving candidate is placed in
-`human-review/pending/` with its benchmark evidence and unified code diff.
+`human-review/pending/` with its benchmark evidence, unified code diff, and a
+bounded decision-difference trace. The trace evaluates the frozen baseline on
+the same observations seen by the candidate and records where their choices
+differ. Only the candidate choice advances the game, so this is behavior-review
+evidence rather than a counterfactual win-rate estimate.
 
 Human approval after screening authorizes deep evaluation, not acceptance:
 
@@ -158,8 +162,10 @@ claims.
 
 ## Run Continuous Specialist Research
 
-The persistent scheduler consumes explicit, narrow hypotheses. It can run
-different specialists concurrently, but only one experiment per specialist:
+The persistent scheduler consumes explicit, narrow hypotheses. It can run up to
+five different specialists concurrently, but only one experiment per specialist.
+Configured provider ceilings allow two Codex jobs and three Claude jobs at once;
+Antigravity/Gemini may use one otherwise available global slot:
 
 ```powershell
 python sub-agents/shared/tools/continuous_scheduler.py enqueue `
@@ -185,9 +191,10 @@ python sub-agents/shared/tools/continuous_scheduler.py authorize `
 
 Use `status` to inspect every queued/running/review/terminal job. Use `stop` for
 a graceful shutdown; current bounded child processes finish before the scheduler
-exits. The scheduler enforces a two-specialist concurrency cap, six-new-job daily
-cap, unique specialist locks, process logs, append-only history, and fresh stored
-seeds.
+exits. The scheduler enforces a five-specialist global cap, per-provider limits,
+a six-new-job daily cap, unique specialist locks, process logs, append-only
+history, and fresh stored seeds. A full provider queue does not prevent another
+provider from using its available capacity.
 
 The evidence path is `20 smoke -> 200 screening -> human review -> 300 main ->
 500 confirmation -> 200 cross-deck games per opponent -> final human review`.
@@ -233,7 +240,7 @@ verification result under `sub-agents/verification/`.
 The current platform creates, registers, validates, snapshots, and benchmarks
 isolated candidates; invokes bounded Codex, Claude Code, or Gemini-backed worker
 cycles; generates human-review packs; ranks complete private deck-agent pairs in
-a central tournament; and controls submission promotion with snapshots, smoke
-tests, manifests, and rollback. Decision-difference trace extraction, a
-statistically powered multi-specialist tournament, and the first evidence-qualified
-real promotion remain future work.
+a central tournament; records candidate-versus-baseline decision differences;
+and controls submission promotion with snapshots, smoke tests, manifests, and
+rollback. A statistically powered multi-specialist tournament and the first
+evidence-qualified real promotion remain future work.

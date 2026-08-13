@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "name": "Dark",
+  "provider": "claude",
+  "worker_profile": null,
+  "deck_file": "deck.csv",
+  "agent_file": "main.py",
+  "source_deck": "No_Name_Decks/No_Name_Dark.csv",
+  "source_baseline": "sample_submission/sample_submission/main.py",
+  "experiment_budget": {
+    "max_experiments_per_run": 3,
+    "max_runtime_minutes": 180
+  },
+  "benchmark_timeout_seconds": 1800,
+  "benchmark_policy": "../../shared/benchmark_config.json",
+  "provider_policy": "../../shared/provider_config.json",
+  "orchestration_policy": "../../shared/orchestration_config.json",
+  "cross_deck_opponents": [],
+  "human_review": {
+    "strategic_change": "REVIEW_REQUIRED",
+    "promotion": "PROMOTION_REQUIRED"
+  },
+  "allowed_writes": [
+    "."
+  ],
+  "forbidden_writes": [
+    "../../../sample_submission/sample_submission/main.py",
+    "../../../sample_submission/sample_submission/deck.csv",
+    "../*",
+    "../../*"
+  ],
+  "strategy_notes": []
+}

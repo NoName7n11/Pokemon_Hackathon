@@ -1,0 +1,22 @@
+{
+  "provider": "claude",
+  "backend": "claude-code",
+  "executable": "C:\\Users\\novan\\AppData\\Local\\Microsoft\\WinGet\\Links\\claude.EXE",
+  "args": [
+    "C:\\Users\\novan\\AppData\\Local\\Microsoft\\WinGet\\Links\\claude.EXE",
+    "--print",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "acceptEdits",
+    "--tools",
+    "Read,Edit,Write",
+    "--no-session-persistence",
+    "--safe-mode",
+    "--model",
+    "opus",
+    "<PROMPT via stdin>"
+  ],
+  "cwd": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Grass\\experiments\\EXP-0002\\workers\\001-claude\\workspace",
+  "model": "opus"
+}

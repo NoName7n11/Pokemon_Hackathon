@@ -1,0 +1,37 @@
+****** Pokémon Trading Card Game Deck List ******
+
+22 - Pokémon
+
+2 Carvanha - 827
+2 Fezandipiti ex - 140
+2 Gastly - 770
+2 Haunter - 771
+2 Mega Absol ex - 687
+2 Mega Gengar ex - 772
+2 Mega Sharpedo ex - 828
+2 Munkidori ex - 139
+2 Pecharunt ex - 141
+2 Toxel - 833
+2 Toxtricity - 834
+
+27 - Trainer Cards
+
+2 Boss’s Orders - 1182
+2 Cyrano - 1205
+2 Energy Retrieval - 1118
+2 Energy Switch - 1116
+1 Hero’s Cape - 1159
+2 Lillie's Determination - 1227
+4 Mega Signal - 1145
+2 Night Stretcher - 1097
+2 Punk Helmet - 1176
+2 Rare Candy - 1079
+2 Risky Ruins - 1260
+2 Switch - 1123
+2 Ultra Ball - 1121
+
+11 - Energy Cards
+
+11 Basic {D} Energy - 7
+
+Total Cards - 60

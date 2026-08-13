@@ -160,6 +160,11 @@ def main() -> int:
     continuous_config = read_json(SUB_AGENTS_ROOT / "shared" / "continuous_config.json")
     check(continuous_config.get("auto_accept") is False, "continuous auto_accept must be false", phase_errors)
     check(continuous_config.get("auto_promote") is False, "continuous auto_promote must be false", phase_errors)
+    check(continuous_config.get("max_parallel_specialists") == 5, "continuous global worker pool must contain five slots", phase_errors)
+    provider_limits = continuous_config.get("provider_parallel_limits", {})
+    check(provider_limits.get("codex") == 2, "continuous Codex worker limit must be two", phase_errors)
+    check(provider_limits.get("claude") == 3, "continuous Claude worker limit must be three", phase_errors)
+    check(all(int(value) > 0 for value in provider_limits.values()), "continuous provider limits must be positive", phase_errors)
     phases["phase_5_continuous"] = {"ok": not phase_errors, "errors": phase_errors, "jobs": len(continuous_state.get("jobs", []))}
 
     phase_errors = []
@@ -171,6 +176,29 @@ def main() -> int:
     for path in requests:
         validate_schema(read_json(path), promotion_schema, str(path), phase_errors)
     phases["phase_6_promotion"] = {"ok": not phase_errors, "errors": phase_errors, "requests": len(requests)}
+
+    phase_errors = []
+    trace_tool = SUB_AGENTS_ROOT / "shared" / "tools" / "decision_trace.py"
+    trace_schema = SUB_AGENTS_ROOT / "shared" / "schemas" / "decision_trace.schema.json"
+    check(trace_tool.is_file(), "Phase 7 decision trace tool is missing", phase_errors)
+    check(trace_schema.is_file(), "Phase 7 decision trace schema is missing", phase_errors)
+    trace_policy = benchmark.get("decision_trace", {})
+    check(int(trace_policy.get("games", 0)) >= 20, "Phase 7 trace policy requires at least 20 games", phase_errors)
+    check(int(trace_policy.get("max_records", 0)) > 0, "Phase 7 trace record bound is missing", phase_errors)
+    check(int(trace_policy.get("max_options_per_record", 0)) > 0, "Phase 7 trace option bound is missing", phase_errors)
+    orchestrator_source = (SUB_AGENTS_ROOT / "shared" / "tools" / "orchestrate.py").read_text(encoding="utf-8")
+    check("ensure_decision_trace" in orchestrator_source, "Phase 7 is not integrated into review-pack creation", phase_errors)
+    traces = list((SUB_AGENTS_ROOT / "specialists").glob("*/experiments/EXP-*/results/decision-trace-*.json"))
+    traces.extend(VERIFICATION_ROOT.glob("phase7-*.json"))
+    for path in traces:
+        trace = read_json(path)
+        validate_schema(trace, trace_schema, str(path), phase_errors)
+        check(not trace.get("errors"), f"Phase 7 trace contains runtime errors: {path}", phase_errors)
+    phases["phase_7_decision_traces"] = {
+        "ok": not phase_errors,
+        "errors": phase_errors,
+        "traces": len(traces),
+    }
 
     submission = {
         "agent_sha256": sha256_file(ENGINE_PARENT / "main.py"),

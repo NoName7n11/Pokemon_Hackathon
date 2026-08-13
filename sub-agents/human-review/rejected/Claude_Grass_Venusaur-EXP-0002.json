@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "specialist": "Claude_Grass_Venusaur",
+  "experiment": "EXP-0002",
+  "stage": "screening",
+  "created_at": "2026-08-12T21:58:51.262018+00:00",
+  "hypothesis": "For forced promotion and own-board CARD choices after a knockout, prefer an attack-ready Mega Venusaur ex, Hydrapple ex, or Teal Mask Ogerpon ex over support Pokemon when it can immediately deal more usable damage; preserve generic live-attacker scoring outside that narrow choice.",
+  "expected_effect": "Increase attacks made by the deck's primary attackers and reduce turns lost after a knockout without changing global evaluation or ability handling.",
+  "mechanisms": [
+    "venusaur_attacker_concentration"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "claude",
+    "backend": "claude-code",
+    "model": null,
+    "started_at": "2026-08-12T21:52:01.535627+00:00",
+    "finished_at": "2026-08-12T21:54:25.531759+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-claude"
+  },
+  "benchmark": {
+    "specialist": "Claude_Grass_Venusaur",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "762779956",
+    "games": 200,
+    "wins": 121,
+    "losses": 79,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 119.03,
+    "average_decision_time_ms": 8.755859846398671,
+    "max_decision_time_ms": 423.85099999955855,
+    "win_rate": 0.605,
+    "confidence_interval": [
+      0.5358822087449843,
+      0.6701601300121683
+    ],
+    "z_score": 2.969848480983499,
+    "p_value": 0.00297946665633299,
+    "started_at": "2026-08-12T21:54:51.451389+00:00",
+    "finished_at": "2026-08-12T21:58:22.461173+00:00",
+    "duration_seconds": 211.01043589999972,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1147,
+      "total_differences": 75,
+      "difference_rate": 0.06538796861377506,
+      "games_with_difference": 18,
+      "contexts": {
+        "MAIN": 75
+      },
+      "select_types": {
+        "MAIN": 75
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 46,
+        "ABILITY": 13,
+        "ATTACH": 11,
+        "RETREAT": 2,
+        "EVOLVE": 2,
+        "ATTACK": 1
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 49,
+        "ATTACH": 12,
+        "ABILITY": 7,
+        "RETREAT": 3,
+        "EVOLVE": 3,
+        "ATTACK": 1
+      },
+      "candidate_wins": 14,
+      "baseline_opponent_wins": 6,
+      "draws_or_timeouts": 0,
+      "records_retained": 75,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "rejected",
+  "reviewer_reason": "Deck-specialist selection reset: retain Hydrapple only until the next four decks are chosen through comparative evaluation.",
+  "reviewed_at": "2026-08-12T22:00:30.430221+00:00"
+}

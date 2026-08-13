@@ -1,0 +1,29 @@
+{
+  "specialist": "Dark",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "screening",
+  "seed_set": "20260907",
+  "games": 200,
+  "wins": 105,
+  "losses": 95,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 141.76,
+  "average_decision_time_ms": 5.865494444839405,
+  "max_decision_time_ms": 149.24670000254991,
+  "win_rate": 0.525,
+  "confidence_interval": [
+    0.45597270710507,
+    0.5930849925990139
+  ],
+  "z_score": 0.7071067811865481,
+  "p_value": 0.4795001221869531,
+  "started_at": "2026-08-12T23:28:51.256060+00:00",
+  "finished_at": "2026-08-12T23:31:44.771850+00:00",
+  "duration_seconds": 173.52291649999825,
+  "errors": []
+}

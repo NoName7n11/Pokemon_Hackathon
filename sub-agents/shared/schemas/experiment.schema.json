@@ -46,6 +46,10 @@
       "type": "array",
       "items": { "type": "object" }
     },
+    "decision_traces": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
     "runs": {
       "type": "array",
       "items": { "type": "object" }

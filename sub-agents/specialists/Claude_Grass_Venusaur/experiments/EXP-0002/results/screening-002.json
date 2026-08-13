@@ -1,0 +1,29 @@
+{
+  "specialist": "Claude_Grass_Venusaur",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "screening",
+  "seed_set": "762779956",
+  "games": 200,
+  "wins": 121,
+  "losses": 79,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 119.03,
+  "average_decision_time_ms": 8.755859846398671,
+  "max_decision_time_ms": 423.85099999955855,
+  "win_rate": 0.605,
+  "confidence_interval": [
+    0.5358822087449843,
+    0.6701601300121683
+  ],
+  "z_score": 2.969848480983499,
+  "p_value": 0.00297946665633299,
+  "started_at": "2026-08-12T21:54:51.451389+00:00",
+  "finished_at": "2026-08-12T21:58:22.461173+00:00",
+  "duration_seconds": 211.01043589999972,
+  "errors": []
+}

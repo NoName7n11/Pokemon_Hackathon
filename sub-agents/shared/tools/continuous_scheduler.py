@@ -24,6 +24,7 @@ SCHEDULER_LOCK = CONTINUOUS_ROOT / ".scheduler.lock"
 STATE_LOCK = CONTINUOUS_ROOT / ".state.lock"
 STOP_PATH = CONTINUOUS_ROOT / "STOP.request"
 TERMINAL_STATES = {"completed", "rejected", "failed", "cancelled"}
+RUNNING_STATES = {"running_screening", "running_deep_evaluation"}
 
 
 def utc_now() -> str:
@@ -220,6 +221,34 @@ def experiments_started_today(state: dict[str, Any]) -> int:
     )
 
 
+def provider_process_counts(
+    processes: dict[str, tuple[subprocess.Popen, Any, str]],
+    jobs: list[dict[str, Any]],
+) -> dict[str, int]:
+    jobs_by_id = {job["id"]: job for job in jobs}
+    counts: dict[str, int] = {}
+    for job_id in processes:
+        job = jobs_by_id.get(job_id)
+        if job is None:
+            continue
+        provider = job["provider"]
+        counts[provider] = counts.get(provider, 0) + 1
+    return counts
+
+
+def has_worker_capacity(
+    job: dict[str, Any],
+    processes: dict[str, tuple[subprocess.Popen, Any, str]],
+    jobs: list[dict[str, Any]],
+    config: dict[str, Any],
+) -> bool:
+    if len(processes) >= int(config["max_parallel_specialists"]):
+        return False
+    limits = config.get("provider_parallel_limits", {})
+    limit = int(limits.get(job["provider"], config["max_parallel_specialists"]))
+    return provider_process_counts(processes, jobs).get(job["provider"], 0) < limit
+
+
 def run_loop(once: bool) -> int:
     config = read_json(CONFIG_PATH)
     if not config.get("enabled", False):
@@ -263,7 +292,7 @@ def run_loop(once: bool) -> int:
                     if status.get("state") == "READY_FOR_EXPERIMENT" and not status.get("active_experiment"):
                         transition(job, "rejected", "recovered_closed_experiment", "Experiment closed while scheduler was offline.")
                         continue
-                    if not status.get("active_experiment") or len(processes) >= int(config["max_parallel_specialists"]):
+                    if not status.get("active_experiment") or not has_worker_capacity(job, processes, jobs, config):
                         continue
                     phase = "screening" if job["state"] == "running_screening" else "deep"
                     if phase == "screening":
@@ -288,7 +317,7 @@ def run_loop(once: bool) -> int:
                 for job in jobs:
                     if job["state"] in ("waiting_screening_review", "waiting_final_review"):
                         phase = reconcile_waiting(job)
-                        if phase == "deep" and len(processes) < int(config["max_parallel_specialists"]):
+                        if phase == "deep" and has_worker_capacity(job, processes, jobs, config):
                             log_path = CONTINUOUS_ROOT / "logs" / f"{job['id']}-deep.log"
                             log_path.parent.mkdir(parents=True, exist_ok=True)
                             handle = log_path.open("w", encoding="utf-8")
@@ -305,6 +334,8 @@ def run_loop(once: bool) -> int:
                     if len(processes) >= int(config["max_parallel_specialists"]) or daily_remaining <= 0:
                         break
                     if job["state"] != "queued" or job["specialist"] in busy_specialists:
+                        continue
+                    if not has_worker_capacity(job, processes, jobs, config):
                         continue
                     if not job.get("provider_authorized", False):
                         transition(
@@ -343,10 +374,24 @@ def run_loop(once: bool) -> int:
 
 def status_command(_args) -> int:
     state = load_state()
+    config = read_json(CONFIG_PATH)
     counts: dict[str, int] = {}
+    active_by_provider: dict[str, int] = {}
     for job in state.get("jobs", []):
         counts[job["state"]] = counts.get(job["state"], 0) + 1
-    print(json.dumps({"scheduler_running": SCHEDULER_LOCK.exists(), "counts": counts, **state}, indent=2, ensure_ascii=True))
+        if job["state"] in RUNNING_STATES:
+            provider = job["provider"]
+            active_by_provider[provider] = active_by_provider.get(provider, 0) + 1
+    print(json.dumps({
+        "scheduler_running": SCHEDULER_LOCK.exists(),
+        "capacity": {
+            "global": config["max_parallel_specialists"],
+            "per_provider": config.get("provider_parallel_limits", {}),
+            "active_by_provider": active_by_provider,
+        },
+        "counts": counts,
+        **state,
+    }, indent=2, ensure_ascii=True))
     return 0
 
 

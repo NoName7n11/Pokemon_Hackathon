@@ -1,0 +1,36 @@
+****** Pokémon Trading Card Game Deck List ******
+
+18 - Pokémon
+
+4 Charmander - 788
+4 Charmeleon - 789
+2 Eevee - 145
+2 Flareon ex - 239
+2 Mega Charizard X ex - 790
+2 Mega Charizard Y ex - 928
+2 Oricorio ex - 795
+
+26 - Trainer Cards
+
+2 Air Balloon - 1174
+2 Boss’s Orders - 1182
+2 Energy Recycler - 1139
+2 Energy Retrieval - 1118
+2 Firebreather - 1232
+1 Hero’s Cape - 1159
+2 Jumbo Ice Cream - 1147
+2 Lillie's Determination - 1227
+2 Mega Signal - 1145
+2 Powerglass - 1163
+2 Rare Candy - 1079
+2 Switch - 1123
+1 Tera Orb - 1127
+2 Ultra Ball - 1121
+
+16 - Energy Cards
+
+2 Basic {L} Energy - 4
+12 Basic {R} Energy - 2
+2 Basic {W} Energy - 3
+
+Total Cards - 60

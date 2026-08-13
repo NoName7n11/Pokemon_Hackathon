@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0002",
+  "specialist": "Dark",
+  "created_at": "2026-08-12T23:24:48.464993+00:00",
+  "updated_at": "2026-08-12T23:24:48.527653+00:00",
+  "worker": "claude",
+  "hypothesis": "For attack choice and immediate attacker scoring, account for Mega Sharpedo ex Hungry Jaws receiving its conditional damage only when Sharpedo is damaged; preserve generic attack ranking for all other Pokemon.",
+  "expected_effect": "Promote and attack with damaged Mega Sharpedo when Hungry Jaws is a real high-damage option without globally inflating its value.",
+  "mechanisms": [
+    "sharpedo_conditional_attack_value"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T23:24:48.527653+00:00",
+    "updated_at": "2026-08-12T23:24:48.527653+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

@@ -1,0 +1,11 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py start --specialist Claude_Grass_Venusaur --hypothesis "For forced promotion and own-board CARD choices after a knockout, prefer an attack-ready Mega Venusaur ex, Hydrapple ex, or Teal Mask Ogerpon ex over support Pokemon when it can immediately deal more usable damage; preserve generic live-attacker scoring outside that narrow choice." --mechanism venusaur_attacker_concentration --expected-effect "Increase attacks made by the deck's primary attackers and reduce turns lost after a knockout without changing global evaluation or ability handling." --worker claude
+STARTED: 2026-08-12T21:52:00.966081+00:00
+FINISHED: 2026-08-12T21:52:01.170108+00:00
+TIMED_OUT: False
+
+STDOUT:
+Started Claude_Grass_Venusaur/EXP-0002
+Edit only: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Claude_Grass_Venusaur\experiments\EXP-0002\candidate\main.py
+
+
+STDERR:

@@ -11,6 +11,127 @@ the reversal as a new entry instead).
 
 ## 2026-08-13
 
+- **Four-deck specialist research launched concurrently with pinned models**:
+  - Created new isolated specialists from the exact evaluated CSVs: `Fire` from
+    `No_Name_Fire.csv`, `Grass` from `No_Name_Grass.csv`, and `Dark` from
+    `No_Name_Dark.csv`. The older `Claude_Grass_Venusaur` specialist was not reused
+    because its deck hash and list differ. Hydrapple remains the fourth specialist.
+  - All three new 60-card lists passed static validation and runtime import against
+    the competition engine. Unchanged baseline smoke readiness also completed with
+    zero crashes: Fire 8-12, Grass 14-6, and Dark 11-9 over 20 games each. Those
+    neutral experiments were explicitly rejected and archived as infrastructure
+    checks rather than improvements.
+  - After explicit human authorization to transmit each isolated `main.py`,
+    `deck.csv`, and strategy context, queued and started four jobs simultaneously:
+    Hydrapple `JOB-00003` and Fire `JOB-00004` use Codex **`gpt-5.5`**; Grass
+    `JOB-00005` and Dark `JOB-00006` use Claude **`opus`**. Scheduler capacity
+    confirms Codex 2/2, Claude 2/3, and global 4/5 active.
+  - First-cycle mechanisms are deliberately separate and attributable: Hydrapple
+    active-only attack-readiness attachment, Fire Charizard effect-driven damage
+    evaluation, Grass Wild Growth Meganium engine priority, and Dark damaged-
+    Sharpedo conditional attack value. Each job follows provider edit -> 20-game
+    smoke -> 200-game screening -> rejection or human review. Automatic acceptance
+    and submission promotion remain disabled.
+  - Active experiments are Hydrapple `EXP-0008`, Fire `EXP-0002`, Grass `EXP-0002`,
+    and Dark `EXP-0002`. All accepted specialist files and the active submission
+    remain unchanged while candidates run in isolation.
+    **Reason for the implementation:** begin parallel, deck-specific agent research
+    on the four selected lists with explicit model accountability, isolated files,
+    and measured gates instead of allowing untracked or cross-deck tuning. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Subagent execution paused and three user-built decks evaluated before selecting the next four specialists**:
+  - Stopped the continuous scheduler at a safe review boundary. Hydrapple's live
+    candidate had already been automatically rejected after its provider stage
+    failed. The completed Venusaur screening experiment was explicitly rejected
+    from adoption because specialist selection is being reset; all historical
+    evidence remains archived. Scheduler status is stopped with both jobs closed,
+    and no candidate was accepted or promoted.
+  - Validated `No_Name_Dark.csv`, `No_Name_Fire.csv`, and `No_Name_Grass.csv` as
+    legal 60-card decks with one ACE SPEC and no validation warnings. The Grass TXT
+    says Bug Catching Set `[1094]`, but its executable CSV contains Buddy-Buddy
+    Poffin `[1086]`; evaluation used the CSV.
+  - Ran a four-deck, six-pairing matrix using the same current generic agent for
+    every seat: **100 games per seat, 200 per pairing, 1,200 total games**, with
+    zero draws, timeouts, crashes, or illegal actions. Aggregate ranking was:
+    Hydrapple **480-120 (80.0%)**, Fire **257-343 (42.8%)**, Grass **248-352
+    (41.3%)**, Dark **215-385 (35.8%)**. Hydrapple beat Dark 169-31, Fire 148-52,
+    and Grass 163-37.
+  - Candidate matchups formed a real cycle: Dark beat Fire **114-86** (`p=0.0477`),
+    Grass beat Dark **130-70** (`p=0.000022`), and Fire beat Grass **119-81**
+    (`p=0.00721`). Fire ranks first among candidates because it had the best field
+    aggregate and strongest Hydrapple result, but it is not close to Hydrapple yet.
+  - Tested whether the archived Venusaur attacker-concentration logic transfers to
+    the exact user Grass list. It tied the generic agent **101-99 over 200 games
+    (50.5%, p=0.888)**, so the previous 121-79 specialist gain was specific to its
+    older deck and cannot be credited to `No_Name_Grass.csv`.
+  - Added `No_Name_Decks/evaluation/REPORT.md` with full matchup evidence and
+    card-level synergy review. Current recommendation: retain Hydrapple as the only
+    confirmed specialist; place Fire first in the candidate queue; simplify and
+    retest Grass; concentrate and retest Dark; leave remaining worker slots empty
+    until decks earn them.
+    **Reason for the implementation:** choose deck-agent research targets using
+    legal lists, measured field performance, actual combo requirements, and agent
+    transfer evidence before spending parallel coding-agent capacity. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Phase 8 scalable multi-provider worker pool implemented and first live jobs started**:
+  - Expanded continuous research from two to **five concurrent deck specialists**.
+    Enforced provider ceilings are **Codex 2**, **Claude 3**, and optional
+    **Antigravity/Gemini 1**, all constrained by the five-process global limit.
+    One active experiment per specialist remains mandatory.
+  - Added provider-aware scheduling so a saturated provider no longer blocks jobs
+    from another provider with free capacity. Scheduler status now reports global
+    capacity, provider limits, and active counts by provider. New validated deck
+    specialists can join the queue without scheduler code changes; empty capacity
+    remains unused until a real deck and hypothesis are supplied.
+  - Added verifier requirements for the five-worker pool and Codex/Claude quotas.
+    Syntax and synthetic capacity tests passed, including two-Codex saturation,
+    available Claude capacity, and the five-process global ceiling. Full audit
+    `VERIFY-20260812-215132-253946` passed all Phases 1-7 with **0 errors across
+    88 JSON files** before live launch; active submission hashes were unchanged.
+  - The user explicitly authorized isolated source/context transmission to both
+    configured providers. `JOB-00001` (Hydrapple active-only attack readiness)
+    started under Codex, and `JOB-00002` (Venusaur attacker concentration) started
+    under Claude. Scheduler status confirmed both in `running_screening`, occupying
+    2/5 global slots. Their bounded provider, 20-game smoke, and 200-game screening
+    results remain pending; no candidate has been accepted or promoted.
+    **Reason for the implementation:** support parallel specialization across a
+    growing deck library without allowing one provider or one deck to monopolize
+    workers, while preserving independent evidence gates and human control. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Phase 7 decision-difference evidence implemented and verified**:
+  - Added `decision_trace.py` and a bounded JSON trace schema. During real engine
+    games, the candidate controls its seat while a separate frozen-baseline shadow
+    evaluates each exact candidate-controlled observation. Only the candidate
+    choice advances the game, so collection cannot turn a shadow choice into a
+    misleading counterfactual outcome claim.
+  - Each changed decision retains selection type/context, legal-option metadata,
+    candidate and baseline selections, and a compact live-board summary. Policy
+    limits the trace to 20 games, 200 changed decisions, and 40 options per record.
+    The live opponent and shadow baseline use separate module instances so trace
+    collection cannot corrupt opponent policy state.
+  - Integrated error-free traces into both screening and confirmation human-review
+    packs. Reviews now show the overall policy-difference rate, affected contexts,
+    games containing differences, and representative choices beside benchmark and
+    code-diff evidence. This identifies indirect behavior changes that a source diff
+    alone can miss.
+  - Verified the collector on rejected Hydrapple `EXP-0006`: **76 differences over
+    1,296 candidate decisions (5.86%) in 18/20 games**, with 12 candidate wins, 8
+    baseline-opponent wins, zero draws/timeouts, and zero trace errors. Human-readable
+    records showed differences in `PLAY`, `ABILITY`, `ATTACH`, `RETREAT`, `EVOLVE`,
+    and `ATTACK`; the wider MAIN effects are plausible because the narrow attachment
+    change is also used inside the agent's search simulations.
+  - Extended `verify_platform.py` with a Phase 7 audit for tool/schema/policy/review
+    integration and schema validation of retained trace artifacts. The trace is
+    behavioral attribution evidence only; it does not replace the 200/300/500-game
+    statistical benchmark gates.
+    **Reason for the implementation:** make human-in-the-loop review inspect what
+    the candidate actually chooses differently on live board states, instead of
+    relying only on aggregate wins and source-code intent. —
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 - **All implemented phases verified and Phase 6 controlled promotion completed as infrastructure**:
   - Added `verify_platform.py`, which performs one repeatable Phase 1-6 audit:
     parses every Plan_2 JSON artifact, validates experiment/job/matchup/tournament/

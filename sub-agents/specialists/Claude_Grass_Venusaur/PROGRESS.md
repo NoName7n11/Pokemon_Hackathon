@@ -40,3 +40,11 @@ not the active submission.
   - Baseline: `v000-baseline`; candidate: `v001-candidate`.
   - Benchmark runs recorded: 1.
   - Decision reason: Infrastructure-only unchanged baseline; smoke validates runtime and safety but is not a strategic candidate
+
+## 2026-08-12 — EXP-0002
+
+- **REJECTED: For forced promotion and own-board CARD choices after a knockout, prefer an attack-ready Mega Venusaur ex, Hydrapple ex, or Teal Mask Ogerpon ex over support Pokemon when it can immediately deal more usable damage; preserve generic live-attacker scoring outside that narrow choice.**
+  - Mechanisms: venusaur_attacker_concentration.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 2.
+  - Decision reason: human review rejection: Deck-specialist selection reset: retain Hydrapple only until the next four decks are chosen through comparative evaluation.

@@ -13,6 +13,39 @@
       "active_experiment": null
     },
     {
+      "name": "Dark",
+      "path": "specialists/Dark",
+      "provider": "claude",
+      "state": "REVIEW_REQUIRED",
+      "current_version": "v000-baseline",
+      "created_at": "2026-08-12T23:20:18.271841+00:00",
+      "deck_sha256": "5fc5813fb39b6f7d5bcd78b1404b23d414f089c9f5333975b2a8b66e25be9954",
+      "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+      "active_experiment": "EXP-0002"
+    },
+    {
+      "name": "Fire",
+      "path": "specialists/Fire",
+      "provider": "codex",
+      "state": "READY_FOR_EXPERIMENT",
+      "current_version": "v000-baseline",
+      "created_at": "2026-08-12T23:20:17.700123+00:00",
+      "deck_sha256": "2191b33925fa0d44729f9cf790ba66bf50ef9a4c48451023853a419ff6f79de4",
+      "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+      "active_experiment": null
+    },
+    {
+      "name": "Grass",
+      "path": "specialists/Grass",
+      "provider": "claude",
+      "state": "REVIEW_REQUIRED",
+      "current_version": "v000-baseline",
+      "created_at": "2026-08-12T23:20:17.986113+00:00",
+      "deck_sha256": "7d8e05ad2d423e4562bd0ea48ae1006b27e75359ffbe9554deb46a626a398444",
+      "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+      "active_experiment": "EXP-0002"
+    },
+    {
       "name": "Hydrapple",
       "path": "specialists/Hydrapple",
       "provider": "codex",

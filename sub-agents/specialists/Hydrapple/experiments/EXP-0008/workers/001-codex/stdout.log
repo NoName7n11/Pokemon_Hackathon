@@ -1,0 +1,5 @@
+Implemented the smallest scoped change in `main.py`: normal Energy attachment scoring now gives an extra Active-only bonus when the attachment changes the Active Pokemon from having no usable attacks to having at least one usable attack. Bench attachment ranking is unchanged: it still uses the shipped `maxHp + hp` score with no readiness bonus.
+
+Verification: `python -m py_compile main.py` passed. I removed the generated `__pycache__` afterward, and only `context/`, `deck.csv`, and `main.py` remain in the worker workspace.
+
+Reviewer concern: the readiness detection depends on `cg` card metadata exposing Energy typing via one of the handled fields (`energyType`, `energyTypes`, `basicEnergyType`, `providesEnergyType`, `providesEnergyTypes`). If Hydrappleâ€™s runtime uses a different field name, the bonus will safely not trigger rather than crash.

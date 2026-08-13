@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "specialist": "Grass",
+  "experiment": "EXP-0002",
+  "stage": "screening",
+  "created_at": "2026-08-12T23:30:59.881075+00:00",
+  "hypothesis": "When evolving the Chikorita line and no Wild Growth Meganium is already in play, prioritize establishing Meganium card 710 before competing Mega Meganium endpoints; preserve evolution ranking after the energy engine exists.",
+  "expected_effect": "Establish Grass Energy doubling earlier and reduce expensive attackers stranded without usable Energy.",
+  "mechanisms": [
+    "wild_growth_engine_priority"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "claude",
+    "backend": "claude-code",
+    "model": "opus",
+    "started_at": "2026-08-12T23:24:48.780933+00:00",
+    "finished_at": "2026-08-12T23:28:07.211890+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-claude"
+  },
+  "benchmark": {
+    "specialist": "Grass",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "20260906",
+    "games": 200,
+    "wins": 110,
+    "losses": 90,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 105.125,
+    "average_decision_time_ms": 7.159179827643745,
+    "max_decision_time_ms": 250.9103000011237,
+    "win_rate": 0.55,
+    "confidence_interval": [
+      0.48075488574571107,
+      0.6173605136624569
+    ],
+    "z_score": 1.4142135623730963,
+    "p_value": 0.15729920705028475,
+    "started_at": "2026-08-12T23:28:17.036387+00:00",
+    "finished_at": "2026-08-12T23:30:42.478362+00:00",
+    "duration_seconds": 145.44582860000082,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1099,
+      "total_differences": 39,
+      "difference_rate": 0.03548680618744313,
+      "games_with_difference": 12,
+      "contexts": {
+        "MAIN": 39
+      },
+      "select_types": {
+        "MAIN": 39
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 14,
+        "ATTACH": 12,
+        "ABILITY": 5,
+        "EVOLVE": 5,
+        "RETREAT": 3
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 17,
+        "ATTACH": 13,
+        "EVOLVE": 5,
+        "ABILITY": 3,
+        "ATTACK": 1
+      },
+      "candidate_wins": 12,
+      "baseline_opponent_wins": 8,
+      "draws_or_timeouts": 0,
+      "records_retained": 39,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "pending",
+  "reviewer_reason": ""
+}

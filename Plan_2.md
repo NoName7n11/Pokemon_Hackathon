@@ -420,6 +420,36 @@ Phase 5 is complete as infrastructure. A real selection tournament still needs m
 
 Phase 6 is code-complete, but no real promotion has occurred because no candidate currently meets its evidence requirements.
 
+### Phase 7: Decision-difference evidence — complete
+
+- Added a bounded shadow-policy trace that runs the candidate in real engine games and asks a separate baseline module what it would choose from each exact candidate-controlled observation.
+- The candidate alone advances the game. The trace therefore measures where policy choices differ without pretending to simulate counterfactual outcomes for the baseline choice.
+- Each retained difference includes the selection type/context, candidate and baseline choices, compact option metadata, and a live board summary. Trace and option counts are capped by policy.
+- Screening and confirmation review-pack generation now requires an error-free trace and includes aggregate difference rates, context counts, and representative examples.
+- Trace artifacts have a JSON Schema and are included in the consolidated platform verifier.
+- A 20-game Hydrapple `EXP-0006` fixture captured 76 different choices across 1,296 candidate decisions in 18 games, with no trace errors. It also exposed indirect MAIN-action differences caused by the candidate's changed attachment logic inside search.
+
+Phase 7 is evidence infrastructure. Its 20-game trace is for human logic inspection and behavioral attribution, not statistical proof that a candidate wins more games.
+
+### Phase 8: Scalable multi-provider worker pool — complete; execution paused for deck selection
+
+- Expanded the scheduler from two global specialist processes to five.
+- Added enforced provider ceilings: two concurrent Codex jobs, three concurrent Claude jobs, and one optional Antigravity/Gemini job subject to the five-process global cap.
+- Provider saturation no longer blocks other queued providers: a third Codex job waits while an available Claude job can still start.
+- One active experiment per specialist remains mandatory, so concurrency scales across decks without allowing two workers to overwrite one deck specialist.
+- Scheduler status now reports global capacity, provider ceilings, and active jobs per provider.
+- Specialist onboarding remains dynamic: a newly validated deck specialist can be queued without changing scheduler code. Unused slots remain empty rather than inventing deck strategies.
+- After explicit human source-egress authorization, Hydrapple `JOB-00001` started under Codex and Claude Grass Venusaur `JOB-00002` started under Claude. Both entered bounded screening; three global slots remain available for future specialists.
+- The live scheduler was subsequently stopped at a safe boundary so deck selection could precede further agent tuning. Both jobs are closed and their evidence is retained. Hydrapple remains the only confirmed deck choice; no replacement candidate was activated.
+
+The worker pool changes throughput, not the evidence bar. Every specialist still follows independent `20 -> 200 -> human review -> 300 -> 500 -> cross-deck` gates, and acceptance and promotion remain human-controlled.
+
+The first selected four-deck cycle is now active: Hydrapple and Fire run on pinned
+Codex `gpt-5.5`, while Grass and Dark run on pinned Claude `opus`. Each uses the
+exact evaluated deck CSV in a separate specialist directory. New specialists first
+passed runtime import and an unchanged 20-game smoke readiness check; those neutral
+experiments were rejected before strategic workers started.
+
 Tournament reporting is now progressive: every result directory keeps its immutable detailed `REPORT.md`, while `sub-agents/tournaments/REPORT.md` is an append-only cross-run ledger. It backfills existing runs once, prevents duplicate tournament IDs, records version/hash changes, and compares rank, field win rate, and worst-matchup rate with the latest same-field run. Unchanged code/deck hashes make clear when an observed delta is benchmark variation rather than implementation progress.
 
 ### Phase 5 extension: Continuous evidence scheduler — implemented, live start awaiting source-egress approval
@@ -432,5 +462,4 @@ Tournament reporting is now progressive: every result directory keeps its immuta
 
 ### Not implemented yet
 
-- Decision-difference trace extraction and inclusion in human-review packs.
 - Live end-to-end confirmation, multi-opponent evaluation, and promotion using a candidate that actually clears every gate.

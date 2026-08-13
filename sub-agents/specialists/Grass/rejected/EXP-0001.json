@@ -1,0 +1,73 @@
+{
+  "id": "EXP-0001",
+  "specialist": "Grass",
+  "created_at": "2026-08-12T23:21:05.631296+00:00",
+  "updated_at": "2026-08-12T23:21:22.981274+00:00",
+  "worker": "infrastructure",
+  "hypothesis": "Unchanged baseline proves Grass specialist runtime readiness",
+  "expected_effect": "No strategic change; establish smoke readiness",
+  "mechanisms": [
+    "infrastructure_baseline"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0001/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "Grass",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "20260832",
+    "games": 20,
+    "wins": 14,
+    "losses": 6,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 102.8,
+    "average_decision_time_ms": 7.231435406148844,
+    "max_decision_time_ms": 250.9308000007877,
+    "win_rate": 0.7,
+    "confidence_interval": [
+      0.4810232237710206,
+      0.854524726031006
+    ],
+    "z_score": 1.7888543819998315,
+    "p_value": 0.07363827012030269,
+    "started_at": "2026-08-12T23:21:06.297442+00:00",
+    "finished_at": "2026-08-12T23:21:22.664204+00:00",
+    "duration_seconds": 16.36913959999947,
+    "errors": []
+  },
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 20260832,
+      "started_at": "2026-08-12T23:21:06.036796+00:00",
+      "finished_at": "2026-08-12T23:21:22.690832+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "Infrastructure-only unchanged baseline",
+  "limitations": []
+}

@@ -1,0 +1,29 @@
+{
+  "specialist": "Dark",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260833",
+  "games": 20,
+  "wins": 11,
+  "losses": 9,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 147.2,
+  "average_decision_time_ms": 7.901177262994584,
+  "max_decision_time_ms": 133.92630000089412,
+  "win_rate": 0.55,
+  "confidence_interval": [
+    0.3420820083075997,
+    0.7418049791429071
+  ],
+  "z_score": 0.44721359549995837,
+  "p_value": 0.6547208460185767,
+  "started_at": "2026-08-12T23:21:23.880936+00:00",
+  "finished_at": "2026-08-12T23:21:47.282771+00:00",
+  "duration_seconds": 23.397309799998766,
+  "errors": []
+}

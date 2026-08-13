@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-12T19:54:41.133966+00:00",
+  "updated_at": "2026-08-13T18:02:07.793501+00:00",
   "jobs": [
     {
       "id": "JOB-00001",
@@ -10,10 +10,10 @@
       "hypothesis": "When a normal Energy attachment makes an attack usable this turn, apply that readiness preference only to the Active Pokemon; never give the readiness bonus to a Benched target, and preserve the shipped attachment ranking otherwise.",
       "mechanism": "active_only_attack_readiness_attachment",
       "expected_effect": "Reduce wasted Active attachments without recreating the measured harmful bench-first Energy routing.",
-      "provider_authorized": false,
-      "state": "awaiting_provider_authorization",
+      "provider_authorized": true,
+      "state": "rejected",
       "created_at": "2026-08-12T19:51:25.353444+00:00",
-      "updated_at": "2026-08-12T19:51:25.353444+00:00",
+      "updated_at": "2026-08-12T21:55:30.991735+00:00",
       "experiment": null,
       "seed": 880271263,
       "history": [
@@ -28,6 +28,24 @@
           "state": "awaiting_provider_authorization",
           "event": "source_egress_blocked",
           "detail": "No source was sent. Explicit authorization is required to transmit isolated main.py, deck.csv, and copied strategy context to Codex."
+        },
+        {
+          "at": "2026-08-12T21:51:47.948823+00:00",
+          "state": "queued",
+          "event": "provider_authorized",
+          "detail": "Human explicitly authorized sending the isolated private source/context to codex."
+        },
+        {
+          "at": "2026-08-12T21:52:00.765426+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 6148; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00001-screening.log."
+        },
+        {
+          "at": "2026-08-12T21:55:30.991735+00:00",
+          "state": "rejected",
+          "event": "screening_failed",
+          "detail": "Process exited with 1."
         }
       ]
     },
@@ -39,11 +57,11 @@
       "hypothesis": "For forced promotion and own-board CARD choices after a knockout, prefer an attack-ready Mega Venusaur ex, Hydrapple ex, or Teal Mask Ogerpon ex over support Pokemon when it can immediately deal more usable damage; preserve generic live-attacker scoring outside that narrow choice.",
       "mechanism": "venusaur_attacker_concentration",
       "expected_effect": "Increase attacks made by the deck's primary attackers and reduce turns lost after a knockout without changing global evaluation or ability handling.",
-      "provider_authorized": false,
-      "state": "awaiting_provider_authorization",
+      "provider_authorized": true,
+      "state": "rejected",
       "created_at": "2026-08-12T19:51:35.156699+00:00",
-      "updated_at": "2026-08-12T19:51:35.156699+00:00",
-      "experiment": null,
+      "updated_at": "2026-08-12T22:00:31.297549+00:00",
+      "experiment": "EXP-0002",
       "seed": 762779953,
       "history": [
         {
@@ -57,6 +75,170 @@
           "state": "awaiting_provider_authorization",
           "event": "source_egress_blocked",
           "detail": "No source was sent. Explicit authorization is required to transmit isolated main.py, deck.csv, and copied strategy context to Claude."
+        },
+        {
+          "at": "2026-08-12T21:51:48.166139+00:00",
+          "state": "queued",
+          "event": "provider_authorized",
+          "detail": "Human explicitly authorized sending the isolated private source/context to claude."
+        },
+        {
+          "at": "2026-08-12T21:52:00.816322+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 24284; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00002-screening.log."
+        },
+        {
+          "at": "2026-08-12T21:59:01.212898+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-12T22:00:31.297549+00:00",
+          "state": "rejected",
+          "event": "experiment_closed",
+          "detail": "Private experiment decision: rejected."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00003",
+      "specialist": "Hydrapple",
+      "provider": "codex",
+      "model": "gpt-5.5",
+      "hypothesis": "When a normal Energy attachment makes an attack usable this turn, apply readiness preference only to the Active Pokemon and preserve the shipped ranking for every Benched target.",
+      "mechanism": "active_only_attack_readiness_attachment",
+      "expected_effect": "Reduce wasted Active attachments without recreating harmful bench-first Energy routing.",
+      "provider_authorized": true,
+      "state": "rejected",
+      "created_at": "2026-08-12T23:24:31.482800+00:00",
+      "updated_at": "2026-08-12T23:28:22.577722+00:00",
+      "experiment": null,
+      "seed": 20260901,
+      "history": [
+        {
+          "at": "2026-08-12T23:24:31.482800+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-12T23:24:47.934475+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 12372; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00003-screening.log."
+        },
+        {
+          "at": "2026-08-12T23:28:22.577722+00:00",
+          "state": "rejected",
+          "event": "screening_failed",
+          "detail": "Process exited with 1."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00004",
+      "specialist": "Fire",
+      "provider": "codex",
+      "model": "gpt-5.5",
+      "hypothesis": "When choosing or evaluating attacks for Mega Charizard X ex and Mega Charizard Y ex, estimate their effect-driven damage and required Energy discard instead of treating zero printed damage as zero value; preserve all non-Charizard attack logic.",
+      "mechanism": "charizard_effect_damage_evaluation",
+      "expected_effect": "Use powered Charizard attacks at tactically correct times instead of underrating dynamic damage.",
+      "provider_authorized": true,
+      "state": "rejected",
+      "created_at": "2026-08-12T23:24:31.697227+00:00",
+      "updated_at": "2026-08-12T23:28:52.678204+00:00",
+      "experiment": null,
+      "seed": 20260902,
+      "history": [
+        {
+          "at": "2026-08-12T23:24:31.697227+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-12T23:24:48.008559+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 19292; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00004-screening.log."
+        },
+        {
+          "at": "2026-08-12T23:28:52.678204+00:00",
+          "state": "rejected",
+          "event": "screening_failed",
+          "detail": "Process exited with 1."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00005",
+      "specialist": "Grass",
+      "provider": "claude",
+      "model": "opus",
+      "hypothesis": "When evolving the Chikorita line and no Wild Growth Meganium is already in play, prioritize establishing Meganium card 710 before competing Mega Meganium endpoints; preserve evolution ranking after the energy engine exists.",
+      "mechanism": "wild_growth_engine_priority",
+      "expected_effect": "Establish Grass Energy doubling earlier and reduce expensive attackers stranded without usable Energy.",
+      "provider_authorized": true,
+      "state": "waiting_screening_review",
+      "created_at": "2026-08-12T23:24:31.930553+00:00",
+      "updated_at": "2026-08-12T23:31:22.885763+00:00",
+      "experiment": "EXP-0002",
+      "seed": 20260903,
+      "history": [
+        {
+          "at": "2026-08-12T23:24:31.930553+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-12T23:24:48.063938+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 10584; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00005-screening.log."
+        },
+        {
+          "at": "2026-08-12T23:31:22.885763+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00006",
+      "specialist": "Dark",
+      "provider": "claude",
+      "model": "opus",
+      "hypothesis": "For attack choice and immediate attacker scoring, account for Mega Sharpedo ex Hungry Jaws receiving its conditional damage only when Sharpedo is damaged; preserve generic attack ranking for all other Pokemon.",
+      "mechanism": "sharpedo_conditional_attack_value",
+      "expected_effect": "Promote and attack with damaged Mega Sharpedo when Hungry Jaws is a real high-damage option without globally inflating its value.",
+      "provider_authorized": true,
+      "state": "waiting_screening_review",
+      "created_at": "2026-08-12T23:24:32.197247+00:00",
+      "updated_at": "2026-08-12T23:32:23.012462+00:00",
+      "experiment": "EXP-0002",
+      "seed": 20260904,
+      "history": [
+        {
+          "at": "2026-08-12T23:24:32.197247+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-12T23:24:48.113845+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 8072; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00006-screening.log."
+        },
+        {
+          "at": "2026-08-12T23:32:23.012462+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
         }
       ]
     }

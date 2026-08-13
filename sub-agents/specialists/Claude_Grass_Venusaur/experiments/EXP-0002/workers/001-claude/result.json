@@ -1,0 +1,17 @@
+{
+  "run": 1,
+  "provider": "claude",
+  "backend": "claude-code",
+  "model": null,
+  "started_at": "2026-08-12T21:52:01.535627+00:00",
+  "finished_at": "2026-08-12T21:54:25.531759+00:00",
+  "dry_run": false,
+  "returncode": 0,
+  "timed_out": false,
+  "candidate_imported": true,
+  "changed_files": [
+    "main.py"
+  ],
+  "validation_errors": [],
+  "run_dir": "workers/001-claude"
+}

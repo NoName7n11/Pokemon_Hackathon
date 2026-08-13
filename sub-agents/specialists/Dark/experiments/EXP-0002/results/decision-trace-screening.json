@@ -1,0 +1,7579 @@
+{
+  "schema_version": 1,
+  "specialist": "Dark",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "seed": 20360907,
+  "created_at": "2026-08-12T23:32:02.045923+00:00",
+  "games": 20,
+  "records": [
+    {
+      "game": 1,
+      "step": 20,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 9,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1191,
+          "attack_name": "Reckless Charge",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 20,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 60,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 21,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1191,
+          "attack_name": "Reckless Charge",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 20,
+              "max_hp": 70,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 60,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 25,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1191,
+          "attack_name": "Reckless Charge",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 6,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 20,
+              "max_hp": 70,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 60,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 64,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 17,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 1
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        12
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 834,
+              "name": "Toxtricity",
+              "hp": 140,
+              "max_hp": 140,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 31,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 300,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 38,
+            "prizes_left": 4
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 79,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 15,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        }
+      ],
+      "baseline_choice": [
+        14
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 30,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 290,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 36,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 80,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 1,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 30,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 290,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 36,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 8,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 687,
+              "name": "Mega Absol ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 687,
+              "name": "Mega Absol ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 46,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 17,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 3,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 770,
+              "name": "Gastly",
+              "hp": 60,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 7,
+            "deck_count": 45,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 19,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 5,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 770,
+              "name": "Gastly",
+              "hp": 60,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 45,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 22,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 8,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 770,
+              "name": "Gastly",
+              "hp": 60,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 1,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 45,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 35,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 12,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        5
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        6
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 4,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 770,
+              "name": "Gastly",
+              "hp": 40,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 42,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 200,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 380,
+                "max_hp": 380,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 827,
+                "name": "Carvanha",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 38,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 21,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 833,
+              "name": "Toxel",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 170,
+              "max_hp": 170,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 1,
+            "deck_count": 44,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 101,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 17,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 834,
+              "name": "Toxtricity",
+              "hp": 120,
+              "max_hp": 140,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 29,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 320,
+              "max_hp": 430,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 31,
+            "prizes_left": 4
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 134,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 2
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 21,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 24,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 240,
+              "max_hp": 430,
+              "energy_count": 6,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 26,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 135,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 2
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 21,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 24,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 240,
+              "max_hp": 430,
+              "energy_count": 6,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 26,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 136,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 2
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 2
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "board": {
+        "turn": 21,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 21,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 240,
+              "max_hp": 430,
+              "energy_count": 6,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 26,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 138,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "board": {
+        "turn": 21,
+        "turn_action_count": 5,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 687,
+              "name": "Mega Absol ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 21,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 240,
+              "max_hp": 430,
+              "energy_count": 6,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 26,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 8,
+      "step": 8,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 770,
+              "name": "Gastly",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 687,
+              "name": "Mega Absol ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 7,
+            "deck_count": 46,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 8,
+      "step": 50,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 8,
+        "turn_action_count": 5,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 772,
+              "name": "Mega Gengar ex",
+              "hp": 280,
+              "max_hp": 350,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 2,
+                "tool_count": 0
+              },
+              {
+                "card_id": 770,
+                "name": "Gastly",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 39,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 50,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 35,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 10,
+      "step": 73,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 30,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        27
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 10,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 141,
+              "name": "Pecharunt ex",
+              "hp": 190,
+              "max_hp": 190,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 827,
+                "name": "Carvanha",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 32,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 90,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 9,
+            "deck_count": 34,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 10,
+      "step": 83,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 31,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 8
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 10,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 10,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 10,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 10,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 10,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 10,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        28
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 12,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 28,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 90,
+              "max_hp": 330,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 33,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 10,
+      "step": 84,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 13,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 7
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 7
+        }
+      ],
+      "baseline_choice": [
+        10
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 12,
+        "turn_action_count": 2,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 28,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 90,
+              "max_hp": 330,
+              "energy_count": 4,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 10,
+            "deck_count": 33,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 10,
+      "step": 85,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 13,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        10
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 12,
+        "turn_action_count": 3,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 28,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 90,
+              "max_hp": 330,
+              "energy_count": 4,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 36,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 10,
+      "step": 86,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 12,
+        "turn_action_count": 4,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 28,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 90,
+              "max_hp": 330,
+              "energy_count": 4,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 36,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 11,
+      "step": 5,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 141,
+              "name": "Pecharunt ex",
+              "hp": 190,
+              "max_hp": 190,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 827,
+                "name": "Carvanha",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 46,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 827,
+              "name": "Carvanha",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 46,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 9,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 6,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 220,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 34,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 60,
+              "max_hp": 330,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 140,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 41,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 47,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 9,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        }
+      ],
+      "board": {
+        "turn": 6,
+        "turn_action_count": 2,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 220,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 34,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 60,
+              "max_hp": 330,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 140,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 41,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 48,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 10,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        }
+      ],
+      "board": {
+        "turn": 6,
+        "turn_action_count": 3,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 220,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 34,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 60,
+              "max_hp": 330,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 140,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 41,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 69,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 8,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 30,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 40,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 140,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 37,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 71,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 12,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        9
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 8,
+        "turn_action_count": 3,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 30,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 40,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 140,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 37,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 72,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 8,
+        "turn_action_count": 4,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 30,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 40,
+              "max_hp": 330,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 140,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 37,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 80,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 10,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        7
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        }
+      ],
+      "board": {
+        "turn": 10,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 9,
+            "deck_count": 26,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 20,
+              "max_hp": 330,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 140,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 9,
+            "deck_count": 34,
+            "prizes_left": 1
+          }
+        ]
+      }
+    },
+    {
+      "game": 17,
+      "step": 39,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 15,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 3
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "baseline_choice": [
+        7
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 5,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 834,
+              "name": "Toxtricity",
+              "hp": 110,
+              "max_hp": 140,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 330,
+                "max_hp": 330,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 36,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 687,
+              "name": "Mega Absol ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 3,
+            "deck_count": 44,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 18,
+      "step": 146,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 10,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "PLAY",
+          "index": 8
+        },
+        {
+          "type": "PLAY",
+          "index": 9
+        },
+        {
+          "type": "PLAY",
+          "index": 10
+        },
+        {
+          "type": "PLAY",
+          "index": 11
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 2
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        6
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 11
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 28,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 100,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 160,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 19,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 772,
+              "name": "Mega Gengar ex",
+              "hp": 450,
+              "max_hp": 450,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 180,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 12,
+            "deck_count": 12,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 18,
+      "step": 152,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 7
+        },
+        {
+          "type": "PLAY",
+          "index": 8
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 4
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 7
+        }
+      ],
+      "baseline_choice": [
+        5
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 28,
+        "turn_action_count": 7,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 100,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 160,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 19,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 180,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 772,
+                "name": "Mega Gengar ex",
+                "hp": 450,
+                "max_hp": 450,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 9,
+            "deck_count": 12,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 18,
+      "step": 155,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 4
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 5
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 28,
+        "turn_action_count": 10,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 100,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 160,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 19,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 180,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 772,
+                "name": "Mega Gengar ex",
+                "hp": 450,
+                "max_hp": 450,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 11,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 18,
+      "step": 158,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 4
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 28,
+        "turn_action_count": 13,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 100,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 160,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 19,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 180,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 772,
+                "name": "Mega Gengar ex",
+                "hp": 450,
+                "max_hp": 450,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 10,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 18,
+      "step": 159,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 4
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "baseline_choice": [
+        7
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 28,
+        "turn_action_count": 14,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 100,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 160,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 19,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 140,
+              "name": "Fezandipiti ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 180,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 772,
+                "name": "Mega Gengar ex",
+                "hp": 450,
+                "max_hp": 450,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 8,
+            "deck_count": 7,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 19,
+      "step": 33,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "baseline_choice": [
+        6
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 320,
+              "max_hp": 330,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 827,
+                "name": "Carvanha",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 38,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 310,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 19,
+      "step": 34,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        5
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 320,
+              "max_hp": 330,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 827,
+                "name": "Carvanha",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 38,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 310,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 19,
+      "step": 39,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 5
+        }
+      ],
+      "baseline_choice": [
+        5
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 320,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 827,
+                "name": "Carvanha",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 37,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 139,
+              "name": "Munkidori ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 42,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 19,
+      "step": 41,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1193,
+          "attack_name": "Hungry Jaws",
+          "printed_damage": 120
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 5
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 320,
+              "max_hp": 330,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 827,
+                "name": "Carvanha",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 833,
+                "name": "Toxel",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 37,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 141,
+              "name": "Pecharunt ex",
+              "hp": 190,
+              "max_hp": 190,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 42,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 101,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1192,
+          "attack_name": "Greedy Fang",
+          "printed_damage": 70
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "board": {
+        "turn": 20,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 90,
+              "max_hp": 330,
+              "energy_count": 5,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 360,
+                "max_hp": 380,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 150,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 834,
+                "name": "Toxtricity",
+                "hp": 60,
+                "max_hp": 140,
+                "energy_count": 2,
+                "tool_count": 1
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 25,
+            "prizes_left": 1
+          },
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 100,
+              "max_hp": 430,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 34,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 103,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 2,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "board": {
+        "turn": 20,
+        "turn_action_count": 3,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 828,
+              "name": "Mega Sharpedo ex",
+              "hp": 90,
+              "max_hp": 330,
+              "energy_count": 5,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 360,
+                "max_hp": 380,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 141,
+                "name": "Pecharunt ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 140,
+                "name": "Fezandipiti ex",
+                "hp": 150,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 834,
+                "name": "Toxtricity",
+                "hp": 60,
+                "max_hp": 140,
+                "energy_count": 2,
+                "tool_count": 1
+              },
+              {
+                "card_id": 139,
+                "name": "Munkidori ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 25,
+            "prizes_left": 1
+          },
+          {
+            "active": {
+              "card_id": 687,
+              "name": "Mega Absol ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 828,
+                "name": "Mega Sharpedo ex",
+                "hp": 100,
+                "max_hp": 430,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 687,
+                "name": "Mega Absol ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 34,
+            "prizes_left": 6
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "candidate_decisions": 1107,
+    "total_differences": 44,
+    "difference_rate": 0.03974706413730804,
+    "games_with_difference": 12,
+    "contexts": {
+      "MAIN": 44
+    },
+    "select_types": {
+      "MAIN": 44
+    },
+    "candidate_selected_option_types": {
+      "PLAY": 22,
+      "ATTACH": 13,
+      "ABILITY": 5,
+      "RETREAT": 3,
+      "END": 1
+    },
+    "baseline_selected_option_types": {
+      "PLAY": 12,
+      "ATTACK": 10,
+      "ATTACH": 9,
+      "END": 9,
+      "RETREAT": 4
+    },
+    "candidate_wins": 8,
+    "baseline_opponent_wins": 12,
+    "draws_or_timeouts": 0,
+    "records_retained": 44,
+    "records_truncated": false
+  },
+  "limits": {
+    "max_steps_per_game": 3000,
+    "max_records": 200,
+    "max_options_per_record": 40
+  },
+  "errors": []
+}

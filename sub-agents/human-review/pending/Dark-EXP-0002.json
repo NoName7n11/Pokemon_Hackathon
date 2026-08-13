@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "specialist": "Dark",
+  "experiment": "EXP-0002",
+  "stage": "screening",
+  "created_at": "2026-08-12T23:32:02.093297+00:00",
+  "hypothesis": "For attack choice and immediate attacker scoring, account for Mega Sharpedo ex Hungry Jaws receiving its conditional damage only when Sharpedo is damaged; preserve generic attack ranking for all other Pokemon.",
+  "expected_effect": "Promote and attack with damaged Mega Sharpedo when Hungry Jaws is a real high-damage option without globally inflating its value.",
+  "mechanisms": [
+    "sharpedo_conditional_attack_value"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "claude",
+    "backend": "claude-code",
+    "model": "opus",
+    "started_at": "2026-08-12T23:24:48.822742+00:00",
+    "finished_at": "2026-08-12T23:28:29.977774+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-claude"
+  },
+  "benchmark": {
+    "specialist": "Dark",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "20260907",
+    "games": 200,
+    "wins": 105,
+    "losses": 95,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 141.76,
+    "average_decision_time_ms": 5.865494444839405,
+    "max_decision_time_ms": 149.24670000254991,
+    "win_rate": 0.525,
+    "confidence_interval": [
+      0.45597270710507,
+      0.5930849925990139
+    ],
+    "z_score": 0.7071067811865481,
+    "p_value": 0.4795001221869531,
+    "started_at": "2026-08-12T23:28:51.256060+00:00",
+    "finished_at": "2026-08-12T23:31:44.771850+00:00",
+    "duration_seconds": 173.52291649999825,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1107,
+      "total_differences": 44,
+      "difference_rate": 0.03974706413730804,
+      "games_with_difference": 12,
+      "contexts": {
+        "MAIN": 44
+      },
+      "select_types": {
+        "MAIN": 44
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 22,
+        "ATTACH": 13,
+        "ABILITY": 5,
+        "RETREAT": 3,
+        "END": 1
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 12,
+        "ATTACK": 10,
+        "ATTACH": 9,
+        "END": 9,
+        "RETREAT": 4
+      },
+      "candidate_wins": 8,
+      "baseline_opponent_wins": 12,
+      "draws_or_timeouts": 0,
+      "records_retained": 44,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "pending",
+  "reviewer_reason": ""
+}

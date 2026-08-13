@@ -64,3 +64,19 @@ not the active submission.
   - Baseline: `v000-baseline`; candidate: `v001-candidate`.
   - Benchmark runs recorded: 2.
   - Decision reason: automatic rejection: screening win rate 40.0% is below 45.0%
+
+## 2026-08-12 — EXP-0007
+
+- **REJECTED: When a normal Energy attachment makes an attack usable this turn, apply that readiness preference only to the Active Pokemon; never give the readiness bonus to a Benched target, and preserve the shipped attachment ranking otherwise.**
+  - Mechanisms: active_only_attack_readiness_attachment.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 0.
+  - Decision reason: automatic rejection: provider stage failed with exit 1
+
+## 2026-08-12 — EXP-0008
+
+- **REJECTED: When a normal Energy attachment makes an attack usable this turn, apply readiness preference only to the Active Pokemon and preserve the shipped ranking for every Benched target.**
+  - Mechanisms: active_only_attack_readiness_attachment.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 0.
+  - Decision reason: automatic rejection: provider stage failed with exit 1

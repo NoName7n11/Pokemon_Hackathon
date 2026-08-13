@@ -1,0 +1,165 @@
+{
+  "id": "EXP-0002",
+  "specialist": "Claude_Grass_Venusaur",
+  "created_at": "2026-08-12T21:52:01.135621+00:00",
+  "updated_at": "2026-08-12T22:00:30.647417+00:00",
+  "worker": "claude",
+  "hypothesis": "For forced promotion and own-board CARD choices after a knockout, prefer an attack-ready Mega Venusaur ex, Hydrapple ex, or Teal Mask Ogerpon ex over support Pokemon when it can immediately deal more usable damage; preserve generic live-attacker scoring outside that narrow choice.",
+  "expected_effect": "Increase attacks made by the deck's primary attackers and reduce turns lost after a knockout without changing global evaluation or ability handling.",
+  "mechanisms": [
+    "venusaur_attacker_concentration"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "Claude_Grass_Venusaur",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "762779955",
+    "games": 20,
+    "wins": 9,
+    "losses": 11,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 126.6,
+    "average_decision_time_ms": 9.828654210121206,
+    "max_decision_time_ms": 254.14490000002843,
+    "win_rate": 0.45,
+    "confidence_interval": [
+      0.25819502085709295,
+      0.6579179916924003
+    ],
+    "z_score": -0.44721359549995787,
+    "p_value": 0.6547208460185772,
+    "started_at": "2026-08-12T21:54:25.919426+00:00",
+    "finished_at": "2026-08-12T21:54:51.086094+00:00",
+    "duration_seconds": 25.1769220999995,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "Claude_Grass_Venusaur",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "762779956",
+    "games": 200,
+    "wins": 121,
+    "losses": 79,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 119.03,
+    "average_decision_time_ms": 8.755859846398671,
+    "max_decision_time_ms": 423.85099999955855,
+    "win_rate": 0.605,
+    "confidence_interval": [
+      0.5358822087449843,
+      0.6701601300121683
+    ],
+    "z_score": 2.969848480983499,
+    "p_value": 0.00297946665633299,
+    "started_at": "2026-08-12T21:54:51.451389+00:00",
+    "finished_at": "2026-08-12T21:58:22.461173+00:00",
+    "duration_seconds": 211.01043589999972,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [
+    {
+      "stage": "screening",
+      "result": "results/decision-trace-screening.json",
+      "log": "orchestration-logs/decision-trace-screening.log",
+      "games": 20,
+      "total_differences": 75,
+      "difference_rate": 0.06538796861377506
+    }
+  ],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 762779955,
+      "started_at": "2026-08-12T21:54:25.773391+00:00",
+      "finished_at": "2026-08-12T21:54:51.117985+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 200,
+      "seed": 762779956,
+      "started_at": "2026-08-12T21:54:51.328362+00:00",
+      "finished_at": "2026-08-12T21:58:22.477201+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "claude",
+      "backend": "claude-code",
+      "model": null,
+      "started_at": "2026-08-12T21:52:01.535627+00:00",
+      "finished_at": "2026-08-12T21:54:25.531759+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-claude"
+    }
+  ],
+  "orchestration": {
+    "state": "REJECTED_BY_HUMAN",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T21:52:01.198750+00:00",
+    "updated_at": "2026-08-12T22:00:30.456839+00:00",
+    "review_pack": "human-review/rejected/Claude_Grass_Venusaur-EXP-0002.md"
+  },
+  "reviews": [
+    {
+      "stage": "screening",
+      "status": "rejected",
+      "created_at": "2026-08-12T21:58:51.267199+00:00",
+      "json": "human-review/rejected/Claude_Grass_Venusaur-EXP-0002.json",
+      "markdown": "human-review/rejected/Claude_Grass_Venusaur-EXP-0002.md",
+      "reviewed_at": "2026-08-12T22:00:30.430221+00:00",
+      "reason": "Deck-specialist selection reset: retain Hydrapple only until the next four decks are chosen through comparative evaluation."
+    }
+  ],
+  "review_history": [
+    {
+      "stage": "screening",
+      "decision": "rejected",
+      "reason": "Deck-specialist selection reset: retain Hydrapple only until the next four decks are chosen through comparative evaluation.",
+      "at": "2026-08-12T22:00:30.456839+00:00"
+    }
+  ],
+  "decision": "rejected",
+  "reason": "human review rejection: Deck-specialist selection reset: retain Hydrapple only until the next four decks are chosen through comparative evaluation.",
+  "limitations": []
+}

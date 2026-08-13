@@ -1,0 +1,35 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\benchmark_pair.py --candidate C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Claude_Grass_Venusaur\experiments\EXP-0002\candidate\main.py --baseline C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Claude_Grass_Venusaur\snapshots\v000-baseline\main.py --deck C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Claude_Grass_Venusaur\experiments\EXP-0002\candidate\deck.csv --games 200 --max-steps 3000 --seed 762779956 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Claude_Grass_Venusaur\experiments\EXP-0002\results\screening-002.json --specialist Claude_Grass_Venusaur --candidate-version v001-candidate --baseline-version v000-baseline --stage screening
+
+STDOUT:
+{
+  "specialist": "Claude_Grass_Venusaur",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "screening",
+  "seed_set": "762779956",
+  "games": 200,
+  "wins": 121,
+  "losses": 79,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 119.03,
+  "average_decision_time_ms": 8.755859846398671,
+  "max_decision_time_ms": 423.85099999955855,
+  "win_rate": 0.605,
+  "confidence_interval": [
+    0.5358822087449843,
+    0.6701601300121683
+  ],
+  "z_score": 2.969848480983499,
+  "p_value": 0.00297946665633299,
+  "started_at": "2026-08-12T21:54:51.451389+00:00",
+  "finished_at": "2026-08-12T21:58:22.461173+00:00",
+  "duration_seconds": 211.01043589999972,
+  "errors": []
+}
+
+
+STDERR:

@@ -1,0 +1,29 @@
+{
+  "specialist": "Grass",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260832",
+  "games": 20,
+  "wins": 14,
+  "losses": 6,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 102.8,
+  "average_decision_time_ms": 7.231435406148844,
+  "max_decision_time_ms": 250.9308000007877,
+  "win_rate": 0.7,
+  "confidence_interval": [
+    0.4810232237710206,
+    0.854524726031006
+  ],
+  "z_score": 1.7888543819998315,
+  "p_value": 0.07363827012030269,
+  "started_at": "2026-08-12T23:21:06.297442+00:00",
+  "finished_at": "2026-08-12T23:21:22.664204+00:00",
+  "duration_seconds": 16.36913959999947,
+  "errors": []
+}

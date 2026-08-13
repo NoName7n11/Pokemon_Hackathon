@@ -1,0 +1,156 @@
+{
+  "id": "EXP-0002",
+  "specialist": "Grass",
+  "created_at": "2026-08-12T23:24:48.403836+00:00",
+  "updated_at": "2026-08-12T23:30:59.930733+00:00",
+  "worker": "claude",
+  "hypothesis": "When evolving the Chikorita line and no Wild Growth Meganium is already in play, prioritize establishing Meganium card 710 before competing Mega Meganium endpoints; preserve evolution ranking after the energy engine exists.",
+  "expected_effect": "Establish Grass Energy doubling earlier and reduce expensive attackers stranded without usable Energy.",
+  "mechanisms": [
+    "wild_growth_engine_priority"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "REVIEW_REQUIRED",
+  "smoke_result": {
+    "specialist": "Grass",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "20260905",
+    "games": 20,
+    "wins": 8,
+    "losses": 12,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 91.2,
+    "average_decision_time_ms": 5.97698324718379,
+    "max_decision_time_ms": 138.94150000123773,
+    "win_rate": 0.4,
+    "confidence_interval": [
+      0.21880396741419272,
+      0.613422057684794
+    ],
+    "z_score": -0.8944271909999157,
+    "p_value": 0.37109336952269767,
+    "started_at": "2026-08-12T23:28:07.564281+00:00",
+    "finished_at": "2026-08-12T23:28:16.680228+00:00",
+    "duration_seconds": 9.121750799997244,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "Grass",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "20260906",
+    "games": 200,
+    "wins": 110,
+    "losses": 90,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 105.125,
+    "average_decision_time_ms": 7.159179827643745,
+    "max_decision_time_ms": 250.9103000011237,
+    "win_rate": 0.55,
+    "confidence_interval": [
+      0.48075488574571107,
+      0.6173605136624569
+    ],
+    "z_score": 1.4142135623730963,
+    "p_value": 0.15729920705028475,
+    "started_at": "2026-08-12T23:28:17.036387+00:00",
+    "finished_at": "2026-08-12T23:30:42.478362+00:00",
+    "duration_seconds": 145.44582860000082,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [
+    {
+      "stage": "screening",
+      "result": "results/decision-trace-screening.json",
+      "log": "orchestration-logs/decision-trace-screening.log",
+      "games": 20,
+      "total_differences": 39,
+      "difference_rate": 0.03548680618744313
+    }
+  ],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 20260905,
+      "started_at": "2026-08-12T23:28:07.402732+00:00",
+      "finished_at": "2026-08-12T23:28:16.700226+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 200,
+      "seed": 20260906,
+      "started_at": "2026-08-12T23:28:16.919006+00:00",
+      "finished_at": "2026-08-12T23:30:42.508357+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "claude",
+      "backend": "claude-code",
+      "model": "opus",
+      "started_at": "2026-08-12T23:24:48.780933+00:00",
+      "finished_at": "2026-08-12T23:28:07.211890+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-claude"
+    }
+  ],
+  "orchestration": {
+    "state": "REVIEW_REQUIRED",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T23:24:48.488824+00:00",
+    "updated_at": "2026-08-12T23:30:59.930733+00:00",
+    "review_pack": "human-review/pending/Grass-EXP-0002.md"
+  },
+  "reviews": [
+    {
+      "stage": "screening",
+      "status": "pending",
+      "created_at": "2026-08-12T23:30:59.881075+00:00",
+      "json": "human-review/pending/Grass-EXP-0002.json",
+      "markdown": "human-review/pending/Grass-EXP-0002.md"
+    }
+  ],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

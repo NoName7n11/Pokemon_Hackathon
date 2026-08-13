@@ -1,0 +1,14 @@
+Implemented the EXP-0007 mechanism in `main.py`.
+
+Behavior changed:
+- `_best_attach_index` still preserves the shipped ranking: Active target first, then strongest Bench by HP.
+- Only Active attachment options now receive a small `+500` bonus when the attached Energy changes the Active from having no payable attack to having at least one payable attack.
+- Bench attachment options never receive this readiness bonus.
+
+Validation:
+- Ran a syntax-only parse: `syntax ok`.
+- Did not run benchmarks or games.
+- Removed generated `__pycache__`; workspace root is back to only `context`, `deck.csv`, and `main.py`.
+
+Reviewer concern:
+- The Energy-type extraction is defensive because local `cg` is unavailable here. If competition card data uses a different field name than `energyType`, `energy_type`, `energy`, or `energies`, the bonus will silently not apply.

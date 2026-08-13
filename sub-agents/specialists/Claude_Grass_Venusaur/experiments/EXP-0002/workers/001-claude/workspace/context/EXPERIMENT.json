@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0002",
+  "specialist": "Claude_Grass_Venusaur",
+  "created_at": "2026-08-12T21:52:01.135621+00:00",
+  "updated_at": "2026-08-12T21:52:01.198750+00:00",
+  "worker": "claude",
+  "hypothesis": "For forced promotion and own-board CARD choices after a knockout, prefer an attack-ready Mega Venusaur ex, Hydrapple ex, or Teal Mask Ogerpon ex over support Pokemon when it can immediately deal more usable damage; preserve generic live-attacker scoring outside that narrow choice.",
+  "expected_effect": "Increase attacks made by the deck's primary attackers and reduce turns lost after a knockout without changing global evaluation or ability handling.",
+  "mechanisms": [
+    "venusaur_attacker_concentration"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-12T21:52:01.198750+00:00",
+    "updated_at": "2026-08-12T21:52:01.198750+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

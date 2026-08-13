@@ -20,6 +20,12 @@
   "fresh_confirmation_seeds": true,
   "required_cross_deck_opponents": 2,
   "cross_deck_games_per_seat": 100,
+  "decision_trace": {
+    "games": 20,
+    "max_records": 200,
+    "max_options_per_record": 40,
+    "timeout_seconds": 1800
+  },
   "track": [
     "wins",
     "losses",

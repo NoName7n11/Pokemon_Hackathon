@@ -33,3 +33,9 @@ __pycache__/
 
 # Other teams' decks reconstructed from replay data -- do not redistribute
 Decs/LiamK_*
+
+# Continuous scheduler runtime state (live lock + process logs, not evidence)
+sub-agents/continuous/.scheduler.lock
+sub-agents/continuous/logs/
+sub-agents/continuous/scheduler.stdout.log
+sub-agents/continuous/scheduler.stderr.log
