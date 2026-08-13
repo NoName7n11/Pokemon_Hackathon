@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "workers": 2,
+  "sessions_per_worker": 500,
+  "max_path_steps": 600,
+  "exit_codes": [
+    0,
+    0
+  ],
+  "reports": [
+    {
+      "ok": true,
+      "result": {
+        "branch_parent_reusable": true,
+        "child_survives_parent_release": true,
+        "sibling_survives_leaf_release": true,
+        "descendant_survives_ancestor_release": true,
+        "released_state_rejected": true,
+        "double_release_idempotent": true,
+        "crossed_turn_boundary": true,
+        "max_path_steps": 3,
+        "replay_exact": true,
+        "replay_terminal": true,
+        "replay_second_terminal": true,
+        "replay_steps": 57,
+        "replay_mismatch_step": null,
+        "replay_stochastic_boundary_step": 3,
+        "replay_stochastic_boundary_reason": "hidden_draw",
+        "replay_coin_events": 0,
+        "session_iterations": 500,
+        "root_ids_reused_across_sessions": true,
+        "begin_ms_median": 0.3826000029221177,
+        "step_ms_median": 0.23779999901307747,
+        "rss_before_bytes": 35893248,
+        "rss_after_bytes": 36012032,
+        "rss_delta_bytes": 118784,
+        "rss_peak_bytes": 36012032,
+        "rss_tail_growth_bytes": 94208,
+        "errors": []
+      }
+    },
+    {
+      "ok": true,
+      "result": {
+        "branch_parent_reusable": true,
+        "child_survives_parent_release": true,
+        "sibling_survives_leaf_release": true,
+        "descendant_survives_ancestor_release": true,
+        "released_state_rejected": true,
+        "double_release_idempotent": true,
+        "crossed_turn_boundary": true,
+        "max_path_steps": 3,
+        "replay_exact": true,
+        "replay_terminal": true,
+        "replay_second_terminal": true,
+        "replay_steps": 180,
+        "replay_mismatch_step": null,
+        "replay_stochastic_boundary_step": 2,
+        "replay_stochastic_boundary_reason": "shuffle",
+        "replay_coin_events": 0,
+        "session_iterations": 500,
+        "root_ids_reused_across_sessions": true,
+        "begin_ms_median": 0.37224999687168747,
+        "step_ms_median": 0.35570000181905925,
+        "rss_before_bytes": 43319296,
+        "rss_after_bytes": 43470848,
+        "rss_delta_bytes": 151552,
+        "rss_peak_bytes": 43470848,
+        "rss_tail_growth_bytes": 81920,
+        "errors": []
+      }
+    }
+  ]
+}

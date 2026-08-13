@@ -24,3 +24,9 @@ not the active submission.
   - Baseline: `v000-baseline`; candidate: `v001-candidate`.
   - Benchmark runs recorded: 1.
   - Decision reason: Infrastructure-only unchanged baseline
+
+## 2026-08-13 - specialist paused
+
+- **EXP-0002 paused by human direction.**
+  - Reason: Human is not confident in the current No_Name_Dark deck and requested that no further Dark specialist work run until the deck is reconsidered.
+  - Existing experiment and human-review evidence were preserved.

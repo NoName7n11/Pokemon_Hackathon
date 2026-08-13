@@ -103,7 +103,14 @@ def main() -> int:
         check(ok, f"{entry['name']} runtime import failed: {detail}", phase_errors)
         check(entry.get("agent_sha256") == sha256_file(directory / "main.py"), f"{entry['name']} registry agent hash stale", phase_errors)
         check(entry.get("deck_sha256") == sha256_file(directory / "deck.csv"), f"{entry['name']} registry deck hash stale", phase_errors)
-        check(status.get("active_experiment") is None, f"{entry['name']} has an active experiment", phase_errors)
+        active = status.get("active_experiment")
+        explicitly_paused = False
+        if active:
+            experiment_path = directory / "experiments" / active / "experiment.json"
+            if experiment_path.is_file():
+                experiment = read_json(experiment_path)
+                explicitly_paused = experiment.get("orchestration", {}).get("state") == "PAUSED_BY_HUMAN"
+        check(active is None or explicitly_paused, f"{entry['name']} has an active experiment", phase_errors)
     phases["phase_1_foundation"] = {"ok": not phase_errors, "errors": phase_errors, "specialists": len(specialists)}
 
     phase_errors = []

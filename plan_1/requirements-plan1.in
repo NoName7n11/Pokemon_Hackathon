@@ -1,0 +1,3 @@
+# Phase 0/1 intentionally uses the Python standard library only.
+# Numerical and ML dependencies will be added and pinned after the simulator
+# conformance and Kaggle runtime compatibility spikes.

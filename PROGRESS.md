@@ -9,6 +9,446 @@ the reversal as a new entry instead).
 
 ---
 
+## 2026-08-14
+
+- **Grass strategy/deck rebased, Dark explicitly paused, and Fire/Grass worker
+  relaunch prepared but awaiting explicit provider payload authorization**:
+  - Rewrote `No_Name_Decks/No_Name_Grass_Logic.txt` as a legal,
+    state-dependent strategy specification. It now keeps Yanma on the Bench for
+    Buzzing Boost, treats the two-Yanmega relay as a multi-turn plan, sequences
+    Ciphermaniac before Run Errand, accounts for Kangaskhan's retreat/prize
+    exposure, reserves Bench roles, calculates Mega Meganium lethal damage from
+    live HP and attached Energy cards, and gates Boss's Orders/Solar Transfer by
+    the live prize and retaliation state.
+  - Replaced both Buddy-Buddy Poffin IDs (`1086`) with Bug Catching Set IDs
+    (`1094`) in `No_Name_Grass.csv`. The revised list validates as exactly 60
+    cards and contains two Bug Catching Set and zero Poffin.
+  - Closed Grass EXP-0002 as superseded rather than comparing its 110-90 result
+    against a changed deck. Added a reusable specialist rebase command and
+    created `Grass/v001-deck-rebase`; revised Grass deck SHA-256 is
+    `f6cadd59a7e6741e96f18754c0866f87e97ed85f87b3a4486e510f4ea0ae2448`.
+    Historical `v000-baseline` and EXP-0002 evidence remain preserved.
+  - Added optional `source_strategy` worker context. Future Grass workers receive
+    the revised strategy as `context/STRATEGY.md` in their isolated workspace.
+  - Added a reversible human pause/resume command and paused Dark EXP-0002 with
+    its pending review and experiment evidence intact. The scheduler will not
+    advance it while its orchestration state is `PAUSED_BY_HUMAN`.
+  - Diagnosed Fire EXP-0002 as an orchestration failure, not a strategy result:
+    Windows `cp1252` decoding crashed on UTF-8 Codex output before any candidate
+    or games existed. `run_worker.py` now captures provider output explicitly as
+    UTF-8 with replacement handling. Fire and rebased Grass both pass static and
+    runtime validation; the complete sub-agent platform verifier passes.
+  - Gracefully stopped two duplicate persistent scheduler loops before changing
+    state. No scheduler currently runs. Fresh Grass and Fire jobs were prepared
+    but **not enqueued and no source was transmitted** because provider launch
+    requires explicit authorization for the exact private payload and external
+    destination.
+  - **Reason:** the new human Grass strategy and deck invalidate the old Grass
+    baseline, Dark must pause without losing evidence, and Fire must not be
+    retried through the same broken provider-output boundary. Explicit source
+    egress remains a separate human-controlled security gate.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Phase 4 strength and horizon evidence regenerated with corrected fallback
+  telemetry schema**:
+  - Repeated the 40-game seat-balanced Hydrapple strength screen and 60-game
+    Stage A/Stage B comparison after adding the actual fallback action to every
+    `SearchResult`. The bounded Stage A candidate scored **15-25** against the
+    unchanged current agent (`p=0.114`), so it still does not qualify for
+    promotion. Stage B scored **33-27** against Stage A (`p=0.439`), still a
+    statistical tie and therefore not justified as the default horizon.
+  - Definitive strength evidence is
+    `phase4-bounded-screen-h0-v2.json`, SHA-256
+    `850dfe4a1b7d1d6ed87c760d37d539b284c4c716abf8e561c4183fa54352c9e2`.
+    Definitive horizon evidence is
+    `phase4-horizon-ablation-bounded-v2.json`, SHA-256
+    `e97cd0cccdc8b545b01adc3922c0ced31c8347ab40cee7ee73e5b70060c7ce2c`.
+  - **Reason:** all definitive Phase 4 reports should use the same corrected
+    result contract; simulator chance means regenerated win counts may differ,
+    but both new samples preserve the original non-promotion conclusions.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Phase 4 definitive-evidence correction — fallback overrides now compare
+  against the actual fallback action**:
+  - The Phase 4 completion entry below reported a **3.02%** fallback-change
+    rate from `phase4-soak-final-v3.json`. That collector compared the chosen
+    action with the first expanded root edge, not with the greedy fallback
+    supplied to search, so that specific rate was not valid. Gameplay, action
+    legality, timing, cleanup, and the strength/horizon outcomes were unaffected.
+  - `SearchResult` now carries the actual root fallback action and
+    `TraceCollector` compares directly against it. A regression test verifies a
+    searched winning action is counted as an override when it differs from the
+    supplied fallback. The complete Plan 1 suite now passes **61/61 tests**.
+  - The superseding run used the same bounded Stage A profile through the newly
+    aligned defaults and completed **500/500 games**, **125 per deck**, with
+    **zero faults, illegal actions, crashes, errors, or 2,000-step timeouts**.
+    Across 69,851 decisions, full-action timing was **12.701 ms p95 / 80.068 ms
+    max**. Internal search was **10.135 ms p95 / 47.504 ms max**, with only
+    **7/42,459 (0.0165%)** hard-deadline overruns. Root coverage was **16.22%**,
+    and MCTS actually changed the greedy fallback on **2,659/42,459 (6.26%)**
+    searched decisions.
+  - Definitive safety evidence is now
+    `plan_1/artifacts/reports/phase4-soak-final-v4.json`, SHA-256
+    `270ac74a1e6c23de6b47dbfaeab816e49ec48771651904d8ef6fccf207ba8407`.
+    The earlier `v3` report remains preserved as the first passing safety run
+    but is superseded for fallback-override telemetry.
+  - **Reason:** promotion and later learning work need trustworthy intervention
+    rates; comparing with an arbitrary expanded edge could misstate how often
+    MCTS changes policy even when all game-level results are correct.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 4 complete as bounded MCTS infrastructure, but rejected for
+  submission promotion on current strength evidence**:
+  - Implemented isolated `uct-v1` search with root-perspective UCT selection,
+    opponent-node minimization, progressive widening, expansion and backup,
+    terminal/heuristic leaf values, deterministic fingerprints and tie-breaks,
+    current-turn and one-opponent-response horizons, loop/depth/node/simulation
+    limits, wall-clock management, complete-root-coverage protection, legal
+    fallback, and lifecycle-safe native-state cleanup. Search traces record root
+    edge visits/values, cutoff and fallback reasons, coverage, overrides,
+    errors, native steps, and deadline overruns.
+  - Added `Plan1MCTSAgent`, four-deck soak/strength/horizon runners, exception
+    containment, seat isolation, per-deck results, Wilson intervals and
+    two-sided head-to-head z-tests. Added regression coverage for terminal
+    backup, opponent minimization, KO-back horizon behavior, loops, hard caps,
+    incomplete coverage, cleanup-on-error, deterministic ties, fingerprinting,
+    and terminal state reached on the final permitted harness action. All
+    **60/60 Plan 1 tests pass**.
+  - The definitive bounded soak completed **500/500 games**, exactly **125 each**
+    for Hydrapple, Fire, Grass, and Dark, with **zero faults, illegal actions,
+    crashes, errors, or 2,000-step timeouts**. Across 65,943 decisions,
+    full-action timing was **18.597 ms p95 / 73.721 ms max**, passing the
+    predeclared **35/500 ms** host envelope. Internal search was **13.982 ms p95
+    / 48.958 ms max**; **59/40,913 (0.144%)** searches crossed the nominal hard
+    deadline, under the predeclared 1% limit. Evidence:
+    `phase4-soak-final-v3.json`, SHA-256
+    `161011e5e40652da552e7e321d4b9dd702ccb4992afb28aacf2ea993da44f9b4`.
+  - Two failed profiles remain in the evidence trail. The first completed
+    499/500 and exceeded a 350 ms maximum; the second completed 500/500 after a
+    final-action terminal-accounting fix but exposed a **1.064 s** full-action
+    tail. Internal UCT max was only 34.953 ms, identifying the nested shipped
+    one-ply fallback as the unbounded component. The final candidate replaces
+    that composition with deterministic greedy fallback and retains full-root
+    coverage before any MCTS override.
+  - Playing strength did **not** clear promotion. Bounded Stage A scored
+    **14-26** against the unchanged current agent in 40 seat-balanced Hydrapple
+    games (`p=0.0578`, negative direction). Stage B scored **32-28** against
+    Stage A in 60 games, but this was a statistical tie (`p=0.606`). Final-soak
+    full-root coverage was only **8.70%**, and MCTS changed fallback on only
+    **3.02%** of searched decisions. The machinery is ready for later belief
+    and learned-value work, but this heuristic candidate is not stronger.
+  - Horizon evidence: `phase4-horizon-ablation-bounded.json`, SHA-256
+    `99e7a3b7302e49cd4a7531f21b5b59c14bcbdce3627bc6136809f42a4367a2e1`.
+    Strength-screen evidence: `phase4-bounded-screen-h0.json`, SHA-256
+    `3bdb96f258ed367d394458eb7c411b4979dbb522c987d3800ed0c20ce57285ab`.
+  - **Reason:** Phase 1 proved the simulator can branch safely and Phase 3
+    supplied a public-state evaluator, but Plan 1 still needed a bounded search
+    implementation and direct evidence of whether added depth helps. The
+    failed runtime profiles also showed that a fallback must itself be bounded;
+    composing bounded MCTS with an unbounded fallback defeats the time manager.
+    Phase 4 records that correction and the honest non-promotion result before
+    hidden-information or learning complexity is introduced.
+  - The active `sample_submission/main.py`, active deck, and Plan 2 agents were
+    not modified.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Phase 3 evidence-hash transcription correction**:
+  - The exact SHA-256 of the definitive
+    `plan_1/artifacts/reports/phase3-suite.json` is
+    `49f27228c74b827e6be1e4aecadef54a9b37d13c4f77071659ef4ca5d8bd098f`.
+    The immediately following correction entry omitted `cad` while transcribing
+    that hash; its game, test, and timing results remain unchanged.
+  - **Reason:** preserve an exact, machine-verifiable evidence pointer without
+    rewriting the append-only historical entry.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 3 final evidence correction — once-per-turn legality added after
+  the initial completion entry**:
+  - Evolution readiness now excludes targets that entered play this turn, and
+    Supporter/retreat availability now respects whether the acting player has
+    already used that once-per-turn action. Dedicated regression tests cover
+    both corrections.
+  - The superseding verification is **46/46 unit tests**, **13/13 tactical
+    fixtures**, and **40/40 live games** across Hydrapple, Fire, Grass, and Dark:
+    **4,569 decisions**, **9,218 seat evaluations**, and zero perspective,
+    scalar/breakdown, finite-value, bound, error, or timeout failures.
+  - Scalar medians are **0.044-0.077 ms** and p95 is **0.074-0.114 ms** by deck.
+    The definitive `phase3-suite.json` SHA-256 is
+    `49f27228c74b827e6be1e4aef54a9b37d13c4f77071659ef4ca5d8bd098f`; this
+    supersedes the report hash in the immediately following Phase 3 completion
+    entry while preserving that entry under the append-only rule.
+  - **Reason:** readiness features must represent actions that are legal now;
+    otherwise MCTS would overvalue impossible evolution, Supporter, or retreat
+    lines.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 3 complete — versioned handcrafted evaluator and tactical
+  regression suite implemented without changing the active submission**:
+  - Added `plan1.evaluation` with a catalog-indexed `handcrafted-v1` evaluator.
+    Search uses an allocation-light scalar `score()` path, while `evaluate()`
+    returns a component-by-component breakdown, metrics, and diagnostics for
+    traces and human review. Terminal results have a hard override and every
+    nonterminal term is built as root-minus-opponent, so switching perspective
+    negates the score exactly.
+  - Covered prize race and multi-prize liability, live HP and damage, immediate
+    attack pressure, lethal and KO-back risk, survivability, status and retreat
+    flexibility, attached/stranded energy and readiness, acceleration/ability
+    potential, bench and evolution development, visible Trainer/Supporter
+    access, deck-out risk, and exposed weakness/resistance. Energy payment
+    handles Colorless, Rainbow, and Team Rocket Psychic/Darkness compatibility.
+  - Added 13 named golden comparisons for terminal bounds, prize monotonicity,
+    attacking instead of passing, useful energy, stall recovery, promotion,
+    retreat, live-HP targeting, KO-back avoidance, weakness, evolution readiness,
+    and decking risk. Added status-aware readiness so an Asleep or Paralyzed
+    Active is not falsely scored as able to attack or retreat.
+  - Added `run_phase3_suite.py`, which validates synthetic tactical fixtures and
+    real public states from Hydrapple plus the Fire, Grass, and Dark decks. The
+    definitive run completed **40/40 games**, **4,598 decisions**, and **9,276
+    seat evaluations** with **0** perspective failures, scalar/breakdown
+    mismatches, non-finite values, bound failures, errors, or timeouts. All
+    **13/13 tactical fixtures** and **44/44 Plan 1 unit tests** pass.
+  - Scalar evaluation measured **0.044-0.056 ms median** and **0.066-0.119 ms
+    p95** by deck, or **11-28%** of the corresponding Phase 1 native search-step
+    median. The tracked evidence is
+    `plan_1/artifacts/reports/phase3-suite.json`, SHA-256
+    `ce4fb6ba0ccddb5549d3be41d2aae4779df6fa4e36ee6030b9bf7c076f91546d`.
+  - **Known limitation:** attacks whose text changes damage are deliberately
+    evaluated from printed damage and tagged
+    `dynamic_attack_damage_approximated`; the evaluator does not claim complete
+    semantic interpretation of arbitrary card text. Phase 4 can measure whether
+    effect-aware parsing is worth its search cost.
+  - **Reason:** earlier one-ply search regressed because its leaf evaluation was
+    myopic and could not price the opponent's reply. MCTS must not amplify that
+    defect, so Phase 3 establishes a transparent, testable, public-information
+    value function before tree search is introduced.
+  - The active `sample_submission` agent and `deck.csv` were not modified.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Scouted Dipam Chakraborty (LB 1090.2) — his deck is OUR Hydrapple deck, 90%
+  identical. The ~625-point ladder gap is the AGENT, not the deck**:
+  - Pulled his list from public episode `92687782` via
+    `kaggle.com/competitions/episodes/<id>/replay.json` (same route used for the
+    LiamK and Majkel scouting). Leaderboard position checked directly: **1090.2,
+    ~30th of ~6,500 teams** — strong, but not top-10 (leader `flg` is at 1220.9).
+  - His 60: 20 Pokémon / 12 Item / 10 Supporter / 4 Stadium / 14 Energy. Lines are
+    4 Teal Mask Ogerpon ex, 2/2/2 Applin-Dipplin-Hydrapple ex, 2/2/2
+    Chikorita-Bayleef-Meganium, 2 Meowth ex, 1 Fezandipiti ex, 1 Tapu Bulu.
+  - **Overlap with `Decs/Hydrapple.csv` (our active submission deck): 54/60 = 90%
+    by card name.** His entire edge over our list is six slots:
+    `+2 Ultra Ball, +1 Forest of Vitality, +1 Dawn, +1 Meowth ex, +1 Basic {G} Energy`
+    against `-1 Boss's Orders, -1 Night Stretcher, -1 Celebi, -1 Briar,
+    -1 Ciphermaniac's Codebreaking, -1 Regigigas`. He cut our scattered 1-ofs and
+    spent the slots on consistency.
+  - Head-to-head under our current agent, seat-balanced, 80 games each:
+
+    | matchup | result |
+    |---|---|
+    | Dipam_Grass vs **Hydrapple** | 53.8% [42.9-64.3] — **TIE** |
+    | Dipam_Grass vs No_Name_Grass | 82.5% [72.7-89.3] — Dipam better |
+    | Dipam_Grass vs Claude_Grass_Venusaur | 80.0% [70.0-87.3] — Dipam better |
+    | Hydrapple vs No_Name_Grass | 70.0% [59.2-78.9] — Hydrapple better |
+
+  - **The headline:** his deck and our deck are statistically indistinguishable in
+    play, yet he scores **1090.2** and our active submission scores **464.6**. Same
+    deck, ~625 points apart. Deck is NOT our bottleneck. This is the cleanest
+    evidence we have that agent quality dominates deck choice at our current level,
+    and it supersedes the earlier working assumption that we needed a better deck.
+  - **Both in-progress Grass decks are REGRESSIONS against the deck we already
+    submit.** `No_Name_Grass` and `Claude_Grass_Venusaur` both lose heavily to
+    Dipam's list, and Hydrapple beats `No_Name_Grass` 70/30. Structural reasons,
+    measured:
+
+    | metric | Dipam | No_Name_Grass | Claude_Grass_Venusaur |
+    |---|---|---|---|
+    | Pokémon / Supporters / Energy | 20 / 10 / 14 | 26 / **6** / **11** | 24 / 11 / 13 |
+    | 4-of cards (consistency core) | **5** | 3 | **2** |
+    | unique cards | 22 | 23 | **25** |
+    | Prizes conceded across all Pokémon | **29** | **42** | 35 |
+    | avg Prizes per Pokémon | **1.45** | **1.62** | 1.46 |
+
+    `No_Name_Grass` runs three separate Mega ex lines (Kangaskhan / Meganium /
+    Venusaur, 3 Prizes each) on only 6 Supporters and 11 Energy — worst prize
+    liability in the field plus the thinnest draw engine. `Claude_Grass_Venusaur`
+    has the most unique cards and the fewest 4-ofs, i.e. maximum dilution.
+  - **Dipam runs ZERO Mega ex.** His most expensive body concedes 2 Prizes. This
+    independently corroborates the 2026-08-09 Zygarde finding (10 of 14 Rule Box
+    bodies lost despite dealing 4.4x more damage) and the refuted `_prize_value`
+    patch: low Prize liability plus a fat 4-of consistency core beats raw damage.
+  - Timing note: our only active submission is from **2026-08-08** and is now six
+    days stale, with the Final Submission Deadline at 2026-08-16 23:59 UTC
+    (2026-08-17 05:29 IST). Nothing has been promoted from the sub-agents platform.
+  - His list is saved locally as `Decs/Dipam_Grass.csv` for testing and is
+    **gitignored** (`Decs/Dipam_*`), same handling as `Decs/LiamK_*` — another
+    team's list reconstructed from Competition Data should not be redistributed
+  from this repo. — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Plan 1 Phase 2 completed - leakage-safe observation records and bounded legal-action generation verified natively**:
+  - Added immutable, typed records for public observations, state, players,
+    Pokemon, cards, logs, selections, and every option field exposed by the
+    competition API. Active/bench slot identity, live HP, attached Energy/cards,
+    tools, evolution history, statuses, public zones, turn flags, and selection
+    metadata are preserved. Opponent hidden hands remain `None` with only their
+    count visible, and the converter deliberately never reads or serializes the
+    opaque native `search_begin_input`; the final fixture leakage scan found zero
+    matches.
+  - Added a stable 1,270-token card vocabulary: PAD, UNKNOWN, INVALID, and all
+    1,267 dataset card IDs. Added a versioned metadata catalog for all 1,267 cards
+    and 1,556 attacks, including card type, HP, Energy type, evolution/Rule Box
+    flags, weakness/resistance, skills, attack text, damage, and costs. Catalog
+    construction rejects duplicate IDs and missing attack references, and its
+    content hash is recorded in the Phase 2 report.
+  - Implemented complete-action generation over the engine's variable
+    `minCount`/`maxCount` contract. Small spaces are exhaustive; unordered
+    selections use canonical combinations; `SKILL_ORDER` preserves permutations;
+    large spaces use a deterministic preferred/prefix/sampled candidate set capped
+    at 128. Every candidate has a selection-qualified fingerprint and exact option
+    mask. Invalid bounds fail closed, duplicate/range/count violations are
+    rejected, and appended future enum values are emitted safely but logged as
+    unknown patterns instead of silently treated as known.
+  - Added a complete-game fixture/legality suite across Hydrapple, No_Name Fire,
+    No_Name Grass, and No_Name Dark. The final fresh-seed run completed **40/40
+    games**, covered **3,928 live decisions** and **21 observed SelectType/context
+    pairs**, generated **26,220 candidates**, and received **26,220/26,220 native
+    `search_step` acceptances**. Setup decisions are now fork-validated too, so
+    there are zero unvalidated candidates, timeouts, unknown patterns, or engine
+    errors. Forty-six combinatorial decisions were bounded; the largest complete
+    action space contained 1,035 actions.
+  - Removed repeated per-candidate selection hashing after an initial latency
+    review. Final generation p95 was 0.65-1.23 ms by deck and the worst observed
+    call was 13.72 ms, below the declared 25 ms p95 and 100 ms maximum gates.
+    Unit coverage increased from 20 to **35 passing tests**, source compilation and
+    diff checking pass, and `Plan_1.md` now marks Phases 0-2 complete. The fixture,
+    vocabulary, and card catalog contain competition-derived data, so they remain
+    locally gitignored; their SHA-256 identities and aggregate evidence are stored
+    in `plan_1/artifacts/reports/phase2-suite.json`. No active submission, deck, or
+    Plan 2 specialist was changed.
+    **Reason for the implementation:** give MCTS a stable, immutable,
+    information-safe state/action boundary and prove that its bounded candidate
+    generator produces only native-accepted complete actions before evaluator or
+    tree-search logic is allowed to depend on it. -
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 1 completed - native search replay, release topology, chance, memory, and multi-deck gates passed**:
+  - Extended the engine conformance layer with canonical public/search-state
+    fingerprints, deterministic full-game searched paths, independent path replay,
+    and explicit stochastic-boundary detection for shuffle, hidden draw, coin, and
+    randomized deck-selection transitions. A real Hydrapple diagnostic found that
+    independent search sessions can expose a differently ordered deck-selection
+    list after randomness even when the action path is identical. The correct
+    invariant is now enforced: exact state equality before the first stochastic
+    boundary, followed by legal terminal completion for both independent paths.
+  - Added release-topology coverage proving that a parent can create multiple
+    children, a sibling survives unrelated leaf release, a child survives parent
+    release, a grandchild survives ancestor release, released states are rejected,
+    and double release is idempotent at the Plan 1 ownership layer. The pass
+    criteria are centralized so single-process, multi-deck, and spawned-worker
+    probes cannot apply contradictory gates.
+  - Added an uncontrolled chance probe using an Applin deck. All 200 trials reached
+    a coin event with `manual_coin=False`: 91 heads and 109 tails (45.5% heads), no
+    missing outcomes, and no engine errors. This is a corruption/forced-outcome
+    guard rather than a claim of precise statistical calibration.
+  - Ran the full Phase 1 suite across Hydrapple, No_Name Fire, No_Name Grass, and
+    No_Name Dark: **2,000 native begin/step/end sessions per deck, 8,000 total**.
+    All four decks passed branch, release, cross-turn, stochastic-aware replay,
+    terminal completion, error, latency, and post-warmup memory gates. Complete
+    searched paths ranged from 106 to 230 decisions. Median begin times were
+    0.284-0.577 ms and median step times were 0.173-0.432 ms; the largest measured
+    post-midpoint working-set growth was 225,280 bytes, below the declared 8 MiB
+    gate.
+  - Re-ran process isolation under the same full criteria: two Windows spawned
+    workers completed 500 sessions each, both independent replay paths terminated,
+    exit codes were clean, and tail working-set growth was 94,208 and 81,920 bytes.
+    Unit coverage increased from 12 to 20 passing tests, source compilation and
+    diff checking remain clean, and `Plan_1.md` now marks Phases 0 and 1 complete.
+    Phase 2 canonical observation/action implementation is next; no active
+    submission, active deck, or Plan 2 specialist was changed.
+    **Reason for the implementation:** close the simulator-contract risk before
+    building MCTS by proving that complete searched games, branch ownership,
+    release order, independent RNG streams, process isolation, and sustained
+    native memory behavior are understood and enforced across multiple decks. -
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 implementation started - Phase 0 complete and Phase 1 native-search foundation verified**:
+  - Added the isolated `plan_1/` package without touching the active submission or
+    Plan 2 specialists. The foundation includes a standard-library-only Python
+    package, strict baseline MCTS configuration and JSON schema, explicit empty
+    dependency lock, `.venv-plan1` bootstrap, artifact boundaries, lazy bundled-
+    engine loading, and commands for environment, baseline, conformance, and test
+    verification.
+  - Implemented hash-based reproducibility manifests with Git commit/dirty status,
+    canonical configuration hash, runtime identity, deterministic derived seeds,
+    atomic JSON writes, and SHA-256 identities for the current `main.py`, active
+    `deck.csv`, engine API/game wrapper, and Hydrapple reference deck. The frozen
+    Phase 0 evidence is stored in
+    `plan_1/artifacts/manifests/phase0-baseline.json`.
+  - Implemented an ownership-safe native `SearchSession` wrapper. It validates
+    hidden-zone card IDs, rejects foreign/released search states, prevents session
+    re-entry, makes close idempotent, attempts cleanup after failed `search_begin`,
+    guarantees `search_end` after successful begin even on exceptions, and always
+    calls the engine with `manual_coin=False` so favorable chance outcomes cannot
+    be selected by the production search path.
+  - Added real-engine conformance and spawned-process isolation probes. Hydrapple
+    tests confirmed that one parent can create multiple children, children remain
+    valid after parent release, released states are rejected, search crosses a turn
+    boundary, and native root IDs are reused only across ended sessions. A 500-
+    session sequential soak completed with no errors, median `search_begin` 0.171
+    ms, median `search_step` 0.106 ms, and a 40,960-byte working-set delta. Two
+    spawned workers then completed 200 sessions each with clean exit codes. Reports
+    are in `plan_1/artifacts/reports/phase1-conformance.json` and
+    `phase1-process-isolation.json`.
+  - Verification passed in both the host Python and the isolated environment: 12
+    unit tests, full source compilation, strict diff checking, engine import of
+    1,267 cards and 1,556 attacks, and environment-report generation. `Plan_1.md`
+    now marks Phase 0 active evidence complete while correctly leaving Phase 1 in
+    progress; deeper path replay, broader release-order coverage, and longer memory
+    soak remain before Phase 1 is declared complete.
+    **Reason for the implementation:** establish a reproducible and failure-safe
+    simulator foundation before implementing MCTS, because search strength is
+    irrelevant if branch semantics, hidden-input contracts, cleanup, process
+    isolation, or evidence identity are wrong. -
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 fully specified for information-set MCTS plus policy-value reinforcement learning**:
+  - Added `Plan_1.md` as the implementation specification for the combined MCTS/RL
+    track. It defines success criteria, competition constraints, non-goals, system
+    architecture, repository boundaries, reproducibility metadata, and the rule
+    that the active submission remains untouched until a candidate passes every
+    promotion gate.
+  - Planned the simulator conformance layer before search implementation, including
+    branch semantics, search-state lifecycle, process isolation, multi-select legal
+    actions, chance handling, cross-turn search, leak tests, and unconditional
+    cleanup. Hidden information is handled through public card accounting,
+    root-sampled ISMCTS, information-set node keys, and explicit anti-leakage tests.
+  - Specified the progression from a transparent handcrafted evaluator and UCT to
+    opponent-response search, belief-aware ISMCTS, a variable-action policy-value
+    model, PUCT, supervised bootstrap, and an AlphaZero-style self-play league.
+    Trajectories, checkpoints, replay data, seeds, configurations, and model/deck
+    identities are versioned and recoverable.
+  - Defined frozen multi-deck evaluation, seat/first-player balancing, `n >= 500`
+    confirmation, confidence intervals, appropriate statistical tests, causal
+    ablations, tactical human review, held-out generalization, runtime/fault
+    metrics, and strict champion/submission promotion gates.
+  - Included CPU-first environment bootstrapping, Windows spawned-process workers,
+    long-run recovery, storage/resource controls, Kaggle dependency and packaging
+    probes, compact inference alternatives, deterministic heuristic fallback, a
+    13-phase implementation sequence, immediate backlog, timeline, risk register,
+    completion checklist, and Strategy-report/compliance requirements. This entry
+    records planning only; no MCTS/RL code, active `main.py`, active deck, or Plan 2
+    specialist state was changed.
+    **Reason for the implementation:** turn the proposed RL/MCTS direction into a
+    complete, ordered, testable engineering program that addresses imperfect
+    information, variable actions, simulator safety, reproducibility,
+    generalization, deployment constraints, and statistical promotion before
+    expensive training begins. -
+    <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 ## 2026-08-13
 
 - **Four-deck specialist research launched concurrently with pinned models**:

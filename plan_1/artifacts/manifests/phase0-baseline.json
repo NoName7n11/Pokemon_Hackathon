@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "run_id": "phase0-baseline",
+  "run_kind": "phase0-baseline",
+  "created_utc": "2026-08-13T19:00:45.032777+00:00",
+  "git": {
+    "commit": "1fe2938fec1ac19be84cb8f6c8438322094d84ed",
+    "dirty": true,
+    "status_available": true
+  },
+  "config": {
+    "schema_version": 1,
+    "search": {
+      "max_simulations": 64,
+      "max_depth": 40,
+      "time_budget_ms": 250,
+      "exploration_constant": 1.4142135623730951
+    },
+    "safety": {
+      "cleanup_reserve_ms": 25,
+      "allow_manual_coin": false,
+      "fallback_on_error": true
+    },
+    "reproducibility": {
+      "seed": 20260814,
+      "record_dirty_worktree": true
+    }
+  },
+  "config_sha256": "3159ad26c79512aa5e880ad254f302d11f474a012d2e5f7ba32c5407f4cd7b61",
+  "files": {
+    "sample_submission/sample_submission/main.py": {
+      "sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+      "bytes": 25498
+    },
+    "sample_submission/sample_submission/deck.csv": {
+      "sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41",
+      "bytes": 293
+    },
+    "sample_submission/sample_submission/cg/api.py": {
+      "sha256": "593f1298e52a635f90f8f505a52113e9af114f444c293404e37906f18ee06ced",
+      "bytes": 26933
+    },
+    "sample_submission/sample_submission/cg/game.py": {
+      "sha256": "3bd3d4f4a369a11e6d2f5da9094cf15ebc410a2221835e6417b7cff4883f1fc2",
+      "bytes": 2225
+    },
+    "Decs/Hydrapple.csv": {
+      "sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41",
+      "bytes": 293
+    }
+  },
+  "runtime": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "implementation": "CPython",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel"
+  }
+}

@@ -1,0 +1,4 @@
+# Phase 0/1 lock: no third-party packages.
+# This file will be replaced with a hash-locked dependency set after the ML
+# compatibility spike. Keeping it explicit makes the current environment
+# reproducible without network access.

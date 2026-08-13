@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-13T20:12:03.163922+00:00",
+  "evaluator_version": "handcrafted-v1",
+  "catalog_sha256": "db1f28d879a6deb9e878fe98fc067778a25762985881cfb4dbf3020f53d075e2",
+  "catalog_cards": 1267,
+  "catalog_attacks": 1556,
+  "games_per_deck": 10,
+  "max_steps": 3000,
+  "limits_ms": {
+    "median": 0.5,
+    "p95": 2.0,
+    "max": 20.0
+  },
+  "performance_reference": "phase1 native search_step median when available; otherwise live battle_select median",
+  "tactical": {
+    "schema_version": 1,
+    "fixture_count": 13,
+    "passed_count": 13,
+    "passed": true,
+    "fixtures": [
+      {
+        "name": "terminal_win_over_nonterminal",
+        "reason": "A proven win must override every heuristic state score.",
+        "preferred_score": 1000000.0,
+        "rejected_score": -152.0,
+        "margin": 1000152.0,
+        "passed": true
+      },
+      {
+        "name": "nonterminal_over_terminal_loss",
+        "reason": "A proven loss must score below every live position.",
+        "preferred_score": -152.0,
+        "rejected_score": -1000000.0,
+        "margin": 999848.0,
+        "passed": true
+      },
+      {
+        "name": "prize_race_monotonic",
+        "reason": "Taking an uncompensated prize must improve evaluation.",
+        "preferred_score": 1897.5,
+        "rejected_score": 697.5,
+        "margin": 1200.0,
+        "passed": true
+      },
+      {
+        "name": "attack_over_avoidable_pass",
+        "reason": "Equivalent post-action states must reward damage actually dealt.",
+        "preferred_score": 75.66666666666669,
+        "rejected_score": -152.0,
+        "margin": 227.66666666666669,
+        "passed": true
+      },
+      {
+        "name": "useful_energy_readiness",
+        "reason": "An energy that activates an attack must not reduce readiness.",
+        "preferred_score": -502.5,
+        "rejected_score": -898.5,
+        "margin": 396.0,
+        "passed": true
+      },
+      {
+        "name": "stall_break_ready_attacker",
+        "reason": "A ready meaningful attacker should be active instead of stalling behind a weak body.",
+        "preferred_score": -255.0,
+        "rejected_score": -1889.0,
+        "margin": 1634.0,
+        "passed": true
+      },
+      {
+        "name": "promotion_attacker_discipline",
+        "reason": "Forced promotion should expose the prepared attacker, not the weakest bench Pokemon.",
+        "preferred_score": 1710.0,
+        "rejected_score": -1808.0,
+        "margin": 3518.0,
+        "passed": true
+      },
+      {
+        "name": "retreat_escape_available",
+        "reason": "A stranded active with a prepared bench attacker is better when retreat is payable.",
+        "preferred_score": -1863.5,
+        "rejected_score": -1943.5,
+        "margin": 80.0,
+        "passed": true
+      },
+      {
+        "name": "live_damage_targeting",
+        "reason": "Live HP and multi-prize knockout proximity must affect target value.",
+        "preferred_score": 3402.0,
+        "rejected_score": 287.0,
+        "margin": 3115.0,
+        "passed": true
+      },
+      {
+        "name": "avoid_opponent_ko_back",
+        "reason": "Otherwise equal lines should prefer an active that survives the likely reply.",
+        "preferred_score": -1823.8333333333333,
+        "rejected_score": -2089.4444444444443,
+        "margin": 265.6111111111111,
+        "passed": true
+      },
+      {
+        "name": "weakness_pressure",
+        "reason": "Exposed weakness should increase immediate attack pressure.",
+        "preferred_score": 3591.0,
+        "rejected_score": 399.0,
+        "margin": 3192.0,
+        "passed": true
+      },
+      {
+        "name": "evolution_in_hand_ready",
+        "reason": "A visible legal evolution line is useful board development.",
+        "preferred_score": -806.5,
+        "rejected_score": -898.5,
+        "margin": 92.0,
+        "passed": true
+      },
+      {
+        "name": "decking_risk",
+        "reason": "A safe deck count should beat an otherwise identical near-deck-out state.",
+        "preferred_score": -538.5,
+        "rejected_score": -862.5,
+        "margin": 324.0,
+        "passed": true
+      }
+    ]
+  },
+  "decks": [
+    {
+      "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\Decs\\Hydrapple.csv",
+      "deck_sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41",
+      "games": 10,
+      "completed_games": 10,
+      "timed_out_games": 0,
+      "decisions": 1131,
+      "observations_evaluated": 2282,
+      "terminal_observations": 10,
+      "perspective_failures": 0,
+      "reconstruction_failures": 0,
+      "scalar_breakdown_mismatches": 0,
+      "nonfinite_scores": 0,
+      "out_of_bound_scores": 0,
+      "evaluator_ms_median": 0.0489,
+      "evaluator_ms_p95": 0.0743,
+      "evaluator_ms_max": 0.4902,
+      "simulator_action_ms_median": 0.1604,
+      "evaluator_to_simulator_median_ratio": 0.11331247707400322,
+      "diagnostic_counts": {
+        "dynamic_attack_damage_approximated": 1534
+      },
+      "errors": [],
+      "elapsed_seconds": 0.7614373999967938,
+      "passed": true
+    },
+    {
+      "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Fire.csv",
+      "deck_sha256": "2191b33925fa0d44729f9cf790ba66bf50ef9a4c48451023853a419ff6f79de4",
+      "games": 10,
+      "completed_games": 10,
+      "timed_out_games": 0,
+      "decisions": 1011,
+      "observations_evaluated": 2042,
+      "terminal_observations": 10,
+      "perspective_failures": 0,
+      "reconstruction_failures": 0,
+      "scalar_breakdown_mismatches": 0,
+      "nonfinite_scores": 0,
+      "out_of_bound_scores": 0,
+      "evaluator_ms_median": 0.0438,
+      "evaluator_ms_p95": 0.0742,
+      "evaluator_ms_max": 0.3881,
+      "simulator_action_ms_median": 0.1543,
+      "evaluator_to_simulator_median_ratio": 0.1221416613128104,
+      "diagnostic_counts": {
+        "dynamic_attack_damage_approximated": 122
+      },
+      "errors": [],
+      "elapsed_seconds": 0.6295769999996992,
+      "passed": true
+    },
+    {
+      "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Grass.csv",
+      "deck_sha256": "7d8e05ad2d423e4562bd0ea48ae1006b27e75359ffbe9554deb46a626a398444",
+      "games": 10,
+      "completed_games": 10,
+      "timed_out_games": 0,
+      "decisions": 976,
+      "observations_evaluated": 1972,
+      "terminal_observations": 10,
+      "perspective_failures": 0,
+      "reconstruction_failures": 0,
+      "scalar_breakdown_mismatches": 0,
+      "nonfinite_scores": 0,
+      "out_of_bound_scores": 0,
+      "evaluator_ms_median": 0.0518,
+      "evaluator_ms_p95": 0.0795,
+      "evaluator_ms_max": 0.3684,
+      "simulator_action_ms_median": 0.17295,
+      "evaluator_to_simulator_median_ratio": 0.3002898484091003,
+      "diagnostic_counts": {
+        "dynamic_attack_damage_approximated": 1168
+      },
+      "errors": [],
+      "elapsed_seconds": 0.680385399988154,
+      "passed": true
+    },
+    {
+      "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Dark.csv",
+      "deck_sha256": "5fc5813fb39b6f7d5bcd78b1404b23d414f089c9f5333975b2a8b66e25be9954",
+      "games": 10,
+      "completed_games": 10,
+      "timed_out_games": 0,
+      "decisions": 1451,
+      "observations_evaluated": 2922,
+      "terminal_observations": 10,
+      "perspective_failures": 0,
+      "reconstruction_failures": 0,
+      "scalar_breakdown_mismatches": 0,
+      "nonfinite_scores": 0,
+      "out_of_bound_scores": 0,
+      "evaluator_ms_median": 0.0766,
+      "evaluator_ms_p95": 0.1134,
+      "evaluator_ms_max": 0.7468,
+      "simulator_action_ms_median": 0.2321,
+      "evaluator_to_simulator_median_ratio": 0.3856028205426601,
+      "diagnostic_counts": {
+        "dynamic_attack_damage_approximated": 1872
+      },
+      "errors": [],
+      "elapsed_seconds": 1.427540599994245,
+      "passed": true
+    }
+  ],
+  "totals": {
+    "games": 40,
+    "completed_games": 40,
+    "timed_out_games": 0,
+    "decisions": 4569,
+    "observations_evaluated": 9218,
+    "terminal_observations": 40,
+    "perspective_failures": 0,
+    "reconstruction_failures": 0,
+    "scalar_breakdown_mismatches": 0,
+    "nonfinite_scores": 0,
+    "out_of_bound_scores": 0,
+    "deck_median_evaluator_ms": 0.05035,
+    "deck_median_evaluator_to_simulator_ratio": 0.21121575486095534
+  },
+  "passed": true
+}

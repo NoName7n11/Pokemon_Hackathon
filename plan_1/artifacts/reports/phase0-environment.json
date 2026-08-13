@@ -1,0 +1,26 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "python_supported": true,
+  "platform": "Windows-10-10.0.26200-SP0",
+  "machine": "AMD64",
+  "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "cpu_count": 16,
+  "repo_root": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon",
+  "engine_parent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sample_submission\\sample_submission",
+  "packages": {
+    "numpy": false,
+    "torch": false,
+    "onnx": false,
+    "onnxruntime": false,
+    "gymnasium": false,
+    "tensorboard": false
+  },
+  "config_schema_version": 1,
+  "engine": {
+    "cards": 1267,
+    "attacks": 1556,
+    "ok": true
+  },
+  "errors": [],
+  "ok": true
+}

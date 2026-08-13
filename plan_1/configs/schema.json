@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan 1 MCTS baseline configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "search", "safety", "reproducibility"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_simulations", "max_depth", "max_nodes", "max_candidates", "time_budget_ms", "exploration_constant", "horizon_turns", "progressive_widening_base", "progressive_widening_exponent", "value_scale", "discount_factor", "require_full_root_coverage"],
+      "properties": {
+        "max_simulations": {"type": "integer", "minimum": 1},
+        "max_depth": {"type": "integer", "minimum": 1},
+        "max_nodes": {"type": "integer", "minimum": 1},
+        "max_candidates": {"type": "integer", "minimum": 1},
+        "time_budget_ms": {"type": "integer", "minimum": 1},
+        "exploration_constant": {"type": "number", "exclusiveMinimum": 0},
+        "horizon_turns": {"type": "integer", "minimum": 0},
+        "progressive_widening_base": {"type": "number", "exclusiveMinimum": 0},
+        "progressive_widening_exponent": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "value_scale": {"type": "number", "exclusiveMinimum": 0},
+        "discount_factor": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "require_full_root_coverage": {"type": "boolean"}
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cleanup_reserve_ms", "allow_manual_coin", "fallback_on_error"],
+      "properties": {
+        "cleanup_reserve_ms": {"type": "integer", "minimum": 1},
+        "allow_manual_coin": {"const": false},
+        "fallback_on_error": {"const": true}
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seed", "record_dirty_worktree"],
+      "properties": {
+        "seed": {"type": "integer", "minimum": 0},
+        "record_dirty_worktree": {"type": "boolean"}
+      }
+    }
+  }
+}

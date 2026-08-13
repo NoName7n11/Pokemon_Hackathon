@@ -38,12 +38,12 @@
       "name": "Grass",
       "path": "specialists/Grass",
       "provider": "claude",
-      "state": "REVIEW_REQUIRED",
-      "current_version": "v000-baseline",
+      "state": "READY_FOR_EXPERIMENT",
+      "current_version": "v001-deck-rebase",
       "created_at": "2026-08-12T23:20:17.986113+00:00",
-      "deck_sha256": "7d8e05ad2d423e4562bd0ea48ae1006b27e75359ffbe9554deb46a626a398444",
+      "deck_sha256": "f6cadd59a7e6741e96f18754c0866f87e97ed85f87b3a4486e510f4ea0ae2448",
       "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
-      "active_experiment": "EXP-0002"
+      "active_experiment": null
     },
     {
       "name": "Hydrapple",

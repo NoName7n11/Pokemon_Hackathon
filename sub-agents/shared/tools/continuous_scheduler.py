@@ -208,6 +208,8 @@ def reconcile_waiting(job: dict[str, Any]) -> str | None:
         return None
     if job["state"] == "waiting_screening_review" and experiment:
         orchestration = experiment.get("orchestration", {}).get("state")
+        if orchestration == "PAUSED_BY_HUMAN":
+            return None
         if orchestration == "MAIN_AUTHORIZED":
             return "deep"
     return None

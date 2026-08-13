@@ -70,6 +70,10 @@ def copy_context(specialist: Path, experiment_dir: Path, workspace: Path) -> Non
         "AGENT_CONTRACT.md": SUB_AGENTS_ROOT / "shared" / "AGENT_CONTRACT.md",
         "POKEMON_RULES.md": REPO_ROOT / "POKEMON_RULES.md",
     }
+    specialist_config = read_json(specialist / "config.json")
+    strategy_source = specialist_config.get("source_strategy")
+    if strategy_source:
+        sources["STRATEGY.md"] = REPO_ROOT / strategy_source
     for destination_name, source in sources.items():
         if source.is_file():
             shutil.copy2(source, context / destination_name)
@@ -88,7 +92,8 @@ def render_prompt(provider: str, specialist: Path, experiment: dict[str, Any]) -
 
 This is a disposable, isolated workspace. Read `context/AGENT_CONTRACT.md`,
 `context/EXPERIMENT.json`, `context/SPECIALIST_CONFIG.json`,
-`context/SPECIALIST_PROGRESS.md`, `context/POKEMON_RULES.md`, the current
+`context/SPECIALIST_PROGRESS.md`, `context/POKEMON_RULES.md`, any available
+`context/STRATEGY.md`, the current
 `main.py`, and `context/baseline/main.py` before editing.
 
 Experiment hypothesis:
@@ -194,6 +199,8 @@ def run_provider(args) -> int:
             input=prompt if command.prompt_via_stdin else None,
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=timeout_seconds,
             check=False,
         )

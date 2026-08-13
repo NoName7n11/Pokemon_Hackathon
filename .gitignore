@@ -27,6 +27,15 @@ liamk_behavior.json
 # Python
 __pycache__/
 *.pyc
+.venv-plan1/
+
+# Plan 1 generated research artifacts. Keep schemas, source, reports, and small
+# checked-in fixtures; large trajectories/checkpoints are local-only.
+plan_1/artifacts/checkpoints/
+plan_1/artifacts/fixtures/
+plan_1/artifacts/trajectories/
+plan_1/artifacts/traces/
+plan_1/artifacts/tmp/
 
 # Local tooling state (not project source)
 .ontrack/
@@ -39,3 +48,6 @@ sub-agents/continuous/.scheduler.lock
 sub-agents/continuous/logs/
 sub-agents/continuous/scheduler.stdout.log
 sub-agents/continuous/scheduler.stderr.log
+
+# Other teams decks reconstructed from replay data -- do not redistribute
+Decs/Dipam_*

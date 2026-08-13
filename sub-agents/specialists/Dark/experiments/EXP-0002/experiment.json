@@ -2,7 +2,7 @@
   "id": "EXP-0002",
   "specialist": "Dark",
   "created_at": "2026-08-12T23:24:48.464993+00:00",
-  "updated_at": "2026-08-12T23:32:02.133808+00:00",
+  "updated_at": "2026-08-13T23:24:12.855828+00:00",
   "worker": "claude",
   "hypothesis": "For attack choice and immediate attacker scoring, account for Mega Sharpedo ex Hungry Jaws receiving its conditional damage only when Sharpedo is damaged; preserve generic attack ranking for all other Pokemon.",
   "expected_effect": "Promote and attack with damaged Mega Sharpedo when Hungry Jaws is a real high-damage option without globally inflating its value.",
@@ -133,12 +133,15 @@
     }
   ],
   "orchestration": {
-    "state": "REVIEW_REQUIRED",
+    "state": "PAUSED_BY_HUMAN",
     "provider": "claude",
     "through_stage": "screening",
     "started_at": "2026-08-12T23:24:48.527653+00:00",
     "updated_at": "2026-08-12T23:32:02.133808+00:00",
-    "review_pack": "human-review/pending/Dark-EXP-0002.md"
+    "review_pack": "human-review/pending/Dark-EXP-0002.md",
+    "resume_state": "REVIEW_REQUIRED",
+    "paused_at": "2026-08-13T23:24:12.855828+00:00",
+    "pause_reason": "Human is not confident in the current No_Name_Dark deck and requested that no further Dark specialist work run until the deck is reconsidered."
   },
   "reviews": [
     {
@@ -149,7 +152,14 @@
       "markdown": "human-review/pending/Dark-EXP-0002.md"
     }
   ],
-  "review_history": [],
+  "review_history": [
+    {
+      "stage": "operator_control",
+      "decision": "paused",
+      "reason": "Human is not confident in the current No_Name_Dark deck and requested that no further Dark specialist work run until the deck is reconsidered.",
+      "at": "2026-08-13T23:24:12.855828+00:00"
+    }
+  ],
   "decision": "pending",
   "reason": "",
   "limitations": []

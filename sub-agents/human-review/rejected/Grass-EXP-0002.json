@@ -93,6 +93,7 @@
     }
   },
   "diff_truncated": false,
-  "decision": "pending",
-  "reviewer_reason": ""
+  "decision": "rejected",
+  "reviewer_reason": "Superseded by human-revised strategy and source deck change from Buddy-Buddy Poffin 1086 to Bug Catching Set 1094; preserve EXP-0002 evidence but do not compare it as the new deck baseline.",
+  "reviewed_at": "2026-08-13T23:20:35.524973+00:00"
 }
