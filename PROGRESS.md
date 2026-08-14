@@ -11,6 +11,299 @@ the reversal as a new entry instead).
 
 ## 2026-08-14
 
+- **Plan 1 Phase 12 complete — Strategy report claims verified and research
+  evidence archived deterministically**:
+  - Added `plan_1/strategy/STRATEGY_REPORT.md`, documenting the actual Plan 1
+    outcome across architecture, public observations, legal-action generation,
+    hidden-card beliefs, UCT/PUCT, self-play, deck interaction, causal
+    experiments, failures, reproducibility, limitations, and compliance. The
+    report explicitly concludes that the infrastructure succeeded while the
+    final playing candidate failed generalization and was not promoted.
+  - Added `MODEL_CARD.md` for the exact 8,192-feature Phase 8 candidate. It
+    records training provenance, intended use, Phase 8 teacher-target dominance,
+    the 960-game Phase 9 rejection, Phase 11 runtime behavior, and a clear
+    `do not submit` decision until a new candidate passes the frozen gate.
+  - Added `REPRODUCIBILITY.md` with environment assumptions, phase commands,
+    fresh-versus-resumed Phase 9 guidance, archive verification, and the native
+    engine's complete-game seed-replay boundary.
+  - Added `DATA_RETENTION_CHECKLIST.md`, inventorying competition card/deck
+    data, simulator files, raw games, trajectories, checkpoints, reports,
+    submission packages, and external card images. No deletion was performed.
+    The checklist requires a final signed-in review of both competition rule
+    pages because no machine-readable post-competition deletion clause could be
+    verified; it does not invent a deadline or authorize broad deletion.
+  - Added `claims.json` and `plan1.archival`: 10 major report claims are bound to
+    20 exact JSON paths and expected values. The publisher fails closed on
+    missing evidence, value drift, unsafe paths, unmatched include patterns,
+    manifest corruption, undeclared archive entries, or content-hash mismatch.
+    All 20 checks passed.
+  - Added strict `phase12_archive.json`, `run_phase12_archive.py`, and three
+    archival regression tests. The deterministic evidence ZIP contains 189
+    files covering Strategy documents, configs, source, tests, preserved phase
+    reports, manifests, checkpoints, frozen evaluation decks, and specialist
+    policies. A stale empty fixture glob was caught by the fail-closed builder
+    and removed. The report glob was then narrowed to Phases 0-11 so a rerun
+    cannot ingest its own prior Phase 12 report.
+  - Two consecutive archive builds were byte-identical: 896,933 bytes, SHA-256
+    `6a4bae2cc717f20645fdc9268c3cc3d0bd57c8ac38418a98958094916db5ef41`.
+    The final integrity-signed archival report SHA-256 is
+    `66bfe889f38a6446743ca34c2e49931e4c93905ed8ed913267668d8804960663`.
+    All 114 Plan 1 tests pass; active `main.py` and `deck.csv` remain unchanged.
+  - **Reason:** make every important Strategy claim independently checkable,
+    preserve enough code/data identity to reproduce the rejected evaluation,
+    document negative results as carefully as successful infrastructure, and
+    leave compliance cleanup explicit without deleting evidence prematurely.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 11 complete — exact candidate packaged and shadow-validated;
+  promotion remains rejected on strength**:
+  - Added `plan_1/src/plan1/deployment/` with strict deployment configuration,
+    deterministic package assembly, a complete per-file hash manifest, path and
+    undeclared-file validation, and deterministic ZIP output. The package
+    contains the exact 8,192-feature checkpoint used by the Phase 9 candidate,
+    its selective-budget search configuration, Hydrapple deck, bundled Plan 1
+    source, and the frozen heuristic policy as fallback. The independent
+    2,048-feature Phase 10 size experiment was deliberately not substituted
+    because it lacks the exact candidate's playing-strength evidence.
+  - Added a Kaggle-style lazy runtime entry point with three levels of failure
+    handling: learned PUCT when the checkpoint loads, heuristic MCTS when the
+    model is missing or corrupt, and deterministic greedy/minimal legal fallback
+    if search or imports fail. The competition API remains a runtime-provided
+    dependency and the package performs no network calls.
+  - Added `phase11_probe.py`, `run_phase11_suite.py`, and strict
+    `phase11_deployment.json`. Fresh isolated Python processes verified imports,
+    exact 60-card loading, model initialization, missing-model degradation, and
+    corrupt-model degradation. Both model fault injections reached
+    `ready_heuristic` instead of crashing or forfeiting.
+  - Built `plan1-shadow-submission.zip`: 66 declared files, 144,042 bytes,
+    SHA-256 `de72e6339b2dabd602fd686e762e92546cabf2e0416f149d51b3a0f3bf7f0057`.
+    Import measured 3.25 ms and model load 4.11 ms in the local clean-process
+    probe.
+  - Ran 12 seat-alternated full shadow games against the active heuristic using
+    the exact packaged entry point. All 12 completed without faults. The package
+    made 815 measured decisions at 19.24 ms p95 and 80.64 ms maximum, inside the
+    declared 50 ms p95 and 250 ms hard validation limits.
+  - Bound the package to the immutable 960-game, 40-matchup Phase 9 evaluation
+    by candidate-checkpoint hash. Packaging and runtime gates pass, but that
+    frozen report conclusively rejects development and held-out strength. The
+    integrity-signed report therefore records `shadow_validation_passed=true`,
+    `promotion.decision=rejected`, and `replace_active_submission=false`.
+    Report SHA-256:
+    `1753e34442b46ba3e114fd7cead812c4b408a781e58142c5ed612a726573eddf`.
+    All 111 Plan 1 tests pass; active `main.py` and `deck.csv` remain unchanged.
+  - **Reason:** separate deployability from playing strength. This phase proves
+    that the exact research policy can be packaged, loaded, fault-contained,
+    and run inside local deployment limits without turning successful packaging
+    into a false claim that the rejected agent should replace the submission.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 9 resolved at promotion sample size — selective-budget
+  candidate rejected**:
+  - Added process-isolated parallel execution to the Phase 9 league runner.
+    Match workers execute battles independently while the coordinator alone
+    validates cached artifacts and publishes reports, preserving deterministic
+    resume and avoiding concurrent writes. Added `--workers` to
+    `run_phase9_suite.py` and regression coverage for the promotion config.
+  - Added `plan_1/configs/phase9_promotion_gate.json`: 40 seat-balanced
+    matchups at 24 games each, for 960 games total. Twenty-four games per
+    matchup leaves room for draws while targeting the declared minimum of 20
+    decisive games. The same frozen three-deck development field, two held-out
+    decks, checkpoints, specialists, search configuration, and gate thresholds
+    were retained. Four workers completed the run in 885 seconds with zero
+    safety failures.
+  - The candidate scored 139-186 with 35 draws on development (42.77%; Wilson
+    95% lower bound 37.51%) and 184-282 with 14 draws on held-out decks (39.48%;
+    lower bound 35.15%). Its worst matchup win rate was 11.11%. Checkpoint
+    round-robin play was 115-105 with 20 draws, cross-deck specialist play was
+    169-289 with 22 draws, and same-deck specialist play was 39-74 with seven
+    draws. No dominance edge or cycle was detected.
+  - Per-deck results were Hydrapple 84-84, Grass 32-87 with 49 draws, Fire
+    60-108, LiamK Mega Lopunny 60-108, and Claude Mega Gardevoir 87-81. Six
+    Grass-related matchups remained below 20 decisive games because each drew
+    9-11 times. The aggregate development and held-out samples nevertheless
+    exceeded 100 decisive games and independently failed mandatory strength
+    floors, so additional games cannot rescue this candidate's gate result.
+  - Corrected gate semantics to distinguish aggregate evidence from per-match
+    evidence. A safety-clean candidate with powered aggregate samples is now
+    `rejected` when a mandatory aggregate strength floor fails, rather than
+    being mislabeled `insufficient_evidence` due to an unrelated draw-heavy
+    pairing. The small Phase 9 screen remains correctly classified as
+    `insufficient_evidence`.
+  - Definitive report:
+    `plan_1/artifacts/reports/phase9-promotion-gate.json` (SHA-256
+    `0b1656e49e88b4dfa678d97654c3e1f5256b6d231a59cd53893c0416b1710500`).
+    All 108 Plan 1 tests pass. Active `main.py` and `deck.csv` remain unchanged.
+  - **Reason:** the earlier 80-game transfer screen could not settle
+    generalization. This promotion-sized run supplies enough aggregate evidence
+    to make the decision honestly: the current candidate is not strong enough
+    across development or held-out opponents, so packaging must not be confused
+    with promotion and the next playing candidate needs a model/training change.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 10 complete — selective-budget search chosen for research;
+  compact model format measured**:
+  - Added `plan_1/src/plan1/optimization/`, strict optimization/confirmation
+    configurations, resumable per-match artifacts, causal search-variant
+    round robins, latency/fallback/coverage aggregation, confidence intervals,
+    head-to-head tests, frozen-corpus model-size training, and deterministic
+    gzip export with exact round-trip checks. Added
+    `plan_1/scripts/run_phase10_suite.py` and four optimization regression tests.
+  - Phase 9 telemetry identified one dominant hot path: 3,749/4,425 searched
+    decisions fell back for incomplete root coverage; only 8.50% reached full
+    root coverage and 2.24% changed the heuristic choice. Direct model
+    inference was already negligible relative to native simulation, so search
+    coverage was optimized first and model compression stayed isolated.
+  - The 90-game Hydrapple/Grass/Fire round robin separated two mechanisms.
+    `selective_root` changed only `require_full_root_coverage`; it raised
+    nonfallback choices to 79.85% but went 22-31 in the three-way field.
+    `selective_budget` additionally changed the 24 ms allocation from an 8 ms
+    search window/16 ms cleanup reserve to 16/8 ms and raised simulation/node
+    caps. It led the field at 32-21, reached 79.38% full-root coverage, and used
+    nonfallback choices on 75.16% of searched decisions. Both were 14-13 with
+    three draws directly against baseline, and neither was accepted because the
+    predeclared 30-decisive-game gate was not met.
+  - A fresh 60-game confirmation compared only full-root baseline and
+    selective-budget with the same checkpoint and three decks. Selective-budget
+    won 30-23 with seven draws, reached 82.30% full-root coverage and 81.52%
+    nonfallback choices, measured 20.62 ms maximum matchup p95, and had 0.034%
+    hard overruns. It cleared the research-rescreen gate. The direct result is
+    not statistically conclusive: 56.60% decisive, Wilson 95%
+    43.27%-69.05%, two-sided `p=0.336`.
+  - The unchanged 80-game Phase 9 transfer screen improved development from
+    10-20 to 11-16 with three draws, held-out from 9-31 to 17-23, cross-deck
+    specialist play from 10-30 to 17-23, and same-deck specialist play from 2-8
+    to 5-4 with one draw. Checkpoint-peer play remained weak at 6-12 with two
+    draws. Therefore `mcts_selective_budget.json` is the next research config,
+    but Phase 9 remains `insufficient_evidence` and nothing is promoted.
+  - Trained 2,048/4,096/8,192-feature models on identical frozen Phase 7 splits.
+    The 2,048 model had the best held-out policy loss (`0.5725`), matched 82.71%
+    top-1 and `0.1600` value Brier, measured `0.0476 ms` p95, and reduced JSON
+    from 174,374 to 50,798 bytes. Deterministic gzip was 6,541 bytes (SHA-256
+    `737a006db2c81c553303454a4672bdf8fede9907a96c1766d4e13eaf829d0912`)
+    with exact restoration. This is a packaging recommendation only and was not
+    substituted into search evidence.
+  - Reports: `phase10-suite.json` SHA-256
+    `bedd95bcf9d2d4a6022702e36c0c9def3ab6ec4525acb050bfafedeb1ed98451`;
+    `phase10-confirmation.json` SHA-256
+    `75239c11e2b08dcee1a59a62f7eced4ba75391daafa921d574c11ce70fd98716`;
+    `phase9-optimized-screen.json` SHA-256
+    `0924d357f62d6597447b2625334a5c2c433e5ef1beeaf26f2732b14a8458c061`.
+    All 106 Plan 1 tests pass; active submission files remain unchanged.
+  - **Reason:** the reinforcement loop was mostly replaying heuristic behavior
+    because conservative full-root coverage discarded almost every bounded
+    search. Phase 10 converts search into an actually exercised policy while
+    preserving safety and latency, measures transfer before escalation, and
+    reduces future package size without confounding playing-strength evidence.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 9 league/generalization framework complete; Phase 8 champion
+  blocked from promotion**:
+  - Added `plan_1/src/plan1/league/` with strict frozen-field configuration,
+    checkpoint and external-module policy registration, development/held-out
+    deck separation, deterministic matchup construction, seat-balanced engine
+    games, Wilson intervals, per-category/per-deck summaries, historical
+    regression checks, directed dominance evidence, and cycle detection. The
+    promotion gate now requires safety, declared evidence minimums, multi-deck
+    strength floors, a worst-matchup floor, and no catastrophic forgetting.
+  - Added atomic per-matchup artifacts under
+    `plan_1/artifacts/phase9/phase9-validation-v1/matches/`. A resumed run checks
+    the full config identity, pairing identity, and game count before reusing
+    evidence; stale or changed fields fail closed. Added
+    `plan_1/scripts/run_phase9_suite.py`, strict
+    `plan_1/configs/phase9_league.json`, and five league regression tests.
+  - The frozen field uses Hydrapple, No Name Grass, and No Name Fire as
+    development decks, with LiamK Mega Lopunny and Claude Mega Gardevoir held
+    out. It compares the Phase 8 iteration-1 champion with the Phase 7
+    checkpoint and Phase 8 iteration-2 league member, and integrates the
+    Hydrapple/Grass/Fire Plan 2 specialists plus generic held-out opponents in
+    same-deck and cross-deck pairings.
+  - Completed 40 matchups / 80 seat-balanced games in 108.9 seconds with zero
+    faults. The current Phase 8 champion scored 10-20 on development (33.3%,
+    Wilson lower 19.2%), 9-31 on held-out matchups (22.5%, lower 12.3%), 7-13
+    against checkpoint peers, 10-30 cross-deck against specialists, and 2-8
+    against same-deck specialists. Its weakest individual pairing was 0%;
+    Claude Mega Gardevoir was the weakest piloted deck at 2-12. Phase 8
+    iteration 2 led the checkpoint table at 14-6, ahead of Phase 7 at 9-11 and
+    the iteration-1 champion at 7-13.
+  - The gate correctly returned `insufficient_evidence`, not promotion. Two
+    games per pairing are below the declared 20-game matchup and 100-game
+    aggregate minimums; the candidate also missed the strength floors. No
+    dominance cycle is claimed because checkpoint pairs did not reach the
+    configured 20-decisive-game threshold. This validates the league machinery
+    while showing that a larger confirmation run on this candidate would be a
+    poor use of compute.
+  - Definitive report:
+    `plan_1/artifacts/reports/phase9-suite.json` (SHA-256
+    `e927f011139bb06d1d506cc18282e4fad07e08f3b16e305e62e89c31c599af2e`).
+    All 102 Plan 1 tests pass. The active submission remains unchanged.
+  - **Reason:** Phase 8's Hydrapple-only 5-3 screen could not measure historical
+    regression, deck transfer, specialist strength, held-out archetypes, or
+    cyclic dominance. Phase 9 creates that missing yardstick and supplies
+    concrete evidence that search/model optimization must precede any larger
+    promotion evaluation.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 8 complete — resumable three-iteration policy-value self-play
+  loop**:
+  - Added `plan_1/src/plan1/selfplay/` with strict reinforcement configuration,
+    spawned native-simulator jobs, one-writer trajectory commits, bounded replay
+    selection, warm-start candidate training, validation-only value calibration,
+    deterministic candidate/champion evaluation, explicit promotion decisions,
+    and an atomic coordinator ledger. Added
+    `plan_1/scripts/run_phase8_loop.py` and the frozen validation configuration
+    `plan_1/configs/phase8_reinforcement.json`.
+  - Extended search traces with learned policy priors and self-play capture with
+    legal-action priors, root visits, Q values, search diagnostics, checkpoint
+    identities, and final outcome targets. Early turns may sample from completed
+    root visit distributions; evaluation remains deterministic. Evaluation
+    matches never receive a corpus writer and their IDs are checked against the
+    training manifest.
+  - Proved real interruption/resume: the first invocation generated and
+    atomically committed iteration-1's eight games, then paused after self-play.
+    Restarting the identical config incremented `resume_count` to one, skipped
+    the committed batch, resumed at training, and completed all three iterations
+    unattended.
+  - Generated 24 Hydrapple mirror self-play games / 2,648 decisions with 18
+    train and six validation games. The corpus has zero test or
+    evaluation-purpose records, no evaluation-ID intersection, a valid complete
+    manifest chain, and zero worker errors. Replay mixed the retained Phase 7
+    bootstrap with recent self-play and stayed at complete-game boundaries.
+  - Search-signal accounting is explicit: 279/2,648 decisions (10.54%) stored
+    completed PUCT targets, 184 contained multi-visit policy distributions, and
+    14 temperature-selected early actions differed from the visit argmax. The
+    other 2,369 decisions used fallback/teacher targets because the conservative
+    24 ms/full-root-coverage search did not clear. This proves the reinforcement
+    path but shows it is still mostly behavioral cloning under the current
+    budget.
+  - Archived research decisions under one fixed rule (`safety`, candidate wins
+    more games, and decisive win rate >=55%): iteration 1 scored 5-3 and was
+    promoted internally; iteration 2 scored 3-5 and was rejected; iteration 3
+    tied 4-4 and was rejected. The final internal champion is iteration 1
+    checkpoint SHA-256
+    `201111f01da276b4fe8e0c4ab623d563fa0ad5da0f81f4b96368b8bae1ead36c`.
+    These eight-game screens validate state transitions; they do not establish
+    statistically reliable superiority or authorize submission promotion.
+  - Definitive report:
+    `plan_1/artifacts/phase8/phase8-validation-v1/phase8-suite.json`
+    (SHA-256
+    `c76dbca3cc9ed8a31943738b135bee483ede717cf88714751069777c72a7c0c9`,
+    report identity
+    `cab6216ff981e4ce5b9a54343157fe0f5dc94a1e09497e418452764694575c31`).
+    All 97 Plan 1 tests pass; explicit `py_compile` and `git diff --check` pass.
+    The active `main.py` and `deck.csv` remain unchanged.
+  - **Reason:** Phase 9 needs a proven feedback loop before adding historical
+    opponents, multiple decks, held-out archetypes, and larger confirmation
+    matches. This phase establishes resumability, data isolation, candidate
+    lineage, and controlled promotion/rejection while exposing search coverage
+    as the next technical ceiling.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 - **Plan 1 Phase 7 complete — supervised policy-value bootstrap and optional
   PUCT integration**:
   - Added an isolated, dependency-free policy-value learning stack under

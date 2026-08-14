@@ -1,0 +1,711 @@
+{
+  "category": "checkpoint_round_robin",
+  "split": "development",
+  "left_policy": "phase7_bootstrap",
+  "right_policy": "phase8_candidate_i002",
+  "left_deck": "Grass",
+  "right_deck": "Grass",
+  "matchup_id": "phase9-m0005",
+  "games": 2,
+  "left_wins": 1,
+  "right_wins": 0,
+  "draws": 1,
+  "left_deck_path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Grass.csv",
+  "left_deck_sha256": "f6cadd59a7e6741e96f18754c0866f87e97ed85f87b3a4486e510f4ea0ae2448",
+  "right_deck_path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Grass.csv",
+  "right_deck_sha256": "f6cadd59a7e6741e96f18754c0866f87e97ed85f87b3a4486e510f4ea0ae2448",
+  "left_policy_sha256": "9d08d218f0625f0ab2698d3c0fc944d6a8d07e2c020b16f957e3fdae791c4e2a",
+  "right_policy_sha256": "74e05e24ae3b32f0ef6e5a757390a2f19dfa05c78cd2e402e113a2c3c17e8849",
+  "left_timing": {
+    "count": 3006,
+    "median_ms": 0.38885000000000003,
+    "p95_ms": 19.0533,
+    "max_ms": 33.5154
+  },
+  "right_timing": {
+    "count": 121,
+    "median_ms": 17.6622,
+    "p95_ms": 20.6884,
+    "max_ms": 37.028
+  },
+  "left_search": {
+    "searched_decisions": 1038,
+    "timing": {
+      "count": 1038,
+      "median_ms": 16.9093,
+      "p95_ms": 17.8621,
+      "max_ms": 26.6562
+    },
+    "stopped_reasons": {
+      "forced_action": 7,
+      "simulation_limit": 5,
+      "time_limit": 1026
+    },
+    "fallback_reasons": {},
+    "trace_errors": {},
+    "simulations": 3878,
+    "completed_simulations": 3878,
+    "native_steps": 9450,
+    "max_depth_reached": 11,
+    "full_root_coverage": 989,
+    "full_root_coverage_rate": 0.9527938342967245,
+    "chose_non_fallback": 985,
+    "chose_non_fallback_rate": 0.9489402697495183,
+    "hard_deadline_overruns": 2,
+    "hard_deadline_overrun_rate": 0.0019267822736030828,
+    "samples": [
+      {
+        "version": "puct-v1",
+        "seed": 10108153684043273948,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 1,
+        "completed_simulations": 1,
+        "tree_nodes": 2,
+        "native_steps": 3,
+        "max_depth_reached": 3,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 0,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": true,
+        "expansion_failures": 0,
+        "elapsed_ms": 26.6562,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 6,
+        "generated_root_actions": 6,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "7a2088edf62b8266b042b78dae382bb7d5cc1ed2b4be4a7a4447dbe6b74f2ae8",
+            "visits": 1,
+            "value_sum": 0.027497173939923184,
+            "mean_value": 0.027497173939923184,
+            "immediate_reward": -0.0022414030137962553,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.7033703704062534
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 227451570058805956,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 3,
+        "completed_simulations": 3,
+        "tree_nodes": 4,
+        "native_steps": 7,
+        "max_depth_reached": 3,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 3,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 0,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 17.0935,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 4,
+        "generated_root_actions": 4,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "e949beebc4a831da2e72e3a722ec9ddf62aaf5d14af4c790035a50ccbe0fb35b",
+            "visits": 1,
+            "value_sum": 0.0008187657819701856,
+            "mean_value": 0.0008187657819701856,
+            "immediate_reward": -0.0025231902541277985,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.7872789041670869
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "bc37d7ca6a21c89b2b07397c889c1557fb88bdac8932f7729c8694edf6215f11",
+            "visits": 1,
+            "value_sum": 0.0008187657819701856,
+            "mean_value": 0.0008187657819701856,
+            "immediate_reward": 0.03640915185206096,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.15340933192465653
+          },
+          {
+            "action": [
+              3
+            ],
+            "fingerprint": "88eb04a0623750e8e1c2c52449dc72ab8544e8303de184fdd4f201ded68d92d4",
+            "visits": 1,
+            "value_sum": -0.033855945222543975,
+            "mean_value": -0.033855945222543975,
+            "immediate_reward": -0.027468411949620932,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.030019586521600687
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 7592112363170078943,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 3,
+        "completed_simulations": 3,
+        "tree_nodes": 4,
+        "native_steps": 6,
+        "max_depth_reached": 3,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 2,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": true,
+        "expansion_failures": 0,
+        "elapsed_ms": 24.1316,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 3,
+        "generated_root_actions": 3,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "ec0b77b882ff2ca790dd3fbe0840cf8d7cfb16c7eec1ae46f04893c63cb2c248",
+            "visits": 1,
+            "value_sum": 0.0008187657819701856,
+            "mean_value": 0.0008187657819701856,
+            "immediate_reward": -0.0025244446392147304,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.939980203499107
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "d65be8b8e39425bc7e5c284bfad48ceb8984f1775e37a6b0904b3cd2ca6e00e9",
+            "visits": 1,
+            "value_sum": 0.0023535325103132103,
+            "mean_value": 0.0023535325103132103,
+            "immediate_reward": -0.027668086068824704,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.034482712463657764
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "77acb4a7f6e9d79a757333a57466f8cbe24f2ad91fdeed182feddf43fc067de0",
+            "visits": 1,
+            "value_sum": 0.01656627060529488,
+            "mean_value": 0.01656627060529488,
+            "immediate_reward": -0.014306914457299227,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.02553708403723522
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 4884710499948722373,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 2,
+        "completed_simulations": 2,
+        "tree_nodes": 3,
+        "native_steps": 7,
+        "max_depth_reached": 4,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 1,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.8153,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 3,
+        "generated_root_actions": 3,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "bf942068b862475daa116ead3d46d5034a718d65d91cea5ffae6b95999448722",
+            "visits": 1,
+            "value_sum": -0.010840544322769815,
+            "mean_value": -0.010840544322769815,
+            "immediate_reward": -0.0025246826854230554,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.8129553493821621
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "7ebb07f34cc983c793f14a1c5a3f5c28c6244a3ade2958d33d7d7b5243aa81d5",
+            "visits": 1,
+            "value_sum": -0.01176983286645263,
+            "mean_value": -0.01176983286645263,
+            "immediate_reward": 0.005684856674098647,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.1572217825891453
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 11899954486003269233,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 3,
+        "completed_simulations": 3,
+        "tree_nodes": 4,
+        "native_steps": 12,
+        "max_depth_reached": 4,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 3,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 0,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.3296,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 4,
+        "generated_root_actions": 4,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "657231526db5d9f66cb78537e0293cef9ba458c9a6f6a2104ca8fe5b411b66a7",
+            "visits": 1,
+            "value_sum": 0.03164481802761314,
+            "mean_value": 0.03164481802761314,
+            "immediate_reward": 0.020192363982022257,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.7633577715432128
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "89ecb2d04fa3060b76ef834159b16dbe5bbe61903449bb0269fa0b1806397929",
+            "visits": 1,
+            "value_sum": 0.03164481802761314,
+            "mean_value": 0.03164481802761314,
+            "immediate_reward": 0.020192363982022257,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.14158248983953484
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "fbaf0200a062669b8c3759ec6b26c235d6077461a93ce7ba1916d029a727881c",
+            "visits": 1,
+            "value_sum": 0.03164481802761314,
+            "mean_value": 0.03164481802761314,
+            "immediate_reward": 0.005684048816492676,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.0659522843866304
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "right_search": {
+    "searched_decisions": 81,
+    "timing": {
+      "count": 81,
+      "median_ms": 16.8834,
+      "p95_ms": 18.4125,
+      "max_ms": 29.9941
+    },
+    "stopped_reasons": {
+      "forced_action": 8,
+      "simulation_limit": 9,
+      "time_limit": 64
+    },
+    "fallback_reasons": {},
+    "trace_errors": {},
+    "simulations": 230,
+    "completed_simulations": 230,
+    "native_steps": 527,
+    "max_depth_reached": 10,
+    "full_root_coverage": 29,
+    "full_root_coverage_rate": 0.35802469135802467,
+    "chose_non_fallback": 25,
+    "chose_non_fallback_rate": 0.30864197530864196,
+    "hard_deadline_overruns": 2,
+    "hard_deadline_overrun_rate": 0.024691358024691357,
+    "samples": [
+      {
+        "version": "puct-v1",
+        "seed": 8057478661984084922,
+        "root_player": 1,
+        "root_turn": 2,
+        "horizon_turns": 0,
+        "simulations": 1,
+        "completed_simulations": 1,
+        "tree_nodes": 2,
+        "native_steps": 4,
+        "max_depth_reached": 4,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 0,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": true,
+        "expansion_failures": 0,
+        "elapsed_ms": 29.9941,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 8,
+        "generated_root_actions": 8,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "147cf19b8defee4f5bb9478cb7bb5be3faa8364cce7681f98315442e776f2a78",
+            "visits": 1,
+            "value_sum": -0.04125036577080121,
+            "mean_value": -0.04125036577080121,
+            "immediate_reward": -0.012406766045447673,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.5330209314868921
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 10743092696869431806,
+        "root_player": 1,
+        "root_turn": 2,
+        "horizon_turns": 0,
+        "simulations": 2,
+        "completed_simulations": 2,
+        "tree_nodes": 3,
+        "native_steps": 11,
+        "max_depth_reached": 6,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 1,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.8834,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 7,
+        "generated_root_actions": 7,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "90922b5d48866fb9bb5e9bb04efe2fffcb791921750de3c61667ba24b4f6ea73",
+            "visits": 1,
+            "value_sum": -0.02199102882522431,
+            "mean_value": -0.02199102882522431,
+            "immediate_reward": 0.029779651224604447,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.5646162312068352
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "25bb32a100225a2c7ea54f43c751da5e7cc639f84f657e11824af5ee3c978bb9",
+            "visits": 1,
+            "value_sum": 0.02423020080549306,
+            "mean_value": 0.02423020080549306,
+            "immediate_reward": -0.00016261426497470033,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.1749346616743205
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 9776991287069925249,
+        "root_player": 1,
+        "root_turn": 2,
+        "horizon_turns": 0,
+        "simulations": 2,
+        "completed_simulations": 2,
+        "tree_nodes": 3,
+        "native_steps": 10,
+        "max_depth_reached": 5,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 2,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 0,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.3606,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 5,
+        "generated_root_actions": 5,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "6d37b8a52d569986e70d4a5d5477dc7a44e5cf0577fccaced820cd2b7018c992",
+            "visits": 1,
+            "value_sum": -0.02199102882522431,
+            "mean_value": -0.02199102882522431,
+            "immediate_reward": 0.029807936028874583,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.6788385741792685
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "e78f06925ccebb06e0f4a3d230bea474170f35963525bb7803eb080e2647ce9b",
+            "visits": 1,
+            "value_sum": -0.02199102882522431,
+            "mean_value": -0.02199102882522431,
+            "immediate_reward": 0.020088416267766737,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.11399683992317927
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 10343042098829593650,
+        "root_player": 1,
+        "root_turn": 2,
+        "horizon_turns": 0,
+        "simulations": 3,
+        "completed_simulations": 3,
+        "tree_nodes": 4,
+        "native_steps": 10,
+        "max_depth_reached": 4,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 2,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.8092,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 4,
+        "generated_root_actions": 4,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "30665e0905c12cc6c334d8e9e6eaa9ec084ca771674af9ee73c8347eaa2341c4",
+            "visits": 1,
+            "value_sum": -0.02199102882522431,
+            "mean_value": -0.02199102882522431,
+            "immediate_reward": 0.020259062031672055,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.7153510782848777
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "708bdff92c70a8669cff3389040b23074e338c92c5f701fff30b1a92bfafc120",
+            "visits": 1,
+            "value_sum": -0.02199102882522431,
+            "mean_value": -0.02199102882522431,
+            "immediate_reward": 0.020259062031672055,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.12012835666963681
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "e1c17ef3ccae2160b20f9ade47e0b0e1725324fdde7aeec13e0f54071f586e08",
+            "visits": 1,
+            "value_sum": 0.0038701406076828183,
+            "mean_value": 0.0038701406076828183,
+            "immediate_reward": 0.004675103788297719,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.10674426123420332
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 8188012240251958285,
+        "root_player": 1,
+        "root_turn": 2,
+        "horizon_turns": 0,
+        "simulations": 3,
+        "completed_simulations": 3,
+        "tree_nodes": 4,
+        "native_steps": 9,
+        "max_depth_reached": 4,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 2,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.9595,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 7,
+        "generated_root_actions": 7,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "44d2ff904c4d6a98df1ad41e9a2e5190781db03cd80d1a3cacbd019c0b664bc4",
+            "visits": 1,
+            "value_sum": -0.005245661279103595,
+            "mean_value": -0.005245661279103595,
+            "immediate_reward": 0.020250183500985952,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.5767051554158164
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "14ac59e1bbea57641c075b4c456ac1b511d2f58f2b8a6d3869d24e789c46f1b0",
+            "visits": 1,
+            "value_sum": -0.005245661279103595,
+            "mean_value": -0.005245661279103595,
+            "immediate_reward": 0.016792950725976467,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.1786801648136554
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "1f61ee2ef8e214aa0ba10bd5d3304c58ac4429466e466eaa928890cfaa301756",
+            "visits": 1,
+            "value_sum": 0.000991133849803075,
+            "mean_value": 0.000991133849803075,
+            "immediate_reward": 0.020250183500985952,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.0968456534225288
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "faults": {},
+  "errors": [],
+  "outcomes": [
+    {
+      "game_index": 0,
+      "left_first": true,
+      "result": 0,
+      "steps": 129,
+      "fault": null,
+      "error": null
+    },
+    {
+      "game_index": 1,
+      "left_first": false,
+      "result": 2,
+      "steps": 2998,
+      "fault": null,
+      "error": null
+    }
+  ],
+  "duration_seconds": 22.868786600010935,
+  "config_sha256": "a9bece212b87774e81b4b503ab72e186463609e55467bc220dd604c7ca827bb3"
+}

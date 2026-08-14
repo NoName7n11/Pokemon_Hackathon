@@ -1,0 +1,403 @@
+{
+  "category": "specialist_same_deck",
+  "split": "development",
+  "left_policy": "phase8_champion_i001",
+  "right_policy": "fire_specialist",
+  "left_deck": "Fire",
+  "right_deck": "Fire",
+  "matchup_id": "phase9-m0027",
+  "games": 2,
+  "left_wins": 2,
+  "right_wins": 0,
+  "draws": 0,
+  "left_deck_path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Fire.csv",
+  "left_deck_sha256": "2191b33925fa0d44729f9cf790ba66bf50ef9a4c48451023853a419ff6f79de4",
+  "right_deck_path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Fire.csv",
+  "right_deck_sha256": "2191b33925fa0d44729f9cf790ba66bf50ef9a4c48451023853a419ff6f79de4",
+  "left_policy_sha256": "201111f01da276b4fe8e0c4ab623d563fa0ad5da0f81f4b96368b8bae1ead36c",
+  "right_policy_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+  "left_timing": {
+    "count": 218,
+    "median_ms": 9.1494,
+    "p95_ms": 19.9276,
+    "max_ms": 36.3055
+  },
+  "right_timing": {
+    "count": 197,
+    "median_ms": 1.9908,
+    "p95_ms": 32.627,
+    "max_ms": 117.4431
+  },
+  "left_search": {
+    "searched_decisions": 125,
+    "timing": {
+      "count": 125,
+      "median_ms": 16.722,
+      "p95_ms": 17.8153,
+      "max_ms": 34.1797
+    },
+    "stopped_reasons": {
+      "forced_action": 11,
+      "simulation_limit": 20,
+      "time_limit": 94
+    },
+    "fallback_reasons": {},
+    "trace_errors": {},
+    "simulations": 460,
+    "completed_simulations": 460,
+    "native_steps": 1065,
+    "max_depth_reached": 15,
+    "full_root_coverage": 60,
+    "full_root_coverage_rate": 0.48,
+    "chose_non_fallback": 42,
+    "chose_non_fallback_rate": 0.336,
+    "hard_deadline_overruns": 1,
+    "hard_deadline_overrun_rate": 0.008,
+    "samples": [
+      {
+        "version": "puct-v1",
+        "seed": 16920937053505372034,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 4,
+        "completed_simulations": 4,
+        "tree_nodes": 5,
+        "native_steps": 7,
+        "max_depth_reached": 2,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 3,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": true,
+        "expansion_failures": 0,
+        "elapsed_ms": 34.1797,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 4,
+        "generated_root_actions": 4,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "13fba107f58af2e1e78e83eba76231b7b2b7c44274f5a482bcc099e534614039",
+            "visits": 1,
+            "value_sum": -0.007618134358273031,
+            "mean_value": -0.007618134358273031,
+            "immediate_reward": -0.0004906586418660765,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.9084365056358255
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "4aa8dfedba3277feea04f7d4fcb47b50598cc7c6e32e90795651b6ed8bfbd3f8",
+            "visits": 1,
+            "value_sum": -0.007618134358273031,
+            "mean_value": -0.007618134358273031,
+            "immediate_reward": -0.0004906586418660765,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.052518227043763625
+          },
+          {
+            "action": [
+              3
+            ],
+            "fingerprint": "7c0a36e6c7ec5ff081ce0db752eff1fef74c904c30fbb6645a20418518c9e40d",
+            "visits": 1,
+            "value_sum": -0.006869252010145148,
+            "mean_value": -0.006869252010145148,
+            "immediate_reward": -0.010517970574361291,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.027531131483373845
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "0f28aef8549a1f11b76e5ce896da3f148079bc5439326ecdd8ce2094d9cc767e",
+            "visits": 1,
+            "value_sum": 0.0153236667245191,
+            "mean_value": 0.0153236667245191,
+            "immediate_reward": -0.0013651042446093335,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.011514135837037098
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 9205361670666596659,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 8,
+        "completed_simulations": 8,
+        "tree_nodes": 5,
+        "native_steps": 6,
+        "max_depth_reached": 2,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 8,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 0,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 9.802,
+        "stopped_reason": "simulation_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 3,
+        "generated_root_actions": 3,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "cec1dfdb16a55e0df6759528853d3f2199340ed2fcdfc116f120b02f96db14cc",
+            "visits": 6,
+            "value_sum": 0.05364025419859379,
+            "mean_value": 0.008940042366432298,
+            "immediate_reward": -0.0004912114952502801,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.914295697403107
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "ceb91f4accfb3355c9a1db139b3c09555bbd7ff8cbf5dee13d330bc67b9bdb17",
+            "visits": 1,
+            "value_sum": 0.0089400423664323,
+            "mean_value": 0.0089400423664323,
+            "immediate_reward": -0.0004912114952502801,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.05285695667606926
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "26b0793afa45322a262979577171766a2c12573140b9a36b6e1f8278e987b2de",
+            "visits": 1,
+            "value_sum": 0.009689260481338299,
+            "mean_value": 0.009689260481338299,
+            "immediate_reward": -0.005634406243180802,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.03284734592082372
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 9185497499760346018,
+        "root_player": 0,
+        "root_turn": 1,
+        "horizon_turns": 0,
+        "simulations": 0,
+        "completed_simulations": 0,
+        "tree_nodes": 0,
+        "native_steps": 0,
+        "max_depth_reached": 0,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 0,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 0,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 0.2005,
+        "stopped_reason": "forced_action",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 1,
+        "generated_root_actions": 1,
+        "root_edges": [],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 12903753986860546017,
+        "root_player": 0,
+        "root_turn": 3,
+        "horizon_turns": 0,
+        "simulations": 2,
+        "completed_simulations": 2,
+        "tree_nodes": 3,
+        "native_steps": 11,
+        "max_depth_reached": 9,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 1,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.964,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 5,
+        "generated_root_actions": 5,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "44ab36afacb8bceeae4a51c457fa154965c76226165756a8684a6c6057d87998",
+            "visits": 1,
+            "value_sum": 0.02025340526669852,
+            "mean_value": 0.02025340526669852,
+            "immediate_reward": -0.0017952187244502198,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.6427011629362843
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "f2c4c1e4f2e90963abc1d8f2b4c92982ef225c1537e944ae4fed8748364b4861",
+            "visits": 1,
+            "value_sum": 0.004174252953118416,
+            "mean_value": 0.004174252953118416,
+            "immediate_reward": -0.010072150460870535,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.13335049865430632
+          }
+        ],
+        "errors": []
+      },
+      {
+        "version": "puct-v1",
+        "seed": 14532796886646674460,
+        "root_player": 0,
+        "root_turn": 3,
+        "horizon_turns": 0,
+        "simulations": 5,
+        "completed_simulations": 5,
+        "tree_nodes": 6,
+        "native_steps": 12,
+        "max_depth_reached": 4,
+        "loop_cutoffs": 0,
+        "horizon_cutoffs": 4,
+        "depth_cutoffs": 0,
+        "time_cutoffs": 1,
+        "hard_deadline_exceeded": false,
+        "expansion_failures": 0,
+        "elapsed_ms": 16.8694,
+        "stopped_reason": "time_limit",
+        "fallback_used": false,
+        "fallback_reason": null,
+        "generation_exhaustive": true,
+        "total_root_actions": 5,
+        "generated_root_actions": 5,
+        "root_edges": [
+          {
+            "action": [
+              0
+            ],
+            "fingerprint": "baf11af6da0b58f65502d8fc34ddc09a3e643d3a19275698f578b995c9399110",
+            "visits": 2,
+            "value_sum": 0.0049878768390756376,
+            "mean_value": 0.0024939384195378188,
+            "immediate_reward": 0.0035609245889140287,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.49122910666111985
+          },
+          {
+            "action": [
+              1
+            ],
+            "fingerprint": "24adf6960443e3c7688bfd1afb229f1552e2b30ad8e64b8aa75f6093c222706f",
+            "visits": 1,
+            "value_sum": -0.005056061349155528,
+            "mean_value": -0.005056061349155528,
+            "immediate_reward": -0.010072430792454835,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.2557326721735555
+          },
+          {
+            "action": [
+              2
+            ],
+            "fingerprint": "9d2661e9c16f2f719dce198051f86bcab61090d2de428ac1143ba34f03b88a59",
+            "visits": 1,
+            "value_sum": -0.005056061349155528,
+            "mean_value": -0.005056061349155528,
+            "immediate_reward": 0.022491094793908012,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.158992464853146
+          },
+          {
+            "action": [
+              4
+            ],
+            "fingerprint": "44ca6632db54d87cc28d81374273ed4a9c519e68d1e632a2c109335b9efec9ce",
+            "visits": 1,
+            "value_sum": -0.024200575312473202,
+            "mean_value": -0.024200575312473202,
+            "immediate_reward": -0.0374598212738958,
+            "terminal": false,
+            "expansion_failures": 0,
+            "sampled_determinizations": 1,
+            "prior": 0.0522343496197983
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "right_search": null,
+  "faults": {},
+  "errors": [],
+  "outcomes": [
+    {
+      "game_index": 0,
+      "left_first": true,
+      "result": 0,
+      "steps": 184,
+      "fault": null,
+      "error": null
+    },
+    {
+      "game_index": 1,
+      "left_first": false,
+      "result": 1,
+      "steps": 231,
+      "fault": null,
+      "error": null
+    }
+  ],
+  "duration_seconds": 3.432469099992886,
+  "config_sha256": "a9bece212b87774e81b4b503ab72e186463609e55467bc220dd604c7ca827bb3"
+}

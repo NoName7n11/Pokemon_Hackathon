@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "run_id": "phase8-validation-v1",
+  "iterations": 3,
+  "selfplay_games_per_iteration": 8,
+  "validation_games_per_iteration": 2,
+  "evaluation_games": 8,
+  "workers": 2,
+  "replay_window_games": 64,
+  "root_seed": 8028,
+  "max_steps": 3000,
+  "max_candidates": 64,
+  "temperature_turns": 8,
+  "visit_temperature": 1.0,
+  "promotion_min_win_rate": 0.55,
+  "initial_checkpoint": "plan_1/artifacts/checkpoints/phase7-bootstrap-v2.json",
+  "bootstrap_corpus": "plan_1/artifacts/trajectories/phase7-bootstrap",
+  "deck_paths": [
+    "Decs/Hydrapple.csv"
+  ],
+  "search_config": "plan_1/configs/mcts_baseline.json",
+  "model": {
+    "feature_dimension": 8192,
+    "learning_rate": 0.04,
+    "value_learning_rate": 0.003,
+    "l2": 0.000001,
+    "epochs": 10,
+    "value_epochs": 3,
+    "seed": 8028
+  }
+}

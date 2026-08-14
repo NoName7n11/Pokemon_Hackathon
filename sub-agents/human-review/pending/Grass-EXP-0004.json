@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "specialist": "Grass",
+  "experiment": "EXP-0004",
+  "stage": "confirmation",
+  "created_at": "2026-08-14T02:52:52.127744+00:00",
+  "hypothesis": "During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.",
+  "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
+  "mechanisms": [
+    "grass_core_bench_role_priority"
+  ],
+  "baseline_version": "v001-deck-rebase",
+  "candidate_version": "v002-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "claude",
+    "backend": "claude-code",
+    "model": "opus",
+    "started_at": "2026-08-14T02:05:41.397249+00:00",
+    "finished_at": "2026-08-14T02:09:51.208500+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-claude"
+  },
+  "worker_identity": {
+    "provider": "claude",
+    "model": "opus",
+    "identity": "opus"
+  },
+  "assigned_reviewer": {
+    "reviewer": "codex",
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "reason": "Claude/Opus-authored experiments require an independent Codex review."
+  },
+  "benchmark": {
+    "specialist": "Grass",
+    "candidate_version": "v002-candidate",
+    "baseline_version": "v001-deck-rebase",
+    "opponent": "specialist_previous",
+    "stage": "confirmation",
+    "seed_set": "2026082403",
+    "games": 500,
+    "wins": 248,
+    "losses": 252,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 97.672,
+    "average_decision_time_ms": 16.32878163743627,
+    "max_decision_time_ms": 1111.1556999967434,
+    "win_rate": 0.496,
+    "confidence_interval": [
+      0.4523723541138067,
+      0.5396886428344405
+    ],
+    "z_score": -0.17888543819998334,
+    "p_value": 0.858027656987521,
+    "started_at": "2026-08-14T02:25:59.492104+00:00",
+    "finished_at": "2026-08-14T02:40:35.639228+00:00",
+    "duration_seconds": 876.1450836000004,
+    "errors": []
+  },
+  "cross_deck_results": [
+    {
+      "status": "complete",
+      "opponent": "Claude_Grass_Venusaur",
+      "opponent_version": "v000-baseline",
+      "games": 200,
+      "wins": 73,
+      "losses": 127,
+      "draws": 0,
+      "win_rate": 0.365,
+      "result": "results/cross-deck-Claude_Grass_Venusaur.json"
+    },
+    {
+      "status": "complete",
+      "opponent": "Dark",
+      "opponent_version": "v000-baseline",
+      "games": 200,
+      "wins": 142,
+      "losses": 58,
+      "draws": 0,
+      "win_rate": 0.71,
+      "result": "results/cross-deck-Dark.json"
+    },
+    {
+      "status": "complete",
+      "opponent": "Hydrapple",
+      "opponent_version": "v000-baseline",
+      "games": 200,
+      "wins": 39,
+      "losses": 161,
+      "draws": 0,
+      "win_rate": 0.195,
+      "result": "results/cross-deck-Hydrapple.json"
+    }
+  ],
+  "decision_trace": {
+    "result": "results/decision-trace-confirmation.json",
+    "summary": {
+      "candidate_decisions": 783,
+      "total_differences": 71,
+      "difference_rate": 0.09067688378033206,
+      "games_with_difference": 15,
+      "contexts": {
+        "MAIN": 71
+      },
+      "select_types": {
+        "MAIN": 71
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 35,
+        "ATTACH": 25,
+        "EVOLVE": 5,
+        "ABILITY": 3,
+        "END": 2,
+        "RETREAT": 1
+      },
+      "baseline_selected_option_types": {
+        "ATTACH": 21,
+        "PLAY": 19,
+        "RETREAT": 12,
+        "ABILITY": 8,
+        "END": 5,
+        "ATTACK": 3,
+        "EVOLVE": 3
+      },
+      "candidate_wins": 8,
+      "baseline_opponent_wins": 12,
+      "draws_or_timeouts": 0,
+      "records_retained": 71,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "pending",
+  "reviewer_reason": ""
+}

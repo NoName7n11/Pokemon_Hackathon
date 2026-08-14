@@ -1,0 +1,79 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\matchup_pair.py --agent-a C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\candidate\main.py --deck-a C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\candidate\deck.csv --name-a Grass --version-a v002-candidate --agent-b C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\main.py --deck-b C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Hydrapple\deck.csv --name-b Hydrapple --version-b v000-baseline --games-per-seat 100 --max-steps 3000 --seed 2026082503 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\results\cross-deck-Hydrapple.json
+
+STDOUT:
+{
+  "schema_version": 1,
+  "stage": "tournament",
+  "pair_a": {
+    "name": "Grass",
+    "version": "v002-candidate",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Grass\\experiments\\EXP-0004\\candidate\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Grass\\experiments\\EXP-0004\\candidate\\deck.csv"
+  },
+  "pair_b": {
+    "name": "Hydrapple",
+    "version": "v000-baseline",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Hydrapple\\deck.csv"
+  },
+  "seed_set": "2026082503",
+  "games_per_seat": 100,
+  "games": 200,
+  "a_wins": 39,
+  "b_wins": 161,
+  "draws": 0,
+  "timeouts": 0,
+  "engine_crashes": 0,
+  "faults": {
+    "a": {
+      "crashes": 0,
+      "illegal_actions": 0
+    },
+    "b": {
+      "crashes": 0,
+      "illegal_actions": 0
+    }
+  },
+  "orientations": {
+    "a_first": {
+      "games": 100,
+      "a_wins": 19,
+      "b_wins": 81,
+      "draws": 0
+    },
+    "b_first": {
+      "games": 100,
+      "a_wins": 20,
+      "b_wins": 80,
+      "draws": 0
+    }
+  },
+  "a_win_rate": 0.195,
+  "a_decisive_win_rate": 0.195,
+  "a_confidence_interval": [
+    0.14605441564505764,
+    0.2554416479651182
+  ],
+  "z_score": -8.62670273047588,
+  "p_value": 6.314602150193648e-18,
+  "average_steps": 104.375,
+  "decision_time": {
+    "a": {
+      "decisions": 8484,
+      "average_ms": 10.391543222582321,
+      "max_ms": 577.9381000029389
+    },
+    "b": {
+      "decisions": 12391,
+      "average_ms": 8.861078807130372,
+      "max_ms": 283.9380999939749
+    }
+  },
+  "started_at": "2026-08-14T02:48:54.570816+00:00",
+  "finished_at": "2026-08-14T02:52:25.404307+00:00",
+  "duration_seconds": 210.84207509999396,
+  "errors": []
+}
+
+
+STDERR:

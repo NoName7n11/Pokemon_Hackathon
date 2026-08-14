@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "run_id": "phase11-shadow-validation-v1",
+  "package_name": "plan1-shadow-submission",
+  "deck_path": "Decs/Hydrapple.csv",
+  "fallback_path": "sample_submission/sample_submission/main.py",
+  "search_config_path": "plan_1/configs/mcts_selective_budget.json",
+  "checkpoint_path": "plan_1/artifacts/phase8/phase8-validation-v1/checkpoints/candidate-i001.json",
+  "frozen_evaluation_path": "plan_1/artifacts/reports/phase9-promotion-gate.json",
+  "output_root": "plan_1/artifacts/phase11",
+  "archive_path": "plan_1/artifacts/phase11/plan1-shadow-submission.zip",
+  "shadow_games": 12,
+  "max_steps": 3000,
+  "signer": "codex",
+  "runtime_limits": {
+    "maximum_archive_bytes": 1000000,
+    "maximum_import_ms": 1000.0,
+    "maximum_model_load_ms": 500.0,
+    "maximum_decision_p95_ms": 50.0,
+    "maximum_decision_ms": 250.0
+  }
+}

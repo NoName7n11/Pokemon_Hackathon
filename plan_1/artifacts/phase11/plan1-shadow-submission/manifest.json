@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "run_id": "phase11-shadow-validation-v1",
+  "package_name": "plan1-shadow-submission",
+  "entrypoint": "main.py",
+  "network_required": false,
+  "files": [
+    {
+      "path": "deck.csv",
+      "bytes": 293,
+      "sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41"
+    },
+    {
+      "path": "fallback_agent.py",
+      "bytes": 25498,
+      "sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203"
+    },
+    {
+      "path": "main.py",
+      "bytes": 4562,
+      "sha256": "d4139de766251d2533647e8c42d3385c1c3f615cede373200f14b3b75669d4f3"
+    },
+    {
+      "path": "model.json",
+      "bytes": 176638,
+      "sha256": "201111f01da276b4fe8e0c4ab623d563fa0ad5da0f81f4b96368b8bae1ead36c"
+    },
+    {
+      "path": "plan1/__init__.py",
+      "bytes": 88,
+      "sha256": "2a38357c0ce5686e37bd088f6ef9947309ae0fd7541bea04fd3d64162ce58d2b"
+    },
+    {
+      "path": "plan1/belief/__init__.py",
+      "bytes": 669,
+      "sha256": "18a485265cb5602ff9fe0ae5d4c0d6827f2e95f48a266406e681b388e8cbcd8a"
+    },
+    {
+      "path": "plan1/belief/card_accounting.py",
+      "bytes": 3527,
+      "sha256": "9269e23aaa43110cdc2eb84eba5a5337e8929d2daa2641df443c5ffb4eddfb64"
+    },
+    {
+      "path": "plan1/belief/information_set.py",
+      "bytes": 2015,
+      "sha256": "d283d88be1313939683e8b4c0d64152d7480311eae51e2d83ef66fc0f680010e"
+    },
+    {
+      "path": "plan1/belief/priors.py",
+      "bytes": 2373,
+      "sha256": "583b6200626f0b98351f35b3e8e7c6b7161723667c8fd825432bba342b76f376"
+    },
+    {
+      "path": "plan1/belief/sampler.py",
+      "bytes": 9034,
+      "sha256": "875b8776fe9de6619b00cff2ceab3e6338178981e2785a8fc23ceb1617805137"
+    },
+    {
+      "path": "plan1/belief/validation.py",
+      "bytes": 9664,
+      "sha256": "dc33b38734e879f511c44bf71e6d728de9b93d3e86b9e1b2eba07e2eb99ec65f"
+    },
+    {
+      "path": "plan1/config.py",
+      "bytes": 6719,
+      "sha256": "4db0abcdaf95ee5225187afa70df8a75cbaa7a6b9b22e0b1647bfd37cad1ffc8"
+    },
+    {
+      "path": "plan1/data/__init__.py",
+      "bytes": 607,
+      "sha256": "872098242bc6fefef76313b8358a2fc67ef77681c7ff8a437b7007d19d2681d4"
+    },
+    {
+      "path": "plan1/data/generator.py",
+      "bytes": 11344,
+      "sha256": "7575bdae45d2d5830da022bd1b4ecce62d0c0cdb746ea1d895dcc1a54fa1db64"
+    },
+    {
+      "path": "plan1/data/manifests.py",
+      "bytes": 8311,
+      "sha256": "48c7082bc553f12ca1d304d5da318a32dac94ebed496434c6de66e259de3c13b"
+    },
+    {
+      "path": "plan1/data/replay_buffer.py",
+      "bytes": 14709,
+      "sha256": "93fd7f6249640451798fc2f1667418b6bef456e3a7ca7b1981695244a1682ebf"
+    },
+    {
+      "path": "plan1/data/trajectory.py",
+      "bytes": 19784,
+      "sha256": "2c60d9b7ee3663b0e932931f322f6eb52a1b5619c13f00f865524c83c80274ee"
+    },
+    {
+      "path": "plan1/data/validation.py",
+      "bytes": 8969,
+      "sha256": "64afd72a650ade3281f2ef9049df9134519693b593867a75dea5e8592777f57d"
+    },
+    {
+      "path": "plan1/deployment/__init__.py",
+      "bytes": 368,
+      "sha256": "b4b13d1bc1824f9f2bfbe4a7cf31bb4f8cfe9c216e4071b1c5651615ec785438"
+    },
+    {
+      "path": "plan1/deployment/config.py",
+      "bytes": 4631,
+      "sha256": "5cb647f8648a2973298de27180c10904ca0bbc8a7a8137ae83e50b359dd0e6f3"
+    },
+    {
+      "path": "plan1/deployment/package.py",
+      "bytes": 6056,
+      "sha256": "e1adc0c192ea4b2df7869d7da9c5d914bb9d507bfa512ac8cf8e5713648b370a"
+    },
+    {
+      "path": "plan1/deployment/runtime_main.py",
+      "bytes": 4562,
+      "sha256": "d4139de766251d2533647e8c42d3385c1c3f615cede373200f14b3b75669d4f3"
+    },
+    {
+      "path": "plan1/engine/__init__.py",
+      "bytes": 280,
+      "sha256": "7fbf9c9629a00a91a714cb524a9f07534f363fd9d8c412adc203573c682d7160"
+    },
+    {
+      "path": "plan1/engine/api_loader.py",
+      "bytes": 802,
+      "sha256": "6471292680269ff17c3a026c403484643f654a33b5a45be5695b72d5e6dee2f9"
+    },
+    {
+      "path": "plan1/engine/conformance.py",
+      "bytes": 23391,
+      "sha256": "75c7900ee8a927958f0d829f4344944572896c547ae558791cd9bdc39eecef75"
+    },
+    {
+      "path": "plan1/engine/lifecycle.py",
+      "bytes": 5737,
+      "sha256": "080eafe9ea2a1a1e42f6039c30fc790c67f79dc154a2c6178136f5843d4a1fb9"
+    },
+    {
+      "path": "plan1/engine/process_probe.py",
+      "bytes": 2065,
+      "sha256": "25ba43a23427e92a9261df8d4a1bec2dee341ab2c27c4c84b56abcdc9c1741f2"
+    },
+    {
+      "path": "plan1/evaluation/__init__.py",
+      "bytes": 346,
+      "sha256": "b95aeead64588e04a03703d72a2015d68091fb79bcb918dd42d36e9379df61bc"
+    },
+    {
+      "path": "plan1/evaluation/handcrafted.py",
+      "bytes": 19415,
+      "sha256": "d2298fb75eeec682fa657dc7b1e08526060240098ef430ac085359f966ee49eb"
+    },
+    {
+      "path": "plan1/evaluation/tactical.py",
+      "bytes": 10587,
+      "sha256": "51181b156db3859fff88538cc4224030ebd63dc0d804e95ceee0188d062cd067"
+    },
+    {
+      "path": "plan1/evaluation/validation.py",
+      "bytes": 11349,
+      "sha256": "f464dc92f6c0d1c3fd9ebedb9432e2f1c87375ef2d3720b11d5b223f34615993"
+    },
+    {
+      "path": "plan1/game/__init__.py",
+      "bytes": 414,
+      "sha256": "5adb49070f88492909dc53545fe430011955168dfd0df86f17a917a98913d24c"
+    },
+    {
+      "path": "plan1/game/actions.py",
+      "bytes": 7250,
+      "sha256": "7b4955a0da74666e803c15045ed1a8d0e40bc9883849f3a7bd6e265e29d68013"
+    },
+    {
+      "path": "plan1/game/catalog.py",
+      "bytes": 3747,
+      "sha256": "3ef005845c976104a1038ee0a52dcc7254ebf6a7f61e058a0accb099c4d8f685"
+    },
+    {
+      "path": "plan1/game/records.py",
+      "bytes": 9068,
+      "sha256": "44151f5b3ca83a8aac83ef80b03d06260b664e8913b9e85283111c3d9cee269f"
+    },
+    {
+      "path": "plan1/game/validation.py",
+      "bytes": 12848,
+      "sha256": "3a4e1b6b3e10d9e5e49c44be99c281230dc4fccb7881bca8e40ea5fbe6d3d642"
+    },
+    {
+      "path": "plan1/game/vocabulary.py",
+      "bytes": 2145,
+      "sha256": "31dbc464c10a0231957cda14aa9ee5c2e62d6649093c6f6bdf25295ff939a19b"
+    },
+    {
+      "path": "plan1/league/__init__.py",
+      "bytes": 308,
+      "sha256": "f0534b226fba70f906b0d01e99f14848788996b895db746e0c695c07512ae231"
+    },
+    {
+      "path": "plan1/league/analysis.py",
+      "bytes": 11309,
+      "sha256": "095f14fdc49fa9736473758a859f19d3a102439c80297c9fd3d77d1c4c7e9999"
+    },
+    {
+      "path": "plan1/league/config.py",
+      "bytes": 5655,
+      "sha256": "c893e3be1663a1bfa44ec98cebc417fd85d000086ac159839e9e593175bd67f0"
+    },
+    {
+      "path": "plan1/league/evaluator.py",
+      "bytes": 11035,
+      "sha256": "be0188762eb9b1a0c4487e680eb182121f9b8fe02f23b32894ca27eafcd8f054"
+    },
+    {
+      "path": "plan1/model/__init__.py",
+      "bytes": 267,
+      "sha256": "2865bb2411bf4471806b453a38f227bad9d3d0241b8b79ad3e0c9f365261a332"
+    },
+    {
+      "path": "plan1/model/features.py",
+      "bytes": 11344,
+      "sha256": "f26fa23eb6dc171a27ccd4f125e08a15c246d76081d44525c3fb68522e5e345c"
+    },
+    {
+      "path": "plan1/model/inference.py",
+      "bytes": 999,
+      "sha256": "11d23d29e41a1f5af3a0402e769c6397aa7210f45714b5ae6205073c575e5172"
+    },
+    {
+      "path": "plan1/model/policy_value.py",
+      "bytes": 5147,
+      "sha256": "baf5ec6ae83e9fae43b909cc768f60159a96777847afafbed27b962c200d01a3"
+    },
+    {
+      "path": "plan1/model/validation.py",
+      "bytes": 14879,
+      "sha256": "c45f3c499ed1fcd3d94b9d1cc6ca8080d2966c30fb0b3b615cd401725a3bccaa"
+    },
+    {
+      "path": "plan1/optimization/__init__.py",
+      "bytes": 301,
+      "sha256": "27779ecd70eeb9dc384ed6ac2224049aeb38b906c12b238f4b63b66455900f1f"
+    },
+    {
+      "path": "plan1/optimization/config.py",
+      "bytes": 5428,
+      "sha256": "1dbbd89c1c7e49b4c323ea26fa8f7eb8bd3420ed1f2dac34838ef1a2827719d5"
+    },
+    {
+      "path": "plan1/optimization/suite.py",
+      "bytes": 17392,
+      "sha256": "6737df940955c83dc0e92cda71aa28f1ad1afb601946c8ff767e72f6c8db5e33"
+    },
+    {
+      "path": "plan1/paths.py",
+      "bytes": 673,
+      "sha256": "cdc68818d90dd18af5e7a9830454e2ed69b76f136e977b7f7d3176705fdfed36"
+    },
+    {
+      "path": "plan1/reproducibility.py",
+      "bytes": 3943,
+      "sha256": "40a68c12447b6a871df8cdc76b065f8000617c9a1e8ad3f175e403e19591eb6f"
+    },
+    {
+      "path": "plan1/search/__init__.py",
+      "bytes": 513,
+      "sha256": "46172e6b5554cb6bccdff7749d822bcbc4e7130e8670d6d615225f56d40c45e2"
+    },
+    {
+      "path": "plan1/search/agent.py",
+      "bytes": 5231,
+      "sha256": "ae8c644e4b7730adbf5f903295d791007a23b0cbd41886ab7fc70bcd4a5fcfd9"
+    },
+    {
+      "path": "plan1/search/ismcts.py",
+      "bytes": 6162,
+      "sha256": "4768f854c1568bc4b1b5eed37dd16c84ab3a40ff22e77afc2213d2e67a94f2cd"
+    },
+    {
+      "path": "plan1/search/mcts.py",
+      "bytes": 25482,
+      "sha256": "d853902ec5900852288541e1d9aaad6bb1f225d559c0bef00ef4388957f03f4e"
+    },
+    {
+      "path": "plan1/search/validation.py",
+      "bytes": 20407,
+      "sha256": "c8168d27ff87a91017e9d135cdc3f9f3657b6533dfd1dd473519e24fb2587427"
+    },
+    {
+      "path": "plan1/selfplay/__init__.py",
+      "bytes": 319,
+      "sha256": "dfa22cb2cab4a75f31b48d80a6136f701074b2dccd4e8341959daa29150e9c88"
+    },
+    {
+      "path": "plan1/selfplay/config.py",
+      "bytes": 4168,
+      "sha256": "b9d6c128b2df5cf13ff6a269455cdef5fe93425062309b4c8bbd9e2dd875d778"
+    },
+    {
+      "path": "plan1/selfplay/coordinator.py",
+      "bytes": 21225,
+      "sha256": "3214580fe2d1e09cfbe6e577df6c0848e26e66947df6da6513dfd43a402b3b1d"
+    },
+    {
+      "path": "plan1/selfplay/evaluation.py",
+      "bytes": 5643,
+      "sha256": "102ceea4c8deb8e8938f1613544cfba869deb697d9137a8d19fe0af4c00f43e7"
+    },
+    {
+      "path": "plan1/selfplay/replay.py",
+      "bytes": 1746,
+      "sha256": "d8677b805b2fd31be6c9806f6a737967bb5a8029a159adf7e78e4c144c9d2df1"
+    },
+    {
+      "path": "plan1/selfplay/worker.py",
+      "bytes": 11890,
+      "sha256": "8a0954522e75de741f728f45ca2009357eb715124a7433ff9cb8ff1e33fd472e"
+    },
+    {
+      "path": "plan1/training/__init__.py",
+      "bytes": 269,
+      "sha256": "94dd562f18d6ee2377614f5cfc1f80f4ed3ad659635a75235d9c5b0d069a6dc8"
+    },
+    {
+      "path": "plan1/training/dataset.py",
+      "bytes": 2642,
+      "sha256": "3f248e46460e2542a1f6a8886380f9f9d70ba4320955f29caab16f44c13540f3"
+    },
+    {
+      "path": "plan1/training/learner.py",
+      "bytes": 6481,
+      "sha256": "c05a7c4609e4d36da922960ab40d29d0a93e58675cd8e2c3e3c227e65268890b"
+    },
+    {
+      "path": "search.json",
+      "bytes": 606,
+      "sha256": "4e468a6588cf357eedec7c7782c453677ed95a96e09a867fe365470a651a0320"
+    }
+  ],
+  "source_identity": {
+    "deck_sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41",
+    "fallback_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+    "search_config_sha256": "4e468a6588cf357eedec7c7782c453677ed95a96e09a867fe365470a651a0320",
+    "checkpoint_sha256": "201111f01da276b4fe8e0c4ab623d563fa0ad5da0f81f4b96368b8bae1ead36c",
+    "frozen_evaluation_sha256": "0b1656e49e88b4dfa678d97654c3e1f5256b6d231a59cd53893c0416b1710500"
+  },
+  "manifest_sha256": "11a23f4059c3a4be43bf7c734ffaac7975a5122c605c5a2db644edaec9596275"
+}

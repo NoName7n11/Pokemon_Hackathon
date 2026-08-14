@@ -1,0 +1,293 @@
+{
+  "iteration": 1,
+  "candidate_checkpoint": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\plan_1\\artifacts\\phase8\\phase8-validation-v1\\checkpoints\\candidate-i001.json",
+  "candidate_file_sha256": "201111f01da276b4fe8e0c4ab623d563fa0ad5da0f81f4b96368b8bae1ead36c",
+  "candidate_payload_sha256": "a2074b3ee3f0bf1244b0550bcbd2f879cf5c2c2240be5529cda9b28ff3e9573a",
+  "parent_checkpoint": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\plan_1\\artifacts\\checkpoints\\phase7-bootstrap-v2.json",
+  "parent_sha256": "9d08d218f0625f0ab2698d3c0fc944d6a8d07e2c020b16f957e3fdae791c4e2a",
+  "replay": {
+    "train_games": [
+      "phase7-bootstrap-v1-g000000",
+      "phase7-bootstrap-v1-g000002",
+      "phase7-bootstrap-v1-g000004",
+      "phase7-bootstrap-v1-g000005",
+      "phase7-bootstrap-v1-g000006",
+      "phase7-bootstrap-v1-g000007",
+      "phase7-bootstrap-v1-g000008",
+      "phase7-bootstrap-v1-g000009",
+      "phase7-bootstrap-v1-g000010",
+      "phase7-bootstrap-v1-g000012",
+      "phase7-bootstrap-v1-g000013",
+      "phase7-bootstrap-v1-g000015",
+      "phase7-bootstrap-v1-g000018",
+      "phase7-bootstrap-v1-g000019",
+      "phase7-bootstrap-v1-g000021",
+      "phase7-bootstrap-v1-g000022",
+      "phase7-bootstrap-v1-g000023",
+      "phase7-bootstrap-v1-g000024",
+      "phase7-bootstrap-v1-g000025",
+      "phase7-bootstrap-v1-g000029",
+      "phase7-bootstrap-v1-g000030",
+      "phase7-bootstrap-v1-g000031",
+      "phase7-bootstrap-v1-g000032",
+      "phase7-bootstrap-v1-g000033",
+      "phase7-bootstrap-v1-g000034",
+      "phase7-bootstrap-v1-g000037",
+      "phase7-bootstrap-v1-g000039",
+      "phase7-bootstrap-v1-g000042",
+      "phase7-bootstrap-v1-g000043",
+      "phase7-bootstrap-v1-g000044",
+      "phase7-bootstrap-v1-g000045",
+      "phase7-bootstrap-v1-g000046",
+      "phase7-bootstrap-v1-g000047",
+      "phase8-validation-v1-i001-g0001",
+      "phase8-validation-v1-i001-g0000",
+      "phase8-validation-v1-i001-g0002",
+      "phase8-validation-v1-i001-g0003",
+      "phase8-validation-v1-i001-g0005",
+      "phase8-validation-v1-i001-g0004"
+    ],
+    "train_decisions": 4080,
+    "validation_games": [
+      "phase7-bootstrap-v1-g000001",
+      "phase7-bootstrap-v1-g000011",
+      "phase7-bootstrap-v1-g000014",
+      "phase7-bootstrap-v1-g000016",
+      "phase7-bootstrap-v1-g000020",
+      "phase7-bootstrap-v1-g000027",
+      "phase7-bootstrap-v1-g000028",
+      "phase7-bootstrap-v1-g000036",
+      "phase7-bootstrap-v1-g000038",
+      "phase7-bootstrap-v1-g000040",
+      "phase8-validation-v1-i001-g0007",
+      "phase8-validation-v1-i001-g0006"
+    ],
+    "validation_decisions": 1625,
+    "source_manifests": [
+      "8e3700d111596cbca8dab902848293d7c61f48bc9e8d9ed66bab8b098dc3c676",
+      "e1242d48811e4cfe13fab531107d807256e3e80f97c3879bacf14edeb12fa932"
+    ]
+  },
+  "training": {
+    "epochs": 10,
+    "examples": 4080,
+    "initial_policy_loss": 0.5955482148043518,
+    "final_policy_loss": 0.5749269463634554,
+    "initial_value_loss": 0.7928790383592994,
+    "final_value_loss": 0.778987520381325,
+    "epoch_metrics": [
+      {
+        "epoch": 1.0,
+        "policy_loss": 0.5811846549482065,
+        "value_loss": 0.7834617375198291
+      },
+      {
+        "epoch": 2.0,
+        "policy_loss": 0.5791501875108223,
+        "value_loss": 0.7808312009671582
+      },
+      {
+        "epoch": 3.0,
+        "policy_loss": 0.577994015342662,
+        "value_loss": 0.778987520381325
+      },
+      {
+        "epoch": 4.0,
+        "policy_loss": 0.5772579308846345,
+        "value_loss": 0.778987520381325
+      },
+      {
+        "epoch": 5.0,
+        "policy_loss": 0.5766287598445325,
+        "value_loss": 0.778987520381325
+      },
+      {
+        "epoch": 6.0,
+        "policy_loss": 0.5761923805959991,
+        "value_loss": 0.778987520381325
+      },
+      {
+        "epoch": 7.0,
+        "policy_loss": 0.5758288419564909,
+        "value_loss": 0.778987520381325
+      },
+      {
+        "epoch": 8.0,
+        "policy_loss": 0.5754532073721027,
+        "value_loss": 0.778987520381325
+      },
+      {
+        "epoch": 9.0,
+        "policy_loss": 0.5751733057359663,
+        "value_loss": 0.778987520381325
+      },
+      {
+        "epoch": 10.0,
+        "policy_loss": 0.5749269463634554,
+        "value_loss": 0.778987520381325
+      }
+    ]
+  },
+  "calibration": {
+    "scale": 0.925,
+    "bias": -0.04286375176851806,
+    "game_balanced_brier": 0.22296669595075583,
+    "games": 12,
+    "examples": 1625
+  },
+  "candidate_validation": {
+    "examples": 1625,
+    "games": 12,
+    "policy_log_loss": 0.6539368377032687,
+    "uniform_policy_log_loss": 1.3671954348584767,
+    "policy_top1_accuracy": 0.8012307692307692,
+    "uniform_expected_top1_accuracy": 0.3443486836408705,
+    "value_brier": 0.23760707819461122,
+    "constant_value_brier": 0.2498278088309197,
+    "value_ece": 0.0499683128409128,
+    "calibration_bins": [
+      {
+        "bin": 0,
+        "count": 2,
+        "mean_confidence": 0.08195430413540308,
+        "outcome_rate": 0.0
+      },
+      {
+        "bin": 1,
+        "count": 26,
+        "mean_confidence": 0.15228131624061778,
+        "outcome_rate": 0.34615384615384615
+      },
+      {
+        "bin": 2,
+        "count": 118,
+        "mean_confidence": 0.25941679560678643,
+        "outcome_rate": 0.2542372881355932
+      },
+      {
+        "bin": 3,
+        "count": 159,
+        "mean_confidence": 0.3595044393316723,
+        "outcome_rate": 0.3333333333333333
+      },
+      {
+        "bin": 4,
+        "count": 306,
+        "mean_confidence": 0.4518506962990491,
+        "outcome_rate": 0.5228758169934641
+      },
+      {
+        "bin": 5,
+        "count": 416,
+        "mean_confidence": 0.5500374053156029,
+        "outcome_rate": 0.5360576923076923
+      },
+      {
+        "bin": 6,
+        "count": 281,
+        "mean_confidence": 0.6463155088881911,
+        "outcome_rate": 0.6014234875444839
+      },
+      {
+        "bin": 7,
+        "count": 167,
+        "mean_confidence": 0.7527065781949354,
+        "outcome_rate": 0.7485029940119761
+      },
+      {
+        "bin": 8,
+        "count": 116,
+        "mean_confidence": 0.8434495820223076,
+        "outcome_rate": 0.7241379310344828
+      },
+      {
+        "bin": 9,
+        "count": 34,
+        "mean_confidence": 0.926925606783132,
+        "outcome_rate": 0.4411764705882353
+      }
+    ]
+  },
+  "champion_validation": {
+    "examples": 1625,
+    "games": 12,
+    "policy_log_loss": 0.6702086361018529,
+    "uniform_policy_log_loss": 1.3671954348584767,
+    "policy_top1_accuracy": 0.8061538461538461,
+    "uniform_expected_top1_accuracy": 0.3443486836408705,
+    "value_brier": 0.23167849731727722,
+    "constant_value_brier": 0.2498278088309197,
+    "value_ece": 0.0395794823260704,
+    "calibration_bins": [
+      {
+        "bin": 0,
+        "count": 2,
+        "mean_confidence": 0.08813051603099517,
+        "outcome_rate": 0.0
+      },
+      {
+        "bin": 1,
+        "count": 25,
+        "mean_confidence": 0.15759152402183849,
+        "outcome_rate": 0.32
+      },
+      {
+        "bin": 2,
+        "count": 101,
+        "mean_confidence": 0.25802049670323374,
+        "outcome_rate": 0.18811881188118812
+      },
+      {
+        "bin": 3,
+        "count": 148,
+        "mean_confidence": 0.35444415393406636,
+        "outcome_rate": 0.35135135135135137
+      },
+      {
+        "bin": 4,
+        "count": 270,
+        "mean_confidence": 0.4528565860973186,
+        "outcome_rate": 0.4740740740740741
+      },
+      {
+        "bin": 5,
+        "count": 450,
+        "mean_confidence": 0.549296850046294,
+        "outcome_rate": 0.5288888888888889
+      },
+      {
+        "bin": 6,
+        "count": 291,
+        "mean_confidence": 0.6485687994868731,
+        "outcome_rate": 0.6151202749140894
+      },
+      {
+        "bin": 7,
+        "count": 168,
+        "mean_confidence": 0.7513356503878641,
+        "outcome_rate": 0.7380952380952381
+      },
+      {
+        "bin": 8,
+        "count": 140,
+        "mean_confidence": 0.8425073206105823,
+        "outcome_rate": 0.7428571428571429
+      },
+      {
+        "bin": 9,
+        "count": 30,
+        "mean_confidence": 0.9247047274400296,
+        "outcome_rate": 0.5333333333333333
+      }
+    ]
+  },
+  "inference": {
+    "calls": 500,
+    "median_ms": 0.0091,
+    "p95_ms": 0.0272,
+    "max_ms": 0.1479,
+    "p95_limit_ms": 5.0,
+    "passed": true
+  },
+  "checkpoint_roundtrip": true
+}

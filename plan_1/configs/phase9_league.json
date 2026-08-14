@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "run_id": "phase9-validation-v1",
+  "games_per_matchup": 2,
+  "max_steps": 3000,
+  "search_config": "plan_1/configs/mcts_baseline.json",
+  "decks": [
+    {"name": "Hydrapple", "path": "Decs/Hydrapple.csv", "split": "development"},
+    {"name": "Grass", "path": "No_Name_Decks/No_Name_Grass.csv", "split": "development"},
+    {"name": "Fire", "path": "No_Name_Decks/No_Name_Fire.csv", "split": "development"},
+    {"name": "LiamK_MegaLopunny", "path": "Decs/LiamK_MegaLopunny.csv", "split": "heldout"},
+    {"name": "Claude_Mega_Gardevoir", "path": "Decs/Claude_Mega_Gardevoir.csv", "split": "heldout"}
+  ],
+  "policies": [
+    {
+      "name": "phase8_champion_i001",
+      "kind": "checkpoint",
+      "path": "plan_1/artifacts/phase8/phase8-validation-v1/checkpoints/candidate-i001.json",
+      "role": "candidate",
+      "preferred_deck": null
+    },
+    {
+      "name": "phase7_bootstrap",
+      "kind": "checkpoint",
+      "path": "plan_1/artifacts/checkpoints/phase7-bootstrap-v2.json",
+      "role": "historical",
+      "preferred_deck": null
+    },
+    {
+      "name": "phase8_candidate_i002",
+      "kind": "checkpoint",
+      "path": "plan_1/artifacts/phase8/phase8-validation-v1/checkpoints/candidate-i002.json",
+      "role": "league_member",
+      "preferred_deck": null
+    },
+    {
+      "name": "hydrapple_specialist",
+      "kind": "module",
+      "path": "sub-agents/specialists/Hydrapple/main.py",
+      "role": "specialist",
+      "preferred_deck": "Hydrapple"
+    },
+    {
+      "name": "grass_specialist",
+      "kind": "module",
+      "path": "sub-agents/specialists/Grass/main.py",
+      "role": "specialist",
+      "preferred_deck": "Grass"
+    },
+    {
+      "name": "fire_specialist",
+      "kind": "module",
+      "path": "sub-agents/specialists/Fire/main.py",
+      "role": "specialist",
+      "preferred_deck": "Fire"
+    },
+    {
+      "name": "lopunny_generic",
+      "kind": "module",
+      "path": "sample_submission/sample_submission/main.py",
+      "role": "specialist",
+      "preferred_deck": "LiamK_MegaLopunny"
+    },
+    {
+      "name": "gardevoir_generic",
+      "kind": "module",
+      "path": "sample_submission/sample_submission/main.py",
+      "role": "specialist",
+      "preferred_deck": "Claude_Mega_Gardevoir"
+    }
+  ],
+  "gates": {
+    "minimum_aggregate_decisive_games": 100,
+    "minimum_matchup_decisive_games": 20,
+    "development_wilson_lower": 0.5,
+    "heldout_wilson_lower": 0.45,
+    "worst_matchup_win_rate": 0.3,
+    "forgetting_win_rate_floor": 0.4,
+    "dominance_win_rate": 0.55,
+    "dominance_minimum_games": 20
+  }
+}

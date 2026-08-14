@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "claims": [
+    {
+      "id": "phase4-soak",
+      "statement": "The bounded MCTS implementation passed its 500-game soak test.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase4-soak-final-v4.json", "json_path": "games", "expected": 500},
+        {"path": "plan_1/artifacts/reports/phase4-soak-final-v4.json", "json_path": "passed", "expected": true}
+      ]
+    },
+    {
+      "id": "phase5-belief",
+      "statement": "The Phase 5 belief and ISMCTS validation passed.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase5-suite.json", "json_path": "passed", "expected": true}
+      ]
+    },
+    {
+      "id": "phase7-bootstrap",
+      "statement": "The policy-value bootstrap passed its declared infrastructure gates.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase7-suite-v2.json", "json_path": "passed", "expected": true}
+      ]
+    },
+    {
+      "id": "phase8-loop",
+      "statement": "Three resumable Phase 8 iterations completed and candidate i001 remained champion.",
+      "evidence": [
+        {"path": "plan_1/artifacts/phase8/phase8-validation-v1/phase8-suite.json", "json_path": "iterations_complete", "expected": 3},
+        {"path": "plan_1/artifacts/phase8/phase8-validation-v1/phase8-suite.json", "json_path": "final_champion_sha256", "expected": "201111f01da276b4fe8e0c4ab623d563fa0ad5da0f81f4b96368b8bae1ead36c"}
+      ]
+    },
+    {
+      "id": "phase8-target-share",
+      "statement": "Only 279 of 2,648 Phase 8 decisions contained completed PUCT targets.",
+      "evidence": [
+        {"path": "plan_1/artifacts/phase8/phase8-validation-v1/phase8-suite.json", "json_path": "training_corpus.decisions", "expected": 2648},
+        {"path": "plan_1/artifacts/phase8/phase8-validation-v1/phase8-suite.json", "json_path": "training_corpus.searched_policy_targets", "expected": 279}
+      ]
+    },
+    {
+      "id": "phase9-sample",
+      "statement": "The promotion gate evaluated 960 games across 40 matchups.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase9-promotion-gate.json", "json_path": "schedule.total_games", "expected": 960},
+        {"path": "plan_1/artifacts/reports/phase9-promotion-gate.json", "json_path": "schedule.matchups", "expected": 40}
+      ]
+    },
+    {
+      "id": "phase9-rejection",
+      "statement": "The promotion candidate was conclusively rejected on strength and not promoted.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase9-promotion-gate.json", "json_path": "analysis.gate.decision", "expected": "rejected"},
+        {"path": "plan_1/artifacts/reports/phase9-promotion-gate.json", "json_path": "analysis.gate.conclusive_strength_rejection", "expected": true},
+        {"path": "plan_1/artifacts/reports/phase9-promotion-gate.json", "json_path": "analysis.gate.promoted", "expected": false}
+      ]
+    },
+    {
+      "id": "phase10-confirmation",
+      "statement": "Selective-budget search won the 60-game confirmation 30-23 with seven draws but was not statistically conclusive.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase10-confirmation.json", "json_path": "search_analysis.table.selective_budget.vs_baseline.wins", "expected": 30},
+        {"path": "plan_1/artifacts/reports/phase10-confirmation.json", "json_path": "search_analysis.table.selective_budget.vs_baseline.losses", "expected": 23},
+        {"path": "plan_1/artifacts/reports/phase10-confirmation.json", "json_path": "search_analysis.table.selective_budget.vs_baseline.draws", "expected": 7}
+      ]
+    },
+    {
+      "id": "phase11-runtime",
+      "statement": "The exact candidate package passed local shadow validation and completed 12 games.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase11-shadow-validation.json", "json_path": "gates.shadow_validation_passed", "expected": true},
+        {"path": "plan_1/artifacts/reports/phase11-shadow-validation.json", "json_path": "probes.games.completed_games", "expected": 12}
+      ]
+    },
+    {
+      "id": "phase11-no-promotion",
+      "statement": "Successful packaging did not replace the active submission.",
+      "evidence": [
+        {"path": "plan_1/artifacts/reports/phase11-shadow-validation.json", "json_path": "promotion.replace_active_submission", "expected": false},
+        {"path": "plan_1/artifacts/reports/phase11-shadow-validation.json", "json_path": "active_submission.unchanged", "expected": true}
+      ]
+    }
+  ]
+}

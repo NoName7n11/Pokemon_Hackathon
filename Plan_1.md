@@ -2,10 +2,13 @@
 
 ## Document status
 
-- **Status:** Active. Phases 0 through 7 are implemented and verified. Phase 8,
-  the AlphaZero-style reinforcement loop, is next. The Phase 4 heuristic-MCTS,
-  Phase 5 ISMCTS, and Phase 7 policy-value PUCT research candidates remain
-  isolated because none has cleared the final playing-strength promotion gate.
+- **Status:** Research track archived. Phases 0 through 12 are implemented and verified as
+  research infrastructure. The promotion-sized Phase 9 rerun is resolved: the
+  current Phase 10 candidate was conclusively rejected on development and
+  held-out strength. Phase 11 validates its exact package in shadow mode, and
+  Phase 12 maps the final report to a deterministic evidence archive. Active
+  promotion remains blocked until a new candidate clears Phase 9. All research
+  candidates remain isolated from the active submission.
 - **Primary objective:** Build a competition-ready agent that combines information-set Monte Carlo Tree Search (MCTS) with a learned policy-value model, using the existing simulator and legal-action API.
 - **Development rule:** The active submission remains unchanged until a candidate clears every correctness, performance, generalization, and packaging gate in this document.
 - **Relationship to Plan 2:** Plan 1 supplies the shared search and learning system. Plan 2 deck specialists can later supply decks, heuristic policies, replay reviews, and evaluation opponents, but Plan 1 must remain independently reproducible.
@@ -1014,6 +1017,53 @@ submission promotion. All 93 Plan 1 unit/regression tests pass.
 
 ### Phase 8 - AlphaZero-style reinforcement loop
 
+**Status:** Complete on 2026-08-14 as an isolated, resumable three-iteration
+reinforcement-loop validation; **not promoted** to the active submission.
+Definitive evidence is
+`plan_1/artifacts/phase8/phase8-validation-v1/phase8-suite.json` (SHA-256
+`c76dbca3cc9ed8a31943738b135bee483ede717cf88714751069777c72a7c0c9`,
+report identity
+`cab6216ff981e4ce5b9a54343157fe0f5dc94a1e09497e418452764694575c31`).
+The final internal research champion is iteration 1 checkpoint
+`candidate-i001.json` (SHA-256
+`201111f01da276b4fe8e0c4ab623d563fa0ad5da0f81f4b96368b8bae1ead36c`).
+
+The coordinator creates immutable game jobs, runs native simulators in spawned
+processes, receives complete validated trajectories, and remains the sole
+manifest writer. Its atomic state ledger records stage transitions,
+heartbeats-at-stage-boundaries, checkpoint parents, replay manifests,
+evaluation outcomes, and champion decisions. A controlled interruption after
+iteration 1 self-play committed eight games and paused. Restarting the same
+configuration incremented `resume_count` to one, skipped already committed
+games, and completed all remaining stages without manual intervention.
+
+Self-play uses the current research champion on both seats, PUCT where the
+bounded search completes, and deterministic greedy fallback otherwise. Early
+turns sample from root visit counts with a recorded temperature; evaluation has
+no exploration. The replay window mixes the immutable Phase 7 bootstrap with
+recent Phase 8 games, keeps complete games together, warm-starts each candidate
+from its parent champion, calibrates value on validation games only, and writes
+checksum-protected candidate checkpoints. Direct candidate/champion evaluation
+cannot write trajectories and uses unique evaluation IDs that are checked
+against the training manifest.
+
+The run produced 24 Hydrapple mirror self-play games and 2,648 decisions: 18
+train games and six validation games, with zero test/evaluation-purpose records
+in the self-play corpus. Spawned workers reported zero errors. Of the decisions,
+279 (10.54%) carried completed PUCT search targets, 184 had multi-visit target
+distributions, and 14 early-turn temperature choices differed from the visit
+argmax. The remaining 2,369 decisions retained fallback/teacher targets. This
+is enough to prove the feedback data path, but it also shows that the current
+24 ms/full-root-coverage search budget leaves the loop mostly behavioral rather
+than strongly AlphaZero-like.
+
+Iteration decisions were reproducible from archived outcomes under the fixed
+research rule (`safety && candidate_wins > champion_wins && decisive win rate
+>= 55%`): iteration 1 scored 5-3 and was promoted internally; iteration 2
+scored 3-5 and was rejected; iteration 3 tied 4-4 and was rejected. These are
+eight-game pipeline screens, not statistical promotion evidence. The active
+submission remains unchanged. All 97 Plan 1 unit/regression tests pass.
+
 **Work**
 
 - Implement self-play coordinator/workers, root exploration, replay-window sampling, learner, candidate evaluation, and champion promotion.
@@ -1025,6 +1075,44 @@ submission promotion. All 93 Plan 1 unit/regression tests pass.
 - No evaluation games enter training data.
 
 ### Phase 9 - League and generalization
+
+**Status:** Implemented and evaluated at promotion sample size on 2026-08-14.
+The current Phase 10 candidate is **rejected**; the playing-strength exit gate
+remains unmet for the project. Definitive promotion evidence is
+`plan_1/artifacts/reports/phase9-promotion-gate.json` (SHA-256
+`0b1656e49e88b4dfa678d97654c3e1f5256b6d231a59cd53893c0416b1710500`).
+
+The frozen league registers checkpoint and module policies by file hash,
+separates development from held-out decks, creates seat-balanced checkpoint
+round robins and candidate-versus-specialist cross-deck matches, and stores
+each completed matchup atomically for strict resume. Its report includes
+Wilson intervals, per-category and per-deck candidate records, historical
+regression checks at each development deck, a checkpoint table, directed
+dominance evidence, and cycle detection. Promotion requires safety, declared
+minimum evidence, development and held-out strength floors, a worst-matchup
+floor, and no catastrophic forgetting. A small validation run therefore cannot
+promote a candidate by accident.
+
+The validation field used Hydrapple, No Name Grass, and No Name Fire for
+development, with LiamK Mega Lopunny and Claude Mega Gardevoir held out. It
+integrated the Hydrapple/Grass/Fire Plan 2 specialists, generic held-out
+opponents, the Phase 7 checkpoint, the Phase 8 iteration-1 champion, and the
+iteration-2 league member. All 80 games completed without faults. The Phase 8
+champion scored 10-20 on development, 9-31 on held-out matchups, 7-13 against
+checkpoint peers, and 2-8 in same-deck specialist comparisons. Iteration 2 led
+the checkpoint table at 14-6. The suite returned `insufficient_evidence`, not a
+promotion: every pairing had only two games, the candidate also missed the
+strength floors, and the dominance minimum was too high for a cycle conclusion.
+Phase 10 subsequently selected `mcts_selective_budget.json` for research, and
+that exact candidate was evaluated in a 960-game, 40-matchup promotion gate.
+It completed without safety failures but scored 139-186 with 35 draws on the
+development field (42.77%; Wilson lower bound 37.51%) and 184-282 with 14 draws
+on held-out decks (39.48%; lower bound 35.15%). Its worst matchup was 11.11%.
+Both aggregate samples exceeded the declared 100-decisive-game minimum, so
+failure of the mandatory development and held-out strength floors is a
+conclusive rejection even though six draw-heavy Grass matchups did not reach
+20 decisive games individually. No dominance cycle was detected. A new model
+or training iteration is required before another promotion attempt.
 
 **Work**
 
@@ -1038,6 +1126,54 @@ submission promotion. All 93 Plan 1 unit/regression tests pass.
 
 ### Phase 10 - Search/model optimization
 
+**Status:** Complete on 2026-08-14 as a measured research-configuration and
+model-size optimization pass; **not promoted** to the active submission.
+Definitive artifacts are `plan_1/artifacts/reports/phase10-suite.json`
+(SHA-256
+`bedd95bcf9d2d4a6022702e36c0c9def3ab6ec4525acb050bfafedeb1ed98451`),
+`plan_1/artifacts/reports/phase10-confirmation.json` (SHA-256
+`75239c11e2b08dcee1a59a62f7eced4ba75391daafa921d574c11ce70fd98716`),
+and `plan_1/artifacts/reports/phase9-optimized-screen.json` (SHA-256
+`0924d357f62d6597447b2625334a5c2c433e5ef1beeaf26f2732b14a8458c061`).
+
+Phase 9 telemetry identified the actual search bottleneck: 3,749/4,425 searched
+decisions fell back for incomplete root coverage, only 8.50% achieved full
+coverage, and search changed the heuristic action only 2.24% of the time. The
+controlled Phase 10 round robin therefore separated two mechanisms. The
+`selective_root` variant changed only the full-root requirement; the
+`selective_budget` variant additionally rebalanced the fixed 24 ms budget from
+16/8 ms search/cleanup to 8/16 ms cleanup/search and raised simulation/node
+caps. Search, checkpoint, decks, and evaluator otherwise stayed fixed.
+
+The initial 90-game three-deck round robin made the attribution clear.
+Selective root alone used search on 79.85% of decisions but went 22-31 in the
+three-way field. Selective budget reached 79.38% full-root coverage, used search
+on 75.16% of decisions, and led the field at 32-21, while both variants were
+14-13 with three draws directly against baseline. Because the predeclared
+30-decisive-game gate was not met, neither was selected from that screen.
+
+A fresh 60-game baseline-versus-selective-budget confirmation then scored
+30-23 with seven draws. Selective budget reached 82.30% full coverage and
+81.52% nonfallback choices with 20.62 ms maximum matchup p95 and 0.034% hard
+overruns, clearing the predeclared research-rescreen gate. Its 56.60% decisive
+win rate remains statistically uncertain (95% Wilson 43.27%-69.05%, two-sided
+`p=0.336`), so this selects a Phase 9 rescreen configuration rather than proving
+superiority or authorizing deployment.
+
+The unchanged 80-game Phase 9 transfer screen improved development from 10-20
+to 11-16 with three draws, held-out from 9-31 to 17-23, cross-deck specialist
+play from 10-30 to 17-23, and same-deck specialist play from 2-8 to 5-4 with one
+draw. Checkpoint-peer play remained weak at 6-12 with two draws. The transfer is
+promising but still below Phase 9's declared evidence and strength gates.
+
+An independent frozen-corpus model-size ablation trained 2,048, 4,096, and
+8,192 feature models on identical Phase 7 game splits. The 2,048-feature model
+had the best held-out policy loss (0.5725), matched 82.71% top-1 accuracy and
+0.1600 value Brier, measured 0.0476 ms inference p95, and reduced checkpoint
+JSON from 174,374 to 50,798 bytes. Deterministic gzip reduced it to 6,541 bytes
+with exact round-trip verification. This is a Phase 11 packaging recommendation
+only; it was not mixed into the search experiment.
+
 **Work**
 
 - Profile bottlenecks, batch inference where useful, tune candidate widening and simulation budgets, compare model sizes, and test export formats.
@@ -1049,6 +1185,31 @@ submission promotion. All 93 Plan 1 unit/regression tests pass.
 
 ### Phase 11 - Submission packaging and shadow validation
 
+**Status:** Implemented and shadow-validated on 2026-08-14; packaging passed,
+promotion rejected on the frozen Phase 9 strength evidence. The active
+submission was not changed.
+
+The exact Phase 9 candidate is packaged with its 8,192-feature checkpoint,
+selective-budget search configuration, Hydrapple deck, bundled standard-library
+Plan 1 source, and deterministic heuristic fallback. A strict manifest hashes
+all 66 declared files, rejects path traversal and undeclared/corrupt files, and
+produces a deterministic 144,042-byte ZIP. Fresh isolated processes verified a
+3.25 ms import, 4.11 ms model load, valid 60-card deck selection, and safe
+minimal fallback. Missing and corrupt checkpoint probes both disabled learned
+inference and initialized heuristic MCTS successfully.
+
+Twelve seat-alternated clean-process shadow games completed without faults.
+The packaged agent made 815 measured decisions at 19.24 ms p95 and 80.64 ms
+maximum latency. The immutable 960-game/40-matchup Phase 9 report was bound to
+the package by matching the candidate checkpoint hash; it remains a conclusive
+strength rejection. The integrity-signed Phase 11 report therefore records
+`shadow_validation_passed=true` and `replace_active_submission=false`.
+
+Artifacts: `plan_1/artifacts/phase11/plan1-shadow-submission.zip` (SHA-256
+`de72e6339b2dabd602fd686e762e92546cabf2e0416f149d51b3a0f3bf7f0057`) and
+`plan_1/artifacts/reports/phase11-shadow-validation.json` (SHA-256
+`1753e34442b46ba3e114fd7cead812c4b408a781e58142c5ed612a726573eddf`).
+
 **Work**
 
 - Build the exact Kaggle artifact, verify clean-process execution, run the complete frozen suite, and shadow it without replacing the active submission.
@@ -1059,6 +1220,37 @@ submission promotion. All 93 Plan 1 unit/regression tests pass.
 - A signed promotion report approves or rejects replacing the active submission.
 
 ### Phase 12 - Strategy report and archival
+
+**Status:** Implemented and verified on 2026-08-14. The research track is
+documented and archived; no Plan 1 candidate was promoted.
+
+Added an evidence-backed Strategy report covering architecture, public-state
+handling, belief sampling, search, learning, experiments, causal ablations,
+deck interaction, failures, limitations, reproducibility, and compliance. A
+separate model card documents the exact rejected checkpoint and prevents the
+small Phase 8 internal promotion from being misrepresented as submission-grade
+evidence. Reproduction commands and boundaries are explicit, including the lack
+of native complete-game seed replay.
+
+`claims.json` maps 10 major report claims to 20 exact JSON paths and expected
+values. The Phase 12 verifier checks those values and evidence hashes before
+publication. The deterministic archive contains 189 source, config, test,
+report, checkpoint, deck, and specialist-policy files. Two consecutive builds
+produced the same 896,933-byte ZIP SHA-256:
+`6a4bae2cc717f20645fdc9268c3cc3d0bd57c8ac38418a98958094916db5ef41`.
+
+The data-retention checklist inventories competition data, simulator files,
+raw outcomes, trajectories, checkpoints, reports, packages, and external card
+images. It deliberately performs no deletion. Because the public rules page did
+not expose a machine-readable deletion clause, final signed-in Simulation and
+Strategy rules review remains a mandatory manual item before retention or
+destructive cleanup decisions.
+
+Artifacts: `plan_1/strategy/STRATEGY_REPORT.md`,
+`plan_1/artifacts/phase12/evidence-manifest.json`,
+`plan_1/artifacts/phase12/plan1-strategy-evidence.zip`, and
+`plan_1/artifacts/reports/phase12-archive.json` (SHA-256
+`66bfe889f38a6446743ca34c2e49931e4c93905ed8ed913267668d8804960663`).
 
 **Work**
 
@@ -1236,13 +1428,13 @@ They are deferred, not omitted: each has a named phase, experiment, and acceptan
 - [x] Trajectory pipeline is atomic, resumable, and versioned.
 - [x] Policy-value model trains and exports reproducibly.
 - [ ] PUCT improves or accelerates search under controlled evaluation.
-- [ ] Three unattended self-play iterations complete successfully.
+- [x] Three unattended self-play iterations complete successfully.
 - [ ] League and held-out generalization gates pass.
 - [ ] Kaggle dependency/package/runtime spike passes.
-- [ ] Exact submission artifact passes clean-process games.
+- [x] Exact shadow submission artifact passes clean-process games.
 - [ ] Champion promotion report is approved.
-- [ ] Strategy report maps claims to archived evidence.
-- [ ] Competition data-retention/deletion obligations are documented.
+- [x] Strategy report maps claims to archived evidence.
+- [x] Competition data-retention/deletion obligations are documented.
 
 ## 30. Final decision rule
 

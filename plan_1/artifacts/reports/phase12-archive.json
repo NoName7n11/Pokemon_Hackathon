@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "phase": 12,
+  "run_id": "phase12-strategy-archive-v1",
+  "created_utc": "2026-08-14T05:43:35.571675+00:00",
+  "config_path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\plan_1\\configs\\phase12_archive.json",
+  "config_sha256": "445d6a9ff4fdd1d62a6ef23304016ac457c98d1b0bd356ec21307b9f9737f5cb",
+  "strategy_report": {
+    "path": "plan_1/strategy/STRATEGY_REPORT.md",
+    "sha256": "29e0849e2663d8caa25080a6d45e317d58d66e51eef083c1702593ee807763fc"
+  },
+  "claim_verification": {
+    "claims": 10,
+    "checks": 20,
+    "passed": true
+  },
+  "archive": {
+    "passed": true,
+    "errors": [],
+    "files": 189,
+    "manifest_sha256": "7fa397b8870e5af45a0fdee365dce49c714f6c0141f4ce431a6c693ba47ddebc",
+    "archive_bytes": 896933,
+    "archive_sha256": "6a4bae2cc717f20645fdc9268c3cc3d0bd57c8ac38418a98958094916db5ef41"
+  },
+  "completion": {
+    "strategy_report_complete": true,
+    "claims_map_to_evidence": true,
+    "reproduction_commands_documented": true,
+    "data_retention_checklist_documented": true,
+    "destructive_cleanup_performed": false,
+    "promotion_decision": "no_plan1_candidate_promoted"
+  },
+  "known_limitations": [
+    "Actual Kaggle validation remains authoritative for runtime packaging.",
+    "The Strategy rules and any deletion clause require a final signed-in manual review.",
+    "Native complete-game seed replay is unavailable."
+  ],
+  "signature": {
+    "kind": "sha256-integrity-signature-v1",
+    "signer": "codex",
+    "signed_utc": "2026-08-14T05:43:35.571675+00:00",
+    "payload_sha256": "c0a78d892ce07247d4f4b6d7ceb6149ae0a81d61df87ed8593674f1153b38e0f"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-14T02:47:13.726819+00:00",
+  "updated_at": "2026-08-14T05:12:33.909011+00:00",
   "jobs": [
     {
       "id": "JOB-00001",
@@ -351,9 +351,9 @@
       "mechanism": "grass_core_bench_role_priority",
       "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
       "provider_authorized": true,
-      "state": "running_deep_evaluation",
+      "state": "waiting_final_review",
       "created_at": "2026-08-14T02:05:40.530380+00:00",
-      "updated_at": "2026-08-14T02:16:41.527451+00:00",
+      "updated_at": "2026-08-14T02:53:14.220158+00:00",
       "experiment": "EXP-0004",
       "seed": 2026081401,
       "campaign": {
@@ -396,6 +396,12 @@
           "state": "running_deep_evaluation",
           "event": "deep_evaluation_started",
           "detail": "PID 19664; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00009-deep.log."
+        },
+        {
+          "at": "2026-08-14T02:53:14.220158+00:00",
+          "state": "waiting_final_review",
+          "event": "deep_evaluation_complete",
+          "detail": "Main, 500-game confirmation, and available cross-deck evaluation completed; final human review required."
         }
       ]
     }

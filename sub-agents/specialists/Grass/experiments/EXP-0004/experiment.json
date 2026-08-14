@@ -2,7 +2,7 @@
   "id": "EXP-0004",
   "specialist": "Grass",
   "created_at": "2026-08-14T02:05:40.942329+00:00",
-  "updated_at": "2026-08-14T02:44:50.896598+00:00",
+  "updated_at": "2026-08-14T02:52:52.171215+00:00",
   "worker": "claude",
   "hypothesis": "During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.",
   "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
@@ -17,7 +17,7 @@
   "accepted_version": null,
   "baseline_path": "snapshots/v001-deck-rebase",
   "candidate_path": "experiments/EXP-0004/candidate",
-  "status": "RUNNING",
+  "status": "REVIEW_REQUIRED",
   "smoke_result": {
     "specialist": "Grass",
     "candidate_version": "v002-candidate",
@@ -145,6 +145,28 @@
       "draws": 0,
       "win_rate": 0.365,
       "result": "results/cross-deck-Claude_Grass_Venusaur.json"
+    },
+    {
+      "status": "complete",
+      "opponent": "Dark",
+      "opponent_version": "v000-baseline",
+      "games": 200,
+      "wins": 142,
+      "losses": 58,
+      "draws": 0,
+      "win_rate": 0.71,
+      "result": "results/cross-deck-Dark.json"
+    },
+    {
+      "status": "complete",
+      "opponent": "Hydrapple",
+      "opponent_version": "v000-baseline",
+      "games": 200,
+      "wins": 39,
+      "losses": 161,
+      "draws": 0,
+      "win_rate": 0.195,
+      "result": "results/cross-deck-Hydrapple.json"
     }
   ],
   "decision_traces": [
@@ -155,6 +177,14 @@
       "games": 20,
       "total_differences": 93,
       "difference_rate": 0.11610486891385768
+    },
+    {
+      "stage": "confirmation",
+      "result": "results/decision-trace-confirmation.json",
+      "log": "orchestration-logs/decision-trace-confirmation.log",
+      "games": 20,
+      "total_differences": 71,
+      "difference_rate": 0.09067688378033206
     }
   ],
   "runs": [
@@ -223,16 +253,17 @@
     }
   ],
   "orchestration": {
-    "state": "DEEP_EVALUATION",
+    "state": "FINAL_REVIEW_REQUIRED",
     "provider": "claude",
     "through_stage": "screening",
     "started_at": "2026-08-14T02:05:40.997378+00:00",
-    "updated_at": "2026-08-14T02:16:41.681352+00:00",
+    "updated_at": "2026-08-14T02:52:52.171215+00:00",
     "review_pack": "human-review/approved/Grass-EXP-0004.md",
     "ai_review_state": "approve_deep_evaluation",
     "ai_review_reviewer": "codex",
     "ai_review_artifact": "reviews/screening-codex-auto-review.json",
-    "deep_seed_base": 2026082401
+    "deep_seed_base": 2026082401,
+    "final_review_pack": "human-review/pending/Grass-EXP-0004.md"
   },
   "reviews": [
     {
@@ -250,6 +281,20 @@
       "markdown": "human-review/approved/Grass-EXP-0004.md",
       "reviewed_at": "2026-08-14T02:16:11.577472+00:00",
       "reason": "automatic codex review approved deep evaluation; see reviews/screening-codex-auto-review.json"
+    },
+    {
+      "stage": "confirmation",
+      "status": "pending",
+      "created_at": "2026-08-14T02:52:52.145148+00:00",
+      "worker_identity": "opus",
+      "assigned_reviewer": {
+        "reviewer": "codex",
+        "provider": "codex",
+        "model": "gpt-5.5",
+        "reason": "Claude/Opus-authored experiments require an independent Codex review."
+      },
+      "json": "human-review/pending/Grass-EXP-0004.json",
+      "markdown": "human-review/pending/Grass-EXP-0004.md"
     }
   ],
   "review_history": [
