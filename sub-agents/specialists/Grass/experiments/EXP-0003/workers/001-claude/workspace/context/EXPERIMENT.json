@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0003",
+  "specialist": "Grass",
+  "created_at": "2026-08-13T23:36:48.102810+00:00",
+  "updated_at": "2026-08-13T23:36:48.169581+00:00",
+  "worker": "claude",
+  "hypothesis": "During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement.",
+  "expected_effect": "Increase early draw consistency without disabling Yanmega's Bench-to-Active acceleration trigger.",
+  "mechanisms": [
+    "kangaskhan_active_yanma_bench_opening"
+  ],
+  "files_changed": [],
+  "baseline_version": "v001-deck-rebase",
+  "candidate_version": "v002-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v001-deck-rebase",
+  "candidate_path": "experiments/EXP-0003/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-13T23:36:48.169581+00:00",
+    "updated_at": "2026-08-13T23:36:48.169581+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

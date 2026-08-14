@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "specialist": "Fire",
+  "experiment": "EXP-0003",
+  "stage": "screening",
+  "created_at": "2026-08-13T23:42:32.485082+00:00",
+  "hypothesis": "For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.",
+  "expected_effect": "Choose powered Charizard attacks and promotions when their live effect damage is tactically superior, without changing unrelated Pokemon.",
+  "mechanisms": [
+    "charizard_effect_damage_evaluation_v2"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "codex",
+    "backend": "codex-cli",
+    "model": null,
+    "started_at": "2026-08-13T23:36:48.536108+00:00",
+    "finished_at": "2026-08-13T23:40:38.185398+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-codex"
+  },
+  "benchmark": {
+    "specialist": "Fire",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "1406264939",
+    "games": 200,
+    "wins": 107,
+    "losses": 93,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 97.795,
+    "average_decision_time_ms": 4.164171300924312,
+    "max_decision_time_ms": 252.46770000376273,
+    "win_rate": 0.535,
+    "confidence_interval": [
+      0.46586521028994954,
+      0.6028155692957681
+    ],
+    "z_score": 0.9899494936611675,
+    "p_value": 0.3221988061625811,
+    "started_at": "2026-08-13T23:40:47.230286+00:00",
+    "finished_at": "2026-08-13T23:42:14.817891+00:00",
+    "duration_seconds": 87.59767049999209,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1132,
+      "total_differences": 24,
+      "difference_rate": 0.02120141342756184,
+      "games_with_difference": 9,
+      "contexts": {
+        "MAIN": 24
+      },
+      "select_types": {
+        "MAIN": 24
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 12,
+        "ATTACH": 8,
+        "EVOLVE": 2,
+        "END": 1,
+        "RETREAT": 1
+      },
+      "baseline_selected_option_types": {
+        "ATTACH": 8,
+        "PLAY": 6,
+        "ATTACK": 6,
+        "RETREAT": 3,
+        "EVOLVE": 1
+      },
+      "candidate_wins": 10,
+      "baseline_opponent_wins": 10,
+      "draws_or_timeouts": 0,
+      "records_retained": 24,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "pending",
+  "reviewer_reason": "",
+  "worker_identity": {
+    "provider": "codex",
+    "model": null,
+    "identity": "codex"
+  },
+  "assigned_reviewer": {
+    "reviewer": "opus",
+    "provider": "claude",
+    "model": "opus",
+    "reason": "Codex-authored experiments require an independent Opus/Claude review."
+  }
+}

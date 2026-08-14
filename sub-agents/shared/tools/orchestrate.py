@@ -12,6 +12,8 @@ from typing import Any
 
 from common import (
     SUB_AGENTS_ROOT,
+    assigned_review_identity,
+    normalize_worker_identity,
     read_json,
     resolve_specialist,
     update_registry_specialist,
@@ -230,6 +232,15 @@ def create_review_pack(specialist: Path, experiment_dir: Path, stage: str) -> tu
     experiment = read_json(experiment_dir / "experiment.json")
     trace_text = trace_markdown(trace)
     latest_worker = next((run for run in reversed(experiment.get("worker_runs", [])) if not run.get("dry_run")), None)
+    specialist_config = read_json(specialist / "config.json")
+    worker_provider = (
+        latest_worker.get("provider")
+        if latest_worker
+        else experiment.get("worker") or specialist_config.get("provider")
+    )
+    worker_model = latest_worker.get("model") if latest_worker else specialist_config.get("worker_profile")
+    worker_identity = normalize_worker_identity(worker_provider, worker_model)
+    reviewer_assignment = assigned_review_identity(worker_identity)
     checks = [
         "Does the diff implement only the stated mechanism?",
         "Does the observed result justify more evaluation rather than acceptance?",
@@ -258,6 +269,12 @@ def create_review_pack(specialist: Path, experiment_dir: Path, stage: str) -> tu
         "baseline_version": experiment["baseline_version"],
         "candidate_version": experiment["candidate_version"],
         "provider_run": latest_worker,
+        "worker_identity": {
+            "provider": worker_provider,
+            "model": worker_model,
+            "identity": worker_identity,
+        },
+        "assigned_reviewer": reviewer_assignment,
         "benchmark": result,
         "cross_deck_results": experiment.get("cross_deck_results", []),
         "decision_trace": {
@@ -279,6 +296,12 @@ def create_review_pack(specialist: Path, experiment_dir: Path, stage: str) -> tu
 Expected effect: {experiment.get('expected_effect') or 'Not specified.'}
 
 Mechanisms: {', '.join(experiment['mechanisms'])}
+
+## Review Assignment
+
+- Implemented by: `{worker_identity}` (`provider={worker_provider or 'unknown'}`, `model={worker_model or 'default'}`)
+- Assigned reviewer: `{reviewer_assignment['reviewer']}` (`provider={reviewer_assignment['provider']}`, `model={reviewer_assignment['model']}`)
+- Reason: {reviewer_assignment['reason']}
 
 ## Evidence
 
@@ -324,6 +347,8 @@ private acceptance. Neither command promotes the active submission. Use
         "stage": stage,
         "status": "pending",
         "created_at": utc_now(),
+        "worker_identity": worker_identity,
+        "assigned_reviewer": reviewer_assignment,
         "json": str(json_path.relative_to(SUB_AGENTS_ROOT)).replace("\\", "/"),
         "markdown": str(markdown_path.relative_to(SUB_AGENTS_ROOT)).replace("\\", "/"),
     })

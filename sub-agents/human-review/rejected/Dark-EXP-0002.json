@@ -93,6 +93,18 @@
     }
   },
   "diff_truncated": false,
-  "decision": "pending",
-  "reviewer_reason": ""
+  "decision": "rejected",
+  "reviewer_reason": "Rejected after Codex review: Hungry Jaws bonus was implemented as +100 but dataset specifies +150, and screening result was statistically neutral.",
+  "worker_identity": {
+    "provider": "claude",
+    "model": "opus",
+    "identity": "opus"
+  },
+  "assigned_reviewer": {
+    "reviewer": "codex",
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "reason": "Claude/Opus-authored experiments require an independent Codex review."
+  },
+  "reviewed_at": "2026-08-14T01:37:52.068470+00:00"
 }

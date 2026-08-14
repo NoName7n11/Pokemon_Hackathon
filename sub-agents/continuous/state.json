@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-13T23:19:47.956952+00:00",
+  "updated_at": "2026-08-14T02:47:13.726819+00:00",
   "jobs": [
     {
       "id": "JOB-00001",
@@ -181,9 +181,9 @@
       "mechanism": "wild_growth_engine_priority",
       "expected_effect": "Establish Grass Energy doubling earlier and reduce expensive attackers stranded without usable Energy.",
       "provider_authorized": true,
-      "state": "waiting_screening_review",
+      "state": "rejected",
       "created_at": "2026-08-12T23:24:31.930553+00:00",
-      "updated_at": "2026-08-12T23:31:22.885763+00:00",
+      "updated_at": "2026-08-13T23:36:47.736157+00:00",
       "experiment": "EXP-0002",
       "seed": 20260903,
       "history": [
@@ -204,6 +204,12 @@
           "state": "waiting_screening_review",
           "event": "screening_complete",
           "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-13T23:36:47.736157+00:00",
+          "state": "rejected",
+          "event": "experiment_closed",
+          "detail": "Private experiment decision: rejected."
         }
       ]
     },
@@ -216,9 +222,9 @@
       "mechanism": "sharpedo_conditional_attack_value",
       "expected_effect": "Promote and attack with damaged Mega Sharpedo when Hungry Jaws is a real high-damage option without globally inflating its value.",
       "provider_authorized": true,
-      "state": "waiting_screening_review",
+      "state": "rejected",
       "created_at": "2026-08-12T23:24:32.197247+00:00",
-      "updated_at": "2026-08-12T23:32:23.012462+00:00",
+      "updated_at": "2026-08-14T01:37:55.706505+00:00",
       "experiment": "EXP-0002",
       "seed": 20260904,
       "history": [
@@ -239,6 +245,157 @@
           "state": "waiting_screening_review",
           "event": "screening_complete",
           "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T01:37:55.706505+00:00",
+          "state": "rejected",
+          "event": "experiment_closed",
+          "detail": "Private experiment decision: rejected."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00007",
+      "specialist": "Grass",
+      "provider": "claude",
+      "model": null,
+      "hypothesis": "During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement.",
+      "mechanism": "kangaskhan_active_yanma_bench_opening",
+      "expected_effect": "Increase early draw consistency without disabling Yanmega's Bench-to-Active acceleration trigger.",
+      "provider_authorized": true,
+      "state": "rejected",
+      "created_at": "2026-08-13T23:35:32.955920+00:00",
+      "updated_at": "2026-08-14T01:37:55.752939+00:00",
+      "experiment": "EXP-0003",
+      "seed": 915146162,
+      "history": [
+        {
+          "at": "2026-08-13T23:35:32.955920+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-13T23:36:47.785345+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 2040; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00007-screening.log."
+        },
+        {
+          "at": "2026-08-13T23:43:19.401453+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T01:37:55.752939+00:00",
+          "state": "rejected",
+          "event": "experiment_closed",
+          "detail": "Private experiment decision: rejected."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00008",
+      "specialist": "Fire",
+      "provider": "codex",
+      "model": null,
+      "hypothesis": "For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.",
+      "mechanism": "charizard_effect_damage_evaluation_v2",
+      "expected_effect": "Choose powered Charizard attacks and promotions when their live effect damage is tactically superior, without changing unrelated Pokemon.",
+      "provider_authorized": true,
+      "state": "waiting_more_evidence",
+      "created_at": "2026-08-13T23:35:33.186832+00:00",
+      "updated_at": "2026-08-14T01:52:22.549108+00:00",
+      "experiment": "EXP-0003",
+      "seed": 1406264936,
+      "history": [
+        {
+          "at": "2026-08-13T23:35:33.186832+00:00",
+          "state": "queued",
+          "event": "enqueued",
+          "detail": "Awaiting an available specialist slot."
+        },
+        {
+          "at": "2026-08-13T23:36:47.819369+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 32732; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00008-screening.log."
+        },
+        {
+          "at": "2026-08-13T23:42:49.333670+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T01:50:52.449594+00:00",
+          "state": "running_ai_review",
+          "event": "ai_review_started",
+          "detail": "PID 24592; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00008-ai-review.log."
+        },
+        {
+          "at": "2026-08-14T01:52:22.549108+00:00",
+          "state": "waiting_more_evidence",
+          "event": "ai_review_requested_more_evidence",
+          "detail": "Independent AI review requested more evidence; automatic loop paused for this experiment."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00009",
+      "specialist": "Grass",
+      "provider": "claude",
+      "model": "opus",
+      "hypothesis": "During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.",
+      "mechanism": "grass_core_bench_role_priority",
+      "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
+      "provider_authorized": true,
+      "state": "running_deep_evaluation",
+      "created_at": "2026-08-14T02:05:40.530380+00:00",
+      "updated_at": "2026-08-14T02:16:41.527451+00:00",
+      "experiment": "EXP-0004",
+      "seed": 2026081401,
+      "campaign": {
+        "path": "campaigns/Grass.json",
+        "hypothesis_id": "grass-campaign-001"
+      },
+      "history": [
+        {
+          "at": "2026-08-14T02:05:40.530380+00:00",
+          "state": "queued",
+          "event": "campaign_enqueued",
+          "detail": "Campaign queued hypothesis grass-campaign-001."
+        },
+        {
+          "at": "2026-08-14T02:05:40.579989+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 33460; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00009-screening.log."
+        },
+        {
+          "at": "2026-08-14T02:15:41.263028+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T02:15:41.311066+00:00",
+          "state": "running_ai_review",
+          "event": "ai_review_started",
+          "detail": "PID 17404; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00009-ai-review.log."
+        },
+        {
+          "at": "2026-08-14T02:16:41.477315+00:00",
+          "state": "waiting_screening_review",
+          "event": "ai_review_approved_deep",
+          "detail": "Independent AI review authorized deep evaluation."
+        },
+        {
+          "at": "2026-08-14T02:16:41.527451+00:00",
+          "state": "running_deep_evaluation",
+          "event": "deep_evaluation_started",
+          "detail": "PID 19664; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00009-deep.log."
         }
       ]
     }

@@ -1,0 +1,3587 @@
+{
+  "schema_version": 1,
+  "specialist": "Fire",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "seed": 1406364939,
+  "created_at": "2026-08-13T23:42:32.428565+00:00",
+  "games": 20,
+  "records": [
+    {
+      "game": 1,
+      "step": 17,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 5,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 1,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 38,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 114,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 24,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1141,
+          "attack_name": "Steady Firebreathing",
+          "printed_damage": 40
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 19,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 789,
+              "name": "Charmeleon",
+              "hp": 70,
+              "max_hp": 110,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 9,
+            "deck_count": 24,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 790,
+              "name": "Mega Charizard X ex",
+              "hp": 280,
+              "max_hp": 360,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 239,
+                "name": "Flareon ex",
+                "hp": 270,
+                "max_hp": 270,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 230,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 0,
+            "deck_count": 35,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 127,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 23,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 10
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1334,
+          "attack_name": "Explosion Y",
+          "printed_damage": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        19
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 10
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 21,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 928,
+              "name": "Mega Charizard Y ex",
+              "hp": 320,
+              "max_hp": 360,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 11,
+            "deck_count": 23,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 230,
+              "max_hp": 290,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 239,
+                "name": "Flareon ex",
+                "hp": 270,
+                "max_hp": 270,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 0,
+            "deck_count": 34,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 128,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 28,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1334,
+          "attack_name": "Explosion Y",
+          "printed_damage": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        20
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 21,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 928,
+              "name": "Mega Charizard Y ex",
+              "hp": 320,
+              "max_hp": 360,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 10,
+            "deck_count": 23,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 230,
+              "max_hp": 290,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 239,
+                "name": "Flareon ex",
+                "hp": 270,
+                "max_hp": 270,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 0,
+            "deck_count": 34,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 129,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 25,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1334,
+          "attack_name": "Explosion Y",
+          "printed_damage": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        20
+      ],
+      "candidate_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 21,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 928,
+              "name": "Mega Charizard Y ex",
+              "hp": 320,
+              "max_hp": 360,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 9,
+            "deck_count": 23,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 230,
+              "max_hp": 290,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 239,
+                "name": "Flareon ex",
+                "hp": 270,
+                "max_hp": 270,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 0,
+            "deck_count": 34,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 24,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1141,
+          "attack_name": "Steady Firebreathing",
+          "printed_damage": 40
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 789,
+              "name": "Charmeleon",
+              "hp": 110,
+              "max_hp": 110,
+              "energy_count": 4,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 5,
+            "deck_count": 42,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 210,
+              "max_hp": 290,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 42,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 25,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1141,
+          "attack_name": "Steady Firebreathing",
+          "printed_damage": 40
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1141,
+          "attack_name": "Steady Firebreathing",
+          "printed_damage": 40
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 789,
+              "name": "Charmeleon",
+              "hp": 110,
+              "max_hp": 110,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 4,
+            "deck_count": 42,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 210,
+              "max_hp": 290,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 42,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 27,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "END"
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 4,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 790,
+              "name": "Mega Charizard X ex",
+              "hp": 360,
+              "max_hp": 360,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 7,
+            "deck_count": 37,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 210,
+              "max_hp": 290,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 42,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 32,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "PLAY",
+          "index": 7
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "baseline_choice": [
+        5
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        }
+      ],
+      "board": {
+        "turn": 11,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 790,
+              "name": "Mega Charizard X ex",
+              "hp": 360,
+              "max_hp": 360,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 8,
+            "deck_count": 36,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 210,
+              "max_hp": 290,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 40,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 34,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        }
+      ],
+      "board": {
+        "turn": 11,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 790,
+              "name": "Mega Charizard X ex",
+              "hp": 360,
+              "max_hp": 360,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 7,
+            "deck_count": 36,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 210,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 40,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 35,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 10,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        6
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 5
+        }
+      ],
+      "baseline_choice": [
+        8
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 11,
+        "turn_action_count": 4,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 790,
+              "name": "Mega Charizard X ex",
+              "hp": 360,
+              "max_hp": 360,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 36,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 210,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 40,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 36,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 12,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        9
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        }
+      ],
+      "board": {
+        "turn": 11,
+        "turn_action_count": 5,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 790,
+              "name": "Mega Charizard X ex",
+              "hp": 360,
+              "max_hp": 360,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 36,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 210,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 40,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 37,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1142,
+          "attack_name": "Inferno X",
+          "printed_damage": 0
+        }
+      ],
+      "board": {
+        "turn": 11,
+        "turn_action_count": 6,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 790,
+              "name": "Mega Charizard X ex",
+              "hp": 360,
+              "max_hp": 360,
+              "energy_count": 6,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 36,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 210,
+                "max_hp": 290,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 790,
+                "name": "Mega Charizard X ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 40,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 7,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 10,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 8
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 46,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 9,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 7,
+      "step": 13,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "PLAY",
+          "index": 7
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1140,
+          "attack_name": "Live Coal",
+          "printed_damage": 20
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 7
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 8,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 4,
+            "deck_count": 44,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 7,
+      "step": 14,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1140,
+          "attack_name": "Live Coal",
+          "printed_damage": 20
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 4,
+            "deck_count": 44,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 7,
+      "step": 19,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 5
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 7,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 190,
+              "max_hp": 190,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 4,
+            "deck_count": 44,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 11,
+      "step": 23,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 11,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1141,
+          "attack_name": "Steady Firebreathing",
+          "printed_damage": 40
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 5,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 789,
+              "name": "Charmeleon",
+              "hp": 90,
+              "max_hp": 110,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 41,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 30,
+              "max_hp": 70,
+              "energy_count": 2,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 8,
+            "deck_count": 41,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 12,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 5,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 788,
+              "name": "Charmander",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [],
+            "hand_count": 5,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 45,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 16,
+      "step": 44,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 189,
+          "attack_name": "Colorful Catch",
+          "printed_damage": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 190,
+          "attack_name": "Headbutt",
+          "printed_damage": 20
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        6
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 8,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 10,
+            "deck_count": 31,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 30,
+              "max_hp": 70,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 39,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 16,
+      "step": 48,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 8,
+        "turn_action_count": 5,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 10,
+            "deck_count": 31,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 145,
+                "name": "Eevee",
+                "hp": 30,
+                "max_hp": 70,
+                "energy_count": 3,
+                "tool_count": 1
+              },
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 39,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 17,
+      "step": 20,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 190,
+              "max_hp": 190,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 788,
+                "name": "Charmander",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 44,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 145,
+              "name": "Eevee",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 795,
+                "name": "Oricorio ex",
+                "hp": 190,
+                "max_hp": 190,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 8,
+            "deck_count": 39,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 16,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 4,
+        "turn_action_count": 2,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 789,
+              "name": "Charmeleon",
+              "hp": 110,
+              "max_hp": 110,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 43,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 250,
+              "max_hp": 290,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 239,
+                "name": "Flareon ex",
+                "hp": 270,
+                "max_hp": 270,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 45,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 17,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 4,
+        "turn_action_count": 3,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 789,
+              "name": "Charmeleon",
+              "hp": 110,
+              "max_hp": 110,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 43,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 795,
+              "name": "Oricorio ex",
+              "hp": 250,
+              "max_hp": 290,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 239,
+                "name": "Flareon ex",
+                "hp": 270,
+                "max_hp": 270,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 8,
+            "deck_count": 40,
+            "prizes_left": 6
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "candidate_decisions": 1132,
+    "total_differences": 24,
+    "difference_rate": 0.02120141342756184,
+    "games_with_difference": 9,
+    "contexts": {
+      "MAIN": 24
+    },
+    "select_types": {
+      "MAIN": 24
+    },
+    "candidate_selected_option_types": {
+      "PLAY": 12,
+      "ATTACH": 8,
+      "EVOLVE": 2,
+      "END": 1,
+      "RETREAT": 1
+    },
+    "baseline_selected_option_types": {
+      "ATTACH": 8,
+      "PLAY": 6,
+      "ATTACK": 6,
+      "RETREAT": 3,
+      "EVOLVE": 1
+    },
+    "candidate_wins": 10,
+    "baseline_opponent_wins": 10,
+    "draws_or_timeouts": 0,
+    "records_retained": 24,
+    "records_truncated": false
+  },
+  "limits": {
+    "max_steps_per_game": 3000,
+    "max_records": 200,
+    "max_options_per_record": 40
+  },
+  "errors": []
+}

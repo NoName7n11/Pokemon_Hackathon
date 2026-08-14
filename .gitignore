@@ -45,6 +45,7 @@ Decs/LiamK_*
 
 # Continuous scheduler runtime state (live lock + process logs, not evidence)
 sub-agents/continuous/.scheduler.lock
+sub-agents/specialists/*/.orchestrator.lock
 sub-agents/continuous/logs/
 sub-agents/continuous/scheduler.stdout.log
 sub-agents/continuous/scheduler.stderr.log

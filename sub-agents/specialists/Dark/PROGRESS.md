@@ -30,3 +30,11 @@ not the active submission.
 - **EXP-0002 paused by human direction.**
   - Reason: Human is not confident in the current No_Name_Dark deck and requested that no further Dark specialist work run until the deck is reconsidered.
   - Existing experiment and human-review evidence were preserved.
+
+## 2026-08-14 — EXP-0002
+
+- **REJECTED: For attack choice and immediate attacker scoring, account for Mega Sharpedo ex Hungry Jaws receiving its conditional damage only when Sharpedo is damaged; preserve generic attack ranking for all other Pokemon.**
+  - Mechanisms: sharpedo_conditional_attack_value.
+  - Baseline: `v000-baseline`; candidate: `v001-candidate`.
+  - Benchmark runs recorded: 2.
+  - Decision reason: human review rejection: Rejected after Codex review: Hungry Jaws bonus was implemented as +100 but dataset specifies +150, and screening result was statistically neutral.

@@ -1,0 +1,42 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\decision_trace.py --candidate C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0003\candidate\main.py --baseline C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\snapshots\v001-deck-rebase\main.py --deck C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0003\candidate\deck.csv --specialist Grass --candidate-version v002-candidate --baseline-version v001-deck-rebase --games 20 --max-steps 3000 --max-records 200 --max-options 40 --seed 915246165 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0003\results\decision-trace-screening.json
+STARTED: 2026-08-13T23:42:22.485111+00:00
+FINISHED: 2026-08-13T23:42:53.202539+00:00
+TIMED_OUT: False
+
+STDOUT:
+{
+  "candidate_decisions": 1212,
+  "total_differences": 42,
+  "difference_rate": 0.034653465346534656,
+  "games_with_difference": 14,
+  "contexts": {
+    "MAIN": 42
+  },
+  "select_types": {
+    "MAIN": 42
+  },
+  "candidate_selected_option_types": {
+    "PLAY": 16,
+    "ATTACH": 15,
+    "ATTACK": 4,
+    "EVOLVE": 4,
+    "ABILITY": 2,
+    "RETREAT": 1
+  },
+  "baseline_selected_option_types": {
+    "PLAY": 22,
+    "ATTACH": 9,
+    "ABILITY": 5,
+    "EVOLVE": 3,
+    "RETREAT": 2,
+    "ATTACK": 1
+  },
+  "candidate_wins": 12,
+  "baseline_opponent_wins": 8,
+  "draws_or_timeouts": 0,
+  "records_retained": 42,
+  "records_truncated": false
+}
+
+
+STDERR:

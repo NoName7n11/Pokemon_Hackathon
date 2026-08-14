@@ -8,6 +8,12 @@ Expected effect: Promote and attack with damaged Mega Sharpedo when Hungry Jaws 
 
 Mechanisms: sharpedo_conditional_attack_value
 
+## Review Assignment
+
+- Implemented by: `opus` (`provider=claude`, `model=opus`)
+- Assigned reviewer: `codex` (`provider=codex`, `model=gpt-5.5`)
+- Reason: Claude/Opus-authored experiments require an independent Codex review.
+
 ## Evidence
 
 - Stage: `screening`
@@ -189,3 +195,33 @@ After screening, use `review_gate.py approve` only to authorize deep evaluation.
 After confirmation and cross-deck evaluation, use `review_gate.py accept` for
 private acceptance. Neither command promotes the active submission. Use
 `review_gate.py reject` to close the experiment.
+
+## Codex Independent Review
+
+Decision: REJECT for acceptance. Do not authorize deep evaluation for this exact
+candidate.
+
+Reason:
+- The strategic hypothesis is valid: Mega Sharpedo ex should be scored
+  differently when Hungry Jaws is usable while Sharpedo is damaged.
+- The implementation does not match the card data. The dataset row for Hungry
+  Jaws says: "If this Pokemon has any damage counters on it, this attack does
+  150 more damage." The candidate hardcodes `HUNGRY_JAWS_CONDITIONAL_BONUS =
+  100`, so the tested policy is under-crediting the stated mechanism.
+- The screening result is not enough to justify continuing anyway: 105/200
+  wins, 52.5%, p=0.4795. That is a statistical tie against the private
+  baseline, not evidence of improvement.
+- The decision trace does not isolate the claimed mechanism. It shows 44 MAIN
+  differences, including many PLAY/ATTACH/RETREAT/END shifts. Those can be
+  downstream path divergence, but the pack does not show representative states
+  where damaged Mega Sharpedo chooses Hungry Jaws specifically because the
+  conditional bonus changes attack ranking or lethal detection.
+- There is no cross-deck evidence, and this Dark specialist is already paused
+  by human request because the deck itself is not yet trusted.
+
+Recommended next action:
+- Reject this candidate.
+- If Dark work resumes later, rerun as a corrected narrow experiment with
+  `+150`, plus a targeted decision trace that explicitly counts damaged
+  Mega Sharpedo states where Hungry Jaws is available and shows whether the
+  chosen attack changes.

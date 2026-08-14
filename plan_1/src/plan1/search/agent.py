@@ -10,7 +10,7 @@ from plan1.evaluation.handcrafted import HandcraftedEvaluator
 from plan1.game.actions import validate_action
 from plan1.game.catalog import CardCatalog
 from plan1.game.records import PublicObservationRecord
-from plan1.search.mcts import SearchResult, UCTSearch
+from plan1.search.mcts import PolicyValueInference, SearchResult, UCTSearch
 
 
 ObservationPolicy = Callable[[Any], Sequence[int]]
@@ -34,6 +34,9 @@ class Plan1MCTSAgent:
         action_observer: ActionObserver | None = None,
         horizon_turns: int | None = None,
         search_select_types: frozenset[int] = frozenset({0}),
+        policy_value: PolicyValueInference | None = None,
+        puct_constant: float = 1.25,
+        learned_value_mix: float = 0.25,
     ) -> None:
         if len(deck) != 60:
             raise ValueError("Plan1MCTSAgent requires a 60-card deck")
@@ -56,6 +59,9 @@ class Plan1MCTSAgent:
             search_config,
             cleanup_reserve_ms=config.safety.cleanup_reserve_ms,
             rollout_policy=self.rollout_policy,
+            policy_value=policy_value,
+            puct_constant=puct_constant,
+            learned_value_mix=learned_value_mix,
         )
 
     def act(self, observation_dict: dict[str, Any]) -> list[int]:

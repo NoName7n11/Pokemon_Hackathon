@@ -167,6 +167,21 @@ def main() -> int:
     continuous_config = read_json(SUB_AGENTS_ROOT / "shared" / "continuous_config.json")
     check(continuous_config.get("auto_accept") is False, "continuous auto_accept must be false", phase_errors)
     check(continuous_config.get("auto_promote") is False, "continuous auto_promote must be false", phase_errors)
+    check(continuous_config.get("auto_ai_review") is True, "continuous automatic AI review must be enabled", phase_errors)
+    check((SUB_AGENTS_ROOT / "shared" / "tools" / "auto_review.py").is_file(), "continuous auto_review tool is missing", phase_errors)
+    campaigns = list((SUB_AGENTS_ROOT / "continuous" / "campaigns").glob("*.json"))
+    for campaign_path in campaigns:
+        campaign = read_json(campaign_path)
+        if not campaign.get("enabled", False):
+            continue
+        check(bool(campaign.get("specialist")), f"enabled campaign has no specialist: {campaign_path}", phase_errors)
+        names = {entry["name"] for entry in specialists}
+        check(campaign.get("specialist") in names, f"enabled campaign specialist is not registered: {campaign_path}", phase_errors)
+        hypotheses = campaign.get("hypotheses", [])
+        check(bool(hypotheses), f"enabled campaign has no hypotheses: {campaign_path}", phase_errors)
+        for item in hypotheses:
+            for field in ("id", "hypothesis", "mechanism", "expected_effect"):
+                check(bool(item.get(field)), f"campaign hypothesis missing {field}: {campaign_path}", phase_errors)
     check(continuous_config.get("max_parallel_specialists") == 5, "continuous global worker pool must contain five slots", phase_errors)
     provider_limits = continuous_config.get("provider_parallel_limits", {})
     check(provider_limits.get("codex") == 2, "continuous Codex worker limit must be two", phase_errors)

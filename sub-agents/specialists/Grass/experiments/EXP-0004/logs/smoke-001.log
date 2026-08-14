@@ -1,0 +1,35 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\benchmark_pair.py --candidate C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\candidate\main.py --baseline C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\snapshots\v001-deck-rebase\main.py --deck C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\candidate\deck.csv --games 20 --max-steps 3000 --seed 2026081403 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\results\smoke-001.json --specialist Grass --candidate-version v002-candidate --baseline-version v001-deck-rebase --stage smoke
+
+STDOUT:
+{
+  "specialist": "Grass",
+  "candidate_version": "v002-candidate",
+  "baseline_version": "v001-deck-rebase",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "2026081403",
+  "games": 20,
+  "wins": 12,
+  "losses": 8,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 124.95,
+  "average_decision_time_ms": 13.66675834797582,
+  "max_decision_time_ms": 511.9687999977032,
+  "win_rate": 0.6,
+  "confidence_interval": [
+    0.3865779423152061,
+    0.7811960325858074
+  ],
+  "z_score": 0.8944271909999157,
+  "p_value": 0.37109336952269767,
+  "started_at": "2026-08-14T02:09:51.625412+00:00",
+  "finished_at": "2026-08-14T02:10:23.612611+00:00",
+  "duration_seconds": 31.98548980000487,
+  "errors": []
+}
+
+
+STDERR:

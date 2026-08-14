@@ -1,0 +1,29 @@
+{
+  "specialist": "Grass",
+  "candidate_version": "v002-candidate",
+  "baseline_version": "v001-deck-rebase",
+  "opponent": "specialist_previous",
+  "stage": "confirmation",
+  "seed_set": "2026082403",
+  "games": 500,
+  "wins": 248,
+  "losses": 252,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 97.672,
+  "average_decision_time_ms": 16.32878163743627,
+  "max_decision_time_ms": 1111.1556999967434,
+  "win_rate": 0.496,
+  "confidence_interval": [
+    0.4523723541138067,
+    0.5396886428344405
+  ],
+  "z_score": -0.17888543819998334,
+  "p_value": 0.858027656987521,
+  "started_at": "2026-08-14T02:25:59.492104+00:00",
+  "finished_at": "2026-08-14T02:40:35.639228+00:00",
+  "duration_seconds": 876.1450836000004,
+  "errors": []
+}

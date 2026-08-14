@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "state": "READY_FOR_EXPERIMENT",
+  "state": "EXPERIMENT_ACTIVE",
   "review_state": "AUTOMATIC",
   "current_version": "v001-deck-rebase",
   "accepted_experiment": null,
-  "active_experiment": null,
+  "active_experiment": "EXP-0004",
   "created_at": "2026-08-12T23:20:17.986113+00:00",
-  "updated_at": "2026-08-13T23:22:11.527407+00:00",
+  "updated_at": "2026-08-14T02:16:11.577472+00:00",
   "deck_sha256": "f6cadd59a7e6741e96f18754c0866f87e97ed85f87b3a4486e510f4ea0ae2448",
   "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
   "validation": {
     "static": "passed",
-    "runtime_import": "pending",
-    "smoke_benchmark": "pending"
+    "runtime_import": "passed",
+    "smoke_benchmark": "passed"
   }
 }

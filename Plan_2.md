@@ -155,6 +155,12 @@ Each coding agent follows the same finite experiment cycle:
 
 No coding CLI receives an unrestricted or indefinite background loop.
 
+A specialist that should keep working can be attached to an explicit campaign
+backlog. A campaign is not free-form autonomy: it is an ordered list of narrow
+hypotheses with mechanisms and expected effects. The scheduler may enqueue the
+next pending campaign hypothesis only when that specialist is idle and ready for
+a new experiment.
+
 ## 6. Shared Benchmark Standard
 
 Every specialist is evaluated under the same measurement policy:
@@ -222,7 +228,19 @@ PROMOTION_REQUIRED
     -> a candidate may enter the final promotion process
 ```
 
-The reviewer can approve, reject, or request another experiment.
+The reviewer can approve, reject, or request another experiment. Review should
+be independent from implementation: a Codex-authored candidate is assigned to
+Opus/Claude review, while an Opus/Claude-authored candidate is assigned to Codex
+review. The reviewer writes a recommendation and rationale; the gate command
+still remains explicit, auditable, and separate from active submission
+promotion.
+
+The continuous scheduler may run that independent AI review automatically after
+screening. A clear `REJECT` closes the candidate, a clear
+`APPROVE_DEEP_EVALUATION` starts the powered main/confirmation path, and
+`MORE_EVIDENCE` pauses the experiment for trace, ablation, or measurement work.
+Final private acceptance and active submission promotion remain separate human
+decisions.
 
 ## 9. Experiment Attribution
 

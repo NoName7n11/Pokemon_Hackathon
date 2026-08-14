@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "name": "No_Name_Grass progressive specialist loop",
+  "specialist": "Grass",
+  "provider": "claude",
+  "model": "opus",
+  "provider_authorized": true,
+  "authorization_reason": "User requested the No_Name_Grass specialist run continuously through progressive hypotheses.",
+  "created_at": "2026-08-14T00:00:00+00:00",
+  "updated_at": "2026-08-14T02:16:41.577186+00:00",
+  "hypotheses": [
+    {
+      "id": "grass-campaign-001",
+      "state": "running_deep_evaluation",
+      "seed": 2026081401,
+      "mechanism": "grass_core_bench_role_priority",
+      "hypothesis": "During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.",
+      "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
+      "job": "JOB-00009",
+      "queued_at": "2026-08-14T02:05:40.548489+00:00",
+      "updated_at": "2026-08-14T02:16:41.527451+00:00"
+    },
+    {
+      "id": "grass-campaign-002",
+      "state": "pending",
+      "seed": 2026081402,
+      "mechanism": "yanmega_buzzing_boost_promotion_priority",
+      "hypothesis": "For forced Active promotion and own-board CARD choices after a knockout, prefer Benched Yanmega ex when Buzzing Boost can create an immediate or near-immediate Jet Cyclone plan; preserve existing promotion ranking when the acceleration trigger is unavailable.",
+      "expected_effect": "Increase useful Buzzing Boost activations and reduce turns where prepared Energy acceleration remains stranded on the Bench."
+    },
+    {
+      "id": "grass-campaign-003",
+      "state": "pending",
+      "seed": 2026081403,
+      "mechanism": "mega_meganium_giant_bouquet_live_damage",
+      "hypothesis": "For attack choice and immediate-attacker scoring, estimate Mega Meganium ex Giant Bouquet damage from attached Grass Energy card count and opponent live HP, rather than treating it as static printed damage; preserve non-Meganium attack logic.",
+      "expected_effect": "Choose Mega Meganium ex as a finisher when its live Giant Bouquet damage secures a valuable knockout."
+    },
+    {
+      "id": "grass-campaign-004",
+      "state": "pending",
+      "seed": 2026081404,
+      "mechanism": "solar_transfer_minimal_lethal_energy",
+      "hypothesis": "For Mega Venusaur ex Solar Transfer decisions, move only the minimum Basic Grass Energy needed to make the intended attacker legal or lethal, prioritizing Mega Meganium ex and Yanmega ex plans while preserving backup attackers.",
+      "expected_effect": "Reduce over-concentration of Energy on one Pokemon and improve follow-up attacks after the current attacker is knocked out."
+    }
+  ]
+}

@@ -1,0 +1,1704 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-14T00:03:24.002467+00:00",
+  "phase": 5,
+  "mode": "belief_and_ismcts_validation",
+  "requested_decisions": 64,
+  "captured_decisions": 64,
+  "determinizations_per_generic_root": 4,
+  "search_config": {
+    "max_simulations": 4,
+    "max_depth": 40,
+    "max_nodes": 32,
+    "max_candidates": 8,
+    "time_budget_ms": 24,
+    "exploration_constant": 1.4142135623730951,
+    "horizon_turns": 0,
+    "progressive_widening_base": 2.0,
+    "progressive_widening_exponent": 0.5,
+    "value_scale": 10000.0,
+    "discount_factor": 1.0,
+    "require_full_root_coverage": true
+  },
+  "decks": [
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\Decs\\Hydrapple.csv",
+      "sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41"
+    },
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Fire.csv",
+      "sha256": "2191b33925fa0d44729f9cf790ba66bf50ef9a4c48451023853a419ff6f79de4"
+    },
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Grass.csv",
+      "sha256": "f6cadd59a7e6741e96f18754c0866f87e97ed85f87b3a4486e510f4ea0ae2448"
+    },
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Dark.csv",
+      "sha256": "5fc5813fb39b6f7d5bcd78b1404b23d414f089c9f5333975b2a8b66e25be9954"
+    }
+  ],
+  "modes": {
+    "mirror_fill": {
+      "decisions": 64,
+      "completed_determinizations": 6,
+      "unique_determinizations": 64,
+      "duplicate_determinizations": 0,
+      "belief_fallbacks": 0,
+      "inner_search_fallbacks": 58,
+      "search_fallbacks": 58,
+      "errors": 0,
+      "elapsed_ms_median": 10.397700003522914,
+      "elapsed_ms_p95": 12.52609999210108,
+      "effective_diversity": 10.666666666666666
+    },
+    "generic": {
+      "decisions": 64,
+      "completed_determinizations": 20,
+      "unique_determinizations": 256,
+      "duplicate_determinizations": 0,
+      "belief_fallbacks": 0,
+      "inner_search_fallbacks": 236,
+      "search_fallbacks": 59,
+      "errors": 0,
+      "elapsed_ms_median": 38.75050000351621,
+      "elapsed_ms_p95": 42.854500003159046,
+      "effective_diversity": 12.8
+    },
+    "oracle": {
+      "decisions": 64,
+      "completed_determinizations": 6,
+      "unique_determinizations": 64,
+      "duplicate_determinizations": 0,
+      "belief_fallbacks": 0,
+      "inner_search_fallbacks": 58,
+      "search_fallbacks": 58,
+      "errors": 0,
+      "elapsed_ms_median": 10.226249993138481,
+      "elapsed_ms_p95": 12.281500006793067,
+      "effective_diversity": 10.666666666666666
+    }
+  },
+  "action_agreement": {
+    "generic_vs_mirror_fill": {
+      "matches": 63,
+      "total": 64,
+      "rate": 0.984375
+    },
+    "generic_vs_oracle": {
+      "matches": 63,
+      "total": 64,
+      "rate": 0.984375
+    },
+    "mirror_fill_vs_oracle": {
+      "matches": 62,
+      "total": 64,
+      "rate": 0.96875
+    }
+  },
+  "samples": [
+    {
+      "game_index": 0,
+      "step": 5,
+      "root_player": 0,
+      "information_set_key": "53115b2a8c7d060e9b609f74375df7b34a0b144959fa25810c482818dc3537bd",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "6a3fb2dcded3a6a07c0813aaaf373e3cc61935e15bfcc2c1a11ea7bd0f04da1c"
+    },
+    {
+      "game_index": 0,
+      "step": 7,
+      "root_player": 0,
+      "information_set_key": "69482662366b64ff2f44556507ba8d9429964bd640c8deca55c9230835b2139a",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "71a31d686071d0305fecf8947c64cbfe733a5c7aa0136357b8738e15a9054612"
+    },
+    {
+      "game_index": 0,
+      "step": 8,
+      "root_player": 0,
+      "information_set_key": "1451d0c7645d5901ad7f2995a0e1c2153ccb1823d44679d290c471e7ed8c4014",
+      "actions": {
+        "mirror_fill": [
+          1
+        ],
+        "generic": [
+          1
+        ],
+        "oracle": [
+          1
+        ]
+      },
+      "values": {
+        "mirror_fill": 0.0527509886695735,
+        "generic": 0.04257361670609729,
+        "oracle": 0.04397162730494584
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "a487d4ae77bf4e0c59f5d0258b99244088da45766a67dc609ce193c9ebe518db"
+    },
+    {
+      "game_index": 0,
+      "step": 9,
+      "root_player": 1,
+      "information_set_key": "b5e4d9deb70fcb33f6edca262781b458442254d28b272537e97708954746b752",
+      "actions": {
+        "mirror_fill": [
+          5
+        ],
+        "generic": [
+          5
+        ],
+        "oracle": [
+          5
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "d2faf13e64bf8e2f077d7fbcfb245bb6d44ba6ed7c1c77ea9afdf69cb8ba340f"
+    },
+    {
+      "game_index": 0,
+      "step": 10,
+      "root_player": 1,
+      "information_set_key": "fe8242a8d9cebd4bab24808d79b145c1339e8f5cfedd6755bd39b424868521ad",
+      "actions": {
+        "mirror_fill": [
+          2
+        ],
+        "generic": [
+          2
+        ],
+        "oracle": [
+          2
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "34ce8a15fde4ff5ba5d52453fc0ffc161a9e066aab5848ff8622923454eaf57e"
+    },
+    {
+      "game_index": 0,
+      "step": 13,
+      "root_player": 1,
+      "information_set_key": "d611502d814e9381efaaa9777a4671eaf4e1bd91a5b91b920b6402e48118bb8d",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "4391b1afb22c40fb9d7ceee6e09ce68917cd2a25af7d4d915763199570bb4596"
+    },
+    {
+      "game_index": 0,
+      "step": 16,
+      "root_player": 1,
+      "information_set_key": "6a9f3fd7e4ef1dad1c44c88f21714bc46d68f2987658a48ba86765c860c4a885",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "5e33812feb42c7cff71ff011e5d4c07fd74ec1930dd4a4b6e9eb28e72f259a48"
+    },
+    {
+      "game_index": 0,
+      "step": 17,
+      "root_player": 1,
+      "information_set_key": "4c2733a59af9924cad255b773c437aeb5aebacb70a4a5d92479fda9a57a885ab",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "d5aa8b6f749a8cb096a24ac0f444c560d057b8eefeeacccf51be14ff8263354d"
+    },
+    {
+      "game_index": 0,
+      "step": 18,
+      "root_player": 1,
+      "information_set_key": "243d825ca06b1c1652a294df026afbc112d7c402c0bc39248a669462bf9494ce",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "74143036311977ef81139680bc3d828889b424295300558a91212048fb4adfb8"
+    },
+    {
+      "game_index": 0,
+      "step": 19,
+      "root_player": 1,
+      "information_set_key": "bde12234914390177e46a6d972f4d6c88f32ab36ac81b0b83e202505be8b0b17",
+      "actions": {
+        "mirror_fill": [
+          2
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": 0.01759818296647072,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "871750a22bb8cd50092d65a6198f92729b61b5cbfcb421335efcbd766aaf5cd7"
+    },
+    {
+      "game_index": 0,
+      "step": 23,
+      "root_player": 0,
+      "information_set_key": "4655c5a690140cb1e47fbe74d9906414bcbc970ca49742a5bac4dc93a97a211c",
+      "actions": {
+        "mirror_fill": [
+          1
+        ],
+        "generic": [
+          1
+        ],
+        "oracle": [
+          1
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "8ad004530a78bf0923a35d086d97ebce0f265559962df5f3d212759cf2bba968"
+    },
+    {
+      "game_index": 0,
+      "step": 24,
+      "root_player": 0,
+      "information_set_key": "57036f82277d3b74789476092bc13cd45ec73212a42f5f38989750c2fc0a02bd",
+      "actions": {
+        "mirror_fill": [
+          1
+        ],
+        "generic": [
+          1
+        ],
+        "oracle": [
+          1
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "d11cbfeb78e61d117425814c73105eef2e35711e45c5e48e7f35dbd1c5a1df2e"
+    },
+    {
+      "game_index": 0,
+      "step": 25,
+      "root_player": 0,
+      "information_set_key": "94199421ff9067d06beaed67c5f2bcd5a16c3505a5ce7ef9fa5bb8bc8b1b2d13",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "58c302d49133da5589398955beaf9bc8a57ad6e50cd5236b86ac2a66da7ff27a"
+    },
+    {
+      "game_index": 0,
+      "step": 26,
+      "root_player": 0,
+      "information_set_key": "8510a9f9332702fe01e1a5628aa215637a0ba8be7d74a6c2fa82838f1ae2ba96",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "4ea90d72bbfa21848667ff9db821c9cb595ce410d5e93503749e6262dd956710"
+    },
+    {
+      "game_index": 0,
+      "step": 28,
+      "root_player": 0,
+      "information_set_key": "4dc09127a1a572802fff146a74b91f65891c414d1b5e5249f49df5f3229dff38",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "50b72a884cffb97034a505684ba28e3c889c259a5a85ff80da345d5d04f93652"
+    },
+    {
+      "game_index": 0,
+      "step": 29,
+      "root_player": 0,
+      "information_set_key": "d35fada4c67d412ce53b9987ed7f1d4c53d9dedcf452a804fc109d1b584a8491",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "daf75bf87e1d289144d969ef93d5f31473a7310feb6c4a4f6ced9fc78b4812a0"
+    },
+    {
+      "game_index": 0,
+      "step": 30,
+      "root_player": 0,
+      "information_set_key": "5049538f0dd9ad81a4aad8035315b080ca750f1e1c1efb77d13c13a14f6138f3",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "a78f275e4b38cd8c7e825bb7e2a4a401e6ed6fddbe9137f25a540ff1ff4384f2"
+    },
+    {
+      "game_index": 0,
+      "step": 32,
+      "root_player": 0,
+      "information_set_key": "1844868be24402d1d010285c8d815e04782d125d205fa1433d62791f8e3abb04",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "63570ecb0bda41ba3088268df53ce94407a6cb0ac5fd5e210c32fd18156d01b6"
+    },
+    {
+      "game_index": 0,
+      "step": 34,
+      "root_player": 0,
+      "information_set_key": "2b7d47ccf15cfc8c401f948d8ec86e94ffd867d343e8394af133f5d011e83ac5",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "afc91fa8e4bfa2611a1e9c4d2475008132b7342000b68fb50344671cd166c68b"
+    },
+    {
+      "game_index": 0,
+      "step": 36,
+      "root_player": 0,
+      "information_set_key": "b3e516b1d37e41b631a8fda50a0e98f33d6aee25eb186fece2f66f176344b640",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "54c80f040787ae69d31412147a29b3dd33195a75eff8dffe5b92b0ddda2fd977"
+    },
+    {
+      "game_index": 0,
+      "step": 39,
+      "root_player": 1,
+      "information_set_key": "b97eeebb586a16130ae7b849d59e2f14d3815f82a2a2854561b66edb8a4afab7",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "9c2c1205b90130c3e9c1763fc9db69e904a15f70fbafe8ea8d2eb0595c6ab071"
+    },
+    {
+      "game_index": 0,
+      "step": 41,
+      "root_player": 1,
+      "information_set_key": "fe340ea57dd01d0709b455a2884e3e2cbbabd5cfab026344b798df234288a6ab",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "688668f6d52e8c94dcb4267ae54b79266c09e1118572b1dbd5c71f389d2a61db"
+    },
+    {
+      "game_index": 0,
+      "step": 42,
+      "root_player": 1,
+      "information_set_key": "620c19da894915a8e22bb0f5ae33856757797eabeca974dc98f890bd0c3f4a8a",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "c42ea5e2184480d2288be61c804ce1a226f8540a6197253c200eea07351d55d8"
+    },
+    {
+      "game_index": 0,
+      "step": 43,
+      "root_player": 1,
+      "information_set_key": "0853480324d422106dbf753665ce3139af873d6d7f444050482ca15e63f39a18",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "ffa2cac722283e278e8b3cf6602aed3b3741d3a3c4df7b67154c484bbc753900"
+    },
+    {
+      "game_index": 0,
+      "step": 44,
+      "root_player": 1,
+      "information_set_key": "460f00d8beb21906a895911e4558f117a2e70ac03fce5332684642765d2fa33c",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": -0.1782099700117429,
+        "generic": -0.18522537714502882,
+        "oracle": -0.17666034354933252
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "145f666a7d298a3daa93639ecb339c679db511c6157ca90326d5f0719b03f2ed"
+    },
+    {
+      "game_index": 0,
+      "step": 46,
+      "root_player": 0,
+      "information_set_key": "7a63f652d827956c6676f4019c17dd5a7271b53b79cc0533d2ec9d678205d6a5",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "399dc2aa30defcd804b2be1cc321648f5f571010cc67187306cbac648f3e4718"
+    },
+    {
+      "game_index": 0,
+      "step": 47,
+      "root_player": 1,
+      "information_set_key": "3ed5a3decc4955f44969e919eea6c8fda35beae2f47b24e86221f4ab265f3e7b",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "92161a6a1630acbafdd97b3dfc397b05c6d4ef4d5d08ce3f8468d22d6770f995"
+    },
+    {
+      "game_index": 0,
+      "step": 49,
+      "root_player": 0,
+      "information_set_key": "cba0e7ed94bfb9a25ffeadfd2529715eae99235045582c235188e7e8723f72ce",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "c9516e9be259d94c75a2b097af2baaeac2abfc36436409625b83cd9c3442990d"
+    },
+    {
+      "game_index": 0,
+      "step": 50,
+      "root_player": 0,
+      "information_set_key": "f16f9bb08b191cabd07478e9b1cafcd8c1607b4742ce7e8ae76f29d1d8e50c5a",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "92d31ca6cc7c57e6f5b1cccc0007a27dd5b732b6720fe2d0e3634ddef3fdeb83"
+    },
+    {
+      "game_index": 0,
+      "step": 52,
+      "root_player": 0,
+      "information_set_key": "867bd16e9dc0f39869be6c398cbb51298febc05709c7917841a0ed0341d901a0",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "c612169f399af72fb2ef2bd0fdf1c4df82b23ba527d37c6493a43e5635e20891"
+    },
+    {
+      "game_index": 0,
+      "step": 53,
+      "root_player": 0,
+      "information_set_key": "575580a29d7875198939a0b08850a4a117d8c447e54a2f335d4c909b43d634c0",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "ac4932a9709f655a865023fe3be5d15e74962b411254bad89b90b2805ba4a80e"
+    },
+    {
+      "game_index": 0,
+      "step": 55,
+      "root_player": 0,
+      "information_set_key": "fdf2bb9f192171d02db0a849cd4804c0171c2686f078c5777145fc2a76cc6fa1",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "77da9ac6b878d7cf7b09f19f20058cfadaf8d09eed797f52cf81aa667e564983"
+    },
+    {
+      "game_index": 0,
+      "step": 57,
+      "root_player": 0,
+      "information_set_key": "459eb87c1202dd69217a61eb8712b2b52a4785dbb9f8d4a19eefbaf3167d48a8",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "17796a99518df3f480025139e667890f24ab09338338e9b7e66320c12c8b327b"
+    },
+    {
+      "game_index": 0,
+      "step": 58,
+      "root_player": 0,
+      "information_set_key": "b65918e10998791ba5358cbd81f3768fa2e61467f69c9d81bd7b0a329d21fc34",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "384bdced588c3265a9d7e02f8bc5364fd3b0efa3ce4358dfa982d3c27e7c4d18"
+    },
+    {
+      "game_index": 0,
+      "step": 59,
+      "root_player": 1,
+      "information_set_key": "7e2932a780e443d711e7ab37a52bd1d91eca77c6d680f6cb95e8881fc8b02bb5",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "a1b49c96527ec6e3678b88b1eb7af4930b6e9c28a39eed3a954adfe9a046c95c"
+    },
+    {
+      "game_index": 0,
+      "step": 61,
+      "root_player": 0,
+      "information_set_key": "d5dcad229cdee7bf29ee1b72a12dee583363a07c74c91d3a2881556306d508ed",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "f536da903af0c5cac454cd0ad7dafd480a5afcb2f682e2ef833f5bc52164c8a9"
+    },
+    {
+      "game_index": 0,
+      "step": 63,
+      "root_player": 0,
+      "information_set_key": "81fd4e4fadb1ffeedec9ac9273a151b0061977c805cc29bc3234c9b9794df371",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "9559d45ae454f3f893b3aa914d22f4510ba0f1007b3ab47baa025d2bf25fc6d6"
+    },
+    {
+      "game_index": 0,
+      "step": 66,
+      "root_player": 1,
+      "information_set_key": "4145d79f4f1e285b480d832cca27c7c0e72fc54e6670cf2e3e73e538a027fc42",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "dff169f7fd9676f0ead833a0f19b460069cf1ae05b7893cf24f585469f3ab884"
+    },
+    {
+      "game_index": 0,
+      "step": 67,
+      "root_player": 1,
+      "information_set_key": "139fc7786cc2e7d14bb23bdf5fd837ab3ed60b6510115a6349999b96e93474cf",
+      "actions": {
+        "mirror_fill": [
+          1
+        ],
+        "generic": [
+          1
+        ],
+        "oracle": [
+          1
+        ]
+      },
+      "values": {
+        "mirror_fill": -0.30594606311069533,
+        "generic": -0.31252582234731446,
+        "oracle": -0.3073955875220561
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "5724491682b60cddcf3904f7e8a97be8a00f9b71fb1364560d965d27288c7293"
+    },
+    {
+      "game_index": 0,
+      "step": 70,
+      "root_player": 0,
+      "information_set_key": "60a7617942c43ec74aa410291b78a093b8f9d5466d2a81ddeea54c749ef09f43",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "89dc8da3d2462c20449c97514b9e03742daa7e13536f60e2f2e26a92f62adaad"
+    },
+    {
+      "game_index": 0,
+      "step": 71,
+      "root_player": 0,
+      "information_set_key": "8a54a3784f5d84ce6ffb452d7a135fe0e125da91152da4094d95d047a4cad560",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "9b73238523464ce0e5f5493b4ba3e63f6cf0d299c04385802bc59a63bd263b3b"
+    },
+    {
+      "game_index": 0,
+      "step": 73,
+      "root_player": 0,
+      "information_set_key": "881e48c21813c194a5bd9d476505619bd37c6ea4375ce6d30b2b66689d4e6f4d",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "c754d924cb9b1625123ef217a32497742d77f005d31e4cdb8c68415dffe93d93"
+    },
+    {
+      "game_index": 0,
+      "step": 74,
+      "root_player": 1,
+      "information_set_key": "9b9f111f163603044913ea3df7adadcf6dece8fc90967f79a3812779dfc5690b",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "baa07463a1c46dff0fc1e181f3620723eacfe04adb7afe775fbc6f3775c9569f"
+    },
+    {
+      "game_index": 0,
+      "step": 77,
+      "root_player": 0,
+      "information_set_key": "b357b2f3245ebc63be8e76bf0a68ae72e6c33267047438a19e3ed5c73baaee87",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "e78a65f751354ea17261a1705334eb5d83849055271ac10a868eda6ba9ed953f"
+    },
+    {
+      "game_index": 0,
+      "step": 78,
+      "root_player": 1,
+      "information_set_key": "9700e01017fe70e5226c71a43d5a3584a84fb1b302708cb1b113f5091b771d29",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "d48c8799d5e8bc32a8e71a97100046d6f32678521f663a40b06d5b5433e69bb0"
+    },
+    {
+      "game_index": 0,
+      "step": 80,
+      "root_player": 0,
+      "information_set_key": "94fe73f2c142f3820eb422e3385561cffcd7dbcdf46d6921c429113779508c8a",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "11f898bf5af3236a2a3827ddd0087367caf53a6cd9ce1a076da404e0d545b14c"
+    },
+    {
+      "game_index": 0,
+      "step": 81,
+      "root_player": 0,
+      "information_set_key": "028b7d8a3b4dba52918a9b43119738086887114c02b3190709f4e3c8c2120961",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "8c1156816ab48bda9e32de0b3acfa26f7bf559b9f7e35a66d12064bddb3a00e2"
+    },
+    {
+      "game_index": 0,
+      "step": 84,
+      "root_player": 1,
+      "information_set_key": "c94612e2fa0d417fc68e0c4b026d8f534e106ca947794c5e9b0c0532ccc03891",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "ae502671b50a1c547b0af0cecfda6edf0afa8cb0d148bc7d5b6ec5593511251e"
+    },
+    {
+      "game_index": 0,
+      "step": 85,
+      "root_player": 1,
+      "information_set_key": "319336a09c2b8c580932d59788a59227d06d900c4218eaa83945f7b78ab2b2d9",
+      "actions": {
+        "mirror_fill": [
+          1
+        ],
+        "generic": [
+          1
+        ],
+        "oracle": [
+          1
+        ]
+      },
+      "values": {
+        "mirror_fill": -0.45430902464231304,
+        "generic": -0.46220295332560435,
+        "oracle": -0.45557786654165267
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "9d7e005771ebd7d07fa93e9876882801e961b663fd4918b8f84e9a0c91f2cd4e"
+    },
+    {
+      "game_index": 0,
+      "step": 88,
+      "root_player": 0,
+      "information_set_key": "5d94e527bab0dffdeb6cda74b1842361ebdc9f21c42c4018443c21026d03b63b",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "ff275e1bb8ae489da995aa07bf19a231d512a08b2af1d0564a0e50e44954a87b"
+    },
+    {
+      "game_index": 0,
+      "step": 90,
+      "root_player": 0,
+      "information_set_key": "df2b77d20a295086e495c63eb6104778f5f8ced782770b4a966432e073cb3ae6",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "65f208f33f93bcc1d9362301d26ebefb9156e4f974c182370f64a7fcf62f6c7b"
+    },
+    {
+      "game_index": 0,
+      "step": 93,
+      "root_player": 1,
+      "information_set_key": "f4fb553f749f1020e8ab0d3ebfee32711512569dbc7ebfc2103f2db514020b0c",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          1
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": -0.5710250929339673
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "53c1fca405e790de7cadd8d1f3fee5b4270de53c0ac792ccff9a4e73ea686aff"
+    },
+    {
+      "game_index": 0,
+      "step": 95,
+      "root_player": 0,
+      "information_set_key": "219efa7caa5b45a145110715bbac8ab1b4d76d66ea0ff0a7b0f010d02851f83a",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "d1b87303b9c593aa7a5149d3b570f67b37dd72d3a2653d2f35cf2983ace5ea32"
+    },
+    {
+      "game_index": 0,
+      "step": 96,
+      "root_player": 0,
+      "information_set_key": "97adbb22f4b05390b23ceef952b940e7ffd34280a8646aad7b01398947196c65",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "8ac99f42653c72bb80df5753918bfdcfb6eb58e7e48f20922d79651bc3783fb1"
+    },
+    {
+      "game_index": 1,
+      "step": 5,
+      "root_player": 0,
+      "information_set_key": "d9686452eaf53a8686d20a357a28488de626c6eda4d3f03e73f4223e8bc26a52",
+      "actions": {
+        "mirror_fill": [
+          9
+        ],
+        "generic": [
+          9
+        ],
+        "oracle": [
+          9
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "8001e678d96f89fe441fbfdde6fac21754c1a2efd0751635c8a96a24d6ef3d1d"
+    },
+    {
+      "game_index": 1,
+      "step": 6,
+      "root_player": 0,
+      "information_set_key": "a5cfb2364e4c7b344d9080e8df7d8a814f365b0782729ab40abe40dcd7f15017",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "92ff23111a6b39d473c03b038b892e5db93c308241514e9ca5061b3a32409f68"
+    },
+    {
+      "game_index": 1,
+      "step": 7,
+      "root_player": 0,
+      "information_set_key": "bdf503da673f7590c3e3c59e8fc9565045c1cd26b958fedf16a6dcf71d995b4b",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "5d7d8db24bcf51909549676642b2009a77e7a6b2bda96eba50d1ec916865fc7c"
+    },
+    {
+      "game_index": 1,
+      "step": 8,
+      "root_player": 0,
+      "information_set_key": "02f0d6018b8376fcdccff08c49537d5eb651931c08cbbf769dc8381510002ab0",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": 0.08562444585676514,
+        "generic": 0.09193651628286079,
+        "oracle": 0.09178617387121189
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "2226e762e79bf38fed83adebf8fc7bfc66dbe0aa0ffb50151a30eeaf03b23e67"
+    },
+    {
+      "game_index": 1,
+      "step": 11,
+      "root_player": 1,
+      "information_set_key": "16212d2982c9ece96e20e7fae7d5aa1e7303bc1e16352c6b2d6b341ded0f8418",
+      "actions": {
+        "mirror_fill": [
+          2
+        ],
+        "generic": [
+          2
+        ],
+        "oracle": [
+          2
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "c597c36de68ba07c879bf571c375a021e7543c518e9c11b407b3c8006126105c"
+    },
+    {
+      "game_index": 1,
+      "step": 12,
+      "root_player": 1,
+      "information_set_key": "1ef1ae1a81e6b3e3dc3c3c533010d972902e2bcb935d10185908ca9516e8ab3b",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "129eda62a588a0aae0eff86476259af9065aa4220b267d07ec7b5fd519df4659"
+    },
+    {
+      "game_index": 1,
+      "step": 13,
+      "root_player": 1,
+      "information_set_key": "7eecf0ed0039053f78f64827fd28c6dd9e7349046e9048d4fd8f14c8363e6e5b",
+      "actions": {
+        "mirror_fill": [
+          1
+        ],
+        "generic": [
+          1
+        ],
+        "oracle": [
+          1
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "254b8b5ce1978af62bec8ed27068cc80cfbff16223a863e1d137f5ecef75321c"
+    },
+    {
+      "game_index": 1,
+      "step": 15,
+      "root_player": 1,
+      "information_set_key": "99698bb998e080d8bd71a591ee9f028ecf6c9211f378a110d7bee7986c2455e6",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "fa5bfd5ab183962d70ba04bf81cb5340d862fdf60737f1a553ac72a20a27b96b"
+    },
+    {
+      "game_index": 1,
+      "step": 16,
+      "root_player": 1,
+      "information_set_key": "4e4aac78a6aafe7c8bf568b540bdc8019a3543a4328ae4003eeac424e484df1b",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "a600bd40b0b78c9db06efa0817a8c5a622d963f6ee0032bbb508659154be74e4"
+    },
+    {
+      "game_index": 1,
+      "step": 17,
+      "root_player": 1,
+      "information_set_key": "155e8465e8e9e74db4ed7a6767ac18ad511b5f3658f58586529578c1cb823e02",
+      "actions": {
+        "mirror_fill": [
+          0
+        ],
+        "generic": [
+          0
+        ],
+        "oracle": [
+          0
+        ]
+      },
+      "values": {
+        "mirror_fill": null,
+        "generic": null,
+        "oracle": null
+      },
+      "generic_unique_determinizations": 4,
+      "generic_errors": [],
+      "public_fingerprint": "9b6233915e8c4ac682e56c12b9e0a15e8e466b13bde3f7920770480c30bd865e"
+    }
+  ],
+  "faults": {},
+  "duration_seconds": 6.332815599991591,
+  "passed": false
+}

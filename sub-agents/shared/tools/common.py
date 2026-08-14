@@ -236,3 +236,43 @@ def update_registry_specialist(name: str, **changes: Any) -> None:
             write_json_atomic(registry_path, registry)
             return
     raise ValueError(f"specialist is not registered: {name}")
+
+
+def normalize_worker_identity(provider: str | None, model: str | None = None) -> str:
+    provider_name = (provider or "").strip().lower()
+    model_name = (model or "").strip().lower()
+    if provider_name == "codex":
+        return "codex"
+    if provider_name == "claude":
+        if "opus" in model_name:
+            return "opus"
+        if "sonnet" in model_name:
+            return "sonnet"
+        return "claude"
+    if provider_name == "antigravity":
+        return "antigravity"
+    return provider_name or "unknown"
+
+
+def assigned_review_identity(worker_identity: str) -> dict[str, str]:
+    identity = worker_identity.strip().lower()
+    if identity == "codex":
+        return {
+            "reviewer": "opus",
+            "provider": "claude",
+            "model": "opus",
+            "reason": "Codex-authored experiments require an independent Opus/Claude review.",
+        }
+    if identity in {"opus", "claude", "sonnet"}:
+        return {
+            "reviewer": "codex",
+            "provider": "codex",
+            "model": "gpt-5.5",
+            "reason": "Claude/Opus-authored experiments require an independent Codex review.",
+        }
+    return {
+        "reviewer": "codex",
+        "provider": "codex",
+        "model": "gpt-5.5",
+        "reason": "Unmapped worker identities default to Codex review.",
+    }

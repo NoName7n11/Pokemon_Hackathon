@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-14T00:32:57.120812+00:00",
+  "phase": 6,
+  "mode": "trajectory_pipeline_validation",
+  "configuration": {
+    "run_id": "phase6-final-v3",
+    "games": 8,
+    "evaluation_games": 2,
+    "root_seed": 6026,
+    "max_steps": 3000,
+    "max_candidates": 64,
+    "split_policy": {
+      "train_percent": 60,
+      "validation_percent": 20,
+      "test_percent": 20,
+      "holdout_deck_sha256": []
+    }
+  },
+  "decks": [
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\Decs\\Hydrapple.csv",
+      "file_sha256": "e1a9abf173bb5f8961156e926feaad7e94a708c638eb606aa9af2065ad41ac41",
+      "deck_sha256": "acd99cd7c464dd9d0aa1116f62fc0a8f21e9353b7f485d9009fe3dd35aab96ab"
+    },
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Fire.csv",
+      "file_sha256": "2191b33925fa0d44729f9cf790ba66bf50ef9a4c48451023853a419ff6f79de4",
+      "deck_sha256": "f3765c3291d7d6e4caf6f6971a6b2b34f7ffb7be5efb7280ae8c64974c8f1887"
+    },
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Grass.csv",
+      "file_sha256": "f6cadd59a7e6741e96f18754c0866f87e97ed85f87b3a4486e510f4ea0ae2448",
+      "deck_sha256": "7f9b0ee2b31d9b25809f0804836839b2e11a56172db76380d775787b9aadbdff"
+    },
+    {
+      "path": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\No_Name_Decks\\No_Name_Dark.csv",
+      "file_sha256": "5fc5813fb39b6f7d5bcd78b1404b23d414f089c9f5333975b2a8b66e25be9954",
+      "deck_sha256": "1a71acec6c11efbc1ea25af3c26ecb3f6d8d24ed6178d4280601acd4ee1dbbb2"
+    }
+  ],
+  "resume": {
+    "initial": {
+      "requested_games": 4,
+      "existing_games": 0,
+      "generated_games": 4,
+      "completed_games": 4,
+      "decisions": 437,
+      "errors": [],
+      "elapsed_seconds": 10.074781999996048
+    },
+    "extension": {
+      "requested_games": 8,
+      "existing_games": 4,
+      "generated_games": 4,
+      "completed_games": 4,
+      "decisions": 526,
+      "errors": [],
+      "elapsed_seconds": 15.042765799997142
+    },
+    "no_op": {
+      "requested_games": 8,
+      "existing_games": 8,
+      "generated_games": 0,
+      "completed_games": 0,
+      "decisions": 0,
+      "errors": [],
+      "elapsed_seconds": 0.01417829999991227
+    },
+    "initial_target": 4,
+    "passed": true
+  },
+  "evaluation_generation": {
+    "requested_games": 2,
+    "existing_games": 0,
+    "generated_games": 2,
+    "completed_games": 2,
+    "decisions": 148,
+    "errors": [],
+    "elapsed_seconds": 3.6978794999886304
+  },
+  "corpus": {
+    "games": 10,
+    "decisions": 1111,
+    "compressed_bytes": 671105,
+    "raw_json_bytes": 10347951,
+    "compression_ratio": 0.06485390199470407,
+    "bytes_per_game": 67110.5,
+    "bytes_per_decision": 604.054905490549,
+    "splits": {
+      "evaluation": 2,
+      "test": 2,
+      "train": 6
+    },
+    "purposes": {
+      "evaluation": 2,
+      "training": 8
+    },
+    "manifest_revision": 10,
+    "manifest_fingerprint": "82b7e9c4415022c030b21641ab448dc70e34922be5b0ab2e4eb8d7dd4fa204d2",
+    "exact_content_replay": true
+  },
+  "validation": {
+    "games": 10,
+    "decisions": 1111,
+    "errors": [],
+    "manifest_revision": 10,
+    "manifest_sha256": "82b7e9c4415022c030b21641ab448dc70e34922be5b0ab2e4eb8d7dd4fa204d2",
+    "passed": true
+  },
+  "replay": {
+    "mode": "canonical_record_replay",
+    "native_resimulation_supported": false,
+    "native_resimulation_reason": "local battle_start exposes no seed input",
+    "training_reader_games": 8,
+    "evaluation_ids_in_training_reader": [],
+    "distribution": {
+      "games": 8,
+      "decisions": 963,
+      "outcomes": {
+        "0": 5,
+        "1": 3
+      },
+      "decks": {
+        "1a71acec6c11efbc1ea25af3c26ecb3f6d8d24ed6178d4280601acd4ee1dbbb2": 3,
+        "7f9b0ee2b31d9b25809f0804836839b2e11a56172db76380d775787b9aadbdff": 6,
+        "acd99cd7c464dd9d0aa1116f62fc0a8f21e9353b7f485d9009fe3dd35aab96ab": 2,
+        "f3765c3291d7d6e4caf6f6971a6b2b34f7ffb7be5efb7280ae8c64974c8f1887": 5
+      },
+      "models": {
+        "shipped_heuristic:phase6-bootstrap": 16
+      },
+      "selection_contexts": {
+        "0:0": 593,
+        "1:1": 16,
+        "1:15": 7,
+        "1:2": 6,
+        "1:21": 15,
+        "1:22": 35,
+        "1:3": 66,
+        "1:4": 24,
+        "1:7": 102,
+        "1:8": 19,
+        "1:9": 7,
+        "2:28": 4,
+        "4:30": 37,
+        "4:33": 3,
+        "5:34": 14,
+        "7:37": 4,
+        "8:38": 3,
+        "9:41": 8
+      }
+    },
+    "passed": true
+  },
+  "corruption_recovery": {
+    "pre_repair": {
+      "games": 10,
+      "decisions": 1057,
+      "errors": [
+        {
+          "game_id": "phase6-final-v3-g000000",
+          "error": "TrajectoryError:trajectory file checksum mismatch: phase6-final-v3-g000000"
+        }
+      ],
+      "manifest_revision": 10,
+      "manifest_sha256": "82b7e9c4415022c030b21641ab448dc70e34922be5b0ab2e4eb8d7dd4fa204d2",
+      "passed": false
+    },
+    "repair": {
+      "quarantined": [
+        {
+          "game_id": "phase6-final-v3-g000000",
+          "error": "TrajectoryError:trajectory file checksum mismatch: phase6-final-v3-g000000"
+        }
+      ],
+      "kept": 9,
+      "changed": true
+    },
+    "post_repair": {
+      "games": 9,
+      "decisions": 1057,
+      "errors": [],
+      "manifest_revision": 11,
+      "manifest_sha256": "601b6dc1bfe4e1d1310c827d7ea2245e916779956baaa41ab882a81689165740",
+      "passed": true
+    },
+    "passed": true
+  },
+  "retention": {
+    "result": {
+      "retired": [
+        "phase6-final-v3-g000001"
+      ],
+      "remaining_games": 8,
+      "remaining_bytes": 564523,
+      "limits_met": true
+    },
+    "post_retention": {
+      "games": 8,
+      "decisions": 935,
+      "errors": [],
+      "manifest_revision": 12,
+      "manifest_sha256": "e2c8cc0df887ede18957b6307f25fd07e12dc2b16b3b566e776501adc7d5236a",
+      "passed": true
+    },
+    "passed": true
+  },
+  "performance": {
+    "generation_seconds": 28.81542729998182,
+    "generated_games": 10,
+    "generated_decisions": 1111,
+    "games_per_second": 0.34703632522590805,
+    "decisions_per_second": 38.555735732598386
+  },
+  "corpus_directory_sha256": "bc9f8241d71a533c36af26ac7eaee8a391bb4eec772002a63568705dd52925fa",
+  "duration_seconds": 90.4276574000105,
+  "split_isolation": {
+    "game_level_only": true,
+    "seed_groups_unique": true,
+    "evaluation_separate": true
+  },
+  "passed": true
+}

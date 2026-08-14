@@ -1,0 +1,273 @@
+{
+  "id": "EXP-0004",
+  "specialist": "Grass",
+  "created_at": "2026-08-14T02:05:40.942329+00:00",
+  "updated_at": "2026-08-14T02:44:50.896598+00:00",
+  "worker": "claude",
+  "hypothesis": "During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.",
+  "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
+  "mechanisms": [
+    "grass_core_bench_role_priority"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v001-deck-rebase",
+  "candidate_version": "v002-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v001-deck-rebase",
+  "candidate_path": "experiments/EXP-0004/candidate",
+  "status": "RUNNING",
+  "smoke_result": {
+    "specialist": "Grass",
+    "candidate_version": "v002-candidate",
+    "baseline_version": "v001-deck-rebase",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "2026081403",
+    "games": 20,
+    "wins": 12,
+    "losses": 8,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 124.95,
+    "average_decision_time_ms": 13.66675834797582,
+    "max_decision_time_ms": 511.9687999977032,
+    "win_rate": 0.6,
+    "confidence_interval": [
+      0.3865779423152061,
+      0.7811960325858074
+    ],
+    "z_score": 0.8944271909999157,
+    "p_value": 0.37109336952269767,
+    "started_at": "2026-08-14T02:09:51.625412+00:00",
+    "finished_at": "2026-08-14T02:10:23.612611+00:00",
+    "duration_seconds": 31.98548980000487,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "Grass",
+    "candidate_version": "v002-candidate",
+    "baseline_version": "v001-deck-rebase",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081404",
+    "games": 200,
+    "wins": 113,
+    "losses": 87,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 102.235,
+    "average_decision_time_ms": 13.205465608141687,
+    "max_decision_time_ms": 1691.3499999936903,
+    "win_rate": 0.565,
+    "confidence_interval": [
+      0.4957060908195922,
+      0.631843928411026
+    ],
+    "z_score": 1.8384776310850222,
+    "p_value": 0.06599205505934778,
+    "started_at": "2026-08-14T02:10:24.105296+00:00",
+    "finished_at": "2026-08-14T02:14:52.061023+00:00",
+    "duration_seconds": 267.96818989999883,
+    "errors": []
+  },
+  "main_result": {
+    "specialist": "Grass",
+    "candidate_version": "v002-candidate",
+    "baseline_version": "v001-deck-rebase",
+    "opponent": "specialist_previous",
+    "stage": "main",
+    "seed_set": "2026082402",
+    "games": 300,
+    "wins": 143,
+    "losses": 157,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 105.29666666666667,
+    "average_decision_time_ms": 16.819580728830292,
+    "max_decision_time_ms": 780.6168999959482,
+    "win_rate": 0.4766666666666667,
+    "confidence_interval": [
+      0.4208006536261767,
+      0.5331227064403843
+    ],
+    "z_score": -0.8082903768654754,
+    "p_value": 0.41892344094638334,
+    "started_at": "2026-08-14T02:16:42.011777+00:00",
+    "finished_at": "2026-08-14T02:25:58.859108+00:00",
+    "duration_seconds": 556.854327500012,
+    "errors": []
+  },
+  "confirmation_result": {
+    "specialist": "Grass",
+    "candidate_version": "v002-candidate",
+    "baseline_version": "v001-deck-rebase",
+    "opponent": "specialist_previous",
+    "stage": "confirmation",
+    "seed_set": "2026082403",
+    "games": 500,
+    "wins": 248,
+    "losses": 252,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 97.672,
+    "average_decision_time_ms": 16.32878163743627,
+    "max_decision_time_ms": 1111.1556999967434,
+    "win_rate": 0.496,
+    "confidence_interval": [
+      0.4523723541138067,
+      0.5396886428344405
+    ],
+    "z_score": -0.17888543819998334,
+    "p_value": 0.858027656987521,
+    "started_at": "2026-08-14T02:25:59.492104+00:00",
+    "finished_at": "2026-08-14T02:40:35.639228+00:00",
+    "duration_seconds": 876.1450836000004,
+    "errors": []
+  },
+  "cross_deck_results": [
+    {
+      "status": "complete",
+      "opponent": "Claude_Grass_Venusaur",
+      "opponent_version": "v000-baseline",
+      "games": 200,
+      "wins": 73,
+      "losses": 127,
+      "draws": 0,
+      "win_rate": 0.365,
+      "result": "results/cross-deck-Claude_Grass_Venusaur.json"
+    }
+  ],
+  "decision_traces": [
+    {
+      "stage": "screening",
+      "result": "results/decision-trace-screening.json",
+      "log": "orchestration-logs/decision-trace-screening.log",
+      "games": 20,
+      "total_differences": 93,
+      "difference_rate": 0.11610486891385768
+    }
+  ],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 2026081403,
+      "started_at": "2026-08-14T02:09:51.460895+00:00",
+      "finished_at": "2026-08-14T02:10:23.646622+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 200,
+      "seed": 2026081404,
+      "started_at": "2026-08-14T02:10:23.911995+00:00",
+      "finished_at": "2026-08-14T02:14:52.102324+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    },
+    {
+      "stage": "main",
+      "games": 300,
+      "seed": 2026082402,
+      "started_at": "2026-08-14T02:16:41.860737+00:00",
+      "finished_at": "2026-08-14T02:25:58.905492+00:00",
+      "returncode": 0,
+      "result": "results/main-003.json",
+      "log": "logs/main-003.log",
+      "timed_out": false
+    },
+    {
+      "stage": "confirmation",
+      "games": 500,
+      "seed": 2026082403,
+      "started_at": "2026-08-14T02:25:59.275426+00:00",
+      "finished_at": "2026-08-14T02:40:35.672560+00:00",
+      "returncode": 0,
+      "result": "results/confirmation-004.json",
+      "log": "logs/confirmation-004.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "claude",
+      "backend": "claude-code",
+      "model": "opus",
+      "started_at": "2026-08-14T02:05:41.397249+00:00",
+      "finished_at": "2026-08-14T02:09:51.208500+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-claude"
+    }
+  ],
+  "orchestration": {
+    "state": "DEEP_EVALUATION",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T02:05:40.997378+00:00",
+    "updated_at": "2026-08-14T02:16:41.681352+00:00",
+    "review_pack": "human-review/approved/Grass-EXP-0004.md",
+    "ai_review_state": "approve_deep_evaluation",
+    "ai_review_reviewer": "codex",
+    "ai_review_artifact": "reviews/screening-codex-auto-review.json",
+    "deep_seed_base": 2026082401
+  },
+  "reviews": [
+    {
+      "stage": "screening",
+      "status": "approved_for_deep_evaluation",
+      "created_at": "2026-08-14T02:15:14.930118+00:00",
+      "worker_identity": "opus",
+      "assigned_reviewer": {
+        "reviewer": "codex",
+        "provider": "codex",
+        "model": "gpt-5.5",
+        "reason": "Claude/Opus-authored experiments require an independent Codex review."
+      },
+      "json": "human-review/approved/Grass-EXP-0004.json",
+      "markdown": "human-review/approved/Grass-EXP-0004.md",
+      "reviewed_at": "2026-08-14T02:16:11.577472+00:00",
+      "reason": "automatic codex review approved deep evaluation; see reviews/screening-codex-auto-review.json"
+    }
+  ],
+  "review_history": [
+    {
+      "stage": "screening",
+      "decision": "approve_deep_evaluation",
+      "reviewer": "codex",
+      "reason": "automatic AI review; see reviews/screening-codex-auto-review.json",
+      "at": "2026-08-14T02:16:11.377459+00:00"
+    },
+    {
+      "stage": "screening",
+      "decision": "approved_for_deep_evaluation",
+      "reason": "automatic codex review approved deep evaluation; see reviews/screening-codex-auto-review.json",
+      "at": "2026-08-14T02:16:11.577472+00:00"
+    }
+  ],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

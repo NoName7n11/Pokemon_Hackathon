@@ -1,0 +1,8 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py run --specialist Grass --stage confirmation --seed 2026082403
+
+STDOUT:
+confirmation: 248/500 wins (49.6%), 0 draws, 0 crashes
+Result: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\results\confirmation-004.json
+
+
+STDERR:

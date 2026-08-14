@@ -1,0 +1,79 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\matchup_pair.py --agent-a C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\candidate\main.py --deck-a C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\candidate\deck.csv --name-a Grass --version-a v002-candidate --agent-b C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Claude_Grass_Venusaur\main.py --deck-b C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Claude_Grass_Venusaur\deck.csv --name-b Claude_Grass_Venusaur --version-b v000-baseline --games-per-seat 100 --max-steps 3000 --seed 2026082501 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0004\results\cross-deck-Claude_Grass_Venusaur.json
+
+STDOUT:
+{
+  "schema_version": 1,
+  "stage": "tournament",
+  "pair_a": {
+    "name": "Grass",
+    "version": "v002-candidate",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Grass\\experiments\\EXP-0004\\candidate\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Grass\\experiments\\EXP-0004\\candidate\\deck.csv"
+  },
+  "pair_b": {
+    "name": "Claude_Grass_Venusaur",
+    "version": "v000-baseline",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Claude_Grass_Venusaur\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\Claude_Grass_Venusaur\\deck.csv"
+  },
+  "seed_set": "2026082501",
+  "games_per_seat": 100,
+  "games": 200,
+  "a_wins": 73,
+  "b_wins": 127,
+  "draws": 0,
+  "timeouts": 0,
+  "engine_crashes": 0,
+  "faults": {
+    "a": {
+      "crashes": 0,
+      "illegal_actions": 0
+    },
+    "b": {
+      "crashes": 0,
+      "illegal_actions": 0
+    }
+  },
+  "orientations": {
+    "a_first": {
+      "games": 100,
+      "a_wins": 44,
+      "b_wins": 56,
+      "draws": 0
+    },
+    "b_first": {
+      "games": 100,
+      "a_wins": 29,
+      "b_wins": 71,
+      "draws": 0
+    }
+  },
+  "a_win_rate": 0.365,
+  "a_decisive_win_rate": 0.365,
+  "a_confidence_interval": [
+    0.3014041621876483,
+    0.4336842594102984
+  ],
+  "z_score": -3.818376618407357,
+  "p_value": 0.00013433273994052422,
+  "average_steps": 106.385,
+  "decision_time": {
+    "a": {
+      "decisions": 9482,
+      "average_ms": 10.60733541448386,
+      "max_ms": 627.3813000007067
+    },
+    "b": {
+      "decisions": 11795,
+      "average_ms": 12.152063136918557,
+      "max_ms": 903.6400000040885
+    }
+  },
+  "started_at": "2026-08-14T02:40:36.024303+00:00",
+  "finished_at": "2026-08-14T02:44:50.851995+00:00",
+  "duration_seconds": 254.83221849999973,
+  "errors": []
+}
+
+
+STDERR:

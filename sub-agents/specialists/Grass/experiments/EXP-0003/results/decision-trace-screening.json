@@ -1,0 +1,6059 @@
+{
+  "schema_version": 1,
+  "specialist": "Grass",
+  "candidate_version": "v002-candidate",
+  "baseline_version": "v001-deck-rebase",
+  "seed": 915246165,
+  "created_at": "2026-08-13T23:42:53.170435+00:00",
+  "games": 20,
+  "records": [
+    {
+      "game": 1,
+      "step": 5,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 10,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        6
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 6,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 1,
+      "step": 10,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 6,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 170,
+              "max_hp": 170,
+              "energy_count": 0,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 5,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 95,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 13,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 60,
+              "max_hp": 300,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 28,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 652,
+              "name": "Mega Venusaur ex",
+              "hp": 380,
+              "max_hp": 380,
+              "energy_count": 4,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 31,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 3,
+      "step": 97,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        }
+      ],
+      "board": {
+        "turn": 13,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 60,
+              "max_hp": 300,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 28,
+            "prizes_left": 3
+          },
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 652,
+                "name": "Mega Venusaur ex",
+                "hp": 380,
+                "max_hp": 380,
+                "energy_count": 4,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 31,
+            "prizes_left": 3
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 81,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 16,
+        "turn_action_count": 4,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 652,
+              "name": "Mega Venusaur ex",
+              "hp": 380,
+              "max_hp": 380,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 37,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 30,
+                "max_hp": 170,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 34,
+            "prizes_left": 5
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 84,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 16,
+        "turn_action_count": 7,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 652,
+              "name": "Mega Venusaur ex",
+              "hp": 380,
+              "max_hp": 380,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 37,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 30,
+                "max_hp": 170,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 33,
+            "prizes_left": 5
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 86,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 16,
+        "turn_action_count": 9,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 652,
+              "name": "Mega Venusaur ex",
+              "hp": 380,
+              "max_hp": 380,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 37,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 30,
+                "max_hp": 170,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 0,
+            "deck_count": 33,
+            "prizes_left": 5
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 95,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        }
+      ],
+      "board": {
+        "turn": 20,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 35,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 30,
+                "max_hp": 170,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 29,
+            "prizes_left": 2
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 98,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 9,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        5
+      ],
+      "candidate_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        }
+      ],
+      "board": {
+        "turn": 20,
+        "turn_action_count": 4,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 35,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 30,
+                "max_hp": 170,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 28,
+            "prizes_left": 2
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 99,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 9,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        }
+      ],
+      "board": {
+        "turn": 20,
+        "turn_action_count": 5,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 35,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 30,
+                "max_hp": 170,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 26,
+            "prizes_left": 2
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 100,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "board": {
+        "turn": 20,
+        "turn_action_count": 6,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 35,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 918,
+                "name": "Bayleef",
+                "hp": 60,
+                "max_hp": 200,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 26,
+            "prizes_left": 2
+          }
+        ]
+      }
+    },
+    {
+      "game": 4,
+      "step": 101,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 20,
+        "turn_action_count": 7,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 1,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 35,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 6,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 120,
+                "max_hp": 260,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 10,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 160,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 26,
+            "prizes_left": 2
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 4,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 7
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 7
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 8,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 5,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 7,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 5,
+      "step": 51,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 474,
+          "attack_name": "Jet Cyclone",
+          "printed_damage": 210
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        6
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 4,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 4,
+                "tool_count": 0
+              },
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 36,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 35,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 6,
+      "step": 19,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 4,
+        "turn_action_count": 2,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 2,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 918,
+              "name": "Bayleef",
+              "hp": 90,
+              "max_hp": 100,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 7,
+      "step": 35,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 10,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 1
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "board": {
+        "turn": 5,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 390,
+              "max_hp": 400,
+              "energy_count": 2,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 918,
+                "name": "Bayleef",
+                "hp": 100,
+                "max_hp": 100,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 37,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 651,
+                "name": "Ivysaur",
+                "hp": 110,
+                "max_hp": 110,
+                "energy_count": 2,
+                "tool_count": 1
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 41,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 7,
+      "step": 50,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 5
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 390,
+              "max_hp": 400,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 919,
+                "name": "Mega Meganium ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 34,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 37,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 7,
+      "step": 51,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 9,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        }
+      ],
+      "baseline_choice": [
+        5
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 7,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 390,
+              "max_hp": 400,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 919,
+                "name": "Mega Meganium ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 8,
+            "deck_count": 32,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 37,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 7,
+      "step": 54,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 12,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 1
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        9
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 5,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 390,
+              "max_hp": 400,
+              "energy_count": 3,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 919,
+                "name": "Mega Meganium ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 1
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 32,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 37,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 8,
+      "step": 8,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 45,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 7,
+            "deck_count": 46,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 9,
+      "step": 5,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "board": {
+        "turn": 1,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 46,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 47,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 11,
+      "step": 18,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 42,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 44,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 11,
+      "step": 19,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 4,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 918,
+                "name": "Bayleef",
+                "hp": 100,
+                "max_hp": 100,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 42,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 44,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 11,
+      "step": 66,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 26,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 6,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "PLAY",
+          "index": 7
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 8,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 9,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 939,
+          "attack_name": "Bind Down",
+          "printed_damage": 10
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 4
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 650,
+              "name": "Bulbasaur",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 2,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 10,
+            "deck_count": 35,
+            "prizes_left": 2
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 4,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 919,
+                "name": "Mega Meganium ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 2,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 28,
+            "prizes_left": 4
+          }
+        ]
+      }
+    },
+    {
+      "game": 13,
+      "step": 25,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 120,
+          "attack_name": "Myriad Leaf Shower",
+          "printed_damage": 30
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 3,
+        "turn_action_count": 5,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": true,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 43,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 45,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 13,
+      "step": 43,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 15,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 5
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 120,
+          "attack_name": "Myriad Leaf Shower",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        6
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 4,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 36,
+            "prizes_left": 4
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 1,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 13,
+      "step": 44,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 13,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 120,
+          "attack_name": "Myriad Leaf Shower",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        5
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 3,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 4,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 36,
+            "prizes_left": 4
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 1,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 13,
+      "step": 45,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 120,
+          "attack_name": "Myriad Leaf Shower",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "EVOLVE",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 4,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 36,
+            "prizes_left": 4
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 1,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 13,
+      "step": 46,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 120,
+          "attack_name": "Myriad Leaf Shower",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 5,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 5,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 651,
+                "name": "Ivysaur",
+                "hp": 110,
+                "max_hp": 110,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 36,
+            "prizes_left": 4
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 1,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 9,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 7,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 5,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 46,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 300,
+              "max_hp": 300,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 7,
+            "deck_count": 45,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 14,
+      "step": 43,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 3,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 7
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 7
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 8,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 170,
+              "max_hp": 170,
+              "energy_count": 2,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 652,
+                "name": "Mega Venusaur ex",
+                "hp": 380,
+                "max_hp": 380,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 34,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 310,
+              "max_hp": 400,
+              "energy_count": 2,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 8,
+            "deck_count": 33,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 16,
+      "step": 16,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 6,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 6
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        4
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 6
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 3,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 2,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 42,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 650,
+              "name": "Bulbasaur",
+              "hp": 80,
+              "max_hp": 80,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 917,
+                "name": "Chikorita",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 8,
+            "deck_count": 43,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 19,
+      "step": 54,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "baseline_choice": [
+        2
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        }
+      ],
+      "board": {
+        "turn": 7,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 380,
+              "max_hp": 400,
+              "energy_count": 6,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 1
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 37,
+            "prizes_left": 5
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 918,
+                "name": "Bayleef",
+                "hp": 100,
+                "max_hp": 100,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 1,
+            "deck_count": 32,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 19,
+      "step": 67,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 9,
+        "turn_action_count": 1,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 380,
+              "max_hp": 400,
+              "energy_count": 6,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 919,
+                "name": "Mega Meganium ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 33,
+            "prizes_left": 4
+          },
+          {
+            "active": {
+              "card_id": 340,
+              "name": "Yanmega ex",
+              "hp": 280,
+              "max_hp": 280,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 1,
+                "tool_count": 0
+              },
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 2,
+            "deck_count": 31,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 19,
+      "step": 83,
+      "candidate_seat": 0,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 12,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 1
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 4
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 1092,
+          "attack_name": "Rapid-Fire Combo",
+          "printed_damage": 200
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        3
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 2
+        }
+      ],
+      "baseline_choice": [
+        5
+      ],
+      "baseline_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 0,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 4
+        }
+      ],
+      "board": {
+        "turn": 13,
+        "turn_action_count": 2,
+        "acting_player": 0,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 756,
+              "name": "Mega Kangaskhan ex",
+              "hp": 380,
+              "max_hp": 400,
+              "energy_count": 8,
+              "tool_count": 1
+            },
+            "bench": [
+              {
+                "card_id": 710,
+                "name": "Meganium",
+                "hp": 160,
+                "max_hp": 160,
+                "energy_count": 0,
+                "tool_count": 1
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 2,
+                "tool_count": 1
+              },
+              {
+                "card_id": 919,
+                "name": "Mega Meganium ex",
+                "hp": 360,
+                "max_hp": 360,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 25,
+            "prizes_left": 2
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 29,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 6,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 4,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 1,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        3
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 3
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 46,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 6,
+            "deck_count": 46,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 7,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 5,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 2
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        0
+      ],
+      "candidate_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "baseline_choice": [
+        1
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 2
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 2,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 46,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 46,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 9,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 4,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "PLAY",
+          "index": 1
+        },
+        {
+          "type": "ABILITY",
+          "area": "BENCH",
+          "index": 0
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        2
+      ],
+      "candidate_selected": [
+        {
+          "type": "RETREAT"
+        }
+      ],
+      "baseline_choice": [
+        0
+      ],
+      "baseline_selected": [
+        {
+          "type": "PLAY",
+          "index": 1
+        }
+      ],
+      "board": {
+        "turn": 2,
+        "turn_action_count": 4,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": true,
+        "energy_attached": true,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 917,
+              "name": "Chikorita",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [],
+            "hand_count": 6,
+            "deck_count": 46,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 339,
+              "name": "Yanma",
+              "hp": 70,
+              "max_hp": 70,
+              "energy_count": 1,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 4,
+            "deck_count": 46,
+            "prizes_left": 6
+          }
+        ]
+      }
+    },
+    {
+      "game": 20,
+      "step": 36,
+      "candidate_seat": 1,
+      "select_type": "MAIN",
+      "context": "MAIN",
+      "min_count": 1,
+      "max_count": 1,
+      "option_count": 8,
+      "options_truncated": false,
+      "options": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "ACTIVE",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        },
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 1
+        },
+        {
+          "type": "PLAY",
+          "index": 3
+        },
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        },
+        {
+          "type": "ATTACK",
+          "attackId": 120,
+          "attack_name": "Myriad Leaf Shower",
+          "printed_damage": 30
+        },
+        {
+          "type": "RETREAT"
+        },
+        {
+          "type": "END"
+        }
+      ],
+      "candidate_choice": [
+        1
+      ],
+      "candidate_selected": [
+        {
+          "type": "ATTACH",
+          "area": "HAND",
+          "index": 2,
+          "inPlayArea": "BENCH",
+          "inPlayIndex": 0
+        }
+      ],
+      "baseline_choice": [
+        4
+      ],
+      "baseline_selected": [
+        {
+          "type": "ABILITY",
+          "area": "ACTIVE",
+          "index": 0
+        }
+      ],
+      "board": {
+        "turn": 6,
+        "turn_action_count": 1,
+        "acting_player": 1,
+        "first_player": 0,
+        "supporter_played": false,
+        "energy_attached": false,
+        "retreated": false,
+        "players": [
+          {
+            "active": {
+              "card_id": 651,
+              "name": "Ivysaur",
+              "hp": 110,
+              "max_hp": 110,
+              "energy_count": 0,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 339,
+                "name": "Yanma",
+                "hp": 70,
+                "max_hp": 70,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 756,
+                "name": "Mega Kangaskhan ex",
+                "hp": 300,
+                "max_hp": 300,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 96,
+                "name": "Teal Mask Ogerpon ex",
+                "hp": 210,
+                "max_hp": 210,
+                "energy_count": 0,
+                "tool_count": 1
+              }
+            ],
+            "hand_count": 3,
+            "deck_count": 42,
+            "prizes_left": 6
+          },
+          {
+            "active": {
+              "card_id": 96,
+              "name": "Teal Mask Ogerpon ex",
+              "hp": 210,
+              "max_hp": 210,
+              "energy_count": 3,
+              "tool_count": 0
+            },
+            "bench": [
+              {
+                "card_id": 340,
+                "name": "Yanmega ex",
+                "hp": 280,
+                "max_hp": 280,
+                "energy_count": 0,
+                "tool_count": 0
+              },
+              {
+                "card_id": 650,
+                "name": "Bulbasaur",
+                "hp": 80,
+                "max_hp": 80,
+                "energy_count": 0,
+                "tool_count": 0
+              }
+            ],
+            "hand_count": 5,
+            "deck_count": 40,
+            "prizes_left": 5
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "candidate_decisions": 1212,
+    "total_differences": 42,
+    "difference_rate": 0.034653465346534656,
+    "games_with_difference": 14,
+    "contexts": {
+      "MAIN": 42
+    },
+    "select_types": {
+      "MAIN": 42
+    },
+    "candidate_selected_option_types": {
+      "PLAY": 16,
+      "ATTACH": 15,
+      "ATTACK": 4,
+      "EVOLVE": 4,
+      "ABILITY": 2,
+      "RETREAT": 1
+    },
+    "baseline_selected_option_types": {
+      "PLAY": 22,
+      "ATTACH": 9,
+      "ABILITY": 5,
+      "EVOLVE": 3,
+      "RETREAT": 2,
+      "ATTACK": 1
+    },
+    "candidate_wins": 12,
+    "baseline_opponent_wins": 8,
+    "draws_or_timeouts": 0,
+    "records_retained": 42,
+    "records_truncated": false
+  },
+  "limits": {
+    "max_steps_per_game": 3000,
+    "max_records": 200,
+    "max_options_per_record": 40
+  },
+  "errors": []
+}

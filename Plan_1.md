@@ -2,10 +2,10 @@
 
 ## Document status
 
-- **Status:** Active. Phases 0 through 4 are implemented and verified. Phase 5,
-  the belief model and information-set MCTS boundary, is next. The Phase 4
-  heuristic-MCTS candidate remains isolated because it did not clear the
-  playing-strength promotion gate.
+- **Status:** Active. Phases 0 through 7 are implemented and verified. Phase 8,
+  the AlphaZero-style reinforcement loop, is next. The Phase 4 heuristic-MCTS,
+  Phase 5 ISMCTS, and Phase 7 policy-value PUCT research candidates remain
+  isolated because none has cleared the final playing-strength promotion gate.
 - **Primary objective:** Build a competition-ready agent that combines information-set Monte Carlo Tree Search (MCTS) with a learned policy-value model, using the existing simulator and legal-action API.
 - **Development rule:** The active submission remains unchanged until a candidate clears every correctness, performance, generalization, and packaging gate in this document.
 - **Relationship to Plan 2:** Plan 1 supplies the shared search and learning system. Plan 2 deck specialists can later supply decks, heuristic policies, replay reviews, and evaluation opponents, but Plan 1 must remain independently reproducible.
@@ -870,6 +870,31 @@ given the observed search outcomes.
 
 ### Phase 5 - Belief model and ISMCTS
 
+**Status:** Complete on 2026-08-14 as an isolated belief and root-sampled
+ISMCTS validation implementation; **not promoted** to the active submission.
+Definitive evidence is `plan_1/artifacts/reports/phase5-suite.json` (SHA-256
+`d7760895b7ae0bee86460d2eb274e64519acdfb76df2d5840dc6b0d93b090f9c`).
+The failed low-budget diagnostic is intentionally preserved as
+`phase5-suite-insufficient-search.json` (SHA-256
+`a1980ebfc5bfe89f37e8aa92c3a15920b8b56c57740d5c34432a71c90e6c77d0`).
+
+The implementation accounts for public cards, constrains samples to declared
+60-card deck mixtures, preserves revealed-prize positions, samples legal
+face-down Basic Pokemon, reports incompatible-prior fallback, keys policy state
+only from public information, and aggregates root edges across fresh native
+search sessions. Exact hidden zones are available only through a separate
+offline visualizer extractor used by the oracle diagnostic; deployable public
+records still never read `search_begin_input` or visualizer data.
+
+The final four-deck corpus captured 64 public decisions. Generic belief sampled
+256/256 valid, distinct determinizations with zero belief fallbacks, errors, or
+native faults; 206/256 inner searches (80.47%) established full enough root
+coverage to contribute statistics. Generic action agreement was 81.25% versus
+mirror-fill and 87.50% versus oracle. Median generic four-world latency was
+233.55 ms (265.40 ms p95) under the research-only 80 ms per-world budget. These
+results validate the belief/search boundary and expose hidden-state sensitivity;
+they do not establish a playing-strength improvement or deployment latency.
+
 **Work**
 
 - Implement public card accounting, generic prior, root sampling, information-set keys, and oracle diagnostic.
@@ -883,6 +908,46 @@ given the observed search outcomes.
 
 ### Phase 6 - Versioned trajectory pipeline
 
+**Status:** Complete on 2026-08-14 as the immutable data foundation for later
+training. Definitive evidence is
+`plan_1/artifacts/reports/phase6-suite.json` (SHA-256
+`74ffc965b337665f5037cdc9c311b237773418d547d06d014b29724a680b0a48`).
+
+The implementation stores complete terminal games as deterministic gzip JSON,
+publishes them only after strict validation and atomic rename, and records each
+game in a revisioned manifest whose full SHA-256 chain is verified back to
+revision zero. Every decision contains the immutable public observation,
+selection and information-set identities, generated legal action fingerprints
+and masks, chosen action, policy/value targets, search and belief diagnostics,
+policy/deck identities, seed group, and final result. Strict readers recompute
+observation, selection, action, file, content, and manifest checksums; bound
+compressed/decompressed input sizes; and refuse unknown schema fields.
+
+Game IDs make generation resumable and idempotent. Train, validation, test, and
+evaluation assignments occur at complete-game/seed-group granularity; the
+training reader cannot request the evaluation split. Corrupt files are copied
+to quarantine before a repaired manifest is published, and retention copies
+old training games to a recoverable retired archive before removing their live
+manifest entries. Temporary/partial files are never added to the corpus.
+
+The final four-deck validation generated eight training and two isolated
+evaluation games containing 1,111 decisions. It proved a four-game initial
+batch, extension to eight, and a zero-write no-op resume; every immutable record
+replayed to its exact canonical content hash. A copied corpus detected and
+quarantined deliberate gzip truncation, then passed validation and recoverable
+retention. The 10-revision source manifest chain passed completely. Compressed
+storage was 671,105 bytes, 6.49% of raw JSON and about 604 bytes per decision;
+generation measured 0.347 games/s and 38.56 decisions/s on the development
+host. The small validation corpus populated train/test/evaluation but happened
+not to populate validation, so it is infrastructure evidence rather than a
+representative training set.
+
+"Exact replay" currently means exact immutable-record/schema/checksum replay.
+The local native `battle_start` API exposes no seed input, so exact native game
+re-simulation is not claimed. Derived seeds and groups are stored for worker,
+split, and future seeded-engine identity, but do not control the current native
+shuffle.
+
 **Work**
 
 - Implement schemas, atomic game files, manifests, validators, splits, replay reader, retention limits, and corruption recovery.
@@ -893,6 +958,48 @@ given the observed search outcomes.
 - Training/validation/test leakage checks pass.
 
 ### Phase 7 - Policy-value supervised bootstrap
+
+**Status:** Complete on 2026-08-14 as an isolated supervised-learning and PUCT
+bootstrap; **not promoted** to the active submission. Definitive evidence is
+`plan_1/artifacts/reports/phase7-suite-v2.json` (SHA-256
+`2a0a983a5ddc909beadd2c270a25e2f4234b11135b871d8a9b6b9fb4b1b2b093`).
+The reproducible checkpoint is
+`plan_1/artifacts/checkpoints/phase7-bootstrap-v2.json` (file SHA-256
+`9d08d218f0625f0ab2698d3c0fc944d6a8d07e2c020b16f957e3fdae791c4e2a`,
+payload SHA-256
+`1b2d5ea583c5b09c737db1d602194f481385e447ad45a46f1e4b987a1da93a14`).
+
+The CPU-first bootstrap deliberately uses no third-party dependency: a strict,
+checksum-protected hashed linear policy-value model learns a masked softmax over
+the legal candidate list and a tanh outcome value. Policy features may use the
+full public observation and selected-option descriptors. Value features are a
+narrow strategic summary of prize race, Active HP, board HP/Energy, Bench depth,
+hand/deck/discard counts, status, turn, and self-opponent differences. This
+separation is evidence-driven: the first broad value model overfit exact card
+and hand features, scoring 0.4027 held-out Brier against a 0.2451 constant
+baseline. A calibration-only probe still missed at 0.2368 versus 0.2334. Both
+failed reports are retained as `phase7-suite.json` and
+`phase7-calibration-probe.json`.
+
+The final corpus contains 48 complete multi-deck heuristic games split only at
+game/seed-group boundaries: 33 train games with 3,298 decisions, 10 validation
+games with 1,378 decisions, and five untouched test games with 457 decisions.
+Affine tanh value calibration is fitted on validation only. On the test split,
+policy log loss was 0.5393 versus 1.2583 uniform and top-1 accuracy was 82.49%
+versus 38.76% uniform expectation. Value Brier was 0.1430 versus 0.2334 for the
+training-mean constant baseline. Checkpoint reload reproduced predictions
+exactly. Direct model inference measured 0.0148 ms median and 0.0633 ms p95
+against the provisional 5 ms limit.
+
+UCT now accepts an optional observation-limited inference interface. With it,
+candidate priors order expansion and PUCT replaces UCT exploration; learned
+leaf values are conservatively blended 10% with the handcrafted evaluator.
+Without inference, the original UCT path is unchanged. In the final
+seat-balanced 20-game Hydrapple screen, policy-value PUCT scored 12-8 against
+heuristic UCT with zero faults and passed the predeclared 20-point
+non-inferiority screen (`p=0.0017` against the 30% null). This is adequate for
+the Phase 7 “no worse” gate but too small to claim superiority or authorize
+submission promotion. All 93 Plan 1 unit/regression tests pass.
 
 **Work**
 
@@ -1125,9 +1232,9 @@ They are deferred, not omitted: each has a named phase, experiment, and acceptan
 - [x] Tactical evaluator and regression suite pass.
 - [x] Time-bounded heuristic MCTS completes 500-game soak test.
 - [x] Opponent-response search ablated.
-- [ ] Belief sampler and information-set search validated.
-- [ ] Trajectory pipeline is atomic, resumable, and versioned.
-- [ ] Policy-value model trains and exports reproducibly.
+- [x] Belief sampler and information-set search validated.
+- [x] Trajectory pipeline is atomic, resumable, and versioned.
+- [x] Policy-value model trains and exports reproducibly.
 - [ ] PUCT improves or accelerates search under controlled evaluation.
 - [ ] Three unattended self-play iterations complete successfully.
 - [ ] League and held-out generalization gates pass.

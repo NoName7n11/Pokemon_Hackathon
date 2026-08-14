@@ -66,3 +66,11 @@ Append-only platform verification results.
 - Errors: 0
 - Warnings: 1
 
+<!-- verification:VERIFY-20260813-233742-003357 -->
+## 2026-08-13T23:37:45.052729+00:00 - VERIFY-20260813-233742-003357
+
+- Overall: **FAIL**
+- Phases: phase_1_foundation=FAIL, phase_2_experiments=PASS, phase_3_providers=PASS, phase_4_orchestration=FAIL, phase_5_tournament=PASS, phase_5_continuous=PASS, phase_6_promotion=PASS, phase_7_decision_traces=PASS
+- Errors: 3
+- Warnings: 1
+

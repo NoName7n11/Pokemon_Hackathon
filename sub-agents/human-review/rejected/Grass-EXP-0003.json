@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "specialist": "Grass",
+  "experiment": "EXP-0003",
+  "stage": "screening",
+  "created_at": "2026-08-13T23:42:53.269009+00:00",
+  "hypothesis": "During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement.",
+  "expected_effect": "Increase early draw consistency without disabling Yanmega's Bench-to-Active acceleration trigger.",
+  "mechanisms": [
+    "kangaskhan_active_yanma_bench_opening"
+  ],
+  "baseline_version": "v001-deck-rebase",
+  "candidate_version": "v002-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "claude",
+    "backend": "claude-code",
+    "model": null,
+    "started_at": "2026-08-13T23:36:48.569452+00:00",
+    "finished_at": "2026-08-13T23:39:14.968094+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-claude"
+  },
+  "benchmark": {
+    "specialist": "Grass",
+    "candidate_version": "v002-candidate",
+    "baseline_version": "v001-deck-rebase",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "915146165",
+    "games": 200,
+    "wins": 96,
+    "losses": 104,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 107.25,
+    "average_decision_time_ms": 6.76334553923644,
+    "max_decision_time_ms": 326.4992999902461,
+    "win_rate": 0.48,
+    "confidence_interval": [
+      0.4117904407948983,
+      0.5489633994418346
+    ],
+    "z_score": -0.5656854249492386,
+    "p_value": 0.5716076449533313,
+    "started_at": "2026-08-13T23:39:42.769803+00:00",
+    "finished_at": "2026-08-13T23:42:22.391186+00:00",
+    "duration_seconds": 159.62553689999913,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1212,
+      "total_differences": 42,
+      "difference_rate": 0.034653465346534656,
+      "games_with_difference": 14,
+      "contexts": {
+        "MAIN": 42
+      },
+      "select_types": {
+        "MAIN": 42
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 16,
+        "ATTACH": 15,
+        "ATTACK": 4,
+        "EVOLVE": 4,
+        "ABILITY": 2,
+        "RETREAT": 1
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 22,
+        "ATTACH": 9,
+        "ABILITY": 5,
+        "EVOLVE": 3,
+        "RETREAT": 2,
+        "ATTACK": 1
+      },
+      "candidate_wins": 12,
+      "baseline_opponent_wins": 8,
+      "draws_or_timeouts": 0,
+      "records_retained": 42,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "rejected",
+  "reviewer_reason": "Rejected after human and Codex review: no measured improvement and no setup Active trace evidence proving the mechanism fired.",
+  "worker_identity": {
+    "provider": "claude",
+    "model": null,
+    "identity": "claude"
+  },
+  "assigned_reviewer": {
+    "reviewer": "codex",
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "reason": "Claude/Opus-authored experiments require an independent Codex review."
+  },
+  "reviewed_at": "2026-08-14T01:37:49.568348+00:00"
+}

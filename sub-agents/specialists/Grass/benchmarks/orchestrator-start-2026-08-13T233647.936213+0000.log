@@ -1,0 +1,11 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py start --specialist Grass --hypothesis "During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement." --mechanism kangaskhan_active_yanma_bench_opening --expected-effect "Increase early draw consistency without disabling Yanmega's Bench-to-Active acceleration trigger." --worker claude
+STARTED: 2026-08-13T23:36:47.936213+00:00
+FINISHED: 2026-08-13T23:36:48.129893+00:00
+TIMED_OUT: False
+
+STDOUT:
+Started Grass/EXP-0003
+Edit only: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\Grass\experiments\EXP-0003\candidate\main.py
+
+
+STDERR:

@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0004",
+  "specialist": "Grass",
+  "created_at": "2026-08-14T02:05:40.942329+00:00",
+  "updated_at": "2026-08-14T02:05:40.997378+00:00",
+  "worker": "claude",
+  "hypothesis": "During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.",
+  "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
+  "mechanisms": [
+    "grass_core_bench_role_priority"
+  ],
+  "files_changed": [],
+  "baseline_version": "v001-deck-rebase",
+  "candidate_version": "v002-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v001-deck-rebase",
+  "candidate_path": "experiments/EXP-0004/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "claude",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T02:05:40.997378+00:00",
+    "updated_at": "2026-08-14T02:05:40.997378+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

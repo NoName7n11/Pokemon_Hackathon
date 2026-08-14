@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "specialist": "Grass",
+  "experiment": "EXP-0004",
+  "stage": "screening",
+  "created_at": "2026-08-14T02:15:14.912192+00:00",
+  "hypothesis": "During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.",
+  "expected_effect": "Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.",
+  "mechanisms": [
+    "grass_core_bench_role_priority"
+  ],
+  "baseline_version": "v001-deck-rebase",
+  "candidate_version": "v002-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "claude",
+    "backend": "claude-code",
+    "model": "opus",
+    "started_at": "2026-08-14T02:05:41.397249+00:00",
+    "finished_at": "2026-08-14T02:09:51.208500+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-claude"
+  },
+  "worker_identity": {
+    "provider": "claude",
+    "model": "opus",
+    "identity": "opus"
+  },
+  "assigned_reviewer": {
+    "reviewer": "codex",
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "reason": "Claude/Opus-authored experiments require an independent Codex review."
+  },
+  "benchmark": {
+    "specialist": "Grass",
+    "candidate_version": "v002-candidate",
+    "baseline_version": "v001-deck-rebase",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081404",
+    "games": 200,
+    "wins": 113,
+    "losses": 87,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 102.235,
+    "average_decision_time_ms": 13.205465608141687,
+    "max_decision_time_ms": 1691.3499999936903,
+    "win_rate": 0.565,
+    "confidence_interval": [
+      0.4957060908195922,
+      0.631843928411026
+    ],
+    "z_score": 1.8384776310850222,
+    "p_value": 0.06599205505934778,
+    "started_at": "2026-08-14T02:10:24.105296+00:00",
+    "finished_at": "2026-08-14T02:14:52.061023+00:00",
+    "duration_seconds": 267.96818989999883,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 801,
+      "total_differences": 93,
+      "difference_rate": 0.11610486891385768,
+      "games_with_difference": 20,
+      "contexts": {
+        "MAIN": 93
+      },
+      "select_types": {
+        "MAIN": 93
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 52,
+        "ATTACH": 27,
+        "EVOLVE": 5,
+        "ABILITY": 4,
+        "END": 3,
+        "ATTACK": 2
+      },
+      "baseline_selected_option_types": {
+        "ATTACH": 27,
+        "PLAY": 22,
+        "ABILITY": 18,
+        "RETREAT": 10,
+        "ATTACK": 9,
+        "EVOLVE": 5,
+        "END": 2
+      },
+      "candidate_wins": 11,
+      "baseline_opponent_wins": 9,
+      "draws_or_timeouts": 0,
+      "records_retained": 93,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "approved_for_deep_evaluation",
+  "reviewer_reason": "automatic codex review approved deep evaluation; see reviews/screening-codex-auto-review.json",
+  "reviewed_at": "2026-08-14T02:16:11.577472+00:00"
+}

@@ -10,8 +10,11 @@
   },
   "max_new_experiments_per_day": 6,
   "worker_timeout_seconds": 900,
+  "review_timeout_seconds": 900,
   "command_timeout_seconds": 14400,
   "require_provider_authorization_per_job": true,
+  "auto_ai_review": true,
+  "auto_ai_review_apply_gate": true,
   "auto_reject_failures": true,
   "auto_accept": false,
   "auto_promote": false

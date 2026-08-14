@@ -1,0 +1,14 @@
+Implemented the smallest coherent change in root [main.py](C:/Users/novan/Desktop/Projects/Pokemon_Hackathon/sub-agents/specialists/Fire/experiments/EXP-0003/workers/001-codex/workspace/main.py:1).
+
+Changed behavior:
+- Added a Mega Charizard X ex / Mega Charizard Y ex-only attack estimator for zero-printed attacks.
+- Threaded that estimate into lethal attack choice, attack selection, `_best_usable_damage`, and immediate-attacker ranking.
+- Added a small discard burden penalty so Charizard attacks with higher required Energy discard are ranked slightly lower when damage is otherwise comparable.
+- All non-target Pokemon still use printed attack damage exactly as before.
+
+Validation:
+- `python -m py_compile main.py` passed.
+- Did not run benchmarks, modify `deck.csv`, edit `context/`, or create extra files.
+
+Concern for reviewer:
+- The local worker lacks `cg`, so I could not inspect live card metadata or run an import/game smoke. The estimator parses runtime attack/card text when available, with conservative fallbacks for likely Charizard attack names.

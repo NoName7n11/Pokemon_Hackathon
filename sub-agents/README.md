@@ -112,6 +112,18 @@ the same observations seen by the candidate and records where their choices
 differ. Only the candidate choice advances the game, so this is behavior-review
 evidence rather than a counterfactual win-rate estimate.
 
+Review packs are assigned to an independent AI reviewer by default. A Codex
+worker is reviewed by Opus/Claude; an Opus/Claude worker is reviewed by Codex.
+The assignment is recorded in both the pending `.json` and `.md` review files.
+
+List the current review queue:
+
+```powershell
+python sub-agents/shared/tools/review_queue.py list
+python sub-agents/shared/tools/review_queue.py list --reviewer codex
+python sub-agents/shared/tools/review_queue.py list --reviewer opus
+```
+
 Human approval after screening authorizes deep evaluation, not acceptance:
 
 ```powershell
@@ -198,10 +210,41 @@ provider from using its available capacity.
 
 The evidence path is `20 smoke -> 200 screening -> human review -> 300 main ->
 500 confirmation -> 200 cross-deck games per opponent -> final human review`.
-Failures and clear regressions may be rejected automatically. Deep evaluation
-starts only after `review_gate.py approve`. Private acceptance uses the separate
-`review_gate.py accept` command and requires confirmation plus two cross-deck
-opponents. Nothing in this scheduler promotes the active submission.
+Failures and clear regressions may be rejected automatically. Screening review
+packs are now sent to the assigned independent AI reviewer automatically when
+`auto_ai_review` is enabled. A clear AI `REJECT` closes the experiment through
+`review_gate.py reject`; a clear `APPROVE_DEEP_EVALUATION` authorizes the 300
+and 500 game deep path through `review_gate.py approve`; `MORE_EVIDENCE` moves
+the job to `waiting_more_evidence` and stops the loop for that experiment.
+
+You can run the reviewer tool manually when needed:
+
+```powershell
+python sub-agents/shared/tools/auto_review.py `
+  --specialist Fire --apply-gate
+```
+
+Private acceptance still uses the separate `review_gate.py accept` command and
+requires confirmation plus two cross-deck opponents. Nothing in this scheduler
+promotes the active submission.
+
+### Campaign Backlogs
+
+A specialist can be kept active through an explicit campaign backlog under
+`sub-agents/continuous/campaigns/`. Each campaign contains ordered, narrow
+hypotheses. The scheduler enqueues the next pending hypothesis only when that
+specialist is idle and `READY_FOR_EXPERIMENT`, so it never runs two experiments
+for one deck at the same time.
+
+The current Grass campaign is:
+
+```text
+sub-agents/continuous/campaigns/Grass.json
+```
+
+It uses Claude Opus for the No_Name_Grass specialist and still passes through
+the same smoke, screening, independent AI review, deep-evidence, and final human
+gates. A campaign keeps work moving; it does not lower the evidence bar.
 
 ## Run Controlled Promotion
 

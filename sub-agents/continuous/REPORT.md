@@ -232,3 +232,185 @@ Append-only scheduler history. Automatic rejection is allowed; acceptance and su
 - Detail: 20-game smoke and 200-game screening completed; human review required.
 - Hypothesis: For attack choice and immediate attacker scoring, account for Mega Sharpedo ex Hungry Jaws receiving its conditional damage only when Sharpedo is damaged; preserve generic attack ranking for all other Pokemon.
 
+<!-- JOB-00007:1:enqueued -->
+## 2026-08-13T23:35:32.955920+00:00 - JOB-00007
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `queued`
+- Event: `enqueued`
+- Detail: Awaiting an available specialist slot.
+- Hypothesis: During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement.
+
+<!-- JOB-00008:1:enqueued -->
+## 2026-08-13T23:35:33.220103+00:00 - JOB-00008
+
+- Specialist: `Fire`
+- Provider: `codex`
+- State: `queued`
+- Event: `enqueued`
+- Detail: Awaiting an available specialist slot.
+- Hypothesis: For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.
+
+<!-- JOB-00005:4:experiment_closed -->
+## 2026-08-13T23:36:47.770904+00:00 - JOB-00005
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `rejected`
+- Event: `experiment_closed`
+- Detail: Private experiment decision: rejected.
+- Hypothesis: When evolving the Chikorita line and no Wild Growth Meganium is already in play, prioritize establishing Meganium card 710 before competing Mega Meganium endpoints; preserve evolution ranking after the energy engine exists.
+
+<!-- JOB-00007:2:screening_started -->
+## 2026-08-13T23:36:47.802839+00:00 - JOB-00007
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 2040; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00007-screening.log.
+- Hypothesis: During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement.
+
+<!-- JOB-00008:2:screening_started -->
+## 2026-08-13T23:36:47.835062+00:00 - JOB-00008
+
+- Specialist: `Fire`
+- Provider: `codex`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 32732; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00008-screening.log.
+- Hypothesis: For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.
+
+<!-- JOB-00008:3:screening_complete -->
+## 2026-08-13T23:42:49.333670+00:00 - JOB-00008
+
+- Specialist: `Fire`
+- Provider: `codex`
+- State: `waiting_screening_review`
+- Event: `screening_complete`
+- Detail: 20-game smoke and 200-game screening completed; human review required.
+- Hypothesis: For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.
+
+<!-- JOB-00007:3:screening_complete -->
+## 2026-08-13T23:43:19.435893+00:00 - JOB-00007
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `waiting_screening_review`
+- Event: `screening_complete`
+- Detail: 20-game smoke and 200-game screening completed; human review required.
+- Hypothesis: During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement.
+
+<!-- JOB-00006:4:experiment_closed -->
+## 2026-08-14T01:37:55.722170+00:00 - JOB-00006
+
+- Specialist: `Dark`
+- Provider: `claude`
+- State: `rejected`
+- Event: `experiment_closed`
+- Detail: Private experiment decision: rejected.
+- Hypothesis: For attack choice and immediate attacker scoring, account for Mega Sharpedo ex Hungry Jaws receiving its conditional damage only when Sharpedo is damaged; preserve generic attack ranking for all other Pokemon.
+
+<!-- JOB-00007:4:experiment_closed -->
+## 2026-08-14T01:37:55.777987+00:00 - JOB-00007
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `rejected`
+- Event: `experiment_closed`
+- Detail: Private experiment decision: rejected.
+- Hypothesis: During opening setup, prefer Mega Kangaskhan ex as Active when Run Errand is usable while preserving Yanma on the Bench so an evolved Yanmega ex can later trigger Buzzing Boost when it moves Active; preserve existing choices outside opening Active/Bench placement.
+
+<!-- JOB-00008:4:ai_review_started -->
+## 2026-08-14T01:50:52.466246+00:00 - JOB-00008
+
+- Specialist: `Fire`
+- Provider: `codex`
+- State: `running_ai_review`
+- Event: `ai_review_started`
+- Detail: PID 24592; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00008-ai-review.log.
+- Hypothesis: For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.
+
+<!-- JOB-00008:5:ai_review_requested_more_evidence -->
+## 2026-08-14T01:52:22.583553+00:00 - JOB-00008
+
+- Specialist: `Fire`
+- Provider: `codex`
+- State: `waiting_more_evidence`
+- Event: `ai_review_requested_more_evidence`
+- Detail: Independent AI review requested more evidence; automatic loop paused for this experiment.
+- Hypothesis: For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.
+
+<!-- JOB-00009:1:campaign_enqueued -->
+## 2026-08-14T02:05:40.548489+00:00 - JOB-00009
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `queued`
+- Event: `campaign_enqueued`
+- Detail: Campaign queued hypothesis grass-campaign-001.
+- Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
+
+<!-- campaign:Grass:grass-campaign-001:JOB-00009 -->
+## 2026-08-14T02:05:40.579989+00:00 - Campaign queued JOB-00009
+
+- Specialist: `Grass`
+- Campaign: `No_Name_Grass progressive specialist loop`
+- Hypothesis ID: `grass-campaign-001`
+- Provider: `claude`
+- Model: `opus`
+- Mechanism: `grass_core_bench_role_priority`
+- Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
+- Expected effect: Build the Grass deck's required engines more consistently without changing attack, evolution, or Energy-transfer logic.
+
+<!-- JOB-00009:2:screening_started -->
+## 2026-08-14T02:05:40.617101+00:00 - JOB-00009
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 33460; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00009-screening.log.
+- Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
+
+<!-- JOB-00009:3:screening_complete -->
+## 2026-08-14T02:15:41.279327+00:00 - JOB-00009
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `waiting_screening_review`
+- Event: `screening_complete`
+- Detail: 20-game smoke and 200-game screening completed; human review required.
+- Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
+
+<!-- JOB-00009:4:ai_review_started -->
+## 2026-08-14T02:15:41.334021+00:00 - JOB-00009
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `running_ai_review`
+- Event: `ai_review_started`
+- Detail: PID 17404; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00009-ai-review.log.
+- Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
+
+<!-- JOB-00009:5:ai_review_approved_deep -->
+## 2026-08-14T02:16:41.495427+00:00 - JOB-00009
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `waiting_screening_review`
+- Event: `ai_review_approved_deep`
+- Detail: Independent AI review authorized deep evaluation.
+- Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
+
+<!-- JOB-00009:6:deep_evaluation_started -->
+## 2026-08-14T02:16:41.545812+00:00 - JOB-00009
+
+- Specialist: `Grass`
+- Provider: `claude`
+- State: `running_deep_evaluation`
+- Event: `deep_evaluation_started`
+- Detail: PID 19664; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00009-deep.log.
+- Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
+

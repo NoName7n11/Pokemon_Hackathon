@@ -11,6 +11,323 @@ the reversal as a new entry instead).
 
 ## 2026-08-14
 
+- **Plan 1 Phase 7 complete — supervised policy-value bootstrap and optional
+  PUCT integration**:
+  - Added an isolated, dependency-free policy-value learning stack under
+    `plan_1/src/plan1/model/` and `plan_1/src/plan1/training/`. It uses
+    deterministic hashed public-state/action features, masked softmax over only
+    the generated legal actions, tanh outcome-value regression, strict
+    checksum-protected JSON checkpoints, exact reload validation, and
+    observation-limited live inference. No NumPy, PyTorch, ONNX Runtime, or
+    network access is required for this bootstrap.
+  - Extended `UCTSearch` and `Plan1MCTSAgent` with an optional policy-value
+    interface. When supplied, learned legal-action priors order expansion and
+    PUCT exploration is used; learned leaf value is conservatively blended with
+    the handcrafted evaluator. The existing UCT path remains the default and
+    its prior tests continue to pass unchanged.
+  - Generated a fresh 48-game four-deck corpus through the immutable Phase 6
+    store: 33 train games / 3,298 decisions, 10 validation games / 1,378
+    decisions, and five untouched test games / 457 decisions. Split assignment
+    remains at complete-game/seed-group granularity; evaluation data is never
+    exposed to the learner.
+  - Retained two instructive failures. The first broad value model overfit exact
+    card/hand features and failed held-out Brier (`0.4027` vs `0.2451` constant).
+    Calibration alone still failed (`0.2368` vs `0.2334`). The final value head
+    therefore uses only general strategic signals: prize race, Active/board HP,
+    attached Energy, Bench depth, hand/deck/discard counts, status, turn, and
+    self-opponent differences. Card-specific public features remain available
+    to the policy head.
+  - Final untouched-test evidence: policy log loss `0.5393` vs `1.2583`
+    uniform; top-1 policy accuracy `82.49%` vs `38.76%` uniform expectation;
+    value Brier `0.1430` vs `0.2334` training-mean constant. Checkpoint reload
+    reproduced predictions exactly. Direct inference was `0.0148 ms` median and
+    `0.0633 ms` p95 under the provisional `5 ms` limit.
+  - Final seat-balanced Hydrapple screen: learned PUCT 12 / heuristic UCT 8 /
+    draw 0, zero faults, passing the predeclared 20-point non-inferiority gate
+    (`p=0.0017` against the 30% null). This clears Phase 7's “no worse” screen;
+    it is not treated as proof of superiority or as authorization to replace the
+    active submission.
+  - Definitive report:
+    `plan_1/artifacts/reports/phase7-suite-v2.json` (SHA-256
+    `2a0a983a5ddc909beadd2c270a25e2f4234b11135b871d8a9b6b9fb4b1b2b093`).
+    Checkpoint: `plan_1/artifacts/checkpoints/phase7-bootstrap-v2.json` (file
+    SHA-256
+    `9d08d218f0625f0ab2698d3c0fc944d6a8d07e2c020b16f957e3fdae791c4e2a`).
+    All 93 Plan 1 tests pass; `py_compile` and `git diff --check` pass. The live
+    `main.py` and `deck.csv` have no diff, and the Grass campaign remained
+    running independently during this work.
+  - **Reason:** Phase 8 needs a reproducible learned policy/value baseline and a
+    proven PUCT integration before unattended self-play can generate improved
+    targets. Separating policy-rich features from low-variance strategic value
+    features corrected measured overfitting while preserving legal masking,
+    deployment simplicity, and causal evidence.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 2 Grass specialist campaign loop started for progressive hypotheses**:
+  - Added campaign/backlog support to the continuous scheduler. Enabled
+    campaigns live under `sub-agents/continuous/campaigns/` and enqueue the next
+    pending hypothesis only when the specialist is idle, registered, and
+    `READY_FOR_EXPERIMENT`. The one-active-experiment-per-specialist lock still
+    applies, so a campaign cannot run two Grass edits at the same time.
+  - Added `sub-agents/continuous/campaigns/Grass.json` for the `No_Name_Grass`
+    specialist. The campaign uses Claude Opus and contains ordered, narrow
+    hypotheses for core Bench-role construction, Yanmega/Buzzing Boost
+    promotion, Mega Meganium Giant Bouquet live damage, and Solar Transfer
+    minimum-lethal Energy movement.
+  - Campaign jobs retain the normal evidence path: provider isolation, smoke,
+    200-game screening, independent AI review, deeper evidence only after
+    approval, and no active-submission promotion. Campaign hypothesis state is
+    synced from the scheduler job state, so rejected/completed work advances the
+    backlog instead of silently looping the same failed idea.
+  - Restarted the visible scheduler with campaign support. It auto-enqueued
+    Grass `JOB-00009` from `grass-campaign-001` and started screening with
+    Claude Opus. Current first hypothesis:
+    `grass_core_bench_role_priority`.
+  - Updated README, Plan 2, and platform verification to document/check enabled
+    campaigns. Active submission files were not changed.
+  - **Reason:** Grass should continue making progress without requiring a manual
+    enqueue after every rejected experiment, but the loop must still work from
+    explicit hypotheses and preserve the same review/evidence gates.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 2 automatic independent AI review added to the continuous scheduler**:
+  - Added `auto_review.py`, a dedicated review runner that reads the active
+    pending review pack, invokes the assigned independent reviewer, stores the
+    complete reviewer output under the specialist experiment, appends a bounded
+    Markdown review note, classifies the recommendation as `reject`,
+    `approve_deep_evaluation`, `more_evidence`, or `unclassified`, and can apply
+    the existing auditable `review_gate.py` commands for clear reject/approve
+    decisions.
+  - Extended the continuous scheduler with `running_ai_review` and
+    `waiting_more_evidence`. When `auto_ai_review` is enabled, a job that
+    reaches `waiting_screening_review` now automatically starts the assigned AI
+    reviewer. A clear reject closes the experiment, a clear screening approval
+    authorizes deep evaluation, and `MORE_EVIDENCE` pauses the job instead of
+    looping or spending more games.
+  - Restarted the scheduler in a visible PowerShell window so the active loop
+    uses the new code. It picked up Fire `JOB-00008`, ran the assigned Opus
+    review, saved the artifact at
+    `sub-agents/specialists/Fire/experiments/EXP-0003/reviews/screening-opus-auto-review.json`,
+    and moved the job to `waiting_more_evidence`.
+  - The automatic Opus review agreed the Fire candidate should not advance yet:
+    107/200 screening is inconclusive, the first trace divergence happens with
+    no Charizard in play, and regex/hardcoded Charizard damage estimates must be
+    checked against engine-resolved damage before trusting lethal decisions.
+  - Updated config, schema, contract, README, Plan 2, and platform verification
+    so the auto-review phase is documented and checked. Active submission files
+    were not changed.
+  - **Reason:** the sub-agent loop should not stall until a human manually asks
+    another AI to review every screening pack; independent AI review can safely
+    reject, authorize deeper evidence, or pause for more evidence while keeping
+    final acceptance and promotion human-controlled.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 2 review workflow executed and queue hardened for reviewer artifacts**:
+  - Ran the independent review gate workflow on the current pending review
+    packs. Codex-reviewed Grass `EXP-0003` and Dark `EXP-0002` were rejected
+    through `review_gate.py` after written review evidence was added to their
+    pending Markdown packs.
+  - Sent Fire `EXP-0003` to the assigned Opus/Claude reviewer. Opus returned
+    `MORE_EVIDENCE`, not approval or rejection, citing inconclusive 107/200
+    screening evidence, broad MAIN trace differences, and the need to validate
+    regex/hardcoded Charizard damage estimates against engine-resolved damage
+    before trusting lethal decisions. The full Opus output is retained beside
+    the review pack.
+  - Hardened `review_queue.py` so auxiliary reviewer-output files in
+    `human-review/pending/` do not break queue listing. The queue now cleanly
+    shows only Fire `EXP-0003` as pending, assigned to Opus.
+  - **Reason:** the new cross-review workflow must be usable in practice:
+    reviewed experiments should close through the gate, while non-final reviewer
+    artifacts should not corrupt the pending review queue.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 2 independent AI review routing added for sub-agent human-review
+  gates**:
+  - Review packs now record both the implementation worker identity and the
+    assigned independent reviewer. Codex-authored experiments are routed to
+    Opus/Claude review; Opus/Claude-authored experiments are routed to Codex
+    review; unmapped providers default to Codex review until explicitly
+    configured.
+  - Added `sub-agents/shared/tools/review_queue.py`, which lists pending review
+    packs globally or by reviewer with `--reviewer codex` / `--reviewer opus`.
+    This gives a direct workflow for asking one AI agent to review the other
+    agent's candidate without guessing from filenames.
+  - Updated the shared agent contract, reviewer prompt, Plan 2 plan, and
+    workspace README so reviewers inspect evidence, recommend approve/reject/
+    more-evidence, and do not edit candidates or promote submissions.
+  - Backfilled the current pending review packs with reviewer assignment
+    metadata. Fire `EXP-0003` is Codex-authored and assigned to Opus; Dark
+    `EXP-0002` and Grass `EXP-0003` are Opus/Claude-authored and assigned to
+    Codex. Existing experiment decisions were not changed.
+  - **Reason:** the same model family should not grade its own candidate. This
+    keeps the sub-agent workflow independent while preserving explicit,
+    auditable gate commands for final human-controlled accept/reject decisions.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 6 completed: atomic, resumable, versioned trajectory and replay
+  pipeline validated on live native games**:
+  - Added strict versioned records for terminal games and individual decisions.
+    Each decision stores the public observation, selection/information-set
+    identities, complete generated legal-action fingerprints and masks, chosen
+    action, heuristic or search targets, belief diagnostics, acting/opponent
+    policy identities, deck hashes, seed group, final result, and seat-relative
+    value target. Hidden oracle state is not a policy field.
+  - Added deterministic gzip JSON game files with bounded decompression, atomic
+    flush/rename publication, file and canonical-content SHA-256 checks, and
+    strict rejection of unknown schema fields. Incomplete games remain in
+    memory and are never published; unrelated temporary files are ignored.
+  - Added revisioned corpus manifests and a `CURRENT.json` pointer. Every
+    revision links to the previous manifest hash, and loading now verifies the
+    entire chain back to revision zero. Duplicate IDs are idempotent only when
+    content hashes match; conflicting reuse is rejected.
+  - Added deterministic complete-game/seed-group train, validation, test, and
+    evaluation splits. The replay reader accepts only training-family splits
+    and cannot request evaluation data. It reports outcome, deck, policy, and
+    selection-context distributions for later sampling controls.
+  - Added corruption recovery and retention. Damaged files are copied to a
+    collision-safe quarantine before the repaired manifest is published;
+    retention copies oldest training games to a recoverable retired archive
+    before removing live entries and does not choose evaluation games first.
+  - Added resumable heuristic-bootstrap generation using stable game IDs. The
+    definitive run generated four games, reopened and extended to eight, then
+    reran as a no-op with all eight recognized and zero duplicate writes. Two
+    separately purposed evaluation games were added and remained absent from
+    the training reader.
+  - The definitive four-deck corpus contains **10 complete games / 1,111
+    decisions**: eight training-purpose and two evaluation-purpose games. All
+    records replay to their exact canonical content hashes, all 10 manifest
+    revisions validate, and deliberate gzip truncation in a copied corpus was
+    detected, quarantined, repaired, and followed by passing recoverable
+    retention. The full Plan 1 suite passes **87/87** tests.
+  - Compressed storage is **671,105 bytes**, **6.49%** of raw JSON, about **604
+    bytes per decision**. Generation measured **0.347 games/s / 38.56
+    decisions/s**. The small validation corpus populated train, test, and
+    evaluation but happened not to populate validation; it proves plumbing and
+    isolation, not dataset representativeness.
+  - Exact replay currently means immutable record/schema/checksum replay. The
+    local native `battle_start` has no seed argument, so exact native battle
+    re-simulation cannot be claimed. Stored derived seeds identify jobs and
+    split groups but do not control the native shuffle.
+  - Definitive report SHA-256 is
+    `74ffc965b337665f5037cdc9c311b237773418d547d06d014b29724a680b0a48`.
+    No active submission or Plan 2 specialist file was changed. Phase 7, the
+    supervised policy-value bootstrap, is next.
+  - **Reason:** learning cannot be evaluated responsibly until complete games,
+    legal policy targets, final value targets, data provenance, split isolation,
+    interruption recovery, and corruption handling are reproducible and
+    independently verifiable.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Phase 5 definitive evidence corrected after serial-leakage review**:
+  - A final static review found that synthetic native card serial allocation
+    could split otherwise identical public information sets because tuple-backed
+    records were not traversed by the serial sanitizer. The sanitizer now
+    traverses tuples as well as lists/dictionaries, and a regression test proves
+    public information-set identity is invariant to native serial allocation.
+  - Mirror-fill now also preserves revealed prize identities and their original
+    zone positions, matching the corrected constrained sampler and native search
+    input contract. The complete Plan 1 suite now passes **74/74** tests.
+  - Regenerated the definitive 64-decision/four-deck report after both fixes:
+    constrained belief sampled **256/256** valid and unique worlds with zero
+    belief fallbacks, errors, or native faults; **206/256 (80.47%)** inner
+    searches contributed root statistics. Generic agreement is **81.25%** with
+    mirror-fill and **87.50%** with the offline oracle. Generic four-world
+    latency is **233.55 ms median / 265.40 ms p95** under the research-only
+    80 ms per-world budget.
+  - This entry supersedes only the numeric evidence and hash in the immediately
+    following Phase 5 entry; that historical entry remains unchanged under the
+    append-only rule. The definitive report SHA-256 is
+    `d7760895b7ae0bee86460d2eb274e64519acdfb76df2d5840dc6b0d93b090f9c`.
+  - **Reason:** native allocation serials and revealed prize placement are
+    reconstruction details, not hidden-world policy signals; correcting them is
+    required before Phase 5 can honestly claim information-set safety.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Plan 1 Phase 5 completed: constrained belief sampling and root-sampled
+  ISMCTS validated without promoting a new submission agent**:
+  - Added public-card accounting that subtracts visible board, discard, hand,
+    stadium, and revealed-prize cards from declared 60-card deck mixtures, then
+    samples hidden deck, prize, hand, and face-down Basic Active identities
+    while preserving all public zone counts and revealed-prize positions.
+  - Added public information-set keys and policy payloads that exclude sampled
+    opponent hands, hidden deck/prize identities, private look data, logs, and
+    option descriptors while retaining the acting player's legitimately visible
+    hand and public board facts. The existing public record still never reads
+    the opaque native `search_begin_input` payload.
+  - Added root-sampled ISMCTS aggregation. Every determinization gets a fresh
+    lifecycle-safe native search session; root statistics are shared only by
+    public information-set and action fingerprints. Inner searches that return
+    Phase 4's legal fallback are measured and excluded from aggregate evidence.
+  - Added explicit comparison modes: the old repeated-card mirror-fill baseline,
+    constrained generic deck-mixture belief, and an oracle that requires exact
+    hidden zones injected through a separate local-visualizer extractor. Oracle
+    state is therefore an offline diagnostic and cannot enter deployable policy
+    features accidentally.
+  - Added belief/ISMCTS unit coverage for conservation, impossible-state
+    rejection, reported prior fallback, deterministic/diverse sampling,
+    revealed prizes, public-key leakage, duplicate worlds, aggregate statistics,
+    and safe fallback. The full Plan 1 suite passes **73/73** tests.
+  - Definitive four-deck validation captured 64 decisions and sampled **256/256**
+    valid generic worlds with 100% effective diversity, zero belief fallbacks,
+    zero errors, and zero native faults. **201/256 (78.52%)** generic inner
+    searches contributed root statistics; action agreement was **89.06%** versus
+    mirror-fill and **85.94%** versus oracle. Generic four-world latency was
+    **225.01 ms median / 265.13 ms p95** under a research-only 80 ms per-world
+    budget. Report SHA-256 is
+    `6e2e1bc684eeb10b804ae03112eb2b51b145cc4ae1d65040813495d2ed7b6591`.
+  - Preserved the failed low-budget diagnostic, where fallback telemetry showed
+    that most inner searches lacked root coverage, instead of presenting those
+    fallbacks as ISMCTS evidence. Its SHA-256 is
+    `a1980ebfc5bfe89f37e8aa92c3a15920b8b56c57740d5c34432a71c90e6c77d0`.
+  - No active `main.py`, `deck.csv`, or Plan 2 specialist file was changed.
+    Phase 5 validates the hidden-information boundary and exposes action
+    sensitivity; it does **not** claim a strength gain or deployment readiness.
+    Phase 6, the atomic/versioned trajectory pipeline, is next.
+  - **Reason:** replace Phase 4's knowingly invalid repeated-card hidden-zone
+    assumptions with a reproducible, leakage-safe uncertainty boundary before
+    generating trajectories or training a policy-value model.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **Fire and rebased Grass specialist screening authorized and started; Dark
+  remains human-paused**:
+  - After explicit human authorization, enqueued Grass `JOB-00007` for Claude
+    and Fire `JOB-00008` for Codex. Each provider received only its specialist's
+    isolated `main.py`, `deck.csv`, and standard copied context; Grass also
+    received the revised `No_Name_Grass_Logic.txt` as `context/STRATEGY.md`.
+  - Grass is testing the narrow `kangaskhan_active_yanma_bench_opening`
+    hypothesis in `EXP-0003`: prefer Mega Kangaskhan ex as the opening Active
+    when Run Errand is usable while preserving Yanma on the Bench for a later
+    Buzzing Boost transition. Fire is testing the narrow
+    `charizard_effect_damage_evaluation_v2` hypothesis in `EXP-0003`: account
+    for Mega Charizard X/Y ex effect-driven damage and required Energy discard
+    in lethal, attack, and immediate-attacker ranking without changing other
+    Pokemon.
+  - Started exactly one hidden persistent scheduler. At launch verification,
+    Grass screening was alive as PID `2040` and Fire screening as PID `32732`;
+    scheduler capacity recorded one active Claude worker and one active Codex
+    worker. Historical Grass `EXP-0002` was reconciled as rejected because it
+    was superseded by the revised deck baseline.
+  - Dark was not relaunched. Its preserved `EXP-0002` evidence explicitly
+    records `orchestration.state = PAUSED_BY_HUMAN`, so the scheduler leaves it
+    at its existing human-review boundary until an explicit resume.
+  - The quiescent-state platform verifier is intentionally not green during
+    this run: it reports Fire/Grass active experiments and their live scheduler
+    locks. Provider availability and stored experiment/JSON validation still
+    pass; a complete clean verification must be rerun after the workers stop.
+  - **Reason:** run the two authorized, deck-specific hypotheses in isolated
+    workspaces while preserving Dark's pause and all prior evidence, with a
+    single scheduler enforcing provider capacity and review gates.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 - **Grass strategy/deck rebased, Dark explicitly paused, and Fire/Grass worker
   relaunch prepared but awaiting explicit provider payload authorization**:
   - Rewrote `No_Name_Decks/No_Name_Grass_Logic.txt` as a legal,

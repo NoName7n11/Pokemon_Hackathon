@@ -3,7 +3,7 @@ from __future__ import annotations
 import math
 import time
 from dataclasses import dataclass, field
-from typing import Any, Callable, Sequence
+from typing import Any, Callable, Protocol, Sequence
 
 from plan1.config import SearchConfig
 from plan1.engine.conformance import conformance_action
@@ -17,6 +17,17 @@ from plan1.reproducibility import canonical_json_hash
 MCTS_VERSION = "uct-v1"
 Clock = Callable[[], int]
 RolloutPolicy = Callable[[Any], Sequence[int]]
+
+
+class PolicyValueInference(Protocol):
+    def policy(
+        self,
+        record: PublicObservationRecord,
+        candidates: Sequence[ActionCandidate],
+        perspective: int,
+    ) -> tuple[float, ...]: ...
+
+    def value(self, record: PublicObservationRecord, perspective: int) -> float: ...
 
 
 def search_fingerprint(record: PublicObservationRecord) -> str:
@@ -107,6 +118,7 @@ class _Edge:
     terminal: bool = False
     expansion_failures: int = 0
     sampled_determinizations: int = 1
+    prior: float = 0.0
 
     @property
     def mean_value(self) -> float:
@@ -123,6 +135,7 @@ class _Node:
     visits: int = 0
     value_sum: float = 0.0
     generation: GenerationResult | None = None
+    priors: tuple[float, ...] = ()
     children: list[_Edge] = field(default_factory=list)
     next_unexpanded: int = 0
 
@@ -153,6 +166,9 @@ class UCTSearch:
         cleanup_reserve_ms: int,
         action_generator: ActionGenerator | None = None,
         rollout_policy: RolloutPolicy | None = None,
+        policy_value: PolicyValueInference | None = None,
+        puct_constant: float = 1.25,
+        learned_value_mix: float = 0.25,
         clock: Clock = time.perf_counter_ns,
     ) -> None:
         if cleanup_reserve_ms >= config.time_budget_ms:
@@ -163,6 +179,11 @@ class UCTSearch:
         self.cleanup_reserve_ms = cleanup_reserve_ms
         self.generator = action_generator or ActionGenerator(max_candidates=config.max_candidates)
         self.rollout_policy = rollout_policy or (lambda observation: conformance_action(observation, backend))
+        if puct_constant <= 0 or not 0.0 <= learned_value_mix <= 1.0:
+            raise ValueError("PUCT constant must be positive and learned value mix must be in [0, 1]")
+        self.policy_value = policy_value
+        self.puct_constant = puct_constant
+        self.learned_value_mix = learned_value_mix
         self.clock = clock
 
     def search(
@@ -188,6 +209,7 @@ class UCTSearch:
 
         try:
             root_generation = self.generator.generate(selection, preferred_indices=fallback, seed=seed)
+            root_generation, root_priors = self._rank_generation(record, root_generation, root_player)
         except Exception as exc:
             errors.append(f"root_generation:{type(exc).__name__}:{exc}")
             return self._fallback_result(fallback, timer, seed, root_player, root_turn, "generation_error", errors)
@@ -227,6 +249,7 @@ class UCTSearch:
                     depth=0,
                     actor=root_player,
                     generation=root_generation,
+                    priors=root_priors,
                 )
                 while counters.simulations < self.config.max_simulations:
                     if timer.search_expired():
@@ -366,6 +389,7 @@ class UCTSearch:
                         child=child,
                         immediate_reward=self._value(child_record, root_player) - self._value(node.record, root_player),
                         terminal=bool(child_record.state is not None and child_record.state.result != -1),
+                        prior=node.priors[node.next_unexpanded - 1] if node.priors else 0.0,
                     )
                     node.children.append(edge)
                     counters.tree_nodes += 1
@@ -450,17 +474,65 @@ class UCTSearch:
                 preferred_indices=preferred,
                 seed=seed ^ int(node.fingerprint[:16], 16),
             )
+            perspective = node.actor if node.actor in (0, 1) else 0
+            node.generation, node.priors = self._rank_generation(
+                node.record, node.generation, perspective
+            )
         except Exception:
             return None
         return node.generation
 
+    def _rank_generation(
+        self,
+        record: PublicObservationRecord,
+        generation: GenerationResult,
+        perspective: int,
+    ) -> tuple[GenerationResult, tuple[float, ...]]:
+        count = len(generation.candidates)
+        if self.policy_value is None:
+            return generation, tuple(1.0 / count for _ in generation.candidates)
+        try:
+            priors = self.policy_value.policy(record, generation.candidates, perspective)
+            if len(priors) != count or any(not math.isfinite(value) or value < 0 for value in priors):
+                raise ValueError("invalid policy prior vector")
+            total = sum(priors)
+            if total <= 0:
+                raise ValueError("policy prior vector has zero mass")
+            normalized = tuple(value / total for value in priors)
+        except Exception:
+            normalized = tuple(1.0 / count for _ in generation.candidates)
+        ranked = sorted(
+            zip(generation.candidates, normalized),
+            key=lambda item: (-item[1], item[0].fingerprint),
+        )
+        return (
+            GenerationResult(
+                candidates=tuple(item[0] for item in ranked),
+                ordered=generation.ordered,
+                exhaustive=generation.exhaustive,
+                total_action_count=generation.total_action_count,
+                issues=generation.issues,
+            ),
+            tuple(item[1] for item in ranked),
+        )
+
     def _select_edge(self, node: _Node, root_player: int) -> _Edge:
         maximizing = node.actor == root_player
-        log_parent = math.log(max(2, node.visits + 1))
 
         def score(edge: _Edge) -> tuple[float, str]:
             exploit = edge.mean_value if maximizing else -edge.mean_value
-            explore = self.config.exploration_constant * math.sqrt(log_parent / max(1, edge.visits))
+            if self.policy_value is None:
+                log_parent = math.log(max(2, node.visits + 1))
+                explore = self.config.exploration_constant * math.sqrt(
+                    log_parent / max(1, edge.visits)
+                )
+            else:
+                explore = (
+                    self.puct_constant
+                    * edge.prior
+                    * math.sqrt(max(1, node.visits))
+                    / (1 + edge.visits)
+                )
             return exploit + explore, edge.action.fingerprint
 
         return min(node.children, key=lambda edge: (-score(edge)[0], score(edge)[1]))
@@ -484,7 +556,14 @@ class UCTSearch:
         score = self.evaluator.score(record, root_player)
         if abs(score) >= TERMINAL_SCORE:
             return 1.0 if score > 0 else -1.0
-        return math.tanh(score / self.config.value_scale)
+        heuristic = math.tanh(score / self.config.value_scale)
+        if self.policy_value is None or self.learned_value_mix == 0.0:
+            return heuristic
+        try:
+            learned = max(-1.0, min(1.0, float(self.policy_value.value(record, root_player))))
+        except Exception:
+            return heuristic
+        return (1.0 - self.learned_value_mix) * heuristic + self.learned_value_mix * learned
 
     @staticmethod
     def _record_terminal(record: PublicObservationRecord) -> bool:
@@ -574,7 +653,7 @@ class UCTSearch:
             for edge in (root.children if root is not None else ())
         )
         return SearchTrace(
-            version=MCTS_VERSION,
+            version="puct-v1" if self.policy_value is not None else MCTS_VERSION,
             seed=seed,
             root_player=root_player,
             root_turn=root_turn,

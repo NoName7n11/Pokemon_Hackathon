@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0003",
+  "specialist": "Fire",
+  "created_at": "2026-08-13T23:36:48.136084+00:00",
+  "updated_at": "2026-08-13T23:36:48.219636+00:00",
+  "worker": "codex",
+  "hypothesis": "For Mega Charizard X ex and Mega Charizard Y ex only, estimate effect-driven attack damage and required Energy discard in lethal, attack, and immediate-attacker ranking instead of treating their printed zero damage as zero; preserve all other attack logic.",
+  "expected_effect": "Choose powered Charizard attacks and promotions when their live effect damage is tactically superior, without changing unrelated Pokemon.",
+  "mechanisms": [
+    "charizard_effect_damage_evaluation_v2"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0003/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-13T23:36:48.219636+00:00",
+    "updated_at": "2026-08-13T23:36:48.219636+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

@@ -17,7 +17,7 @@
     "state": {
       "enum": [
         "awaiting_provider_authorization", "queued", "running_screening", "waiting_screening_review",
-        "running_deep_evaluation", "waiting_final_review", "completed",
+        "running_ai_review", "waiting_more_evidence", "running_deep_evaluation", "waiting_final_review", "completed",
         "rejected", "failed", "cancelled"
       ]
     },
