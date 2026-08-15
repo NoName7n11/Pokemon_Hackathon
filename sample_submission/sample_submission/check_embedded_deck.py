@@ -68,7 +68,43 @@ def check_exec_model_without_file() -> None:
         sys.path.remove(str(HERE))
 
 
+def check_agent_is_last_callable() -> None:
+    """Kaggle's runner uses the LAST callable defined in the module as the agent.
+
+    Commit 569ca1d appended a 2-arg helper after _agent_impl, so Kaggle called
+    that instead of the agent, got None, and rejected every episode. This
+    asserts the entry point is still the real agent.
+    """
+    source = (HERE / "main.py").read_text(encoding="utf-8")
+
+    import re
+
+    defs = re.findall(r"^def (\w+)\(", source, re.M)
+    assert defs, "no top-level defs found in main.py"
+    assert defs[-1] == "agent", (
+        f"the LAST top-level def in main.py is {defs[-1]!r}, not 'agent'.\n"
+        "Kaggle takes the last callable as the entry point, so this ships a "
+        "non-agent function and every episode fails validation. Move new "
+        "helpers ABOVE agent()."
+    )
+
+    # Same check against the real exec env, not just the source text.
+    sys.path.insert(0, str(HERE))
+    try:
+        env: dict = {}
+        exec(compile(source, "main.py", "exec"), env)
+        callables = [v for v in env.values() if callable(v) and getattr(v, "__module__", None) != "builtins"]
+        last = callables[-1]
+        assert last.__name__ == "agent", (
+            f"last callable in the exec env is {last.__name__!r}, not 'agent'"
+        )
+    finally:
+        sys.path.remove(str(HERE))
+    print("OK  last top-level def / last callable is agent()")
+
+
 if __name__ == "__main__":
+    check_agent_is_last_callable()
     check_embedded_matches_csv()
     check_exec_model_without_file()
     print("PASS")

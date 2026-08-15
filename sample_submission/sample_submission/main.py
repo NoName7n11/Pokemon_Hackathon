@@ -646,29 +646,6 @@ def _search_choose_main(obs: Observation):
     return _clamp([best_i], sel, len(sel.option))
 
 
-def agent(obs_dict: dict) -> list[int]:
-    """Pokémon TCG agent entry point. Delegates to `_agent_impl`; on ANY unexpected
-    exception there (e.g. the native cg engine failing to load on an unfamiliar
-    host) falls back to a minimal, cg.api-free legal selection instead of
-    forfeiting the match outright.
-
-    Returns:
-        list[int]: A list of option index.
-    """
-    try:
-        return _agent_impl(obs_dict)
-    except Exception:
-        sel = obs_dict.get("select") if isinstance(obs_dict, dict) else None
-        if sel is None:
-            try:
-                return read_deck_csv()
-            except Exception:
-                return []
-        options = sel.get("option") or []
-        min_count = sel.get("minCount", 0) or 0
-        return list(range(min(min_count, len(options))))
-
-
 def _agent_impl(obs_dict: dict) -> list[int]:
     """Pokémon TCG agent: MAIN-phase 1-ply lookahead (greedy rollout) with a greedy
     fallback for all other decisions and on any search failure.
@@ -704,3 +681,42 @@ def _record_if_ability(obs: Observation, chosen: list[int]) -> None:
     options = obs.select.option if obs.select else []
     if 0 <= i < len(options) and options[i].type == OptionType.ABILITY:
         _record_ability_use(obs.current)
+
+
+# ---------------------------------------------------------------------------
+# KEEP `agent` LAST IN THIS FILE. Kaggle's runner (kaggle_environments'
+# get_last_callable) takes the LAST callable defined in the module as the
+# entry point -- the submit dialog states it as "a python file with the last
+# 'def' accepting an observation and returning an action".
+#
+# Bug found 2026-08-15: commit 569ca1d appended `_record_if_ability(obs,
+# chosen)` after `_agent_impl`, so the LAST def became a 2-arg helper that
+# returns None. Kaggle called it as the agent, got no action, and rejected
+# every episode with "Player 1's deck does not have 60 cards" (#55521916,
+# #55522008, #55522139, #55522XXX) -- while the identical agent scored 435.2
+# seven days earlier, when `_agent_impl` was still last. Nothing about the
+# deck or the deck-loading code was wrong; the entry point had been stolen.
+#
+# check_embedded_deck.py asserts this ordering. Add new helpers ABOVE here.
+# ---------------------------------------------------------------------------
+def agent(obs_dict: dict) -> list[int]:
+    """Pokémon TCG agent entry point. Delegates to `_agent_impl`; on ANY unexpected
+    exception there (e.g. the native cg engine failing to load on an unfamiliar
+    host) falls back to a minimal, cg.api-free legal selection instead of
+    forfeiting the match outright.
+
+    Returns:
+        list[int]: A list of option index.
+    """
+    try:
+        return _agent_impl(obs_dict)
+    except Exception:
+        sel = obs_dict.get("select") if isinstance(obs_dict, dict) else None
+        if sel is None:
+            try:
+                return read_deck_csv()
+            except Exception:
+                return []
+        options = sel.get("option") or []
+        min_count = sel.get("minCount", 0) or 0
+        return list(range(min(min_count, len(options))))
