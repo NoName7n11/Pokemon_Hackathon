@@ -50,28 +50,67 @@ def _attack_data():
     return _ATTACK_DATA
 
 
+# Last-resort copy of deck.csv, kept in sync by _assert_embedded_deck_matches()
+# (run by check_embedded_deck.py). Every path-based lookup below can fail on
+# Kaggle, and when it does the agent has no deck at all -- see read_deck_csv.
+_EMBEDDED_DECK = [
+    96, 96, 96, 96, 708, 708, 709, 709, 710, 710, 42, 42, 93, 93, 150, 150,
+    920, 655, 1071, 140, 251, 1227, 1227, 1227, 1227, 1182, 1182, 1182,
+    1188, 1184, 1201, 1231, 1094, 1094, 1094, 1094, 1097, 1097, 1152, 1152,
+    1121, 1121, 1080, 1213, 1261, 1261, 1261, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1,
+]
+
+
 def read_deck_csv() -> list[int]:
-    """Read deck.csv.
+    """Read deck.csv, falling back to the embedded deck if it can't be found.
 
     Returns:
         list[int]: A list of card IDs in the deck.
     """
-    # NOTE: Kaggle runs this file via exec() of its source, so `__file__` is NOT
+    # Kaggle runs this file via exec() of its source, so `__file__` is NOT
     # defined there (it crashed submissions #55335664/#55351154 with NameError).
-    # Resolve the sibling deck.csv only when __file__ exists; otherwise fall back
-    # to the documented Kaggle agent directory, then the CWD.
+    #
+    # Bug found 2026-08-15: the __file__-less fallbacks were ALSO wrong. Kaggle
+    # puts the agent directory on sys.path (so `import cg` works) but does NOT
+    # chdir into it, and the tree is not at /kaggle_simulations/agent/ anymore
+    # (kaggle_environments 1.32.7). So all three candidates missed, open() raised
+    # FileNotFoundError, agent()'s except-handler swallowed it and returned [],
+    # and validation rejected the episode with "Player 1's deck does not have 60
+    # cards" -- with an empty stderr, because nothing ever propagated. That took
+    # down #55521916, #55522008 and #55522139. Reproduced locally by exec()ing
+    # this source with no __file__ from an unrelated CWD.
+    #
+    # Reading the file must stay PRIMARY: the sub-agent specialists and the
+    # matchup harnesses bind different decks by writing their own deck.csv next
+    # to a copy of this agent. The embedded list is only the last resort.
     candidates = []
     module_file = globals().get("__file__")
     if module_file:
         candidates.append(Path(module_file).with_name("deck.csv"))
+    # cg imports fine on Kaggle, so its package anchors the real agent directory
+    # even when __file__ is undefined and the CWD points elsewhere.
+    try:
+        import cg
+
+        cg_file = getattr(cg, "__file__", None)
+        if cg_file:
+            candidates.append(Path(cg_file).resolve().parent.parent / "deck.csv")
+    except Exception:
+        pass
     candidates.append(Path("/kaggle_simulations/agent/deck.csv"))
     candidates.append(Path("deck.csv"))
-    file_path = next((p for p in candidates if p.exists()), candidates[-1])
-    with open(file_path, "r", encoding="utf-8") as file:
-        rows = [line.strip() for line in file if line.strip()]
-    if len(rows) < 60:
-        raise ValueError(f"deck.csv must contain at least 60 card IDs, found {len(rows)}.")
-    return [int(card_id) for card_id in rows[:60]]
+    for path in candidates:
+        try:
+            if not path.exists():
+                continue
+            with open(path, "r", encoding="utf-8") as file:
+                rows = [line.strip() for line in file if line.strip()]
+            if len(rows) >= 60:
+                return [int(card_id) for card_id in rows[:60]]
+        except Exception:
+            continue  # unreadable/malformed candidate: try the next one
+    return list(_EMBEDDED_DECK)
 
 
 def _group_by_type(options):
