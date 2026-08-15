@@ -424,3 +424,293 @@ Append-only scheduler history. Automatic rejection is allowed; acceptance and su
 - Detail: Main, 500-game confirmation, and available cross-deck evaluation completed; final human review required.
 - Hypothesis: During MAIN-phase Basic Pokemon PLAY choices, prioritize missing Grass core Bench roles in this order: Yanma for Yanmega relay, Chikorita for Meganium 710, Bulbasaur for Mega Venusaur, then Teal Mask Ogerpon ex when Grass Energy is available; avoid redundant support Pokemon when they block those roles.
 
+<!-- JOB-00010:1:campaign_enqueued -->
+## 2026-08-14T20:28:55.970608+00:00 - JOB-00010
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `queued`
+- Event: `campaign_enqueued`
+- Detail: Campaign queued hypothesis dragapult-campaign-001.
+- Hypothesis: During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.
+
+<!-- campaign:PalSystem_Dragapult:dragapult-campaign-001:JOB-00010 -->
+## 2026-08-14T20:28:55.990367+00:00 - Campaign queued JOB-00010
+
+- Specialist: `PalSystem_Dragapult`
+- Campaign: `PalSystem Dragapult progressive specialist loop`
+- Hypothesis ID: `dragapult-campaign-001`
+- Provider: `codex`
+- Model: `gpt-5.5`
+- Mechanism: `drakloak_recon_before_evolution`
+- Hypothesis: During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.
+- Expected effect: Gain the Drakloak draw opportunity that the generic evolve-before-Ability policy currently discards, without changing unrelated evolution lines or globally raising Ability priority.
+
+<!-- JOB-00010:2:screening_started -->
+## 2026-08-14T20:28:56.029778+00:00 - JOB-00010
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 26852; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00010-screening.log.
+- Hypothesis: During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.
+
+<!-- JOB-00010:3:screening_complete -->
+## 2026-08-14T20:40:26.912836+00:00 - JOB-00010
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `waiting_screening_review`
+- Event: `screening_complete`
+- Detail: 20-game smoke and 200-game screening completed; human review required.
+- Hypothesis: During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.
+
+<!-- JOB-00010:4:ai_review_started -->
+## 2026-08-14T20:40:26.990401+00:00 - JOB-00010
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_ai_review`
+- Event: `ai_review_started`
+- Detail: PID 20852; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00010-ai-review.log.
+- Hypothesis: During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.
+
+<!-- JOB-00010:5:ai_review_closed_experiment -->
+## 2026-08-14T20:42:27.277373+00:00 - JOB-00010
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `rejected`
+- Event: `ai_review_closed_experiment`
+- Detail: Independent AI review closed experiment as unknown.
+- Hypothesis: During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.
+
+<!-- JOB-00011:1:campaign_enqueued -->
+## 2026-08-14T20:42:27.331864+00:00 - JOB-00011
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `queued`
+- Event: `campaign_enqueued`
+- Detail: Campaign queued hypothesis dragapult-campaign-002.
+- Hypothesis: For Crispin and normal Energy attachment choices in this deck only, prioritize a legal Fire-plus-Psychic route that makes the Active or best prepared Dragapult ex able to use Phantom Dive, while reserving Darkness Energy for Munkidori only when Adrena-Brain has live damage-movement value; preserve generic attachment ranking when no deck-specific route improves attack readiness.
+
+<!-- campaign:PalSystem_Dragapult:dragapult-campaign-002:JOB-00011 -->
+## 2026-08-14T20:42:27.361137+00:00 - Campaign queued JOB-00011
+
+- Specialist: `PalSystem_Dragapult`
+- Campaign: `PalSystem Dragapult progressive specialist loop`
+- Hypothesis ID: `dragapult-campaign-002`
+- Provider: `codex`
+- Model: `gpt-5.5`
+- Mechanism: `crispin_dragapult_energy_routing`
+- Hypothesis: For Crispin and normal Energy attachment choices in this deck only, prioritize a legal Fire-plus-Psychic route that makes the Active or best prepared Dragapult ex able to use Phantom Dive, while reserving Darkness Energy for Munkidori only when Adrena-Brain has live damage-movement value; preserve generic attachment ranking when no deck-specific route improves attack readiness.
+- Expected effect: Reach Phantom Dive sooner and reduce off-plan Energy attachments without stranding Munkidori's useful Darkness requirement.
+
+<!-- JOB-00011:2:screening_started -->
+## 2026-08-14T20:42:27.396745+00:00 - JOB-00011
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 27300; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00011-screening.log.
+- Hypothesis: For Crispin and normal Energy attachment choices in this deck only, prioritize a legal Fire-plus-Psychic route that makes the Active or best prepared Dragapult ex able to use Phantom Dive, while reserving Darkness Energy for Munkidori only when Adrena-Brain has live damage-movement value; preserve generic attachment ranking when no deck-specific route improves attack readiness.
+
+<!-- JOB-00011:3:screening_failed -->
+## 2026-08-14T20:53:11.576926+00:00 - JOB-00011
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `rejected`
+- Event: `screening_failed`
+- Detail: Process exited with 1.
+- Hypothesis: For Crispin and normal Energy attachment choices in this deck only, prioritize a legal Fire-plus-Psychic route that makes the Active or best prepared Dragapult ex able to use Phantom Dive, while reserving Darkness Energy for Munkidori only when Adrena-Brain has live damage-movement value; preserve generic attachment ranking when no deck-specific route improves attack readiness.
+
+<!-- JOB-00012:1:campaign_enqueued -->
+## 2026-08-14T20:53:11.624923+00:00 - JOB-00012
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `queued`
+- Event: `campaign_enqueued`
+- Detail: Campaign queued hypothesis dragapult-campaign-003.
+- Hypothesis: Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.
+
+<!-- campaign:PalSystem_Dragapult:dragapult-campaign-003:JOB-00012 -->
+## 2026-08-14T20:53:11.656811+00:00 - Campaign queued JOB-00012
+
+- Specialist: `PalSystem_Dragapult`
+- Campaign: `PalSystem Dragapult progressive specialist loop`
+- Hypothesis ID: `dragapult-campaign-003`
+- Provider: `codex`
+- Model: `gpt-5.5`
+- Mechanism: `phantom_dive_live_spread_targeting`
+- Hypothesis: Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.
+- Expected effect: Convert Phantom Dive's spread counters into more prizes and credible follow-up knockouts instead of following printed card power.
+
+<!-- JOB-00012:2:screening_started -->
+## 2026-08-14T20:53:11.706375+00:00 - JOB-00012
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 3260; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00012-screening.log.
+- Hypothesis: Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.
+
+<!-- JOB-00012:3:screening_complete -->
+## 2026-08-14T21:04:16.237405+00:00 - JOB-00012
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `waiting_screening_review`
+- Event: `screening_complete`
+- Detail: 20-game smoke and 200-game screening completed; human review required.
+- Hypothesis: Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.
+
+<!-- JOB-00012:4:ai_review_started -->
+## 2026-08-14T21:04:16.278136+00:00 - JOB-00012
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_ai_review`
+- Event: `ai_review_started`
+- Detail: PID 29396; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00012-ai-review.log.
+- Hypothesis: Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.
+
+<!-- JOB-00012:5:ai_review_requested_more_evidence -->
+## 2026-08-14T21:05:16.476016+00:00 - JOB-00012
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `waiting_more_evidence`
+- Event: `ai_review_requested_more_evidence`
+- Detail: Independent AI review requested more evidence; automatic loop paused for this experiment.
+- Hypothesis: Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.
+
+<!-- JOB-00013:1:campaign_enqueued -->
+## 2026-08-14T23:30:59.108051+00:00 - JOB-00013
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `queued`
+- Event: `campaign_enqueued`
+- Detail: Campaign queued hypothesis dragapult-campaign-004.
+- Hypothesis: For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.
+
+<!-- campaign:PalSystem_Dragapult:dragapult-campaign-004:JOB-00013 -->
+## 2026-08-14T23:30:59.124438+00:00 - Campaign queued JOB-00013
+
+- Specialist: `PalSystem_Dragapult`
+- Campaign: `PalSystem Dragapult progressive specialist loop`
+- Hypothesis ID: `dragapult-campaign-004`
+- Provider: `codex`
+- Model: `gpt-5.5`
+- Mechanism: `munkidori_adrena_brain_damage_transfer`
+- Hypothesis: For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.
+- Expected effect: Turn existing self-damage into prize pressure while improving survival of prepared Dragapult attackers.
+
+<!-- JOB-00013:2:screening_started -->
+## 2026-08-14T23:30:59.169674+00:00 - JOB-00013
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 29228; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00013-screening.log.
+- Hypothesis: For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.
+
+<!-- JOB-00013:3:screening_complete -->
+## 2026-08-14T23:43:00.252708+00:00 - JOB-00013
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `waiting_screening_review`
+- Event: `screening_complete`
+- Detail: 20-game smoke and 200-game screening completed; human review required.
+- Hypothesis: For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.
+
+<!-- JOB-00013:4:ai_review_started -->
+## 2026-08-14T23:43:00.298174+00:00 - JOB-00013
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_ai_review`
+- Event: `ai_review_started`
+- Detail: PID 29224; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00013-ai-review.log.
+- Hypothesis: For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.
+
+<!-- JOB-00013:5:ai_review_closed_experiment -->
+## 2026-08-14T23:44:30.491431+00:00 - JOB-00013
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `rejected`
+- Event: `ai_review_closed_experiment`
+- Detail: Independent AI review closed experiment as unknown.
+- Hypothesis: For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.
+
+<!-- JOB-00014:1:campaign_enqueued -->
+## 2026-08-14T23:44:30.535466+00:00 - JOB-00014
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `queued`
+- Event: `campaign_enqueued`
+- Detail: Campaign queued hypothesis dragapult-campaign-005.
+- Hypothesis: For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.
+
+<!-- campaign:PalSystem_Dragapult:dragapult-campaign-005:JOB-00014 -->
+## 2026-08-14T23:44:30.570082+00:00 - Campaign queued JOB-00014
+
+- Specialist: `PalSystem_Dragapult`
+- Campaign: `PalSystem Dragapult progressive specialist loop`
+- Hypothesis ID: `dragapult-campaign-005`
+- Provider: `codex`
+- Model: `gpt-5.5`
+- Mechanism: `dragapult_disruption_timing`
+- Hypothesis: For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.
+- Expected effect: Reduce low-value disruption plays and retain timing-sensitive cards for turns where they create prize or tempo advantage.
+
+<!-- JOB-00014:2:screening_started -->
+## 2026-08-14T23:45:00.698983+00:00 - JOB-00014
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_screening`
+- Event: `screening_started`
+- Detail: PID 25372; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00014-screening.log.
+- Hypothesis: For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.
+
+<!-- JOB-00014:3:screening_complete -->
+## 2026-08-14T23:58:01.646374+00:00 - JOB-00014
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `waiting_screening_review`
+- Event: `screening_complete`
+- Detail: 20-game smoke and 200-game screening completed; human review required.
+- Hypothesis: For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.
+
+<!-- JOB-00014:4:ai_review_started -->
+## 2026-08-14T23:58:01.688631+00:00 - JOB-00014
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `running_ai_review`
+- Event: `ai_review_started`
+- Detail: PID 17788; log C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\continuous\logs\JOB-00014-ai-review.log.
+- Hypothesis: For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.
+
+<!-- JOB-00014:5:ai_review_requested_more_evidence -->
+## 2026-08-14T23:59:01.866307+00:00 - JOB-00014
+
+- Specialist: `PalSystem_Dragapult`
+- Provider: `codex`
+- State: `waiting_more_evidence`
+- Event: `ai_review_requested_more_evidence`
+- Detail: Independent AI review requested more evidence; automatic loop paused for this experiment.
+- Hypothesis: For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.
+

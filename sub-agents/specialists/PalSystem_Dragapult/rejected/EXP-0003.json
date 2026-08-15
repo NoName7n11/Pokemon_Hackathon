@@ -1,0 +1,139 @@
+{
+  "id": "EXP-0003",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T20:42:27.675556+00:00",
+  "updated_at": "2026-08-14T20:53:03.669533+00:00",
+  "worker": "codex",
+  "hypothesis": "For Crispin and normal Energy attachment choices in this deck only, prioritize a legal Fire-plus-Psychic route that makes the Active or best prepared Dragapult ex able to use Phantom Dive, while reserving Darkness Energy for Munkidori only when Adrena-Brain has live damage-movement value; preserve generic attachment ranking when no deck-specific route improves attack readiness.",
+  "expected_effect": "Reach Phantom Dive sooner and reduce off-plan Energy attachments without stranding Munkidori's useful Darkness requirement.",
+  "mechanisms": [
+    "crispin_dragapult_energy_routing"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0003/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "2026081504",
+    "games": 20,
+    "wins": 11,
+    "losses": 9,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 196.95,
+    "average_decision_time_ms": 6.8830875703632355,
+    "max_decision_time_ms": 169.08999999941443,
+    "win_rate": 0.55,
+    "confidence_interval": [
+      0.3420820083075997,
+      0.7418049791429071
+    ],
+    "z_score": 0.44721359549995837,
+    "p_value": 0.6547208460185767,
+    "started_at": "2026-08-14T20:46:50.987719+00:00",
+    "finished_at": "2026-08-14T20:47:22.244609+00:00",
+    "duration_seconds": 31.261307700002362,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081505",
+    "games": 200,
+    "wins": 89,
+    "losses": 111,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 203.32,
+    "average_decision_time_ms": 7.885358136475761,
+    "max_decision_time_ms": 217.48369999841088,
+    "win_rate": 0.445,
+    "confidence_interval": [
+      0.3778048169746545,
+      0.5142682436763609
+    ],
+    "z_score": -1.5556349186104044,
+    "p_value": 0.11979493042591835,
+    "started_at": "2026-08-14T20:47:22.691705+00:00",
+    "finished_at": "2026-08-14T20:53:03.441148+00:00",
+    "duration_seconds": 340.7376413999991,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 2026081504,
+      "started_at": "2026-08-14T20:46:50.817268+00:00",
+      "finished_at": "2026-08-14T20:47:22.277057+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 200,
+      "seed": 2026081505,
+      "started_at": "2026-08-14T20:47:22.562864+00:00",
+      "finished_at": "2026-08-14T20:53:03.460889+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": "gpt-5.5",
+      "started_at": "2026-08-14T20:42:28.084305+00:00",
+      "finished_at": "2026-08-14T20:46:50.547449+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-codex"
+    }
+  ],
+  "orchestration": {
+    "state": "FAILED_SCREENING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T20:42:27.731080+00:00",
+    "updated_at": "2026-08-14T20:53:03.498298+00:00",
+    "failure_reason": "automatic rejection: screening win rate 44.5% is below 45.0%"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "automatic rejection: screening win rate 44.5% is below 45.0%",
+  "limitations": []
+}

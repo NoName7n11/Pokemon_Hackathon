@@ -1,0 +1,13 @@
+Implemented the targeted `munkidori_adrena_brain_damage_transfer` change in `main.py` only.
+
+Behavior changed:
+- When the real selected MAIN action is Munkidori card ID `235` using an Ability, the next Adrena-Brain damage-counter card selections get specialized scoring.
+- Friendly source selection now prefers damaged, low-HP, high-value Pokemon, especially prepared attackers.
+- Opponent target selection now prioritizes moved-counter knockouts, then strongest low-live-HP prize setup.
+- Generic Ability choice and non-Munkidori damage-counter targeting remain on the existing path.
+
+Verification:
+- Ran `python -m py_compile main.py` successfully.
+- Did not run benchmarks or games, per instruction.
+
+Concern for review: this relies on the simulator exposing Munkidori’s Ability option with `cardId == 235` or an in-play Pokemon reference resolving to ID `235`. If Ability options omit both, the specialization will not activate.

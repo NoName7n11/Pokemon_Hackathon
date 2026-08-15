@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0002",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T20:28:56.305354+00:00",
+  "updated_at": "2026-08-14T20:28:56.355459+00:00",
+  "worker": "codex",
+  "hypothesis": "During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.",
+  "expected_effect": "Gain the Drakloak draw opportunity that the generic evolve-before-Ability policy currently discards, without changing unrelated evolution lines or globally raising Ability priority.",
+  "mechanisms": [
+    "drakloak_recon_before_evolution"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T20:28:56.355459+00:00",
+    "updated_at": "2026-08-14T20:28:56.355459+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

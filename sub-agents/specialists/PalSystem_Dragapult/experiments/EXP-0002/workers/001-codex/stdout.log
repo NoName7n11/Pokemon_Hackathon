@@ -1,0 +1,18 @@
+Implemented the smallest scoped change in `main.py`.
+
+Behavior changed:
+- When MAIN options include both:
+  - a Drakloak Ability option for Recon Directive, and
+  - an evolution option from that same in-play slot into Dragapult,
+- the agent now chooses the Drakloak Ability before evolving.
+- This check is applied both in greedy MAIN selection and before MAIN lookahead, so search cannot override it back to evolve-first.
+- Other evolution lines and normal Ability ordering remain unchanged.
+
+Verification:
+- Parsed `main.py` successfully with `ast.parse`.
+- Removed the generated `__pycache__`.
+- Did not modify `deck.csv` or files under `context/`.
+- Did not run benchmarks.
+
+Reviewer concern:
+- The local worker environment does not have `cg` importable, so I could not runtime-inspect live option objects. The implementation defensively uses existing option location fields (`inPlayArea`/`inPlayIndex` or `area`/`index`) to ensure the Ability and evolution are for the same Drakloak.

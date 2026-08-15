@@ -1,0 +1,174 @@
+{
+  "id": "EXP-0006",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T23:45:00.980396+00:00",
+  "updated_at": "2026-08-14T23:58:59.724946+00:00",
+  "worker": "codex",
+  "hypothesis": "For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.",
+  "expected_effect": "Reduce low-value disruption plays and retain timing-sensitive cards for turns where they create prize or tempo advantage.",
+  "mechanisms": [
+    "dragapult_disruption_timing"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0006/candidate",
+  "status": "REVIEW_REQUIRED",
+  "smoke_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "2026081507",
+    "games": 20,
+    "wins": 13,
+    "losses": 7,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 188.4,
+    "average_decision_time_ms": 10.301245327273769,
+    "max_decision_time_ms": 228.19830000662478,
+    "win_rate": 0.65,
+    "confidence_interval": [
+      0.43285051021946463,
+      0.8188104521320554
+    ],
+    "z_score": 1.341640786499874,
+    "p_value": 0.17971249487899985,
+    "started_at": "2026-08-14T23:49:52.924238+00:00",
+    "finished_at": "2026-08-14T23:50:39.236399+00:00",
+    "duration_seconds": 46.312024500002735,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081508",
+    "games": 200,
+    "wins": 107,
+    "losses": 93,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 205.6,
+    "average_decision_time_ms": 8.608288816791374,
+    "max_decision_time_ms": 201.79620000271825,
+    "win_rate": 0.535,
+    "confidence_interval": [
+      0.46586521028994954,
+      0.6028155692957681
+    ],
+    "z_score": 0.9899494936611675,
+    "p_value": 0.3221988061625811,
+    "started_at": "2026-08-14T23:50:39.670678+00:00",
+    "finished_at": "2026-08-14T23:56:54.846555+00:00",
+    "duration_seconds": 375.1752081000013,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [
+    {
+      "stage": "screening",
+      "result": "results/decision-trace-screening.json",
+      "log": "orchestration-logs/decision-trace-screening.log",
+      "games": 20,
+      "total_differences": 137,
+      "difference_rate": 0.06419868791002811
+    }
+  ],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 2026081507,
+      "started_at": "2026-08-14T23:49:52.368465+00:00",
+      "finished_at": "2026-08-14T23:50:39.266557+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 200,
+      "seed": 2026081508,
+      "started_at": "2026-08-14T23:50:39.504832+00:00",
+      "finished_at": "2026-08-14T23:56:54.873604+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": "gpt-5.5",
+      "started_at": "2026-08-14T23:45:01.352007+00:00",
+      "finished_at": "2026-08-14T23:49:51.844376+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-codex"
+    }
+  ],
+  "orchestration": {
+    "state": "REVIEW_REQUIRED",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T23:45:01.043795+00:00",
+    "updated_at": "2026-08-14T23:58:59.724946+00:00",
+    "review_pack": "human-review/pending/PalSystem_Dragapult-EXP-0006.md",
+    "ai_review_state": "more_evidence",
+    "ai_review_reviewer": "opus",
+    "ai_review_artifact": "reviews/screening-opus-auto-review.json"
+  },
+  "reviews": [
+    {
+      "stage": "screening",
+      "status": "pending",
+      "created_at": "2026-08-14T23:57:49.907624+00:00",
+      "worker_identity": "codex",
+      "assigned_reviewer": {
+        "reviewer": "opus",
+        "provider": "claude",
+        "model": "opus",
+        "reason": "Codex-authored experiments require an independent Opus/Claude review."
+      },
+      "json": "human-review/pending/PalSystem_Dragapult-EXP-0006.json",
+      "markdown": "human-review/pending/PalSystem_Dragapult-EXP-0006.md"
+    }
+  ],
+  "review_history": [
+    {
+      "stage": "screening",
+      "decision": "more_evidence",
+      "reviewer": "opus",
+      "reason": "automatic AI review; see reviews/screening-opus-auto-review.json",
+      "at": "2026-08-14T23:58:59.724946+00:00"
+    }
+  ],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

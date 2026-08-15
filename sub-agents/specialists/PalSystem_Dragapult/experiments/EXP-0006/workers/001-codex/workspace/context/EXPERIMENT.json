@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0006",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T23:45:00.980396+00:00",
+  "updated_at": "2026-08-14T23:45:01.044600+00:00",
+  "worker": "codex",
+  "hypothesis": "For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.",
+  "expected_effect": "Reduce low-value disruption plays and retain timing-sensitive cards for turns where they create prize or tempo advantage.",
+  "mechanisms": [
+    "dragapult_disruption_timing"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0006/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T23:45:01.043795+00:00",
+    "updated_at": "2026-08-14T23:45:01.044600+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

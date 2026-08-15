@@ -1,0 +1,12 @@
+Implemented the `crispin_dragapult_energy_routing` change in `main.py`.
+
+Behavior changed:
+- Normal Energy attachments now prefer Fire/Psychic onto the Active or best-prepared Dreepy/Drakloak/Dragapult ex line when that moves it toward Phantom Dive.
+- Darkness Energy is routed to Munkidori only when Munkidori lacks Darkness and there is live damage-movement value: damaged own Pokemon plus an opposing target.
+- Crispin-style Energy selection prompts now prefer missing Fire/Psychic for the Dragapult line, with Darkness added only for live Munkidori value.
+- Generic ranking remains the fallback when no deck-specific route applies.
+
+Verification:
+- Ran `python -m py_compile main.py` successfully.
+- Did not run benchmarks or games, per instruction.
+- Could not runtime-test `cg` behavior locally because this worker image does not have the `cg` module installed; controller validation should inspect exact Crispin prompt contexts and Energy option metadata.

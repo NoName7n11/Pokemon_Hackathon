@@ -1,0 +1,182 @@
+{
+  "id": "EXP-0002",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T20:28:56.305354+00:00",
+  "updated_at": "2026-08-14T20:42:10.312232+00:00",
+  "worker": "codex",
+  "hypothesis": "During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.",
+  "expected_effect": "Gain the Drakloak draw opportunity that the generic evolve-before-Ability policy currently discards, without changing unrelated evolution lines or globally raising Ability priority.",
+  "mechanisms": [
+    "drakloak_recon_before_evolution"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "2026081503",
+    "games": 20,
+    "wins": 13,
+    "losses": 7,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 216.05,
+    "average_decision_time_ms": 7.638767946989311,
+    "max_decision_time_ms": 134.7578999993857,
+    "win_rate": 0.65,
+    "confidence_interval": [
+      0.43285051021946463,
+      0.8188104521320554
+    ],
+    "z_score": 1.341640786499874,
+    "p_value": 0.17971249487899985,
+    "started_at": "2026-08-14T20:32:48.298303+00:00",
+    "finished_at": "2026-08-14T20:33:22.810205+00:00",
+    "duration_seconds": 34.504844199997024,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081504",
+    "games": 200,
+    "wins": 91,
+    "losses": 109,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 196.74,
+    "average_decision_time_ms": 8.27181341256279,
+    "max_decision_time_ms": 300.35769999813056,
+    "win_rate": 0.455,
+    "confidence_interval": [
+      0.38748099090226035,
+      0.5242151496303886
+    ],
+    "z_score": -1.272792206135785,
+    "p_value": 0.2030917875771681,
+    "started_at": "2026-08-14T20:33:23.238534+00:00",
+    "finished_at": "2026-08-14T20:39:14.210183+00:00",
+    "duration_seconds": 350.9711309999984,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [
+    {
+      "stage": "screening",
+      "result": "results/decision-trace-screening.json",
+      "log": "orchestration-logs/decision-trace-screening.log",
+      "games": 20,
+      "total_differences": 135,
+      "difference_rate": 0.06835443037974684
+    }
+  ],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 2026081503,
+      "started_at": "2026-08-14T20:32:48.176595+00:00",
+      "finished_at": "2026-08-14T20:33:22.839878+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 200,
+      "seed": 2026081504,
+      "started_at": "2026-08-14T20:33:23.058644+00:00",
+      "finished_at": "2026-08-14T20:39:14.234152+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": "gpt-5.5",
+      "started_at": "2026-08-14T20:28:56.705368+00:00",
+      "finished_at": "2026-08-14T20:32:47.968388+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-codex"
+    }
+  ],
+  "orchestration": {
+    "state": "REJECTED_BY_HUMAN",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T20:28:56.355459+00:00",
+    "updated_at": "2026-08-14T20:42:09.487664+00:00",
+    "review_pack": "human-review/rejected/PalSystem_Dragapult-EXP-0002.md",
+    "ai_review_state": "reject",
+    "ai_review_reviewer": "opus",
+    "ai_review_artifact": "reviews/screening-opus-auto-review.json"
+  },
+  "reviews": [
+    {
+      "stage": "screening",
+      "status": "rejected",
+      "created_at": "2026-08-14T20:40:00.784688+00:00",
+      "worker_identity": "codex",
+      "assigned_reviewer": {
+        "reviewer": "opus",
+        "provider": "claude",
+        "model": "opus",
+        "reason": "Codex-authored experiments require an independent Opus/Claude review."
+      },
+      "json": "human-review/rejected/PalSystem_Dragapult-EXP-0002.json",
+      "markdown": "human-review/rejected/PalSystem_Dragapult-EXP-0002.md",
+      "reviewed_at": "2026-08-14T20:42:09.479963+00:00",
+      "reason": "automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json"
+    }
+  ],
+  "review_history": [
+    {
+      "stage": "screening",
+      "decision": "reject",
+      "reviewer": "opus",
+      "reason": "automatic AI review; see reviews/screening-opus-auto-review.json",
+      "at": "2026-08-14T20:42:09.072523+00:00"
+    },
+    {
+      "stage": "screening",
+      "decision": "rejected",
+      "reason": "automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json",
+      "at": "2026-08-14T20:42:09.487664+00:00"
+    }
+  ],
+  "decision": "rejected",
+  "reason": "human review rejection: automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json",
+  "limitations": []
+}

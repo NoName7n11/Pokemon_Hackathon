@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0003",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T20:42:27.675556+00:00",
+  "updated_at": "2026-08-14T20:42:27.732180+00:00",
+  "worker": "codex",
+  "hypothesis": "For Crispin and normal Energy attachment choices in this deck only, prioritize a legal Fire-plus-Psychic route that makes the Active or best prepared Dragapult ex able to use Phantom Dive, while reserving Darkness Energy for Munkidori only when Adrena-Brain has live damage-movement value; preserve generic attachment ranking when no deck-specific route improves attack readiness.",
+  "expected_effect": "Reach Phantom Dive sooner and reduce off-plan Energy attachments without stranding Munkidori's useful Darkness requirement.",
+  "mechanisms": [
+    "crispin_dragapult_energy_routing"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0003/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T20:42:27.731080+00:00",
+    "updated_at": "2026-08-14T20:42:27.732180+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

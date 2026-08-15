@@ -1,0 +1,11 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py start --specialist PalSystem_Dragapult --hypothesis "For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection." --mechanism munkidori_adrena_brain_damage_transfer --expected-effect "Turn existing self-damage into prize pressure while improving survival of prepared Dragapult attackers." --worker codex
+STARTED: 2026-08-14T23:30:59.343884+00:00
+FINISHED: 2026-08-14T23:30:59.579429+00:00
+TIMED_OUT: False
+
+STDOUT:
+Started PalSystem_Dragapult/EXP-0005
+Edit only: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0005\candidate\main.py
+
+
+STDERR:

@@ -1,0 +1,12 @@
+Implemented the disruption timing experiment in [main.py](C:/Users/novan/Desktop/Projects/Pokemon_Hackathon/sub-agents/specialists/PalSystem_Dragapult/experiments/EXP-0006/workers/001-codex/workspace/main.py:34).
+
+Exact behavior changed: during MAIN-phase lookahead only, for the Dragapult deck only, the search now skips low-value first-action plays of `Unfair Stamp`, `Judge`, `Boss's Orders`, `Crushing Hammer`, and `Jamming Tower` unless live board checks indicate current value:
+- `Boss's Orders`: bench gust can KO, pick off a weak target, or pull a much stronger engine threat.
+- `Crushing Hammer`: opponent has Energy in play.
+- `Judge`: opponent has a strong hand advantage / large hand.
+- `Unfair Stamp`: opponent hand is above Stamp size or our hand is low.
+- `Jamming Tower`: opponent appears to have a Tool attached.
+
+All other Trainer/card ranking paths are left unchanged. I did not modify `deck.csv`, `context/`, or add project files.
+
+Verification: syntax-only compile passed. I could not import or smoke-test with `cg` because the local worker shell does not have the competition package installed. Human reviewer should inspect the `Jamming Tower` attachment detection in traces, since it depends on which attached-card fields the simulator exposes.

@@ -1,0 +1,182 @@
+{
+  "id": "EXP-0005",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T23:30:59.560200+00:00",
+  "updated_at": "2026-08-14T23:44:28.795612+00:00",
+  "worker": "codex",
+  "hypothesis": "For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.",
+  "expected_effect": "Turn existing self-damage into prize pressure while improving survival of prepared Dragapult attackers.",
+  "mechanisms": [
+    "munkidori_adrena_brain_damage_transfer"
+  ],
+  "files_changed": [
+    "main.py"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0005/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "2026081506",
+    "games": 20,
+    "wins": 12,
+    "losses": 8,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 212.1,
+    "average_decision_time_ms": 12.748289843831545,
+    "max_decision_time_ms": 820.4875000010361,
+    "win_rate": 0.6,
+    "confidence_interval": [
+      0.3865779423152061,
+      0.7811960325858074
+    ],
+    "z_score": 0.8944271909999157,
+    "p_value": 0.37109336952269767,
+    "started_at": "2026-08-14T23:34:21.927331+00:00",
+    "finished_at": "2026-08-14T23:35:16.358159+00:00",
+    "duration_seconds": 54.42757309999433,
+    "errors": []
+  },
+  "screening_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081507",
+    "games": 200,
+    "wins": 122,
+    "losses": 78,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 197.78,
+    "average_decision_time_ms": 9.344496619531492,
+    "max_decision_time_ms": 453.1127999944147,
+    "win_rate": 0.61,
+    "confidence_interval": [
+      0.5409361758928832,
+      0.6749177028050861
+    ],
+    "z_score": 3.1112698372208087,
+    "p_value": 0.001862846297981894,
+    "started_at": "2026-08-14T23:35:16.792792+00:00",
+    "finished_at": "2026-08-14T23:41:50.409554+00:00",
+    "duration_seconds": 393.61673869999504,
+    "errors": []
+  },
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [
+    {
+      "stage": "screening",
+      "result": "results/decision-trace-screening.json",
+      "log": "orchestration-logs/decision-trace-screening.log",
+      "games": 20,
+      "total_differences": 152,
+      "difference_rate": 0.07839092315626611
+    }
+  ],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 2026081506,
+      "started_at": "2026-08-14T23:34:21.746463+00:00",
+      "finished_at": "2026-08-14T23:35:16.381668+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    },
+    {
+      "stage": "screening",
+      "games": 200,
+      "seed": 2026081507,
+      "started_at": "2026-08-14T23:35:16.636331+00:00",
+      "finished_at": "2026-08-14T23:41:50.440185+00:00",
+      "returncode": 0,
+      "result": "results/screening-002.json",
+      "log": "logs/screening-002.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [
+    {
+      "run": 1,
+      "provider": "codex",
+      "backend": "codex-cli",
+      "model": "gpt-5.5",
+      "started_at": "2026-08-14T23:31:00.030550+00:00",
+      "finished_at": "2026-08-14T23:34:21.463344+00:00",
+      "dry_run": false,
+      "returncode": 0,
+      "timed_out": false,
+      "candidate_imported": true,
+      "changed_files": [
+        "main.py"
+      ],
+      "validation_errors": [],
+      "run_dir": "workers/001-codex"
+    }
+  ],
+  "orchestration": {
+    "state": "REJECTED_BY_HUMAN",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T23:30:59.611015+00:00",
+    "updated_at": "2026-08-14T23:44:28.583706+00:00",
+    "review_pack": "human-review/rejected/PalSystem_Dragapult-EXP-0005.md",
+    "ai_review_state": "reject",
+    "ai_review_reviewer": "opus",
+    "ai_review_artifact": "reviews/screening-opus-auto-review.json"
+  },
+  "reviews": [
+    {
+      "stage": "screening",
+      "status": "rejected",
+      "created_at": "2026-08-14T23:42:40.284681+00:00",
+      "worker_identity": "codex",
+      "assigned_reviewer": {
+        "reviewer": "opus",
+        "provider": "claude",
+        "model": "opus",
+        "reason": "Codex-authored experiments require an independent Opus/Claude review."
+      },
+      "json": "human-review/rejected/PalSystem_Dragapult-EXP-0005.json",
+      "markdown": "human-review/rejected/PalSystem_Dragapult-EXP-0005.md",
+      "reviewed_at": "2026-08-14T23:44:28.575070+00:00",
+      "reason": "automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json"
+    }
+  ],
+  "review_history": [
+    {
+      "stage": "screening",
+      "decision": "reject",
+      "reviewer": "opus",
+      "reason": "automatic AI review; see reviews/screening-opus-auto-review.json",
+      "at": "2026-08-14T23:44:28.394628+00:00"
+    },
+    {
+      "stage": "screening",
+      "decision": "rejected",
+      "reason": "automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json",
+      "at": "2026-08-14T23:44:28.583706+00:00"
+    }
+  ],
+  "decision": "rejected",
+  "reason": "human review rejection: automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json",
+  "limitations": []
+}

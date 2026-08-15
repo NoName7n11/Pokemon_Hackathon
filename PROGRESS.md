@@ -9,6 +9,83 @@ the reversal as a new entry instead).
 
 ---
 
+## 2026-08-15
+
+- **PalSystem replay curation pass — setup signal found, but no `main.py`
+  change retained**:
+  - Reviewed the curated `palsystem_games/replays/` logs by identifying the
+    PalSystem seat from the submitted 60-card deck. The usable sample covered
+    87 non-error games: 58 wins and 29 losses. The clearest gameplay signal was
+    setup discipline: PalSystem wins opened Dreepy far more often than any other
+    Basic, while generic static-card ranking can overvalue higher-printed-stat
+    support Pokémon such as Fezandipiti ex, Meowth ex, or Munkidori.
+  - Tried converting that replay signal into a PalSystem-detected `main.py`
+    branch. The first version bundled setup priority, Basic Bench play priority,
+    and Energy routing. It was legal but clearly regressed in the specialist
+    smoke benchmark: 5-15 over 20 games against the frozen PalSystem baseline
+    (`replay_policy_smoke_shared_main.json`).
+  - Narrowed the branch to setup-only Dreepy-first Active/Bench choices. That
+    removed the immediate regression in smoke (10-10 over 20 games), but the
+    standard screening run did not justify keeping it: 97-103 over 200 games,
+    no draws, no timeouts, no illegal actions, no crashes
+    (`replay_setup_only_screen200_shared_main.json`, `p=0.671`).
+  - The attempted policy was therefore removed from `main.py`; the active agent
+    is unchanged. The useful retained knowledge is tactical, not shipped code:
+    future PalSystem work should target Dreepy-first setup, but only through an
+    isolated specialist experiment with decision traces proving the setup branch
+    actually fires and improves results. Also note the earlier ID trap:
+    Munkidori is card `112`; Budew is card `235`.
+  - **Reason:** replay curation is valuable only if the resulting heuristic
+    survives measurement. This pass prevented a speculative deck-specific branch
+    from entering the shared submission after screening showed no improvement.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **PalSystem Dragapult progressive specialist campaign started**:
+  - Added `sub-agents/continuous/campaigns/PalSystem_Dragapult.json` with five
+    ordered, deck-specific hypotheses: Recon Directive before evolution,
+    Crispin/Fire-Psychic-Darkness routing, Phantom Dive live spread targeting,
+    Munkidori Adrena-Brain damage transfer, and timing-sensitive disruption.
+  - The campaign uses isolated `gpt-5.5` Codex workers and the existing
+    cross-provider review rule, so Codex-generated candidates are independently
+    screened by Opus before deep evaluation.
+  - The evidence path remains 20 smoke -> 200 screening -> AI review -> 300
+    main -> 500 confirmation -> cross-deck checks -> final review. One mechanism
+    is tested at a time; automatic acceptance, tournament promotion, and writes
+    to the active shared `main.py` remain disabled.
+  - **Reason:** begin measurable, continuous specialization of the selected
+    Dragapult deck without bundling heuristics or risking the current submission
+    before a candidate proves that it is stronger.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **PalSystem Dragapult dedicated specialist prepared with powered deck
+  baselines**:
+  - Created and registered the isolated `PalSystem_Dragapult` Codex specialist
+    from `Decs/PalSystem_Dragapult.csv` and the frozen active-policy baseline.
+    Static deck validation, Python validation, runtime import, and a fault-free
+    20-game readiness smoke passed. The unchanged readiness experiment was
+    explicitly rejected because it was infrastructure evidence, not a gameplay
+    improvement.
+  - Corrected the `.txt` headings from 14/36 to the actual 17 Pokemon and 33
+    Trainers without changing the 60-card CSV. Added dataset-grounded specialist
+    strategy notes covering Dreepy setup, Recon Directive ordering, Dragapult ex
+    Fire/Psychic preparation, Munkidori Darkness routing, Phantom Dive spread
+    targeting, support-card timing, and six narrow experiment families.
+  - Ran two 500-game, seat-balanced comparisons with the exact same frozen agent
+    on both sides. Dragapult lost 191-309 to Hydrapple (38.2%, 95% CI
+    34.05-42.53%, `p=1.31e-7`) and beat No_Name_Grass 308-192 (61.6%, 95% CI
+    57.26-65.76%, `p=2.13e-7`). Both runs had zero draws, timeouts, illegal
+    actions, agent crashes, or engine crashes.
+  - Results are retained under the specialist `benchmarks/` directory and are
+    explicitly labeled deck-plus-generic-policy baselines. Hydrapple is the
+    first improvement target; No_Name_Grass is the initial regression guard.
+  - **Reason:** prepare one reproducible, deck-specific research target and
+    measure its starting matchup position before specialized policy changes can
+    confound deck strength with agent strength.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 ## 2026-08-14
 
 - **Plan 1 Phase 12 complete — Strategy report claims verified and research

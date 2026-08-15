@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-14T05:12:33.909011+00:00",
+  "updated_at": "2026-08-15T01:00:19.580890+00:00",
   "jobs": [
     {
       "id": "JOB-00001",
@@ -304,7 +304,7 @@
       "mechanism": "charizard_effect_damage_evaluation_v2",
       "expected_effect": "Choose powered Charizard attacks and promotions when their live effect damage is tactically superior, without changing unrelated Pokemon.",
       "provider_authorized": true,
-      "state": "waiting_more_evidence",
+      "state": "rejected",
       "created_at": "2026-08-13T23:35:33.186832+00:00",
       "updated_at": "2026-08-14T01:52:22.549108+00:00",
       "experiment": "EXP-0003",
@@ -402,6 +402,255 @@
           "state": "waiting_final_review",
           "event": "deep_evaluation_complete",
           "detail": "Main, 500-game confirmation, and available cross-deck evaluation completed; final human review required."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00010",
+      "specialist": "PalSystem_Dragapult",
+      "provider": "codex",
+      "model": "gpt-5.5",
+      "hypothesis": "During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.",
+      "mechanism": "drakloak_recon_before_evolution",
+      "expected_effect": "Gain the Drakloak draw opportunity that the generic evolve-before-Ability policy currently discards, without changing unrelated evolution lines or globally raising Ability priority.",
+      "provider_authorized": true,
+      "state": "rejected",
+      "created_at": "2026-08-14T20:28:55.955482+00:00",
+      "updated_at": "2026-08-14T20:42:27.247309+00:00",
+      "experiment": "EXP-0002",
+      "seed": 2026081501,
+      "campaign": {
+        "path": "campaigns/PalSystem_Dragapult.json",
+        "hypothesis_id": "dragapult-campaign-001"
+      },
+      "history": [
+        {
+          "at": "2026-08-14T20:28:55.955482+00:00",
+          "state": "queued",
+          "event": "campaign_enqueued",
+          "detail": "Campaign queued hypothesis dragapult-campaign-001."
+        },
+        {
+          "at": "2026-08-14T20:28:56.006080+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 26852; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00010-screening.log."
+        },
+        {
+          "at": "2026-08-14T20:40:26.869507+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T20:40:26.947996+00:00",
+          "state": "running_ai_review",
+          "event": "ai_review_started",
+          "detail": "PID 20852; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00010-ai-review.log."
+        },
+        {
+          "at": "2026-08-14T20:42:27.247309+00:00",
+          "state": "rejected",
+          "event": "ai_review_closed_experiment",
+          "detail": "Independent AI review closed experiment as unknown."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00011",
+      "specialist": "PalSystem_Dragapult",
+      "provider": "codex",
+      "model": "gpt-5.5",
+      "hypothesis": "For Crispin and normal Energy attachment choices in this deck only, prioritize a legal Fire-plus-Psychic route that makes the Active or best prepared Dragapult ex able to use Phantom Dive, while reserving Darkness Energy for Munkidori only when Adrena-Brain has live damage-movement value; preserve generic attachment ranking when no deck-specific route improves attack readiness.",
+      "mechanism": "crispin_dragapult_energy_routing",
+      "expected_effect": "Reach Phantom Dive sooner and reduce off-plan Energy attachments without stranding Munkidori's useful Darkness requirement.",
+      "provider_authorized": true,
+      "state": "rejected",
+      "created_at": "2026-08-14T20:42:27.306098+00:00",
+      "updated_at": "2026-08-14T20:53:11.545006+00:00",
+      "experiment": null,
+      "seed": 2026081502,
+      "campaign": {
+        "path": "campaigns/PalSystem_Dragapult.json",
+        "hypothesis_id": "dragapult-campaign-002"
+      },
+      "history": [
+        {
+          "at": "2026-08-14T20:42:27.306098+00:00",
+          "state": "queued",
+          "event": "campaign_enqueued",
+          "detail": "Campaign queued hypothesis dragapult-campaign-002."
+        },
+        {
+          "at": "2026-08-14T20:42:27.375155+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 27300; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00011-screening.log."
+        },
+        {
+          "at": "2026-08-14T20:53:11.545006+00:00",
+          "state": "rejected",
+          "event": "screening_failed",
+          "detail": "Process exited with 1."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00012",
+      "specialist": "PalSystem_Dragapult",
+      "provider": "codex",
+      "model": "gpt-5.5",
+      "hypothesis": "Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.",
+      "mechanism": "phantom_dive_live_spread_targeting",
+      "expected_effect": "Convert Phantom Dive's spread counters into more prizes and credible follow-up knockouts instead of following printed card power.",
+      "provider_authorized": true,
+      "state": "rejected",
+      "created_at": "2026-08-14T20:53:11.611602+00:00",
+      "updated_at": "2026-08-14T23:28:50.782122+00:00",
+      "experiment": "EXP-0004",
+      "seed": 2026081503,
+      "campaign": {
+        "path": "campaigns/PalSystem_Dragapult.json",
+        "hypothesis_id": "dragapult-campaign-003"
+      },
+      "history": [
+        {
+          "at": "2026-08-14T20:53:11.611602+00:00",
+          "state": "queued",
+          "event": "campaign_enqueued",
+          "detail": "Campaign queued hypothesis dragapult-campaign-003."
+        },
+        {
+          "at": "2026-08-14T20:53:11.672600+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 3260; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00012-screening.log."
+        },
+        {
+          "at": "2026-08-14T21:04:16.216759+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T21:04:16.257320+00:00",
+          "state": "running_ai_review",
+          "event": "ai_review_started",
+          "detail": "PID 29396; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00012-ai-review.log."
+        },
+        {
+          "at": "2026-08-14T21:05:16.464295+00:00",
+          "state": "waiting_more_evidence",
+          "event": "ai_review_requested_more_evidence",
+          "detail": "Independent AI review requested more evidence; automatic loop paused for this experiment."
+        },
+        {
+          "at": "2026-08-14T23:28:50.782122+00:00",
+          "state": "rejected",
+          "event": "experiment_closed",
+          "detail": "Private experiment decision: rejected."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00013",
+      "specialist": "PalSystem_Dragapult",
+      "provider": "codex",
+      "model": "gpt-5.5",
+      "hypothesis": "For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.",
+      "mechanism": "munkidori_adrena_brain_damage_transfer",
+      "expected_effect": "Turn existing self-damage into prize pressure while improving survival of prepared Dragapult attackers.",
+      "provider_authorized": true,
+      "state": "rejected",
+      "created_at": "2026-08-14T23:30:59.068739+00:00",
+      "updated_at": "2026-08-14T23:44:30.468772+00:00",
+      "experiment": "EXP-0005",
+      "seed": 2026081504,
+      "campaign": {
+        "path": "campaigns/PalSystem_Dragapult.json",
+        "hypothesis_id": "dragapult-campaign-004"
+      },
+      "history": [
+        {
+          "at": "2026-08-14T23:30:59.068739+00:00",
+          "state": "queued",
+          "event": "campaign_enqueued",
+          "detail": "Campaign queued hypothesis dragapult-campaign-004."
+        },
+        {
+          "at": "2026-08-14T23:30:59.144370+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 29228; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00013-screening.log."
+        },
+        {
+          "at": "2026-08-14T23:43:00.234296+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T23:43:00.277404+00:00",
+          "state": "running_ai_review",
+          "event": "ai_review_started",
+          "detail": "PID 29224; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00013-ai-review.log."
+        },
+        {
+          "at": "2026-08-14T23:44:30.468772+00:00",
+          "state": "rejected",
+          "event": "ai_review_closed_experiment",
+          "detail": "Independent AI review closed experiment as unknown."
+        }
+      ]
+    },
+    {
+      "id": "JOB-00014",
+      "specialist": "PalSystem_Dragapult",
+      "provider": "codex",
+      "model": "gpt-5.5",
+      "hypothesis": "For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks.",
+      "mechanism": "dragapult_disruption_timing",
+      "expected_effect": "Reduce low-value disruption plays and retain timing-sensitive cards for turns where they create prize or tempo advantage.",
+      "provider_authorized": true,
+      "state": "waiting_more_evidence",
+      "created_at": "2026-08-14T23:44:30.514225+00:00",
+      "updated_at": "2026-08-14T23:59:01.834066+00:00",
+      "experiment": "EXP-0006",
+      "seed": 2026081505,
+      "campaign": {
+        "path": "campaigns/PalSystem_Dragapult.json",
+        "hypothesis_id": "dragapult-campaign-005"
+      },
+      "history": [
+        {
+          "at": "2026-08-14T23:44:30.514225+00:00",
+          "state": "queued",
+          "event": "campaign_enqueued",
+          "detail": "Campaign queued hypothesis dragapult-campaign-005."
+        },
+        {
+          "at": "2026-08-14T23:45:00.675930+00:00",
+          "state": "running_screening",
+          "event": "screening_started",
+          "detail": "PID 25372; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00014-screening.log."
+        },
+        {
+          "at": "2026-08-14T23:58:01.627216+00:00",
+          "state": "waiting_screening_review",
+          "event": "screening_complete",
+          "detail": "20-game smoke and 200-game screening completed; human review required."
+        },
+        {
+          "at": "2026-08-14T23:58:01.667296+00:00",
+          "state": "running_ai_review",
+          "event": "ai_review_started",
+          "detail": "PID 17788; log C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\continuous\\logs\\JOB-00014-ai-review.log."
+        },
+        {
+          "at": "2026-08-14T23:59:01.834066+00:00",
+          "state": "waiting_more_evidence",
+          "event": "ai_review_requested_more_evidence",
+          "detail": "Independent AI review requested more evidence; automatic loop paused for this experiment."
         }
       ]
     }

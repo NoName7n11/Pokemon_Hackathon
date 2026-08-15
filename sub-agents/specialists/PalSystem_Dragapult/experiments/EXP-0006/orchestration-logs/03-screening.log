@@ -1,0 +1,11 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py run --specialist PalSystem_Dragapult --stage screening --seed 2026081508
+STARTED: 2026-08-14T23:50:39.314405+00:00
+FINISHED: 2026-08-14T23:56:54.912878+00:00
+TIMED_OUT: False
+
+STDOUT:
+screening: 107/200 wins (53.5%), 0 draws, 0 crashes
+Result: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0006\results\screening-002.json
+
+
+STDERR:

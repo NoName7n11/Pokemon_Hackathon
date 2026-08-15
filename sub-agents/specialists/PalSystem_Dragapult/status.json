@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "state": "REVIEW_REQUIRED",
+  "review_state": "REVIEW_REQUIRED",
+  "current_version": "v000-baseline",
+  "accepted_experiment": null,
+  "active_experiment": "EXP-0006",
+  "created_at": "2026-08-14T19:44:58.483242+00:00",
+  "updated_at": "2026-08-14T23:57:49.907624+00:00",
+  "deck_sha256": "4effb5248d766a8110ac265628f9a65b28e948aa64541ca84fa62d9716e5fd98",
+  "agent_sha256": "dba17948b6dd8414fe1ac34c56ccc6f1be50e8c4f68ef800309bb764acaa3203",
+  "validation": {
+    "static": "passed",
+    "runtime_import": "passed",
+    "smoke_benchmark": "passed"
+  }
+}

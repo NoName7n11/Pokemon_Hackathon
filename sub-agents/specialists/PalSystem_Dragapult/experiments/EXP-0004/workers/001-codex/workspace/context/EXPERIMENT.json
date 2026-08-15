@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0004",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T20:53:11.933131+00:00",
+  "updated_at": "2026-08-14T20:53:11.981122+00:00",
+  "worker": "codex",
+  "hypothesis": "Only in Dragapult ex Phantom Dive damage-counter selections, rank opposing Bench targets using live remaining HP, prize value, immediate knockout completion, and useful two-turn knockout setup; preserve all other DAMAGE_COUNTER and CARD target contexts unchanged.",
+  "expected_effect": "Convert Phantom Dive's spread counters into more prizes and credible follow-up knockouts instead of following printed card power.",
+  "mechanisms": [
+    "phantom_dive_live_spread_targeting"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0004/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T20:53:11.981122+00:00",
+    "updated_at": "2026-08-14T20:53:11.981122+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

@@ -1,0 +1,14 @@
+Implemented the narrow change in `main.py`.
+
+Changed behavior:
+- Added a Phantom Dive-specific damage-counter scorer for selections that look like Dragapult ex’s opposing Bench spread: `DAMAGE_COUNTER`, 1-6 counters remaining, targets all opposing Bench.
+- That scorer prioritizes live remaining HP, prize value, immediate KO completion, and targets that can be set up for a next Phantom Dive.
+- All other target contexts continue using the existing `_target_score` / card-power behavior.
+
+Validation:
+- `python -m py_compile main.py` passed.
+- No benchmarks or games were run.
+- No files remain added beyond the original workspace files.
+
+Reviewer concern:
+- Because `cg` metadata was not importable in this worker, Phantom Dive is detected structurally rather than by attack ID/name. If another same-shape effect exists in this deck, it could share this branch.

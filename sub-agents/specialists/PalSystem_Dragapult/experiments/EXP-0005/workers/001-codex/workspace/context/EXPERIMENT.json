@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0005",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T23:30:59.560200+00:00",
+  "updated_at": "2026-08-14T23:30:59.611015+00:00",
+  "worker": "codex",
+  "hypothesis": "For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.",
+  "expected_effect": "Turn existing self-damage into prize pressure while improving survival of prepared Dragapult attackers.",
+  "mechanisms": [
+    "munkidori_adrena_brain_damage_transfer"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0005/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-14T23:30:59.611015+00:00",
+    "updated_at": "2026-08-14T23:30:59.611015+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

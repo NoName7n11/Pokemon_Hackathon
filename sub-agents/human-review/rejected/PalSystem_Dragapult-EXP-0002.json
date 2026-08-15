@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "specialist": "PalSystem_Dragapult",
+  "experiment": "EXP-0002",
+  "stage": "screening",
+  "created_at": "2026-08-14T20:40:00.775387+00:00",
+  "hypothesis": "During MAIN-phase evolution ordering, when a Drakloak can use Recon Directive and can also evolve into Dragapult ex, use that Drakloak's draw Ability before evolving it; preserve the existing evolve and Ability ordering for every other Pokemon and when Recon Directive is unavailable or already used.",
+  "expected_effect": "Gain the Drakloak draw opportunity that the generic evolve-before-Ability policy currently discards, without changing unrelated evolution lines or globally raising Ability priority.",
+  "mechanisms": [
+    "drakloak_recon_before_evolution"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "codex",
+    "backend": "codex-cli",
+    "model": "gpt-5.5",
+    "started_at": "2026-08-14T20:28:56.705368+00:00",
+    "finished_at": "2026-08-14T20:32:47.968388+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-codex"
+  },
+  "worker_identity": {
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "identity": "codex"
+  },
+  "assigned_reviewer": {
+    "reviewer": "opus",
+    "provider": "claude",
+    "model": "opus",
+    "reason": "Codex-authored experiments require an independent Opus/Claude review."
+  },
+  "benchmark": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081504",
+    "games": 200,
+    "wins": 91,
+    "losses": 109,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 196.74,
+    "average_decision_time_ms": 8.27181341256279,
+    "max_decision_time_ms": 300.35769999813056,
+    "win_rate": 0.455,
+    "confidence_interval": [
+      0.38748099090226035,
+      0.5242151496303886
+    ],
+    "z_score": -1.272792206135785,
+    "p_value": 0.2030917875771681,
+    "started_at": "2026-08-14T20:33:23.238534+00:00",
+    "finished_at": "2026-08-14T20:39:14.210183+00:00",
+    "duration_seconds": 350.9711309999984,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1975,
+      "total_differences": 135,
+      "difference_rate": 0.06835443037974684,
+      "games_with_difference": 20,
+      "contexts": {
+        "MAIN": 135
+      },
+      "select_types": {
+        "MAIN": 135
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 78,
+        "ATTACH": 19,
+        "ABILITY": 18,
+        "EVOLVE": 11,
+        "RETREAT": 5,
+        "END": 3,
+        "ATTACK": 1
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 75,
+        "ATTACH": 18,
+        "ABILITY": 17,
+        "EVOLVE": 10,
+        "ATTACK": 7,
+        "RETREAT": 6,
+        "END": 2
+      },
+      "candidate_wins": 11,
+      "baseline_opponent_wins": 9,
+      "draws_or_timeouts": 0,
+      "records_retained": 135,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "rejected",
+  "reviewer_reason": "automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json",
+  "reviewed_at": "2026-08-14T20:42:09.479963+00:00"
+}

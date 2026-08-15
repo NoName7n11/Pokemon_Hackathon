@@ -1,0 +1,11 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py start --specialist PalSystem_Dragapult --hypothesis "For this deck's MAIN-phase Trainer choices only, delay Unfair Stamp, Judge, Boss's Orders, Crushing Hammer, and Jamming Tower unless their current board-state effect is materially useful, while preserving the shipped play ranking for all other Trainers and decks." --mechanism dragapult_disruption_timing --expected-effect "Reduce low-value disruption plays and retain timing-sensitive cards for turns where they create prize or tempo advantage." --worker codex
+STARTED: 2026-08-14T23:45:00.829759+00:00
+FINISHED: 2026-08-14T23:45:00.999232+00:00
+TIMED_OUT: False
+
+STDOUT:
+Started PalSystem_Dragapult/EXP-0006
+Edit only: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0006\candidate\main.py
+
+
+STDERR:

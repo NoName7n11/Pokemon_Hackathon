@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "stage": "tournament",
+  "pair_a": {
+    "name": "PalSystem_Dragapult",
+    "version": "baseline",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\shared\\baseline\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\Decs\\PalSystem_Dragapult.csv"
+  },
+  "pair_b": {
+    "name": "Hydrapple",
+    "version": "baseline",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\shared\\baseline\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\Decs\\Hydrapple.csv"
+  },
+  "seed_set": "2026081502",
+  "games_per_seat": 250,
+  "games": 500,
+  "a_wins": 191,
+  "b_wins": 309,
+  "draws": 0,
+  "timeouts": 0,
+  "engine_crashes": 0,
+  "faults": {
+    "a": {
+      "crashes": 0,
+      "illegal_actions": 0
+    },
+    "b": {
+      "crashes": 0,
+      "illegal_actions": 0
+    }
+  },
+  "orientations": {
+    "a_first": {
+      "games": 250,
+      "a_wins": 101,
+      "b_wins": 149,
+      "draws": 0
+    },
+    "b_first": {
+      "games": 250,
+      "a_wins": 90,
+      "b_wins": 160,
+      "draws": 0
+    }
+  },
+  "a_win_rate": 0.382,
+  "a_decisive_win_rate": 0.382,
+  "a_confidence_interval": [
+    0.34046388387564963,
+    0.4253355260976436
+  ],
+  "z_score": -5.277120426899503,
+  "p_value": 1.3122965105823642e-07,
+  "average_steps": 168.716,
+  "decision_time": {
+    "a": {
+      "decisions": 49631,
+      "average_ms": 13.051906489894234,
+      "max_ms": 2338.0638000016916
+    },
+    "b": {
+      "decisions": 34727,
+      "average_ms": 11.624940933545012,
+      "max_ms": 1034.5061000007263
+    }
+  },
+  "started_at": "2026-08-14T19:47:09.662071+00:00",
+  "finished_at": "2026-08-14T20:05:50.200764+00:00",
+  "duration_seconds": 1120.5471208999988,
+  "errors": []
+}

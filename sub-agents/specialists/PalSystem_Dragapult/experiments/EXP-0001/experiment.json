@@ -1,0 +1,73 @@
+{
+  "id": "EXP-0001",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-14T19:45:17.248431+00:00",
+  "updated_at": "2026-08-14T19:46:24.765801+00:00",
+  "worker": "codex",
+  "hypothesis": "Verify unchanged baseline policy can legally pilot the PalSystem Dragapult deck",
+  "expected_effect": "Runtime-valid, fault-free seat-balanced smoke evidence before strategic tuning",
+  "mechanisms": [
+    "infrastructure_readiness"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0001/candidate",
+  "status": "COMPLETE",
+  "smoke_result": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "smoke",
+    "seed_set": "2026081501",
+    "games": 20,
+    "wins": 8,
+    "losses": 12,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 211.8,
+    "average_decision_time_ms": 11.735461950306227,
+    "max_decision_time_ms": 850.4099999991013,
+    "win_rate": 0.4,
+    "confidence_interval": [
+      0.21880396741419272,
+      0.613422057684794
+    ],
+    "z_score": -0.8944271909999157,
+    "p_value": 0.37109336952269767,
+    "started_at": "2026-08-14T19:45:21.440035+00:00",
+    "finished_at": "2026-08-14T19:46:17.152519+00:00",
+    "duration_seconds": 55.71533030000137,
+    "errors": []
+  },
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [
+    {
+      "stage": "smoke",
+      "games": 20,
+      "seed": 2026081501,
+      "started_at": "2026-08-14T19:45:21.152780+00:00",
+      "finished_at": "2026-08-14T19:46:17.183060+00:00",
+      "returncode": 0,
+      "result": "results/smoke-001.json",
+      "log": "logs/smoke-001.log",
+      "timed_out": false
+    }
+  ],
+  "worker_runs": [],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "Infrastructure-only unchanged candidate; smoke established runtime readiness but contained no strategic implementation to accept.",
+  "limitations": []
+}

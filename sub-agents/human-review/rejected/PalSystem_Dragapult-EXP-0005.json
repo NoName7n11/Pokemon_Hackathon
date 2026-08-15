@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "specialist": "PalSystem_Dragapult",
+  "experiment": "EXP-0005",
+  "stage": "screening",
+  "created_at": "2026-08-14T23:42:40.273659+00:00",
+  "hypothesis": "For Munkidori Adrena-Brain selections only, move damage counters from the most strategically endangered friendly Pokemon to an opposing Pokemon where the moved damage secures a knockout or creates the strongest live-HP prize setup; do not alter generic Ability choice or unrelated damage-counter selection.",
+  "expected_effect": "Turn existing self-damage into prize pressure while improving survival of prepared Dragapult attackers.",
+  "mechanisms": [
+    "munkidori_adrena_brain_damage_transfer"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "codex",
+    "backend": "codex-cli",
+    "model": "gpt-5.5",
+    "started_at": "2026-08-14T23:31:00.030550+00:00",
+    "finished_at": "2026-08-14T23:34:21.463344+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-codex"
+  },
+  "worker_identity": {
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "identity": "codex"
+  },
+  "assigned_reviewer": {
+    "reviewer": "opus",
+    "provider": "claude",
+    "model": "opus",
+    "reason": "Codex-authored experiments require an independent Opus/Claude review."
+  },
+  "benchmark": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081507",
+    "games": 200,
+    "wins": 122,
+    "losses": 78,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 197.78,
+    "average_decision_time_ms": 9.344496619531492,
+    "max_decision_time_ms": 453.1127999944147,
+    "win_rate": 0.61,
+    "confidence_interval": [
+      0.5409361758928832,
+      0.6749177028050861
+    ],
+    "z_score": 3.1112698372208087,
+    "p_value": 0.001862846297981894,
+    "started_at": "2026-08-14T23:35:16.792792+00:00",
+    "finished_at": "2026-08-14T23:41:50.409554+00:00",
+    "duration_seconds": 393.61673869999504,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1939,
+      "total_differences": 152,
+      "difference_rate": 0.07839092315626611,
+      "games_with_difference": 20,
+      "contexts": {
+        "MAIN": 152
+      },
+      "select_types": {
+        "MAIN": 152
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 72,
+        "ATTACH": 32,
+        "EVOLVE": 19,
+        "ABILITY": 19,
+        "RETREAT": 6,
+        "ATTACK": 3,
+        "END": 1
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 79,
+        "ATTACH": 28,
+        "EVOLVE": 19,
+        "ABILITY": 15,
+        "RETREAT": 9,
+        "ATTACK": 2
+      },
+      "candidate_wins": 10,
+      "baseline_opponent_wins": 10,
+      "draws_or_timeouts": 0,
+      "records_retained": 152,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "rejected",
+  "reviewer_reason": "automatic opus review rejected candidate; see reviews/screening-opus-auto-review.json",
+  "reviewed_at": "2026-08-14T23:44:28.575070+00:00"
+}

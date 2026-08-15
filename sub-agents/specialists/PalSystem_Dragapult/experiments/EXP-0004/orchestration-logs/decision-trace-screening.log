@@ -1,0 +1,44 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\decision_trace.py --candidate C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0004\candidate\main.py --baseline C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\snapshots\v000-baseline\main.py --deck C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0004\candidate\deck.csv --specialist PalSystem_Dragapult --candidate-version v001-candidate --baseline-version v000-baseline --games 20 --max-steps 3000 --max-records 200 --max-options 40 --seed 2026181506 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0004\results\decision-trace-screening.json
+STARTED: 2026-08-14T21:03:16.314179+00:00
+FINISHED: 2026-08-14T21:04:01.162614+00:00
+TIMED_OUT: False
+
+STDOUT:
+{
+  "candidate_decisions": 2051,
+  "total_differences": 168,
+  "difference_rate": 0.08191126279863481,
+  "games_with_difference": 19,
+  "contexts": {
+    "MAIN": 168
+  },
+  "select_types": {
+    "MAIN": 168
+  },
+  "candidate_selected_option_types": {
+    "PLAY": 84,
+    "ATTACH": 26,
+    "ABILITY": 24,
+    "EVOLVE": 16,
+    "RETREAT": 7,
+    "END": 6,
+    "ATTACK": 5
+  },
+  "baseline_selected_option_types": {
+    "PLAY": 99,
+    "ATTACH": 20,
+    "ABILITY": 18,
+    "EVOLVE": 15,
+    "ATTACK": 9,
+    "END": 4,
+    "RETREAT": 3
+  },
+  "candidate_wins": 11,
+  "baseline_opponent_wins": 9,
+  "draws_or_timeouts": 0,
+  "records_retained": 168,
+  "records_truncated": false
+}
+
+
+STDERR:

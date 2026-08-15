@@ -22,6 +22,7 @@ replay.html
 # Other teams' downloaded replay data (Competition Data -- do not redistribute)
 liamk_decks.json
 liamk_behavior.json
+palsystem_games/
 .playwright-mcp/
 
 # Python
@@ -52,3 +53,4 @@ sub-agents/continuous/scheduler.stderr.log
 
 # Other teams decks reconstructed from replay data -- do not redistribute
 Decs/Dipam_*
+Decs/PalSystem_*

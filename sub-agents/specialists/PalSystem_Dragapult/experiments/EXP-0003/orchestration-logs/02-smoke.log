@@ -1,0 +1,11 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\run_experiment.py run --specialist PalSystem_Dragapult --stage smoke --seed 2026081504
+STARTED: 2026-08-14T20:46:50.607190+00:00
+FINISHED: 2026-08-14T20:47:22.315793+00:00
+TIMED_OUT: False
+
+STDOUT:
+smoke: 11/20 wins (55.0%), 0 draws, 0 crashes
+Result: C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0003\results\smoke-001.json
+
+
+STDERR:
