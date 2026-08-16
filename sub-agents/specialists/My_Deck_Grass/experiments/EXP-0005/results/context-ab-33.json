@@ -1,0 +1,153 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0005\\candidate\\main.py",
+  "context": "SWITCH_ENERGY",
+  "games": 12,
+  "selections_in_context": 60,
+  "differs": 35,
+  "same": 25,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Night Stretcher": 13,
+    "Bayleef": 11,
+    "Teal Mask Ogerpon ex": 8,
+    "Basic {G} Energy": 7,
+    "Chikorita": 6,
+    "Dawn": 3,
+    "Ivysaur": 2,
+    "UNRESOLVED": 2,
+    "Meowth ex": 2,
+    "Boss\u2019s Orders": 2,
+    "Meganium": 2,
+    "Forest of Vitality": 1,
+    "Mega Venusaur ex": 1
+  },
+  "baseline_picked": {
+    "Bayleef": 13,
+    "Night Stretcher": 11,
+    "Basic {G} Energy": 8,
+    "Teal Mask Ogerpon ex": 8,
+    "Chikorita": 5,
+    "Dawn": 4,
+    "Meganium": 3,
+    "Boss\u2019s Orders": 2,
+    "UNRESOLVED": 2,
+    "Lana\u2019s Aid": 2,
+    "Ivysaur": 1,
+    "Mega Venusaur ex": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher",
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher",
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Night Stretcher",
+        "Night Stretcher",
+        "Night Stretcher",
+        "Night Stretcher"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    }
+  ],
+  "errors": []
+}

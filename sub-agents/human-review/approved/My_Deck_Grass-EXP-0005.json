@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "specialist": "My_Deck_Grass",
+  "experiment": "EXP-0005",
+  "stage": "confirmation",
+  "created_at": "2026-08-16T07:21:53.810856+00:00",
+  "hypothesis": "SelectType.ENERGY falls through _greedy_select's blind else-branch to range(minCount), so all 44 SWITCH_ENERGY selections per 10 games -- every Solar Transfer and Energy Switch SOURCE -- are chosen arbitrarily while Solar Transfer fires 3.6 times per game. Scoring the source by how expendable that Energy is should stop the deck's own energy engine from disarming its ready attacker.",
+  "expected_effect": "Solar Transfer and Energy Switch take Energy from idle Bench Pokemon and from Pokemon that cannot attack, never from an Active that is currently able to attack, and never the unit that drops a ready attacker below its attack cost.",
+  "mechanisms": [
+    "energy_source_selection"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": null,
+  "worker_identity": {
+    "provider": "claude",
+    "model": null,
+    "identity": "claude"
+  },
+  "assigned_reviewer": {
+    "reviewer": "codex",
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "reason": "Claude/Opus-authored experiments require an independent Codex review."
+  },
+  "benchmark": {
+    "specialist": "My_Deck_Grass",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "confirmation",
+    "seed_set": "20260812",
+    "games": 500,
+    "wins": 283,
+    "losses": 217,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 147.844,
+    "average_decision_time_ms": 16.88493639761652,
+    "max_decision_time_ms": 668.7062999990303,
+    "win_rate": 0.566,
+    "confidence_interval": [
+      0.522216352008653,
+      0.6087771983452676
+    ],
+    "z_score": 2.95160973029972,
+    "p_value": 0.003161222020906981,
+    "started_at": "2026-08-16T04:19:43.684913+00:00",
+    "finished_at": "2026-08-16T04:42:21.512655+00:00",
+    "duration_seconds": 1357.8281490000008,
+    "errors": []
+  },
+  "cross_deck_results": [
+    {
+      "status": "complete",
+      "opponent": "Hydrapple",
+      "opponent_version": "n/a",
+      "evidence_kind": "agent_overfit_regression",
+      "note": "NOT a matchup_pair deck-vs-deck comparison. This is benchmark_pair.py with the EXP-0005 candidate and the frozen v000-baseline BOTH piloting the opponent specialist's deck, so My_Deck_Grass never enters the game. It measures whether the energy-source policy is overfit to this deck, which is what the operator authorized; a deck-strength matchup was explicitly out of scope for this specialist.",
+      "games": 200,
+      "wins": 116,
+      "losses": 84,
+      "draws": 0,
+      "win_rate": 0.58,
+      "p_value": 0.02365161665535606,
+      "result": "results/overfit-regression-Hydrapple.json"
+    },
+    {
+      "status": "complete",
+      "opponent": "PalSystem_Dragapult",
+      "opponent_version": "n/a",
+      "evidence_kind": "agent_overfit_regression",
+      "note": "NOT a matchup_pair deck-vs-deck comparison. This is benchmark_pair.py with the EXP-0005 candidate and the frozen v000-baseline BOTH piloting the opponent specialist's deck, so My_Deck_Grass never enters the game. It measures whether the energy-source policy is overfit to this deck, which is what the operator authorized; a deck-strength matchup was explicitly out of scope for this specialist.",
+      "games": 200,
+      "wins": 113,
+      "losses": 87,
+      "draws": 0,
+      "win_rate": 0.565,
+      "p_value": 0.06599205505934778,
+      "result": "results/overfit-regression-PalSystem_Dragapult.json"
+    }
+  ],
+  "decision_trace": {
+    "result": "results/decision-trace-confirmation.json",
+    "summary": {
+      "candidate_decisions": 1682,
+      "total_differences": 198,
+      "difference_rate": 0.11771700356718193,
+      "games_with_difference": 19,
+      "contexts": {
+        "MAIN": 156,
+        "SWITCH_ENERGY": 42
+      },
+      "select_types": {
+        "MAIN": 156,
+        "ENERGY": 42
+      },
+      "candidate_selected_option_types": {
+        "ABILITY": 64,
+        "PLAY": 48,
+        "ENERGY": 42,
+        "ATTACH": 18,
+        "EVOLVE": 9,
+        "ATTACK": 7,
+        "RETREAT": 5,
+        "END": 5
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 50,
+        "ENERGY": 42,
+        "ABILITY": 34,
+        "END": 30,
+        "ATTACH": 15,
+        "RETREAT": 11,
+        "EVOLVE": 9,
+        "ATTACK": 7
+      },
+      "candidate_wins": 12,
+      "baseline_opponent_wins": 8,
+      "draws_or_timeouts": 0,
+      "records_retained": 198,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "approved_for_acceptance",
+  "reviewer_reason": "Operator accepted after reviewing the full evidence pack. Energy-source selection vs the frozen v000-baseline on this deck, seat-balanced, zero draws/timeouts/illegal actions/crashes in every run: smoke 13-7 (65.0%); screening 112-88 (56.0%, p=0.0897); main 174-126 (58.0%, p=0.0056); confirmation 283-217 (56.6%, z=2.95, p=0.0032, CI 52.2-60.9%); aggregate 582-438 (57.1%) over 1020 games. Non-inertness proven before any games were spent (context_ab SWITCH_ENERGY: 35 of 60 selections differ) and the logic pinned by check_energy_source.py. CROSS-DECK SCOPE: the two cross_deck_results rows are labelled evidence_kind=agent_overfit_regression and are NOT matchup_pair deck-vs-deck comparisons; candidate and baseline both pilot the foreign deck (Hydrapple 116-84, 58.0%, p=0.024; PalSystem_Dragapult 113-87, 56.5%, p=0.066) so My_Deck_Grass never plays in them. Deck-strength matchups are out of scope for this specialist by operator instruction. Both foreign decks improved by the same magnitude, indicating a general fix to a context the baseline answered at random rather than a Grass-specific hack. Acceptance is private to this specialist; the active submission is untouched and no Kaggle submission is authorized.",
+  "reviewed_at": "2026-08-16T07:22:04.228195+00:00"
+}

@@ -1,0 +1,193 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0003\\candidate\\main.py",
+  "context": "MAIN",
+  "games": 12,
+  "selections_in_context": 488,
+  "differs": 105,
+  "same": 383,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "UNRESOLVED": 107,
+    "Basic {G} Energy": 66,
+    "Ivysaur": 29,
+    "Bayleef": 28,
+    "Mega Venusaur ex": 26,
+    "Boss\u2019s Orders": 25,
+    "Bulbasaur": 22,
+    "Teal Mask Ogerpon ex": 21,
+    "Bug Catching Set": 20,
+    "Dawn": 20,
+    "Lillie's Determination": 19,
+    "Pok\u00e9 Pad": 14,
+    "Fezandipiti ex": 12,
+    "Chikorita": 12,
+    "Ultra Ball": 12,
+    "Lana\u2019s Aid": 12,
+    "Forest of Vitality": 10,
+    "Meganium": 10,
+    "Meowth ex": 9,
+    "Night Stretcher": 8,
+    "Energy Switch": 6
+  },
+  "baseline_picked": {
+    "UNRESOLVED": 156,
+    "Basic {G} Energy": 48,
+    "Bayleef": 26,
+    "Ivysaur": 24,
+    "Bulbasaur": 23,
+    "Mega Venusaur ex": 23,
+    "Boss\u2019s Orders": 23,
+    "Teal Mask Ogerpon ex": 21,
+    "Dawn": 20,
+    "Bug Catching Set": 19,
+    "Lillie's Determination": 18,
+    "Ultra Ball": 12,
+    "Chikorita": 10,
+    "Forest of Vitality": 9,
+    "Meganium": 9,
+    "Pok\u00e9 Pad": 9,
+    "Lana\u2019s Aid": 9,
+    "Fezandipiti ex": 8,
+    "Meowth ex": 7,
+    "Night Stretcher": 7,
+    "Energy Switch": 7
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Bug Catching Set",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Forest of Vitality",
+        "Forest of Vitality",
+        "Basic {G} Energy",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Bug Catching Set",
+        "Forest of Vitality",
+        "Forest of Vitality",
+        "Basic {G} Energy",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "Bug Catching Set"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Bug Catching Set",
+        "Basic {G} Energy",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Bug Catching Set"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Bug Catching Set",
+        "Fezandipiti ex",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Bug Catching Set"
+      ],
+      "baseline": [
+        "Bug Catching Set"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Fezandipiti ex",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Fezandipiti ex"
+      ],
+      "baseline": [
+        "Fezandipiti ex"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Boss\u2019s Orders",
+        "Basic {G} Energy",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Boss\u2019s Orders",
+        "Forest of Vitality",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    }
+  ],
+  "errors": []
+}

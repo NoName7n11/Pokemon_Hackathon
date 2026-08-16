@@ -1,0 +1,173 @@
+{
+  "agent": "sub-agents\\specialists\\My_Deck_Grass\\snapshots\\v000-baseline\\main.py",
+  "games": 20,
+  "seed": 2026081680,
+  "wins": 6,
+  "losses": 14,
+  "draws_or_timeouts": 0,
+  "plays_per_game": {
+    "count": 20,
+    "mean": 15.9,
+    "median": 17.0,
+    "min": 6,
+    "max": 22
+  },
+  "played": {
+    "win": {
+      "Chikorita": 9,
+      "Dawn": 9,
+      "Lillie's Determination": 8,
+      "Energy Switch": 8,
+      "Bug Catching Set": 8,
+      "Boss\u2019s Orders": 8,
+      "Ultra Ball": 7,
+      "Teal Mask Ogerpon ex": 6,
+      "Bulbasaur": 6,
+      "Lana\u2019s Aid": 6,
+      "Pok\u00e9 Pad": 5,
+      "Night Stretcher": 5,
+      "Meowth ex": 4,
+      "Forest of Vitality": 3,
+      "Fezandipiti ex": 3
+    },
+    "loss": {
+      "Bulbasaur": 27,
+      "Bug Catching Set": 20,
+      "Dawn": 19,
+      "Boss\u2019s Orders": 18,
+      "Teal Mask Ogerpon ex": 17,
+      "Energy Switch": 15,
+      "Meowth ex": 15,
+      "Chikorita": 13,
+      "Pok\u00e9 Pad": 13,
+      "Night Stretcher": 13,
+      "Lillie's Determination": 12,
+      "Ultra Ball": 12,
+      "Fezandipiti ex": 11,
+      "Lana\u2019s Aid": 10,
+      "Forest of Vitality": 8
+    }
+  },
+  "played_per_game": {
+    "Boss\u2019s Orders": 1.3,
+    "Bug Catching Set": 1.4,
+    "Bulbasaur": 1.65,
+    "Chikorita": 1.1,
+    "Dawn": 1.4,
+    "Energy Switch": 1.15,
+    "Fezandipiti ex": 0.7,
+    "Forest of Vitality": 0.55,
+    "Lana\u2019s Aid": 0.8,
+    "Lillie's Determination": 1.0,
+    "Meowth ex": 0.95,
+    "Night Stretcher": 0.9,
+    "Pok\u00e9 Pad": 0.9,
+    "Teal Mask Ogerpon ex": 1.15,
+    "Ultra Ball": 0.95
+  },
+  "abilities": {
+    "win": {
+      "Mega Venusaur ex": 36,
+      "Teal Mask Ogerpon ex": 25,
+      "Fezandipiti ex": 2
+    },
+    "loss": {
+      "Mega Venusaur ex": 36,
+      "Teal Mask Ogerpon ex": 23,
+      "Fezandipiti ex": 15
+    }
+  },
+  "abilities_per_game": {
+    "Fezandipiti ex": 0.85,
+    "Mega Venusaur ex": 3.6,
+    "Teal Mask Ogerpon ex": 2.4
+  },
+  "first_in_play_turn": {
+    "Mega Venusaur ex": {
+      "win": {
+        "count": 5,
+        "mean": 6.8,
+        "median": 6,
+        "min": 3,
+        "max": 11
+      },
+      "loss": {
+        "count": 12,
+        "mean": 8.67,
+        "median": 7.5,
+        "min": 3,
+        "max": 18
+      },
+      "reached_rate": 0.85
+    },
+    "Meganium": {
+      "win": {
+        "count": 6,
+        "mean": 9.5,
+        "median": 9.0,
+        "min": 6,
+        "max": 13
+      },
+      "loss": {
+        "count": 9,
+        "mean": 9.67,
+        "median": 10,
+        "min": 3,
+        "max": 16
+      },
+      "reached_rate": 0.75
+    },
+    "Teal Mask Ogerpon ex": {
+      "win": {
+        "count": 6,
+        "mean": 1.83,
+        "median": 1.0,
+        "min": 1,
+        "max": 5
+      },
+      "loss": {
+        "count": 12,
+        "mean": 6.17,
+        "median": 3.0,
+        "min": 1,
+        "max": 14
+      },
+      "reached_rate": 0.9
+    },
+    "Ivysaur": {
+      "win": {
+        "count": 5,
+        "mean": 4.8,
+        "median": 3,
+        "min": 3,
+        "max": 11
+      },
+      "loss": {
+        "count": 14,
+        "mean": 6.5,
+        "median": 4.5,
+        "min": 3,
+        "max": 18
+      },
+      "reached_rate": 0.95
+    },
+    "Bayleef": {
+      "win": {
+        "count": 6,
+        "mean": 6.83,
+        "median": 7.0,
+        "min": 3,
+        "max": 11
+      },
+      "loss": {
+        "count": 9,
+        "mean": 8.11,
+        "median": 9,
+        "min": 3,
+        "max": 14
+      },
+      "reached_rate": 0.75
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,33 @@
+{
+  "id": "EXP-0002",
+  "specialist": "My_Deck_Grass",
+  "created_at": "2026-08-16T03:38:39.437249+00:00",
+  "updated_at": "2026-08-16T03:41:02.904887+00:00",
+  "worker": "claude",
+  "hypothesis": "Meganium Wild Growth doubles every Basic G Energy, so _can_pay/_best_usable_damage understate every attacker while Meganium is in play (75% of games). Modelling it should correct lethal detection, active_quality and attacker ranking.",
+  "expected_effect": "Mega Venusaur ex Jungle Dump and Meganium Solar Beam become recognised as payable at half the printed Grass cost while a Meganium is on my board; earlier and more frequent Jungle Dump, fewer turns stuck attacking with Bind Down.",
+  "mechanisms": [
+    "wild_growth_energy_accounting"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0002/candidate",
+  "status": "COMPLETE",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "Hypothesis falsified by direct engine probe before any games were spent. mon.energies already reports PROVIDED energy, not attached cards: with Meganium in play a single Basic G card shows as energies=[1,1]. _can_pay is therefore already Wild-Growth-correct and the patch would have been inert. Probe also found the real defect: attack.damage is static, so Myriad Leaf Shower (id 120) reads 30 when it deals 30+30*provided-energy-on-both-Actives (measured 120/150/180), and Cruel Arrow (id 183) reads 0 when it deals 100.",
+  "limitations": []
+}

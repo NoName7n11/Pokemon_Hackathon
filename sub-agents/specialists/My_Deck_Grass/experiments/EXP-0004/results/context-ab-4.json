@@ -1,0 +1,159 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0004\\candidate\\main.py",
+  "context": "TO_ACTIVE",
+  "games": 12,
+  "selections_in_context": 20,
+  "differs": 0,
+  "same": 20,
+  "inert": true,
+  "no_observations": false,
+  "candidate_picked": {
+    "Ivysaur": 4,
+    "UNRESOLVED": 3,
+    "Lana\u2019s Aid": 3,
+    "Forest of Vitality": 2,
+    "Basic {G} Energy": 2,
+    "Meganium": 2,
+    "Boss\u2019s Orders": 1,
+    "Mega Venusaur ex": 1,
+    "Energy Switch": 1,
+    "Bayleef": 1
+  },
+  "baseline_picked": {
+    "Ivysaur": 4,
+    "UNRESOLVED": 3,
+    "Lana\u2019s Aid": 3,
+    "Forest of Vitality": 2,
+    "Basic {G} Energy": 2,
+    "Meganium": 2,
+    "Boss\u2019s Orders": 1,
+    "Mega Venusaur ex": 1,
+    "Energy Switch": 1,
+    "Bayleef": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Ivysaur",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Ivysaur",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Night Stretcher",
+        "Lana\u2019s Aid",
+        "Basic {G} Energy",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Forest of Vitality"
+      ],
+      "candidate": [
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "Forest of Vitality"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Boss\u2019s Orders",
+        "Basic {G} Energy",
+        "Mega Venusaur ex",
+        "Teal Mask Ogerpon ex",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Boss\u2019s Orders"
+      ],
+      "baseline": [
+        "Boss\u2019s Orders"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Mega Venusaur ex",
+        "Bulbasaur",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Dawn"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Mega Venusaur ex",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Lana\u2019s Aid",
+        "Meganium",
+        "Bulbasaur",
+        "Bayleef",
+        "Ivysaur"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    }
+  ],
+  "errors": []
+}

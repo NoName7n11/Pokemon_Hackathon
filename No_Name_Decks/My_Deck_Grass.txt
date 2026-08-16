@@ -1,0 +1,32 @@
+****** Pokémon Trading Card Game Deck List ******
+
+22 - Pokémon
+
+2 Bayleef - 918
+3 Bulbasaur - 650
+2 Chikorita - 917
+2 Fezandipiti ex - 140
+3 Ivysaur - 651
+3 Mega Venusaur ex - 652
+2 Meganium - 710
+2 Meowth ex - 1071
+3 Teal Mask Ogerpon ex - 96
+
+24 - Trainer Cards
+
+3 Boss’s Orders - 1182
+3 Bug Catching Set - 1094
+3 Dawn - 1231
+2 Energy Switch - 1116
+2 Forest of Vitality - 1261
+2 Lana’s Aid - 1184
+3 Lillie's Determination - 1227
+2 Night Stretcher - 1097
+2 Poké Pad - 1152
+2 Ultra Ball - 1121
+
+14 - Energy Cards
+
+14 Basic {G} Energy - 1
+
+Total Cards - 60

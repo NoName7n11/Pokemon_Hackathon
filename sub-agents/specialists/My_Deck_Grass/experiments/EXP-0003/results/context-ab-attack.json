@@ -1,0 +1,14 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0003\\candidate\\main.py",
+  "context": "ATTACK",
+  "games": 12,
+  "selections_in_context": 0,
+  "differs": 0,
+  "same": 0,
+  "inert": false,
+  "no_observations": true,
+  "candidate_picked": {},
+  "baseline_picked": {},
+  "examples": [],
+  "errors": []
+}

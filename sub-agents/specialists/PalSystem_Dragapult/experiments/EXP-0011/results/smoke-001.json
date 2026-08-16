@@ -1,0 +1,29 @@
+{
+  "specialist": "PalSystem_Dragapult",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260812",
+  "games": 20,
+  "wins": 12,
+  "losses": 8,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 207.35,
+  "average_decision_time_ms": 11.7099185524972,
+  "max_decision_time_ms": 209.4463999965228,
+  "win_rate": 0.6,
+  "confidence_interval": [
+    0.3865779423152061,
+    0.7811960325858074
+  ],
+  "z_score": 0.8944271909999157,
+  "p_value": 0.37109336952269767,
+  "started_at": "2026-08-15T09:14:57.599532+00:00",
+  "finished_at": "2026-08-15T09:15:45.771937+00:00",
+  "duration_seconds": 48.172748500001035,
+  "errors": []
+}

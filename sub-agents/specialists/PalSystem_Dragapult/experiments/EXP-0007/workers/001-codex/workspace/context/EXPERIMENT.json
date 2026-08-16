@@ -1,0 +1,39 @@
+{
+  "id": "EXP-0007",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-15T01:58:36.859008+00:00",
+  "updated_at": "2026-08-15T01:58:36.910560+00:00",
+  "worker": "codex",
+  "hypothesis": "Replay-curated PalSystem games show Dreepy is the dominant successful opener and first setup body. For opening Active and initial setup Bench CARD selections only, prefer Dreepy first, then Munkidori/Budew as fallback support, while keeping Fezandipiti ex and Meowth ex off Active unless no better Basic is available; preserve all MAIN-phase play, Energy, Trainer, Ability, attack, evolution, and damage-target logic unchanged.",
+  "expected_effect": "Increase stable Dragapult-line setup without bundling speculative Energy or Trainer changes; decision traces must prove the changed decisions are opening/setup CARD selections and not unrelated cascade differences.",
+  "mechanisms": [
+    "dreepy_first_opening_setup_only"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0007/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "RUNNING",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-15T01:58:36.909501+00:00",
+    "updated_at": "2026-08-15T01:58:36.909501+00:00"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

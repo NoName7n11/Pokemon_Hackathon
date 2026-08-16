@@ -1,0 +1,35 @@
+COMMAND: C:\Users\novan\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\shared\tools\benchmark_pair.py --candidate C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0010\candidate\main.py --baseline C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\snapshots\v000-baseline\main.py --deck C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0010\candidate\deck.csv --games 20 --max-steps 3000 --seed 20260812 --output C:\Users\novan\Desktop\Projects\Pokemon_Hackathon\sub-agents\specialists\PalSystem_Dragapult\experiments\EXP-0010\results\smoke-001.json --specialist PalSystem_Dragapult --candidate-version v001-candidate --baseline-version v000-baseline --stage smoke
+
+STDOUT:
+{
+  "specialist": "PalSystem_Dragapult",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260812",
+  "games": 20,
+  "wins": 9,
+  "losses": 11,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 195.7,
+  "average_decision_time_ms": 14.55023471526483,
+  "max_decision_time_ms": 214.82100000139326,
+  "win_rate": 0.45,
+  "confidence_interval": [
+    0.25819502085709295,
+    0.6579179916924003
+  ],
+  "z_score": -0.44721359549995787,
+  "p_value": 0.6547208460185772,
+  "started_at": "2026-08-15T09:02:50.822355+00:00",
+  "finished_at": "2026-08-15T09:03:50.112992+00:00",
+  "duration_seconds": 59.290342899999814,
+  "errors": []
+}
+
+
+STDERR:

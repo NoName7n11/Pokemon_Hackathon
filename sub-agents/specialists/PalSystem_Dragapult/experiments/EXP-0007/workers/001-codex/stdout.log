@@ -1,0 +1,16 @@
+Implemented the smallest setup-only change in `main.py`.
+
+Behavior changed:
+- For `SETUP_ACTIVE_POKEMON` card selection, Basic priority is now:
+  `Dreepy` first, then `Munkidori`, then `Budew`, then other Basics.
+- `Fezandipiti ex` and `Meowth ex` are deprioritized for opening Active unless no better Basic is available.
+- For `SETUP_BENCH_POKEMON`, setup Bench card ordering now puts `Dreepy` first, then `Munkidori`/`Budew`, before other Basics.
+- MAIN-phase play, Energy, Trainer, Ability, attack, evolution, damage-target logic, deck loading, and fallback behavior are unchanged.
+
+Verification:
+- Ran a no-bytecode AST syntax check: `syntax ok`.
+- Did not run benchmarks or games.
+- Removed the generated `__pycache__`; no extra project files remain.
+
+Reviewer concern to inspect:
+- The local environment lacks `cg`, so I could not runtime-check enum/card metadata. The code defensively reads card names via common fields and falls back to existing card-power behavior if names are unavailable. Decision traces should confirm the setup context names and card-name fields resolve as expected.

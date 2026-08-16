@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "specialist": "PalSystem_Dragapult",
+  "experiment": "EXP-0007",
+  "stage": "screening",
+  "created_at": "2026-08-15T02:08:19.804784+00:00",
+  "hypothesis": "Replay-curated PalSystem games show Dreepy is the dominant successful opener and first setup body. For opening Active and initial setup Bench CARD selections only, prefer Dreepy first, then Munkidori/Budew as fallback support, while keeping Fezandipiti ex and Meowth ex off Active unless no better Basic is available; preserve all MAIN-phase play, Energy, Trainer, Ability, attack, evolution, and damage-target logic unchanged.",
+  "expected_effect": "Increase stable Dragapult-line setup without bundling speculative Energy or Trainer changes; decision traces must prove the changed decisions are opening/setup CARD selections and not unrelated cascade differences.",
+  "mechanisms": [
+    "dreepy_first_opening_setup_only"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "codex",
+    "backend": "codex-cli",
+    "model": "gpt-5.5",
+    "started_at": "2026-08-15T01:58:37.289669+00:00",
+    "finished_at": "2026-08-15T02:02:45.275005+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-codex"
+  },
+  "worker_identity": {
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "identity": "codex"
+  },
+  "assigned_reviewer": {
+    "reviewer": "opus",
+    "provider": "claude",
+    "model": "opus",
+    "reason": "Codex-authored experiments require an independent Opus/Claude review."
+  },
+  "benchmark": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081513",
+    "games": 200,
+    "wins": 96,
+    "losses": 104,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 198.875,
+    "average_decision_time_ms": 6.007182478059199,
+    "max_decision_time_ms": 196.66790000337642,
+    "win_rate": 0.48,
+    "confidence_interval": [
+      0.4117904407948983,
+      0.5489633994418346
+    ],
+    "z_score": -0.5656854249492386,
+    "p_value": 0.5716076449533313,
+    "started_at": "2026-08-15T02:03:24.369718+00:00",
+    "finished_at": "2026-08-15T02:07:39.310059+00:00",
+    "duration_seconds": 254.94047920000594,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1897,
+      "total_differences": 127,
+      "difference_rate": 0.06694781233526621,
+      "games_with_difference": 20,
+      "contexts": {
+        "MAIN": 127
+      },
+      "select_types": {
+        "MAIN": 127
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 71,
+        "ATTACH": 18,
+        "ABILITY": 13,
+        "RETREAT": 13,
+        "EVOLVE": 11,
+        "ATTACK": 1
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 72,
+        "ATTACH": 26,
+        "EVOLVE": 12,
+        "ABILITY": 11,
+        "RETREAT": 6
+      },
+      "candidate_wins": 9,
+      "baseline_opponent_wins": 11,
+      "draws_or_timeouts": 0,
+      "records_retained": 127,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "rejected",
+  "reviewer_reason": "Rejected after replay-inspired setup screen: candidate went 96/200 (48.0%, p=0.572) and decision trace showed 127 differences all in MAIN/MAIN, not opening/setup CARD contexts. The implementation did not isolate the stated Dreepy-first setup mechanism, so deeper evaluation would not answer the replay hypothesis.",
+  "reviewed_at": "2026-08-15T02:08:43.562272+00:00"
+}

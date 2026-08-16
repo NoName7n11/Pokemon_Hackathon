@@ -1,0 +1,29 @@
+{
+  "specialist": "My_Deck_Grass",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "screening",
+  "seed_set": "20260817",
+  "games": 200,
+  "wins": 113,
+  "losses": 87,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 197.88,
+  "average_decision_time_ms": 5.128608035410026,
+  "max_decision_time_ms": 134.235899999112,
+  "win_rate": 0.565,
+  "confidence_interval": [
+    0.4957060908195922,
+    0.631843928411026
+  ],
+  "z_score": 1.8384776310850222,
+  "p_value": 0.06599205505934778,
+  "started_at": "2026-08-16T04:50:15.503787+00:00",
+  "finished_at": "2026-08-16T04:53:49.321201+00:00",
+  "duration_seconds": 213.81429059999937,
+  "errors": []
+}

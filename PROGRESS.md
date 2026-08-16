@@ -11,6 +11,198 @@ the reversal as a new entry instead).
 
 ## 2026-08-15
 
+- **Dreepy-first setup finally tested for real and rejected; tempo diagnostics
+  found a far larger gap (`EXP-0011`)**:
+  - `EXP-0011` passed the new non-inertness gate (4 of 20 `SETUP_ACTIVE_POKEMON`
+    selections differed; Dreepy picked 13 vs baseline 10, Fezandipiti ex 1 vs
+    3), making it the first genuine test of the replay-derived opening
+    hypothesis after three inert attempts. Smoke `12/20` (60.0%); screening
+    `95/200` (47.5%, `z=-0.707`, `p=0.480`); 0 draws, illegal actions, or
+    crashes.
+  - Rejected. The hypothesis is now tested and unsupported: the replay
+    correlation between Dreepy openings and wins reflects deck draw rather than
+    a decision advantage. The baseline already picks Dreepy whenever it is
+    offered against worse options, and roughly 80% of setup Active selections
+    are single-option forced, so the reachable headroom was always small.
+  - Added `sub-agents/shared/tools/tempo_census.py` for the next diagnostic:
+    first-use turn of named attacks and first turn a named Pokemon becomes
+    Active, split by win and loss. Its first run crashed in 17 of 30 games
+    (`player.active[0]` is `None` in the window between a knockout and its
+    replacement), which truncated those games and biased every statistic; fixed
+    and re-run clean before anything was read from it.
+  - Verified the `turn` field is a **ply counter** — it alternates acting seat
+    on each increment, so a player's Nth turn is roughly ply `2N`. The replay
+    analyzer reads the same raw `current["turn"]` field, so replay and
+    simulator numbers are directly comparable.
+  - Baseline over 30 clean games versus curated replays, on winning games:
+
+    | Metric | Replays | Local baseline |
+    |---|---|---|
+    | First Phantom Dive | 9.08 | 13.64 |
+    | First Dragapult ex Active | 8.00 | 11.42 |
+
+    The local pilot is about 4.6 ply (~2 full turns) slower to its first
+    Phantom Dive and about 3.4 ply slower to get Dragapult ex Active. Replays
+    attack roughly one ply after Dragapult arrives; locally it takes 2.2. So
+    the agent is slower both at assembling the Dragapult line and at attacking
+    once it is assembled.
+  - Phantom Dive usage tracks winning strongly in local play too (37 uses
+    across 12 wins vs 11 across 18 losses), while Itchy Pollen dominates losses
+    (32 vs 22) — consistent with the replay report.
+  - Caveat on the comparison: local games are mirror matches against the same
+    agent, while replays are against varied opponents, so absolute turn numbers
+    are not strictly equivalent. The size of the gap, not its exact value, is
+    what motivates the next hypothesis.
+  - **Next hypothesis:** accelerate the Dragapult line (evolution and Energy
+    prioritization toward Dreepy → Drakloak → Dragapult ex) rather than any
+    further setup-selection work. This is the first PalSystem lever with a
+    measured multi-turn gap behind it.
+
+  — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **Root-caused three inert PalSystem setup candidates and built the tooling
+  that catches them (`EXP-0009`, `EXP-0010`, `EXP-0011`)**:
+  - Built `sub-agents/shared/tools/setup_census.py` to answer the question
+    `decision_trace.py` structurally cannot: it records *every* selection
+    context an agent is asked plus what it picks during setup, instead of only
+    candidate-vs-baseline differences. A candidate whose hook silently no-ops
+    produces an empty difference table, which is indistinguishable from a
+    candidate that works — that blind spot is what let `EXP-0007` and
+    `EXP-0008` each burn 220 games measuring nothing.
+  - The census proved setup selections *do* reach the agent (~3 per game) and
+    that `SelectContext.SETUP_ACTIVE_POKEMON == 1` — so `EXP-0007` (named
+    contexts) and `EXP-0008` (numeric contexts) had tested the identical
+    condition. The real defect was different: **setup options carry
+    `option.cardId is None`**. Both candidates ranked every option equally and
+    the stable sort reproduced baseline order exactly. Setup options identify
+    their card by `area == HAND (2)` plus `index` into
+    `current.players[yourIndex].hand`.
+  - `EXP-0009` never ran: the `codex` CLI disappeared from the machine
+    (`where.exe codex` finds nothing; absent from PATH, npm global, and the
+    hermes venv), so the provider stage failed with exit 2 and the orchestrator
+    auto-rejected it. Infrastructure failure, not evidence.
+  - `EXP-0010` was written by Codex from a prompt supplied by Claude, then
+    staged manually with `run_experiment.py start` since no provider was
+    available. It was **inert because of a wrong engine fact in that prompt**:
+    Claude asserted hand entries were Card objects exposing `.name`. They are
+    `Card(id, serial, playerIndex)` and expose only those three fields; the
+    name requires an `all_card_data()` lookup keyed on `hand[index].id`. The
+    patch read `getattr(hand[i], "name", None)`, got `None`, and fell back to
+    baseline on every setup selection. Direct A/B on identical observations:
+    20/20 setup choices identical. Trace: 124 differences, all `MAIN`.
+    Screening `101/200` (50.5%, `p=0.888`) measured nothing. Rejected.
+  - The census's own `card_name()` helper had masked the flaw by trying `.name`
+    first and falling through to an id lookup, so resolved names appeared in
+    the report and Claude read that as proof the attribute existed. The helper
+    now resolves *only* via `hand[index].id`, matching what an agent must do,
+    and both tools document the trap.
+  - Added `sub-agents/shared/tools/context_ab.py`: asks candidate and baseline
+    for a choice on the *same* observation, restricted to one context, and
+    reports agreement plus resolved card names on both sides. It exits non-zero
+    on `inert` or `no_observations`. All three failed candidates would have been
+    caught by it in under a minute, before any benchmark.
+  - `EXP-0011` is Codex's `EXP-0010` patch with the one-line resolution fix
+    (`_card_data().get(hand[opt.index].id)`, the idiom already used at line 138
+    of the baseline). It **passes the non-inertness gate**: 4 of 20 setup
+    selections differ from baseline, Dreepy picked 13 vs 10 and Fezandipiti ex
+    1 vs 3 — the intended shift. Smoke `12/20` (60.0%), 0 draws, 0 crashes.
+    Screening pending.
+  - Known ceiling: most `SETUP_ACTIVE_POKEMON` selections offer a single forced
+    option, so only ~20% are genuine choices. Even a correct Dreepy-first rule
+    can only move a minority of openings, and the effect should be expected to
+    be small.
+  - Operational note: Codex edited
+    `snapshots/v000-baseline/main.py` directly — that snapshot is the immutable
+    comparison target. The patch was extracted and the baseline restored, but
+    `git restore` rewrote it with CRLF endings and broke the `agent_sha256`
+    gate (`existing snapshot does not match accepted v000-baseline`). Restoring
+    the blob with LF bytes returned it to `dba17948…`. Worker prompts should
+    name the candidate path, never the snapshot.
+  - **Reason:** three consecutive candidates passed validation while changing
+    no behavior, and one of those was caused by a wrong fact Claude supplied to
+    the worker. Verifying a mechanism actually fires now precedes spending
+    games on it.
+
+  — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+  / <span style="background-color:rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
+- **PalSystem numeric setup-context retry (`EXP-0008`) tested and rejected**:
+  - Context: `EXP-0007` failed because it checked named setup contexts
+    (`SETUP_ACTIVE_POKEMON` etc.) while raw replay observations use numeric
+    contexts. Before retrying, the replay analyzer
+    (`palsystem_games/analyze_replay_patterns.py`) was corrected twice: it now
+    identifies the PalSystem seat from the actual submitted deck action instead
+    of visualizer deck data, and it uses the raw option constants
+    (`SELECT_MAIN=0`, `SELECT_CARD=1`, setup Active context `1`, setup Bench
+    context `2`, `PLAY=7`, `ATTACH=8`, `EVOLVE=9`, `ABILITY=10`, `RETREAT=12`,
+    `ATTACK=13`, `END=14`).
+  - Corrected report over 87 usable replays (58 wins / 29 losses) supports
+    Dreepy-first: opening Active in wins was Dreepy 31, Budew 17, Munkidori 16,
+    Meowth ex 7, Fezandipiti ex 4; setup Bench in wins was Dreepy 14,
+    Munkidori 4, Meowth ex 1. First Phantom Dive turn averaged 9.08 in wins vs
+    9.58 in losses.
+  - `EXP-0008` ran that hypothesis narrowly against numeric contexts only:
+    `sel.type == 1` with context `1` → Active priority Dreepy, Munkidori,
+    Budew, Meowth ex, Fezandipiti ex; context `2` → Bench priority Dreepy,
+    Munkidori, Meowth ex, Fezandipiti ex, Budew. No MAIN-phase play, Energy,
+    Trainer, Ability, attack, evolution, or damage-target logic was touched.
+  - The Codex candidate diff was clean and on-mechanism: it added
+    `_raw_enum_value` to unwrap enums to ints, `_card_name`, and
+    `_setup_replay_priority_choice`, called from three lines ahead of the MAIN
+    cascade and returning `None` for every other context.
+  - Results: smoke 8-12 over 20 games (40.0%); screening 104-96 over 200 games
+    (52.0%, `z=0.566`, `p=0.572`), zero draws, timeouts, illegal actions, or
+    crashes; mean/max decision time 8.43 ms / 673.50 ms.
+  - The trace gate failed again for the same reason as `EXP-0007`: all 118
+    retained differences over 20 trace games were `MAIN/MAIN`, with zero
+    differences in CARD context `1` or `2`. Switching from named to numeric
+    contexts did not make the setup decision observable, so the screening
+    number is still measuring cascade noise, not Dreepy-first setup.
+  - `EXP-0008` was rejected without escalating to deep evaluation.
+  - Operational note: the earlier interrupt did not kill the orchestrator —
+    pid 20616 stayed alive and held `.orchestrator.lock`, so a `resume` attempt
+    correctly refused with `specialist is locked by another orchestrator`. The
+    original run finished screening on its own at 08:01 UTC. Also note that
+    `kill -0 <pid>` in Git Bash cannot see Windows PIDs; use `Wait-Process`.
+  - **Next sequence:** (1) build setup-trace tooling that records whether
+    `_setup_replay_priority_choice` fires at all and what it picks, by card
+    name — two consecutive rejections on the same blind spot mean the tooling,
+    not the hypothesis, is the bottleneck; (2) separate first-Phantom-Dive
+    tempo diagnostics; (3) isolated Energy routing (never bundled with setup —
+    prior bundled attempts regressed); (4) Phantom Dive spread targeting. The
+    analyzer still reports ability source as `unknown`; resolving ability
+    options via area/index is a later improvement.
+
+  — <span style="background-color:rgba(255, 209, 144, 0.31); color:#ffb347">claude</span>
+
+- **PalSystem replay-inspired setup hypothesis tested and rejected in the
+  specialist loop**:
+  - Closed the paused disruption-timing experiment (`EXP-0006`) before starting
+    new work. Its evidence was weak (`107/200`, 53.5%, `p=0.322`) and the
+    independent review requested mechanism-level traces, so it was rejected to
+    unblock the next isolated PalSystem hypothesis.
+  - Started `EXP-0007` from the replay curation signal: test Dreepy-first
+    opening Active / setup Bench discipline only, with no intended change to
+    MAIN-phase play, Energy, Trainers, Abilities, attacks, evolution, or damage
+    targeting.
+  - The candidate passed legality but failed the evidence gate: smoke was
+    10-10, screening was 96-104 over 200 games (48.0%, `p=0.572`), with zero
+    draws, timeouts, illegal actions, or crashes.
+  - Decision traces showed the important implementation flaw: all 127 retained
+    differences were `MAIN/MAIN`, not opening/setup CARD selections. That means
+    the candidate did not isolate the replay hypothesis; it changed ordinary
+    MAIN sequencing through cascade effects and therefore could not answer
+    whether Dreepy-first setup is good.
+  - `EXP-0007` was rejected. The replay hypothesis remains plausible, but the
+    next attempt needs simulator-verified setup context detection before any
+    benchmark, or a dedicated decision-trace tool that captures initial setup
+    selections by card name.
+  - **Reason:** keep the PalSystem specialist loop evidence-driven. A losing
+    candidate that does not exercise the intended decision context should be
+    closed quickly, not escalated into deeper games.
+
+  — <span style="background-color: rgba(91,155,213, 0.31); color:#8fd9fb">codex</span>
+
 - **PalSystem replay curation pass — setup signal found, but no `main.py`
   change retained**:
   - Reviewed the curated `palsystem_games/replays/` logs by identifying the

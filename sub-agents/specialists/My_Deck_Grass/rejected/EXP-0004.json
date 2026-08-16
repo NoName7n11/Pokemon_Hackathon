@@ -1,0 +1,33 @@
+{
+  "id": "EXP-0004",
+  "specialist": "My_Deck_Grass",
+  "created_at": "2026-08-16T03:53:33.018137+00:00",
+  "updated_at": "2026-08-16T03:56:10.698518+00:00",
+  "worker": "claude",
+  "hypothesis": "_live_attacker_score subtracts a 120*prize_value liability penalty that pushes every own-board CARD choice (post-KO forced promotion, and the 53-per-10-games ATTACH_FROM Solar Transfer destination) toward a cheap support Pokemon instead of this deck's rule-box attackers. Cancelling that penalty for an already-attack-ready ex/megaEx should concentrate energy and promotion on Mega Venusaur ex and Teal Mask Ogerpon ex.",
+  "expected_effect": "Post-knockout promotions and Solar Transfer destinations favour an attack-ready Mega Venusaur ex or Teal Mask Ogerpon ex over Meowth ex / Fezandipiti ex / an unevolved Bulbasaur. Prior evidence: the same mechanism screened 121-79 (60.5%, p=0.00298) on the Claude_Grass_Venusaur deck and was closed for portfolio reasons, not evidence.",
+  "mechanisms": [
+    "attacker_concentration_bonus"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0004/candidate",
+  "status": "COMPLETE",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "Inert: 0 differences across 96 own-board CARD selections (ATTACH_FROM 0/51, TO_ACTIVE 0/20, SWITCH 0/25) via context_ab.py. The bonus cannot change the argmax on this deck because _live_attacker_score is already dominated by raw HP: a charged Mega Venusaur ex scores ~4880 (240 dmg x20 + 380 hp - 360 prize penalty) against ~175 for a Bulbasaur, so cancelling the 360-point liability penalty moves nothing. The mechanism's 60.5% result on Claude_Grass_Venusaur does not transfer to this deck's board composition. No games spent.",
+  "limitations": []
+}

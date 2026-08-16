@@ -1,0 +1,40 @@
+{
+  "id": "EXP-0009",
+  "specialist": "PalSystem_Dragapult",
+  "created_at": "2026-08-15T08:52:37.042624+00:00",
+  "updated_at": "2026-08-15T08:52:37.811315+00:00",
+  "worker": "codex",
+  "hypothesis": "Setup-context diagnosis (sub-agents/shared/tools/setup_census.py) proved why EXP-0007 and EXP-0008 were inert: setup CARD options have cardId == None, so any heuristic reading option.cardId ranks every option equally and the stable sort reproduces baseline order exactly. Setup options identify their card by area == HAND (AreaType 2) plus index into obs.current.players[obs.current.yourIndex].hand, whose entries are Card objects carrying .name. Implement ONLY the opening Active choice: when select type is CARD (1) and context is SETUP_ACTIVE_POKEMON (1), resolve each option's card name through hand[option.index] and choose by replay priority Dreepy first, then Munkidori, then Budew, then Meowth ex, then Fezandipiti ex last. Guard every index against len(hand) and fall back to existing behavior when an option cannot be resolved. Do NOT touch SETUP_BENCH_POKEMON (context 2) -- the census shows minCount 0 maxCount 2 and the baseline already benches every Basic offered, so bench priority is a no-op that only adds noise. Do not change MAIN-phase PLAY, ATTACH, Trainer, Ability, Attack, Evolve, or damage-target logic.",
+  "expected_effect": "Census over 10 baseline games shows the baseline sends Fezandipiti ex to Active on 4 of 4 offers and Dreepy on only 6 of 10 offers, while replays show Dreepy dominant in wins (31) and Fezandipiti ex neutral (4 wins / 4 losses). Ranking Fezandipiti ex last should measurably shift the opening Active card. Decision traces MUST now show differences in SETUP_ACTIVE_POKEMON context; if traces are still entirely MAIN/MAIN the candidate is inert again and must be rejected without deep evaluation.",
+  "mechanisms": [
+    "setup_active_hand_index_replay_priority"
+  ],
+  "files_changed": [],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v000-baseline",
+  "candidate_path": "experiments/EXP-0009/candidate",
+  "status": "COMPLETE",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {
+    "state": "FAILED_PROVIDER",
+    "provider": "codex",
+    "through_stage": "screening",
+    "started_at": "2026-08-15T08:52:37.127421+00:00",
+    "updated_at": "2026-08-15T08:52:37.505820+00:00",
+    "failure_reason": "automatic rejection: provider stage failed with exit 2"
+  },
+  "reviews": [],
+  "review_history": [],
+  "decision": "rejected",
+  "reason": "automatic rejection: provider stage failed with exit 2",
+  "limitations": []
+}

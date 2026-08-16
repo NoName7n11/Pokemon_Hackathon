@@ -1,0 +1,164 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0004\\candidate\\main.py",
+  "context": "ATTACH_FROM",
+  "games": 12,
+  "selections_in_context": 51,
+  "differs": 0,
+  "same": 51,
+  "inert": true,
+  "no_observations": false,
+  "candidate_picked": {
+    "Basic {G} Energy": 7,
+    "Bulbasaur": 7,
+    "Forest of Vitality": 7,
+    "Ivysaur": 6,
+    "UNRESOLVED": 6,
+    "Mega Venusaur ex": 5,
+    "Boss\u2019s Orders": 3,
+    "Bayleef": 2,
+    "Lana\u2019s Aid": 2,
+    "Dawn": 2,
+    "Meganium": 2,
+    "Teal Mask Ogerpon ex": 2
+  },
+  "baseline_picked": {
+    "Basic {G} Energy": 7,
+    "Bulbasaur": 7,
+    "Forest of Vitality": 7,
+    "Ivysaur": 6,
+    "UNRESOLVED": 6,
+    "Mega Venusaur ex": 5,
+    "Boss\u2019s Orders": 3,
+    "Bayleef": 2,
+    "Lana\u2019s Aid": 2,
+    "Dawn": 2,
+    "Meganium": 2,
+    "Teal Mask Ogerpon ex": 2
+  },
+  "examples": [
+    {
+      "game": 2,
+      "offered": [
+        "Bayleef",
+        "Bayleef",
+        "Meganium",
+        "Ivysaur",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Bayleef"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Ivysaur",
+        "Ivysaur",
+        "Basic {G} Energy",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Ivysaur",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Ivysaur",
+        "Ivysaur",
+        "Basic {G} Energy",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Ivysaur",
+        "Ivysaur",
+        "Basic {G} Energy",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Ivysaur",
+        "Ivysaur",
+        "Basic {G} Energy",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Lana\u2019s Aid",
+        "Ivysaur",
+        "Bulbasaur",
+        "Teal Mask Ogerpon ex",
+        "Teal Mask Ogerpon ex"
+      ],
+      "candidate": [
+        "Bulbasaur"
+      ],
+      "baseline": [
+        "Bulbasaur"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Lana\u2019s Aid",
+        "Lana\u2019s Aid",
+        "Ivysaur",
+        "Teal Mask Ogerpon ex",
+        "Teal Mask Ogerpon ex"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    }
+  ],
+  "errors": []
+}

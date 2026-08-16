@@ -1,0 +1,29 @@
+{
+  "specialist": "PalSystem_Dragapult",
+  "candidate_version": "v001-candidate",
+  "baseline_version": "v000-baseline",
+  "opponent": "specialist_previous",
+  "stage": "screening",
+  "seed_set": "20260812",
+  "games": 200,
+  "wins": 101,
+  "losses": 99,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 193.935,
+  "average_decision_time_ms": 8.420247920976426,
+  "max_decision_time_ms": 221.93319999496453,
+  "win_rate": 0.505,
+  "confidence_interval": [
+    0.4362687594824017,
+    0.573542780458415
+  ],
+  "z_score": 0.14142135623730964,
+  "p_value": 0.887537083981715,
+  "started_at": "2026-08-15T09:03:56.120202+00:00",
+  "finished_at": "2026-08-15T09:09:42.914163+00:00",
+  "duration_seconds": 346.7945433999994,
+  "errors": []
+}

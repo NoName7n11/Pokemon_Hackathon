@@ -1,0 +1,237 @@
+{
+  "agent": "sub-agents\\specialists\\My_Deck_Grass\\snapshots\\v000-baseline\\main.py",
+  "games": 30,
+  "seed": 2026081570,
+  "wins": 18,
+  "losses": 12,
+  "draws_or_timeouts": 0,
+  "first_attack_turn": {
+    "Jungle Dump": {
+      "win": {
+        "count": 13,
+        "mean": 13.23,
+        "median": 13,
+        "min": 6,
+        "max": 32
+      },
+      "loss": {
+        "count": 6,
+        "mean": 17.5,
+        "median": 15.5,
+        "min": 14,
+        "max": 28
+      }
+    },
+    "Myriad Leaf Shower": {
+      "win": {
+        "count": 10,
+        "mean": 9.3,
+        "median": 5.5,
+        "min": 4,
+        "max": 20
+      },
+      "loss": {
+        "count": 1,
+        "mean": 4.0,
+        "median": 4,
+        "min": 4,
+        "max": 4
+      }
+    },
+    "Solar Beam": {
+      "win": {
+        "count": 3,
+        "mean": 14.67,
+        "median": 9,
+        "min": 6,
+        "max": 29
+      },
+      "loss": {
+        "count": 0
+      }
+    },
+    "Leaf Step": {
+      "win": {
+        "count": 1,
+        "mean": 7.0,
+        "median": 7,
+        "min": 7,
+        "max": 7
+      },
+      "loss": {
+        "count": 0
+      }
+    },
+    "Razor Leaf": {
+      "win": {
+        "count": 2,
+        "mean": 5.5,
+        "median": 5.5,
+        "min": 3,
+        "max": 8
+      },
+      "loss": {
+        "count": 2,
+        "mean": 4.5,
+        "median": 4.5,
+        "min": 3,
+        "max": 6
+      }
+    },
+    "Bind Down": {
+      "win": {
+        "count": 5,
+        "mean": 5.0,
+        "median": 3,
+        "min": 2,
+        "max": 15
+      },
+      "loss": {
+        "count": 4,
+        "mean": 2.75,
+        "median": 2.5,
+        "min": 2,
+        "max": 4
+      }
+    },
+    "Seed Bomb": {
+      "win": {
+        "count": 2,
+        "mean": 3.0,
+        "median": 3.0,
+        "min": 3,
+        "max": 3
+      },
+      "loss": {
+        "count": 1,
+        "mean": 4.0,
+        "median": 4,
+        "min": 4,
+        "max": 4
+      }
+    },
+    "Cruel Arrow": {
+      "win": {
+        "count": 0
+      },
+      "loss": {
+        "count": 1,
+        "mean": 13.0,
+        "median": 13,
+        "min": 13,
+        "max": 13
+      }
+    },
+    "Tuck Tail": {
+      "win": {
+        "count": 0
+      },
+      "loss": {
+        "count": 0
+      }
+    },
+    "Growl": {
+      "win": {
+        "count": 1,
+        "mean": 2.0,
+        "median": 2,
+        "min": 2,
+        "max": 2
+      },
+      "loss": {
+        "count": 2,
+        "mean": 8.5,
+        "median": 8.5,
+        "min": 5,
+        "max": 12
+      }
+    }
+  },
+  "first_active_turn": {
+    "Mega Venusaur ex": {
+      "win": {
+        "count": 14,
+        "mean": 9.29,
+        "median": 8.0,
+        "min": 3,
+        "max": 32
+      },
+      "loss": {
+        "count": 9,
+        "mean": 10.22,
+        "median": 10,
+        "min": 3,
+        "max": 22
+      }
+    },
+    "Meganium": {
+      "win": {
+        "count": 5,
+        "mean": 15.0,
+        "median": 15,
+        "min": 6,
+        "max": 29
+      },
+      "loss": {
+        "count": 3,
+        "mean": 16.0,
+        "median": 14,
+        "min": 8,
+        "max": 26
+      }
+    },
+    "Teal Mask Ogerpon ex": {
+      "win": {
+        "count": 12,
+        "mean": 5.08,
+        "median": 2.0,
+        "min": 1,
+        "max": 19
+      },
+      "loss": {
+        "count": 6,
+        "mean": 5.0,
+        "median": 5.5,
+        "min": 1,
+        "max": 9
+      }
+    }
+  },
+  "attack_uses": {
+    "Jungle Dump": {
+      "win": 48,
+      "loss": 8
+    },
+    "Myriad Leaf Shower": {
+      "win": 32,
+      "loss": 1
+    },
+    "Solar Beam": {
+      "win": 3
+    },
+    "Leaf Step": {
+      "win": 1
+    },
+    "Razor Leaf": {
+      "win": 2,
+      "loss": 2
+    },
+    "Bind Down": {
+      "win": 11,
+      "loss": 17
+    },
+    "Seed Bomb": {
+      "win": 2,
+      "loss": 5
+    },
+    "Cruel Arrow": {
+      "loss": 1
+    },
+    "Tuck Tail": {},
+    "Growl": {
+      "loss": 3,
+      "win": 1
+    }
+  },
+  "errors": []
+}

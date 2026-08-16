@@ -1,0 +1,12 @@
+Implemented the isolated setup change in [main.py](C:/Users/novan/Desktop/Projects/Pokemon_Hackathon/sub-agents/specialists/PalSystem_Dragapult/experiments/EXP-0008/workers/001-codex/workspace/main.py:111).
+
+Behavior changed:
+- For raw `CARD` select type `1` with numeric context `1`, setup Active now prioritizes: `Dreepy`, `Munkidori`, `Budew`, `Meowth ex`, `Fezandipiti ex`.
+- For numeric context `2`, setup Bench now prioritizes: `Dreepy`, `Munkidori`, `Meowth ex`, `Fezandipiti ex`, `Budew`.
+- All other CARD contexts and all MAIN-phase play, attach, trainer, ability, attack, evolve, and damage-target logic remain on the baseline path.
+
+Verification:
+- Ran `python -m py_compile main.py`; syntax passed.
+- Removed the generated `__pycache__` afterward so no extra project files remain.
+
+Reviewer concern to inspect: the implementation matches card names from `all_card_data()` using common fields (`name`, `cardName`, `displayName`). Decision traces should confirm the expected differences occur in CARD context `1` or `2`.

@@ -1,0 +1,137 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0005\\candidate\\main.py",
+  "context": "DISCARD_ENERGY",
+  "games": 12,
+  "selections_in_context": 17,
+  "differs": 0,
+  "same": 17,
+  "inert": true,
+  "no_observations": false,
+  "candidate_picked": {
+    "Meganium": 5,
+    "Mega Venusaur ex": 3,
+    "Lana\u2019s Aid": 2,
+    "Night Stretcher": 2,
+    "Basic {G} Energy": 1,
+    "Bayleef": 1,
+    "Dawn": 1,
+    "Boss\u2019s Orders": 1,
+    "Forest of Vitality": 1
+  },
+  "baseline_picked": {
+    "Meganium": 5,
+    "Mega Venusaur ex": 3,
+    "Lana\u2019s Aid": 2,
+    "Night Stretcher": 2,
+    "Basic {G} Energy": 1,
+    "Bayleef": 1,
+    "Dawn": 1,
+    "Boss\u2019s Orders": 1,
+    "Forest of Vitality": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Meganium",
+        "Meganium"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Meganium",
+        "Meganium"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Meganium"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    }
+  ],
+  "errors": []
+}

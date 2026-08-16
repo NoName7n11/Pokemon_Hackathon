@@ -1,0 +1,91 @@
+{
+  "agent": "..\\..\\specialists\\PalSystem_Dragapult\\snapshots\\v000-baseline\\main.py",
+  "games": 30,
+  "seed": 2026081570,
+  "wins": 12,
+  "losses": 18,
+  "draws_or_timeouts": 0,
+  "first_attack_turn": {
+    "Phantom Dive": {
+      "win": {
+        "count": 11,
+        "mean": 13.64,
+        "median": 13,
+        "min": 5,
+        "max": 28
+      },
+      "loss": {
+        "count": 6,
+        "mean": 10.83,
+        "median": 11.0,
+        "min": 9,
+        "max": 13
+      }
+    },
+    "Jet Headbutt": {
+      "win": {
+        "count": 10,
+        "mean": 12.0,
+        "median": 10.5,
+        "min": 5,
+        "max": 24
+      },
+      "loss": {
+        "count": 12,
+        "mean": 11.58,
+        "median": 9.5,
+        "min": 5,
+        "max": 26
+      }
+    },
+    "Itchy Pollen": {
+      "win": {
+        "count": 9,
+        "mean": 6.11,
+        "median": 4,
+        "min": 3,
+        "max": 12
+      },
+      "loss": {
+        "count": 16,
+        "mean": 4.62,
+        "median": 3.0,
+        "min": 2,
+        "max": 14
+      }
+    }
+  },
+  "first_active_turn": {
+    "Dragapult ex": {
+      "win": {
+        "count": 12,
+        "mean": 11.42,
+        "median": 10.5,
+        "min": 5,
+        "max": 24
+      },
+      "loss": {
+        "count": 13,
+        "mean": 10.69,
+        "median": 9,
+        "min": 5,
+        "max": 22
+      }
+    }
+  },
+  "attack_uses": {
+    "Phantom Dive": {
+      "win": 37,
+      "loss": 11
+    },
+    "Jet Headbutt": {
+      "win": 30,
+      "loss": 41
+    },
+    "Itchy Pollen": {
+      "win": 22,
+      "loss": 32
+    }
+  },
+  "errors": []
+}

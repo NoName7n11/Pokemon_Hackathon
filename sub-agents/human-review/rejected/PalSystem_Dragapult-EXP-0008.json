@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "specialist": "PalSystem_Dragapult",
+  "experiment": "EXP-0008",
+  "stage": "screening",
+  "created_at": "2026-08-15T08:02:02.166660+00:00",
+  "hypothesis": "Use the corrected replay-pattern report from palsystem_games/analysis/replay_patterns.md. Implement only PalSystem opening setup CARD selection: when obs.select.type is CARD/select type 1 and context is numeric 1, choose Active by replay priority Dreepy first, then Munkidori, then Budew, then Meowth ex, then Fezandipiti ex. When context is numeric 2, choose setup Bench by replay priority Dreepy first, then Munkidori, then Meowth ex, then Fezandipiti ex, then Budew. Do not change MAIN-phase PLAY, ATTACH, Trainer, Ability, Attack, Evolve, or damage-target logic.",
+  "expected_effect": "Correct the previous failed setup attempt by using the raw replay numeric CARD contexts 1 and 2; decision traces must show differences in CARD context 1 or 2, not MAIN cascade differences, before any deep evaluation.",
+  "mechanisms": [
+    "numeric_setup_context_replay_priority"
+  ],
+  "baseline_version": "v000-baseline",
+  "candidate_version": "v001-candidate",
+  "provider_run": {
+    "run": 1,
+    "provider": "codex",
+    "backend": "codex-cli",
+    "model": "gpt-5.5",
+    "started_at": "2026-08-15T07:51:26.129013+00:00",
+    "finished_at": "2026-08-15T07:54:28.046297+00:00",
+    "dry_run": false,
+    "returncode": 0,
+    "timed_out": false,
+    "candidate_imported": true,
+    "changed_files": [
+      "main.py"
+    ],
+    "validation_errors": [],
+    "run_dir": "workers/001-codex"
+  },
+  "worker_identity": {
+    "provider": "codex",
+    "model": "gpt-5.5",
+    "identity": "codex"
+  },
+  "assigned_reviewer": {
+    "reviewer": "opus",
+    "provider": "claude",
+    "model": "opus",
+    "reason": "Codex-authored experiments require an independent Opus/Claude review."
+  },
+  "benchmark": {
+    "specialist": "PalSystem_Dragapult",
+    "candidate_version": "v001-candidate",
+    "baseline_version": "v000-baseline",
+    "opponent": "specialist_previous",
+    "stage": "screening",
+    "seed_set": "2026081543",
+    "games": 200,
+    "wins": 104,
+    "losses": 96,
+    "draws": 0,
+    "timeouts": 0,
+    "illegal_actions": 0,
+    "crashes": 0,
+    "average_steps": 201.88,
+    "average_decision_time_ms": 8.427067118205152,
+    "max_decision_time_ms": 673.5042000073008,
+    "win_rate": 0.52,
+    "confidence_interval": [
+      0.4510366005581654,
+      0.5882095592051018
+    ],
+    "z_score": 0.5656854249492386,
+    "p_value": 0.5716076449533313,
+    "started_at": "2026-08-15T07:55:11.948938+00:00",
+    "finished_at": "2026-08-15T08:01:18.888420+00:00",
+    "duration_seconds": 366.9404937999934,
+    "errors": []
+  },
+  "cross_deck_results": [],
+  "decision_trace": {
+    "result": "results/decision-trace-screening.json",
+    "summary": {
+      "candidate_decisions": 1915,
+      "total_differences": 118,
+      "difference_rate": 0.06161879895561358,
+      "games_with_difference": 20,
+      "contexts": {
+        "MAIN": 118
+      },
+      "select_types": {
+        "MAIN": 118
+      },
+      "candidate_selected_option_types": {
+        "PLAY": 77,
+        "ATTACH": 20,
+        "EVOLVE": 9,
+        "ABILITY": 6,
+        "RETREAT": 3,
+        "END": 2,
+        "ATTACK": 1
+      },
+      "baseline_selected_option_types": {
+        "PLAY": 64,
+        "ATTACH": 17,
+        "EVOLVE": 16,
+        "ABILITY": 9,
+        "RETREAT": 9,
+        "ATTACK": 3
+      },
+      "candidate_wins": 9,
+      "baseline_opponent_wins": 11,
+      "draws_or_timeouts": 0,
+      "records_retained": 118,
+      "records_truncated": false
+    }
+  },
+  "diff_truncated": false,
+  "decision": "rejected",
+  "reviewer_reason": "Trace gate failed: 118/118 decision differences are MAIN/MAIN; zero CARD context 1 or 2 differences, so the numeric setup-context hook produced no observable setup change. Screening 104/200 (52.0%, z=0.566, p=0.572) is null. Next step is setup-trace tooling to prove whether _setup_replay_priority_choice fires at all.",
+  "reviewed_at": "2026-08-15T08:02:32.916837+00:00"
+}

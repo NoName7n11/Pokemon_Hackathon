@@ -1,0 +1,46 @@
+{
+  "agent": "sub-agents\\specialists\\My_Deck_Grass\\snapshots\\v000-baseline\\main.py",
+  "deck": "sub-agents\\specialists\\My_Deck_Grass\\deck.csv",
+  "games": 10,
+  "seed": 2026081550,
+  "setup_selection_events": 16,
+  "contexts_seen": {
+    "MAIN/MAIN": 419,
+    "CARD/TO_HAND": 97,
+    "CARD/ATTACH_FROM": 53,
+    "ENERGY/SWITCH_ENERGY": 44,
+    "CARD/ATTACH_TO": 27,
+    "CARD/SWITCH": 21,
+    "CARD/TO_ACTIVE": 13,
+    "ENERGY/DISCARD_ENERGY": 13,
+    "CARD/DISCARD": 11,
+    "CARD/SETUP_ACTIVE_POKEMON": 10,
+    "ATTACHED_CARD/SWITCH_ENERGY_CARD": 9,
+    "YES_NO/ACTIVATE": 7,
+    "CARD/SETUP_BENCH_POKEMON": 6,
+    "YES_NO/IS_FIRST": 5,
+    "COUNT/DRAW_COUNT": 3
+  },
+  "setup_offered": {
+    "SETUP_ACTIVE_POKEMON/Meowth ex": 7,
+    "SETUP_ACTIVE_POKEMON/Bulbasaur": 5,
+    "SETUP_BENCH_POKEMON/Meowth ex": 3,
+    "SETUP_ACTIVE_POKEMON/Teal Mask Ogerpon ex": 3,
+    "SETUP_BENCH_POKEMON/Bulbasaur": 2,
+    "SETUP_ACTIVE_POKEMON/Chikorita": 2,
+    "SETUP_BENCH_POKEMON/Teal Mask Ogerpon ex": 2,
+    "SETUP_ACTIVE_POKEMON/Fezandipiti ex": 1,
+    "SETUP_BENCH_POKEMON/Fezandipiti ex": 1
+  },
+  "setup_picked": {
+    "SETUP_ACTIVE_POKEMON/Meowth ex": 4,
+    "SETUP_BENCH_POKEMON/Meowth ex": 3,
+    "SETUP_ACTIVE_POKEMON/Bulbasaur": 3,
+    "SETUP_BENCH_POKEMON/Bulbasaur": 2,
+    "SETUP_ACTIVE_POKEMON/Chikorita": 2,
+    "SETUP_BENCH_POKEMON/Teal Mask Ogerpon ex": 2,
+    "SETUP_BENCH_POKEMON/Fezandipiti ex": 1,
+    "SETUP_ACTIVE_POKEMON/Teal Mask Ogerpon ex": 1
+  },
+  "errors": []
+}

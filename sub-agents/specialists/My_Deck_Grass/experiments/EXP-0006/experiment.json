@@ -1,0 +1,33 @@
+{
+  "id": "EXP-0006",
+  "specialist": "My_Deck_Grass",
+  "created_at": "2026-08-16T07:30:50.980226+00:00",
+  "updated_at": "2026-08-16T07:30:50.980226+00:00",
+  "worker": "claude",
+  "hypothesis": "CARD/TO_HAND is the second-busiest context on this deck (97 selections per 10 games: every Dawn, Ultra Ball, Poke Pad, Bug Catching Set, Night Stretcher and Lana's Aid target) and falls through to _option_card_power descending, which scores a Basic G Energy at 0. The agent therefore never fetches Energy and always takes the biggest Pokemon, regardless of what the board actually lacks.",
+  "expected_effect": "Search and recovery cards fetch the missing evolution piece for a line already on board, or Basic G Energy when the intended attacker is short of its attack cost, instead of defaulting to the highest-HP Pokemon in the list.",
+  "mechanisms": [
+    "fetch_target_need_scoring"
+  ],
+  "files_changed": [],
+  "baseline_version": "v001-accepted",
+  "candidate_version": "v002-candidate",
+  "accepted_version": null,
+  "baseline_path": "snapshots/v001-accepted",
+  "candidate_path": "experiments/EXP-0006/candidate",
+  "status": "PROPOSED",
+  "smoke_result": null,
+  "screening_result": null,
+  "main_result": null,
+  "confirmation_result": null,
+  "cross_deck_results": [],
+  "decision_traces": [],
+  "runs": [],
+  "worker_runs": [],
+  "orchestration": {},
+  "reviews": [],
+  "review_history": [],
+  "decision": "pending",
+  "reason": "",
+  "limitations": []
+}

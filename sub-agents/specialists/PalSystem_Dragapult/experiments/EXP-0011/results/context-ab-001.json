@@ -1,0 +1,127 @@
+{
+  "candidate": "..\\..\\specialists\\PalSystem_Dragapult\\experiments\\EXP-0011\\candidate\\main.py",
+  "context": "SETUP_ACTIVE_POKEMON",
+  "games": 20,
+  "selections_in_context": 20,
+  "differs": 4,
+  "same": 16,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Dreepy": 13,
+    "Meowth ex": 3,
+    "Budew": 2,
+    "Fezandipiti ex": 1,
+    "Munkidori": 1
+  },
+  "baseline_picked": {
+    "Dreepy": 10,
+    "Fezandipiti ex": 3,
+    "Meowth ex": 3,
+    "Budew": 3,
+    "Munkidori": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Dreepy",
+        "Munkidori",
+        "Dreepy"
+      ],
+      "candidate": [
+        "Dreepy"
+      ],
+      "baseline": [
+        "Dreepy"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Fezandipiti ex"
+      ],
+      "candidate": [
+        "Fezandipiti ex"
+      ],
+      "baseline": [
+        "Fezandipiti ex"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Dreepy"
+      ],
+      "candidate": [
+        "Dreepy"
+      ],
+      "baseline": [
+        "Dreepy"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Dreepy",
+        "Budew"
+      ],
+      "candidate": [
+        "Dreepy"
+      ],
+      "baseline": [
+        "Dreepy"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Dreepy",
+        "Budew"
+      ],
+      "candidate": [
+        "Dreepy"
+      ],
+      "baseline": [
+        "Dreepy"
+      ]
+    },
+    {
+      "game": 6,
+      "offered": [
+        "Meowth ex"
+      ],
+      "candidate": [
+        "Meowth ex"
+      ],
+      "baseline": [
+        "Meowth ex"
+      ]
+    },
+    {
+      "game": 7,
+      "offered": [
+        "Dreepy"
+      ],
+      "candidate": [
+        "Dreepy"
+      ],
+      "baseline": [
+        "Dreepy"
+      ]
+    },
+    {
+      "game": 8,
+      "offered": [
+        "Dreepy"
+      ],
+      "candidate": [
+        "Dreepy"
+      ],
+      "baseline": [
+        "Dreepy"
+      ]
+    }
+  ],
+  "errors": []
+}

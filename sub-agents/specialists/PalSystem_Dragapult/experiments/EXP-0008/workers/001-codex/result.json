@@ -1,0 +1,17 @@
+{
+  "run": 1,
+  "provider": "codex",
+  "backend": "codex-cli",
+  "model": "gpt-5.5",
+  "started_at": "2026-08-15T07:51:26.129013+00:00",
+  "finished_at": "2026-08-15T07:54:28.046297+00:00",
+  "dry_run": false,
+  "returncode": 0,
+  "timed_out": false,
+  "candidate_imported": true,
+  "changed_files": [
+    "main.py"
+  ],
+  "validation_errors": [],
+  "run_dir": "workers/001-codex"
+}

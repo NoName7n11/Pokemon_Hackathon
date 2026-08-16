@@ -108,6 +108,7 @@
     }
   },
   "diff_truncated": false,
-  "decision": "pending",
-  "reviewer_reason": ""
+  "decision": "rejected",
+  "reviewer_reason": "Rejected before replay-inspired setup campaign: disruption timing screen was weak (107/200, p=0.322) and AI review requested mechanism-level traces before more evidence. Closing it to unblock the next isolated PalSystem hypothesis.",
+  "reviewed_at": "2026-08-15T01:58:23.725431+00:00"
 }
