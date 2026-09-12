@@ -20,7 +20,7 @@ import re
 import sys
 from collections import defaultdict
 
-CSV_PATH = "dataset/EN_Card_Data.csv"
+CSV_PATH = "data/dataset/EN_Card_Data.csv"
 DECK_OUT = "sample_submission/sample_submission/deck.csv"
 STAGE_COL = "Stage (Pokémon)/Type (Energy and Trainer)"
 

@@ -17,7 +17,7 @@ import main as agent_mod
 from cg.api import to_observation_class
 from cg.game import battle_finish, battle_select, battle_start
 
-DECS = Path(__file__).resolve().parents[2] / "Decs"
+DECS = Path(__file__).resolve().parents[2] / "decks" / "Decs"
 
 
 def load_deck(path: Path) -> list[int]:

@@ -6,7 +6,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CARD_DATA = ROOT / "dataset" / "EN_Card_Data.csv"
+CARD_DATA = ROOT / "data" / "dataset" / "EN_Card_Data.csv"
 IMAGE_ROOT = Path(r"C:\Users\novan\Desktop\Pokemon_Dataset")
 OUTPUT = Path(__file__).with_name("card-data.js")
 PREVIEW_ROOT = Path(__file__).with_name("assets") / "cards"

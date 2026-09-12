@@ -13,7 +13,7 @@ from cg.api import to_observation_class
 from cg.game import battle_finish, battle_select, battle_start
 from main import agent as heuristic
 
-DECS = Path(__file__).resolve().parents[2] / "Decs"
+DECS = Path(__file__).resolve().parents[2] / "decks" / "Decs"
 P0_DECK = "Hide_n_Sneak.csv"
 
 

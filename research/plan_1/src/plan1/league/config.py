@@ -103,7 +103,7 @@ def load_league_config(path: Path) -> LeagueConfig:
     }
     if set(data) != expected:
         raise ValueError(f"league config keys differ: {sorted(set(data) ^ expected)}")
-    root = path.resolve().parents[2]
+    root = path.resolve().parents[3]
 
     def resolve(value: str) -> Path:
         candidate = Path(value)

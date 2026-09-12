@@ -14,8 +14,8 @@ import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
-CSV_PATH = "dataset/EN_Card_Data.csv"
-DECS_DIR = "Decs"
+CSV_PATH = "data/dataset/EN_Card_Data.csv"
+DECS_DIR = "decks/Decs"
 
 
 ENERGY_ALIAS = {

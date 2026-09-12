@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "phase11-shadow-validation-v1",
   "package_name": "plan1-shadow-submission",
-  "deck_path": "Decs/Hydrapple.csv",
+  "deck_path": "decks/Decs/Hydrapple.csv",
   "fallback_path": "sample_submission/sample_submission/main.py",
   "search_config_path": "plan_1/configs/mcts_selective_budget.json",
   "checkpoint_path": "plan_1/artifacts/phase8/phase8-validation-v1/checkpoints/candidate-i001.json",

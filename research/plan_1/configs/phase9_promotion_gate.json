@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "run_id": "phase9-validation-v1",
-  "games_per_matchup": 2,
+  "run_id": "phase9-promotion-gate-v1",
+  "games_per_matchup": 24,
   "max_steps": 3000,
-  "search_config": "plan_1/configs/mcts_baseline.json",
+  "search_config": "plan_1/configs/mcts_selective_budget.json",
   "decks": [
-    {"name": "Hydrapple", "path": "Decs/Hydrapple.csv", "split": "development"},
-    {"name": "Grass", "path": "No_Name_Decks/No_Name_Grass.csv", "split": "development"},
-    {"name": "Fire", "path": "No_Name_Decks/No_Name_Fire.csv", "split": "development"},
-    {"name": "LiamK_MegaLopunny", "path": "Decs/LiamK_MegaLopunny.csv", "split": "heldout"},
-    {"name": "Claude_Mega_Gardevoir", "path": "Decs/Claude_Mega_Gardevoir.csv", "split": "heldout"}
+    {"name": "Hydrapple", "path": "decks/Decs/Hydrapple.csv", "split": "development"},
+    {"name": "Grass", "path": "decks/No_Name_Decks/No_Name_Grass.csv", "split": "development"},
+    {"name": "Fire", "path": "decks/No_Name_Decks/No_Name_Fire.csv", "split": "development"},
+    {"name": "LiamK_MegaLopunny", "path": "decks/Decs/LiamK_MegaLopunny.csv", "split": "heldout"},
+    {"name": "Claude_Mega_Gardevoir", "path": "decks/Decs/Claude_Mega_Gardevoir.csv", "split": "heldout"}
   ],
   "policies": [
     {

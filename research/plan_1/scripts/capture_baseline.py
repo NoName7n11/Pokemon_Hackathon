@@ -15,7 +15,7 @@ DEFAULT_FILES = (
     "sample_submission/sample_submission/deck.csv",
     "sample_submission/sample_submission/cg/api.py",
     "sample_submission/sample_submission/cg/game.py",
-    "Decs/Hydrapple.csv",
+    "decks/Decs/Hydrapple.csv",
 )
 
 

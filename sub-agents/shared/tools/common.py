@@ -15,7 +15,7 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SUB_AGENTS_ROOT = REPO_ROOT / "sub-agents"
 SPECIALISTS_ROOT = SUB_AGENTS_ROOT / "specialists"
-DATASET_PATH = REPO_ROOT / "dataset" / "EN_Card_Data.csv"
+DATASET_PATH = REPO_ROOT / "data" / "dataset" / "EN_Card_Data.csv"
 ENGINE_PARENT = REPO_ROOT / "sample_submission" / "sample_submission"
 
 

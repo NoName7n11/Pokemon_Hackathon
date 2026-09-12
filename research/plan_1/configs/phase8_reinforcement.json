@@ -16,7 +16,7 @@
   "initial_checkpoint": "plan_1/artifacts/checkpoints/phase7-bootstrap-v2.json",
   "bootstrap_corpus": "plan_1/artifacts/trajectories/phase7-bootstrap",
   "deck_paths": [
-    "Decs/Hydrapple.csv"
+    "decks/Decs/Hydrapple.csv"
   ],
   "search_config": "plan_1/configs/mcts_baseline.json",
   "model": {

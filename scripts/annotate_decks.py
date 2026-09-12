@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from check_decks import load_pool, norm  # noqa: E402
 
-DECS_DIR = "Decs"
+DECS_DIR = "decks/Decs"
 # A card line: leading count, then the name (optionally trailing "SET Collector").
 CARD_LINE = re.compile(r"^(\d+)\s+(.*?)\s*$")
 SET_SUFFIX = re.compile(r"\s+([A-Z0-9]{2,4})\s+(\d+)\s*$")

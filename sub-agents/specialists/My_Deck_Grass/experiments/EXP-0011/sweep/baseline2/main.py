@@ -756,12 +756,12 @@ def _mcts_agent():
             raise ImportError("no __file__; cannot locate plan_1")
         repo_root = None
         for parent in Path(module_file).resolve().parents:
-            if (parent / "plan_1" / "src").is_dir():
+            if (parent / "research" / "plan_1" / "src").is_dir():
                 repo_root = parent
                 break
         if repo_root is None:
-            raise ImportError("plan_1/src not found above this module")
-        src = str(repo_root / "plan_1" / "src")
+            raise ImportError("research/plan_1/src not found above this module")
+        src = str(repo_root / "research" / "plan_1" / "src")
         if src not in _sys.path:
             _sys.path.insert(0, src)
 
@@ -776,7 +776,7 @@ def _mcts_agent():
         # one main.py per arm without touching plan_1/configs.
         cfg_path = Path(module_file).resolve().with_name(MCTS_CONFIG)
         if not cfg_path.is_file():
-            cfg_path = repo_root / "plan_1" / "configs" / MCTS_CONFIG
+            cfg_path = repo_root / "research" / "plan_1" / "configs" / MCTS_CONFIG
         _MCTS_AGENT = Plan1MCTSAgent(
             _api,
             deck,

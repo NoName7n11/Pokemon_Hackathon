@@ -2,9 +2,9 @@
 # shared outside Kaggle's own competition forums/notebooks, and must be deleted
 # after the competition ends. Never commit these, even to a private remote you
 # might later make public.
-dataset/
-par_rulebook_en.pdf
-ptcg_engine/
+data/dataset/
+docs/rules/par_rulebook_en.pdf
+data/ptcg_engine/
 sample_submission/sample_submission/cg/
 
 # Deck-builder card data: card-data.js is dataset/EN_Card_Data.csv repackaged as
@@ -22,7 +22,7 @@ replay.html
 # Other teams' downloaded replay data (Competition Data -- do not redistribute)
 liamk_decks.json
 liamk_behavior.json
-palsystem_games/
+research/palsystem_games/
 .playwright-mcp/
 
 # Python
@@ -32,17 +32,17 @@ __pycache__/
 
 # Plan 1 generated research artifacts. Keep schemas, source, reports, and small
 # checked-in fixtures; large trajectories/checkpoints are local-only.
-plan_1/artifacts/checkpoints/
-plan_1/artifacts/fixtures/
-plan_1/artifacts/trajectories/
-plan_1/artifacts/traces/
-plan_1/artifacts/tmp/
+research/plan_1/artifacts/checkpoints/
+research/plan_1/artifacts/fixtures/
+research/plan_1/artifacts/trajectories/
+research/plan_1/artifacts/traces/
+research/plan_1/artifacts/tmp/
 
 # Local tooling state (not project source)
 .ontrack/
 
 # Other teams' decks reconstructed from replay data -- do not redistribute
-Decs/LiamK_*
+decks/Decs/LiamK_*
 
 # Continuous scheduler runtime state (live lock + process logs, not evidence)
 sub-agents/continuous/.scheduler.lock
@@ -52,19 +52,19 @@ sub-agents/continuous/scheduler.stdout.log
 sub-agents/continuous/scheduler.stderr.log
 
 # Other teams decks reconstructed from replay data -- do not redistribute
-Decs/Dipam_*
-Decs/PalSystem_*
+decks/Decs/Dipam_*
+decks/Decs/PalSystem_*
 
 # Official Pokemon TCG card artwork (Competition Data / Pokemon Elements license
 # -- redistributing licensed card images is grounds for disqualification per
 # EVALUATION.md, same category as deck_builder/assets/cards/ above).
-Pokemon/
-Pokemon_Dataset/
+data/Pokemon/
+data/Pokemon_Dataset/
 
 # Downloaded episode replay JSONs (Competition Data -- replay files, not to be
 # redistributed per EVALUATION.md §5).
-Game/
+data/Game/
 
-# Local submission build scratch (regenerable from sample_submission/ + Decs/)
+# Local submission build scratch (regenerable from sample_submission/ + decks/Decs/)
 submission_staging/
 *.tar.gz

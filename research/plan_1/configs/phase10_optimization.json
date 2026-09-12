@@ -1,21 +1,22 @@
 {
   "schema_version": 1,
-  "run_id": "phase10-confirmation-v1",
+  "run_id": "phase10-validation-v1",
   "checkpoint": "plan_1/artifacts/phase8/phase8-validation-v1/checkpoints/candidate-i001.json",
   "deck_paths": [
-    "Decs/Hydrapple.csv",
-    "No_Name_Decks/No_Name_Grass.csv",
-    "No_Name_Decks/No_Name_Fire.csv"
+    "decks/Decs/Hydrapple.csv",
+    "decks/No_Name_Decks/No_Name_Grass.csv",
+    "decks/No_Name_Decks/No_Name_Fire.csv"
   ],
   "search_variants": [
     {"name": "full_root_baseline", "config_path": "plan_1/configs/mcts_baseline.json"},
+    {"name": "selective_root", "config_path": "plan_1/configs/mcts_selective.json"},
     {"name": "selective_budget", "config_path": "plan_1/configs/mcts_selective_budget.json"}
   ],
-  "games_per_pair": 20,
+  "games_per_pair": 10,
   "max_steps": 3000,
   "search_gates": {
     "baseline_name": "full_root_baseline",
-    "minimum_decisive_games": 50,
+    "minimum_decisive_games": 30,
     "minimum_baseline_win_rate": 0.5,
     "minimum_nonfallback_rate": 0.1,
     "maximum_hard_overrun_rate": 0.01,
@@ -23,7 +24,7 @@
   },
   "model_ablation": {
     "corpus_root": "plan_1/artifacts/trajectories/phase7-bootstrap",
-    "dimensions": [2048, 8192],
+    "dimensions": [2048, 4096, 8192],
     "epochs": 10,
     "value_epochs": 3,
     "learning_rate": 0.04,

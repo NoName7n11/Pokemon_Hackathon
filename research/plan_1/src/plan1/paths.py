@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[2]
-REPO_ROOT = PACKAGE_ROOT.parent
+REPO_ROOT = PACKAGE_ROOT.parents[1]
 CONFIG_ROOT = PACKAGE_ROOT / "configs"
 ARTIFACT_ROOT = PACKAGE_ROOT / "artifacts"
 ENGINE_PARENT = REPO_ROOT / "sample_submission" / "sample_submission"

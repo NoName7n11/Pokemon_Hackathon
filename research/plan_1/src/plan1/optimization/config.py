@@ -107,7 +107,7 @@ def load_optimization_config(path: Path) -> OptimizationConfig:
         raise ValueError("search gate config keys differ")
     if set(data["model_ablation"]) != set(ModelAblation.__dataclass_fields__):
         raise ValueError("model ablation config keys differ")
-    root = path.resolve().parents[2]
+    root = path.resolve().parents[3]
 
     def resolve(value: str) -> Path:
         candidate = Path(value)
