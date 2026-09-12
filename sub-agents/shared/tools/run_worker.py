@@ -68,7 +68,7 @@ def copy_context(specialist: Path, experiment_dir: Path, workspace: Path) -> Non
         "SPECIALIST_STATUS.json": specialist / "status.json",
         "SPECIALIST_PROGRESS.md": specialist / "PROGRESS.md",
         "AGENT_CONTRACT.md": SUB_AGENTS_ROOT / "shared" / "AGENT_CONTRACT.md",
-        "POKEMON_RULES.md": REPO_ROOT / "POKEMON_RULES.md",
+        "POKEMON_RULES.md": REPO_ROOT / "docs" / "rules" / "POKEMON_RULES.md",
     }
     specialist_config = read_json(specialist / "config.json")
     strategy_source = specialist_config.get("source_strategy")

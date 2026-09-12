@@ -2,19 +2,20 @@
 
 **Nine mechanisms tested, one accepted: a negative-results program that separates deck strength from agent strength, and finds the bottleneck is the evaluator.**
 
+> ### 90% identical deck. Statistical tie in play. ~700 leaderboard points apart.
+> **The bottleneck is the agent — not the deck.** *(proof in §2.1 / Figure 4)*
+
 ---
 
 ## TL;DR
 
 I built a heuristic Pokémon TCG agent, then spent most of my effort trying to disprove my own improvements. Nine agent mechanisms were tested against pre-committed thresholds; **one was accepted, eight were rejected**, and two apparently-significant results evaporated when the sample size grew. The single accepted change (+7 points) fixed a decision context the baseline answered *at random* — not a ranking it already computed. That distinction turned out to predict every subsequent result.
 
-**Main keypoints:**
+**Four more findings, each with its own proof:**
 
-- **The strongest evidence in this report is a controlled deck-vs-agent decomposition.** A rank-30 competitor's deck is 90% identical to mine by card name and ties mine head-to-head under my own agent — while scoring ~700 leaderboard points higher. The deck is not my bottleneck.
 - **Fix arbitrary decisions, not existing rankings.** Mechanisms correcting contexts the baseline answered arbitrarily won (+7 pts). Mechanisms refining rankings it already computed measured 50.5%, 51.0%, 50.2%, 50.0%, 47.0% — indistinguishable from zero.
 - **More search made things monotonically worse** (49.5% → 47.5% → 44.5% → 41.5% as search width grew), which is the signature of a weak *evaluator*, not weak search.
 - **Two nominally-significant results did not replicate.** One stood at 53.4% with p=0.0315 over 1000 games and fell to 51.25% over 2000. A pre-committed effect-size bar, not a p-value gate, is what prevented adopting it.
-- **A 200-game screen carries ~7 points of standard deviation.** I measured this directly with an inert control arm that scored 44.5% while making zero different decisions.
 - **The agent is structurally blind to 24% of the card pool.** The engine reports variable-damage attacks (`50×`) as `damage=0`, and my ranking reads that field.
 
 **Context**
