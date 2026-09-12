@@ -1,0 +1,156 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0014\\ablation\\meowth_only\\main.py",
+  "context": "SWITCH",
+  "games": 14,
+  "selections_in_context": 41,
+  "differs": 3,
+  "same": 38,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Mega Venusaur ex": 8,
+    "Ivysaur": 8,
+    "Meganium": 5,
+    "Bulbasaur": 3,
+    "Basic {G} Energy": 3,
+    "Lana\u2019s Aid": 3,
+    "Forest of Vitality": 3,
+    "Bayleef": 2,
+    "Lillie's Determination": 1,
+    "Night Stretcher": 1,
+    "Chikorita": 1,
+    "Teal Mask Ogerpon ex": 1,
+    "Fezandipiti ex": 1,
+    "UNRESOLVED": 1
+  },
+  "baseline_picked": {
+    "Mega Venusaur ex": 9,
+    "Ivysaur": 9,
+    "Meganium": 5,
+    "Lana\u2019s Aid": 3,
+    "Forest of Vitality": 3,
+    "Bulbasaur": 2,
+    "Lillie's Determination": 2,
+    "Basic {G} Energy": 2,
+    "Bayleef": 2,
+    "Night Stretcher": 1,
+    "Chikorita": 1,
+    "Fezandipiti ex": 1,
+    "UNRESOLVED": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Bulbasaur"
+      ],
+      "baseline": [
+        "Bulbasaur"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Bulbasaur",
+        "Boss\u2019s Orders",
+        "Lillie's Determination",
+        "Meganium",
+        "Meganium"
+      ],
+      "candidate": [
+        "Bulbasaur"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Lillie's Determination",
+        "Ivysaur",
+        "Bayleef",
+        "Bug Catching Set"
+      ],
+      "candidate": [
+        "Lillie's Determination"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Mega Venusaur ex",
+        "Lana\u2019s Aid",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Mega Venusaur ex",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Mega Venusaur ex",
+        "Ivysaur",
+        "Meganium",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Mega Venusaur ex",
+        "Bayleef",
+        "Ivysaur",
+        "Boss\u2019s Orders"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    }
+  ],
+  "errors": []
+}

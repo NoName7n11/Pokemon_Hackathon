@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "stage": "tournament",
+  "pair_a": {
+    "name": "My_Deck_Grass_current",
+    "version": "v001-accepted",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\My_Deck_Grass\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\My_Deck_Grass\\deck.csv"
+  },
+  "pair_b": {
+    "name": "variant_consistency",
+    "version": "v001-accepted",
+    "agent": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\My_Deck_Grass\\main.py",
+    "deck": "C:\\Users\\novan\\Desktop\\Projects\\Pokemon_Hackathon\\sub-agents\\specialists\\My_Deck_Grass\\deck_experiments\\variant_consistency.csv"
+  },
+  "seed_set": "20260824",
+  "games_per_seat": 500,
+  "games": 1000,
+  "a_wins": 487,
+  "b_wins": 513,
+  "draws": 0,
+  "timeouts": 0,
+  "engine_crashes": 0,
+  "faults": {
+    "a": {
+      "crashes": 0,
+      "illegal_actions": 0
+    },
+    "b": {
+      "crashes": 0,
+      "illegal_actions": 0
+    }
+  },
+  "orientations": {
+    "a_first": {
+      "games": 500,
+      "a_wins": 250,
+      "b_wins": 250,
+      "draws": 0
+    },
+    "b_first": {
+      "games": 500,
+      "a_wins": 237,
+      "b_wins": 263,
+      "draws": 0
+    }
+  },
+  "a_win_rate": 0.487,
+  "a_decisive_win_rate": 0.487,
+  "a_confidence_interval": [
+    0.4561292002724138,
+    0.5179702990908324
+  ],
+  "z_score": -0.8221921916437794,
+  "p_value": 0.41096752208833565,
+  "average_steps": 155.937,
+  "decision_time": {
+    "a": {
+      "decisions": 77574,
+      "average_ms": 15.627254968164005,
+      "max_ms": 919.6566000027815
+    },
+    "b": {
+      "decisions": 78363,
+      "average_ms": 15.905319381583661,
+      "max_ms": 1157.3344999997062
+    }
+  },
+  "started_at": "2026-08-16T11:14:14.556211+00:00",
+  "finished_at": "2026-08-16T11:56:18.815852+00:00",
+  "duration_seconds": 2524.2739140999984,
+  "errors": []
+}

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "state": "EXPERIMENT_ACTIVE",
+  "state": "READY_FOR_EXPERIMENT",
   "review_state": "AUTOMATIC",
   "current_version": "v001-accepted",
   "accepted_experiment": "EXP-0005",
-  "active_experiment": "EXP-0006",
+  "active_experiment": null,
   "created_at": "2026-08-16T03:31:27.967995+00:00",
-  "updated_at": "2026-08-16T07:30:50.981173+00:00",
+  "updated_at": "2026-08-16T16:43:02.982492+00:00",
   "deck_sha256": "f091fe5af2143a4f4dff2399a2590f905db284791cedab483ece9279f3b1240f",
   "agent_sha256": "0482e9acf7a9d06e828e296597e9f881cafd8e9db48f0241b991f39a5ff9f93a",
   "validation": {

@@ -1,0 +1,201 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0009\\candidate\\main.py",
+  "context": "MAIN",
+  "games": 12,
+  "selections_in_context": 433,
+  "differs": 49,
+  "same": 384,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "UNRESOLVED": 100,
+    "Basic {G} Energy": 66,
+    "Meganium": 32,
+    "Lillie's Determination": 23,
+    "Ivysaur": 22,
+    "Mega Venusaur ex": 20,
+    "Forest of Vitality": 16,
+    "Bug Catching Set": 16,
+    "Pok\u00e9 Pad": 15,
+    "Bayleef": 14,
+    "Boss\u2019s Orders": 14,
+    "Dawn": 13,
+    "Bulbasaur": 13,
+    "Ultra Ball": 12,
+    "Chikorita": 11,
+    "Lana\u2019s Aid": 11,
+    "Meowth ex": 9,
+    "Fezandipiti ex": 8,
+    "Night Stretcher": 7,
+    "Teal Mask Ogerpon ex": 7,
+    "Energy Switch": 4
+  },
+  "baseline_picked": {
+    "UNRESOLVED": 101,
+    "Basic {G} Energy": 59,
+    "Meganium": 32,
+    "Ivysaur": 23,
+    "Lillie's Determination": 22,
+    "Mega Venusaur ex": 20,
+    "Bayleef": 17,
+    "Bug Catching Set": 17,
+    "Dawn": 16,
+    "Forest of Vitality": 15,
+    "Lana\u2019s Aid": 15,
+    "Pok\u00e9 Pad": 13,
+    "Boss\u2019s Orders": 13,
+    "Bulbasaur": 13,
+    "Chikorita": 11,
+    "Ultra Ball": 11,
+    "Teal Mask Ogerpon ex": 9,
+    "Fezandipiti ex": 8,
+    "Meowth ex": 8,
+    "Night Stretcher": 6,
+    "Energy Switch": 4
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Forest of Vitality",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "Forest of Vitality"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Dawn",
+        "Lillie's Determination",
+        "Meowth ex",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Lillie's Determination"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Chikorita",
+        "Ultra Ball",
+        "Pok\u00e9 Pad",
+        "Pok\u00e9 Pad",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Bayleef",
+        "Bayleef",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Pok\u00e9 Pad"
+      ],
+      "baseline": [
+        "Pok\u00e9 Pad"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Chikorita",
+        "Ultra Ball",
+        "Pok\u00e9 Pad",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Bayleef",
+        "Bayleef",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Pok\u00e9 Pad"
+      ],
+      "baseline": [
+        "Chikorita"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Chikorita",
+        "Ultra Ball",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Bayleef",
+        "Bayleef",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Chikorita"
+      ],
+      "baseline": [
+        "Chikorita"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Bayleef",
+        "Ultra Ball",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Bayleef",
+        "Bayleef",
+        "Bayleef",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Bayleef"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Meganium",
+        "Ultra Ball",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Meganium",
+        "Meganium",
+        "Meganium",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    }
+  ],
+  "errors": []
+}

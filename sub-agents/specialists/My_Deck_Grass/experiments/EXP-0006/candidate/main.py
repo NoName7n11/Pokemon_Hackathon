@@ -359,6 +359,128 @@ def _choose_evolve(obs: Observation) -> list[int]:
     return [_best_card_option(sel.option, list(range(len(sel.option))))]
 
 
+# This deck's two evolution lines, child -> its pre-evolution.
+# Bulbasaur -> Ivysaur -> Mega Venusaur ex, and Chikorita -> Bayleef -> Meganium.
+_EVOLVES_FROM = {651: 650, 652: 651, 918: 917, 710: 918}
+_LINES = ((650, 651, 652), (917, 918, 710))
+_MEGANIUM = 710
+
+
+def _line_of(card_id):
+    for line in _LINES:
+        if card_id in line:
+            return line
+    return None
+
+
+def _resolve_card_id(opt, obs):
+    """Card id behind a CARD option, for the areas a fetch can draw from.
+
+    TO_HAND options carry `cardId is None` and identify their card by area+index, so
+    `_option_card_power` scores every one of them 0 and the stable sort simply takes
+    index 0. Measured on this deck: Dawn was offered {Meowth ex, Chikorita, Teal Mask
+    Ogerpon ex, Bulbasaur} and took Meowth ex; offered {Bayleef, Ivysaur, Ivysaur} it
+    took Bayleef. The fetch was not mis-ranked, it was unranked.
+
+    Sources, all verified against the live engine:
+      DECK    -> sel.deck[index]              (deck searches: Dawn, Ultra Ball, Poke Pad)
+      LOOKING -> state.looking[index]         (Bug Catching Set's top 7)
+      DISCARD -> player.discard[index]        (Night Stretcher, Lana's Aid)
+      HAND    -> player.hand[index]
+    Hand/deck/discard entries are Card(id, serial, playerIndex) and expose NO `.name`;
+    the name requires an all_card_data() lookup on `.id`.
+    """
+    if opt.cardId:
+        return opt.cardId
+    index = opt.index
+    if index is None or index < 0:
+        return None
+    state = obs.current
+    sel = obs.select
+    if opt.area == AreaType.DECK:
+        deck = getattr(sel, "deck", None) if sel is not None else None
+        if deck and index < len(deck) and deck[index] is not None:
+            return deck[index].id
+        return None
+    if opt.area == AreaType.LOOKING:
+        looking = getattr(state, "looking", None) if state is not None else None
+        if looking and index < len(looking) and looking[index] is not None:
+            return looking[index].id
+        return None
+    if state is None:
+        return None
+    owner = opt.playerIndex if opt.playerIndex is not None else state.yourIndex
+    if not 0 <= owner < len(state.players):
+        return None
+    player = state.players[owner]
+    zone = None
+    if opt.area == AreaType.DISCARD:
+        zone = getattr(player, "discard", None)
+    elif opt.area == AreaType.HAND:
+        zone = getattr(player, "hand", None)
+    if zone and index < len(zone) and zone[index] is not None:
+        return getattr(zone[index], "id", None)
+    return None
+
+
+def _board_card_ids(me) -> list[int]:
+    mons = ([me.active[0]] if me.active and me.active[0] is not None else []) + list(me.bench or [])
+    return [m.id for m in mons if m is not None]
+
+
+def _fetch_target_score(card_id, obs) -> int:
+    """Rank one fetch candidate by what the board is actually missing.
+
+    An evolution whose pre-evolution is already in play is worth the most -- it converts
+    to board presence next turn. Energy matters only while nothing can attack yet;
+    once something can, more Energy is the least urgent thing to dig for.
+    """
+    if card_id is None:
+        return 0
+    card = _card_data().get(card_id)
+    state = obs.current
+    if card is None or state is None:
+        return 0
+    me = state.players[state.yourIndex]
+    board = _board_card_ids(me)
+    hand = [getattr(c, "id", None) for c in (getattr(me, "hand", None) or [])]
+
+    if card.cardType in (CardType.BASIC_ENERGY, CardType.SPECIAL_ENERGY):
+        can_attack = any(
+            _best_usable_damage(m) > 0
+            for m in ([me.active[0]] if me.active and me.active[0] is not None else []) + list(me.bench or [])
+        )
+        score = 250 if can_attack else 900
+    elif card.cardType == CardType.POKEMON:
+        pre = _EVOLVES_FROM.get(card_id)
+        if pre is not None:
+            if pre in board:
+                score = 1000       # playable next turn onto something already in play
+            elif pre in hand:
+                score = 700        # completes a line I am holding
+            else:
+                score = 250        # dead weight until its pre-evolution shows up
+        elif card.basic:
+            room = len(me.bench or []) < me.benchMax
+            line = _line_of(card_id)
+            score = (600 if (line or not card.ex) else 350) if room else 200
+            if line is not None:
+                # A line already represented on board or in hand does not need another
+                # starter; the line I am missing entirely is the one worth digging for.
+                held = any(c in board or c in hand for c in line)
+                score += -200 if held else 250
+        else:
+            score = 250
+        # Meganium powers every attack cost in the deck; never rank it as a spare body.
+        if card_id == _MEGANIUM and _MEGANIUM not in board:
+            score += 150
+    else:
+        score = 400  # Trainers: better than a dead evolution, worse than a live one
+
+    score -= 150 * hand.count(card_id)      # a second copy in hand is near-worthless
+    return score + _card_power(card_id) // 50
+
+
 def _choose_card(obs: Observation) -> list[int]:
     """Rank card choices by HP: strongest first for board-building contexts,
     weakest first when discarding/returning cards."""
@@ -386,6 +508,14 @@ def _choose_card(obs: Observation) -> list[int]:
 
     if sel.context in opponent_target_contexts:
         ranked = sorted(indices, key=lambda i: _target_score(options[i], obs), reverse=True)
+    elif sel.context == SelectContext.TO_HAND and obs.current is not None:
+        # Fetch targets identify their card by area+index, so the generic
+        # _option_card_power path below scores every option 0 and takes index 0.
+        ranked = sorted(
+            indices,
+            key=lambda i: _fetch_target_score(_resolve_card_id(options[i], obs), obs),
+            reverse=True,
+        )
     else:
         reverse = sel.context not in weakest_first_contexts
         own_board_indices = []

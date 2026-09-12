@@ -1,0 +1,171 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0014\\ablation\\ko_only\\main.py",
+  "context": "SWITCH",
+  "games": 14,
+  "selections_in_context": 30,
+  "differs": 0,
+  "same": 30,
+  "inert": true,
+  "no_observations": false,
+  "candidate_picked": {
+    "Ivysaur": 7,
+    "Mega Venusaur ex": 7,
+    "Basic {G} Energy": 3,
+    "Lana\u2019s Aid": 3,
+    "Night Stretcher": 1,
+    "Lillie's Determination": 1,
+    "Fezandipiti ex": 1,
+    "Forest of Vitality": 1,
+    "Meganium": 1,
+    "Dawn": 1,
+    "UNRESOLVED": 1,
+    "Teal Mask Ogerpon ex": 1,
+    "Boss\u2019s Orders": 1,
+    "Chikorita": 1
+  },
+  "baseline_picked": {
+    "Ivysaur": 7,
+    "Mega Venusaur ex": 7,
+    "Basic {G} Energy": 3,
+    "Lana\u2019s Aid": 3,
+    "Night Stretcher": 1,
+    "Lillie's Determination": 1,
+    "Fezandipiti ex": 1,
+    "Forest of Vitality": 1,
+    "Meganium": 1,
+    "Dawn": 1,
+    "UNRESOLVED": 1,
+    "Teal Mask Ogerpon ex": 1,
+    "Boss\u2019s Orders": 1,
+    "Chikorita": 1
+  },
+  "examples": [
+    {
+      "game": 4,
+      "offered": [
+        "Night Stretcher",
+        "Lana\u2019s Aid",
+        "Fezandipiti ex",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Basic {G} Energy",
+        "Lillie's Determination",
+        "Dawn",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Lillie's Determination",
+        "Dawn",
+        "Mega Venusaur ex",
+        "Basic {G} Energy",
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Lillie's Determination"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Forest of Vitality",
+        "Dawn",
+        "Lana\u2019s Aid",
+        "Chikorita"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Forest of Vitality",
+        "Ivysaur",
+        "Fezandipiti ex",
+        "Ivysaur",
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Fezandipiti ex"
+      ],
+      "baseline": [
+        "Fezandipiti ex"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Forest of Vitality",
+        "Ivysaur",
+        "Fezandipiti ex",
+        "Ivysaur",
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "Forest of Vitality"
+      ]
+    },
+    {
+      "game": 6,
+      "offered": [
+        "Ivysaur",
+        "Fezandipiti ex",
+        "Ivysaur",
+        "Mega Venusaur ex",
+        "Boss\u2019s Orders"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 6,
+      "offered": [
+        "Ivysaur",
+        "Fezandipiti ex",
+        "Ivysaur",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    }
+  ],
+  "errors": []
+}

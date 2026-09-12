@@ -1,0 +1,153 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0014\\ablation\\ko_only\\main.py",
+  "context": "TO_ACTIVE",
+  "games": 14,
+  "selections_in_context": 19,
+  "differs": 0,
+  "same": 19,
+  "inert": true,
+  "no_observations": false,
+  "candidate_picked": {
+    "Mega Venusaur ex": 4,
+    "UNRESOLVED": 4,
+    "Bayleef": 2,
+    "Basic {G} Energy": 2,
+    "Dawn": 1,
+    "Meganium": 1,
+    "Ivysaur": 1,
+    "Boss\u2019s Orders": 1,
+    "Lillie's Determination": 1,
+    "Night Stretcher": 1,
+    "Bug Catching Set": 1
+  },
+  "baseline_picked": {
+    "Mega Venusaur ex": 4,
+    "UNRESOLVED": 4,
+    "Bayleef": 2,
+    "Basic {G} Energy": 2,
+    "Dawn": 1,
+    "Meganium": 1,
+    "Ivysaur": 1,
+    "Boss\u2019s Orders": 1,
+    "Lillie's Determination": 1,
+    "Night Stretcher": 1,
+    "Bug Catching Set": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Mega Venusaur ex",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Bayleef",
+        "Lillie's Determination"
+      ],
+      "candidate": [
+        "Bayleef"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Basic {G} Energy",
+        "Boss\u2019s Orders",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Dawn",
+        "Bug Catching Set",
+        "Teal Mask Ogerpon ex",
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Dawn"
+      ],
+      "baseline": [
+        "Dawn"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Night Stretcher",
+        "Meganium",
+        "Mega Venusaur ex",
+        "Teal Mask Ogerpon ex",
+        "Bayleef"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Meganium",
+        "Bayleef",
+        "Mega Venusaur ex",
+        "Chikorita",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Bayleef"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    }
+  ],
+  "errors": []
+}

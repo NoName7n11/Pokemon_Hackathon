@@ -1,0 +1,174 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0011\\sweep\\tealcond\\main.py",
+  "context": "MAIN",
+  "games": 10,
+  "selections_in_context": 434,
+  "differs": 42,
+  "same": 392,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "UNRESOLVED": 109,
+    "Basic {G} Energy": 57,
+    "Bayleef": 30,
+    "Ivysaur": 26,
+    "Boss\u2019s Orders": 23,
+    "Bulbasaur": 23,
+    "Mega Venusaur ex": 17,
+    "Lillie's Determination": 14,
+    "Ultra Ball": 14,
+    "Meowth ex": 14,
+    "Dawn": 14,
+    "Teal Mask Ogerpon ex": 13,
+    "Lana\u2019s Aid": 13,
+    "Pok\u00e9 Pad": 12,
+    "Bug Catching Set": 11,
+    "Chikorita": 11,
+    "Energy Switch": 9,
+    "Meganium": 8,
+    "Night Stretcher": 6,
+    "Fezandipiti ex": 6,
+    "Forest of Vitality": 4
+  },
+  "baseline_picked": {
+    "UNRESOLVED": 110,
+    "Basic {G} Energy": 55,
+    "Ivysaur": 28,
+    "Bayleef": 25,
+    "Boss\u2019s Orders": 24,
+    "Bulbasaur": 21,
+    "Lillie's Determination": 20,
+    "Mega Venusaur ex": 17,
+    "Meowth ex": 16,
+    "Dawn": 16,
+    "Teal Mask Ogerpon ex": 14,
+    "Lana\u2019s Aid": 13,
+    "Pok\u00e9 Pad": 13,
+    "Ultra Ball": 12,
+    "Chikorita": 11,
+    "Bug Catching Set": 9,
+    "Meganium": 8,
+    "Forest of Vitality": 6,
+    "Energy Switch": 6,
+    "Fezandipiti ex": 6,
+    "Night Stretcher": 4
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Forest of Vitality",
+        "Basic {G} Energy",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Forest of Vitality",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "Forest of Vitality"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Basic {G} Energy",
+        "Lillie's Determination",
+        "Basic {G} Energy",
+        "Teal Mask Ogerpon ex",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Teal Mask Ogerpon ex"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Lillie's Determination",
+        "Teal Mask Ogerpon ex",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Teal Mask Ogerpon ex"
+      ],
+      "baseline": [
+        "Teal Mask Ogerpon ex"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Lillie's Determination",
+        "Energy Switch",
+        "Night Stretcher",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Lillie's Determination",
+        "Energy Switch",
+        "Boss\u2019s Orders",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Energy Switch"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Lillie's Determination",
+        "Boss\u2019s Orders",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Lillie's Determination"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    }
+  ],
+  "errors": []
+}

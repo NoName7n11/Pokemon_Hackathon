@@ -1,0 +1,29 @@
+{
+  "specialist": "My_Deck_Grass",
+  "candidate_version": "abl-meowth-payable",
+  "baseline_version": "v001-accepted",
+  "opponent": "specialist_previous",
+  "stage": "screening",
+  "seed_set": "20260843",
+  "games": 200,
+  "wins": 115,
+  "losses": 85,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 163.2,
+  "average_decision_time_ms": 12.349206591393703,
+  "max_decision_time_ms": 808.931699997629,
+  "win_rate": 0.575,
+  "confidence_interval": [
+    0.5057080512046821,
+    0.6414650479075696
+  ],
+  "z_score": 2.1213203435596415,
+  "p_value": 0.03389485352468938,
+  "started_at": "2026-08-16T15:43:46.849998+00:00",
+  "finished_at": "2026-08-16T15:50:25.700473+00:00",
+  "duration_seconds": 398.8506802999982,
+  "errors": []
+}

@@ -1,0 +1,166 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0014\\candidate\\main.py",
+  "context": "SWITCH",
+  "games": 14,
+  "selections_in_context": 28,
+  "differs": 3,
+  "same": 25,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Mega Venusaur ex": 6,
+    "Bayleef": 4,
+    "Ivysaur": 3,
+    "Lana\u2019s Aid": 3,
+    "Basic {G} Energy": 3,
+    "Forest of Vitality": 2,
+    "Meganium": 1,
+    "UNRESOLVED": 1,
+    "Lillie's Determination": 1,
+    "Dawn": 1,
+    "Chikorita": 1,
+    "Meowth ex": 1,
+    "Boss\u2019s Orders": 1
+  },
+  "baseline_picked": {
+    "Mega Venusaur ex": 5,
+    "Bayleef": 5,
+    "Ivysaur": 3,
+    "Basic {G} Energy": 3,
+    "Meganium": 2,
+    "Lana\u2019s Aid": 2,
+    "Forest of Vitality": 2,
+    "UNRESOLVED": 1,
+    "Lillie's Determination": 1,
+    "Dawn": 1,
+    "Chikorita": 1,
+    "Meowth ex": 1,
+    "Boss\u2019s Orders": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Meganium",
+        "Bayleef",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Ivysaur"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Ivysaur",
+        "Meganium"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Ivysaur",
+        "Mega Venusaur ex",
+        "Lillie's Determination",
+        "Dawn"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Lillie's Determination",
+        "Forest of Vitality",
+        "Ivysaur",
+        "Meganium",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Lillie's Determination",
+        "Forest of Vitality",
+        "Ivysaur",
+        "Meganium",
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Lillie's Determination"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Dawn",
+        "Forest of Vitality",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Dawn"
+      ],
+      "baseline": [
+        "Dawn"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Mega Venusaur ex",
+        "Basic {G} Energy",
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 7,
+      "offered": [
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Basic {G} Energy",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    }
+  ],
+  "errors": []
+}

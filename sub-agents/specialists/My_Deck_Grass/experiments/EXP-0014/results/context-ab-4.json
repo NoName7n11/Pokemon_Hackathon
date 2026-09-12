@@ -1,0 +1,169 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0014\\candidate\\main.py",
+  "context": "TO_ACTIVE",
+  "games": 14,
+  "selections_in_context": 29,
+  "differs": 16,
+  "same": 13,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "UNRESOLVED": 6,
+    "Basic {G} Energy": 4,
+    "Meowth ex": 3,
+    "Dawn": 2,
+    "Bayleef": 2,
+    "Lana\u2019s Aid": 2,
+    "Mega Venusaur ex": 2,
+    "Boss\u2019s Orders": 2,
+    "Chikorita": 1,
+    "Fezandipiti ex": 1,
+    "Lillie's Determination": 1,
+    "Bulbasaur": 1,
+    "Ivysaur": 1,
+    "Meganium": 1
+  },
+  "baseline_picked": {
+    "UNRESOLVED": 5,
+    "Meganium": 4,
+    "Basic {G} Energy": 4,
+    "Forest of Vitality": 3,
+    "Bayleef": 2,
+    "Teal Mask Ogerpon ex": 2,
+    "Mega Venusaur ex": 2,
+    "Bulbasaur": 2,
+    "Lillie's Determination": 1,
+    "Lana\u2019s Aid": 1,
+    "Boss\u2019s Orders": 1,
+    "Dawn": 1,
+    "Ivysaur": 1
+  },
+  "examples": [
+    {
+      "game": 2,
+      "offered": [
+        "Basic {G} Energy",
+        "Meganium",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Ivysaur",
+        "Forest of Vitality",
+        "Bulbasaur",
+        "Teal Mask Ogerpon ex",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Night Stretcher",
+        "Bayleef",
+        "Meganium",
+        "Dawn",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Dawn"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Bayleef",
+        "Meganium",
+        "Meowth ex",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Bayleef"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Lillie's Determination",
+        "Basic {G} Energy",
+        "Night Stretcher",
+        "Lana\u2019s Aid",
+        "Fezandipiti ex"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Basic {G} Energy",
+        "Chikorita",
+        "Meganium",
+        "Chikorita",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Basic {G} Energy",
+        "Chikorita",
+        "Meganium",
+        "Chikorita"
+      ],
+      "candidate": [
+        "Chikorita"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Fezandipiti ex",
+        "Forest of Vitality",
+        "Night Stretcher",
+        "Meowth ex",
+        "Meganium"
+      ],
+      "candidate": [
+        "Fezandipiti ex"
+      ],
+      "baseline": [
+        "Forest of Vitality"
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,162 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0014\\ablation\\meowth_only\\main.py",
+  "context": "TO_ACTIVE",
+  "games": 14,
+  "selections_in_context": 22,
+  "differs": 9,
+  "same": 13,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Meganium": 6,
+    "UNRESOLVED": 3,
+    "Basic {G} Energy": 3,
+    "Ivysaur": 2,
+    "Dawn": 2,
+    "Bulbasaur": 2,
+    "Teal Mask Ogerpon ex": 1,
+    "Lillie's Determination": 1,
+    "Night Stretcher": 1,
+    "Mega Venusaur ex": 1
+  },
+  "baseline_picked": {
+    "Meganium": 4,
+    "Ivysaur": 4,
+    "UNRESOLVED": 3,
+    "Basic {G} Energy": 3,
+    "Teal Mask Ogerpon ex": 2,
+    "Bulbasaur": 2,
+    "Mega Venusaur ex": 2,
+    "Lillie's Determination": 1,
+    "Night Stretcher": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Bayleef",
+        "Meganium",
+        "Meganium",
+        "Bayleef",
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Teal Mask Ogerpon ex",
+        "Bayleef",
+        "Meowth ex",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Teal Mask Ogerpon ex"
+      ],
+      "baseline": [
+        "Teal Mask Ogerpon ex"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Bayleef",
+        "Meganium",
+        "Ivysaur",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Meganium",
+        "Chikorita",
+        "Lana\u2019s Aid",
+        "Lillie's Determination",
+        "Lillie's Determination"
+      ],
+      "candidate": [
+        "Lillie's Determination"
+      ],
+      "baseline": [
+        "Lillie's Determination"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Ivysaur",
+        "Meganium",
+        "Meganium",
+        "Bayleef",
+        "Chikorita"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Ivysaur",
+        "Meganium",
+        "Chikorita",
+        "Lillie's Determination",
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Lillie's Determination",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Bulbasaur",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Dawn",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Dawn"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    }
+  ],
+  "errors": []
+}

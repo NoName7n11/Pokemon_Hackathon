@@ -432,6 +432,85 @@ def _choose_count(obs: Observation) -> list[int]:
     return [best_i]
 
 
+class _EnergyView:
+    """Minimal stand-in for a Pokemon with a hypothetical Energy set.
+
+    _best_usable_damage only reads `.id` and `.energies`, so this is enough to ask
+    "could this Pokemon still attack if that Energy left?" without touching live state.
+    """
+
+    __slots__ = ("id", "energies")
+
+    def __init__(self, card_id, energies):
+        self.id = card_id
+        self.energies = energies
+
+
+def _energy_source_score(opt, me) -> int:
+    """Rank one SWITCH_ENERGY / DISCARD_ENERGY source Energy: higher = more expendable.
+
+    This context was previously answered by the blind `range(minCount)` default in
+    _greedy_select, which on this deck means every Solar Transfer and Energy Switch
+    source -- 44 selections per 10 games, with Solar Transfer firing 3.6 times a game --
+    was picked arbitrarily. The whole point of the deck's energy engine is to move Energy
+    ONTO the attacker, so taking it off the attacker is the one outcome that must not
+    happen by accident.
+
+    `opt.count` is documented as the number of Energy UNITS the option corresponds to,
+    which already accounts for Meganium's Wild Growth doubling a Basic {G}.
+    """
+    mon = None
+    if opt.area == AreaType.ACTIVE:
+        mon = me.active[0] if me.active and me.active[0] is not None else None
+    elif opt.area == AreaType.BENCH and opt.index is not None and opt.index < len(me.bench):
+        mon = me.bench[opt.index]
+    if mon is None:
+        return 0
+
+    is_active = opt.area == AreaType.ACTIVE
+    units = opt.count if getattr(opt, "count", None) else 1
+    before = _best_usable_damage(mon)
+
+    # What this Pokemon could still do without the Energy being taken.
+    remaining = list(mon.energies)
+    drop = mon.energies[opt.energyIndex] if (
+        opt.energyIndex is not None and opt.energyIndex < len(mon.energies)
+    ) else None
+    for _ in range(units):
+        if drop is not None and drop in remaining:
+            remaining.remove(drop)
+        elif remaining:
+            remaining.pop()
+    after = _best_usable_damage(_EnergyView(mon.id, remaining))
+
+    score = len(mon.energies) * 10          # a bigger pile has more to spare
+    if not is_active:
+        score += 300                        # Bench Energy is idle by default
+    if before <= 0:
+        score += 200                        # this Pokemon cannot attack either way
+    if before > 0 and after <= 0:
+        score -= 400                        # taking this disarms a ready attacker
+    if is_active and before > 0:
+        score -= 600                        # never disarm the Active
+    return score
+
+
+def _choose_energy(obs: Observation) -> list[int]:
+    """Pick which attached Energy to move/discard, most expendable first."""
+    sel = obs.select
+    assert sel is not None
+    state = obs.current
+    if state is None:
+        return list(range(sel.minCount))
+    me = state.players[state.yourIndex]
+    ranked = sorted(
+        range(len(sel.option)),
+        key=lambda i: _energy_source_score(sel.option[i], me),
+        reverse=True,
+    )
+    return ranked[: max(sel.minCount, 1)]
+
+
 def _clamp(idx_list, sel, n_options):
     """Enforce minCount <= len <= maxCount, no duplicates, valid range."""
     idx_list = [i for i in dict.fromkeys(idx_list) if 0 <= i < n_options]
@@ -464,8 +543,10 @@ def _greedy_select(obs: Observation) -> list[int]:
         idx_list = _choose_yes_no(obs)
     elif sel.type == SelectType.COUNT:
         idx_list = _choose_count(obs)
+    elif sel.type == SelectType.ENERGY:
+        idx_list = _choose_energy(obs)
     else:
-        # ENERGY, SKILL, SPECIAL_CONDITION, and any future types: safe minimal default.
+        # SKILL, SPECIAL_CONDITION, and any future types: safe minimal default.
         idx_list = list(range(sel.minCount))
 
     return _clamp(idx_list, sel, len(options))

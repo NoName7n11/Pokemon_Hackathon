@@ -60,12 +60,12 @@
       "name": "My_Deck_Grass",
       "path": "specialists/My_Deck_Grass",
       "provider": "claude",
-      "state": "EXPERIMENT_ACTIVE",
+      "state": "READY_FOR_EXPERIMENT",
       "current_version": "v001-accepted",
       "created_at": "2026-08-16T03:31:27.967995+00:00",
       "deck_sha256": "f091fe5af2143a4f4dff2399a2590f905db284791cedab483ece9279f3b1240f",
       "agent_sha256": "0482e9acf7a9d06e828e296597e9f881cafd8e9db48f0241b991f39a5ff9f93a",
-      "active_experiment": "EXP-0006"
+      "active_experiment": null
     },
     {
       "name": "PalSystem_Dragapult",

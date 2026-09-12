@@ -1,0 +1,29 @@
+{
+  "specialist": "My_Deck_Grass",
+  "candidate_version": "v002-candidate",
+  "baseline_version": "v001-accepted",
+  "opponent": "specialist_previous",
+  "stage": "smoke",
+  "seed_set": "20260812",
+  "games": 20,
+  "wins": 11,
+  "losses": 9,
+  "draws": 0,
+  "timeouts": 0,
+  "illegal_actions": 0,
+  "crashes": 0,
+  "average_steps": 167.5,
+  "average_decision_time_ms": 14.750895068582384,
+  "max_decision_time_ms": 414.3857999952161,
+  "win_rate": 0.55,
+  "confidence_interval": [
+    0.3420820083075997,
+    0.7418049791429071
+  ],
+  "z_score": 0.44721359549995837,
+  "p_value": 0.6547208460185767,
+  "started_at": "2026-08-16T14:59:07.864012+00:00",
+  "finished_at": "2026-08-16T14:59:59.719014+00:00",
+  "duration_seconds": 51.86955110000417,
+  "errors": []
+}

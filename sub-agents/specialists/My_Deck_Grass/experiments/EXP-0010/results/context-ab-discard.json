@@ -1,0 +1,190 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0010\\candidate\\main.py",
+  "context": "DISCARD",
+  "games": 14,
+  "selections_in_context": 15,
+  "differs": 11,
+  "same": 4,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Bayleef": 7,
+    "Ivysaur": 4,
+    "Lana\u2019s Aid": 4,
+    "Basic {G} Energy": 4,
+    "Dawn": 3,
+    "Forest of Vitality": 2,
+    "Night Stretcher": 2,
+    "Fezandipiti ex": 2,
+    "Lillie's Determination": 1,
+    "Mega Venusaur ex": 1
+  },
+  "baseline_picked": {
+    "Basic {G} Energy": 6,
+    "Mega Venusaur ex": 5,
+    "Lana\u2019s Aid": 4,
+    "Ivysaur": 2,
+    "Meganium": 2,
+    "Night Stretcher": 2,
+    "Bayleef": 2,
+    "Bug Catching Set": 2,
+    "Lillie's Determination": 1,
+    "Dawn": 1,
+    "Teal Mask Ogerpon ex": 1,
+    "Fezandipiti ex": 1,
+    "Boss\u2019s Orders": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Mega Venusaur ex",
+        "Ivysaur",
+        "Mega Venusaur ex",
+        "Forest of Vitality",
+        "Energy Switch",
+        "Fezandipiti ex",
+        "Lillie's Determination"
+      ],
+      "candidate": [
+        "Ivysaur",
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "Mega Venusaur ex",
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Lana\u2019s Aid",
+        "Meganium",
+        "Night Stretcher",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid",
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid",
+        "Meganium"
+      ]
+    },
+    {
+      "game": 2,
+      "offered": [
+        "Basic {G} Energy",
+        "Night Stretcher",
+        "Bug Catching Set",
+        "Lillie's Determination",
+        "Forest of Vitality"
+      ],
+      "candidate": [
+        "Basic {G} Energy",
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Basic {G} Energy",
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Lillie's Determination",
+        "Dawn"
+      ],
+      "candidate": [
+        "Lillie's Determination",
+        "Dawn"
+      ],
+      "baseline": [
+        "Lillie's Determination",
+        "Dawn"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Basic {G} Energy",
+        "Mega Venusaur ex",
+        "Basic {G} Energy",
+        "Dawn",
+        "Dawn",
+        "Basic {G} Energy",
+        "Teal Mask Ogerpon ex"
+      ],
+      "candidate": [
+        "Dawn",
+        "Dawn"
+      ],
+      "baseline": [
+        "Basic {G} Energy",
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Mega Venusaur ex",
+        "Basic {G} Energy",
+        "Bayleef",
+        "Lana\u2019s Aid",
+        "Basic {G} Energy",
+        "Ivysaur"
+      ],
+      "candidate": [
+        "Bayleef",
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Mega Venusaur ex",
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Bayleef",
+        "Night Stretcher",
+        "Lillie's Determination",
+        "Meganium",
+        "Boss\u2019s Orders",
+        "Dawn"
+      ],
+      "candidate": [
+        "Bayleef",
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Bayleef",
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Teal Mask Ogerpon ex",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Ivysaur",
+        "Forest of Vitality",
+        "Boss\u2019s Orders",
+        "Bug Catching Set"
+      ],
+      "candidate": [
+        "Ivysaur",
+        "Forest of Vitality"
+      ],
+      "baseline": [
+        "Teal Mask Ogerpon ex",
+        "Mega Venusaur ex"
+      ]
+    }
+  ],
+  "errors": []
+}

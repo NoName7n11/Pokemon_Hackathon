@@ -1,0 +1,157 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0013\\candidate\\main.py",
+  "context": "SWITCH",
+  "games": 14,
+  "selections_in_context": 40,
+  "differs": 4,
+  "same": 36,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Basic {G} Energy": 7,
+    "Mega Venusaur ex": 6,
+    "Ivysaur": 5,
+    "Lana\u2019s Aid": 4,
+    "Forest of Vitality": 4,
+    "Meganium": 4,
+    "Bayleef": 3,
+    "Meowth ex": 2,
+    "Bulbasaur": 2,
+    "UNRESOLVED": 2,
+    "Lillie's Determination": 1
+  },
+  "baseline_picked": {
+    "Basic {G} Energy": 7,
+    "Mega Venusaur ex": 6,
+    "Ivysaur": 5,
+    "Forest of Vitality": 5,
+    "Meganium": 4,
+    "Lillie's Determination": 3,
+    "Bayleef": 3,
+    "Meowth ex": 2,
+    "Bulbasaur": 2,
+    "Lana\u2019s Aid": 2,
+    "UNRESOLVED": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Ivysaur",
+        "Mega Venusaur ex",
+        "Ivysaur",
+        "Ivysaur"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Ivysaur",
+        "Teal Mask Ogerpon ex"
+      ],
+      "candidate": [
+        "Ivysaur"
+      ],
+      "baseline": [
+        "Ivysaur"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Meowth ex",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Basic {G} Energy",
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Meowth ex",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Meowth ex"
+      ],
+      "baseline": [
+        "Meowth ex"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Bulbasaur",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "Teal Mask Ogerpon ex",
+        "Fezandipiti ex"
+      ],
+      "candidate": [
+        "Bulbasaur"
+      ],
+      "baseline": [
+        "Bulbasaur"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Mega Venusaur ex",
+        "Teal Mask Ogerpon ex",
+        "Fezandipiti ex",
+        "Forest of Vitality",
+        "Bulbasaur"
+      ],
+      "candidate": [
+        "Bulbasaur"
+      ],
+      "baseline": [
+        "Bulbasaur"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Basic {G} Energy",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 4,
+      "offered": [
+        "Lana\u2019s Aid",
+        "Basic {G} Energy",
+        "Energy Switch",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Lana\u2019s Aid"
+      ]
+    }
+  ],
+  "errors": []
+}

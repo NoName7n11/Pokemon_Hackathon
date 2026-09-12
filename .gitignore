@@ -54,3 +54,17 @@ sub-agents/continuous/scheduler.stderr.log
 # Other teams decks reconstructed from replay data -- do not redistribute
 Decs/Dipam_*
 Decs/PalSystem_*
+
+# Official Pokemon TCG card artwork (Competition Data / Pokemon Elements license
+# -- redistributing licensed card images is grounds for disqualification per
+# EVALUATION.md, same category as deck_builder/assets/cards/ above).
+Pokemon/
+Pokemon_Dataset/
+
+# Downloaded episode replay JSONs (Competition Data -- replay files, not to be
+# redistributed per EVALUATION.md §5).
+Game/
+
+# Local submission build scratch (regenerable from sample_submission/ + Decs/)
+submission_staging/
+*.tar.gz

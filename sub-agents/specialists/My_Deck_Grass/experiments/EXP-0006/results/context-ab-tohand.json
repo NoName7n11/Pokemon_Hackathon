@@ -1,0 +1,187 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0006\\candidate\\main.py",
+  "context": "TO_HAND",
+  "games": 12,
+  "selections_in_context": 105,
+  "differs": 37,
+  "same": 68,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "UNRESOLVED": 67,
+    "Bayleef": 16,
+    "Mega Venusaur ex": 14,
+    "Meganium": 9,
+    "Basic {G} Energy": 6,
+    "Night Stretcher": 6,
+    "Chikorita": 5,
+    "Forest of Vitality": 4,
+    "Lana\u2019s Aid": 3,
+    "Teal Mask Ogerpon ex": 2,
+    "Ivysaur": 2,
+    "Lillie's Determination": 2,
+    "Energy Switch": 2,
+    "Bug Catching Set": 1,
+    "Dawn": 1,
+    "Boss\u2019s Orders": 1
+  },
+  "baseline_picked": {
+    "UNRESOLVED": 52,
+    "Bayleef": 21,
+    "Mega Venusaur ex": 14,
+    "Meganium": 9,
+    "Basic {G} Energy": 9,
+    "Night Stretcher": 8,
+    "Forest of Vitality": 6,
+    "Chikorita": 5,
+    "Teal Mask Ogerpon ex": 3,
+    "Lillie's Determination": 3,
+    "Dawn": 2,
+    "Ivysaur": 2,
+    "Boss\u2019s Orders": 2,
+    "Energy Switch": 2,
+    "Lana\u2019s Aid": 2,
+    "Bug Catching Set": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Mega Venusaur ex",
+        "Mega Venusaur ex",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Mega Venusaur ex"
+      ],
+      "baseline": [
+        "Mega Venusaur ex"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Meganium",
+        "Dawn",
+        "Bayleef",
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Meganium",
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "Meganium",
+        "Dawn"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Meganium",
+        "Basic {G} Energy",
+        "Dawn",
+        "Basic {G} Energy"
+      ],
+      "candidate": [
+        "Meganium",
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Meganium",
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Basic {G} Energy",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Basic {G} Energy"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "UNRESOLVED"
+      ],
+      "baseline": [
+        "UNRESOLVED"
+      ]
+    }
+  ],
+  "errors": []
+}

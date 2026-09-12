@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "search": {
+    "max_simulations": 8,
+    "max_depth": 40,
+    "max_nodes": 48,
+    "max_candidates": 8,
+    "time_budget_ms": 24,
+    "exploration_constant": 1.4142135623730951,
+    "horizon_turns": 1,
+    "progressive_widening_base": 2.0,
+    "progressive_widening_exponent": 0.5,
+    "value_scale": 10000.0,
+    "discount_factor": 1.0,
+    "require_full_root_coverage": false
+  },
+  "safety": {
+    "cleanup_reserve_ms": 8,
+    "allow_manual_coin": false,
+    "fallback_on_error": true
+  },
+  "reproducibility": {
+    "seed": 20260814,
+    "record_dirty_worktree": true
+  }
+}

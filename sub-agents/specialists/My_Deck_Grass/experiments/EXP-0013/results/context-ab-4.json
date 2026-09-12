@@ -1,0 +1,147 @@
+{
+  "candidate": "sub-agents\\specialists\\My_Deck_Grass\\experiments\\EXP-0013\\candidate\\main.py",
+  "context": "TO_ACTIVE",
+  "games": 14,
+  "selections_in_context": 24,
+  "differs": 15,
+  "same": 9,
+  "inert": false,
+  "no_observations": false,
+  "candidate_picked": {
+    "Meganium": 8,
+    "UNRESOLVED": 6,
+    "Bayleef": 3,
+    "Ultra Ball": 2,
+    "Lana\u2019s Aid": 2,
+    "Night Stretcher": 1,
+    "Basic {G} Energy": 1,
+    "Meowth ex": 1
+  },
+  "baseline_picked": {
+    "Bayleef": 6,
+    "Meganium": 5,
+    "UNRESOLVED": 3,
+    "Ultra Ball": 2,
+    "Basic {G} Energy": 2,
+    "Forest of Vitality": 2,
+    "Night Stretcher": 1,
+    "Mega Venusaur ex": 1,
+    "Bulbasaur": 1,
+    "Chikorita": 1
+  },
+  "examples": [
+    {
+      "game": 1,
+      "offered": [
+        "Bayleef",
+        "Meganium",
+        "Boss\u2019s Orders"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    },
+    {
+      "game": 1,
+      "offered": [
+        "Bayleef",
+        "Meganium",
+        "Energy Switch"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Meganium"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Night Stretcher",
+        "Ultra Ball"
+      ],
+      "candidate": [
+        "Night Stretcher"
+      ],
+      "baseline": [
+        "Night Stretcher"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Ultra Ball",
+        "UNRESOLVED"
+      ],
+      "candidate": [
+        "Ultra Ball"
+      ],
+      "baseline": [
+        "Ultra Ball"
+      ]
+    },
+    {
+      "game": 3,
+      "offered": [
+        "Ultra Ball"
+      ],
+      "candidate": [
+        "Ultra Ball"
+      ],
+      "baseline": [
+        "Ultra Ball"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Bayleef",
+        "Meganium",
+        "Bayleef",
+        "Mega Venusaur ex",
+        "Bug Catching Set"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    },
+    {
+      "game": 5,
+      "offered": [
+        "Bayleef",
+        "Meganium",
+        "Bayleef",
+        "Mega Venusaur ex",
+        "Mega Venusaur ex"
+      ],
+      "candidate": [
+        "Meganium"
+      ],
+      "baseline": [
+        "Bayleef"
+      ]
+    },
+    {
+      "game": 6,
+      "offered": [
+        "Meganium",
+        "Basic {G} Energy",
+        "Lana\u2019s Aid"
+      ],
+      "candidate": [
+        "Lana\u2019s Aid"
+      ],
+      "baseline": [
+        "Basic {G} Energy"
+      ]
+    }
+  ],
+  "errors": []
+}

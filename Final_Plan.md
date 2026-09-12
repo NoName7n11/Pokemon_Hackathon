@@ -435,3 +435,157 @@ decision trace shows the differences land in the context the phase targeted.
 
 **Final gate for the deck as a whole:** 300-game main + 500-game confirmation vs. the frozen
 baseline, on this deck only.
+
+---
+
+# Consolidated status (live)
+
+## Accepted
+
+**`EXP-0005` energy-source selection** — the only accepted mechanism. `SelectType.ENERGY`
+fell through `_greedy_select`'s blind `else` to `range(minCount)`, so every Solar Transfer
+and Energy Switch *source* was chosen arbitrarily (44 selections per 10 games, Solar
+Transfer firing 3.6×/game). Now scored by expendability: never disarm an Active that can
+attack, prefer idle Bench Energy.
+
+| Stage | Games | Result | p |
+|---|---|---|---|
+| Smoke | 20 | 13-7 (65.0%) | 0.18 |
+| Screening | 200 | 112-88 (56.0%) | 0.090 |
+| Main | 300 | 174-126 (58.0%) | 0.0056 |
+| Confirmation | 500 | 283-217 (56.6%) | **0.0032** |
+| **Aggregate** | **1020** | **582-438 (57.1%)** | — |
+| Overfit: Hydrapple deck | 200 | 116-84 (58.0%) | 0.024 |
+| Overfit: Dragapult deck | 200 | 113-87 (56.5%) | 0.066 |
+
+Promoted to `v001-accepted`. Not deck-overfit — same gain piloting foreign decks.
+
+## Rejected, with the reason each one mattered
+
+| EXP | Mechanism | Result | Lesson |
+|---|---|---|---|
+| 0002 | Wild Growth energy accounting | falsified by probe, **0 games** | `mon.energies` is *provided* energy; `_can_pay` was already correct |
+| 0003 | Live variable attack damage | 50.5% | Formulas right (Myriad Leaf Shower = `30+30×provided on both Actives`; Cruel Arrow = 100), but correcting a value the rollout already resolves changes nothing |
+| 0004 | Attacker concentration bonus | inert, **0 games** | `_live_attacker_score` is dominated by raw HP; a 360-point penalty cannot move a 4880-vs-175 gap |
+| 0006 | Fetch-target need scoring | 51.0% | Made the line arrive **1.5-2.7 ply earlier** and still didn't win — the "deck is too slow" reading was confounded |
+| 0007 | Ability priority ordering | 45.0% | Starving Solar Transfer of ability budget partly undoes EXP-0005 |
+| 0008 | Ability cap 4→8 | 50.2% pooled (500) | Cap is a loop guard, not a strategic limit; costs nothing at 4 |
+| 0009 | Attach-target scoring | 50.0% | Solar Transfer reroutes misplaced Energy anyway once the router is correct |
+| 0010 | Discard-cost targeting | 47.0% | Real defect (pitched Meganium, pitched Boss's Orders) but ~1.1 decisions/game is too rare to move 200 games |
+| — | Go second on `IS_FIRST` | 47.0% | Going first is correct; baseline default stands |
+
+**The pattern:** mechanisms that fixed a context the baseline answered *arbitrarily* won
+(EXP-0005). Mechanisms that improved a ranking it already computed did not (0003, 0006,
+0009, 0010). Reallocating a resource the accepted fix depends on lost (0007).
+
+## The MCTS wiring bug — why four results were void
+
+`EXP-0011` wired plan_1's bounded UCT search. The first four screenings looked like
+"search doesn't help" (49.0%, 37.5%, 49.0%, 44.5%). A decision trace found the real cause:
+**ABILITY picked 1092 times vs END 18** in 10 games (baseline: 52 and 958). `Plan1MCTSAgent`
+enumerates legal options straight from the engine and never sees `ABILITY_CAP_PER_TURN`, so
+the unbounded Solar Transfer loop documented at main.py:249-263 reappeared through it.
+
+Average steps per game tracked the pathology exactly, while win rate disguised it:
+
+| Arm | Win rate | Steps/game |
+|---|---|---|
+| baseline reference | — | ~154 |
+| `mcts_baseline` | 37.5% | 206 |
+| `max_candidates=24` | 49.0% | 236 |
+| `selective_budget` | 49.0% | 344 |
+| `horizon_turns=1` | 44.5% | 398 |
+
+Fixed by gating the search path on the same cap; trace confirms ABILITY 1092 → 97. All four
+arms re-running. **Keep step-count as a standing health check** — two of those arms sat at a
+perfectly innocuous 49.0% while looping.
+
+## Deck experiments (never modify `My_Deck_Grass.csv`; variants live in `deck_experiments/`)
+
+Same agent both seats, seat-balanced, so this isolates deck from agent.
+
+| Variant | Change | Result |
+|---|---|---|
+| `variant_meowscarada` | +Sprigatito/Floragato/Meowscarada 2/2/2, +2 Rare Candy; −Meowth ex ×2, −Fezandipiti ex ×2, −Ogerpon ×1, −Poké Pad ×1, Energy 14→12 | **lost 169-331 (33.8%)**, p=4e-13 |
+| `variant_consistency` | Boss's Orders/Dawn/Lillie's → 4, Ultra Ball → 3; −1 each Energy Switch, Lana's Aid, Night Stretcher, Poké Pad. **Pokémon and Energy untouched** | **won 263-237 (52.6%)**, p=0.245, extension running |
+
+Meowscarada cut Basic Pokémon 12→9 and Energy 14→12 to fit a third line — card quality lost
+to consistency. The consistency build is the only deck change with a positive signal, and it
+matches the repo's own finding that Dipam (LB 1090.2) runs 5 four-of cards while the losing
+Grass decks ran 2-3. **This deck runs zero.**
+
+## Scoring context
+
+`382.4` is a Gaussian skill rating (μ₀ = 600), not a percentage — below the starting rating
+means net-losing. Reference: 1090.2 ≈ 30th of ~6,500; leader 1220.9. PROGRESS.md:1113-1141
+already established our Hydrapple deck is **90% identical** to Dipam's at 1090.2 and
+statistically tied in play (53.8% [42.9-64.3]). **The ~700-point gap is the agent, not the
+deck** — which is why deck swaps are the low-yield axis here.
+
+---
+
+# Later results: domain-supplied rules, and a methodology lesson
+
+## EXP-0012 — conditional ability priority (operator-supplied) — REJECTED
+
+The operator's refinement of the failed EXP-0007: Teal Dance ahead of Solar Transfer
+*unless the Active cannot currently attack*, in which case routing wins. Materially better
+than my blanket version (45.0%), but the effect did not survive scale.
+
+| Stage | Result | p |
+|---|---|---|
+| Screening | 101-99 (50.5%) | 0.89 |
+| Main | 169-131 (56.3%) | **0.028** |
+| Confirmation | 264-236 (52.8%) | 0.21 |
+| Extension (fresh seed) | 491-509 (49.1%) | 0.57 |
+| **Pooled 2,000** | **1025-975 (51.25%)** | **0.264** |
+
+**The methodology lesson.** At n=1000 this stood at **53.4%, p=0.0315** — nominally
+significant, CI excluding 50%. A further 1000 games on a fresh seed pulled it to 51.25%
+with the interval spanning 50. Screening, main, confirmation and an extension are four
+opportunities for noise to cross a threshold, and one did. **The pre-committed 55%
+effect-size bar is the only thing that prevented adoption; a p-value gate alone would have
+promoted a non-existent +3.4 point gain.**
+
+## EXP-0013 / EXP-0014 — forced-promotion policy (operator-supplied) — REJECTED
+
+Four deck-role rules for TO_ACTIVE / SWITCH: KO-capable first; Ogerpon ex held back for
+Tera immunity; Meowth ex promoted as a Tuck Tail escape when the bench cannot attack;
+Fezandipiti ex only when a target sits at ≤100 HP (Cruel Arrow's exact damage) and it
+survives the reply.
+
+| Version | Result |
+|---|---|
+| EXP-0013 (first encoding) | screening 65-135 (32.5%), main 105-195 (35.0%, p=2e-7) |
+| chump arm (same + sacrifice logic) | 64-136 (32.0%) |
+| EXP-0014 (both bugs fixed) | screening 75-125 (37.5%) |
+
+**Two encoding defects, both mine, found by scoring inspection and by the self-check:**
+
+1. "Keep Ogerpon Benched" was applied as an **unconditional −900**, so a charged 210 HP
+   Ogerpon scored −915 and ranked *below a 70 HP Chikorita* — the agent chump-blocked
+   while holding a live attacker.
+2. The sacrifice branch evaluated "doomed" **per candidate** rather than once for the
+   situation, so fragile Pokémon scored up to +1900 for being killable. It systematically
+   promoted the weakest body available.
+3. Even after fixing both, `all_doomed` still fired when a candidate *could* attack —
+   chump-blocking is only right when there is no damage to trade. Caught by the self-check
+   before any games were spent.
+
+**Working diagnosis: magnitude, not direction.** `_live_attacker_score` spans roughly −50
+to 5000 and is dominated by HP and damage×20. Adjustments of ±900–4000 do not refine that
+ranking, they replace it. Single-rule ablation at ±200 supports this: the Ogerpon rule
+scores 46.0% (p=0.258) as a nudge where it contributed to 32.5% as a veto.
+
+**Also under-credited when proposing it:** Tuck Tail returns Meowth ex *and attached cards*
+to hand, which removes it from play. That empties the Active slot and forces another
+promotion, so it costs a turn to deal 60 — and if it were the only Pokémon in play, it
+would be an immediate loss.
+
+## Standing conclusion
+
+13 mechanisms tested, 1 accepted (+7.1 points, 1420 games). Heuristic contexts exhausted;
+search ruled out across 4 configs; evaluator enrichment flat; promotion meddling strongly
+negative. Every benchmark is a **mirror match** — same deck and same agent lineage both
+sides — and two competent copies converge toward 50% almost regardless of small policy
+differences. That is why +7.1 was exceptional and why everything since sits in noise.

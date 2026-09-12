@@ -1,0 +1,209 @@
+STRATEGY WRITEUP — STRUCTURE PLAN
+(Pokemon TCG AI Battle Challenge Strategy competition — Kaggle Writeup)
+Not the writeup itself. This is the plan for it. Draft later, from this.
+
+======================================================================
+SOURCES CHECKED (do not re-derive these, just cite what's here)
+======================================================================
+- Rubric + mechanics: Overview tab, pokemon-tcg-ai-battle-challenge-strategy
+  (checked 2026-09-05/06). Model 70% / Deck 20% / Report 10%, bullets below.
+- Judging process NOT publicly disclosed beyond the rubric table (checked
+  Rules tab — legal boilerplate only, no scoring-methodology text). Don't
+  invent mechanics; the rubric bullets are the only real target.
+- Format precedent: kaggle.com/solution-write-up-documentation (Kaggle's own
+  general swag-award rubric — different program, different judges, but a
+  real Kaggle-endorsed structural template).
+- Format precedent: Eduardo Rocha de Andrade's 1st-place Konwinski Prize
+  writeup (real example, different competition/domain — code-repair, not
+  card game). Useful for skeleton, NOT for content strategy (see below).
+
+======================================================================
+THE ACTUAL RUBRIC (this is what gets scored — everything below maps to it)
+======================================================================
+MODEL SCORE — 70%
+  - clarity of approach + rationale explained
+  - originality / technical soundness
+  - consistency under repeated matches / stable conditions
+  - avoids over-reliance on specific initial states, matchups, situational
+    advantages
+  - performance within the competition track (leaderboard) — ONE factor
+    among the above, explicitly NOT the whole score
+
+DECK SCORE — 20%
+  - clarity of deck concept + alignment with strategy
+  - effective key-card selection/utilization
+
+REPORT SCORE — 10%
+  - logical structure / writing clarity
+  - effective use of figures / charts / tables
+
+Constraints: title + subtitle (separate fields) + must select Track (only
+"Main Track" exists) + body <=2000 words (overage may be penalized) + Media
+Gallery is a SEPARATE optional attachment (images/video), distinct from
+anything embedded in the body. No Kaggle-mandated section template beyond
+"title, subtitle, detailed analysis."
+
+======================================================================
+WHAT TO STEAL FROM THE TWO EXAMPLES CHECKED, AND WHY
+======================================================================
+STEAL (skeleton, free credibility, costs ~0 words or pays for itself):
+  1. TL;DR at the very top. One line + a short "Main Keypoints" bullet list,
+     BEFORE the deep dive. Highest-leverage 50 words in the doc — 637 teams
+     competing, unknown per-judge time budget, judges may skim.
+  2. Dedicated "What Didn't Work" section, first-class heading, not buried
+     in "limitations." Both examples do this. We have unusually strong
+     material for it (see WDW below) — don't waste it as an aside.
+  3. Context section: 2 links (competition overview page + data page).
+     Free, standardized, costs nothing, Kaggle's own rubric asks for it.
+  4. Sources/Citation section at the end. Cheap, standard, include it.
+
+DO NOT COPY:
+  - Eduardo's writeup has ZERO tables and ZERO rendered charts in the body
+    — pure prose + 2 large code blocks. That fit Konwinski's own
+    swag-rubric (code samples valued, no figures/charts criterion). OUR
+    rubric explicitly names "effective use of figures/charts/tables" as a
+    scored Report criterion. Copying his all-prose style would under-serve
+    OUR rubric. Tables/numbers stay the default here, not narrative prose.
+  - Don't drift into victory-lap/narrative storytelling tone. Our rubric
+    rewards "clearly articulated... rationale" — structured argument
+    (hypothesis -> test -> result), not a chronological story.
+
+======================================================================
+FINAL STRUCTURE (word-budgeted, target ~1900-1950 of 2000)
+======================================================================
+TITLE + SUBTITLE  (not counted in body budget)
+  - Title = name the actual mechanism, not a generic label.
+    e.g. "Greedy-Ladder TCG Agent: A Measured Case for Deck-Agent Co-Design"
+  - Subtitle = one line stating the thesis (agent-vs-deck decomposition,
+    or whichever angle we finalize when drafting).
+
+TL;DR  (~60 words)
+  - 1-line summary of the whole submission + thesis.
+  - "Main Keypoints" bullet list (5-7 bullets), each keypoint = one finding
+    below, compressed to a phrase. This is the skim-path for a time-boxed
+    judge.
+
+CONTEXT  (~20 words + 2 links, near-free)
+  - Link: Simulation competition overview page
+  - Link: Simulation competition data page
+  - (Optional 3rd: this Strategy competition's own overview page)
+
+1. APPROACH & RATIONALE  (~350 words) — Model: clarity/rationale
+  - Priority-ladder + 1-ply lookahead structure (SEARCH_MAIN in main.py).
+  - WHY that shape: lethal -> evolve -> attach -> play -> ability -> attack
+    -> retreat -> end, stated as deliberate ordering, not incidental.
+  - State the deck-dependence finding UP FRONT as the thesis: measured
+    64.6% vs 45% lookahead-vs-greedy across two different decks, same
+    agent code. This is the paper's real argument: agent and deck are
+    coupled, can't be scored independently.
+  - Source: PROGRESS.md (SEARCH_MAIN measurement entries), main.py comments.
+
+2. EVIDENCE OF RIGOR  (~500 words) — Model: originality/soundness
+  Three hypothesis -> test -> result blocks, not narrative:
+  a) __file__/exec() bug: two failed Kaggle submissions, root-caused via a
+     real Linux container reproduction + a negative control (old code
+     re-fails identically, new code passes). Source: PROGRESS.md 2026-08-08.
+  b) Dipam Chakraborty scouting comparison: his LB-1090.2 deck is 90%
+     identical to ours by card name; head-to-head under our own agent is a
+     statistical TIE (53.8% [42.9-64.3], 80 games); yet his score is ~625
+     points higher than ours. Isolates: the gap is the AGENT, not the deck.
+     Source: PROGRESS.md Dipam scouting entry, this session's Decs/ compare.
+  c) Variable-damage blind spot: engine reports "50x"-style attacks as
+     damage=0; our agent ranks by that field, so it mis-scores 24% of all
+     engine attacks (381/1556). Proved with a one-line patch: 20% -> 37%
+     win rate, zero deck changes. Source: PROGRESS.md Gardevoir agent-arm
+     entry (stock/dmg/bench/full table).
+  - Each block: 1 sentence claim, 1-2 sentence method, 1 result line/number.
+    No throat-clearing.
+
+3. GENERALIZATION  (~300 words) — Model: avoids over-reliance on matchups
+  - Tempo table: wins avg 6.0 turns / losses avg 17.8 turns, across VARIED
+    ladder opponents, not just mirror self-play.
+  - Name our own methodology gap explicitly: mirror self-play benchmarks
+    (99% vs random, 60/40 vs frozen self) were blind to the exact weakness
+    that lost real ladder games, because both sides shared the same deck.
+    Naming this ourselves IS what "avoids over-reliance" bullet is asking
+    to see demonstrated, not just claimed.
+  - Source: PROGRESS.md 2026-07-19 (first ladder-loss tempo analysis),
+    2026-08-09 (Zygarde tempo probe: 4.4x more damage, still lost).
+
+4. DECK CONCEPT  (~300 words) — Deck: 20%, clarity/alignment
+  - State CURRENT actual submitted deck's thesis in 2-3 sentences first.
+    (Need to confirm exact live deck.csv identity at draft time — check
+    sub-agents/registry.json / My_Deck_Grass status for what's actually
+    live before writing this section, it may have changed since last
+    checked in this conversation.)
+  - Then the Zygarde/Gardevoir build-test-reject cycle as EVIDENCE of
+    alternatives explored, not padding: stated thesis -> falsified
+    hypothesis -> prize-economy explanation for why raw damage didn't
+    matter (10/14 Rule Box Pokemon in Zygarde deck = opponent needs only
+    ~3 KOs despite 4.4x more damage dealt).
+  - Source: Decs/Claude_Zygarde_Ramp.txt, Decs/Claude_Mega_Gardevoir.txt,
+    PROGRESS.md 2026-08-09/2026-08-13 entries.
+
+5. KEY-CARD UTILIZATION  (~200 words) — Deck: 20%
+  - Consistency-core table: which cards run at 4-of and why.
+  - Prize-economy math table: avg prizes conceded per Pokemon, compared
+    across our decks and Dipam's (his 1.45 avg vs our worse decks' higher
+    averages) — ties card choice directly to the win condition (prizes,
+    not damage), reinforcing section 3's generalization argument.
+  - Source: this session's compare3.py output (already computed, reuse the
+    actual table, don't re-derive).
+
+6. WHAT DIDN'T WORK  (~200 words) — Model: soundness (rubric rewards this)
+  - Plan 1 MCTS/RL track: built (6 layers: engine safety, public-state
+    conversion, ISMCTS search, learned policy-value model, self-play,
+    league eval + deployment packaging), measured on a 960-game promotion
+    gate, CORRECTLY REJECTED (worst-matchup floor 11.11%, no dominance
+    cycle explained it).
+  - State the reject reason plainly, in one line, with the number. This
+    is a strength here, not something to soften.
+  - Also fold in: Zygarde's refuted hypotheses (prize_value patch made
+    things WORSE, not better; "basic attackers fix tempo" falsified by the
+    4.4x-damage-still-loses result) as a second, smaller example of a
+    hypothesis tested and killed cleanly.
+  - Source: plan_1/strategy/STRATEGY_REPORT.md (already drafted, reusable
+    almost verbatim for the Plan 1 part), PROGRESS.md Zygarde entries.
+
+7. CONCLUSION  (~100 words)
+  - What's proven, what's open, what we'd do with more time (e.g. teach
+    _best_usable_damage to estimate scaling attacks properly instead of
+    just detecting the blind spot).
+
+SOURCES  (near-free, standard)
+  - Link: this repo (if we decide to attach it — code repo attachment is
+    optional per submission requirements, but strengthens "technical
+    soundness" and reproducibility).
+  - Link: any external references actually used (none identified yet beyond
+    the competition's own pages and POKEMON_RULES.md, which is our own doc).
+
+======================================================================
+FIGURES / TABLES TO REUSE VERBATIM (already computed this session/log,
+do not re-derive — pull from PROGRESS.md or regenerate from the same
+scripts if the underlying data changed)
+======================================================================
+  - Deck comparison table: Dipam vs No_Name_Grass vs Claude_Grass_Venusaur
+    (Pokemon count, prize economy, top printed dmg, trainer diffs).
+  - Win/loss tempo table (turns, attacks/game, dmg dealt/taken) for
+    Zygarde vs Hydrapple mirror probe.
+  - Agent-arm table: stock 21% -> dmg 34% -> bench 40% -> full 38%
+    (Gardevoir vs Hydrapple, deck held constant, agent varied).
+  - Dipam scouting table: 90% card-name overlap, 53.8% head-to-head tie,
+    ~625-point leaderboard gap.
+
+======================================================================
+OPEN ITEMS BEFORE DRAFTING FOR REAL
+======================================================================
+  1. Confirm the CURRENTLY LIVE submitted deck+main.py identity (checked
+     stale mid-session; may have moved to My_Deck_Grass or another
+     specialist since — verify against sub-agents/registry.json /
+     promotion records before writing section 4).
+  2. Re-verify Strategy competition Entry Deadline status — was Sept 6,
+     2026; today's date context showed Sept 5/6 boundary during this
+     planning conversation. Confirm entry is actually locked in before
+     any drafting deadline pressure changes.
+  3. Decide whether to attach the code repo / a notebook as an optional
+     asset (strengthens reproducibility claims in section 2 and 6).
+  4. Per standing rule: do NOT submit anything to Strategy without
+     explicit user sign-off, and warn again immediately before the actual
+     submit action, even after agreement. This plan produces a DRAFT only.
