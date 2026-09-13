@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measuring What Actually Moves a Pokémon TCG Agent</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+
+  :root {
+    --paper: #f7f5f0;
+    --paper-raised: #fffefb;
+    --ink: #1c1b19;
+    --ink-soft: #4a4740;
+    --muted: #77716a;
+    --line: #ded9cf;
+    --accent: #4f6d4a;
+    --accent-strong: #35492f;
+    --accent-tint: #e8efe4;
+    --bad: #9a4a3a;
+    --bad-tint: #f5e9e5;
+    --shadow: 0 1px 2px rgba(28,27,25,0.04), 0 8px 24px -12px rgba(28,27,25,0.12);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17160f;
+      --paper-raised: #201f18;
+      --ink: #efe9dd;
+      --ink-soft: #cdc6b8;
+      --muted: #948c7c;
+      --line: #38352b;
+      --accent: #8fb586;
+      --accent-strong: #b6d4ae;
+      --accent-tint: #232c1f;
+      --bad: #d98a78;
+      --bad-tint: #2e211d;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17160f;
+    --paper-raised: #201f18;
+    --ink: #efe9dd;
+    --ink-soft: #cdc6b8;
+    --muted: #948c7c;
+    --line: #38352b;
+    --accent: #8fb586;
+    --accent-strong: #b6d4ae;
+    --accent-tint: #232c1f;
+    --bad: #d98a78;
+    --bad-tint: #2e211d;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Gowun Batang', Georgia, serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  ::selection { background: var(--accent-tint); color: var(--accent-strong); }
+
+  h1, h2, h3, .display {
+    font-family: 'Gowun Batang', Georgia, serif;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: var(--accent-strong); }
+  code, .mono, .num { font-family: 'Gowun Batang', Georgia, serif; }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap {
+    display: flex; align-items: center; gap: 20px;
+    padding-top: 12px; padding-bottom: 12px;
+    max-width: 1040px;
+  }
+  nav .brand {
+    font-family: 'Gowun Batang', serif; font-weight: 700; font-size: 0.95rem;
+    white-space: nowrap; color: var(--accent-strong);
+  }
+  nav ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; gap: 4px; flex-wrap: wrap;
+    font-size: 0.82rem;
+  }
+  nav a {
+    text-decoration: none; color: var(--muted);
+    padding: 6px 10px; border-radius: 6px;
+  }
+  nav a:hover { background: var(--accent-tint); color: var(--accent-strong); }
+
+  /* ---------- hero ---------- */
+  header.hero { padding: 64px 0 40px; }
+  h1.title {
+    font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+    font-weight: 700; line-height: 1.22; margin: 0 0 18px;
+    max-width: 22ch;
+  }
+  p.subtitle {
+    font-size: 1.15rem; color: var(--ink-soft); max-width: 62ch;
+    margin: 0 0 28px; font-weight: 400;
+  }
+
+  .stat-callout {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 22px 26px;
+    box-shadow: var(--shadow);
+    display: grid; gap: 6px;
+  }
+  .stat-callout .headline {
+    font-family: 'Gowun Batang', serif; font-weight: 700;
+    font-size: 1.25rem; line-height: 1.35;
+  }
+  .stat-callout .thesis { color: var(--accent-strong); font-weight: 600; }
+  .stat-callout .proof-link { font-size: 0.85rem; color: var(--muted); }
+
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+    border-radius: 10px; overflow: hidden; margin-top: 32px;
+  }
+  .stat-tile {
+    background: var(--paper-raised); padding: 20px 18px;
+  }
+  .stat-tile .n {
+    font-family: 'Gowun Batang', Georgia, serif; font-weight: 700;
+    font-size: 1.7rem; color: var(--accent-strong);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-tile .label { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+  /* ---------- sections ---------- */
+  section { padding: 44px 0; border-top: 1px solid var(--line); }
+  section > .wrap > h2 {
+    font-size: 1.5rem; font-weight: 700; margin: 0 0 6px;
+  }
+  section > .wrap > .kicker {
+    color: var(--muted); font-size: 0.95rem; margin: 0 0 26px; max-width: 90ch;
+  }
+
+  .tldr-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 14px; }
+  .tldr-list li {
+    padding-left: 22px; position: relative;
+  }
+  .tldr-list li::before {
+    content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 600;
+  }
+  .tldr-list strong { color: var(--ink); }
+
+  figure { margin: 24px 0 0; }
+  figcaption {
+    font-size: 0.85rem; color: var(--muted); margin-top: 10px;
+    max-width: 90ch;
+  }
+  figcaption .fig-no { color: var(--accent-strong); font-weight: 600; }
+
+  /* ---------- embedded figure charts (from writeup_figures.html) ---------- */
+  .viz-fig {
+    --v-surface:  var(--paper-raised);
+    --v-text-1:   var(--ink);
+    --v-text-2:   var(--ink-soft);
+    --v-text-mut: var(--muted);
+    --v-grid:     var(--line);
+    --v-axis:     var(--muted);
+    --v-series:   var(--accent);
+    --v-shade-lo: color-mix(in srgb, var(--accent) 45%, var(--paper-raised));
+    --v-shade-hi: var(--accent-strong);
+    --v-deemph:   var(--muted);
+    --v-border:   var(--line);
+    background: var(--v-surface);
+    border: 1px solid var(--v-border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 20px 22px 16px;
+  }
+  .viz-fig .v-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 12px; font-size: 12px; color: var(--v-text-2); }
+  .viz-fig .v-lg { display: flex; align-items: center; gap: 6px; }
+  .viz-fig .v-sw { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+  .viz-fig .v-sw-line { width: 14px; height: 2px; border-radius: 1px; flex: none; }
+  .viz-fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .viz-fig .v-tick { font-size: 11px; fill: var(--v-text-mut); font-variant-numeric: tabular-nums; }
+  .viz-fig .v-cat  { font-size: 12px; fill: var(--v-text-2); }
+  .viz-fig .v-cat-em { font-size: 12px; fill: var(--v-text-1); font-weight: 600; }
+  .viz-fig .v-val  { font-size: 12px; fill: var(--v-text-1); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .viz-fig .v-val-mut { font-size: 11.5px; fill: var(--v-text-2); font-variant-numeric: tabular-nums; }
+  .viz-fig .v-note { font-size: 11.5px; fill: var(--v-text-mut); }
+  .viz-fig .v-gridline { stroke: var(--v-grid); stroke-width: 1; }
+  .viz-fig .v-baseline { stroke: var(--v-axis); stroke-width: 1; }
+  .viz-fig .v-refline  { stroke: var(--v-text-2); stroke-width: 1.5; }
+  .viz-fig .v-foot {
+    font-size: 11.5px; color: var(--v-text-mut); margin: 12px 0 0;
+    line-height: 1.5; border-top: 1px solid var(--v-border); padding-top: 10px;
+  }
+  .viz-fig details { margin-top: 12px; }
+  .viz-fig summary { font-size: 12px; color: var(--v-text-2); cursor: pointer; }
+  .viz-fig .v-table { border-collapse: collapse; margin-top: 10px; font-size: 12px; width: 100%; }
+  .viz-fig .v-table th, .viz-fig .v-table td { text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid var(--v-border); color: var(--v-text-2); }
+  .viz-fig .v-table th { color: var(--v-text-1); font-weight: 600; }
+  .viz-fig .v-table td.num, .viz-fig .v-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .prose p { max-width: 90ch; }
+  .prose { display: grid; gap: 14px; }
+
+  table.data {
+    width: 100%; border-collapse: collapse; font-size: 0.88rem;
+    background: var(--paper-raised); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden;
+  }
+  table.data th, table.data td {
+    padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line);
+  }
+  table.data th {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--muted); font-weight: 600; background: var(--accent-tint);
+  }
+  table.data td.num, table.data th.num { font-family: 'Gowun Batang', Georgia, serif; font-variant-numeric: tabular-nums; text-align: right; }
+  table.data tr:last-child td { border-bottom: none; }
+  .table-scroll { overflow-x: auto; margin-top: 20px; }
+
+  .pill {
+    display: inline-block; padding: 2px 9px; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 700; font-family: 'Gowun Batang', Georgia, serif;
+  }
+  .pill.accepted { background: var(--accent-tint); color: var(--accent-strong); }
+  .pill.rejected { background: var(--bad-tint); color: var(--bad); }
+
+  blockquote {
+    margin: 20px 0 0; padding: 16px 20px; border-left: 3px solid var(--accent);
+    background: var(--accent-tint); border-radius: 0 8px 8px 0;
+    font-size: 0.95rem; color: var(--ink-soft);
+  }
+
+  /* deck cards */
+  .deck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
+  @media (max-width: 640px) { .deck-grid { grid-template-columns: 1fr; } }
+  .deck-card {
+    background: var(--paper-raised); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 20px; box-shadow: var(--shadow);
+  }
+  .deck-card h3 { font-size: 1.02rem; margin: 0 0 4px; font-weight: 700; }
+  .deck-card .result { font-family: 'Gowun Batang', Georgia, serif; color: var(--bad); font-weight: 700; font-size: 1.4rem; }
+  .deck-card p { font-size: 0.88rem; color: var(--muted); margin: 8px 0 0; }
+
+  /* explorer */
+  .explorer-controls {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;
+  }
+  .explorer-controls input, .explorer-controls select {
+    font-family: 'Gowun Batang', Georgia, serif; font-size: 0.85rem;
+    border: 1px solid var(--line); background: var(--paper-raised); color: var(--ink);
+    padding: 7px 11px; border-radius: 7px;
+  }
+  .explorer-controls input:focus, .explorer-controls select:focus, th button:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 1px;
+  }
+  .explorer-controls input { flex: 1; min-width: 180px; }
+  th button {
+    background: none; border: none; font: inherit; color: inherit; cursor: pointer;
+    padding: 0; text-transform: inherit; letter-spacing: inherit; display: flex; gap: 4px; align-items: center;
+  }
+  .sort-arrow { font-size: 0.65rem; color: var(--accent); }
+  .note-cell { max-width: 320px; color: var(--ink-soft); font-size: 0.83rem; }
+  .csv-link { font-size: 0.82rem; color: var(--muted); margin-top: 12px; display: block; }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 36px 0 48px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--muted); }
+  footer a { color: var(--muted); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: rise 0.5s ease both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0);} }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Grass Toolbox — Field Notes</span>
+    <ul>
+      <li><a href="#tldr">TL;DR</a></li>
+      <li><a href="#evidence">Evidence</a></li>
+      <li><a href="#limits">Limits</a></li>
+      <li><a href="#deck">Deck</a></li>
+      <li><a href="#didnt-work">What Didn't Work</a></li>
+      <li><a href="#explorer">All 15 Experiments</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero reveal">
+  <div class="wrap">
+    <h1 class="title">Measuring What Actually Moves a Pokémon TCG Agent</h1>
+    <p class="subtitle">Nine mechanisms tested, one accepted: a negative-results program that separates deck strength from agent strength — and finds the bottleneck is the evaluator.</p>
+
+    <div class="stat-callout">
+      <div class="headline">90% identical deck. Statistical tie in play. ~700 leaderboard points apart.</div>
+      <div class="thesis">The bottleneck is the agent — not the deck.</div>
+      <div class="proof-link">Proof in "The deck is not the bottleneck" ↓</div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-tile"><div class="n">9 / 1</div><div class="label">mechanisms tested / accepted</div></div>
+      <div class="stat-tile"><div class="n">24%</div><div class="label">of card pool the agent can't see (variable-damage bug)</div></div>
+      <div class="stat-tile"><div class="n">2</div><div class="label">"significant" results that didn't replicate</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="tldr">
+  <div class="wrap">
+    <h2>TL;DR</h2>
+    <p class="kicker">For the reviewer with two minutes: the whole submission in five findings.</p>
+    <div class="prose">
+      <p>I built a heuristic Pokémon TCG agent, then spent most of my effort trying to disprove my own improvements. Nine agent mechanisms were tested against pre-committed thresholds; <strong>one was accepted, eight were rejected</strong>, and two apparently-significant results evaporated when the sample size grew. The single accepted change (+7 points) fixed a decision context the baseline answered <em>at random</em> — not a ranking it already computed. That distinction predicted every subsequent result.</p>
+    </div>
+    <ul class="tldr-list">
+      <li><strong>Fix arbitrary decisions, not existing rankings.</strong> Mechanisms correcting contexts the baseline answered arbitrarily won (+7 pts). Mechanisms refining rankings it already computed measured 50.5%, 51.0%, 50.2%, 50.0%, 47.0% — indistinguishable from zero.</li>
+      <li><strong>More search made things monotonically worse</strong> (49.5% → 47.5% → 44.5% → 41.5% as search width grew) — the signature of a weak <em>evaluator</em>, not weak search.</li>
+      <li><strong>Two nominally-significant results did not replicate.</strong> One stood at 53.4% (p=0.0315, n=1000) and fell to 51.25% at n=2000. A pre-committed effect-size bar, not a p-value gate, is what prevented adopting it.</li>
+      <li><strong>The agent is structurally blind to 24% of the card pool.</strong> The engine reports variable-damage attacks (<code>50×</code>) as <code>damage=0</code>, and the ranking reads that field.</li>
+    </ul>
+    <blockquote>
+      Context — <a href="https://www.kaggle.com/competitions/pokemon-tcg-ai-battle" target="_blank" rel="noopener">Simulation competition</a> · <a href="https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/data" target="_blank" rel="noopener">Competition data</a>
+    </blockquote>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <h2>Approach and rationale</h2>
+    <div class="prose">
+      <p>The agent is a <strong>priority ladder with a 1-ply lookahead</strong>. On each MAIN decision it evaluates every legal option by forking the real engine, applying the option, playing the rest of the turn greedily, and scoring the resulting board. Where search fails, it falls back to a fixed ordering:</p>
+    </div>
+    <blockquote>lethal attack → evolve → attach Energy → develop bench → ability → best attack → retreat if dying → end turn</blockquote>
+    <div class="prose">
+      <p>The ordering is deliberate. Lethal is first because a prize taken is irreversible. Evolution precedes attachment because evolution is free while attachment is the scarce once-per-turn resource. Attacking sits <em>below</em> board development because developing compounds and a marginal attack does not.</p>
+      <p><strong>What the ladder rests on is that the win condition is prizes, not damage.</strong> A deck that dealt 4.4× more printed damage than its opponent still lost, because 10 of its 14 Pokémon were Rule Box cards conceding 2 prizes each.</p>
+      <p>I also established early that <strong>agent quality and deck choice are coupled</strong>. The same lookahead code measured 64.6% on one deck and 45% on another. "This agent is better" is incomplete without naming the deck — a constraint that shaped the entire protocol below.</p>
+    </div>
+  </div>
+</section>
+
+<section id="evidence">
+  <div class="wrap">
+    <h2>Evidence: three findings, each with its test</h2>
+    <p class="kicker">2.1 The deck is not the bottleneck &nbsp;·&nbsp; 2.2 Fix arbitrary decisions &nbsp;·&nbsp; 2.3 A 24%-wide blind spot</p>
+
+    <h3 style="font-size:1.1rem;margin:0 0 10px;">2.1 &nbsp;The deck is not the bottleneck (controlled comparison)</h3>
+    <div class="prose">
+      <p>I reconstructed a rank-30 competitor's deck from a public episode replay and compared it to my own.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="data">
+        <thead><tr><th></th><th>Their deck</th><th>My deck</th></tr></thead>
+        <tbody>
+          <tr><td>Card-name overlap</td><td><strong>90%</strong> (54/60 identical)</td><td>—</td></tr>
+          <tr><td>Head-to-head, my agent piloting both, 80 seat-balanced games</td><td>53.8% [42.9–64.3]</td><td><strong>statistical tie</strong></td></tr>
+          <tr><td>Leaderboard score</td><td class="num">~1090</td><td class="num">333 (active) / 441 (best)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="viz-fig">
+      <svg viewBox="0 0 700 250" role="img" aria-label="Two panels. Left: head-to-head win rate 53.8 percent with confidence interval 42.9 to 64.3 spanning the 50 percent parity line, a statistical tie. Right: leaderboard scores, their deck 1090, our active submission 333.">
+        <text class="v-cat-em" x="20" y="22">A &middot; Head-to-head, my agent piloting both</text>
+        <text class="v-note"   x="20" y="38">80 seat-balanced games</text>
+        <g>
+          <line class="v-gridline" x1="30"  y1="60" x2="30"  y2="140"/>
+          <line class="v-gridline" x1="120" y1="60" x2="120" y2="140"/>
+          <line class="v-gridline" x1="210" y1="60" x2="210" y2="140"/>
+          <line class="v-gridline" x1="300" y1="60" x2="300" y2="140"/>
+          <text class="v-tick" x="30"  y="158" text-anchor="middle">40%</text>
+          <text class="v-tick" x="120" y="158" text-anchor="middle">50%</text>
+          <text class="v-tick" x="210" y="158" text-anchor="middle">60%</text>
+          <text class="v-tick" x="300" y="158" text-anchor="middle">70%</text>
+        </g>
+        <line class="v-refline" x1="120" y1="54" x2="120" y2="140"/>
+        <text class="v-note" x="120" y="50" text-anchor="middle">50% parity</text>
+        <line x1="56.1"  y1="100" x2="248.7" y2="100" stroke="var(--v-series)" stroke-width="3" opacity="0.35"/>
+        <line x1="56.1"  y1="93"  x2="56.1"  y2="107" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <line x1="248.7" y1="93"  x2="248.7" y2="107" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <circle cx="154.2" cy="100" r="7" fill="var(--v-series)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val" x="154.2" y="84" text-anchor="middle">53.8%</text>
+        <text class="v-note" x="30" y="180">95% CI [42.9, 64.3] — spans parity.</text>
+        <text class="v-note" x="30" y="195">Statistically indistinguishable.</text>
+        <line x1="350" y1="18" x2="350" y2="215" stroke="var(--v-border)" stroke-width="1"/>
+        <text class="v-cat-em" x="386" y="22">B &middot; Leaderboard score</text>
+        <text class="v-note"   x="386" y="38">Simulation track</text>
+        <g>
+          <line class="v-gridline" x1="386" y1="140" x2="676" y2="140"/>
+          <line class="v-gridline" x1="386" y1="111" x2="676" y2="111"/>
+          <line class="v-gridline" x1="386" y1="83"  x2="676" y2="83"/>
+          <text class="v-tick" x="378" y="144" text-anchor="end">0</text>
+          <text class="v-tick" x="378" y="115" text-anchor="end">400</text>
+          <text class="v-tick" x="378" y="87"  text-anchor="end">800</text>
+        </g>
+        <rect x="410" y="62" width="86" height="78" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="453" y="55" text-anchor="middle">1090</text>
+        <text class="v-cat" x="453" y="158" text-anchor="middle">Their deck</text>
+        <text class="v-note" x="453" y="172" text-anchor="middle">rank ~30</text>
+        <rect x="556" y="116.2" width="86" height="23.8" rx="4" fill="var(--v-deemph)"/>
+        <text class="v-val" x="599" y="109" text-anchor="middle">333</text>
+        <text class="v-cat" x="599" y="158" text-anchor="middle">Mine (active)</text>
+        <text class="v-note" x="599" y="172" text-anchor="middle">best scored 441</text>
+        <line class="v-baseline" x1="386" y1="140" x2="676" y2="140"/>
+        <text class="v-note" x="386" y="195">Card-name overlap between the two lists: 90% (54 of 60).</text>
+      </svg>
+      <p class="v-foot">Their list was reconstructed from a public episode replay. Panel A holds the agent constant and varies only the deck; Panel B is the ladder outcome for each side's own agent-plus-deck pair. The two panels use separate scales and are deliberately not overlaid.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Measure</th><th class="num">Their deck</th><th class="num">Mine</th></tr></thead>
+          <tbody>
+            <tr><td>Card-name overlap</td><td class="num" colspan="2">54 / 60 = 90%</td></tr>
+            <tr><td>Head-to-head (my agent both sides, 80 games)</td><td class="num" colspan="2">53.8%, CI [42.9, 64.3] — tie</td></tr>
+            <tr><td>Leaderboard score</td><td class="num">1090</td><td class="num">333 active / 441 best</td></tr>
+            <tr><td>Prizes conceded across all Pokémon</td><td class="num">29</td><td class="num">higher</td></tr>
+          </tbody>
+        </table>
+      </details>
+      <figcaption><span class="fig-no">Figure 1.</span> Deck-vs-agent decomposition — near-identical decks, a statistical tie in play, and a ~700-point leaderboard gap.</figcaption>
+    </figure>
+    <div class="prose">
+      <p>Two decks that are 90% the same list and tie in play, separated by ~700 leaderboard points. <strong>The gap is the agent, not the deck.</strong> This comparison redirected all remaining effort away from deck construction.</p>
+      <p>Their six-slot edge is instructive anyway: they cut four scattered 1-ofs and bought search with the slots (+2 Ultra Ball, +1 Forest of Vitality, +1 Dawn, +1 Meowth ex, +1 Energy), and run <strong>zero Mega ex</strong> — 29 prizes conceded across 20 Pokémon, the lowest of any list measured.</p>
+    </div>
+
+    <h3 style="font-size:1.1rem;margin:36px 0 10px;">2.2 &nbsp;Fix arbitrary decisions, not existing rankings</h3>
+    <div class="prose">
+      <p>The accepted mechanism (<strong>EXP-0005</strong>) came from noticing that <code>SelectType.ENERGY</code> fell through to a blind <code>range(minCount)</code> default. Every Solar Transfer and Energy Switch <em>source</em> — 44 selections per 10 games — was chosen arbitrarily. The deck's own energy engine was disarming its ready attacker.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="data">
+        <thead><tr><th>Stage</th><th>Result</th><th class="num">Win rate</th><th class="num">p</th></tr></thead>
+        <tbody>
+          <tr><td>Smoke</td><td>13–7</td><td class="num">65.0%</td><td class="num">—</td></tr>
+          <tr><td>Screening</td><td>112–88</td><td class="num">56.0%</td><td class="num">0.090</td></tr>
+          <tr><td>Main</td><td>174–126</td><td class="num">58.0%</td><td class="num">0.0056</td></tr>
+          <tr><td>Confirmation</td><td>283–217</td><td class="num">56.6%</td><td class="num">0.0032</td></tr>
+          <tr style="background:var(--accent-tint);"><td><strong>Aggregate (1020 games)</strong></td><td><strong>582–438</strong></td><td class="num"><strong>57.1%</strong></td><td class="num">CI 52.2–60.9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p>It generalized: the same fix improved play on two <em>foreign</em> decks by the same magnitude (58.0%, 56.5%), indicating a general repair rather than a deck-specific hack.</p>
+    </div>
+    <figure class="viz-fig">
+      <div class="v-legend">
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-series)"></span>Accepted</span>
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-deemph)"></span>Rejected</span>
+        <span class="v-lg"><span class="v-sw-line" style="background:var(--v-text-2)"></span>50% parity</span>
+      </div>
+      <svg viewBox="0 0 760 330" role="img" aria-label="Dot plot of nine mechanisms by win rate. Energy source selection accepted at 57.1 percent. Eight rejected: 52.5, 51.25, 51.0, 50.5, 50.3, 50.2, 50.0, 47.0, and promotion policy at 37.5 percent.">
+        <g>
+          <line class="v-gridline" x1="210" y1="18" x2="210" y2="278"/>
+          <line class="v-gridline" x1="300" y1="18" x2="300" y2="278"/>
+          <line class="v-gridline" x1="390" y1="18" x2="390" y2="278"/>
+          <line class="v-gridline" x1="480" y1="18" x2="480" y2="278"/>
+          <line class="v-gridline" x1="570" y1="18" x2="570" y2="278"/>
+          <line class="v-gridline" x1="660" y1="18" x2="660" y2="278"/>
+          <text class="v-tick" x="210" y="296" text-anchor="middle">35%</text>
+          <text class="v-tick" x="300" y="296" text-anchor="middle">40%</text>
+          <text class="v-tick" x="390" y="296" text-anchor="middle">45%</text>
+          <text class="v-tick" x="480" y="296" text-anchor="middle">50%</text>
+          <text class="v-tick" x="570" y="296" text-anchor="middle">55%</text>
+          <text class="v-tick" x="660" y="296" text-anchor="middle">60%</text>
+        </g>
+        <line class="v-refline" x1="480" y1="12" x2="480" y2="278"/>
+        <text class="v-note" x="480" y="8" text-anchor="middle">50%</text>
+        <text class="v-cat-em" x="198" y="40" text-anchor="end">Energy-source selection</text>
+        <line x1="489.6" y1="36" x2="678.2" y2="36" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <line x1="489.6" y1="31" x2="489.6" y2="41" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <line x1="678.2" y1="31" x2="678.2" y2="41" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <circle cx="607.8" cy="36" r="6" fill="var(--v-series)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val" x="688" y="40">57.1%</text>
+        <text class="v-cat" x="198" y="66" text-anchor="end">Meowth escape (screen)</text>
+        <circle cx="525" cy="62" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="66">52.5%</text>
+        <text class="v-cat" x="198" y="92" text-anchor="end">Conditional ability priority</text>
+        <circle cx="502.5" cy="88" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="92">51.25%</text>
+        <text class="v-cat" x="198" y="118" text-anchor="end">Fetch-target need scoring</text>
+        <circle cx="498" cy="114" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="118">51.0%</text>
+        <text class="v-cat" x="198" y="144" text-anchor="end">Ability reordering (early)</text>
+        <circle cx="489" cy="140" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="144">50.5%</text>
+        <text class="v-cat" x="198" y="170" text-anchor="end">Meowth escape (pooled)</text>
+        <circle cx="485.4" cy="166" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="170">50.3%</text>
+        <text class="v-cat" x="198" y="196" text-anchor="end">Ability-cap budget</text>
+        <circle cx="483.6" cy="192" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="196">50.2%</text>
+        <text class="v-cat" x="198" y="222" text-anchor="end">Attach-target scoring</text>
+        <circle cx="480" cy="218" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="222">50.0%</text>
+        <text class="v-cat" x="198" y="248" text-anchor="end">Discard-cost targeting</text>
+        <circle cx="426" cy="244" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="248">47.0%</text>
+        <text class="v-cat" x="198" y="274" text-anchor="end">Deck promotion policy</text>
+        <circle cx="255" cy="270" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="274">37.5%</text>
+        <text class="v-note" x="210" y="318">Noise floor: an inert control arm — zero different decisions — scored 44.5% over 200 games.</text>
+      </svg>
+      <p class="v-foot">Interval shown on the accepted mechanism only (1,020 games). The rejected mechanisms are plotted at their largest measured sample; several were carried to 500–2,000 games before rejection.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Mechanism</th><th class="num">Win rate</th><th>Outcome</th></tr></thead>
+          <tbody>
+            <tr><td>Energy-source selection (EXP-0005)</td><td class="num">57.1%</td><td>Accepted — CI 52.2–60.9, n=1020</td></tr>
+            <tr><td>Meowth ex escape — screening</td><td class="num">52.5%</td><td>Rejected on pooled result</td></tr>
+            <tr><td>Conditional ability priority</td><td class="num">51.25%</td><td>Rejected — CI spans 50</td></tr>
+            <tr><td>Fetch-target need scoring</td><td class="num">51.0%</td><td>Rejected</td></tr>
+            <tr><td>Ability reordering</td><td class="num">50.5%</td><td>Rejected</td></tr>
+            <tr><td>Meowth ex escape — pooled</td><td class="num">50.3%</td><td>Rejected — CI spans 50</td></tr>
+            <tr><td>Ability-cap budget</td><td class="num">50.2%</td><td>Rejected</td></tr>
+            <tr><td>Attach-target scoring</td><td class="num">50.0%</td><td>Rejected — dead flat</td></tr>
+            <tr><td>Discard-cost targeting</td><td class="num">47.0%</td><td>Rejected — mildly negative</td></tr>
+            <tr><td>Deck promotion policy (corrected)</td><td class="num">37.5%</td><td>Rejected — harmful</td></tr>
+          </tbody>
+        </table>
+      </details>
+      <figcaption><span class="fig-no">Figure 2.</span> All nine mechanisms tested. Eight cluster on the 50% line; the accepted fix is the outlier.</figcaption>
+    </figure>
+    <div class="prose">
+      <p><strong>The eight rejections then formed a pattern.</strong> Mechanisms improving a ranking the baseline <em>already computed</em> went nowhere: 50.5%, 51.0%, 50.2%, 50.0%, 47.0%. Mechanisms reallocating a resource the accepted fix depended on actively lost (45.0%). The rule — <em>fix what is arbitrary, not what is merely imperfect</em> — was derived from data, not assumed.</p>
+    </div>
+
+    <h3 style="font-size:1.1rem;margin:36px 0 10px;">2.3 &nbsp;The agent cannot see 24% of the card pool</h3>
+    <div class="prose">
+      <p>The engine reports variable-damage attacks (printed <code>50×</code>) as <code>damage=0</code>, and <code>_best_attack_index</code> ranks attacks by exactly that field. <strong>381 of 1556 engine attacks (24%) are tied at zero</strong> and picked by list order.</p>
+      <p>Demonstrated on Mega Gardevoir ex, whose Mega Symphonia scales at 50 damage per Psychic Energy in play. Across 10 games the agent parked on a 120-printed-damage Basic (334 steps Active) over the card that actually hits for 200–400 (55 steps). Patching <em>only the agent's view of that one number</em>, deck untouched, moved the matchup <strong>20% → 37%</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <h2>Generalization and the limits of my own measurements</h2>
+    <div class="prose">
+      <p><strong>My early benchmarks were structurally blind.</strong> Self-play against a frozen copy of myself on a mirrored deck reported 99% vs random and 60/40 vs prior-self — while the ladder said otherwise. A mirror cannot expose a deck-consistency failure, because both sides brick identically. The metric was not noisy — it was <em>measuring the wrong thing</em>.</p>
+      <p><strong>A 200-game screen cannot distinguish 45% from 55%.</strong> I measured the noise floor directly with an <strong>inert control arm</strong> — a candidate making zero different decisions across 49 selections — which scored <strong>44.5% over 200 games</strong> purely from run-to-run variance. Screens filter gross regressions and inertness, not small gains.</p>
+    </div>
+    <figure class="viz-fig">
+      <div class="v-legend">
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-shade-lo)"></span>First look (small n)</span>
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-shade-hi)"></span>Final (large n)</span>
+        <span class="v-lg"><span class="v-sw-line" style="background:var(--v-text-2)"></span>50% parity</span>
+      </div>
+      <svg viewBox="0 0 700 220" role="img" aria-label="Dumbbell chart. EXP-0012 moved from 53.4 percent at n=1000 to 51.25 percent at n=2000 with a confidence interval spanning 50. EXP-0015 moved from 57.5 percent at n=200 to 50.3 percent at n=1000, interval also spanning 50.">
+        <g>
+          <line class="v-gridline" x1="150" y1="40" x2="150" y2="175"/>
+          <line class="v-gridline" x1="272.5" y1="40" x2="272.5" y2="175"/>
+          <line class="v-gridline" x1="435" y1="40" x2="435" y2="175"/>
+          <line class="v-gridline" x1="558" y1="40" x2="558" y2="175"/>
+          <text class="v-tick" x="150" y="192" text-anchor="middle">46%</text>
+          <text class="v-tick" x="272.5" y="192" text-anchor="middle">49%</text>
+          <text class="v-tick" x="435" y="192" text-anchor="middle">53%</text>
+          <text class="v-tick" x="558" y="192" text-anchor="middle">56%</text>
+        </g>
+        <line class="v-refline" x1="313.3" y1="34" x2="313.3" y2="175"/>
+        <text class="v-note" x="313.3" y="28" text-anchor="middle">50%</text>
+        <text class="v-cat-em" x="138" y="72" text-anchor="end">EXP-0012</text>
+        <text class="v-note"   x="138" y="87" text-anchor="end">n 1000 → 2000</text>
+        <line x1="273.0" y1="68" x2="453.9" y2="68" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="273.0" y1="63" x2="273.0" y2="73" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="453.9" y1="63" x2="453.9" y2="73" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="452.3" y1="68" x2="364.4" y2="68" stroke="var(--v-text-mut)" stroke-width="2"/>
+        <circle cx="452.3" cy="68" r="6" fill="var(--v-shade-lo)" stroke="var(--v-surface)" stroke-width="2"/>
+        <circle cx="364.4" cy="68" r="6" fill="var(--v-shade-hi)"  stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="452.3" y="53" text-anchor="middle">53.4%</text>
+        <text class="v-val"     x="364.4" y="53" text-anchor="middle">51.25%</text>
+        <text class="v-note"    x="466" y="86">CI [49.06, 53.44] — spans 50</text>
+        <text class="v-cat-em" x="138" y="142" text-anchor="end">EXP-0015</text>
+        <text class="v-note"   x="138" y="157" text-anchor="end">n 200 → 1000</text>
+        <line x1="199.0" y1="138" x2="452.3" y2="138" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="199.0" y1="133" x2="199.0" y2="143" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="452.3" y1="133" x2="452.3" y2="143" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="619.5" y1="138" x2="325.5" y2="138" stroke="var(--v-text-mut)" stroke-width="2"/>
+        <circle cx="619.5" cy="138" r="6" fill="var(--v-shade-lo)" stroke="var(--v-surface)" stroke-width="2"/>
+        <circle cx="325.5" cy="138" r="6" fill="var(--v-shade-hi)"  stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="619.5" y="123" text-anchor="middle">57.5%</text>
+        <text class="v-val"     x="325.5" y="123" text-anchor="middle">50.3%</text>
+        <text class="v-note"    x="466" y="156">CI [47.2, 53.4] — spans 50</text>
+      </svg>
+      <p class="v-foot">Shaded bars are 95% confidence intervals on the final measurement. Zero draws, timeouts, illegal actions or crashes across all 3,020 games.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Experiment</th><th class="num">First look</th><th class="num">p</th><th class="num">Final</th><th>Final 95% CI</th></tr></thead>
+          <tbody>
+            <tr><td>EXP-0012 (conditional ability priority)</td><td class="num">53.4% (n=1000)</td><td class="num">0.0315</td><td class="num">51.25% (n=2000)</td><td>[49.06, 53.44]</td></tr>
+            <tr><td>EXP-0015 (Meowth ex escape)</td><td class="num">57.5% (n=200)</td><td class="num">0.034</td><td class="num">50.3% (n=1000)</td><td>[47.2, 53.4]</td></tr>
+          </tbody>
+        </table>
+      </details>
+      <figcaption><span class="fig-no">Figure 3.</span> Two nominally-significant early reads (EXP-0012, EXP-0015) both regressed to a statistical tie as sample size grew.</figcaption>
+    </figure>
+    <div class="table-scroll">
+      <table class="data">
+        <thead><tr><th>Experiment</th><th>Early look</th><th>Final</th></tr></thead>
+        <tbody>
+          <tr><td>EXP-0012</td><td>53.4%, p=0.0315, n=1000</td><td><strong>51.25%</strong>, CI [49.06, 53.44], n=2000</td></tr>
+          <tr><td>EXP-0015</td><td>57.5%, p=0.034, n=200</td><td><strong>50.3%</strong>, CI [47.2, 53.4], n=1000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p>Both were multiple-looks artifacts: screening, main, confirmation and extension are four chances for noise to cross a threshold, and one of them did. <strong>A pre-committed 55% effect-size bar prevented adoption; a p-value gate alone would have accepted EXP-0012.</strong> The single most useful thing learned in this project.</p>
+      <p>Every accepted or rejected mechanism was additionally <strong>proven non-inert before games were spent</strong> (by diffing selections in the target context against the baseline), so no result reports the noise of a candidate that never actually behaved differently.</p>
+    </div>
+  </div>
+</section>
+
+<section id="deck">
+  <div class="wrap">
+    <h2>Deck concept and key cards</h2>
+    <div class="prose">
+      <p>The active submission is a <strong>Grass toolbox built on two 2/2/2 evolution lines sharing one Basic-heavy shell</strong>:</p>
+    </div>
+    <ul class="tldr-list">
+      <li><strong>Applin → Dipplin → Hydrapple ex</strong> — a 330 HP wall that anchors the board.</li>
+      <li><strong>Chikorita → Bayleef → Meganium</strong> — Wild Growth makes every Basic Grass Energy count double, which is what makes the deck's attack costs payable at all.</li>
+      <li><strong>4× Teal Mask Ogerpon ex</strong> — 210 HP Basic; the Tera clause makes it immune to attack damage while Benched, and Teal Dance works from the Bench.</li>
+    </ul>
+    <div class="prose">
+      <p>The concept is <strong>energy multiplication plus a durable Active</strong>, not raw damage. Meganium is the enabler, not the attacker; Hydrapple ex absorbs the KOs that would otherwise cost prizes.</p>
+      <p><strong>Alignment with the agent is deliberate and measured.</strong> The one accepted agent change is an <em>energy-routing</em> fix — precisely the mechanism this deck's game plan depends on. The deck's win condition named the decision context worth instrumenting.</p>
+      <p><strong>Alternatives were built and rejected, not assumed away:</strong></p>
+    </div>
+    <div class="deck-grid">
+      <div class="deck-card">
+        <h3>Zygarde Ramp</h3>
+        <div class="result">37.0%</div>
+        <p>All-Basic attackers, zero evolution steps. Confirmed on its own terms — attacked earlier (turn 3.7 vs 4.0), more often (6.9 vs 4.8/game), for 4.4× more printed damage (627 vs 142) — and still lost. 10 of 14 Pokémon were Rule Box cards; the opponent needed only ~3 KOs.</p>
+      </div>
+      <div class="deck-card">
+        <h3>Mega Gardevoir</h3>
+        <div class="result">19–20%</div>
+        <p>Board-wide energy scaling, 1-cost attacker. Loss traced to the same variable-damage blind spot described above — the deck's own signature attack was invisible to its pilot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="didnt-work">
+  <div class="wrap">
+    <h2>What didn't work</h2>
+    <div class="prose">
+      <p><strong>The heuristic line is exhausted, and it shows.</strong> Nine mechanisms, one accepted, and the last five all inside the noise floor (50.5, 51.0, 50.2, 50.0, 47.0). Further single-context heuristic scoring has a measured expected value near zero.</p>
+      <p><strong>Search did not rescue it.</strong> The 1-ply lookahead was replaced with bounded UCT, using the accepted heuristic as fallback, rollout policy and seed candidate. After fixing a wiring bug that voided the first attempt, all four configurations sat at or below the heuristic over 200 games each:</p>
+    </div>
+    <figure class="viz-fig">
+      <svg viewBox="0 0 700 250" role="img" aria-label="Win rate by search configuration: horizon 1 at 49.5 percent, baseline 47.5, selective budget 44.5, max candidates 24 at 41.5 percent. All below the 50 percent parity line.">
+        <g>
+          <line class="v-gridline" x1="150" y1="190" x2="660" y2="190"/>
+          <line class="v-gridline" x1="150" y1="145" x2="660" y2="145"/>
+          <line class="v-gridline" x1="150" y1="100" x2="660" y2="100"/>
+          <line class="v-gridline" x1="150" y1="55"  x2="660" y2="55"/>
+          <text class="v-tick" x="142" y="194" text-anchor="end">40%</text>
+          <text class="v-tick" x="142" y="149" text-anchor="end">44%</text>
+          <text class="v-tick" x="142" y="104" text-anchor="end">48%</text>
+          <text class="v-tick" x="142" y="59"  text-anchor="end">52%</text>
+        </g>
+        <line class="v-refline" x1="150" y1="77.5" x2="620" y2="77.5"/>
+        <text class="v-note" x="624" y="81">50% parity</text>
+        <rect x="168" y="83.1" width="78" height="106.9" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="207" y="76" text-anchor="middle">49.5%</text>
+        <rect x="288" y="105.6" width="78" height="84.4" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="327" y="98.5" text-anchor="middle">47.5%</text>
+        <rect x="408" y="139.4" width="78" height="50.6" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="447" y="132.3" text-anchor="middle">44.5%</text>
+        <rect x="528" y="173.1" width="78" height="16.9" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="567" y="166" text-anchor="middle">41.5%</text>
+        <text class="v-val-mut" x="567" y="150" text-anchor="middle">p = 0.016</text>
+        <line class="v-baseline" x1="150" y1="190" x2="660" y2="190"/>
+        <text class="v-cat" x="207" y="208" text-anchor="middle">horizon = 1</text>
+        <text class="v-cat" x="327" y="208" text-anchor="middle">mcts_baseline</text>
+        <text class="v-cat" x="447" y="208" text-anchor="middle">selective_budget</text>
+        <text class="v-cat-em" x="567" y="208" text-anchor="middle">max_cand = 24</text>
+        <text class="v-note" x="150" y="232">narrower search</text>
+        <text class="v-note" x="660" y="232" text-anchor="end">wider search →</text>
+      </svg>
+      <p class="v-foot">Zero faults across all arms; latency was never the constraint (9.2 ms mean, 97 ms max). An earlier attempt was voided by a wiring bug that bypassed the per-turn ability cap — all four arms above are the cap-fixed measurements.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Configuration</th><th class="num">Record</th><th class="num">Win rate</th><th class="num">p</th></tr></thead>
+          <tbody>
+            <tr><td>horizon_turns = 1</td><td class="num">99–101</td><td class="num">49.5%</td><td class="num">—</td></tr>
+            <tr><td>mcts_baseline</td><td class="num">95–105</td><td class="num">47.5%</td><td class="num">—</td></tr>
+            <tr><td>selective_budget</td><td class="num">89–111</td><td class="num">44.5%</td><td class="num">—</td></tr>
+            <tr><td>max_candidates = 24</td><td class="num">83–117</td><td class="num">41.5%</td><td class="num">0.016</td></tr>
+          </tbody>
+        </table>
+      </details>
+      <figcaption><span class="fig-no">Figure 4.</span> Win rate declines monotonically as search width increases — the signature of a weak evaluator, not weak search.</figcaption>
+    </figure>
+    <div class="table-scroll">
+      <table class="data">
+        <thead><tr><th>Configuration</th><th>Result</th><th class="num">Win rate</th></tr></thead>
+        <tbody>
+          <tr><td>horizon_turns=1</td><td>99–101</td><td class="num">49.5%</td></tr>
+          <tr><td>mcts_baseline</td><td>95–105</td><td class="num">47.5%</td></tr>
+          <tr><td>selective_budget</td><td>89–111</td><td class="num">44.5%</td></tr>
+          <tr><td>max_candidates=24</td><td>83–117</td><td class="num"><strong>41.5%</strong> (p=0.016)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <p><strong>The trend is monotonic in search width</strong> — widening the root from 8 to 24 candidates gave UCT three times as many ways to exploit blind spots in the position evaluator. Latency was never the constraint (9.2 ms mean, 97 ms max, zero faults).</p>
+      <p>A parallel research track reached the same conclusion independently at larger scale: a root-sampled ISMCTS agent with a learned policy-value model was built through self-play and a frozen multi-deck league, then <strong>rejected by its own promotion gate on 960 games</strong> (worst-matchup win rate 11.11%). Its self-play corpus was dominated by fallback targets — a learner cannot substantially exceed its teacher when most targets encode teacher behavior. That track also showed that <strong>packaging success is orthogonal to playing strength</strong>: the rejected candidate passed every deployment gate, manifest check and shadow game.</p>
+      <p><strong>Two rejections were my own errors, reported as such.</strong> A deck-specific promotion policy scored 32.5% — not because the strategy was wrong, but because a "keep this Pokémon Benched" rule was encoded as an unconditional −900, burying a charged 210 HP attacker below a 70 HP Basic. Corrected, it still scored 37.5%: the diagnosis is magnitude, not direction — the positional adjustments swamped the signal the baseline was using.</p>
+      <p><strong>Two submissions were also lost to a deployment bug worth naming</strong>, because it is invisible locally: Kaggle executes <code>main.py</code> via <code>exec()</code>, so <code>__file__</code> is undefined. <code>Path(__file__)</code> raised <code>NameError</code>, the deck loaded empty, validation failed. It reproduces only under a replicated exec harness, never under a normal import.</p>
+    </div>
+  </div>
+</section>
+
+<section id="conclusion">
+  <div class="wrap">
+    <h2>Conclusion</h2>
+    <div class="prose">
+      <p><strong>Proven:</strong> the deck is not the bottleneck (90% identical list, statistical tie, ~700 point gap). Fixing arbitrarily-answered decision contexts pays; refining existing rankings does not. The evaluator, not search depth, is the binding constraint — demonstrated twice, independently, at two scales. The screening methodology carries ~7 points of standard deviation, and pre-committed effect-size bars are what keep multiple-looks artifacts out of the agent.</p>
+      <p><strong>Not proven, and not claimed:</strong> that the agent is competitive. Its active leaderboard score is 333. Everything above is an account of <em>why</em>, with the measurements attached.</p>
+      <p><strong>The identified next step is specific:</strong> <code>_eval_state</code> enrichment, measured against the cheap 1-ply lookahead first. If the evaluator improves, search becomes worth retesting on top of it — in that order, because the monotonic-degradation result says search amplifies whatever the evaluator gets wrong. The variable-damage estimator is an independent, already-quantified +17-point repair that is not deck-specific.</p>
+    </div>
+  </div>
+</section>
+
+<section id="explorer">
+  <div class="wrap">
+    <h2>All 15 experiments, unabridged</h2>
+    <p class="kicker">Every mechanism tried, including the ones that never made it past a first probe. Filter by decision or search the notes.</p>
+
+    <div class="explorer-controls">
+      <input id="exp-search" type="text" placeholder="Search mechanism or note…" aria-label="Search experiments">
+      <select id="exp-filter" aria-label="Filter by decision">
+        <option value="all">All decisions</option>
+        <option value="accepted">Accepted</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+
+    <div class="table-scroll">
+      <table class="data" id="exp-table">
+        <thead>
+          <tr>
+            <th><button data-key="exp_id">ID <span class="sort-arrow"></span></button></th>
+            <th><button data-key="mechanism">Mechanism <span class="sort-arrow"></span></button></th>
+            <th><button data-key="decision">Decision <span class="sort-arrow"></span></button></th>
+            <th class="num"><button data-key="n_games">N <span class="sort-arrow"></span></button></th>
+            <th class="num"><button data-key="win_rate">Win rate <span class="sort-arrow"></span></button></th>
+            <th class="num"><button data-key="p_value">p <span class="sort-arrow"></span></button></th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody id="exp-tbody"></tbody>
+      </table>
+    </div>
+    <span class="csv-link">Source: <a href="https://github.com/NoName7n11/Pokemon_Hackathon/blob/main/sub-agents/specialists/My_Deck_Grass/experiments_summary.csv" target="_blank" rel="noopener"><code>sub-agents/specialists/My_Deck_Grass/experiments_summary.csv</code></a> — one row per experiment, parsed programmatically from each run's <code>experiment.json</code>.</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Pokémon TCG AI Battle Challenge — Strategy Writeup companion page</span>
+    <span>
+      <a href="https://www.kaggle.com/competitions/pokemon-tcg-ai-battle" target="_blank" rel="noopener">Simulation</a> ·
+      <a href="https://www.kaggle.com/competitions/pokemon-tcg-ai-battle-challenge-strategy" target="_blank" rel="noopener">Strategy</a> ·
+      <a href="https://github.com/NoName7n11/Pokemon_Hackathon" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const rows = [
+    {exp_id:"EXP-0001",mechanism:"infrastructure_baseline",decision:"rejected",stage:"diagnostic_only",n_games:null,win_rate:null,p_value:null,note:"Candidate byte-identical to baseline; froze v000-baseline snapshot and tempo/play census. No gameplay change to test."},
+    {exp_id:"EXP-0002",mechanism:"wild_growth_energy_accounting",decision:"rejected",stage:"probe_only",n_games:null,win_rate:null,p_value:null,note:"Falsified before games were spent: mon.energies already reports provided (Wild-Growth-doubled) energy; patch would have been inert. Surfaced the real defect later fixed as EXP-0003."},
+    {exp_id:"EXP-0003",mechanism:"live_variable_attack_damage",decision:"rejected",stage:"confirmation",n_games:200,win_rate:0.505,p_value:0.8875,note:"Static Attack.damage undervalues Myriad Leaf Shower / Cruel Arrow (variable-damage attacks read as fixed/zero); non-inert but no measurable win-rate gain at n=200."},
+    {exp_id:"EXP-0004",mechanism:"attacker_concentration_bonus",decision:"rejected",stage:"screening",n_games:null,win_rate:null,p_value:null,note:"Inert: 0/96 own-board CARD selections changed (context_ab probe) before any games were run. _live_attacker_score already dominated by raw HP; no test needed."},
+    {exp_id:"EXP-0005",mechanism:"energy_source_selection",decision:"accepted",stage:"aggregate",n_games:1020,win_rate:0.571,p_value:0.0032,note:"ACCEPTED. Stages: smoke 13-7 (65.0%); screening 112-88 (56.0%,p=0.090); main 174-126 (58.0%,p=0.0056); confirmation 283-217 (56.6%,p=0.0032). Aggregate 582-438 over 1020 games. Generalized to 2 foreign decks (Hydrapple 58.0%, PalSystem_Dragapult 56.5%). Non-inert proven first: 35/60 SWITCH_ENERGY selections differed."},
+    {exp_id:"EXP-0006",mechanism:"fetch_target_need_scoring",decision:"rejected",stage:"screening",n_games:200,win_rate:0.51,p_value:0.7773,note:"CARD/TO_HAND fetch defaults to highest-HP Pokemon regardless of board need. Non-inert but flat result."},
+    {exp_id:"EXP-0007",mechanism:"ability_priority_ordering",decision:"rejected",stage:"screening",n_games:200,win_rate:0.45,p_value:0.1573,note:"Reordering Teal Dance ahead of Solar Transfer LOSES: starves the accepted EXP-0005 routing mechanism of its ability-budget slot."},
+    {exp_id:"EXP-0008",mechanism:"ability_cap_budget",decision:"rejected",stage:"main",n_games:300,win_rate:0.48,p_value:0.4884,note:"Pooled 500 games: 50.2% (z=0.089,p=0.929). Raising ABILITY_CAP_PER_TURN 4->8 did not help and did not reopen the ability-loop the cap guards against; games lengthened ~154->172 steps for no gain."},
+    {exp_id:"EXP-0009",mechanism:"attach_target_attacker_scoring",decision:"rejected",stage:"screening",n_games:200,win_rate:0.5,p_value:1.0,note:"Dead flat. Non-inert (49/433 ATTACH targets differed) but change absorbed by the accepted EXP-0005 router, which fixes misplaced Energy anyway."},
+    {exp_id:"EXP-0010",mechanism:"discard_cost_targeting",decision:"rejected",stage:"screening",n_games:200,win_rate:0.47,p_value:0.3961,note:"Ultra Ball's 2-card discard cost paid blind (cardId=None scores 0). Real defect confirmed by direct engine observation; too rare (~1.1/game) to move a 200-game result."},
+    {exp_id:"EXP-0011",mechanism:"plan1_uct_search",decision:"rejected",stage:"screening",n_games:200,win_rate:0.49,p_value:0.7773,note:"Bounded UCT search vs the 1-ply heuristic. 4 configurations all <=baseline: horizon=1 49.5%, mcts_baseline 47.5%, selective_budget 44.5%, max_candidates=24 41.5% (p=0.016) — monotonic decline in search width, signature of a weak evaluator not weak search."},
+    {exp_id:"EXP-0012",mechanism:"conditional_ability_priority",decision:"rejected",stage:"pooled_2000",n_games:2000,win_rate:0.5125,p_value:0.264,note:"NON-REPLICATING. Screening 50.5%; main 56.3%(p=0.028); confirmation 264-236(52.8%); extension 491-509(49.1%). At n=1000 stood 53.4%(p=0.0315,CI excl.50); n=2000 pooled 51.25%,CI spans 50. Multiple-looks artifact caught by pre-committed 55% effect-size bar, not a p-value gate."},
+    {exp_id:"EXP-0013",mechanism:"deck_promotion_policy",decision:"rejected",stage:"main",n_games:300,win_rate:0.35,p_value:2.03e-7,note:"Harmful: encoded 'keep Pokemon Benched' rule as unconditional -900, burying a charged 210HP attacker below a 70HP Basic. Own implementation error, not the operator's strategy — rules as intended were never actually tested."},
+    {exp_id:"EXP-0014",mechanism:"deck_promotion_policy_v2",decision:"rejected",stage:"screening",n_games:200,win_rate:0.375,p_value:0.0004,note:"Encoding errors from EXP-0013 fixed; still harmful. Working diagnosis: magnitude not direction — positional adjustments (900-4000) swamp the HP/damage signal the baseline already uses."},
+    {exp_id:"EXP-0015",mechanism:"meowth_tuck_tail_escape",decision:"rejected",stage:"pooled_1000",n_games:1000,win_rate:0.503,p_value:0.85,note:"NON-REPLICATING. Screening 115-85(57.5%,p=0.034) motivated the test; pooled 1000 games 50.3%,CI spans 50. Precondition itself was a real fix: without the 'can pay Tuck Tail' guard the rule measured 36.5%(p=0.0001,actively harmful); guard moved it to exactly neutral."},
+    {exp_id:"ko_only_control",mechanism:"inert_control_arm",decision:"noise_floor",stage:"screening",n_games:200,win_rate:0.445,p_value:null,note:"NOT a proposed mechanism — a control arm making 0 different decisions across 49 selections vs the accepted baseline, run to measure the screen's own noise floor. Scored 44.5% over 200 games purely from run-to-run variance. This is why a 200-game screen cannot distinguish 45% from 55%, and is the basis for treating EXP-0012/EXP-0015's early significant-looking reads as multiple-looks artifacts rather than real effects."}
+  ];
+
+  const tbody = document.getElementById('exp-tbody');
+  const searchInput = document.getElementById('exp-search');
+  const filterSelect = document.getElementById('exp-filter');
+  let sortKey = null, sortDir = 1;
+
+  function fmtPct(v) { return v == null ? '—' : (v*100).toFixed(1) + '%'; }
+  function fmtP(v) { return v == null ? '—' : (v < 0.001 ? v.toExponential(2) : v.toFixed(4)); }
+  function pill(decision) {
+    if (decision === 'accepted') return '<span class="pill accepted">accepted</span>';
+    if (decision === 'rejected') return '<span class="pill rejected">rejected</span>';
+    return '<span class="pill">' + decision + '</span>';
+  }
+
+  function render() {
+    const q = searchInput.value.trim().toLowerCase();
+    const f = filterSelect.value;
+    let data = rows.filter(r => {
+      if (f !== 'all' && r.decision !== f) return false;
+      if (!q) return true;
+      return r.mechanism.toLowerCase().includes(q) || r.note.toLowerCase().includes(q) || r.exp_id.toLowerCase().includes(q);
+    });
+    if (sortKey) {
+      data = data.slice().sort((a, b) => {
+        let av = a[sortKey], bv = b[sortKey];
+        if (av == null) av = sortKey === 'p_value' ? Infinity : -Infinity;
+        if (bv == null) bv = sortKey === 'p_value' ? Infinity : -Infinity;
+        if (typeof av === 'string') return av.localeCompare(bv) * sortDir;
+        return (av - bv) * sortDir;
+      });
+    }
+    tbody.innerHTML = data.map(r => `
+      <tr>
+        <td class="mono">${r.exp_id}</td>
+        <td>${r.mechanism.replace(/_/g,' ')}</td>
+        <td>${pill(r.decision)}</td>
+        <td class="num">${r.n_games ?? '—'}</td>
+        <td class="num">${fmtPct(r.win_rate)}</td>
+        <td class="num">${fmtP(r.p_value)}</td>
+        <td class="note-cell">${r.note}</td>
+      </tr>
+    `).join('') || '<tr><td colspan="7" style="color:var(--muted);padding:20px;">No experiments match.</td></tr>';
+  }
+
+  document.querySelectorAll('#exp-table th button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.key;
+      if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+      document.querySelectorAll('.sort-arrow').forEach(a => a.textContent = '');
+      btn.querySelector('.sort-arrow').textContent = sortDir === 1 ? '▲' : '▼';
+      render();
+    });
+  });
+  searchInput.addEventListener('input', render);
+  filterSelect.addEventListener('change', render);
+  render();
+})();
+</script>
+</body>
+</html>
