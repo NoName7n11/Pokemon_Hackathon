@@ -97,20 +97,11 @@
   nav a:hover { background: var(--accent-tint); color: var(--accent-strong); }
 
   /* ---------- hero ---------- */
-  header.hero { padding: 56px 0 40px; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 18px;
-  }
-  .eyebrow::before {
-    content: ""; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); display: inline-block;
-  }
+  header.hero { padding: 64px 0 40px; }
   h1.title {
-    font-size: clamp(2rem, 4.4vw, 3rem);
-    font-weight: 600; line-height: 1.08; margin: 0 0 16px;
-    max-width: 15ch;
+    font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+    font-weight: 600; line-height: 1.22; margin: 0 0 18px;
+    max-width: 22ch;
   }
   p.subtitle {
     font-size: 1.15rem; color: var(--ink-soft); max-width: 62ch;
@@ -152,11 +143,6 @@
   section { padding: 44px 0; border-top: 1px solid var(--line); }
   section > .wrap > h2 {
     font-size: 1.5rem; font-weight: 600; margin: 0 0 6px;
-    display: flex; align-items: baseline; gap: 10px;
-  }
-  section > .wrap > h2 .sec-no {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-    color: var(--muted); font-weight: 500;
   }
   section > .wrap > .kicker {
     color: var(--muted); font-size: 0.95rem; margin: 0 0 26px; max-width: 60ch;
@@ -314,14 +300,13 @@
 
 <header class="hero reveal">
   <div class="wrap">
-    <div class="eyebrow">Pokémon TCG AI Battle Challenge — Strategy Writeup</div>
     <h1 class="title">Measuring What Actually Moves a Pokémon TCG Agent</h1>
     <p class="subtitle">Nine mechanisms tested, one accepted: a negative-results program that separates deck strength from agent strength — and finds the bottleneck is the evaluator.</p>
 
     <div class="stat-callout">
       <div class="headline">90% identical deck. Statistical tie in play. ~700 leaderboard points apart.</div>
       <div class="thesis">The bottleneck is the agent — not the deck.</div>
-      <div class="proof-link">Proof in §2.1, Figure 4 ↓</div>
+      <div class="proof-link">Proof in "The deck is not the bottleneck" ↓</div>
     </div>
 
     <div class="stat-row">
@@ -334,7 +319,7 @@
 
 <section id="tldr">
   <div class="wrap">
-    <h2><span class="sec-no">§0</span> TL;DR</h2>
+    <h2>TL;DR</h2>
     <p class="kicker">For the reviewer with two minutes: the whole submission in five findings.</p>
     <div class="prose">
       <p>I built a heuristic Pokémon TCG agent, then spent most of my effort trying to disprove my own improvements. Nine agent mechanisms were tested against pre-committed thresholds; <strong>one was accepted, eight were rejected</strong>, and two apparently-significant results evaporated when the sample size grew. The single accepted change (+7 points) fixed a decision context the baseline answered <em>at random</em> — not a ranking it already computed. That distinction predicted every subsequent result.</p>
@@ -353,7 +338,7 @@
 
 <section id="approach">
   <div class="wrap">
-    <h2><span class="sec-no">§1</span> Approach and rationale</h2>
+    <h2>Approach and rationale</h2>
     <div class="prose">
       <p>The agent is a <strong>priority ladder with a 1-ply lookahead</strong>. On each MAIN decision it evaluates every legal option by forking the real engine, applying the option, playing the rest of the turn greedily, and scoring the resulting board. Where search fails, it falls back to a fixed ordering:</p>
     </div>
@@ -368,7 +353,7 @@
 
 <section id="evidence">
   <div class="wrap">
-    <h2><span class="sec-no">§2</span> Evidence: three findings, each with its test</h2>
+    <h2>Evidence: three findings, each with its test</h2>
     <p class="kicker">2.1 The deck is not the bottleneck &nbsp;·&nbsp; 2.2 Fix arbitrary decisions &nbsp;·&nbsp; 2.3 A 24%-wide blind spot</p>
 
     <h3 style="font-size:1.1rem;margin:0 0 10px;">2.1 &nbsp;The deck is not the bottleneck (controlled comparison)</h3>
@@ -443,7 +428,7 @@
           </tbody>
         </table>
       </details>
-      <figcaption><span class="fig-no">Figure 4.</span> Deck-vs-agent decomposition — near-identical decks, a statistical tie in play, and a ~700-point leaderboard gap.</figcaption>
+      <figcaption><span class="fig-no">Figure 1.</span> Deck-vs-agent decomposition — near-identical decks, a statistical tie in play, and a ~700-point leaderboard gap.</figcaption>
     </figure>
     <div class="prose">
       <p>Two decks that are 90% the same list and tie in play, separated by ~700 leaderboard points. <strong>The gap is the agent, not the deck.</strong> This comparison redirected all remaining effort away from deck construction.</p>
@@ -546,7 +531,7 @@
           </tbody>
         </table>
       </details>
-      <figcaption><span class="fig-no">Figure 3.</span> All nine mechanisms tested. Eight cluster on the 50% line; the accepted fix (§2.2) is the outlier.</figcaption>
+      <figcaption><span class="fig-no">Figure 2.</span> All nine mechanisms tested. Eight cluster on the 50% line; the accepted fix is the outlier.</figcaption>
     </figure>
     <div class="prose">
       <p><strong>The eight rejections then formed a pattern.</strong> Mechanisms improving a ranking the baseline <em>already computed</em> went nowhere: 50.5%, 51.0%, 50.2%, 50.0%, 47.0%. Mechanisms reallocating a resource the accepted fix depended on actively lost (45.0%). The rule — <em>fix what is arbitrary, not what is merely imperfect</em> — was derived from data, not assumed.</p>
@@ -562,7 +547,7 @@
 
 <section id="limits">
   <div class="wrap">
-    <h2><span class="sec-no">§3</span> Generalization and the limits of my own measurements</h2>
+    <h2>Generalization and the limits of my own measurements</h2>
     <div class="prose">
       <p><strong>My early benchmarks were structurally blind.</strong> Self-play against a frozen copy of myself on a mirrored deck reported 99% vs random and 60/40 vs prior-self — while the ladder said otherwise. A mirror cannot expose a deck-consistency failure, because both sides brick identically. The metric was not noisy — it was <em>measuring the wrong thing</em>.</p>
       <p><strong>A 200-game screen cannot distinguish 45% from 55%.</strong> I measured the noise floor directly with an <strong>inert control arm</strong> — a candidate making zero different decisions across 49 selections — which scored <strong>44.5% over 200 games</strong> purely from run-to-run variance. Screens filter gross regressions and inertness, not small gains.</p>
@@ -620,7 +605,7 @@
           </tbody>
         </table>
       </details>
-      <figcaption><span class="fig-no">Figure 2.</span> Two nominally-significant early reads (EXP-0012, EXP-0015) both regressed to a statistical tie as sample size grew.</figcaption>
+      <figcaption><span class="fig-no">Figure 3.</span> Two nominally-significant early reads (EXP-0012, EXP-0015) both regressed to a statistical tie as sample size grew.</figcaption>
     </figure>
     <div class="table-scroll">
       <table class="data">
@@ -640,7 +625,7 @@
 
 <section id="deck">
   <div class="wrap">
-    <h2><span class="sec-no">§4</span> Deck concept and key cards</h2>
+    <h2>Deck concept and key cards</h2>
     <div class="prose">
       <p>The active submission is a <strong>Grass toolbox built on two 2/2/2 evolution lines sharing one Basic-heavy shell</strong>:</p>
     </div>
@@ -651,7 +636,7 @@
     </ul>
     <div class="prose">
       <p>The concept is <strong>energy multiplication plus a durable Active</strong>, not raw damage. Meganium is the enabler, not the attacker; Hydrapple ex absorbs the KOs that would otherwise cost prizes.</p>
-      <p><strong>Alignment with the agent is deliberate and measured.</strong> The one accepted agent change (§2.2) is an <em>energy-routing</em> fix — precisely the mechanism this deck's game plan depends on. The deck's win condition named the decision context worth instrumenting.</p>
+      <p><strong>Alignment with the agent is deliberate and measured.</strong> The one accepted agent change is an <em>energy-routing</em> fix — precisely the mechanism this deck's game plan depends on. The deck's win condition named the decision context worth instrumenting.</p>
       <p><strong>Alternatives were built and rejected, not assumed away:</strong></p>
     </div>
     <div class="deck-grid">
@@ -663,7 +648,7 @@
       <div class="deck-card">
         <h3>Mega Gardevoir</h3>
         <div class="result">19–20%</div>
-        <p>Board-wide energy scaling, 1-cost attacker. Loss traced to the same variable-damage blind spot as §2.3 — the deck's own signature attack was invisible to its pilot.</p>
+        <p>Board-wide energy scaling, 1-cost attacker. Loss traced to the same variable-damage blind spot described above — the deck's own signature attack was invisible to its pilot.</p>
       </div>
     </div>
   </div>
@@ -671,7 +656,7 @@
 
 <section id="didnt-work">
   <div class="wrap">
-    <h2><span class="sec-no">§5</span> What didn't work</h2>
+    <h2>What didn't work</h2>
     <div class="prose">
       <p><strong>The heuristic line is exhausted, and it shows.</strong> Nine mechanisms, one accepted, and the last five all inside the noise floor (50.5, 51.0, 50.2, 50.0, 47.0). Further single-context heuristic scoring has a measured expected value near zero.</p>
       <p><strong>Search did not rescue it.</strong> The 1-ply lookahead was replaced with bounded UCT, using the accepted heuristic as fallback, rollout policy and seed candidate. After fixing a wiring bug that voided the first attempt, all four configurations sat at or below the heuristic over 200 games each:</p>
@@ -720,7 +705,7 @@
           </tbody>
         </table>
       </details>
-      <figcaption><span class="fig-no">Figure 1.</span> Win rate declines monotonically as search width increases — the signature of a weak evaluator, not weak search.</figcaption>
+      <figcaption><span class="fig-no">Figure 4.</span> Win rate declines monotonically as search width increases — the signature of a weak evaluator, not weak search.</figcaption>
     </figure>
     <div class="table-scroll">
       <table class="data">
@@ -744,18 +729,18 @@
 
 <section id="conclusion">
   <div class="wrap">
-    <h2><span class="sec-no">§6</span> Conclusion</h2>
+    <h2>Conclusion</h2>
     <div class="prose">
       <p><strong>Proven:</strong> the deck is not the bottleneck (90% identical list, statistical tie, ~700 point gap). Fixing arbitrarily-answered decision contexts pays; refining existing rankings does not. The evaluator, not search depth, is the binding constraint — demonstrated twice, independently, at two scales. The screening methodology carries ~7 points of standard deviation, and pre-committed effect-size bars are what keep multiple-looks artifacts out of the agent.</p>
       <p><strong>Not proven, and not claimed:</strong> that the agent is competitive. Its active leaderboard score is 333. Everything above is an account of <em>why</em>, with the measurements attached.</p>
-      <p><strong>The identified next step is specific:</strong> <code>_eval_state</code> enrichment, measured against the cheap 1-ply lookahead first. If the evaluator improves, search becomes worth retesting on top of it — in that order, because the monotonic-degradation result says search amplifies whatever the evaluator gets wrong. The variable-damage estimator (§2.3) is an independent, already-quantified +17-point repair that is not deck-specific.</p>
+      <p><strong>The identified next step is specific:</strong> <code>_eval_state</code> enrichment, measured against the cheap 1-ply lookahead first. If the evaluator improves, search becomes worth retesting on top of it — in that order, because the monotonic-degradation result says search amplifies whatever the evaluator gets wrong. The variable-damage estimator is an independent, already-quantified +17-point repair that is not deck-specific.</p>
     </div>
   </div>
 </section>
 
 <section id="explorer">
   <div class="wrap">
-    <h2><span class="sec-no">§7</span> All 15 experiments, unabridged</h2>
+    <h2>All 15 experiments, unabridged</h2>
     <p class="kicker">Every mechanism tried, including the ones that never made it past a first probe. Filter by decision or search the notes.</p>
 
     <div class="explorer-controls">
@@ -783,7 +768,7 @@
         <tbody id="exp-tbody"></tbody>
       </table>
     </div>
-    <span class="csv-link">Source: <code>sub-agents/specialists/My_Deck_Grass/experiments_summary.csv</code> — one row per experiment, parsed programmatically from each run's <code>experiment.json</code>.</span>
+    <span class="csv-link">Source: <a href="https://github.com/NoName7n11/Pokemon_Hackathon/blob/main/sub-agents/specialists/My_Deck_Grass/experiments_summary.csv" target="_blank" rel="noopener"><code>sub-agents/specialists/My_Deck_Grass/experiments_summary.csv</code></a> — one row per experiment, parsed programmatically from each run's <code>experiment.json</code>.</span>
   </div>
 </section>
 
