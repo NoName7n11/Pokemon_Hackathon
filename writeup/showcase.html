@@ -1,6 +1,6 @@
 <title>Evaluator, Not the Deck</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
   :root {
     --paper: #f7f5f0;
@@ -52,7 +52,7 @@
   body {
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Gowun Batang', Georgia, serif;
     line-height: 1.6;
     font-size: 16px;
   }
@@ -65,7 +65,7 @@
   }
 
   a { color: var(--accent-strong); }
-  code, .mono, .num { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  code, .mono, .num { font-family: 'Gowun Batang', Georgia, serif; }
 
   .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
 
@@ -133,7 +133,7 @@
     background: var(--paper-raised); padding: 20px 18px;
   }
   .stat-tile .n {
-    font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    font-family: 'Gowun Batang', Georgia, serif; font-weight: 700;
     font-size: 1.7rem; color: var(--accent-strong);
     font-variant-numeric: tabular-nums;
   }
@@ -223,13 +223,13 @@
     font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
     color: var(--muted); font-weight: 600; background: var(--accent-tint);
   }
-  table.data td.num, table.data th.num { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; text-align: right; }
+  table.data td.num, table.data th.num { font-family: 'Gowun Batang', Georgia, serif; font-variant-numeric: tabular-nums; text-align: right; }
   table.data tr:last-child td { border-bottom: none; }
   .table-scroll { overflow-x: auto; margin-top: 20px; }
 
   .pill {
     display: inline-block; padding: 2px 9px; border-radius: 999px;
-    font-size: 0.72rem; font-weight: 600; font-family: 'Inter', sans-serif;
+    font-size: 0.72rem; font-weight: 700; font-family: 'Gowun Batang', Georgia, serif;
   }
   .pill.accepted { background: var(--accent-tint); color: var(--accent-strong); }
   .pill.rejected { background: var(--bad-tint); color: var(--bad); }
@@ -248,7 +248,7 @@
     padding: 18px 20px; box-shadow: var(--shadow);
   }
   .deck-card h3 { font-size: 1.02rem; margin: 0 0 4px; font-weight: 700; }
-  .deck-card .result { font-family: 'JetBrains Mono', monospace; color: var(--bad); font-weight: 600; font-size: 1.4rem; }
+  .deck-card .result { font-family: 'Gowun Batang', Georgia, serif; color: var(--bad); font-weight: 700; font-size: 1.4rem; }
   .deck-card p { font-size: 0.88rem; color: var(--muted); margin: 8px 0 0; }
 
   /* explorer */
@@ -256,7 +256,7 @@
     display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; align-items: center;
   }
   .explorer-controls input, .explorer-controls select {
-    font-family: 'Inter', sans-serif; font-size: 0.85rem;
+    font-family: 'Gowun Batang', Georgia, serif; font-size: 0.85rem;
     border: 1px solid var(--line); background: var(--paper-raised); color: var(--ink);
     padding: 7px 11px; border-radius: 7px;
   }
