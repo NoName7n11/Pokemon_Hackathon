@@ -172,16 +172,55 @@
   .tldr-list strong { color: var(--ink); }
 
   figure { margin: 24px 0 0; }
-  figure img {
-    width: 100%; display: block; border-radius: 10px;
-    border: 1px solid var(--line); background: var(--paper-raised);
-    box-shadow: var(--shadow);
-  }
   figcaption {
     font-size: 0.85rem; color: var(--muted); margin-top: 10px;
     max-width: 65ch;
   }
   figcaption .fig-no { color: var(--accent-strong); font-weight: 600; }
+
+  /* ---------- embedded figure charts (from writeup_figures.html) ---------- */
+  .viz-fig {
+    --v-surface:  var(--paper-raised);
+    --v-text-1:   var(--ink);
+    --v-text-2:   var(--ink-soft);
+    --v-text-mut: var(--muted);
+    --v-grid:     var(--line);
+    --v-axis:     var(--muted);
+    --v-series:   var(--accent);
+    --v-shade-lo: color-mix(in srgb, var(--accent) 45%, var(--paper-raised));
+    --v-shade-hi: var(--accent-strong);
+    --v-deemph:   var(--muted);
+    --v-border:   var(--line);
+    background: var(--v-surface);
+    border: 1px solid var(--v-border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 20px 22px 16px;
+  }
+  .viz-fig .v-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 12px; font-size: 12px; color: var(--v-text-2); }
+  .viz-fig .v-lg { display: flex; align-items: center; gap: 6px; }
+  .viz-fig .v-sw { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+  .viz-fig .v-sw-line { width: 14px; height: 2px; border-radius: 1px; flex: none; }
+  .viz-fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .viz-fig .v-tick { font-size: 11px; fill: var(--v-text-mut); font-variant-numeric: tabular-nums; }
+  .viz-fig .v-cat  { font-size: 12px; fill: var(--v-text-2); }
+  .viz-fig .v-cat-em { font-size: 12px; fill: var(--v-text-1); font-weight: 600; }
+  .viz-fig .v-val  { font-size: 12px; fill: var(--v-text-1); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .viz-fig .v-val-mut { font-size: 11.5px; fill: var(--v-text-2); font-variant-numeric: tabular-nums; }
+  .viz-fig .v-note { font-size: 11.5px; fill: var(--v-text-mut); }
+  .viz-fig .v-gridline { stroke: var(--v-grid); stroke-width: 1; }
+  .viz-fig .v-baseline { stroke: var(--v-axis); stroke-width: 1; }
+  .viz-fig .v-refline  { stroke: var(--v-text-2); stroke-width: 1.5; }
+  .viz-fig .v-foot {
+    font-size: 11.5px; color: var(--v-text-mut); margin: 12px 0 0;
+    line-height: 1.5; border-top: 1px solid var(--v-border); padding-top: 10px;
+  }
+  .viz-fig details { margin-top: 12px; }
+  .viz-fig summary { font-size: 12px; color: var(--v-text-2); cursor: pointer; }
+  .viz-fig .v-table { border-collapse: collapse; margin-top: 10px; font-size: 12px; width: 100%; }
+  .viz-fig .v-table th, .viz-fig .v-table td { text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid var(--v-border); color: var(--v-text-2); }
+  .viz-fig .v-table th { color: var(--v-text-1); font-weight: 600; }
+  .viz-fig .v-table td.num, .viz-fig .v-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
 
   .prose p { max-width: 68ch; }
   .prose { display: grid; gap: 14px; }
@@ -346,8 +385,64 @@
         </tbody>
       </table>
     </div>
-    <figure>
-      <img src="writeup_assets/figure-4-deck-vs-agent.png" alt="Two-panel chart decomposing deck similarity versus leaderboard-score gap between the operator's deck and the reconstructed rank-30 competitor deck">
+    <figure class="viz-fig">
+      <svg viewBox="0 0 700 250" role="img" aria-label="Two panels. Left: head-to-head win rate 53.8 percent with confidence interval 42.9 to 64.3 spanning the 50 percent parity line, a statistical tie. Right: leaderboard scores, their deck 1090, our active submission 333.">
+        <text class="v-cat-em" x="20" y="22">A &middot; Head-to-head, my agent piloting both</text>
+        <text class="v-note"   x="20" y="38">80 seat-balanced games</text>
+        <g>
+          <line class="v-gridline" x1="30"  y1="60" x2="30"  y2="140"/>
+          <line class="v-gridline" x1="120" y1="60" x2="120" y2="140"/>
+          <line class="v-gridline" x1="210" y1="60" x2="210" y2="140"/>
+          <line class="v-gridline" x1="300" y1="60" x2="300" y2="140"/>
+          <text class="v-tick" x="30"  y="158" text-anchor="middle">40%</text>
+          <text class="v-tick" x="120" y="158" text-anchor="middle">50%</text>
+          <text class="v-tick" x="210" y="158" text-anchor="middle">60%</text>
+          <text class="v-tick" x="300" y="158" text-anchor="middle">70%</text>
+        </g>
+        <line class="v-refline" x1="120" y1="54" x2="120" y2="140"/>
+        <text class="v-note" x="120" y="50" text-anchor="middle">50% parity</text>
+        <line x1="56.1"  y1="100" x2="248.7" y2="100" stroke="var(--v-series)" stroke-width="3" opacity="0.35"/>
+        <line x1="56.1"  y1="93"  x2="56.1"  y2="107" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <line x1="248.7" y1="93"  x2="248.7" y2="107" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <circle cx="154.2" cy="100" r="7" fill="var(--v-series)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val" x="154.2" y="84" text-anchor="middle">53.8%</text>
+        <text class="v-note" x="30" y="180">95% CI [42.9, 64.3] — spans parity.</text>
+        <text class="v-note" x="30" y="195">Statistically indistinguishable.</text>
+        <line x1="350" y1="18" x2="350" y2="215" stroke="var(--v-border)" stroke-width="1"/>
+        <text class="v-cat-em" x="386" y="22">B &middot; Leaderboard score</text>
+        <text class="v-note"   x="386" y="38">Simulation track</text>
+        <g>
+          <line class="v-gridline" x1="386" y1="140" x2="676" y2="140"/>
+          <line class="v-gridline" x1="386" y1="111" x2="676" y2="111"/>
+          <line class="v-gridline" x1="386" y1="83"  x2="676" y2="83"/>
+          <text class="v-tick" x="378" y="144" text-anchor="end">0</text>
+          <text class="v-tick" x="378" y="115" text-anchor="end">400</text>
+          <text class="v-tick" x="378" y="87"  text-anchor="end">800</text>
+        </g>
+        <rect x="410" y="62" width="86" height="78" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="453" y="55" text-anchor="middle">1090</text>
+        <text class="v-cat" x="453" y="158" text-anchor="middle">Their deck</text>
+        <text class="v-note" x="453" y="172" text-anchor="middle">rank ~30</text>
+        <rect x="556" y="116.2" width="86" height="23.8" rx="4" fill="var(--v-deemph)"/>
+        <text class="v-val" x="599" y="109" text-anchor="middle">333</text>
+        <text class="v-cat" x="599" y="158" text-anchor="middle">Mine (active)</text>
+        <text class="v-note" x="599" y="172" text-anchor="middle">best scored 441</text>
+        <line class="v-baseline" x1="386" y1="140" x2="676" y2="140"/>
+        <text class="v-note" x="386" y="195">Card-name overlap between the two lists: 90% (54 of 60).</text>
+      </svg>
+      <p class="v-foot">Their list was reconstructed from a public episode replay. Panel A holds the agent constant and varies only the deck; Panel B is the ladder outcome for each side's own agent-plus-deck pair. The two panels use separate scales and are deliberately not overlaid.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Measure</th><th class="num">Their deck</th><th class="num">Mine</th></tr></thead>
+          <tbody>
+            <tr><td>Card-name overlap</td><td class="num" colspan="2">54 / 60 = 90%</td></tr>
+            <tr><td>Head-to-head (my agent both sides, 80 games)</td><td class="num" colspan="2">53.8%, CI [42.9, 64.3] — tie</td></tr>
+            <tr><td>Leaderboard score</td><td class="num">1090</td><td class="num">333 active / 441 best</td></tr>
+            <tr><td>Prizes conceded across all Pokémon</td><td class="num">29</td><td class="num">higher</td></tr>
+          </tbody>
+        </table>
+      </details>
       <figcaption><span class="fig-no">Figure 4.</span> Deck-vs-agent decomposition — near-identical decks, a statistical tie in play, and a ~700-point leaderboard gap.</figcaption>
     </figure>
     <div class="prose">
@@ -374,8 +469,83 @@
     <div class="prose">
       <p>It generalized: the same fix improved play on two <em>foreign</em> decks by the same magnitude (58.0%, 56.5%), indicating a general repair rather than a deck-specific hack.</p>
     </div>
-    <figure>
-      <img src="writeup_assets/figure-3-nine-mechanisms.png" alt="Dot plot of all nine tested mechanisms' win rates against the 50% baseline, with the single accepted mechanism highlighted">
+    <figure class="viz-fig">
+      <div class="v-legend">
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-series)"></span>Accepted</span>
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-deemph)"></span>Rejected</span>
+        <span class="v-lg"><span class="v-sw-line" style="background:var(--v-text-2)"></span>50% parity</span>
+      </div>
+      <svg viewBox="0 0 700 330" role="img" aria-label="Dot plot of nine mechanisms by win rate. Energy source selection accepted at 57.1 percent. Eight rejected: 52.5, 51.25, 51.0, 50.5, 50.3, 50.2, 50.0, 47.0, and promotion policy at 37.5 percent.">
+        <g>
+          <line class="v-gridline" x1="210" y1="18" x2="210" y2="278"/>
+          <line class="v-gridline" x1="300" y1="18" x2="300" y2="278"/>
+          <line class="v-gridline" x1="390" y1="18" x2="390" y2="278"/>
+          <line class="v-gridline" x1="480" y1="18" x2="480" y2="278"/>
+          <line class="v-gridline" x1="570" y1="18" x2="570" y2="278"/>
+          <line class="v-gridline" x1="660" y1="18" x2="660" y2="278"/>
+          <text class="v-tick" x="210" y="296" text-anchor="middle">35%</text>
+          <text class="v-tick" x="300" y="296" text-anchor="middle">40%</text>
+          <text class="v-tick" x="390" y="296" text-anchor="middle">45%</text>
+          <text class="v-tick" x="480" y="296" text-anchor="middle">50%</text>
+          <text class="v-tick" x="570" y="296" text-anchor="middle">55%</text>
+          <text class="v-tick" x="660" y="296" text-anchor="middle">60%</text>
+        </g>
+        <line class="v-refline" x1="480" y1="12" x2="480" y2="278"/>
+        <text class="v-note" x="480" y="8" text-anchor="middle">50%</text>
+        <text class="v-cat-em" x="198" y="40" text-anchor="end">Energy-source selection</text>
+        <line x1="489.6" y1="36" x2="678.2" y2="36" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <line x1="489.6" y1="31" x2="489.6" y2="41" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <line x1="678.2" y1="31" x2="678.2" y2="41" stroke="var(--v-series)" stroke-width="2" opacity="0.35"/>
+        <circle cx="607.8" cy="36" r="6" fill="var(--v-series)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val" x="688" y="40">57.1%</text>
+        <text class="v-cat" x="198" y="66" text-anchor="end">Meowth escape (screen)</text>
+        <circle cx="525" cy="62" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="66">52.5%</text>
+        <text class="v-cat" x="198" y="92" text-anchor="end">Conditional ability priority</text>
+        <circle cx="502.5" cy="88" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="92">51.25%</text>
+        <text class="v-cat" x="198" y="118" text-anchor="end">Fetch-target need scoring</text>
+        <circle cx="498" cy="114" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="118">51.0%</text>
+        <text class="v-cat" x="198" y="144" text-anchor="end">Ability reordering (early)</text>
+        <circle cx="489" cy="140" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="144">50.5%</text>
+        <text class="v-cat" x="198" y="170" text-anchor="end">Meowth escape (pooled)</text>
+        <circle cx="485.4" cy="166" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="170">50.3%</text>
+        <text class="v-cat" x="198" y="196" text-anchor="end">Ability-cap budget</text>
+        <circle cx="483.6" cy="192" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="196">50.2%</text>
+        <text class="v-cat" x="198" y="222" text-anchor="end">Attach-target scoring</text>
+        <circle cx="480" cy="218" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="222">50.0%</text>
+        <text class="v-cat" x="198" y="248" text-anchor="end">Discard-cost targeting</text>
+        <circle cx="426" cy="244" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="248">47.0%</text>
+        <text class="v-cat" x="198" y="274" text-anchor="end">Deck promotion policy</text>
+        <circle cx="255" cy="270" r="5.5" fill="var(--v-deemph)" stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="688" y="274">37.5%</text>
+        <text class="v-note" x="210" y="318">Noise floor: an inert control arm — zero different decisions — scored 44.5% over 200 games.</text>
+      </svg>
+      <p class="v-foot">Interval shown on the accepted mechanism only (1,020 games). The rejected mechanisms are plotted at their largest measured sample; several were carried to 500–2,000 games before rejection.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Mechanism</th><th class="num">Win rate</th><th>Outcome</th></tr></thead>
+          <tbody>
+            <tr><td>Energy-source selection (EXP-0005)</td><td class="num">57.1%</td><td>Accepted — CI 52.2–60.9, n=1020</td></tr>
+            <tr><td>Meowth ex escape — screening</td><td class="num">52.5%</td><td>Rejected on pooled result</td></tr>
+            <tr><td>Conditional ability priority</td><td class="num">51.25%</td><td>Rejected — CI spans 50</td></tr>
+            <tr><td>Fetch-target need scoring</td><td class="num">51.0%</td><td>Rejected</td></tr>
+            <tr><td>Ability reordering</td><td class="num">50.5%</td><td>Rejected</td></tr>
+            <tr><td>Meowth ex escape — pooled</td><td class="num">50.3%</td><td>Rejected — CI spans 50</td></tr>
+            <tr><td>Ability-cap budget</td><td class="num">50.2%</td><td>Rejected</td></tr>
+            <tr><td>Attach-target scoring</td><td class="num">50.0%</td><td>Rejected — dead flat</td></tr>
+            <tr><td>Discard-cost targeting</td><td class="num">47.0%</td><td>Rejected — mildly negative</td></tr>
+            <tr><td>Deck promotion policy (corrected)</td><td class="num">37.5%</td><td>Rejected — harmful</td></tr>
+          </tbody>
+        </table>
+      </details>
       <figcaption><span class="fig-no">Figure 3.</span> All nine mechanisms tested. Eight cluster on the 50% line; the accepted fix (§2.2) is the outlier.</figcaption>
     </figure>
     <div class="prose">
@@ -397,8 +567,59 @@
       <p><strong>My early benchmarks were structurally blind.</strong> Self-play against a frozen copy of myself on a mirrored deck reported 99% vs random and 60/40 vs prior-self — while the ladder said otherwise. A mirror cannot expose a deck-consistency failure, because both sides brick identically. The metric was not noisy — it was <em>measuring the wrong thing</em>.</p>
       <p><strong>A 200-game screen cannot distinguish 45% from 55%.</strong> I measured the noise floor directly with an <strong>inert control arm</strong> — a candidate making zero different decisions across 49 selections — which scored <strong>44.5% over 200 games</strong> purely from run-to-run variance. Screens filter gross regressions and inertness, not small gains.</p>
     </div>
-    <figure>
-      <img src="writeup_assets/figure-2-replication-failure.png" alt="Dumbbell chart showing two experiments' early win-rate reading versus their final pooled reading, both regressing to near 50%">
+    <figure class="viz-fig">
+      <div class="v-legend">
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-shade-lo)"></span>First look (small n)</span>
+        <span class="v-lg"><span class="v-sw" style="background:var(--v-shade-hi)"></span>Final (large n)</span>
+        <span class="v-lg"><span class="v-sw-line" style="background:var(--v-text-2)"></span>50% parity</span>
+      </div>
+      <svg viewBox="0 0 700 220" role="img" aria-label="Dumbbell chart. EXP-0012 moved from 53.4 percent at n=1000 to 51.25 percent at n=2000 with a confidence interval spanning 50. EXP-0015 moved from 57.5 percent at n=200 to 50.3 percent at n=1000, interval also spanning 50.">
+        <g>
+          <line class="v-gridline" x1="150" y1="40" x2="150" y2="175"/>
+          <line class="v-gridline" x1="272.5" y1="40" x2="272.5" y2="175"/>
+          <line class="v-gridline" x1="435" y1="40" x2="435" y2="175"/>
+          <line class="v-gridline" x1="558" y1="40" x2="558" y2="175"/>
+          <text class="v-tick" x="150" y="192" text-anchor="middle">46%</text>
+          <text class="v-tick" x="272.5" y="192" text-anchor="middle">49%</text>
+          <text class="v-tick" x="435" y="192" text-anchor="middle">53%</text>
+          <text class="v-tick" x="558" y="192" text-anchor="middle">56%</text>
+        </g>
+        <line class="v-refline" x1="313.3" y1="34" x2="313.3" y2="175"/>
+        <text class="v-note" x="313.3" y="28" text-anchor="middle">50%</text>
+        <text class="v-cat-em" x="138" y="72" text-anchor="end">EXP-0012</text>
+        <text class="v-note"   x="138" y="87" text-anchor="end">n 1000 → 2000</text>
+        <line x1="273.0" y1="68" x2="453.9" y2="68" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="273.0" y1="63" x2="273.0" y2="73" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="453.9" y1="63" x2="453.9" y2="73" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="452.3" y1="68" x2="364.4" y2="68" stroke="var(--v-text-mut)" stroke-width="2"/>
+        <circle cx="452.3" cy="68" r="6" fill="var(--v-shade-lo)" stroke="var(--v-surface)" stroke-width="2"/>
+        <circle cx="364.4" cy="68" r="6" fill="var(--v-shade-hi)"  stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="452.3" y="53" text-anchor="middle">53.4%</text>
+        <text class="v-val"     x="364.4" y="53" text-anchor="middle">51.25%</text>
+        <text class="v-note"    x="466" y="86">CI [49.06, 53.44] — spans 50</text>
+        <text class="v-cat-em" x="138" y="142" text-anchor="end">EXP-0015</text>
+        <text class="v-note"   x="138" y="157" text-anchor="end">n 200 → 1000</text>
+        <line x1="199.0" y1="138" x2="452.3" y2="138" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="199.0" y1="133" x2="199.0" y2="143" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="452.3" y1="133" x2="452.3" y2="143" stroke="var(--v-shade-hi)" stroke-width="2" opacity="0.35"/>
+        <line x1="619.5" y1="138" x2="325.5" y2="138" stroke="var(--v-text-mut)" stroke-width="2"/>
+        <circle cx="619.5" cy="138" r="6" fill="var(--v-shade-lo)" stroke="var(--v-surface)" stroke-width="2"/>
+        <circle cx="325.5" cy="138" r="6" fill="var(--v-shade-hi)"  stroke="var(--v-surface)" stroke-width="2"/>
+        <text class="v-val-mut" x="619.5" y="123" text-anchor="middle">57.5%</text>
+        <text class="v-val"     x="325.5" y="123" text-anchor="middle">50.3%</text>
+        <text class="v-note"    x="466" y="156">CI [47.2, 53.4] — spans 50</text>
+      </svg>
+      <p class="v-foot">Shaded bars are 95% confidence intervals on the final measurement. Zero draws, timeouts, illegal actions or crashes across all 3,020 games.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Experiment</th><th class="num">First look</th><th class="num">p</th><th class="num">Final</th><th>Final 95% CI</th></tr></thead>
+          <tbody>
+            <tr><td>EXP-0012 (conditional ability priority)</td><td class="num">53.4% (n=1000)</td><td class="num">0.0315</td><td class="num">51.25% (n=2000)</td><td>[49.06, 53.44]</td></tr>
+            <tr><td>EXP-0015 (Meowth ex escape)</td><td class="num">57.5% (n=200)</td><td class="num">0.034</td><td class="num">50.3% (n=1000)</td><td>[47.2, 53.4]</td></tr>
+          </tbody>
+        </table>
+      </details>
       <figcaption><span class="fig-no">Figure 2.</span> Two nominally-significant early reads (EXP-0012, EXP-0015) both regressed to a statistical tie as sample size grew.</figcaption>
     </figure>
     <div class="table-scroll">
@@ -455,8 +676,50 @@
       <p><strong>The heuristic line is exhausted, and it shows.</strong> Nine mechanisms, one accepted, and the last five all inside the noise floor (50.5, 51.0, 50.2, 50.0, 47.0). Further single-context heuristic scoring has a measured expected value near zero.</p>
       <p><strong>Search did not rescue it.</strong> The 1-ply lookahead was replaced with bounded UCT, using the accepted heuristic as fallback, rollout policy and seed candidate. After fixing a wiring bug that voided the first attempt, all four configurations sat at or below the heuristic over 200 games each:</p>
     </div>
-    <figure>
-      <img src="writeup_assets/figure-1-search-degradation.png" alt="Bar chart of four MCTS search-width configurations, win rate declining monotonically from 49.5% to 41.5% as search width increases">
+    <figure class="viz-fig">
+      <svg viewBox="0 0 700 250" role="img" aria-label="Win rate by search configuration: horizon 1 at 49.5 percent, baseline 47.5, selective budget 44.5, max candidates 24 at 41.5 percent. All below the 50 percent parity line.">
+        <g>
+          <line class="v-gridline" x1="150" y1="190" x2="660" y2="190"/>
+          <line class="v-gridline" x1="150" y1="145" x2="660" y2="145"/>
+          <line class="v-gridline" x1="150" y1="100" x2="660" y2="100"/>
+          <line class="v-gridline" x1="150" y1="55"  x2="660" y2="55"/>
+          <text class="v-tick" x="142" y="194" text-anchor="end">40%</text>
+          <text class="v-tick" x="142" y="149" text-anchor="end">44%</text>
+          <text class="v-tick" x="142" y="104" text-anchor="end">48%</text>
+          <text class="v-tick" x="142" y="59"  text-anchor="end">52%</text>
+        </g>
+        <line class="v-refline" x1="150" y1="77.5" x2="620" y2="77.5"/>
+        <text class="v-note" x="624" y="81">50% parity</text>
+        <rect x="168" y="83.1" width="78" height="106.9" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="207" y="76" text-anchor="middle">49.5%</text>
+        <rect x="288" y="105.6" width="78" height="84.4" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="327" y="98.5" text-anchor="middle">47.5%</text>
+        <rect x="408" y="139.4" width="78" height="50.6" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="447" y="132.3" text-anchor="middle">44.5%</text>
+        <rect x="528" y="173.1" width="78" height="16.9" rx="4" fill="var(--v-series)"/>
+        <text class="v-val" x="567" y="166" text-anchor="middle">41.5%</text>
+        <text class="v-val-mut" x="567" y="150" text-anchor="middle">p = 0.016</text>
+        <line class="v-baseline" x1="150" y1="190" x2="660" y2="190"/>
+        <text class="v-cat" x="207" y="208" text-anchor="middle">horizon = 1</text>
+        <text class="v-cat" x="327" y="208" text-anchor="middle">mcts_baseline</text>
+        <text class="v-cat" x="447" y="208" text-anchor="middle">selective_budget</text>
+        <text class="v-cat-em" x="567" y="208" text-anchor="middle">max_cand = 24</text>
+        <text class="v-note" x="150" y="232">narrower search</text>
+        <text class="v-note" x="660" y="232" text-anchor="end">wider search →</text>
+      </svg>
+      <p class="v-foot">Zero faults across all arms; latency was never the constraint (9.2 ms mean, 97 ms max). An earlier attempt was voided by a wiring bug that bypassed the per-turn ability cap — all four arms above are the cap-fixed measurements.</p>
+      <details>
+        <summary>Table view</summary>
+        <table class="v-table">
+          <thead><tr><th>Configuration</th><th class="num">Record</th><th class="num">Win rate</th><th class="num">p</th></tr></thead>
+          <tbody>
+            <tr><td>horizon_turns = 1</td><td class="num">99–101</td><td class="num">49.5%</td><td class="num">—</td></tr>
+            <tr><td>mcts_baseline</td><td class="num">95–105</td><td class="num">47.5%</td><td class="num">—</td></tr>
+            <tr><td>selective_budget</td><td class="num">89–111</td><td class="num">44.5%</td><td class="num">—</td></tr>
+            <tr><td>max_candidates = 24</td><td class="num">83–117</td><td class="num">41.5%</td><td class="num">0.016</td></tr>
+          </tbody>
+        </table>
+      </details>
       <figcaption><span class="fig-no">Figure 1.</span> Win rate declines monotonically as search width increases — the signature of a weak evaluator, not weak search.</figcaption>
     </figure>
     <div class="table-scroll">
